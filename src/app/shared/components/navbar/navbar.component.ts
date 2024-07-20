@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-  constructor() {
-    console.log('Hello From hassan again');
+  constructor({
+    console.log('Hello From hassan again';
   }
 }
