@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
   constructor() {
     console.log('Hello From hassan again');
+    console.log('Hello From mohamed again');
+
   }
 }
