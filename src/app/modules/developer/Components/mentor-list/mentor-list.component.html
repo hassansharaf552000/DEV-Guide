@@ -1,0 +1,88 @@
+<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
+<div class="container text-center mt-5">
+  <h5 class="display-4 fw-bold" style="
+  font-family: Edu AU VIC WA NT Hand, cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+">Our Mentors</h5>
+<br>
+  <!-- Filters Section -->
+  <div class="row mt-4 justify-content-center">
+    <div class="col-md-12">
+      <form class="form-inline d-flex flex-row justify-content-evenly">
+        <!-- Department Dropdown -->
+        <div class="form__group_one">
+          <input class="input" placeholder="Mentor Name" type="name">
+        </div>
+
+        <div class="form__group_three">
+          <input class="input" placeholder="Mentor Role" type="name">
+        </div>
+
+
+        <div class="form__group_two">
+          <div class="dropdown mt-3">
+            <button class="btn btn-close-white dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false" style="border: 2px solid #1c4980;">
+              Department
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Select Department</a></li>
+            </ul>
+          </div>
+        </div>
+
+
+        <h4 class="mt-3">Rate</h4>
+
+        <!-- Rate Range -->
+        <div class="row">
+          <div class="form-group mt-3">
+
+            <input id="rateFrom" type="number" class="form-control form-control-sm" placeholder="Rate From" min="1"
+              max="5" style="width: 100px;border: 2px solid #1c4980;">
+          </div>
+
+          <div class="form-group mt-3">
+
+            <input id="rateTo" type="number" class="form-control form-control-sm" placeholder="Rate To" min="1" max="5"
+              style="width: 100px;border: 2px solid #1c4980;">
+          </div>
+
+        </div>
+
+        <h4 class="mt-3">Price</h4>
+
+        <div class="row">
+          <div class="form-group mt-3">
+
+            <input id="priceFrom" type="number" class="form-control form-control-sm" placeholder="Price From" min="100"
+              max="1000" style="width: 100px;border: 2px solid #1c4980;">
+          </div>
+
+          <div class="form-group mt-3">
+
+            <input id="priceto" type="number" class="form-control form-control-sm" placeholder="Price To" min="1000" max="1000"
+              style="width: 100px;border: 2px solid #1c4980;">
+          </div>
+
+        </div>
+        <button type="button" class="btn btn-primary mt-3" style="background-color: #1c4980; width: 150px;">
+          <i class="fas fa-search"></i> Search
+        </button>
+
+      </form>
+      <br>
+
+    </div>
+  </div>
+  <br>
+
+  <div class="row mt-4 row mt-4 justify-content-center">
+    @for (mentor of mentors; track $index) {
+    <div class="col-12 col-md-6 col-lg-4 mb-4 d-flex justify-content-center">
+      <app-mentor-card [mentor]="mentor"></app-mentor-card>
+    </div>
+    }
+  </div>
+</div>

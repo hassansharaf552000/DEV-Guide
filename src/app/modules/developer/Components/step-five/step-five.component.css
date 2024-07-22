@@ -1,0 +1,50 @@
+.container {
+  margin-top: 2rem;
+}
+
+.custom-card {
+
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+}
+
+.card-title {
+  color: #007bff;
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.info-section {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s;
+}
+
+.info-section:hover {
+  transform: scale(1.02);
+}
+
+.btn-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
