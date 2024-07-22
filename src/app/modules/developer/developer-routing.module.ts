@@ -11,6 +11,9 @@ import { StepTwoComponent } from './Components/step-two/step-two.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { SharedModule } from '../../shared/shared.module';
 import { Update_profileComponent } from '../../shared/components/update_profile/update_profile.component';
+import { LoginComponent } from '../../shared/components/login/login.component';
+import { RegisterComponent } from '../../shared/components/register/register.component';
+import { UserlayoutComponent } from './userlayout/userlayout.component';
 
 const routes: Routes = [
   { path: 'step-one', component: StepOneComponent },
@@ -23,6 +26,9 @@ const routes: Routes = [
   { path: 'contactus', component: ContactUsComponent },
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'updateprofile', component: Update_profileComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'userlayout', component: UserlayoutComponent },
   { path: '', redirectTo: 'step-one', pathMatch: 'full' },
   { path: '**', redirectTo: 'step-one' },
 ];
