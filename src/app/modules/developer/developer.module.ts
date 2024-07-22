@@ -3,6 +3,16 @@ import { RateComponent } from './Components/rate/rate.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DeveloperRoutingModule } from './developer-routing.module';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
+
+@NgModule({
+  declarations: [
+    ContactUsComponent,
+    AboutUsComponent
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { StepFiveComponent } from './Components/step-five/step-five.component';
@@ -31,6 +41,8 @@ import { MentorListComponent } from './Components/mentor-list/mentor-list.compon
     CommonModule,
     DeveloperRoutingModule,
     FormsModule,
+    ReactiveFormsModule
+  ]
     ReactiveFormsModule,
     NgSelectModule,
   ],
