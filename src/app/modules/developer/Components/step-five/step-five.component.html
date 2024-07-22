@@ -1,0 +1,46 @@
+<div class="container mt-2">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card custom-card">
+        <div class="card-body">
+          <h3 class="card-title">Profile Summary</h3>
+          <p class="text-danger">
+            Please fill in all required fields on your profile before proceeding. Identify any missing details flagged
+            with exclamation marks in each section.
+          </p>
+          <div class="info-section">
+            <h4>Basic Information</h4>
+            <p>First name: {{ basicInfo.firstName || 'N/A' }}</p>
+            <p>Last name: {{ basicInfo.lastName || 'N/A' }}</p>
+            <p>Country of residence: {{ basicInfo.country || 'N/A' }}</p>
+            <p>City of residence: {{ basicInfo.city || 'N/A' }}</p>
+            <p>Phone number: {{ basicInfo.phone || 'N/A' }}</p>
+            <button class="btn btn-link" (click)="editSection('step-two')">Edit Information</button>
+          </div>
+          <hr>
+          <div class="info-section">
+            <h4>Education</h4>
+            <p>University / School: {{ education.university || 'N/A' }}</p>
+            <p>Country: {{ education.country || 'N/A' }}</p>
+            <p>Degree: {{ education.degree || 'N/A' }}</p>
+            <p>Field of study: {{ education.fieldOfStudy || 'N/A' }}</p>
+            <p>Start Date: {{ education.startYear || 'N/A' }} {{ education.startMonth || '' }}</p>
+            <p>End Date: {{ education.endYear || 'N/A' }} {{ education.endMonth || '' }}</p>
+            <p>Currently studying: {{ education.currentlyStudying ? 'Yes' : 'No' }}</p>
+            <button class="btn btn-link" (click)="editSection('step-three')">Edit Information</button>
+          </div>
+          <hr>
+          <div class="info-section">
+            <h4>Technical Skills</h4>
+            <p>Years of full-time work experience: {{ technicalSkills.experience || 'N/A' }}</p>
+            <p>Preferred role: {{ technicalSkills.role || 'N/A' }}</p>
+            <p>Skills: {{ technicalSkills.skills.join(', ') || 'N/A' }}</p>
+            <button class="btn btn-link" (click)="editSection('step-four')">Edit Information</button>
+          </div>
+          <button class="btn btn-secondary mt-3 ms-3" (click)="goToPreviousStep()">Back</button>
+          <button class="btn btn-primary mt-3 ms-3" (click)="submitProfile()">Submit Profile</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
