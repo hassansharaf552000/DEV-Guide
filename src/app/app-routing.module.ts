@@ -1,10 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AppComponent } from './app.component';
 import { ContactUsComponent } from './modules/developer/contact-us/contact-us.component';
 
 const routes: Routes = [
   { path: '', component: ContactUsComponent },
+
+const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () =>
+      import('./modules/developer/developer.module').then(
+        (m) => m.DeveloperModule
+      ),
+  },
   {
     path: 'admin',
     loadChildren: () =>
@@ -37,6 +47,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
