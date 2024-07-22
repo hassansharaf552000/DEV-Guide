@@ -1,12 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { AppComponent } from './app.component';
-import { ContactUsComponent } from './modules/developer/contact-us/contact-us.component';
-
-const routes: Routes = [
-  { path: '', component: ContactUsComponent },
-
 const routes: Routes = [
   {
     path: '',
@@ -42,12 +35,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/mentor/mentor.module').then((m) => m.MentorModule),
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: 'developer/step-one', pathMatch: 'full' },
+  { path: '**', redirectTo: 'developer/step-one' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

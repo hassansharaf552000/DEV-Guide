@@ -6,11 +6,8 @@ import {
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
-
-
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [provideClientHydration()],
