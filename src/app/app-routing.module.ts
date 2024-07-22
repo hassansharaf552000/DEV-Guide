@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'developer/step-one',
+    pathMatch: 'full',
+  },
+  {
+    path: 'developer',
     loadChildren: () =>
       import('./modules/developer/developer.module').then(
         (m) => m.DeveloperModule
@@ -12,13 +18,6 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
-  },
-  {
-    path: 'developer',
-    loadChildren: () =>
-      import('./modules/developer/developer.module').then(
-        (m) => m.DeveloperModule
-      ),
   },
   {
     path: 'guest',
@@ -35,7 +34,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/mentor/mentor.module').then((m) => m.MentorModule),
   },
-  { path: '', redirectTo: 'developer/step-one', pathMatch: 'full' },
   { path: '**', redirectTo: 'developer/step-one' },
 ];
 

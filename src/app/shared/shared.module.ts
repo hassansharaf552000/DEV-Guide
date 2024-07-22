@@ -5,8 +5,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { Update_profileComponent } from './components/update_profile/update_profile.component';
-
-
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,10 +14,8 @@ import { Update_profileComponent } from './components/update_profile/update_prof
     FooterComponent,
     NotFoundComponent,
     SpinnerComponent,
-    Update_profileComponent
+    Update_profileComponent,
   ],
-  imports: [
-   // CommonModule
-  ]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
 })
-export class SharedModule { }
+export class SharedModule {}
