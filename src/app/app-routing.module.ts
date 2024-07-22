@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { RegisterComponent } from './shared/components/register/register.component';
+import { LoginComponent } from './shared/components/login/login.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
+  {path: '', component: LoginComponent },
+  { path: '', component: RegisterComponent },
   {
     path: 'admin',
     loadChildren: () =>
