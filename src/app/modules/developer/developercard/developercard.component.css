@@ -1,0 +1,28 @@
+.card {
+    border-radius: 20px; /* Increased border radius for the card */
+    overflow: hidden;
+    padding-top: 75px; /* Adjust padding to account for the shifted image */
+}
+.card-img-top {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Make the image a circle */
+    object-fit: cover; /* Ensure the image covers the circle */
+    margin: -75px auto 0; /* Center the image and position it above the card body */
+    border: 5px solid white; /* Optional: add a border around the image */
+    position: relative;
+    z-index: 10;
+}
+.card-body {
+    padding-top: 50px; /* Add padding to accommodate the image */
+    text-align: center;
+}
+.card-rating {
+    color: #ffc107;
+}
+.card-title {
+    margin-bottom: 0.5rem;
+}
+.card-text {
+    margin-bottom: 0.5rem;
+}
