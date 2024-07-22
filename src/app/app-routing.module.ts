@@ -1,20 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { AppComponent } from './app.component';
-import { ContactUsComponent } from './modules/developer/contact-us/contact-us.component';
-
-const routes: Routes = [
-  { path: '', component: ContactUsComponent },
-
-const routes: Routes = [
-  {
-    path: '',
-    loadChildren: () =>
-      import('./modules/developer/developer.module').then(
-        (m) => m.DeveloperModule
-      ),
-  },
   {
     path: 'admin',
     loadChildren: () =>

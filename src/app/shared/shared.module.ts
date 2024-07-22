@@ -14,6 +14,8 @@ import { Update_profileComponent } from './components/update_profile/update_prof
     FooterComponent,
     NotFoundComponent,
     SpinnerComponent,
+    LoginComponent,
+    RegisterComponent
     Update_profileComponent
   ],
   imports: [
