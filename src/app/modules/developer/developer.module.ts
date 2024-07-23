@@ -18,6 +18,7 @@ import { StepOneComponent } from './Components/step-one/step-one.component';
 import { StepThreeComponent } from './Components/step-three/step-three.component';
 import { StepTwoComponent } from './Components/step-two/step-two.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -42,8 +43,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DeveloperRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    ReactiveFormsModule,
     NgSelectModule,
+    SharedModule,
   ],
 })
 export class DeveloperModule {}

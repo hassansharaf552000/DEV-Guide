@@ -14,6 +14,7 @@ import { Update_profileComponent } from '../../shared/components/update_profile/
 import { LoginComponent } from '../../shared/components/login/login.component';
 import { RegisterComponent } from '../../shared/components/register/register.component';
 import { UserlayoutComponent } from './userlayout/userlayout.component';
+import { Forget_passwordComponent } from '../../shared/components/forget_password/forget_password.component';
 
 const routes: Routes = [
   { path: 'step-one', component: StepOneComponent },
@@ -29,8 +30,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'userlayout', component: UserlayoutComponent },
-  { path: '', redirectTo: 'step-one', pathMatch: 'full' },
-  { path: '**', redirectTo: 'step-one' },
+  { path: 'forgetpassword', component: Forget_passwordComponent },
+  { path: '', redirectTo: 'userlayout', pathMatch: 'full' },
+  { path: '**', redirectTo: 'userlayout' },
 ];
 
 @NgModule({

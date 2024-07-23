@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -9,6 +8,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { Update_profileComponent } from './components/update_profile/update_profile.component';
 import { provideClientHydration } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Forget_passwordComponent } from './components/forget_password/forget_password.component';
 
 @NgModule({
   declarations: [
@@ -19,20 +20,12 @@ import { provideClientHydration } from '@angular/platform-browser';
     Update_profileComponent,
     LoginComponent,
     RegisterComponent,
+    Forget_passwordComponent,
   ],
 
-  imports: [
-    CommonModule
-   
-  ],providers: [
-    provideClientHydration()
-  ]
-})
-
-export class SharedModule { }
-
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
+
   exports: [NavbarComponent, FooterComponent],
+  providers: [provideClientHydration()],
 })
 export class SharedModule {}
-

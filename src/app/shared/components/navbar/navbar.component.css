@@ -1,0 +1,12 @@
+nav {
+  position: fixed;
+  top: 0;
+  bottom: 5;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(85, 84, 84, 0.431);
+}
+
+.nav-link, .active, .navbar-brand {
+  color: white !important;
+}
