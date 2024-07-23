@@ -1,5 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+
+import { AppComponent } from './app.component';
+
+import { CommonModule } from '@angular/common';
+
+import { ContactUsComponent } from './modules/developer/contact-us/contact-us.component';
+
+
+const routes: Routes = [
+  { path: '', component: ContactUsComponent },
+
+
 const routes: Routes = [
   {
     path: 'developer',

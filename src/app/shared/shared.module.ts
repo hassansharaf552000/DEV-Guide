@@ -8,6 +8,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { Update_profileComponent } from './components/update_profile/update_profile.component';
+import { provideClientHydration } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,19 @@ import { Update_profileComponent } from './components/update_profile/update_prof
     LoginComponent,
     RegisterComponent,
   ],
+
+  imports: [
+    CommonModule
+   
+  ],providers: [
+    provideClientHydration()
+  ]
+})
+
+export class SharedModule { }
+
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [NavbarComponent, FooterComponent],
 })
 export class SharedModule {}
+
