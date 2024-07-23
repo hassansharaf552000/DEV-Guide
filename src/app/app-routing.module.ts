@@ -1,10 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AppComponent } from './app.component';
+<<<<<<< HEAD
 import { CommonModule } from '@angular/common';
+=======
+import { ContactUsComponent } from './modules/developer/contact-us/contact-us.component';
+>>>>>>> 490544c09936e65d506d43fa2fa0d732848c1a56
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
+  { path: '', component: ContactUsComponent },
+
+const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () =>
+      import('./modules/developer/developer.module').then(
+        (m) => m.DeveloperModule
+      ),
+  },
   {
     path: 'admin',
     loadChildren: () =>
@@ -37,6 +51,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

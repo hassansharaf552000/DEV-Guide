@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <div class="card custom-card">
+        <div class="card-body">
+          <h3 class="card-title">Technical skills</h3>
+          <form [formGroup]="stepFourForm" (ngSubmit)="onNext()">
+            <div class="form-group">
+              <label for="experience">Years of full-time work experience</label>
+              <input type="number" id="experience" class="form-control" formControlName="experience">
+            </div>
+            <div class="form-group">
+              <label for="role">Preferred role</label>
+              <select id="role" class="form-control" formControlName="role">
+                <option value="">Select your preferred role</option>
+                <option value="Developer">Developer</option>
+                <option value="Designer">Designer</option>
+                <!-- Add more roles as needed -->
+              </select>
+              <div *ngIf="stepFourForm.get('role')?.invalid && stepFourForm.get('role')?.touched" class="text-danger">
+                Preferred role is required
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="skills">Skills</label>
+              <ng-select [items]="skills" bindLabel="name" bindValue="id" formControlName="skills" multiple
+                class="custom-ng-select">
+              </ng-select>
+              <div *ngIf="stepFourForm.get('skills')?.invalid && stepFourForm.get('skills')?.touched"
+                class="text-danger">
+                Select at least one skill
+              </div>
+            </div>
+            <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
+            <button type="submit" class="btn btn-primary mt-3 ms-3">Next</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
