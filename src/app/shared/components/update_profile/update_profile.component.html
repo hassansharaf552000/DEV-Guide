@@ -1,4 +1,4 @@
-<form class="" [formGroup]="profileform" (ngSubmit)="onsubmit()" >
+<form class="" [formGroup]="profileform" (ngSubmit)="onsubmit()">
   <div>
     <label for="UserName" class="text-capitalize">UserName:</label>
     <input type="text" id="UserName" formControlName="UserName" class="form-control" />
@@ -9,13 +9,13 @@
   </div>
   <div>
     <label for="Password" class="text-capitalize">Password</label>
-    <input type="password" id="Password" formControlName="Password class="form-control" />
+    <input type="password" id="Password" formControlName="Password" class="form-control" />
   </div>
   <div>
-    <label for="PHoneNumber" class="text-capitalize">PHoneNumber:</label>
-    <input type="text" id="PHoneNumber" formControlName="PHoneNumber" class="form-control" />
+    <label for="PhoneNumber" class="text-capitalize">PhoneNumber:</label>
+    <input type="text" id="PhoneNumber" formControlName="PhoneNumber" class="form-control" />
   </div>
-  
+
   <div>
     <label for="PersonalDetails" class="text-capitalize">PersonalDetails:</label>
     <textarea class="form-control" id="PersonalDetails" formControlName="PersonalDetails"></textarea>
@@ -25,22 +25,21 @@
     <textarea class="form-control" id="Skills" formControlName="Skills"></textarea>
   </div>
   <div>
-    <label for=" Experience" class="text-capitalize"> Experience:</label>
-    <textarea class="form-control" id=" Experience" formControlName=" Experience"> </textarea>
+    <label for="Experience" class="text-capitalize">Experience:</label>
+    <textarea class="form-control" id="Experience" formControlName="Experience"></textarea>
   </div>
   <div>
-    <label for=" Portfolio" class="text-capitalize"> Portfolio:</label>
-    <textarea class="form-control" id=" Portfolio" formControlName="Portfolio"> </textarea>
+    <label for="Portfolio" class="text-capitalize">Portfolio:</label>
+    <textarea class="form-control" id="Portfolio" formControlName="Portfolio"></textarea>
   </div>
   <div>
-    <label for="AssignedTasks" class="text-capitalize"> AssignedTasks:</label>
-    <textarea class="form-control" id="AssignedTasks" formControlName="AssignedTasks"> </textarea>
+    <label for="AssignedTasks" class="text-capitalize">AssignedTasks:</label>
+    <textarea class="form-control" id="AssignedTasks" formControlName="AssignedTasks"></textarea>
   </div>
   <div>
-    <label for="Rating" class="text-capitalize"> Rating:</label>
-    <textarea class="form-control" id="Rating" formControlName="Rating"> </textarea>
+    <label for="Rating" class="text-capitalize">Rating:</label>
+    <textarea class="form-control" id="Rating" formControlName="Rating"></textarea>
   </div>
-  
 
-  
+  <button type="submit" class="btn btn-primary mt-3">Submit</button>
 </form>

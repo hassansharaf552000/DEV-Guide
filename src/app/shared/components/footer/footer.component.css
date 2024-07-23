@@ -1,0 +1,42 @@
+footer .container {
+    max-width: 1200px;
+}
+
+footer .h-20px {
+    max-height: 20px;
+}
+
+footer p, footer a {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+footer a {
+    white-space: nowrap;
+}
+
+footer .list-inline-item {
+    margin-left: 0.5rem;
+}
+
+@media (max-width: 767.98px) {
+    footer .col-md-4 {
+        text-align: center !important;
+    }
+    
+    footer .col-md-8 {
+        text-align: center;
+    }
+    
+    footer .col-12.col-md-3 {
+        text-align: center;
+    }
+    
+    footer .col-12.col-md-9 {
+        justify-content: center !important;
+    }
+    
+    footer .list-inline {
+        justify-content: center !important;
+    }
+}

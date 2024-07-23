@@ -3,10 +3,10 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
-
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
+
   declarations: [
     AppComponent
   ],
@@ -18,6 +18,12 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     provideClientHydration()
   ],
   bootstrap: [AppComponent]
+
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, SharedModule],
+  providers: [provideClientHydration()],
+  bootstrap: [AppComponent],
+
 })
 export class AppModule {}
 

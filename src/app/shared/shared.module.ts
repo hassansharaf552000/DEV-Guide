@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
-//import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { RegisterComponent } from './components/register/register.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { Update_profileComponent } from './components/update_profile/update_profile.component';
 import { provideClientHydration } from '@angular/platform-browser';
-
-
 
 @NgModule({
   declarations: [
@@ -15,10 +16,13 @@ import { provideClientHydration } from '@angular/platform-browser';
     FooterComponent,
     NotFoundComponent,
     SpinnerComponent,
-    Update_profileComponent
+    Update_profileComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
+
   imports: [
-   // CommonModule
+    CommonModule
    
   ],providers: [
     provideClientHydration()
@@ -26,3 +30,9 @@ import { provideClientHydration } from '@angular/platform-browser';
 })
 
 export class SharedModule { }
+
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  exports: [NavbarComponent, FooterComponent],
+})
+export class SharedModule {}
+

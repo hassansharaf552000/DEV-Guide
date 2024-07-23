@@ -1,24 +1,32 @@
 import { Injectable } from '@angular/core';
-import { Profile } from '../profile';
 import { Observable, of } from 'rxjs';
-
-
+import { Profile } from '../profile';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProfileService {
+  private profile: Profile = {
+    UserName: '',
+    Email: '',
+    Password: '',
+    PHoneNumber: '',
+    PersonalDetails: '',
+    Skills: '',
+    Experience: '',
+    Portfolio: '',
+    AssignedTasks: '',
+    Rating: '',
+  };
 
-constructor(private profile1:Profile) {
-  
- }
- getprofile():Observable<Profile>{
-  return of(this.profile1)
- }
- updateProfile(profile2:Profile):Observable<Profile>{
- this.profile1=profile2;
- return of(this.profile1)
+  constructor() {}
 
- }
+  getProfile(): Observable<Profile> {
+    return of(this.profile);
+  }
 
+  updateProfile(profile: Profile): Observable<Profile> {
+    this.profile = profile;
+    return of(this.profile);
+  }
 }

@@ -17,19 +17,23 @@
                 <option value="Designer">Designer</option>
                 <!-- Add more roles as needed -->
               </select>
-              <div *ngIf="stepFourForm.get('role')?.invalid && stepFourForm.get('role')?.touched" class="text-danger">
-                Preferred role is required
-              </div>
+              @if (stepFourForm.get('role')?.invalid && stepFourForm.get('role')?.touched) {
+                <div class="text-danger">
+                  Preferred role is required
+                </div>
+              }
             </div>
             <div class="form-group">
               <label for="skills">Skills</label>
               <ng-select [items]="skills" bindLabel="name" bindValue="id" formControlName="skills" multiple
                 class="custom-ng-select">
               </ng-select>
-              <div *ngIf="stepFourForm.get('skills')?.invalid && stepFourForm.get('skills')?.touched"
-                class="text-danger">
-                Select at least one skill
-              </div>
+              @if (stepFourForm.get('skills')?.invalid && stepFourForm.get('skills')?.touched) {
+                <div
+                  class="text-danger">
+                  Select at least one skill
+                </div>
+              }
             </div>
             <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
             <button type="submit" class="btn btn-primary mt-3 ms-3">Next</button>
