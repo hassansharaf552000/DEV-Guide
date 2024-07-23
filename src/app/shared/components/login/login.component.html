@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,11 +15,13 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+
     .login-form h2 {
       margin-bottom: 20px;
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="login-form">
@@ -36,16 +39,16 @@
           <input type="checkbox" class="form-check-input" id="rememberMe">
           <label class="form-check-label" for="rememberMe">Remember me</label>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        <button type="submit" class="btn btn-primary btn-block" (click)="goToNextStep()">Submit</button>
         <p class="text-center mt-3">
-          <a href="#">Forgot your password?</a>
+          <a href="developer/forgetpassword">Forgot your password?</a>
         </p>
         <p class="text-center">
-          <a routerLink="/register">Create an account</a>
+          <a href="developer/register">Create an account</a>
         </p>
       </form>
     </div>
   </div>
 </body>
-</html>
 
+</html>

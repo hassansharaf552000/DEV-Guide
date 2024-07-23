@@ -26,11 +26,11 @@
   <div class="container">
     <div class="signup-form">
       <h2 class="text-center">Sign up</h2>
-      <form [formGroup]="form" >
+      <form [formGroup]="form">
         <div class="form-group">
           <label for="email">Email address</label>
           <input formControlName="email" type="email" class="form-control" [ngClass]="{
-            'is-valid': form.controls['email'].valid, 
+            'is-valid': form.controls['email'].valid,
             'is-invalid': form.controls['email'].invalid && form.controls['email'].dirty
             }">
           <div class="valid-feedback">
@@ -49,7 +49,7 @@
         <div class="form-group">
           <label for="personname">Full Name</label>
           <input formControlName="personname" type="text" class="form-control" [ngClass]="{
-            'is-valid': form.controls['personname'].valid, 
+            'is-valid': form.controls['personname'].valid,
             'is-invalid': form.controls['personname'].invalid && form.controls['personname'].dirty
           }">
           <div class="valid-feedback">
@@ -61,14 +61,14 @@
             <span>Please Provide Valid Name</span>
             }
             @else if(form.controls['personname'].hasError("minLength")){
-              <span> Name must have 20 Letter atleast.</span>
+            <span> Name must have 20 Letter atleast.</span>
             }
           </div>
         </div>
         <div class="form-group">
           <label for="username">UserName</label>
           <input formControlName="username" type="text" class="form-control" [ngClass]="{
-            'is-valid': form.controls['username'].valid, 
+            'is-valid': form.controls['username'].valid,
             'is-invalid': form.controls['username'].invalid && form.controls['username'].dirty
           }">
           <div class="valid-feedback">
@@ -76,31 +76,31 @@
           </div>
           <div class="invalid-feedback">
             @if(form.controls['username'].hasError("required")){
-              <span>Please Provide Valid UserName</span>
+            <span>Please Provide Valid UserName</span>
             }
             @else{
-              <span>Please Provide Valid User Name at least 8 characters Without Spaces</span>
+            <span>Please Provide Valid User Name at least 8 characters Without Spaces</span>
             }
-            
+
           </div>
         </div>
         <div class="form-group">
           <label for="phonenumber">Phone Number</label>
           <input formControlName="phonenumber" type="text" class="form-control" [ngClass]="{
-            'is-valid': form.controls['phonenumber'].valid, 
+            'is-valid': form.controls['phonenumber'].valid,
             'is-invalid': form.controls['phonenumber'].invalid && form.controls['phonenumber'].dirty
           }">
           <div class="valid-feedback">
             Looks good!
           </div>
           <div class="invalid-feedback">
-              <span>Please Provide Valid Phone Number contains 11 number</span>
+            <span>Please Provide Valid Phone Number contains 11 number</span>
           </div>
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1" class="form-label">Password</label>
           <input formControlName="password" type="password" class="form-control" [ngClass]="{
-            'is-valid': form.controls['password'].valid, 
+            'is-valid': form.controls['password'].valid,
             'is-invalid': form.controls['password'].invalid && form.controls['password'].dirty
             }">
           <div class="valid-feedback">
@@ -112,7 +112,8 @@
         </div>
         <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-block">Signup</button>
         <p class="text-center mt-3">
-          <a routerLink="/login">Already have an account? Login</a>
+          Already have an account?
+          <a href="developer/login"> login</a>
         </p>
       </form>
     </div>
