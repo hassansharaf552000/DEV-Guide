@@ -1,0 +1,112 @@
+<main>
+  <section class="h-100">
+    <div class="container h-100 d-flex justify-content-center align-items-center">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Image -->
+          <img src="02.jpg" class="img-fluid imgcontact" alt="Contact Us Image">
+
+
+
+
+          <div class="container">
+            <form [formGroup]="form" class="pt-4">
+
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                  (blur)="onBlur('email')" [ngClass]="{
+                                  'is-valid': form.controls['email'].valid && form.controls['email'].touched,
+                                  'is-invalid': form.controls['email'].invalid && form.controls['email'].touched
+                                }">
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+                <div class="invalid-feedback">
+                  @if (form.controls['email'].hasError('required')) {
+                  <span>Please provide a valid email.</span>
+                  }
+                  @if (form.controls['email'].hasError('email')) {
+                  <span>Email must be in the format: user&commat;example.com.</span>
+                  }
+                </div>
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+
+              <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input formControlName="username" type="text" class="form-control" (blur)="onBlur('username')"
+                  [ngClass]="{
+                                  'is-valid': form.controls['username'].valid && form.controls['username'].touched,
+                                  'is-invalid': form.controls['username'].invalid && form.controls['username'].touched
+                                }">
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+                <div class="invalid-feedback">
+                  Username must be between 3 to 20 characters long and contain only letters, numbers, underscores, and
+                  hyphens.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input formControlName="password" type="password" class="form-control" id="password"
+                  (blur)="onBlur('password')" [ngClass]="{
+                                  'is-valid': form.controls['password'].valid && form.controls['password'].touched,
+                                  'is-invalid': form.controls['password'].invalid && form.controls['password'].touched
+                                }">
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+                <div class="invalid-feedback">
+                  Password must contain at least 8 characters, including uppercase, lowercase, number, and special
+                  character.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="phonenumber" class="form-label">Phone Number</label>
+                <input formControlName="phonenumber" type="text" class="form-control" (blur)="onBlur('phonenumber')"
+                  [ngClass]="{
+                                  'is-valid': form.controls['phonenumber'].valid && form.controls['phonenumber'].touched,
+                                  'is-invalid': form.controls['phonenumber'].invalid && form.controls['phonenumber'].touched
+                                }">
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+                <div class="invalid-feedback">
+                  Phone number must contain exactly 10 digits.
+                </div>
+              </div>
+
+
+              <div class="mb-3">
+                <label for="name" class="form-label">Object of complain</label>
+                <input formControlName="name" type="text" class="form-control" (blur)="onBlur('name')" [ngClass]="{
+                                  'is-valid': form.controls['name'].valid && form.controls['name'].touched,
+                                  'is-invalid': form.controls['name'].invalid && form.controls['name'].touched
+                                }">
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+                <div class="invalid-feedback">
+                  Name must contain at least 8 letters.
+                </div>
+              </div>
+              <div class="mb-4">
+                <textarea class="form-control bg-transparent" placeholder="Message" style="height: 100px"></textarea>
+              </div>
+
+              <button class="btn btn-lg btn-primary mb-0" [disabled]="form.invalid">Send a message</button>
+            </form>
+          </div>
+
+
+
+
+
+        </div>
+      </div> <!-- Row END -->
+    </div>
+  </section>
+</main>

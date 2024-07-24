@@ -15,7 +15,7 @@
             <p>Country of residence: {{ basicInfo.country || 'N/A' }}</p>
             <p>City of residence: {{ basicInfo.city || 'N/A' }}</p>
             <p>Phone number: {{ basicInfo.phone || 'N/A' }}</p>
-            <button class="btn btn-link" (click)="editSection('step-two')">Edit Information</button>
+            <button class="btn btn-link" (click)="editSection('/developer/step-two')">Edit Information</button>
           </div>
           <hr>
           <div class="info-section">
@@ -27,7 +27,7 @@
             <p>Start Date: {{ education.startYear || 'N/A' }} {{ education.startMonth || '' }}</p>
             <p>End Date: {{ education.endYear || 'N/A' }} {{ education.endMonth || '' }}</p>
             <p>Currently studying: {{ education.currentlyStudying ? 'Yes' : 'No' }}</p>
-            <button class="btn btn-link" (click)="editSection('step-three')">Edit Information</button>
+            <button class="btn btn-link" (click)="editSection('/developer/step-three')">Edit Information</button>
           </div>
           <hr>
           <div class="info-section">
@@ -35,7 +35,7 @@
             <p>Years of full-time work experience: {{ technicalSkills.experience || 'N/A' }}</p>
             <p>Preferred role: {{ technicalSkills.role || 'N/A' }}</p>
             <p>Skills: {{ technicalSkills.skills.join(', ') || 'N/A' }}</p>
-            <button class="btn btn-link" (click)="editSection('step-four')">Edit Information</button>
+            <button class="btn btn-link" (click)="editSection('/developer/step-four')">Edit Information</button>
           </div>
           <button class="btn btn-secondary mt-3 ms-3" (click)="goToPreviousStep()">Back</button>
           <button class="btn btn-primary mt-3 ms-3" (click)="submitProfile()">Submit Profile</button>

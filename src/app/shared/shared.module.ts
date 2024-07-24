@@ -10,6 +10,7 @@ import { Update_profileComponent } from './components/update_profile/update_prof
 import { provideClientHydration } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Forget_passwordComponent } from './components/forget_password/forget_password.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { Forget_passwordComponent } from './components/forget_password/forget_pa
     Forget_passwordComponent,
   ],
 
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
 
   exports: [NavbarComponent, FooterComponent],
   providers: [provideClientHydration()],

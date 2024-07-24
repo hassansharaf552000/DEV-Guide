@@ -22,11 +22,11 @@ export class StepTwoComponent implements OnInit {
   }
   onNext(): void {
     if (this.stepTwoForm.valid) {
-      this.router.navigate(['/step-three']);
+      this.router.navigate(['/developer/step-three']);
     }
   }
 
   goToPreviousStep(): void {
-    this.router.navigate(['/step-one']);
+    this.router.navigate(['/developer/step-one']);
   }
 }

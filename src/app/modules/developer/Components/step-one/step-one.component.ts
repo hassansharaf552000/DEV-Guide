@@ -10,6 +10,6 @@ export class StepOneComponent {
   constructor(private router: Router) {}
 
   goToNextStep() {
-    this.router.navigate(['/step-two']);
+    this.router.navigate(['/developer/step-two']);
   }
 }

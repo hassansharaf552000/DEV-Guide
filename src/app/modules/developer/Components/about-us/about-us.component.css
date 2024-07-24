@@ -1,0 +1,39 @@
+.IMGABOUT {
+  width: 100%;
+}
+
+.borderless {
+  border: 0px;
+}
+
+.about-section {
+  padding: 60px 0;
+}
+
+.about-section h1 {
+  font-weight: bold;
+}
+
+.about-section p {
+  font-size: 18px;
+  color: #555;
+}
+
+.team-image {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+.icon-arrows {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 30px;
+  height: 30px;
+  background-color: #ffce00;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

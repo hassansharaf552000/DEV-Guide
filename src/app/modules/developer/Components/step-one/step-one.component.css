@@ -4,8 +4,7 @@ html, body {
 }
 
 .container-fluid {
-  background-image: "url('guide.jpg')";
-
+  background-image: url('../../../../../../public/guide.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

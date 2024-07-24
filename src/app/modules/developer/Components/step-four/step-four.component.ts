@@ -29,11 +29,11 @@ export class StepFourComponent implements OnInit {
 
   onNext(): void {
     if (this.stepFourForm.valid) {
-      this.router.navigate(['/step-five']);
+      this.router.navigate(['/developer/step-five']);
     }
   }
 
   goToPreviousStep(): void {
-    this.router.navigate(['/step-three']);
+    this.router.navigate(['/developer/step-three']);
   }
 }

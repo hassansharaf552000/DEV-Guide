@@ -8,8 +8,4 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   constructor(private router: Router) {}
-
-  goToNextStep() {
-    this.router.navigate(['/step-one']);
-  }
 }

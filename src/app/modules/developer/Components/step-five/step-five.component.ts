@@ -47,7 +47,7 @@ export class StepFiveComponent implements OnInit {
   }
 
   goToPreviousStep(): void {
-    this.router.navigate(['/step-four']);
+    this.router.navigate(['/developer/step-four']);
   }
 
   submitProfile(): void {

@@ -16,17 +16,23 @@ const routes: Routes = [
   {
     path: 'guest',
     loadChildren: () =>
-      import('./modules/guest/guest.module').then((m) => m.GuestModule),
+      import('./modules/developer/Components/guest/guest.module').then(
+        (m) => m.GuestModule
+      ),
   },
   {
     path: 'hr',
     loadChildren: () =>
-      import('./modules/hr/hr.module').then((m) => m.HrModule),
+      import('./modules/developer/Components/hr/hr.module').then(
+        (m) => m.HrModule
+      ),
   },
   {
     path: 'mentor',
     loadChildren: () =>
-      import('./modules/mentor/mentor.module').then((m) => m.MentorModule),
+      import('./modules/developer/Components/mentor/mentor.module').then(
+        (m) => m.MentorModule
+      ),
   },
   { path: '**', redirectTo: 'developer/userlayout' },
 ];

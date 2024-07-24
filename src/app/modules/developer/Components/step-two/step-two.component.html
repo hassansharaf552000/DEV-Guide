@@ -12,52 +12,49 @@
               <label for="firstName">First name</label>
               <input id="firstName" type="text" class="form-control" formControlName="firstName"
                 placeholder="First name">
-                @if (stepTwoForm.get('firstName')?.invalid && stepTwoForm.get('firstName')?.touched) {
-                  <div
-                    class="text-danger">
-                    First Name is required
-                  </div>
-                }
+              @if (stepTwoForm.get('firstName')?.invalid && stepTwoForm.get('firstName')?.touched) {
+              <div class="text-danger">
+                First Name is required
               </div>
-              <div class="form-group">
-                <label for="lastName">Last name</label>
-                <input id="lastName" type="text" class="form-control" formControlName="lastName" placeholder="Last name">
-                @if (stepTwoForm.get('lastName')?.invalid && stepTwoForm.get('lastName')?.touched) {
-                  <div
-                    class="text-danger">
-                    Last Name is required
-                  </div>
-                }
+              }
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last name</label>
+              <input id="lastName" type="text" class="form-control" formControlName="lastName" placeholder="Last name">
+              @if (stepTwoForm.get('lastName')?.invalid && stepTwoForm.get('lastName')?.touched) {
+              <div class="text-danger">
+                Last Name is required
               </div>
-              <div class="form-group">
-                <label for="country">Country of residence</label>
-                <select id="country" class="form-control" formControlName="country">
-                  <option value="">Select your country</option>
-                  <option value="country1">Country 1</option>
-                  <option value="country2">Country 2</option>
-                  <!-- Add more countries as needed -->
-                </select>
-                @if (stepTwoForm.get('country')?.invalid && stepTwoForm.get('country')?.touched) {
-                  <div
-                    class="text-danger">
-                    Country of residence is required
-                  </div>
-                }
+              }
+            </div>
+            <div class="form-group">
+              <label for="country">Country of residence</label>
+              <select id="country" class="form-control" formControlName="country">
+                <option value="">Select your country</option>
+                <option value="country1">Country 1</option>
+                <option value="country2">Country 2</option>
+                <!-- Add more countries as needed -->
+              </select>
+              @if (stepTwoForm.get('country')?.invalid && stepTwoForm.get('country')?.touched) {
+              <div class="text-danger">
+                Country of residence is required
               </div>
-              <div class="form-group">
-                <label for="phone">Phone number</label>
-                <input id="phone" type="text" class="form-control" formControlName="phone" placeholder="Phone number">
-                @if (stepTwoForm.get('phone')?.invalid && stepTwoForm.get('phone')?.touched) {
-                  <div class="text-danger">
-                    Phone number is required
-                  </div>
-                }
+              }
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone number</label>
+              <input id="phone" type="text" class="form-control" formControlName="phone" placeholder="Phone number">
+              @if (stepTwoForm.get('phone')?.invalid && stepTwoForm.get('phone')?.touched) {
+              <div class="text-danger">
+                Phone number is required
               </div>
-              <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
-              <button type="button" class="btn btn-primary mt-3 ms-3" (click)=" onNext()">Next</button>
-            </form>
-          </div>
+              }
+            </div>
+            <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
+            <button type="button" class="btn btn-primary mt-3 ms-3" (click)=" onNext()">Next</button>
+          </form>
         </div>
       </div>
     </div>
   </div>
+</div>

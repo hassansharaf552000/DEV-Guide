@@ -3,11 +3,11 @@ import { RateComponent } from './Components/rate/rate.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DeveloperRoutingModule } from './developer-routing.module';
-import { UserlayoutComponent } from './userlayout/userlayout.component';
-import { DevelopercardComponent } from './developercard/developercard.component';
-import { DeveloperrateComponent } from './developerrate/developerrate.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
-import { AboutUsComponent } from './about-us/about-us.component';
+import { UserlayoutComponent } from './Components/userlayout/userlayout.component';
+import { DevelopercardComponent } from './Components/developercard/developercard.component';
+import { DeveloperrateComponent } from './Components/developerrate/developerrate.component';
+import { ContactUsComponent } from './Components/contact-us/contact-us.component';
+import { AboutUsComponent } from './Components/about-us/about-us.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { HRListComponent } from './Components/hr-list/hr-list.component';
 import { MentorCardComponent } from './Components/mentor-card/mentor-card.component';
@@ -19,6 +19,7 @@ import { StepThreeComponent } from './Components/step-three/step-three.component
 import { StepTwoComponent } from './Components/step-two/step-two.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [

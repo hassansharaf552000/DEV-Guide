@@ -1,0 +1,69 @@
+main {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgcontact {
+  width: 100%;
+  height: auto;
+}
+
+/* Optional: Adjust the form width as needed */
+.card {
+  width: 100%;
+  /* Adjust width as needed */
+  max-width: 40rem;
+  /* Limit maximum width */
+}
+
+.h-100 {
+  height: 100vh;
+  /* Full viewport height */
+}
+
+.d-flex {
+  display: flex !important;
+  /* Use !important to override Bootstrap defaults */
+}
+
+.justify-content-center {
+  justify-content: center !important;
+  /* Center horizontally */
+}
+
+.align-items-center {
+  align-items: center !important;
+  /* Center vertically */
+}
+
+.form-container {
+  margin-top: -200px;
+  /* Adjust this value to move the form upwards */
+}
+
+.breadcrumb {
+  padding-left: 0;
+}
+
+.breadcrumb li {
+  display: inline;
+  font-size: 14px;
+}
+
+.breadcrumb li+li:before {
+  padding: 0 5px;
+  color: #000;
+  content: "/\00a0";
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
