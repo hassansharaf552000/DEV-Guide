@@ -1,42 +1,45 @@
-<nav class="navbar navbar-expand-lg ">
+<nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand">Dev-Guide</a>
     <div class="d-flex order-lg-2 ms-auto align-items-center">
-      <button class="navbar-toggler me-1" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">
+      <button class="navbar-toggler me-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="dropdown navbar-dropdown-image1 drop-img ms-1 ms-lg-0">
-        <a class="p-0 ps-3" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static"
-          data-bs-toggle="dropdown" aria-expanded="false">
-          <img class="rounded-circle" src="01.jpg" alt="avatar" style="width:25%;">
-        </a>
-        <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3 p-3 navbar-dropdown-image"
-          aria-labelledby="profileDropdown">
-          <li class="px-2 mb-1">
-            <div class="d-flex align-items-center">
-              <div class="pe-3">
-                <img class="rounded-circle shadow" src="01.jpg" style="width:100%;" alt="avatar">
+      @if(isuserExist)
+      {
+        <div class="dropdown navbar-dropdown-image1 drop-img ms-1 ms-lg-0">
+          <a class="p-0 ps-3" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+            <img class="rounded-circle" src="01.jpg" alt="avatar" style="width:25%;">
+          </a>
+          <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3 p-3 navbar-dropdown-image" aria-labelledby="profileDropdown">
+            <li class="px-2 mb-1">
+              <div class="d-flex align-items-center">
+                <div class="pe-3">
+                  <img class="rounded-circle shadow" src="01.jpg" style="width:100%;" alt="avatar">
+                </div>
+                <div>
+                  <a class="h6 text-decoration-none">Lori Ferguson</a>
+                  <p class="small m-0 text-muted">example.com</p>
+                </div>
               </div>
-              <div>
-                <a class="h6 text-decoration-none">Lori Ferguson</a>
-                <p class="small m-0 text-muted">example.com</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li><a class="dropdown-item text-muted" routerLink="/developer/updateprofile"><i
-                class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
-
-          <li><a class="dropdown-item bg-danger-soft-hover text-muted" routerLink="/developer/register"><i
-                class="bi bi-power fa-fw me-2"></i>Sign
-              Out</a></li>
-        </ul>
-      </div>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item text-muted" routerLink="/developer/updateprofile"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
+            <li><a class="dropdown-item bg-danger-soft-hover text-muted" routerLink="/developer/register"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+          </ul>
+        </div>
+      } @else {
+        <div class="collapse navbar-collapse order-lg-1 " >
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" routerLink="/developer/login">Login /</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/developer/register">Register</a></li>
+          </ul>
+        </div>
+      }
     </div>
+    
     <div class="collapse navbar-collapse order-lg-1" id="navbarSupportedContent">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
         <li class="nav-item">
@@ -49,11 +52,17 @@
           <a class="nav-link" routerLink="/developer/hr-s">HR</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " routerLink="/developer/aboutus">aboutus</a>
+          <a class="nav-link " routerLink="/developer/aboutus">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/developer/contactus">Contact us</a>
+          <a class="nav-link" routerLink="/developer/contactus">Contact Us</a>
         </li>
+        @if(!isuserExist)
+        {
+          <li class="nav-item d-lg-none d-block"><a class="nav-link" routerLink="/developer/login">Login</a></li>
+          <li class="nav-item d-lg-none d-block"><a class="nav-link" routerLink="/developer/register">Register</a></li>
+        }
+      
       </ul>
     </div>
   </div>
