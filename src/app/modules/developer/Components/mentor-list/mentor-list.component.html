@@ -1,88 +1,131 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
-<div class="container text-center mt-5">
-  <h5 class="display-4 fw-bold" style="
-  font-family: Edu AU VIC WA NT Hand, cursive;
-  font-optical-sizing: auto;
-  font-style: normal;
-">Our Mentors</h5>
 <br>
-  <!-- Filters Section -->
-  <div class="row mt-4 justify-content-center">
-    <div class="col-md-12">
-      <form class="form-inline d-flex flex-row justify-content-evenly">
+<br>
+<div class="container mt-5">
+  <h5 class="display-4 fw-bold text-center" style="
+      font-family: Edu AU VIC WA NT Hand, cursive;
+      font-optical-sizing: auto;
+      font-style: normal;
+">Our Mentors</h5>
+  <br>
+  <!-- Filters and Cards Section -->
+  <div class="row mt-4">
+    <!-- Filters Section -->
+     <br>
+     <br>
+     <br>
+    <div class="col-md-3">
+      <form class="form-inline d-flex flex-column align-items-start">
+        <!-- HR Name Input -->
+        <div class="form-group mb-3">
+          <input class="form-control" placeholder="HR Name" type="text">
+        </div>
+
+        <!-- HR Role Input -->
+        <div class="form-group mb-3">
+          <input class="form-control" placeholder="HR Role" type="text">
+        </div>
+
         <!-- Department Dropdown -->
-        <div class="form__group_one">
-          <input class="input" placeholder="Mentor Name" type="name">
+        <div class="form-group mb-3">
+          <select class="form-select" style="border: 2px solid #1c4980;">
+            <option selected>Select Department</option>
+            <option value="HR">HR</option>
+            <option value="Finance">Finance</option>
+            <option value="IT">IT</option>
+            <option value="Marketing">Marketing</option>
+            <!-- Add more options as needed -->
+          </select>
         </div>
 
-        <div class="form__group_three">
-          <input class="input" placeholder="Mentor Role" type="name">
+        <!-- Rate Filter -->
+        <h4 class="mb-3">Rate</h4>
+        <div class="rate-filter mb-3 star-rating">
+          <input type="radio" name="rate" id="rate5" value="5">
+          <label for="rate5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
+              viewBox="0 0 16 16">
+              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+            </svg>
+          </label>
+          <input type="radio" name="rate" id="rate4" value="4">
+          <label for="rate4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
+              viewBox="0 0 16 16">
+              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+            </svg>
+          </label>
+          <input type="radio" name="rate" id="rate3" value="3">
+          <label for="rate3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
+              viewBox="0 0 16 16">
+              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+            </svg>
+          </label>
+          <input type="radio" name="rate" id="rate2" value="2">
+          <label for="rate2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
+              viewBox="0 0 16 16">
+              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+            </svg>
+          </label>
+          <input type="radio" name="rate" id="rate1" value="1">
+          <label for="rate1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
+              viewBox="0 0 16 16">
+              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+            </svg>
+          </label>
         </div>
 
-
-        <div class="form__group_two">
-          <div class="dropdown mt-3">
-            <button class="btn btn-close-white dropdown-toggle" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false" style="border: 2px solid #1c4980;">
-              Department
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Select Department</a></li>
-            </ul>
+        <!-- Price Range -->
+        <h4 class="mb-3">Price</h4>
+        <div class="slider-container mb-3" style="margin-right: 300px;">
+          <input id="priceMin" type="range" min="100" max="1000" [(ngModel)]="priceMin" (input)="updateRange()"
+            step="10">
+          <input id="priceMax" type="range" min="100" max="1000" [(ngModel)]="priceMax" (input)="updateRange()"
+            step="10">
+          <div class="track">
+            <div class="range-fill"></div>
           </div>
+          <div class="tooltip" id="priceMinTooltip">{{ priceMin }}</div>
+          <div class="tooltip" id="priceMaxTooltip">{{ priceMax }}</div>
         </div>
 
+        <br>
 
-        <h4 class="mt-3">Rate</h4>
-
-        <!-- Rate Range -->
-        <div class="row">
-          <div class="form-group mt-3">
-
-            <input id="rateFrom" type="number" class="form-control form-control-sm" placeholder="Rate From" min="1"
-              max="5" style="width: 100px;border: 2px solid #1c4980;">
-          </div>
-
-          <div class="form-group mt-3">
-
-            <input id="rateTo" type="number" class="form-control form-control-sm" placeholder="Rate To" min="1" max="5"
-              style="width: 100px;border: 2px solid #1c4980;">
-          </div>
-
-        </div>
-
-        <h4 class="mt-3">Price</h4>
-
-        <div class="row">
-          <div class="form-group mt-3">
-
-            <input id="priceFrom" type="number" class="form-control form-control-sm" placeholder="Price From" min="100"
-              max="1000" style="width: 100px;border: 2px solid #1c4980;">
-          </div>
-
-          <div class="form-group mt-3">
-
-            <input id="priceto" type="number" class="form-control form-control-sm" placeholder="Price To" min="1000" max="1000"
-              style="width: 100px;border: 2px solid #1c4980;">
-          </div>
-
-        </div>
-        <button type="button" class="btn btn-primary mt-3" style="background-color: #1c4980; width: 150px;">
+        <!-- Search Button -->
+        <button type="button" class="btn btn-primary-search">
           <i class="fas fa-search"></i> Search
         </button>
-
       </form>
-      <br>
-
     </div>
-  </div>
-  <br>
 
-  <div class="row mt-4 row mt-4 justify-content-center">
-    @for (mentor of mentors; track $index) {
-    <div class="col-12 col-md-6 col-lg-4 mb-4 d-flex justify-content-center">
-      <app-mentor-card [mentor]="mentor"></app-mentor-card>
+
+
+    <!-- Cards Section -->
+    <div class="col-md-9">
+      <!-- Button Container -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <button type="button" class="btn btn-primary" (click)="prevPage()">Prev</button>
+
+        <!-- Counter -->
+        <div class="counter">
+          <span>{{ currentPage }} / {{ totalPages }}</span>
+        </div>
+
+        <button type="button" class="btn btn-primary" (click)="nextPage()">Next</button>
+      </div>
+
+      <!-- Cards Container -->
+      <div class="row mt-4 justify-content-center">
+        <div *ngFor="let mentor of mentors; let index = index" class="col-12 col-md-6 col-lg-4 mb-4 d-flex justify-content-center">
+          <app-mentor-card [mentor]="mentor"></app-mentor-card>
+        </div>
+      </div>
     </div>
-    }
+
   </div>
 </div>
