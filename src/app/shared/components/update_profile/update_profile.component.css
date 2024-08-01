@@ -1,0 +1,100 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 50%; /* Reduced height */
+  width: 98%; /* Further increased width */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  width: 100%;
+  max-width: 1600px; /* Further increased max-width */
+}
+
+.card {
+  width: 100%;
+  max-width: 1000px; /* Further increased max-width */
+  margin: 5px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #007bff;
+}
+
+.card-body {
+  padding: 5px;
+}
+
+form .form-group {
+  margin-bottom: 5px;
+}
+
+form label {
+  font-weight: bold;
+}
+
+form .form-control {
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+form .btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.card-body.text-center img {
+  width: 450px;
+  border-radius: 50%;
+}
+
+.list-group-item {
+  padding: 15px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}
+
+.list-group-item i {
+  margin-right: 10px;
+}
+
+.list-group-item a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.list-group-item a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .card {
+    margin: 5px 0;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+}
