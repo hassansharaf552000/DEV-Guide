@@ -20,6 +20,7 @@ import { StepTwoComponent } from './Components/step-two/step-two.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { HomeComponent } from './Components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { RouterModule } from '@angular/router';
     UserlayoutComponent,
     DevelopercardComponent,
     DeveloperrateComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

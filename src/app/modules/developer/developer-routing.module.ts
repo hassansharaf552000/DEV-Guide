@@ -13,8 +13,8 @@ import { SharedModule } from '../../shared/shared.module';
 import { Update_profileComponent } from '../../shared/components/update_profile/update_profile.component';
 import { LoginComponent } from '../../shared/components/login/login.component';
 import { RegisterComponent } from '../../shared/components/register/register.component';
-import { UserlayoutComponent } from './Components/userlayout/userlayout.component';
 import { Forget_passwordComponent } from '../../shared/components/forget_password/forget_password.component';
+import { HomeComponent } from './Components/home/home.component';
 
 const routes: Routes = [
   { path: 'step-one', component: StepOneComponent },
@@ -27,12 +27,10 @@ const routes: Routes = [
   { path: 'contactus', component: ContactUsComponent },
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'updateprofile', component: Update_profileComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'userlayout', component: UserlayoutComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'forgetpassword', component: Forget_passwordComponent },
-  { path: '', redirectTo: 'userlayout', pathMatch: 'full' },
-  { path: '**', redirectTo: 'userlayout' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({

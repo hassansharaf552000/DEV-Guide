@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './shared/components/login/login.component';
+import { RegisterComponent } from './shared/components/register/register.component';
+import { UserlayoutComponent } from './modules/developer/Components/userlayout/userlayout.component';
 const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   {
-    path: 'developer',
+    path: 'developer',component:UserlayoutComponent,
     loadChildren: () =>
       import('./modules/developer/developer.module').then(
         (m) => m.DeveloperModule
@@ -16,7 +21,7 @@ const routes: Routes = [
   {
     path: 'guest',
     loadChildren: () =>
-      import('./modules/developer/Components/guest/guest.module').then(
+      import('./modules/guest/guest.module').then(
         (m) => m.GuestModule
       ),
   },
