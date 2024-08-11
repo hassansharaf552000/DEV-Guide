@@ -21,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
+import { BookingConfirmationComponent } from './Components/booking-confirmation/booking-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { HomeComponent } from './Components/home/home.component';
     UserlayoutComponent,
     DevelopercardComponent,
     DeveloperrateComponent,
-    HomeComponent
+    HomeComponent,
+    BookingConfirmationComponent
   ],
   imports: [
     CommonModule,
