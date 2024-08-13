@@ -21,6 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
+import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
+import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { HomeComponent } from './Components/home/home.component';
     UserlayoutComponent,
     DevelopercardComponent,
     DeveloperrateComponent,
-    HomeComponent
+    HomeComponent,
+    HrProfileComponent,
+    MentorProfileComponent
   ],
   imports: [
     CommonModule,

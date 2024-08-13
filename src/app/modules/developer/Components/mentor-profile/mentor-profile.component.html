@@ -1,0 +1,146 @@
+<div class="container mt-5">
+  <br>
+
+  <div class="row">
+    <!-- Profile Picture and Details -->
+    <div class="col-md-4 text-center">
+      <img [src]="mentorProfile?.imageurl" alt="{{ mentorProfile?.name }}" class="profile-img rounded-circle">
+    </div>
+
+    <div class="col-md-8">
+      <h2 class="fw-bold">{{ mentorProfile?.name }}</h2>
+      <h1><app-rate [value]="mentorProfile?.rate" style="font-size: xx-large;"></app-rate></h1>
+      <br>
+      <h5><strong>Session Price:</strong> ${{ mentorProfile?.currentprice }}</h5>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <!-- Forms Layout -->
+    <div class="col-md-3">
+      <!-- Personal Details Card -->
+      <div class="card mb-4">
+        <div class="card-header">
+          <h4 class="mb-0">Personal Details</h4>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" [value]="mentorProfile?.name" readonly>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" [value]="mentorProfile?.name+ '@gmail.com'" readonly>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" id="title" [value]="mentorProfile?.title" readonly>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="department">Department</label>
+              <input type="text" class="form-control" id="department" [value]="mentorProfile?.category" readonly>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <!-- Information Card -->
+      <div class="card mb-4">
+        <div class="card-header">
+          <h4 class="mb-0">Information</h4>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <textarea class="form-control" id="feedback" rows="4" placeholder="Information..." readonly></textarea>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+      <!-- Work Hours Card -->
+      <div class="card mb-4">
+        <div class="card-header">
+          <h4 class="mb-0">Work Hours</h4>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control" id="feedback" rows="4" placeholder="Workhours..." readonly>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+      <!-- History Card -->
+      <div class="card mb-4">
+        <div class="card-header">
+          <h4 class="mb-0">Education</h4>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <textarea class="form-control" id="Education" rows="4" placeholder="Education..." readonly></textarea>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-header">
+          <h4 class="mb-0">Work Experience</h4>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <textarea class="form-control" id="feedback" rows="4" placeholder="Work Experience ..." readonly></textarea>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Reviews Card -->
+      <div class="card mb-4">
+        <div class="card-header">
+          <h4 class="mb-0">Reviews</h4>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <textarea class="form-control" id="feedback" rows="4" placeholder="Reviews..." readonly></textarea>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <a [routerLink]="'/developer/mentors'" class="btn btn-custom">
+          <i class="fas fa-arrow-left"></i> Back to List
+        </a>
+      </div>
+      <div class="col-auto">
+        <a class="btn btn-success">
+          <i class="fas fa-calendar-check"></i> Book Session
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
