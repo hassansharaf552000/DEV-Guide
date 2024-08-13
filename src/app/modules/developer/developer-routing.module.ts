@@ -15,6 +15,8 @@ import { LoginComponent } from '../../shared/components/login/login.component';
 import { RegisterComponent } from '../../shared/components/register/register.component';
 import { Forget_passwordComponent } from '../../shared/components/forget_password/forget_password.component';
 import { HomeComponent } from './Components/home/home.component';
+import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
+import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
 
 const routes: Routes = [
   { path: 'step-one', component: StepOneComponent },
@@ -23,7 +25,9 @@ const routes: Routes = [
   { path: 'step-four', component: StepFourComponent },
   { path: 'step-five', component: StepFiveComponent },
   { path: 'mentors', component: MentorListComponent },
-  { path: 'hr-s', component: HRListComponent },
+  { path: 'mentors/:id', component: MentorProfileComponent },  // Updated route
+  { path: 'hr', component: HRListComponent },
+  { path: 'hr/:id', component: HrProfileComponent },
   { path: 'contactus', component: ContactUsComponent },
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'updateprofile', component: Update_profileComponent },
