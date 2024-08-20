@@ -25,6 +25,9 @@ import { SkillAssessmentsComponent } from './Components/skill-assessments/skill-
 import { SkillInstructionsComponent } from './Components/skill-instructions/skill-instructions.component';
 import { QuizComponent } from './Components/quiz/quiz.component';
 import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.component';
+import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
+import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -48,6 +51,8 @@ import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.compon
     SkillInstructionsComponent,
     QuizComponent,
     FinishQuizComponent,
+    HrProfileComponent,
+    MentorProfileComponent
   ],
   imports: [
     CommonModule,

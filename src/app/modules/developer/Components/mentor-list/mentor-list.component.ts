@@ -12,6 +12,7 @@ export class MentorListComponent {
     // Example data; replace with actual data retrieval logic
     this.mentors = [
       {
+        id: 1,
         name: 'John Doe',
         imageurl: 'https://via.placeholder.com/150',
         category: 'Web Development',
@@ -20,6 +21,7 @@ export class MentorListComponent {
         currentprice: 99.99
       },
       {
+        id: 2,
         name: 'Jane Smith',
         imageurl: 'https://via.placeholder.com/150',
         category: 'Data Science',
@@ -28,6 +30,7 @@ export class MentorListComponent {
         currentprice: 149.99
       },
       {
+        id: 3,
         name: 'Alice Johnson',
         imageurl: 'https://via.placeholder.com/150',
         category: 'Machine Learning',
@@ -36,6 +39,7 @@ export class MentorListComponent {
         currentprice: 199.99
       },
       {
+        id:4,
         name: 'Alice Johnson',
         imageurl: 'https://via.placeholder.com/150',
         category: 'Machine Learning',
@@ -44,6 +48,7 @@ export class MentorListComponent {
         currentprice: 199.99
       },
       {
+        id:5,
         name: 'Alice Johnson',
         imageurl: 'https://via.placeholder.com/150',
         category: 'Machine Learning',
@@ -52,6 +57,7 @@ export class MentorListComponent {
         currentprice: 199.99
       },
       {
+        id:6,
         name: 'Alice Johnson',
         imageurl: 'https://via.placeholder.com/150',
         category: 'Machine Learning',

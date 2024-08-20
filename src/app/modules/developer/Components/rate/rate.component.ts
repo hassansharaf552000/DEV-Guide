@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './rate.component.css'
 })
 export class RateComponent {
-  @Input() value:number = 0
+  @Input() value:undefined|number = 0
 }
