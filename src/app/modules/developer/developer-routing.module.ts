@@ -15,6 +15,8 @@ import { LoginComponent } from '../../shared/components/login/login.component';
 import { RegisterComponent } from '../../shared/components/register/register.component';
 import { Forget_passwordComponent } from '../../shared/components/forget_password/forget_password.component';
 import { HomeComponent } from './Components/home/home.component';
+import { BookingComponent } from './Components/booking/booking.component';
+import { QueryComponent } from './Components/query/query.component';
 
 const routes: Routes = [
   { path: 'step-one', component: StepOneComponent },
@@ -29,6 +31,8 @@ const routes: Routes = [
   { path: 'updateprofile', component: Update_profileComponent },
   { path: 'home', component: HomeComponent },
   { path: 'forgetpassword', component: Forget_passwordComponent },
+  { path: 'booking', component: BookingComponent },
+  { path: 'query', component: QueryComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' },
 ];
