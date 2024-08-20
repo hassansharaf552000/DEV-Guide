@@ -31,7 +31,6 @@ import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.compon
 import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
 import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
 
-
 @NgModule({
   declarations: [
     StepOneComponent,
@@ -49,7 +48,7 @@ import { MentorProfileComponent } from './Components/mentor-profile/mentor-profi
     UserlayoutComponent,
     DevelopercardComponent,
     DeveloperrateComponent,
-    PaymentComponent
+    PaymentComponent,
     HomeComponent,
     BookingComponent,
     BookingConfirmationComponent,
@@ -67,8 +66,6 @@ import { MentorProfileComponent } from './Components/mentor-profile/mentor-profi
     ReactiveFormsModule,
     NgSelectModule,
     SharedModule,
-    
-    
   ],
 })
 export class DeveloperModule {}
