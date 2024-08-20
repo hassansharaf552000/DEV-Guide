@@ -1,0 +1,88 @@
+.container {
+  max-width: 1200px;
+}
+
+.custom-card {
+  border: 1px solid #ddd;
+  border-radius: 15px;
+}
+
+h4 {
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+h5 {
+  font-weight: 600;
+  color: #34495e;
+}
+
+p {
+  color: #7f8c8d;
+  line-height: 1.6;
+}
+
+.rating-icons span {
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.rating-icons span:hover {
+  transform: scale(1.2);
+  color: #007bff;
+}
+
+.rating-icon.active {
+  color: #28a745;
+  /* Green for selected rating */
+}
+
+textarea {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+textarea:focus {
+  background-color: #f8f9fa;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+button:disabled {
+  background-color: #bfc9d1;
+  cursor: not-allowed;
+}
+
+button {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover:enabled {
+  background-color: #007bff;
+  transform: translateY(-3px);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.custom-card {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@media (max-width: 768px) {
+  .custom-card {
+    margin-bottom: 20px;
+  }
+
+  .rating-icons span {
+    font-size: 1.5rem;
+  }
+}
