@@ -15,6 +15,7 @@ import { LoginComponent } from '../../shared/components/login/login.component';
 import { RegisterComponent } from '../../shared/components/register/register.component';
 import { UserlayoutComponent } from './Components/userlayout/userlayout.component';
 import { Forget_passwordComponent } from '../../shared/components/forget_password/forget_password.component';
+import { FaqComponent } from '../../shared/components/faq/faq.component';
 
 const routes: Routes = [
   { path: 'step-one', component: StepOneComponent },
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'userlayout', component: UserlayoutComponent },
   { path: 'forgetpassword', component: Forget_passwordComponent },
+  {path: 'faq-and-licence', component: FaqComponent},
   { path: '', redirectTo: 'userlayout', pathMatch: 'full' },
   { path: '**', redirectTo: 'userlayout' },
 ];
