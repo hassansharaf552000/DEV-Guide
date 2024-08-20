@@ -51,13 +51,13 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'forgetpassword', component: Forget_passwordComponent },
   { path: 'faq-and-licence', component: FaqComponent },
-  { path: '', redirectTo: 'userlayout', pathMatch: 'full' },
-  { path: '**', redirectTo: 'userlayout' },
+  // { path: '', redirectTo: 'userlayout', pathMatch: 'full' },
+  // { path: '**', redirectTo: 'userlayout' },
   { path: 'booking', component: BookingComponent },
   { path: 'query', component: QueryComponent },
   { path: 'confirmation', component: BookingConfirmationComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '**', redirectTo: 'home' },
+  { path: '**', redirectTo: 'notfound' },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes), SharedModule],

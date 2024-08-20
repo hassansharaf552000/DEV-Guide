@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {
-    path: 'developer',component:UserlayoutComponent,
+    path: 'developer',
+    component: UserlayoutComponent,
     loadChildren: () =>
       import('./modules/developer/developer.module').then(
         (m) => m.DeveloperModule
@@ -22,9 +23,7 @@ const routes: Routes = [
   {
     path: 'guest',
     loadChildren: () =>
-      import('./modules/guest/guest.module').then(
-        (m) => m.GuestModule
-      ),
+      import('./modules/guest/guest.module').then((m) => m.GuestModule),
   },
   {
     path: 'hr',
@@ -40,7 +39,7 @@ const routes: Routes = [
         (m) => m.MentorModule
       ),
   },
-  { path: '**', redirectTo: 'developer/userlayout' },
+
   { path: '**', component: NotFoundComponent },
 ];
 
