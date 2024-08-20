@@ -5,6 +5,7 @@ nav {
   width: 100%;
   z-index: 1000;
   background-color: rgba(85, 84, 84, 0.431);
+  height: 10vh;
 }
 
 .nav-link, .active, .navbar-brand {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProfileService } from '../../services/profile.service';
+//import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'app-update_profile',
@@ -8,38 +8,43 @@ import { ProfileService } from '../../services/profile.service';
   styleUrls: ['./update_profile.component.css'],
 })
 export class Update_profileComponent implements OnInit {
-  profileform: FormGroup;
+  profileForm: FormGroup;
+  selectedImage: string | ArrayBuffer | null = '01.jpg'; // Default image
 
-  constructor(private profile3: ProfileService, private fb: FormBuilder) {
-    this.profileform = this.fb.group({
-      UserName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.maxLength(20),
-        ],
-      ],
+  constructor(private fb: FormBuilder) {
+    this.profileForm = this.fb.group({
+      UserName: ['', Validators.required],
+      job_Title: ['', Validators.required],
       Email: ['', [Validators.required, Validators.email]],
-      Password: ['', [Validators.required, Validators.minLength(6)]],
-      PHoneNumber: ['', Validators.required],
+      PhoneNumber: ['', Validators.required],
       PersonalDetails: ['', Validators.required],
       Skills: ['', Validators.required],
       Experience: ['', Validators.required],
-      Portfolio: [''],
-      AssignedTasks: [''],
-      Rating: [''],
+      Portfolio: ['', Validators.required],
+      // Add other form controls here if needed
     });
   }
 
-  ngOnInit() {}
-  onsubmit(): void {
-    if (this.profileform.valid) {
-      this.profile3.updateProfile(this.profileform.value).subscribe({
-        next: (update1: any) => {
-          console.log('Profile updated successfully', update1);
-        },
-      });
+  ngOnInit(): void {}
+
+  onImageChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.selectedImage = reader.result;
+      };
+      reader.readAsDataURL(input.files[0]);
     }
   }
+
+  onSubmit(): void {
+    if (this.profileForm.valid) {
+      console.log(this.profileForm.value);
+      // Perform your form submission logic here
+    } else {
+      console.log('Form is invalid');
+    }
+  }
+ 
 }

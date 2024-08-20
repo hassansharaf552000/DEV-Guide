@@ -1,45 +1,94 @@
-<form class="" [formGroup]="profileform" (ngSubmit)="onsubmit()">
-  <div>
-    <label for="UserName" class="text-capitalize">UserName:</label>
-    <input type="text" id="UserName" formControlName="UserName" class="form-control" />
+<div class="container py-2">
+  <div class="container mt-2">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">Login</div>
+          <div class="card-body">
+            <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="card mb-4">
+                    <div class="card-body text-center">
+                      <img [src]="selectedImage" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                      <div class="form-group mt-3">
+                        <input type="file" (change)="onImageChange($event)" accept="image/*" class=" overflow-hidden rounded-circle">
+                      </div>
+                      <div class="form-group">
+                        <label for="UserName" class="text-capitalize">UserName:</label>
+                        <input type="text" id="UserName" formControlName="UserName" class="form-control" />
+                      </div>
+                      <div class="form-group">
+                        <label for="job_Title" class="text-capitalize">job_Title:</label>
+                        <input type="text" id="job_Title" formControlName="job_Title" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card mb-4 mb-lg-0">
+                    <div class="card-body p-0">
+                      <ul class="list-group list-group-flush rounded-3">
+                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                          <i class="fas fa-globe fa-lg text-warning"></i>
+                          <p class="mb-0"><a href="https://mdbootstrap.com">micro</a></p>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                          <i class="fab fa-github fa-lg text-body"></i>
+                          <p class="mb-0"><a href="https://github.com">git Hub</a></p>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                          <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+                          <p class="mb-0"><a href="https://twitter.com">Twitter</a></p>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                          <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                          <p class="mb-0"><a href="https://instagram.com">Instagram</a></p>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                          <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                          <p class="mb-0"><a href="https://facebook.com">Facebook</a></p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label for="Email" class="text-capitalize">Email:</label>
+                        <input type="email" id="Email" formControlName="Email" class="form-control" />
+                      </div>
+                      <div class="form-group">
+                        <label for="PhoneNumber" class="text-capitalize">PhoneNumber:</label>
+                        <input type="text" id="PhoneNumber" formControlName="PhoneNumber" class="form-control" />
+                      </div>
+                      <div class="form-group">
+                        <label for="PersonalDetails" class="text-capitalize">PersonalDetails:</label>
+                        <textarea class="form-control" id="PersonalDetails" formControlName="PersonalDetails"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="Skills" class="text-capitalize">Skills:</label>
+                        <textarea class="form-control" id="Skills" formControlName="Skills"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="Experience" class="text-capitalize">Experience:</label>
+                        <textarea class="form-control" id="Experience" formControlName="Experience"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="Portfolio" class="text-capitalize">Portfolio:</label>
+                        <textarea class="form-control" id="Portfolio" formControlName="Portfolio"></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-primary btn-rounded btn-block btn-lg m-1">
+                        <i class="far fa-clock me-2"></i>Submit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>
-    <label for="Email" class="text-capitalize">Email:</label>
-    <input type="email" id="Email" formControlName="Email" class="form-control" />
-  </div>
-  <div>
-    <label for="Password" class="text-capitalize">Password</label>
-    <input type="password" id="Password" formControlName="Password" class="form-control" />
-  </div>
-  <div>
-    <label for="PhoneNumber" class="text-capitalize">PhoneNumber:</label>
-    <input type="text" id="PhoneNumber" formControlName="PhoneNumber" class="form-control" />
-  </div>
-
-  <div>
-    <label for="PersonalDetails" class="text-capitalize">PersonalDetails:</label>
-    <textarea class="form-control" id="PersonalDetails" formControlName="PersonalDetails"></textarea>
-  </div>
-  <div>
-    <label for="Skills" class="text-capitalize">Skills:</label>
-    <textarea class="form-control" id="Skills" formControlName="Skills"></textarea>
-  </div>
-  <div>
-    <label for="Experience" class="text-capitalize">Experience:</label>
-    <textarea class="form-control" id="Experience" formControlName="Experience"></textarea>
-  </div>
-  <div>
-    <label for="Portfolio" class="text-capitalize">Portfolio:</label>
-    <textarea class="form-control" id="Portfolio" formControlName="Portfolio"></textarea>
-  </div>
-  <div>
-    <label for="AssignedTasks" class="text-capitalize">AssignedTasks:</label>
-    <textarea class="form-control" id="AssignedTasks" formControlName="AssignedTasks"></textarea>
-  </div>
-  <div>
-    <label for="Rating" class="text-capitalize">Rating:</label>
-    <textarea class="form-control" id="Rating" formControlName="Rating"></textarea>
-  </div>
-
-  <button type="submit" class="btn btn-primary mt-3">Submit</button>
-</form>
+</div>

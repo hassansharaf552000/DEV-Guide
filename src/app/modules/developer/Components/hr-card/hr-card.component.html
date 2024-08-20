@@ -7,6 +7,10 @@
   <p class="category-client"> Department:  {{hr.category}}</p>
   <p class="category-client"> Rate: <app-rate [value]="hr.rate"></app-rate></p>
   <p class="price-client">Session Price:  ${{ hr.currentprice}}</p>
+  <br>
+  <button type="button" class="btn btn-dark" [routerLink]="['/hr', hr.id]" routerLinkActive="active">
+    <i class="fas fa-user"></i> View Profile
+  </button>
 
   <div class="social-media">
       <a href="#">

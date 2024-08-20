@@ -21,6 +21,11 @@
   <p class="category-client"> Department:  {{mentor.category}}</p>
   <p class="category-client"> Rate: <app-rate [value]="mentor.rate"></app-rate></p>
   <p class="price-client">Session Price:  ${{ mentor.currentprice}}</p>
+  <br>
+  <button type="button" class="btn btn-dark" [routerLink]="['/mentors', mentor.id]" routerLinkActive="active">
+    <i class="fas fa-user"></i> View Profile
+  </button>
+
 
   <div class="social-media">
       <a href="#">
