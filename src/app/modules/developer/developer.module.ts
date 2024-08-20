@@ -17,9 +17,11 @@ import { StepFourComponent } from './Components/step-four/step-four.component';
 import { StepOneComponent } from './Components/step-one/step-one.component';
 import { StepThreeComponent } from './Components/step-three/step-three.component';
 import { StepTwoComponent } from './Components/step-two/step-two.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PaymentComponent } from './Components/payment/payment.component';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +40,9 @@ import { RouterModule } from '@angular/router';
     UserlayoutComponent,
     DevelopercardComponent,
     DeveloperrateComponent,
+    PaymentComponent
+    
+
   ],
   imports: [
     CommonModule,
@@ -46,6 +51,8 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     NgSelectModule,
     SharedModule,
+    
+    
   ],
 })
 export class DeveloperModule {}

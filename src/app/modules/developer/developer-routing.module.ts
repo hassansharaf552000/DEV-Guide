@@ -15,9 +15,12 @@ import { LoginComponent } from '../../shared/components/login/login.component';
 import { RegisterComponent } from '../../shared/components/register/register.component';
 import { UserlayoutComponent } from './Components/userlayout/userlayout.component';
 import { Forget_passwordComponent } from '../../shared/components/forget_password/forget_password.component';
+import { PaymentComponent } from './Components/payment/payment.component';
+//import { PaymenttComponent } from '../../shared/components/paymentt/paymentt.component';
 
 const routes: Routes = [
   { path: 'step-one', component: StepOneComponent },
+  {path: 'payment', component: PaymentComponent},
   { path: 'step-two', component: StepTwoComponent },
   { path: 'step-three', component: StepThreeComponent },
   { path: 'step-four', component: StepFourComponent },
@@ -30,6 +33,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'userlayout', component: UserlayoutComponent },
+ 
   { path: 'forgetpassword', component: Forget_passwordComponent },
   { path: '', redirectTo: 'userlayout', pathMatch: 'full' },
   { path: '**', redirectTo: 'userlayout' },
