@@ -30,7 +30,6 @@ import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.compon
 import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
 import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
 
-
 @NgModule({
   declarations: [
     StepOneComponent,
@@ -49,14 +48,14 @@ import { MentorProfileComponent } from './Components/mentor-profile/mentor-profi
     DevelopercardComponent,
     DeveloperrateComponent,
     HomeComponent,
-    BookingComponent
-    BookingConfirmationComponent
+    BookingComponent,
+    BookingConfirmationComponent,
     SkillAssessmentsComponent,
     SkillInstructionsComponent,
     QuizComponent,
     FinishQuizComponent,
     HrProfileComponent,
-    MentorProfileComponent
+    MentorProfileComponent,
   ],
   imports: [
     CommonModule,

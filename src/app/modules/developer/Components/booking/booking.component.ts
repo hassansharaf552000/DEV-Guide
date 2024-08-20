@@ -5,29 +5,12 @@ import { Time } from '../../../../shared/types/time';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
-  styleUrl: './booking.component.css'
+  styleUrl: './booking.component.css',
 })
 export class BookingComponent {
-list: Array<Time>
+  list: Array<Time>;
 
-  constructor(){
-
-
-this.list=[]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  constructor() {
+    this.list = [];
   }
-
 }
