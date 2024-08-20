@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'step-four', component: StepFourComponent },
   { path: 'step-five', component: StepFiveComponent },
   { path: 'mentors', component: MentorListComponent },
-  { path: 'mentors/:id', component: MentorProfileComponent },  // Updated route
+  { path: 'mentors/:id', component: MentorProfileComponent }, // Updated route
   { path: 'hr', component: HRListComponent },
   { path: 'hr/:id', component: HrProfileComponent },
   { path: 'contactus', component: ContactUsComponent },
@@ -45,11 +45,10 @@ const routes: Routes = [
   { path: 'forgetpassword', component: Forget_passwordComponent },
   { path: 'booking', component: BookingComponent },
   { path: 'query', component: QueryComponent },
-  { path: 'confirmation',component: BookingConfirmationComponent},
+  { path: 'confirmation', component: BookingConfirmationComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '**', redirectTo: 'home' }
+  { path: '**', redirectTo: 'home' },
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes), SharedModule],
   exports: [RouterModule],
