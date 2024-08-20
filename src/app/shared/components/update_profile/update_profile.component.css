@@ -2,20 +2,21 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  /* width:80%; */
 }
 
-.container {
-  height: 50%; /* Reduced height */
-  width: 98%; /* Further increased width */
+/* .container {
+  height: 50%; Reduced height
+  width: 100%; Further increased width
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-}
+} */
 
 .row {
   width: 100%;
-  max-width: 1600px; /* Further increased max-width */
+  max-width: 1600px; /* Further increased max-width 
 }
 
 .card {
@@ -55,14 +56,17 @@ form .form-control {
 }
 
 form .btn {
-  width: 100%;
+  width: 25%;
   padding: 10px;
   font-size: 16px;
   border-radius: 5px;
+  /* justify-content: center; */
+  /* align-items: center; */
+  
 }
 
 .card-body.text-center img {
-  width: 450px;
+  width: 650px;
   border-radius: 50%;
 }
 
@@ -89,6 +93,15 @@ form .btn {
   text-decoration: underline;
 }
 
+.containerbtn {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;    /* Centers vertically */
+          /* Full height of the viewport */
+}
+.center-button {
+  padding: 10px 20px;
+}
 @media (max-width: 768px) {
   .card {
     margin: 5px 0;

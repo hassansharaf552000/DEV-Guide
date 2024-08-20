@@ -17,7 +17,8 @@ import { StepFourComponent } from './Components/step-four/step-four.component';
 import { StepOneComponent } from './Components/step-one/step-one.component';
 import { StepThreeComponent } from './Components/step-three/step-three.component';
 import { StepTwoComponent } from './Components/step-two/step-two.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PaymentComponent } from './Components/payment/payment.component';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
@@ -29,6 +30,7 @@ import { QuizComponent } from './Components/quiz/quiz.component';
 import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.component';
 import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
 import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { MentorProfileComponent } from './Components/mentor-profile/mentor-profi
     UserlayoutComponent,
     DevelopercardComponent,
     DeveloperrateComponent,
+    PaymentComponent
     HomeComponent,
     BookingComponent,
     BookingConfirmationComponent,
@@ -64,6 +67,8 @@ import { MentorProfileComponent } from './Components/mentor-profile/mentor-profi
     ReactiveFormsModule,
     NgSelectModule,
     SharedModule,
+    
+    
   ],
 })
 export class DeveloperModule {}

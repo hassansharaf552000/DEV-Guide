@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { FaqComponent } from './components/faq/faq.component';
 
 
+
 @NgModule({
   declarations: [
     NavbarComponent,

@@ -40,6 +40,7 @@ const routes: Routes = [
         (m) => m.MentorModule
       ),
   },
+  { path: '**', redirectTo: 'developer/userlayout' },
   { path: '**', component: NotFoundComponent },
 ];
 
