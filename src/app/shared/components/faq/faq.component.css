@@ -1,0 +1,131 @@
+.parent {
+  background-image: url(../../../../../public/back.jpg);
+  background-position: 100% , 100%;
+  background-size: cover;
+  color: #333;
+  padding-top: 60px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.lead {
+  color: #6c7d6e;
+  margin-bottom: 1rem;
+}
+
+.accordion-button {
+  display: flex;
+  justify-content: space-between; /* Align question to the left and dropdown icon to the right */
+  align-items: center; /* Center items vertically */
+  padding: 1rem; /* Adjust padding as needed */
+  font-weight: bold;
+  color: #007bff;
+  max-width: 100%; /* Ensure the button does not exceed container width */
+  border: 1px solid #ddd; /* Optional: add border to visually separate items */
+  background-color: #f8f9fa; /* Light background color for normal state */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for color change */
+}
+
+.accordion-button:hover {
+  background-color: #e9ecef; /* Light grey background color on hover */
+  color: #0056b3; /* Darker color for text on hover */
+}
+
+.accordion-button::after {
+  content: '\f078'; /* Unicode for down arrow */
+  font-family: 'FontAwesome';
+  font-size: 1.25rem; /* Adjust size as needed */
+  color: #007bff; /* Color for the dropdown icon */
+}
+
+.accordion-button:focus {
+  box-shadow: none; /* Remove focus outline */
+  border-color: #007bff; /* Optional: highlight border on focus */
+}
+
+.accordion-item {
+  margin-bottom: 1rem; /* Add space between accordion items */
+}
+
+.accordion-header {
+  margin-bottom: 0; /* Remove margin from header */
+}
+
+.accordion-body {
+  font-size: 1rem;
+  color: #333;
+}
+
+.accordion-section h3 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  color: #052d92;
+  text-align: center;
+}
+
+.card {
+  background-color: #e6f7ff;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.img-fluid {
+  max-width: 150px;
+  height: auto;
+  margin-left: 20px;
+}
+
+/* Additional image styling */
+img[src*="300x100"] {
+  margin-top: 2rem;
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.contact-section {
+  background-color: #4e7aa5; /* Background color for the contact section */
+  color: #fff; /* Text color */
+  padding: 2rem; /* Padding for better spacing */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  max-width: 800px; /* Increased max width for a larger layout */
+  margin: 2rem auto; /* Center horizontally and add margin */
+}
+
+.contact-section h5 {
+  font-size: 1.5rem; /* Font size for heading */
+  margin-bottom: 1rem; /* Margin below heading */
+}
+
+.contact-section p {
+  font-size: 1rem; /* Font size for paragraph */
+  margin-bottom: 1.5rem; /* Margin below paragraph */
+}
+
+.contact-section .btn-primary {
+  background-color: #fff; /* Background color for the button */
+  border-color: #fff; /* Border color for the button */
+  color: #007bff; /* Text color for the button */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.contact-section .btn-primary:hover {
+  background-color: #0056b3; /* Darker background on hover */
+  color: #fff; /* Text color on hover */
+}

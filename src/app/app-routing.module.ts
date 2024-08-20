@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { LoginComponent } from './shared/components/login/login.component';
 import { RegisterComponent } from './shared/components/register/register.component';
 import { UserlayoutComponent } from './modules/developer/Components/userlayout/userlayout.component';
@@ -39,7 +40,7 @@ const routes: Routes = [
         (m) => m.MentorModule
       ),
   },
-  { path: '**', redirectTo: 'developer/userlayout' },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

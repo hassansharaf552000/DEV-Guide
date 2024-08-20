@@ -14,6 +14,7 @@ import { Update_profileComponent } from '../../shared/components/update_profile/
 import { LoginComponent } from '../../shared/components/login/login.component';
 import { RegisterComponent } from '../../shared/components/register/register.component';
 import { Forget_passwordComponent } from '../../shared/components/forget_password/forget_password.component';
+import { FaqComponent } from '../../shared/components/faq/faq.component';
 import { HomeComponent } from './Components/home/home.component';
 import { BookingComponent } from './Components/booking/booking.component';
 import { QueryComponent } from './Components/query/query.component';
@@ -43,6 +44,9 @@ const routes: Routes = [
   { path: 'updateprofile', component: Update_profileComponent },
   { path: 'home', component: HomeComponent },
   { path: 'forgetpassword', component: Forget_passwordComponent },
+  {path: 'faq-and-licence', component: FaqComponent},
+  { path: '', redirectTo: 'userlayout', pathMatch: 'full' },
+  { path: '**', redirectTo: 'userlayout' },
   { path: 'booking', component: BookingComponent },
   { path: 'query', component: QueryComponent },
   { path: 'confirmation', component: BookingConfirmationComponent },
