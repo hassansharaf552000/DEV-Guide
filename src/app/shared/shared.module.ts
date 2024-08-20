@@ -11,6 +11,8 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Forget_passwordComponent } from './components/forget_password/forget_password.component';
 import { RouterModule } from '@angular/router';
+import { FaqComponent } from './components/faq/faq.component';
+
 
 
 @NgModule({
@@ -23,7 +25,7 @@ import { RouterModule } from '@angular/router';
     LoginComponent,
     RegisterComponent,
     Forget_passwordComponent,
-   
+    FaqComponent
   ],
 
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],

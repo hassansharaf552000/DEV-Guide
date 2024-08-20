@@ -13,11 +13,20 @@ import { SharedModule } from '../../shared/shared.module';
 import { Update_profileComponent } from '../../shared/components/update_profile/update_profile.component';
 import { LoginComponent } from '../../shared/components/login/login.component';
 import { RegisterComponent } from '../../shared/components/register/register.component';
-import { UserlayoutComponent } from './Components/userlayout/userlayout.component';
 import { Forget_passwordComponent } from '../../shared/components/forget_password/forget_password.component';
 import { PaymentComponent } from './Components/payment/payment.component';
 //import { PaymenttComponent } from '../../shared/components/paymentt/paymentt.component';
-
+import { FaqComponent } from '../../shared/components/faq/faq.component';
+import { HomeComponent } from './Components/home/home.component';
+import { BookingComponent } from './Components/booking/booking.component';
+import { QueryComponent } from './Components/query/query.component';
+import { BookingConfirmationComponent } from './Components/booking-confirmation/booking-confirmation.component';
+import { SkillAssessmentsComponent } from './Components/skill-assessments/skill-assessments.component';
+import { SkillInstructionsComponent } from './Components/skill-instructions/skill-instructions.component';
+import { QuizComponent } from './Components/quiz/quiz.component';
+import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.component';
+import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
+import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
 const routes: Routes = [
   { path: 'step-one', component: StepOneComponent },
   {path: 'payment', component: PaymentComponent},
@@ -26,19 +35,30 @@ const routes: Routes = [
   { path: 'step-four', component: StepFourComponent },
   { path: 'step-five', component: StepFiveComponent },
   { path: 'mentors', component: MentorListComponent },
-  { path: 'hr-s', component: HRListComponent },
+  { path: 'mentors/:id', component: MentorProfileComponent }, // Updated route
+  { path: 'hr', component: HRListComponent },
+  { path: 'hr/:id', component: HrProfileComponent },
   { path: 'contactus', component: ContactUsComponent },
+  { path: 'skill-assessments', component: SkillAssessmentsComponent },
+  { path: 'skill-instructions', component: SkillInstructionsComponent },
+  { path: 'quiz', component: QuizComponent },
+  { path: 'finish-quiz', component: FinishQuizComponent },
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'updateprofile', component: Update_profileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'userlayout', component: UserlayoutComponent },
- 
+  { path: 'home', component: HomeComponent },
   { path: 'forgetpassword', component: Forget_passwordComponent },
+  {path: 'faq-and-licence', component: FaqComponent},
   { path: '', redirectTo: 'userlayout', pathMatch: 'full' },
   { path: '**', redirectTo: 'userlayout' },
+  { path: 'booking', component: BookingComponent },
+  { path: 'query', component: QueryComponent },
+  { path: 'confirmation', component: BookingConfirmationComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home' },
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes), SharedModule],
   exports: [RouterModule],

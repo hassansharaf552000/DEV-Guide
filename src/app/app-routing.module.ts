@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-//import { PaymenttComponent } from './shared/components/paymentt/paymentt.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { LoginComponent } from './shared/components/login/login.component';
+import { RegisterComponent } from './shared/components/register/register.component';
+import { UserlayoutComponent } from './modules/developer/Components/userlayout/userlayout.component';
 const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   {
-    path: 'developer',
+    path: 'developer',component:UserlayoutComponent,
     loadChildren: () =>
       import('./modules/developer/developer.module').then(
         (m) => m.DeveloperModule
@@ -17,7 +22,7 @@ const routes: Routes = [
   {
     path: 'guest',
     loadChildren: () =>
-      import('./modules/developer/Components/guest/guest.module').then(
+      import('./modules/guest/guest.module').then(
         (m) => m.GuestModule
       ),
   },
@@ -35,8 +40,8 @@ const routes: Routes = [
         (m) => m.MentorModule
       ),
   },
-  
   { path: '**', redirectTo: 'developer/userlayout' },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
