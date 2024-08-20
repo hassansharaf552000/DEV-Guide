@@ -21,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
+import { BookingComponent } from './Components/booking/booking.component';
 import { BookingConfirmationComponent } from './Components/booking-confirmation/booking-confirmation.component';
 import { SkillAssessmentsComponent } from './Components/skill-assessments/skill-assessments.component';
 import { SkillInstructionsComponent } from './Components/skill-instructions/skill-instructions.component';
@@ -48,6 +49,7 @@ import { MentorProfileComponent } from './Components/mentor-profile/mentor-profi
     DevelopercardComponent,
     DeveloperrateComponent,
     HomeComponent,
+    BookingComponent
     BookingConfirmationComponent
     SkillAssessmentsComponent,
     SkillInstructionsComponent,
