@@ -1,0 +1,55 @@
+<div class="container mt-5 pt-4">
+  <div class="row">
+    <!-- Left section (Feedback summary) -->
+    <div class="col-md-5">
+      <div class="card shadow p-4 mb-4 bg-white rounded custom-card">
+        <h4>Assessment Complete!</h4>
+        <h5>You've Reached the Finish Line!</h5>
+        <div class="mt-4">
+          <p>Questions: <strong>30</strong></p>
+          <p>Attempted: <strong>4</strong></p>
+          <p>Not Attempted: <strong>26</strong></p>
+        </div>
+        <p class="mt-4">Thank you,</p>
+        <p>We sincerely appreciate your time and effort in completing this assessment. Your valuable input and feedback
+          are crucial in helping us improve and grow.</p>
+        <p>If you have any additional comments or suggestions, please feel free to share them with us in the comments
+          section. Your input is highly valued.</p>
+        <p>Once again, thank you for your participation and support. We look forward to having you again soon.</p>
+      </div>
+    </div>
+
+    <!-- Right section (Feedback form) -->
+    <div class="col-md-7">
+      <div class="card shadow p-4 mb-4 bg-white rounded custom-card">
+        <h4>Assessment Feedback</h4>
+        <p>How would you rate your experience?</p>
+        <div class="rating-icons d-flex justify-content-between mb-4">
+          <span class="rating-icon" (click)="rateExperience(1)">
+            <i class="fa fa-smile-beam"></i>
+          </span>
+          <span class="rating-icon" (click)="rateExperience(2)">
+            <i class="fa fa-smile"></i>
+          </span>
+          <span class="rating-icon" (click)="rateExperience(3)">
+            <i class="fa fa-meh"></i>
+          </span>
+          <span class="rating-icon" (click)="rateExperience(4)">
+            <i class="fa fa-frown"></i>
+          </span>
+          <span class="rating-icon" (click)="rateExperience(5)">
+            <i class="fa fa-sad-tear"></i>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="feedback">Describe your experience:</label>
+          <textarea id="feedback" class="form-control" rows="4"
+            placeholder="Provide your valuable feedback to help us improve!" [(ngModel)]="feedbackText"
+            (ngModelChange)="onFeedbackTextChange($event)">
+          </textarea>
+        </div>
+        <button class="btn btn-primary mt-3" (click)="submitFeedback()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

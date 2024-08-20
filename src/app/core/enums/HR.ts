@@ -1,4 +1,5 @@
 export interface IHR{
+  id:number;
   name:String
   imageurl:String
   category:String

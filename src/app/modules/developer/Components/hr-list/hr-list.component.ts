@@ -13,6 +13,7 @@ export class HRListComponent {
     // Example data; replace with actual data retrieval logic
     this.Hr = [
       {
+        id:1,
         name: 'John Doe',
         imageurl: 'https://via.placeholder.com/150',
         category: 'Employees',
@@ -21,6 +22,7 @@ export class HRListComponent {
         currentprice: 99.99
       },
       {
+        id:2,
         name: 'Jane Smith',
         imageurl: 'https://via.placeholder.com/150',
         category: 'Law',
@@ -29,6 +31,7 @@ export class HRListComponent {
         currentprice: 149.99
       },
       {
+        id:3,
         name: 'Alice Johnson',
         imageurl: 'https://via.placeholder.com/150',
         category: 'Accountant',
@@ -37,6 +40,7 @@ export class HRListComponent {
         currentprice: 199.99
       },
       {
+        id:4,
         name: 'Alice Johnson',
         imageurl: 'https://via.placeholder.com/150',
         category: 'Accountant',
@@ -45,6 +49,7 @@ export class HRListComponent {
         currentprice: 199.99
       },
       {
+        id:5,
         name: 'Alice Johnson',
         imageurl: 'https://via.placeholder.com/150',
         category: 'Accountant',
@@ -53,6 +58,7 @@ export class HRListComponent {
         currentprice: 199.99
       },
       {
+        id:6,
         name: 'Alice Johnson',
         imageurl: 'https://via.placeholder.com/150',
         category: 'Accountant',

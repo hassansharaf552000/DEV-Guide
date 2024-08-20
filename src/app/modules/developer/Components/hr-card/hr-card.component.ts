@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IHR } from '../../../../core/enums/HR';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hr-card',
@@ -8,4 +9,10 @@ import { IHR } from '../../../../core/enums/HR';
 })
 export class HRCardComponent {
   @Input() hr!:IHR
+
+  constructor(private router: Router) {}
+
+  viewProfile(id: number): void {
+    this.router.navigate(['/hr', id]); // Navigate to HR profile page with the selected HR's ID
+  }
 }
