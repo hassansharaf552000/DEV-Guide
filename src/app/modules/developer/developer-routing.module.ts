@@ -15,13 +15,13 @@ import { LoginComponent } from '../../shared/components/login/login.component';
 import { RegisterComponent } from '../../shared/components/register/register.component';
 import { Forget_passwordComponent } from '../../shared/components/forget_password/forget_password.component';
 import { HomeComponent } from './Components/home/home.component';
+import { BookingConfirmationComponent } from './Components/booking-confirmation/booking-confirmation.component';
 import { SkillAssessmentsComponent } from './Components/skill-assessments/skill-assessments.component';
 import { SkillInstructionsComponent } from './Components/skill-instructions/skill-instructions.component';
 import { QuizComponent } from './Components/quiz/quiz.component';
 import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.component';
 import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
 import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
-
 const routes: Routes = [
   { path: 'step-one', component: StepOneComponent },
   { path: 'step-two', component: StepTwoComponent },
@@ -41,8 +41,9 @@ const routes: Routes = [
   { path: 'updateprofile', component: Update_profileComponent },
   { path: 'home', component: HomeComponent },
   { path: 'forgetpassword', component: Forget_passwordComponent },
+  { path: 'confirmation',component: BookingConfirmationComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '**', redirectTo: 'home' },
+  { path: '**', redirectTo: 'home' }
 ];
 
 @NgModule({
