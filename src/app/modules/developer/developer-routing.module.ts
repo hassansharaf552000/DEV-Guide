@@ -15,6 +15,10 @@ import { LoginComponent } from '../../shared/components/login/login.component';
 import { RegisterComponent } from '../../shared/components/register/register.component';
 import { Forget_passwordComponent } from '../../shared/components/forget_password/forget_password.component';
 import { HomeComponent } from './Components/home/home.component';
+import { SkillAssessmentsComponent } from './Components/skill-assessments/skill-assessments.component';
+import { SkillInstructionsComponent } from './Components/skill-instructions/skill-instructions.component';
+import { QuizComponent } from './Components/quiz/quiz.component';
+import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.component';
 import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
 import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
 
@@ -29,6 +33,10 @@ const routes: Routes = [
   { path: 'hr', component: HRListComponent },
   { path: 'hr/:id', component: HrProfileComponent },
   { path: 'contactus', component: ContactUsComponent },
+  { path: 'skill-assessments', component: SkillAssessmentsComponent },
+  { path: 'skill-instructions', component: SkillInstructionsComponent },
+  { path: 'quiz', component: QuizComponent },
+  { path: 'finish-quiz', component: FinishQuizComponent },
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'updateprofile', component: Update_profileComponent },
   { path: 'home', component: HomeComponent },

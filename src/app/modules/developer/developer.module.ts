@@ -21,8 +21,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
+import { SkillAssessmentsComponent } from './Components/skill-assessments/skill-assessments.component';
+import { SkillInstructionsComponent } from './Components/skill-instructions/skill-instructions.component';
+import { QuizComponent } from './Components/quiz/quiz.component';
+import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.component';
 import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
 import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -42,6 +47,10 @@ import { MentorProfileComponent } from './Components/mentor-profile/mentor-profi
     DevelopercardComponent,
     DeveloperrateComponent,
     HomeComponent,
+    SkillAssessmentsComponent,
+    SkillInstructionsComponent,
+    QuizComponent,
+    FinishQuizComponent,
     HrProfileComponent,
     MentorProfileComponent
   ],

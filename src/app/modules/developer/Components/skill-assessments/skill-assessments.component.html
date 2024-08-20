@@ -1,0 +1,28 @@
+<div class="container my-5">
+  <h2 class="text-center">Skill Assessments</h2>
+  <p class="text-center">Master your concepts with level-wise tests, followed by full-length mock exams for 360°
+    preparation!</p>
+
+  <div class="d-flex justify-content-center my-4">
+    <button class="btn custom-btn mx-2" (click)="filterCards('all')">All</button>
+    <button class="btn custom-btn mx-2" (click)="filterCards('computer-fundamentals')">Computer Fundamentals</button>
+    <button class="btn custom-btn mx-2" (click)="filterCards('cn')">Computer Network</button>
+    <button class="btn custom-btn mx-2" (click)="filterCards('dsa')">Data Structures & Algorithms</button>
+    <button class="btn custom-btn mx-2" (click)="filterCards('oops')">Object Oriented Programming</button>
+    <button class="btn custom-btn mx-2" (click)="filterCards('machine-learning')">Machine Learning</button>
+    <button class="btn custom-btn mx-2" (click)="filterCards('dbms')">Database Management System</button>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let card of filteredCards">
+      <div class="card h-100 clickable-card" (click)="onCardClick(card)">
+        <img [src]="card.image" class="card-img-top" alt="{{ card.title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ card.title }}</h5>
+          <p class="card-text">{{ card.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
