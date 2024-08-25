@@ -44,7 +44,6 @@ const routes: Routes = [
   { path: 'quiz', component: QuizComponent },
   { path: 'finish-quiz', component: FinishQuizComponent },
   { path: 'aboutus', component: AboutUsComponent },
-  { path: 'updateprofile', component: Update_profileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'userlayout', component: UserlayoutComponent },
@@ -53,6 +52,12 @@ const routes: Routes = [
   { path: 'faq-and-licence', component: FaqComponent },
   // { path: '', redirectTo: 'userlayout', pathMatch: 'full' },
   // { path: '**', redirectTo: 'userlayout' },
+  // { path: 'profile', component: layout,children:
+  //   [
+  //     { path: 'updateprofile', component: Update_profileComponent },
+
+  //   ]
+  //  },
   { path: 'booking', component: BookingComponent },
   { path: 'query', component: QueryComponent },
   { path: 'confirmation', component: BookingConfirmationComponent },

@@ -4,20 +4,34 @@
   <div class="row">
     <!-- Profile Picture and Details -->
     <div class="col-md-4 text-center">
-      <img [src]="mentorProfile?.imageurl" alt="{{ mentorProfile?.name }}" class="profile-img rounded-circle">
+      <img [src]="mentorProfile?.imageurl" alt="{{ mentorProfile?.name }}" class="profile-img rounded-circle shadow-lg">
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-8 d-flex flex-column justify-content-center">
       <h2 class="fw-bold">{{ mentorProfile?.name }}</h2>
-      <h1><app-rate [value]="mentorProfile?.rate" style="font-size: xx-large;"></app-rate></h1>
-      <br>
-      <h5><strong>Session Price:</strong> ${{ mentorProfile?.currentprice }}</h5>
+      <h1 class="mb-3"><app-rate [value]="mentorProfile?.rate" style="font-size: xx-large;"></app-rate></h1>
+      <h5 class="session-price"><strong>Session Price:</strong> ${{ mentorProfile?.currentprice }}</h5>
     </div>
   </div>
+  <br>
 
   <div class="row mt-4">
     <!-- Forms Layout -->
     <div class="col-md-3">
+      <div class="text-center mb-4">
+        <div class="d-grid gap-3">
+          <a [routerLink]="'/developer/hr'" class="btn btn-custom">
+            <i class="fas fa-arrow-left"></i> Back to List
+          </a>
+          <a class="btn btn-success">
+            <i class="fas fa-calendar-check"></i> Book Session
+          </a>
+          <a class="btn btn-primary">
+            <i class="fas fa-question-circle"></i> Ask Question
+          </a>
+        </div>
+      </div>
+
       <!-- Personal Details Card -->
       <div class="card mb-4">
         <div class="card-header">
@@ -25,22 +39,19 @@
         </div>
         <div class="card-body">
           <form>
-            <div class="form-group">
+            <div class="form-group mb-3">
               <label for="name">Name</label>
               <input type="text" class="form-control" id="name" [value]="mentorProfile?.name" readonly>
             </div>
-            <br>
-            <div class="form-group">
+            <div class="form-group mb-3">
               <label for="email">Email</label>
               <input type="email" class="form-control" id="email" [value]="mentorProfile?.name+ '@gmail.com'" readonly>
             </div>
-            <br>
-            <div class="form-group">
+            <div class="form-group mb-3">
               <label for="title">Title</label>
               <input type="text" class="form-control" id="title" [value]="mentorProfile?.title" readonly>
             </div>
-            <br>
-            <div class="form-group">
+            <div class="form-group mb-3">
               <label for="department">Department</label>
               <input type="text" class="form-control" id="department" [value]="mentorProfile?.category" readonly>
             </div>
@@ -57,11 +68,10 @@
         </div>
         <div class="card-body">
           <form>
-            <div class="form-group">
-              <textarea class="form-control" id="feedback" rows="4" placeholder="Information..." readonly></textarea>
+            <div class="form-group mb-3">
+              <textarea class="form-control" id="information" rows="4" placeholder="Information..." readonly></textarea>
             </div>
           </form>
-
         </div>
       </div>
 
@@ -72,37 +82,36 @@
         </div>
         <div class="card-body">
           <form>
-            <div class="form-group">
-              <input type="text" class="form-control" id="feedback" rows="4" placeholder="Workhours..." readonly>
+            <div class="form-group mb-3">
+              <input type="text" class="form-control" id="workhours" placeholder="Work hours..." readonly>
             </div>
           </form>
-
         </div>
       </div>
 
-      <!-- History Card -->
+      <!-- Education Card -->
       <div class="card mb-4">
         <div class="card-header">
           <h4 class="mb-0">Education</h4>
         </div>
         <div class="card-body">
           <form>
-            <div class="form-group">
-              <textarea class="form-control" id="Education" rows="4" placeholder="Education..." readonly></textarea>
+            <div class="form-group mb-3">
+              <textarea class="form-control" id="education" rows="4" placeholder="Education..." readonly></textarea>
             </div>
           </form>
-
         </div>
       </div>
 
+      <!-- Work Experience Card -->
       <div class="card mb-4">
         <div class="card-header">
           <h4 class="mb-0">Work Experience</h4>
         </div>
         <div class="card-body">
           <form>
-            <div class="form-group">
-              <textarea class="form-control" id="feedback" rows="4" placeholder="Work Experience ..." readonly></textarea>
+            <div class="form-group mb-3">
+              <textarea class="form-control" id="workexperience" rows="4" placeholder="Work Experience..." readonly></textarea>
             </div>
           </form>
         </div>
@@ -115,32 +124,12 @@
         </div>
         <div class="card-body">
           <form>
-            <div class="form-group">
-              <textarea class="form-control" id="feedback" rows="4" placeholder="Reviews..." readonly></textarea>
+            <div class="form-group mb-3">
+              <textarea class="form-control" id="reviews" rows="4" placeholder="Reviews..." readonly></textarea>
             </div>
           </form>
-
         </div>
       </div>
-
-
-
     </div>
   </div>
-
-  <div class="text-center mt-4">
-    <div class="row justify-content-center">
-      <div class="col-auto">
-        <a [routerLink]="'/developer/mentors'" class="btn btn-custom">
-          <i class="fas fa-arrow-left"></i> Back to List
-        </a>
-      </div>
-      <div class="col-auto">
-        <a class="btn btn-success">
-          <i class="fas fa-calendar-check"></i> Book Session
-        </a>
-      </div>
-    </div>
-  </div>
-
 </div>

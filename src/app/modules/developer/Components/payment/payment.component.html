@@ -1,28 +1,212 @@
-<form (ngSubmit)="onSubmit(paymentForm)" #paymentForm="ngForm">
-  <div class="form-group">
-    <label for="cardName">Cardholder Name</label>
-    <input type="text" id="cardName" class="form-control" name="cardName" required ngModel>
-  </div>
+<div class="container mt-5 m-auto">
+  <div class="row">
+    <div class="col-md-6 ">
+      <div class="card custom-card">
+        <div class="card-header custom-card-header">
+          <h2 class="mb-0">Checkout</h2>
+        </div>
+        <div class="card-body custom-card-body">
+          <!-- Payment Method Selection -->
+          <div class="form-group">
+            <div class="d-flex align-items-center">
+              <div class="form-check me-4 d-flex align-items-center">
+                <input
+                  class="form-check-input me-2"
+                  type="radio"
+                  name="paymentMethod"
+                  id="creditCard"
+                  (change)="change('creditCard')"
+                  value="creditCard"
+                  checked
+                />
+                <label
+                  class="form-check-label d-flex align-items-center"
+                  for="creditCard"
+                >
+                  <img
+                    src="Visa-Logo.png"
+                    alt="Visa"
+                    width="60"
+                    class="me-2"
+                  />
+                  <img
+                    src="Mastercard-logo.svg.png"
+                    alt="MasterCard"
+                    width="60"
+                  />
+                </label>
+              </div>
+              <div class="form-check d-flex align-items-center">
+                <input
+                  class="form-check-input me-2"
+                  type="radio"
+                  name="paymentMethod"
+                  id="paypal"
+                  value="paypal"
+                  (change)="change('paypal')"
+                />
+                <label
+                  class="form-check-label d-flex align-items-center"
+                  for="paypal"
+                >
+                  <img src="paypal.webp" alt="PayPal" width="100" />
+                </label>
+              </div>
+            </div>
+          </div>
 
-  <div class="form-group">
-    <label for="cardNumber">Card Number</label>
-    <input type="text" id="cardNumber" class="form-control" name="cardNumber" required ngModel>
-  </div>
+          <!-- PayPal Form -->
+          <div *ngIf="paymentMethod === 'paypal'" class="payment-form">
+            <div class="form-group mt-3">
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="john.doe@gmail.com"
+              />
+            </div>
 
-  <div class="form-group">
-    <label for="expiryDate">Expiry Date</label>
-    <input type="text" id="expiryDate" class="form-control" name="expiryDate" required ngModel>
-  </div>
+            <div class="form-group mt-3">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Password"
+              />
+            </div>
 
-  <div class="form-group">
-    <label for="cvv">CVV</label>
-    <input type="text" id="cvv" class="form-control" name="cvv" required ngModel>
-  </div>
+            <div class="form-group mt-3">
+              <label for="country">Country</label>
+              <select class="form-control" id="country">
+                <option>Egypt</option>
+                <!-- Add more options here -->
+              </select>
+            </div>
+            <div class="form-group mt-3">
+              <label for="zip">Billing Zip / Postal Code</label>
+              <input
+                type="text"
+                class="form-control"
+                id="zip"
+                placeholder="Zip / Postal Code"
+              />
+            </div>
+          </div>
 
-  <div class="form-group">
-    <label for="billingAddress">Billing Address</label>
-    <input type="text" id="billingAddress" class="form-control" name="billingAddress" required ngModel>
-  </div>
+          <!-- Credit Card Form -->
+          <div *ngIf="paymentMethod === 'creditCard'" class="payment-form">
+            <h4 class="mt-5">Credit Card Info</h4>
+            <div class="form-group">
+              <label for="cardNumber">Card Number</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cardNumber"
+                placeholder="7465 8374 5837 5067"
+              />
+            </div>
 
-  <button type="submit" class="btn btn-primary">Pay Now</button>
-</form>
+            <div class="form-group mt-3">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="John Doe"
+              />
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <label for="expDate">EXP Date</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="expDate"
+                  placeholder="MM/YY"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="cvv">CVV</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cvv"
+                  placeholder="965"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card custom-summary-card">
+        <div class="card-body">
+          <h3 class="card-title">Session Summary</h3>
+          <p class="card-text">
+            It can help you manage and service orders before, during, and after
+            fulfillment.
+          </p>
+          <div class="bg-light p-3 rounded">
+            <div class="card session-card mb-4">
+              <div class="card-body">
+                <div class="d-flex align-items-center mb-4">
+                  <img
+                    src="05 (1).jpg"
+                    alt="Profile Picture"
+                    class="rounded-circle"
+                    width="80"
+                  />
+                  <div class="ms-3">
+                    <h5 class="mb-0">Eng Heba Samy</h5>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <p>
+                      <i class="bi bi-bookmark"></i> Booking ID:
+                      <strong>BS-58678</strong>
+                    </p>
+                    <p>
+                      <i class="bi bi-person"></i> Booked by:
+                      <strong>Frances Guerrero</strong>
+                    </p>
+                    <p>
+                      <i class="bi bi-book"></i> Session In:
+                      <strong>Angular</strong>
+                    </p>
+                    <p>
+                      <i class="bi bi-calendar-date"></i> Date:
+                      <strong>29 July 2024</strong>
+                    </p>
+                    <p>
+                      <i class="fas fa-clock"></i> Session Duration:
+                      <strong>2 Hours</strong>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <p class="d-flex justify-content-between">
+              <span>Subtotal</span><span>$85.99</span>
+            </p>
+            <p class="d-flex justify-content-between">
+              <span>Tax</span><span>$4.99</span>
+            </p>
+            <p class="d-flex justify-content-between font-weight-bold">
+              <span>Total</span><span>$90.98</span>
+            </p>
+          </div>
+          <button class="btn btn-success btn-block mt-4">
+            Proceed with Payment
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

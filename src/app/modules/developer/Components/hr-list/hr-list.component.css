@@ -1,7 +1,7 @@
 .input {
   margin-top: 1rem;
   border-radius: 10px;
-  outline: 2px solid #1c4980;
+  outline: 2px solid #415bcf;
   border: 0;
   font-family: "Montserrat", sans-serif;
   color: #030000;
@@ -26,14 +26,14 @@
   cursor: pointer;
   position: relative;
   transition: 300ms;
-  border: 2px solid #1c4980;
+  border: 2px solid #415bcf;
   color: white;
   overflow: hidden;
   width: 200px;
 }
 
 .selected {
-  background-color: #1c4980;
+  background-color: #415bcf;
   padding: 5px;
   margin-bottom: 3px;
   border-radius: 5px;
@@ -61,7 +61,7 @@
   flex-direction: column;
   border-radius: 5px;
   padding: 5px;
-  background-color: #1c4980;
+  background-color: #415bcf;
   position: relative;
   top: -100px;
   opacity: 0;
@@ -82,12 +82,12 @@
   border-radius: 5px;
   padding: 5px;
   transition: 300ms;
-  background-color:#1c4980;
+  background-color:#415bcf;
   width: 150px;
   font-size: 15px;
 }
 .option:hover {
-  background-color:#1c4980;
+  background-color:#415bcf;
 }
 
 .options input[type="radio"] {
@@ -123,8 +123,8 @@
 }
 
 .btn-primary-search {
-  background-color: #1c4980;
-  border-color: #1c4980;
+  background-color: #415bcf;
+  border-color: #415bcf;
   width: 250px;
   height: 50px;
   color: white;
@@ -200,7 +200,7 @@ input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   width: 24px;
   height: 24px;
-  background: #1c4980;
+  background: #415bcf;
   border-radius: 50%;
   cursor: pointer;
   position: relative;
@@ -271,8 +271,8 @@ input[type="range"]::-ms-track {
   color: transparent;
 }
 .btn-primary {
-  background-color: #1c4980;
-  border-color: #1c4980;
+  background-color: #415bcf;
+  border-color: #415bcf;
   width: 120px; /* Adjust width as needed */
   height: 40px; /* Adjust height as needed */
   text-align: center;
@@ -296,6 +296,12 @@ input[type="range"]::-ms-track {
 
 .align-items-center {
   align-items: center;
+}
+
+
+.slider-container {
+  width: 100%;
+  position: relative;
 }
 
 
