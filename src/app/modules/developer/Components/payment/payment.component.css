@@ -1,58 +1,327 @@
-/* General form styling */
-form {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-  }
-  
-  /* Form group styling */
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  .form-group input:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.2);
-  }
-  
-  /* Button styling */
-  button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
+/* Basic Container and Layout Styling */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+h2, h3, h4 {
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-check-label img {
+  margin-right: 8px;
+}
+
+/* Order Summary Box Styling */
+.bg-light {
+  background-color: #f8f9fa !important;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+small {
+  font-size: 0.875rem;
+}
+
+/* Button Styling */
+.btn-block {
+  width: 100%;
+}
+
+.btn-primary {
+  background-color: #6868f0;
+  border-color: #6868f0;
+}
+
+.btn-primary:hover {
+  background-color: #5050d4;
+  border-color: #5050d4;
+}
+
+.btn-success {
+  background-color: #4caf50;
+  border-color: #4caf50;
+}
+
+.btn-success:hover {
+  background-color: #45a047;
+  border-color: #45a047;
+}
+
+/* Input and Select Styling */
+input.form-control, select.form-control {
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+input.form-control::placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+
+select.form-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select.form-control:focus {
+  box-shadow: none;
+}
+
+/* Radio Button Styling */
+.form-check-input {
+  margin-top: 5px;
+}
+
+.form-check-label {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.me-4 {
+  margin-right: 1.5rem;
+}
+
+/* Row and Column Layout */
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.col-md-8 {
+  flex: 0 0 auto;
+  width: 65%;
+}
+
+.col-md-4 {
+  flex: 0 0 auto;
+  width: 30%;
+}
+
+/* Additional Styling */
+.mt-5 {
+  margin-top: 3rem !important;
+}
+
+.mt-4 {
+  margin-top: 2rem !important;
+}
+
+.mt-3 {
+  margin-top: 1rem !important;
+}
+
+.mt-2 {
+  margin-top: 0.5rem !important;
+}
+
+.font-weight-bold {
+  font-weight: 700;
+}
+
+.d-flex.justify-content-between {
+  display: flex;
+  justify-content: space-between;
+}
+/* Align items center to ensure radio buttons and images are aligned */
+.d-flex.align-items-center {
+  display: flex;
+  align-items: center;
+}
+
+/* Add spacing between the radio button and images */
+.form-check-input.me-2 {
+  margin-right: 0.5rem;
+}
+
+/* Add spacing between images within the same label */
+label img.me-2 {
+  margin-right: 0.5rem;
+}
+
+/* Ensure the label itself aligns its contents (radio button and images) */
+.form-check-label.d-flex.align-items-center {
+  display: flex;
+  align-items: center;
+}
+/* Custom card styling */
+.custom-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* Ensures the border-radius is applied */
+  background-color: #ffffff; /* White background */
+  border: none; /* Remove default border */
+}
+
+/* Custom card header */
+.custom-card-header {
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white; /* White text */
+  padding: 15px; /* Padding inside header */
+  font-weight: bold; /* Bold text */
+  border-bottom: none; /* Remove default border */
+}
+
+/* Custom card body */
+.custom-card-body {
+  padding: 25px; /* Add padding inside the card body */
+  background-color: #f8f9fa; /* Light gray background */
+}
+
+/* Form labels styling */
+.custom-card-body label {
+  font-weight: bold; /* Make labels bold */
+  margin-bottom: 5px;
+}
+
+/* Input field styling */
+.custom-card-body .form-control {
+  border-radius: 5px; /* Slightly rounded input fields */
+  border: 1px solid #ced4da; /* Light gray border */
+}
+
+/* Styling for the radio buttons and images */
+.form-check-input {
+  accent-color: #007bff; /* Change radio button color to primary */
+}
+
+.form-check-label img {
+  margin-right: 10px; /* Add spacing between radio and image */
+}
+
+/* Add spacing between form sections */
+.custom-card-body .form-group {
+  margin-bottom: 20px;
+}
+/* Custom summary card styling */
+.custom-summary-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-radius: 10px; /* Rounded corners */
+  background-color: #ffffff; /* White background */
+  border: none; /* Remove default border */
+  align-items: right;
+}
+
+/* Card title and text */
+.custom-summary-card .card-title {
+  font-weight: bold; /* Bold title */
+  margin-bottom: 15px; /* Spacing below title */
+}
+
+.custom-summary-card .card-text {
+  color: #6c757d; /* Bootstrap's muted text color */
+  margin-bottom: 20px; /* Spacing below text */
+}
+
+/* Plan and total details */
+.custom-summary-card .bg-light {
+  background-color: #f8f9fa !important; /* Light gray background */
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.custom-summary-card .bg-light h2 {
+  color: #007bff; /* Primary color for the price */
+  font-weight: bold; /* Bold text */
+}
+
+/* Buttons */
+.custom-summary-card .btn-primary {
+  width: 100%; /* Full width button */
+  background-color: #007bff; /* Bootstrap's primary color */
+  border-color: #007bff;
+}
+
+.custom-summary-card .btn-success {
+  width: 100%; /* Full width button */
+  background-color: #28a745; /* Bootstrap's success color */
+  border-color: #28a745;
+}
+
+/* Spacing adjustments */
+.custom-summary-card .d-flex {
+  margin-bottom: 10px; /* Space between rows */
+}
+
+/* Custom card styling */
+.session-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: none;
+  background-color: #ffffff;
+}
+
+/* Profile image styling */
+.session-card img {
+  border: 2px solid #dddddd;
+  padding: 2px;
+}
+
+/* Text styling */
+.session-card p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #333333;
+}
+
+/* Icons */
+.session-card i {
+  color: #007bff; /* Bootstrap's primary color */
+  margin-right: 8px;
+}
+/* Add space between PayPal and Credit Card forms */
+.custom-card-body .form-group.payment-method-space {
+  margin-bottom: 2rem; /* Adjust the space between forms as needed */
+}
+
+/* Ensure that other form sections are consistent */
+.custom-card-body .form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* If you want to further adjust spacing specifically for the PayPal and Credit Card forms */
+.custom-card-body .paypal-form {
+  margin-bottom: 2rem; /* Space below the PayPal form */
+}
+
+.custom-card-body .credit-card-form {
+  margin-top: 2rem; /* Space above the Credit Card form */
+}
+
+.card-container {
+  margin-right: 2rem; /* Adjust the margin as needed */
+}

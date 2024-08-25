@@ -1,33 +1,41 @@
+/* General Styles */
 .profile-img {
   width: 150px;
   height: 150px;
   object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .card {
-  border-radius: 5px;
-  background-color:#ffffff;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .card-header {
-  border-bottom: 1px solid #0a2187;
-  background-color: #31288d;
+  border-bottom: 1px solid #415bcf;
+  background-color: #415bcf;
   color: #ffffff;
+  border-radius: 10px 10px 0 0;
 }
+
 .card-body {
   padding: 20px;
 }
-.form-control {
 
-  border-color: #31288d;
-  border: 30px;
+.form-control {
+  border-color: #415bcf;
   font-size: larger;
   font-weight: bolder;
+}
 
+.session-price {
+  color: #333;
+  font-size: 1.5rem;
 }
-.bg-light {
-  background-color: #074c91 !important;
-}
+
 .btn-custom {
-  background-color: #000; /* Black background */
+  background-color: #415bcf; /* Black background */
   color: #fff; /* White text color */
   font-size: 1.25rem; /* Increase font size */
   padding: 0.75rem 1.5rem; /* Increase width and height */
@@ -35,6 +43,7 @@
   border: none; /* Remove border if desired */
   text-decoration: none; /* Remove underline */
   display: inline-block; /* Ensure the button respects padding */
+  width: 100%;
 }
 
 .btn-custom:hover {
@@ -43,7 +52,7 @@
 }
 
 .btn-success {
-  background-color: #f53607; /* Black background */
+  background-color: #415bcf; /* Red background */
   color: #fff; /* White text color */
   font-size: 1.25rem; /* Increase font size */
   padding: 0.75rem 1.5rem; /* Increase width and height */
@@ -51,9 +60,46 @@
   border: none; /* Remove border if desired */
   text-decoration: none; /* Remove underline */
   display: inline-block; /* Ensure the button respects padding */
+  width: 100%;
 }
 
 .btn-success:hover {
-  background-color: #574f4f; /* Darker shade of black on hover */
+  background-color:#333; /* Darker red on hover */
   color: #fff; /* Maintain white text color on hover */
 }
+
+.btn-primary {
+  background-color: #415bcf; /* Green background */
+  color: #fff; /* White text color */
+  font-size: 1.25rem; /* Increase font size */
+  padding: 0.75rem 1.5rem; /* Increase width and height */
+  border-radius: 0.25rem; /* Optional: rounded corners */
+  border: none; /* Remove border if desired */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Ensure the button respects padding */
+  width: 100%;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  background-color: #333; /* Darker green on hover */
+  color: #fff; /* Maintain white text color on hover */
+}
+
+/* Layout Adjustments */
+.d-grid.gap-3 {
+  gap: 1rem;
+}
+
+.mt-4 {
+  margin-top: 2rem;
+}
+
+.mb-4 {
+  margin-bottom: 2rem;
+}
+
+.mb-2 {
+  margin-bottom: 1rem;
+}
+

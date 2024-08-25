@@ -85,17 +85,47 @@
 
         <!-- Price Range -->
         <h4 class="mb-3">Price</h4>
-        <div class="slider-container mb-3" style="margin-right: 300px;">
-          <input id="priceMin" type="range" min="100" max="1000" [(ngModel)]="priceMin" (input)="updateRange()"
-            step="10">
-          <input id="priceMax" type="range" min="100" max="1000" [(ngModel)]="priceMax" (input)="updateRange()"
-            step="10">
+        <div class="slider-container mb-3" style="position: relative; margin-right: 300px;">
+          <input
+            id="priceMin"
+            type="range"
+            min="100"
+            max="10000"
+            [(ngModel)]="priceMin"
+            (input)="updateRange()"
+            step="10"
+          >
+          <input
+            id="priceMax"
+            type="range"
+            min="100"
+            max="10000"
+            [(ngModel)]="priceMax"
+            (input)="updateRange()"
+            step="10"
+          >
           <div class="track">
-            <div class="range-fill"></div>
+            <div
+              class="range-fill"
+              [ngStyle]="{ 'left.%': getRangeMinPercent(), 'width.%': getRangeWidthPercent() }"
+            ></div>
           </div>
-          <div class="tooltip" id="priceMinTooltip">{{ priceMin }}</div>
-          <div class="tooltip" id="priceMaxTooltip">{{ priceMax }}</div>
+          <div
+            class="tooltip"
+            id="priceMinTooltip"
+            [ngStyle]="{ 'left.%': getRangeMinPercent() }"
+          >
+            {{ priceMin }}
+          </div>
+          <div
+            class="tooltip"
+            id="priceMaxTooltip"
+            [ngStyle]="{ 'left.%': getRangeMaxPercent() }"
+          >
+            {{ priceMax }}
+          </div>
         </div>
+
 
         <br>
 

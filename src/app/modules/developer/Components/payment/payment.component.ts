@@ -10,31 +10,38 @@ import { Observable } from 'rxjs'
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent  {
+  paymentMethod: string = 'creditCard';
+  // constructor(private paymentService: Payment1Service) {}
 
-  constructor(private paymentService: Payment1Service) {}
+  change(paymant:string){
 
-  onSubmit(paymentForm: NgForm) {
-    if (paymentForm.valid) {
-      const paymentDetails = {
-        cardName: paymentForm.value.cardName,
-        cardNumber: paymentForm.value.cardNumber,
-        expiryDate: paymentForm.value.expiryDate,
-        cvv: paymentForm.value.cvv,
-        billingAddress: paymentForm.value.billingAddress
-      };
-  
-      this.paymentService.processPayment(paymentDetails).subscribe(
-        response => {
-          console.log('Payment successful:', response);
-          paymentForm.reset();  // Reset form after successful payment
-        },
-        error => {
-          console.error('Payment failed:', error);
-        }
-      );
-    } else {
-      console.error('Form is invalid')
-    }
+     this.paymentMethod = paymant;
+
+  }
+  // onSubmit(paymentForm: NgForm) {
+  //   if (paymentForm.valid) {
+  //     const paymentDetails = {
+  //       cardName: paymentForm.value.cardName,
+  //       cardNumber: paymentForm.value.cardNumber,
+  //       expiryDate: paymentForm.value.expiryDate,
+  //       cvv: paymentForm.value.cvv,
+  //       billingAddress: paymentForm.value.billingAddress
+  //     };
+
+  //     this.paymentService.processPayment(paymentDetails).subscribe(
+  //       response => {
+  //         console.log('Payment successful:', response);
+  //         paymentForm.reset();  // Reset form after successful payment
+  //       },
+  //       error => {
+  //         console.error('Payment failed:', error);
+  //       }
+  //     );
+  //   } else {
+  //     console.error('Form is invalid')
+  //   }
+  // }
 
 }
-}
+
+
