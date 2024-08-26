@@ -27,6 +27,9 @@ import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.compon
 import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
 import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
 import { UserlayoutComponent } from './Components/userlayout/userlayout.component';
+import { ProfileSideBarComponent } from './Components/profile-side-bar/profile-side-bar.component';
+import path from 'path';
+import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
 const routes: Routes = [
   { path: 'step-one', component: StepOneComponent },
   { path: 'payment', component: PaymentComponent },
@@ -50,6 +53,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'forgetpassword', component: Forget_passwordComponent },
   { path: 'faq-and-licence', component: FaqComponent },
+  {path:'updateprofile',component:Update_profileComponent},
+  {path:'sidebar',component:ProfileSideBarComponent},
+  {path:'reviews',component:ReviewsListComponent},
   // { path: '', redirectTo: 'userlayout', pathMatch: 'full' },
   // { path: '**', redirectTo: 'userlayout' },
   // { path: 'profile', component: layout,children:

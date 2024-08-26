@@ -1,0 +1,27 @@
+<nav class="sidebar">
+  <div class="profile-section">
+    <img [src]="profile.imageUrl" alt="Profile Image" class="profile-image" />
+    <h3>{{ profile.name }}</h3>
+    <p>{{ profile.email }}</p>
+    <div class="progress-bar-wrapper">
+      <div class="progress-bar">
+        <div class="progress" [style.width.%]="profile.profileCompletion"></div>
+      </div>
+      <span class="progress-percentage">{{ profile.profileCompletion }}%</span>
+    </div>
+  </div>
+
+  <ul>
+    <li *ngFor="let item of menuItems">
+      <a [routerLink]="item.path" routerLinkActive="active">
+        <i [class]="item.icon"></i> {{ item.label }}
+      </a>
+    </li>
+    <div class="logout-section">
+      <button class="logout-button" (click)="logout()">
+        <i [class]="logoutItem.icon"></i> {{ logoutItem.label }}
+      </button>
+    </div>
+  </ul>
+</nav>
+
