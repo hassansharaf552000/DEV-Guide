@@ -7,6 +7,7 @@ import { IMentor } from '../../../../core/enums/Mentor';
   styleUrl: './mentor-list.component.css'
 })
 export class MentorListComponent {
+  price: number = 10;
   mentors: IMentor[] = []; // Initialize with an empty array4
   ngOnInit(): void {
     // Example data; replace with actual data retrieval logic
@@ -69,57 +70,31 @@ export class MentorListComponent {
     this.updateRange();
     this.loadMentors();
   }
-  priceMin: number = 100;
-  priceMax: number = 1000;
+
   currentPage = 1;
   totalPages = 1;
 
-  get minPercent(): number {
-    return ((this.priceMin - 100) / (1000 - 100)) * 100;
-  }
-
-  get maxPercent(): number {
-    return ((this.priceMax - 100) / (1000 - 100)) * 100;
-  }
+  priceMin: number = 100;
+  priceMax: number = 10000;
 
   updateRange(): void {
-    const rangeFill = document.querySelector('.range-fill') as HTMLElement | null;
-    const priceMinTooltip = document.getElementById('priceMinTooltip') as HTMLElement | null;
-    const priceMaxTooltip = document.getElementById('priceMaxTooltip') as HTMLElement | null;
-
-    const minPercent = this.minPercent;
-    const maxPercent = this.maxPercent;
-
-    if (rangeFill) {
-      rangeFill.style.left = `${minPercent}%`;
-      rangeFill.style.width = `${maxPercent - minPercent}%`;
-    }
-    if (priceMinTooltip) {
-      priceMinTooltip.style.left = `calc(${minPercent}% + 2px)`;
-      priceMinTooltip.textContent = `${this.priceMin}`;
-    }
-    if (priceMaxTooltip) {
-      priceMaxTooltip.style.left = `calc(${maxPercent}% - 2px)`;
-      priceMaxTooltip.textContent = `${this.priceMax}`;
-    }
-  }
-
-  onMinValueChange(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    this.priceMin = Number(inputElement.value);
     if (this.priceMin > this.priceMax) {
+      const temp = this.priceMin;
       this.priceMin = this.priceMax;
+      this.priceMax = temp;
     }
-    this.updateRange();
   }
 
-  onMaxValueChange(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    this.priceMax = Number(inputElement.value);
-    if (this.priceMax < this.priceMin) {
-      this.priceMax = this.priceMin;
-    }
-    this.updateRange();
+  getRangeMinPercent(): number {
+    return ((this.priceMin - 100) / (10000 - 100)) * 100;
+  }
+
+  getRangeMaxPercent(): number {
+    return ((this.priceMax - 100) / (10000 - 100)) * 100;
+  }
+
+  getRangeWidthPercent(): number {
+    return this.getRangeMaxPercent() - this.getRangeMinPercent();
   }
   loadMentors(): void {
     // Load your mentors here and calculate totalPages

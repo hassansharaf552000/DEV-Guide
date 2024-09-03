@@ -1,0 +1,76 @@
+<div class="container mt-5">
+  <!-- Summary Section -->
+  <div class="row mb-2 fade-in">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Computer Fundamentals</h5>
+          <h6 class="card-subtitle mb-2 text-muted">EASY LEVEL</h6>
+          <p class="card-text">Total Score: {{ correctAnswers }}/{{ totalQuestions }} Marks Scored</p>
+          <p class="card-text">Finish time: 09:11 on 12 Aug 2024</p>
+          <p class="card-text">Time taken: 45m 0s</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Question Overview -->
+  <div class="row mb-2 fade-in">
+    <div class="col-lg-3 col-md-6 mb-3 slide-in-top">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5>Total Questions</h5>
+          <p class="display-4">{{ totalQuestions }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 mb-3 slide-in-top">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5>Attempted</h5>
+          <p class="display-4">{{ attemptedQuestions }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 mb-3 slide-in-top">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5>Not Attempted</h5>
+          <p class="display-4">{{ totalQuestions - attemptedQuestions }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 mb-3 slide-in-top">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5>Correct</h5>
+          <p class="display-4">{{ correctAnswers }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Solutions Section -->
+  <div class="card mb-4 fade-in">
+    <div class="card-body">
+      <h4 class="card-title">Solutions</h4>
+      <hr />
+      <div *ngFor="let question of questions; let i = index" class="fade-in">
+        <h5>Question {{ i + 1 }}</h5>
+        <p>{{ question.text }}</p>
+        <ul class="list-group">
+          <li *ngFor="let option of question.options; let j = index" class="list-group-item slide-in-left" [ngClass]="{
+              'list-group-item-success': j === question.correctOptionIndex,
+              'list-group-item-danger': j === question.selectedOptionIndex && j !== question.correctOptionIndex
+            }">
+            {{ j + 1 }}) {{ option }}
+            <span *ngIf="j === question.correctOptionIndex" class="badge bg-success float-end">Correct</span>
+            <span *ngIf="j === question.selectedOptionIndex && j !== question.correctOptionIndex"
+              class="badge bg-danger float-end">Incorrect</span>
+          </li>
+        </ul>
+        <hr />
+      </div>
+    </div>
+  </div>
+</div>
