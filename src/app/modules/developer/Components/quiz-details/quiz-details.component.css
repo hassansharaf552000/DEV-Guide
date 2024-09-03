@@ -1,0 +1,63 @@
+.card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item-success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.list-group-item-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+/* Fade-in animation */
+.fade-in {
+  animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Slide-in from top */
+.slide-in-top {
+  animation: slideInTop ease 0.5s;
+}
+
+@keyframes slideInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide-in from left with staggered effect */
+.slide-in-left {
+  animation: slideInLeft ease 0.5s;
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

@@ -27,6 +27,8 @@ import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.compon
 import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
 import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
 import { UserlayoutComponent } from './Components/userlayout/userlayout.component';
+import { QuizListComponent } from './Components/quiz-list/quiz-list.component';
+import { QuizDetailsComponent } from './Components/quiz-details/quiz-details.component';
 import { ProfileSideBarComponent } from './Components/profile-side-bar/profile-side-bar.component';
 import path from 'path';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
@@ -46,6 +48,8 @@ const routes: Routes = [
   { path: 'skill-instructions', component: SkillInstructionsComponent },
   { path: 'quiz', component: QuizComponent },
   { path: 'finish-quiz', component: FinishQuizComponent },
+  { path: 'quiz-list', component: QuizListComponent },
+  { path: 'quiz-details', component: QuizDetailsComponent },
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
