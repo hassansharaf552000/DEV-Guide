@@ -32,6 +32,9 @@ import { HrProfileComponent } from './Components/hr-profile/hr-profile.component
 import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
 import { QuizListComponent } from './Components/quiz-list/quiz-list.component';
 import { QuizDetailsComponent } from './Components/quiz-details/quiz-details.component';
+import { ProfileSideBarComponent } from './Components/profile-side-bar/profile-side-bar.component';
+import { ReviewsCardComponent } from './Components/reviews-card/reviews-card.component';
+import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +65,9 @@ import { QuizDetailsComponent } from './Components/quiz-details/quiz-details.com
     MentorProfileComponent,
     QuizListComponent,
     QuizDetailsComponent,
+    ProfileSideBarComponent,
+    ReviewsCardComponent,
+    ReviewsListComponent,
   ],
   imports: [
     CommonModule,

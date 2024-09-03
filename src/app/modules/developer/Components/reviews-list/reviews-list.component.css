@@ -1,0 +1,107 @@
+.left-card {
+  border: 2px solid #415bcf; /* Border color */
+  background-color: #ffffff; /* White background */
+  color: #000000; /* Black text */
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-right: 20px; /* Optional: adds a subtle shadow */
+}
+
+.left-card .rating h2 {
+  font-size: 2.5rem;
+  margin: 0;
+  color: #000000; /* Ensure the text color is black */
+}
+
+.left-card .stars span {
+  font-size: 1.5rem;
+  color: gold; /* Star color */
+}
+
+.left-card p {
+  margin: 5px 0;
+  color: #000000; /* Ensure the text color is black */
+}
+
+
+.container {
+  margin-top: 20px; /* Adds some space at the top of the container */
+}
+
+/* Container for all reviews */
+
+/* Individual review card */
+
+
+/* Add hover effect for better interaction */
+.review-card:hover {
+  transform: translateY(-5px); /* Slight lift effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* User info within the review card */
+.review-card .user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* User's profile picture */
+.review-card .user-info .user-image {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border: 2px solid #415bcf; /* Border around the profile image */
+}
+
+/* User name and date */
+.review-card .user-info h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #415bcf; /* User name color */
+}
+
+.review-card .user-info p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #6c757d; /* Date color */
+}
+
+/* The actual review text */
+.review-card p.review-text {
+  margin-top: 10px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #000000; /* Black text */
+}
+
+/* Rating displayed within the review card */
+.review-card .rating span {
+  font-size: 1.25rem;
+  color: #ffcc00; /* Gold color for stars */
+  display: inline-block;
+  margin-left: auto; /* Align stars to the right */
+}
+.reviews {
+  max-height: 400px; /* Adjust this height as needed */
+  overflow-y: auto; /* Enables vertical scrolling */
+  padding-right: 15px; /* Optional: adds padding to the right */
+  margin-right: -15px; /* Optional: prevents padding from causing horizontal overflow */
+}
+
+/* Optional: Style for scrollbar */
+.reviews::-webkit-scrollbar {
+  width: 8px;
+}
+
+.reviews::-webkit-scrollbar-thumb {
+  background-color: #415bcf; /* Color for scrollbar thumb */
+  border-radius: 4px;
+}
+
+.reviews::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color for scrollbar track */
+}

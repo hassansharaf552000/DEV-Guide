@@ -22,11 +22,11 @@
   padding-left: 20px;
   padding-right: 20px;
   /* margin-left: 30px; */
-  border: 4px solid #1c4980;
+  border: 4px solid #415bcf;
   box-shadow: 0 6px 10px rgba(207, 212, 222, 1);
   border-radius: 10px;
   text-align: center;
-  color: #1c4980;
+  color: #415bcf;
   transition: all 0.3s ease;
 }
 
@@ -70,7 +70,7 @@
   width: 100%;
   height: 2px;
   margin: 20px 0;
-  background:#1c4980;
+  background:#415bcf;
 }
 
 .social-media a {
