@@ -3,13 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { LoginComponent } from './shared/components/login/login.component';
 import { RegisterComponent } from './shared/components/register/register.component';
-import { UserlayoutComponent } from './modules/developer/Components/userlayout/userlayout.component';
+// import { UserlayoutComponent } from './modules/developer/Components/userlayout/userlayout.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {
     path: 'developer',
-    component: UserlayoutComponent,
+    // component: UserlayoutComponent,
     loadChildren: () =>
       import('./modules/developer/developer.module').then(
         (m) => m.DeveloperModule

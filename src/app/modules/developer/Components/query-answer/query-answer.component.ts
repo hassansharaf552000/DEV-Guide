@@ -2,16 +2,29 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-query',
-  templateUrl: './query.component.html',
-  styleUrl: './query.component.css'
+  selector: 'app-query-answer',
+  templateUrl: './query-answer.component.html',
+  styleUrl: './query-answer.component.css'
 })
-export class QueryComponent {
+export class QueryAnswerComponent {
   querymessage:any;
   QueryArray:Array<any>=[];
   
   selectedFile: File | null = null;
   constructor(private http: HttpClient) {}
+
+  downloadFile() {
+    this.http.get('path/to/your/file.pdf', { responseType: 'blob' }).subscribe((blob) => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'my-file.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    });
+  }
 
   onFileSelected(event: any): void {
     const file = event.target.files[0];
@@ -39,4 +52,4 @@ export class QueryComponent {
      this.QueryArray.push(obj)
     }
 
-}
+  }
