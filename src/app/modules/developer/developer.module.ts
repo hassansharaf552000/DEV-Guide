@@ -30,6 +30,8 @@ import { QuizComponent } from './Components/quiz/quiz.component';
 import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.component';
 import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
 import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
+import { QuizListComponent } from './Components/quiz-list/quiz-list.component';
+import { QuizDetailsComponent } from './Components/quiz-details/quiz-details.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { MentorProfileComponent } from './Components/mentor-profile/mentor-profi
     FinishQuizComponent,
     HrProfileComponent,
     MentorProfileComponent,
+    QuizListComponent,
+    QuizDetailsComponent,
   ],
   imports: [
     CommonModule,
