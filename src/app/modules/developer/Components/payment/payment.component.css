@@ -1,10 +1,11 @@
 /* Basic Container and Layout Styling */
 .container {
-  max-width: 1000px;
-  margin: auto;
+  max-width: 90%;
+  border: 20px;
   padding: 20px;
 }
 
+/* Typography */
 h2, h3, h4 {
   margin-bottom: 20px;
 }
@@ -157,6 +158,7 @@ select.form-control:focus {
   display: flex;
   justify-content: space-between;
 }
+
 /* Align items center to ensure radio buttons and images are aligned */
 .d-flex.align-items-center {
   display: flex;
@@ -178,6 +180,7 @@ label img.me-2 {
   display: flex;
   align-items: center;
 }
+
 /* Custom card styling */
 .custom-card {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
@@ -185,6 +188,7 @@ label img.me-2 {
   overflow: hidden; /* Ensures the border-radius is applied */
   background-color: #ffffff; /* White background */
   border: none; /* Remove default border */
+  justify-content: space-around;
 }
 
 /* Custom card header */
@@ -227,6 +231,7 @@ label img.me-2 {
 .custom-card-body .form-group {
   margin-bottom: 20px;
 }
+
 /* Custom summary card styling */
 .custom-summary-card {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
@@ -303,25 +308,33 @@ label img.me-2 {
   color: #007bff; /* Bootstrap's primary color */
   margin-right: 8px;
 }
-/* Add space between PayPal and Credit Card forms */
-.custom-card-body .form-group.payment-method-space {
-  margin-bottom: 2rem; /* Adjust the space between forms as needed */
+
+/* Additional adjustments for responsive designs */
+@media (max-width: 768px) {
+  .custom-card-body .payment-form {
+    width: 100%;
+  }
+
+  .custom-summary-card, .custom-card {
+    margin: 0;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .col-md-6 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .card-container {
+    margin-right: 0;
+  }
 }
 
-/* Ensure that other form sections are consistent */
-.custom-card-body .form-group {
-  margin-bottom: 1.5rem;
-}
-
-/* If you want to further adjust spacing specifically for the PayPal and Credit Card forms */
-.custom-card-body .paypal-form {
-  margin-bottom: 2rem; /* Space below the PayPal form */
-}
-
-.custom-card-body .credit-card-form {
-  margin-top: 2rem; /* Space above the Credit Card form */
-}
-
-.card-container {
-  margin-right: 2rem; /* Adjust the margin as needed */
+@media (min-width: 768px) and (max-width: 992px) {
+  .custom-card-body .payment-form {
+    width: 90%;
+  }
 }
