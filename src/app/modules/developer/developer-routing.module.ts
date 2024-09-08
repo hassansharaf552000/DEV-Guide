@@ -32,6 +32,8 @@ import { QuizDetailsComponent } from './Components/quiz-details/quiz-details.com
 import { ProfileSideBarComponent } from './Components/profile-side-bar/profile-side-bar.component';
 import path from 'path';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
+import { scheduled } from 'rxjs';
+
 import { ContactAdminComponent } from '../mentor/contact-admin/contact-admin.component';
 import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.component';
 import { QueryAnswerComponent } from './Components/query-answer/query-answer.component';

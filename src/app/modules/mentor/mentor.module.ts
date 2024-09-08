@@ -1,21 +1,40 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { MentorRoutingModule } from './mentor-routing.module';
+import { SessionDetailsComponent } from './session-details/session-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MentorRoutingModule } from '../developer/Components/mentor/mentor-routing.module';
-
-
-
-
-
-
 import { MentorRoutingModule } from './mentor-routing.module';
 import { ReviewsCardComponent } from './Components/reviews-card/reviews-card.component';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
 
 
 
+ 
+ 
+
+
 @NgModule({
   declarations: [
+    ScheduleComponent,
+    SessionDetailsComponent,
+  ],
+  imports: [
+    CommonModule,
+    MentorRoutingModule,
+    ReactiveFormsModule,
+    NgSelectModule,
+    FormsModule,
+      
+  ]
+
+})
+export class MentorModule { }
+
+
     
 
     ReviewsCardComponent,

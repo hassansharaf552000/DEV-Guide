@@ -1,25 +1,21 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import jsPDF from 'jspdf';  // Correct import for jsPDF
 import html2canvas from 'html2canvas';
-
+import jsPDF from 'jspdf'
 @Component({
-  selector: 'app-booking-confirmation',
-  templateUrl: './booking-confirmation.component.html',
-  styleUrls: ['./booking-confirmation.component.css']
+  selector: 'app-session-details',
+  templateUrl: './session-details.component.html',
+  styleUrl: './session-details.component.css'
 })
-export class BookingConfirmationComponent {
+export class SessionDetailsComponent {
+  
   @ViewChild('contentToConvert') contentToConvert!: ElementRef;
-
-  constructor() {}
-
-  downloadAsPDF() {
+  constructor(){}
+  downloadPDF() {
     const content = this.contentToConvert.nativeElement;
-
-    // Use html2canvas to capture the content
     html2canvas(content, {
       backgroundColor: null, 
-      scale: 2, 
-      logging: true,
+      scale: 2,
+      logging: true, 
       useCORS: true 
     }).then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
@@ -31,12 +27,8 @@ export class BookingConfirmationComponent {
       let heightLeft = imgHeight;
 
       let position = 0;
-
-      
       pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
       heightLeft -= pageHeight;
-
-      
       while (heightLeft > 0) {
         position = heightLeft - imgHeight;
         pdf.addPage();
@@ -44,8 +36,7 @@ export class BookingConfirmationComponent {
         heightLeft -= pageHeight;
       }
 
-      // Save the PDF
-      pdf.save('booking-confirmation.pdf');
+      pdf.save('Session-Details.pdf');
     });
   }
 }

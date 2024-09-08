@@ -5,6 +5,8 @@ import { ContactAdminComponent } from './contact-admin/contact-admin.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
 
+
+const routes: Routes = [];
 const routes: Routes = [
   {path:"reviews",component:ReviewsListComponent}
 import { MentorlayoutComponent } from './components/mentorlayout/mentorlayout.component';
