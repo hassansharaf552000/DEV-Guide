@@ -8,25 +8,25 @@ import { BehaviorSubject } from 'rxjs';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-    isuserExist:boolean = false
+    isuserExist:boolean = true
   // isloggedUserSubject: BehaviorSubject<boolean>
   constructor(private router: Router) {
     console.log('Hello From hassan again');
-    
+
       // this.isloggedUserSubject = new BehaviorSubject<boolean>(this.isloggedUser())
       // this.isloggedUserSubject.subscribe(value=>{
       // this.isuserExist = value
-        
+
       // })
     }
-  
+
     // isloggedUser(): boolean {
     //   return (localStorage.getItem('bxmnczxhcv') == null) ? false : true
     // }
     // getToken():string{
     //   return localStorage.getItem('bxmnczxhcv') ?? ""
     // }
-  
+
     // userlogin(token: string) {
     //   localStorage.setItem('bxmnczxhcv', token)
     //   this.isloggedUserSubject.next(true)
@@ -35,15 +35,15 @@ export class NavbarComponent {
     //   localStorage.removeItem('bxmnczxhcv')
     //   this.isloggedUserSubject.next(false)
     // }
-  
+
   onclick() {
     this.router.navigate(['/aboutus']);
   }
   // logout(){
   //   this.userlogout()
   // }
-  
 
-  
+
+
 
 }
