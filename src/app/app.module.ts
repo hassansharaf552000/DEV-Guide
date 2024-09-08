@@ -4,10 +4,10 @@ import {
   provideClientHydration,
 } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
+
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -18,6 +18,21 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [AppComponent,],
   imports: [BrowserModule, AppRoutingModule, SharedModule, HttpClientModule,RouterModule,ReactiveFormsModule],
   providers: [provideClientHydration(), provideHttpClient(withFetch())],
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+  ],
+  providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
