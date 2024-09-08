@@ -30,6 +30,8 @@ import { UserlayoutComponent } from './Components/userlayout/userlayout.componen
 import { ProfileSideBarComponent } from './Components/profile-side-bar/profile-side-bar.component';
 import path from 'path';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
+import { scheduled } from 'rxjs';
+
 const routes: Routes = [
   { path: 'step-one', component: StepOneComponent },
   { path: 'payment', component: PaymentComponent },

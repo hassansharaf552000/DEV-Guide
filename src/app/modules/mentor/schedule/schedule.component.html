@@ -1,0 +1,90 @@
+<form  >
+  <div class="master">
+    <div class="card p-5">
+      <!-- Header with Background -->
+      <div
+        style="background-color: #e7f1ff; border-radius: 15px 15px 15px 15px; box-shadow: 0 0 10px gray; padding: 20px;">
+        <div class="d-flex align-items-center">
+          <h5>Set Schedule</h5>
+        </div>
+        <h3 class="mb-1"></h3>
+        <div class="p-3">
+
+          <div class="row mb-3">
+            <div class="col-6">
+              Day
+            </div>
+            @if(isOpen==true){
+            <div class="col-3">
+              Start
+            </div>
+            <div class="col-3">
+              End
+            </div>}
+          </div>
+
+          @for(day of Working_Hours; track day; let i = $index){
+          <div class="row justify-content-between mb-2  tp-day-cont ">
+            <div class="col-3">
+              <span class="day-txt">{{day['Day']}} </span>
+            </div>
+            <div class="col-9 row">
+              @if(day["Available"] == false){
+              <div class="col-4">
+                <!-- <div class="d-flex"> -->
+                <button type="button" class="btn btn-outline-primary" (click)="available(i)">Available</button>
+              </div>
+              } @else if(day["Available"] == true){
+              <div class="col-4">
+                <button type="button" class="btn btn-outline-primary " (click)="notavailable(i)"> Cancel</button>
+              </div>
+              <div class="col-4 text-center">
+
+                <input class="form-control  text-center" (change)="setTime(i,true,$event)" id="start-{{i}}" type="time"
+                  name="appt-time" value="12:00" required />
+              </div>
+              <div class="col-4 text-center">
+                <input  class="form-control  text-center" (change)="setTime(i,false,$event)" id="end-{{i}}" type="time"
+                  name="appt-time" value="12:00" required />
+
+              </div>
+
+              }
+
+
+            </div>
+
+          </div>
+          }
+          @for (item of Errors; track $index) {
+            <p class="text-danger">{{item}}</p>
+          }
+        </div>
+      </div>
+
+      <!-- Header with Background -->
+      <div class="row m-1 mt-4"
+        style="background-color: #e7f1ff; border-radius: 15px 15px 15px 15px; box-shadow: 0 0 10px gray; padding: 20px; ">
+        <div class="col-5">
+          <h5>Price per hour</h5>
+        </div>
+        <div class="col-5">
+          <input class="form-control" #price (change)="checkPrice(price.value)" [value]="SessionPrice" type="number" required />
+          <span class="text-danger">{{priceError}}</span>
+        </div>
+
+        <div class="col-2">
+          <label>EGP</label>
+        </div>
+      </div>
+
+
+      <div class="text-right mt-3">
+        <button type="button" [disabled]="AllDone" class="btn btn-outline-primary px-4">Submit</button>
+     
+
+      
+      </div>
+    </div>
+  </div>
+</form>

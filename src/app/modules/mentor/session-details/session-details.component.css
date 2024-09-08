@@ -1,0 +1,12 @@
+.bg-light-warning{
+    background-color: rgb(253, 237, 185);
+    color: rgb(146, 92, 26);
+}
+.btn-click:hover{
+background-color: white;
+color: rgb(70, 70, 250);
+}
+.font-head h6{
+    font-size: 16px;
+    font-weight: 600;
+}
