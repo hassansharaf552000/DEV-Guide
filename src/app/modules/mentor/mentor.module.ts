@@ -34,6 +34,7 @@ import { SidebarlayoutComponent } from './Components/sidebarlayout/sidebarlayout
     FormsModule,
     ReactiveFormsModule,
     MentorRoutingModule,
+    SharedModule,
   ],
 })
 export class MentorModule {}

@@ -1,18 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import emailjs from 'emailjs-com';
-
-
-
-
-
-
 @Component({
   selector: 'app-contact-admin',
   templateUrl: './contact-admin.component.html',
-  styleUrl: './contact-admin.component.css'
+  styleUrl: './contact-admin.component.css',
 })
-export class ContactAdminComponent   {
+export class ContactAdminComponent {
   contactForm: FormGroup;
   subjects = [
     { value: 'subject1', label: 'Subject 1' },
@@ -29,7 +23,7 @@ export class ContactAdminComponent   {
       email: ['', [Validators.required, Validators.email]],
       subject: ['', Validators.required],
       details: ['', [Validators.required, Validators.minLength(10)]],
-      file: [null] // Handling file input, no required validation here
+      file: [null], // Handling file input, no required validation here
     });
   }
 
@@ -38,7 +32,7 @@ export class ContactAdminComponent   {
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
       this.contactForm.patchValue({
-        file: file
+        file: file,
       });
     }
   }
@@ -52,19 +46,22 @@ export class ContactAdminComponent   {
     const formElement = document.querySelector('form') as HTMLFormElement;
 
     if (formElement) {
-      emailjs.sendForm(this.EMAILJS_SERVICE_ID, this.EMAILJS_TEMPLATE_ID, formElement, this.EMAILJS_USER_ID)
-        .then(response => {
+      emailjs
+        .sendForm(
+          this.EMAILJS_SERVICE_ID,
+          this.EMAILJS_TEMPLATE_ID,
+          formElement,
+          this.EMAILJS_USER_ID
+        )
+        .then((response) => {
           console.log('Message sent successfully!', response);
           this.contactForm.reset();
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('Error sending message', error);
         });
     } else {
       console.error('Form element not found');
     }
   }
-
- 
-
 }

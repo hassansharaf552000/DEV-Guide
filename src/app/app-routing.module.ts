@@ -29,7 +29,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/mentor/mentor.module').then((m) => m.MentorModule),
   },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./modules/developer/developer.module').then(
+        (m) => m.DeveloperModule
+      ),
+  },
   { path: '**', component: NotFoundComponent },
 ];
 
