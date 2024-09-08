@@ -30,9 +30,11 @@ const routes: Routes = [
   {
     path: 'mentor',
     loadChildren: () =>
+
       import('./modules/mentor/mentor.module').then(
         (m) => m.MentorModule
       ),
+
 
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },

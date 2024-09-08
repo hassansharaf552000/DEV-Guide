@@ -1,5 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MentorRoutingModule } from '../developer/Components/mentor/mentor-routing.module';
+
+
+
+
+
+
 import { MentorRoutingModule } from './mentor-routing.module';
 import { ReviewsCardComponent } from './Components/reviews-card/reviews-card.component';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
@@ -8,11 +16,14 @@ import { ReviewsListComponent } from './Components/reviews-list/reviews-list.com
 
 @NgModule({
   declarations: [
+    
+
     ReviewsCardComponent,
     ReviewsListComponent
   ],
   imports: [
-    CommonModule,
+    CommonModule,FormsModule,
+    ReactiveFormsModule,
     MentorRoutingModule
   ]
 import { MentorPaymentsComponent } from './components/mentor-payments/mentor-payments.component';

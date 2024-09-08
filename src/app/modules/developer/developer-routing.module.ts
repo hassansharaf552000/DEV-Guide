@@ -27,6 +27,12 @@ import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.compon
 import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
 import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
 import { UserlayoutComponent } from './Components/userlayout/userlayout.component';
+import { QuizListComponent } from './Components/quiz-list/quiz-list.component';
+import { QuizDetailsComponent } from './Components/quiz-details/quiz-details.component';
+import { ProfileSideBarComponent } from './Components/profile-side-bar/profile-side-bar.component';
+import path from 'path';
+import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
+import { ContactAdminComponent } from '../mentor/contact-admin/contact-admin.component';
 import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.component';
 import { QueryAnswerComponent } from './Components/query-answer/query-answer.component';
 import { ProfileLayoutComponent } from './Components/profile-layout/profile-layout.component';
@@ -73,6 +79,15 @@ const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+
+  //   ]
+  //  },
+  { path: 'contact_admin', component: ContactAdminComponent },
+  { path: 'booking', component: BookingComponent },
+  { path: 'query', component: QueryComponent },
+  { path: 'confirmation', component: BookingConfirmationComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },  
+  { path: '**', redirectTo: 'notfound' },
 
   {path:"",component:UserlayoutComponent,children:
   [

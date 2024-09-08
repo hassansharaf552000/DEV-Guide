@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { ContactAdminComponent } from './contact-admin/contact-admin.component';
+import { SharedModule } from '../../shared/shared.module';
+
+const routes: Routes = [
+  
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
 
 const routes: Routes = [
@@ -31,8 +36,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), SharedModule],
   exports: [RouterModule],
 })
 export class MentorRoutingModule {}
+

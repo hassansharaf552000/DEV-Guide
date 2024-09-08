@@ -38,6 +38,7 @@ import { QuizDetailsComponent } from './Components/quiz-details/quiz-details.com
 import { ProfileSideBarComponent } from './Components/profile-side-bar/profile-side-bar.component';
 import { ReviewsCardComponent } from './Components/reviews-card/reviews-card.component';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
+import { ContactAdminComponent } from '../mentor/contact-admin/contact-admin.component';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { ReviewsListComponent } from './Components/reviews-list/reviews-list.com
     QuizDetailsComponent,
     ProfileSideBarComponent,
     ReviewsCardComponent,
+    ReviewsListComponent,ContactAdminComponent
     ReviewsListComponent,
 
   ],
