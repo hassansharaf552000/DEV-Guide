@@ -1,7 +1,77 @@
 <div class="container mt-5 m-auto">
-  <div class="row">
-    <div class="col-md-6 ">
-      <div class="card custom-card">
+  <div class="row justify-content-around">
+    <!-- Session Summary - This will appear first on mobile and tablets -->
+    <div class="col-md-6 order-2 order-md-2 order-sm-2">
+      <div class="card custom-summary-card">
+        <div class="card-body">
+          <h3 class="card-title">Session Summary</h3>
+          <p class="card-text">
+            It can help you manage and service orders before, during, and after
+            fulfillment.
+          </p>
+          <div class="bg-light p-3 rounded">
+            <div class="card session-card mb-4">
+              <div class="card-body">
+                <div class="d-flex align-items-center mb-4">
+                  <img
+                    src="05 (1).jpg"
+                    alt="Profile Picture"
+                    class="rounded-circle"
+                    width="80"
+                  />
+                  <div class="ms-3">
+                    <h5 class="mb-0">Eng Heba Samy</h5>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <p>
+                      <i class="bi bi-bookmark"></i> Booking ID:
+                      <strong>BS-58678</strong>
+                    </p>
+                    <p>
+                      <i class="bi bi-person"></i> Booked by:
+                      <strong>Frances Guerrero</strong>
+                    </p>
+                    <p>
+                      <i class="bi bi-book"></i> Session In:
+                      <strong>Angular</strong>
+                    </p>
+                    <p>
+                      <i class="bi bi-calendar-date"></i> Date:
+                      <strong>29 July 2024</strong>
+                    </p>
+                    <p>
+                      <i class="fas fa-clock"></i> Session Duration:
+                      <strong>2 Hours</strong>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <p class="d-flex justify-content-between">
+              <span>Subtotal</span><span>$85.99</span>
+            </p>
+            <p class="d-flex justify-content-between">
+              <span>Tax</span><span>$4.99</span>
+            </p>
+            <p class="d-flex justify-content-between font-weight-bold">
+              <span>Total</span><span>$90.98</span>
+            </p>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-success btn-block mt-4 w-50">
+              Proceed with Payment
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Method - This will appear second on mobile and tablets -->
+    <div class="col-md-6 order-2 order-md-1 order-sm-1">
+      <div class="card custom-card" style="margin-right: 20px;">
         <div class="card-header custom-card-header">
           <h2 class="mb-0">Checkout</h2>
         </div>
@@ -23,6 +93,7 @@
                   class="form-check-label d-flex align-items-center"
                   for="creditCard"
                 >
+                <div class="col">
                   <img
                     src="Visa-Logo.png"
                     alt="Visa"
@@ -34,6 +105,8 @@
                     alt="MasterCard"
                     width="60"
                   />
+                </div>
+
                 </label>
               </div>
               <div class="form-check d-flex align-items-center">
@@ -49,7 +122,7 @@
                   class="form-check-label d-flex align-items-center"
                   for="paypal"
                 >
-                  <img src="paypal.webp" alt="PayPal" width="100" />
+                  <img src="paypal.webp" alt="PayPal" width="70" />
                 </label>
               </div>
             </div>
@@ -139,72 +212,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="card custom-summary-card">
-        <div class="card-body">
-          <h3 class="card-title">Session Summary</h3>
-          <p class="card-text">
-            It can help you manage and service orders before, during, and after
-            fulfillment.
-          </p>
-          <div class="bg-light p-3 rounded">
-            <div class="card session-card mb-4">
-              <div class="card-body">
-                <div class="d-flex align-items-center mb-4">
-                  <img
-                    src="05 (1).jpg"
-                    alt="Profile Picture"
-                    class="rounded-circle"
-                    width="80"
-                  />
-                  <div class="ms-3">
-                    <h5 class="mb-0">Eng Heba Samy</h5>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12">
-                    <p>
-                      <i class="bi bi-bookmark"></i> Booking ID:
-                      <strong>BS-58678</strong>
-                    </p>
-                    <p>
-                      <i class="bi bi-person"></i> Booked by:
-                      <strong>Frances Guerrero</strong>
-                    </p>
-                    <p>
-                      <i class="bi bi-book"></i> Session In:
-                      <strong>Angular</strong>
-                    </p>
-                    <p>
-                      <i class="bi bi-calendar-date"></i> Date:
-                      <strong>29 July 2024</strong>
-                    </p>
-                    <p>
-                      <i class="fas fa-clock"></i> Session Duration:
-                      <strong>2 Hours</strong>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr />
-            <p class="d-flex justify-content-between">
-              <span>Subtotal</span><span>$85.99</span>
-            </p>
-            <p class="d-flex justify-content-between">
-              <span>Tax</span><span>$4.99</span>
-            </p>
-            <p class="d-flex justify-content-between font-weight-bold">
-              <span>Total</span><span>$90.98</span>
-            </p>
-          </div>
-          <button class="btn btn-success btn-block mt-4">
-            Proceed with Payment
-          </button>
         </div>
       </div>
     </div>

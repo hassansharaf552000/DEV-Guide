@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
+
+const routes: Routes = [
+  {path:"reviews",component:ReviewsListComponent}
 import { MentorlayoutComponent } from './components/mentorlayout/mentorlayout.component';
 import { SidebarlayoutComponent } from './components/sidebarlayout/sidebarlayout.component';
 import { MentorPaymentsComponent } from './components/mentor-payments/mentor-payments.component';
