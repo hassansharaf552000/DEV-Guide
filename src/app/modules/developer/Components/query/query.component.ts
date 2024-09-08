@@ -10,11 +10,7 @@ export class QueryComponent {
   querymessage:any;
   QueryArray:Array<any>=[];
   
-   
-  
-
   selectedFile: File | null = null;
-
   constructor(private http: HttpClient) {}
 
   onFileSelected(event: any): void {

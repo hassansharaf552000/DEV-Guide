@@ -1,0 +1,55 @@
+<div class="container my-4">
+  <h3 class="mb-4 text-center">Your Completed Quizzes</h3>
+
+  <div *ngFor="let quiz of quizzes" class="quiz-card mb-4 p-3 shadow-sm border rounded position-relative">
+    <div class="d-flex align-items-center mb-2">
+      <div>
+        <h5 class="mb-0">{{ quiz.level }}</h5>
+        <small class="text-muted">{{ quiz.description }}</small>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn me-2" [ngClass]="{'btn-warning': quiz.retake, 'btn-success': !quiz.retake}"
+        [routerLink]="quiz.retake ? '/developer/skill-instructions' : null">
+        {{ quiz.retake ? 'Retake Exam' : 'You\'ve passed' }}
+      </button>
+      <button class="btn btn-outline-primary me-2" [routerLink]="['/developer/quiz-details']">Analysis</button>
+      <button class="btn btn-outline-warning" (click)="openScoreModal(quiz)">Score</button>
+    </div>
+  </div>
+</div>
+<!-- Score Modal -->
+<div class="modal fade" id="scoreModal" tabindex="-1" aria-labelledby="scoreModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="scoreModalLabel">Quiz Score</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <h2>Congratulations. You passed!</h2>
+        <p>You are successfully completed the quiz. Now you click on finish and back to your quiz page.</p>
+        <div class="position-relative my-4" style="width: 120px; height: 120px; margin: 0 auto;">
+          <svg class="position-absolute top-0 start-0" style="transform: rotate(-90deg);" width="120" height="120"
+            viewBox="0 0 36 36">
+            <path class="circle-bg" stroke="#f3f3f3" stroke-width="3.8" fill="none" d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <path class="circle" stroke="#4CAF50" stroke-width="3.8" stroke-dasharray="85, 100" fill="none" d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831" />
+          </svg>
+          <div class="position-absolute top-50 start-50 translate-middle">
+            <span class="h3">{{ selectedQuiz?.score }}%</span>
+          </div>
+        </div>
+        <p>Your Score: <strong>{{ selectedQuiz?.score }}% ({{ selectedQuiz?.points }} points)</strong></p>
+        <p>Passing Score: <strong>60%</strong></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

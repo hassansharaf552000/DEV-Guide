@@ -1,0 +1,22 @@
+<div class="card review-card">
+  <div class="card-body">
+    <div class="review-header d-flex align-items-center">
+      <div class="profile-picture me-3">
+        <img [src]="review.userimage" alt="User Profile" class="rounded-circle" />
+      </div>
+      <div class="review-info">
+        <h5 class="reviewer-name mb-1">{{ review.username }}</h5>
+        <p class="review-date text-muted mb-0">{{ review.reviewDate | date: 'dd MMM yy, hh:mm a zzzz' }}</p>
+      </div>
+      <div class="review-rating ms-auto d-flex align-items-center">
+        <span class="rating-value me-1">{{ review.rate }}</span>
+        <i class="bi bi-star-fill text-warning"></i>
+      </div>
+    </div>
+    <hr>
+    <h6 class="review-text mt-3">{{ review.description }}</h6>
+  </div>
+</div>
+
+
+
