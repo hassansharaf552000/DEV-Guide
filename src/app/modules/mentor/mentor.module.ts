@@ -14,6 +14,6 @@ import { BookingComponent } from './components/booking/booking.component';
     SidebarlayoutComponent,
     BookingComponent,
   ],
-  imports: [CommonModule, MentorRoutingModule, SharedModule],
+
 })
 export class MentorModule {}

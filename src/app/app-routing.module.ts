@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { LoginComponent } from './shared/components/login/login.component';
 import { RegisterComponent } from './shared/components/register/register.component';
-import { UserlayoutComponent } from './modules/developer/Components/userlayout/userlayout.component';
 const routes: Routes = [
   {
     path: 'admin',
