@@ -86,7 +86,7 @@
   margin-left: auto; /* Align stars to the right */
 }
 .reviews {
-  max-height: 400px; /* Adjust this height as needed */
+  max-height: 700px; /* Adjust this height as needed */
   overflow-y: auto; /* Enables vertical scrolling */
   padding-right: 15px; /* Optional: adds padding to the right */
   margin-right: -15px; /* Optional: prevents padding from causing horizontal overflow */

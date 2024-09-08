@@ -3,9 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactAdminComponent } from './contact-admin/contact-admin.component';
 import { SharedModule } from '../../shared/shared.module';
-
-const routes: Routes = [
-  
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
 
 const routes: Routes = [
