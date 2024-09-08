@@ -30,16 +30,13 @@ import { QuizComponent } from './Components/quiz/quiz.component';
 import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.component';
 import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
 import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
-
 import { ProfileLayoutComponent } from './Components/profile-layout/profile-layout.component';
-
 import { QuizListComponent } from './Components/quiz-list/quiz-list.component';
 import { QuizDetailsComponent } from './Components/quiz-details/quiz-details.component';
 import { ProfileSideBarComponent } from './Components/profile-side-bar/profile-side-bar.component';
 import { ReviewsCardComponent } from './Components/reviews-card/reviews-card.component';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
-import { ContactAdminComponent } from '../mentor/contact-admin/contact-admin.component';
-
+import { ContactAdminComponent } from '../mentor/Components/contact-admin/contact-admin.component';
 
 @NgModule({
   declarations: [
@@ -68,16 +65,14 @@ import { ContactAdminComponent } from '../mentor/contact-admin/contact-admin.com
     FinishQuizComponent,
     HrProfileComponent,
     MentorProfileComponent,
-
     ProfileLayoutComponent,
-
     QuizListComponent,
     QuizDetailsComponent,
     ProfileSideBarComponent,
     ReviewsCardComponent,
-    ReviewsListComponent,ContactAdminComponent
     ReviewsListComponent,
-
+    ContactAdminComponent,
+    ReviewsListComponent,
   ],
   imports: [
     CommonModule,

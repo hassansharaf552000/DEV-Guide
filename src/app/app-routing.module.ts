@@ -1,9 +1,6 @@
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
-import { LoginComponent } from './shared/components/login/login.component';
-import { RegisterComponent } from './shared/components/register/register.component';
 const routes: Routes = [
   {
     path: 'admin',
@@ -30,12 +27,7 @@ const routes: Routes = [
   {
     path: 'mentor',
     loadChildren: () =>
-
-      import('./modules/mentor/mentor.module').then(
-        (m) => m.MentorModule
-      ),
-
-
+      import('./modules/mentor/mentor.module').then((m) => m.MentorModule),
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },

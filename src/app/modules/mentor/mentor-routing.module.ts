@@ -1,18 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { ContactAdminComponent } from './contact-admin/contact-admin.component';
+import { ContactAdminComponent } from './Components/contact-admin/contact-admin.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
-
-
-const routes: Routes = [];
-const routes: Routes = [
-  {path:"reviews",component:ReviewsListComponent}
-import { MentorlayoutComponent } from './components/mentorlayout/mentorlayout.component';
-import { SidebarlayoutComponent } from './components/sidebarlayout/sidebarlayout.component';
-import { MentorPaymentsComponent } from './components/mentor-payments/mentor-payments.component';
-import { BookingComponent } from './components/booking/booking.component';
+import { BookingComponent } from './Components/booking-mentor/booking.component';
+import { MentorlayoutComponent } from './Components/mentorlayout/mentorlayout.component';
+import { MentorPaymentsComponent } from './Components/mentor-payments/mentor-payments.component';
+import { SidebarlayoutComponent } from './Components/sidebarlayout/sidebarlayout.component';
 
 const routes: Routes = [
   {
@@ -39,4 +34,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class MentorRoutingModule {}
-
