@@ -1,24 +1,21 @@
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { LoginComponent } from './shared/components/login/login.component';
 import { RegisterComponent } from './shared/components/register/register.component';
-// import { UserlayoutComponent } from './modules/developer/Components/userlayout/userlayout.component';
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  {
-    path: 'developer',
-    // component: UserlayoutComponent,
-    loadChildren: () =>
-      import('./modules/developer/developer.module').then(
-        (m) => m.DeveloperModule
-      ),
-  },
   {
     path: 'admin',
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
+    path: 'developer',
+    loadChildren: () =>
+      import('./modules/developer/developer.module').then(
+        (m) => m.DeveloperModule
+      ),
   },
   {
     path: 'guest',
@@ -28,18 +25,19 @@ const routes: Routes = [
   {
     path: 'hr',
     loadChildren: () =>
-      import('./modules/developer/Components/hr/hr.module').then(
-        (m) => m.HrModule
-      ),
+      import('./modules/hr/hr.module').then((m) => m.HrModule),
   },
   {
     path: 'mentor',
     loadChildren: () =>
-      import('./modules/developer/Components/mentor/mentor.module').then(
+
+      import('./modules/mentor/mentor.module').then(
         (m) => m.MentorModule
       ),
-  },
 
+
+  },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
 

@@ -1,0 +1,51 @@
+<div class="container custom-margin">
+  <!-- Monthly Stats Section -->
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+        <h5 class="card-title">Current Month</h5>
+        <p class="display-4">{{currentMonthEarnings | currency}}</p>
+        <p class="text-success">{{currentMonthChange}}% <i class="fas fa-arrow-up"></i> vs last month</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+        <h5 class="card-title">Last Month</h5>
+        <p class="display-4">{{lastMonthEarnings | currency}}</p>
+        <p class="text-danger">{{lastMonthChange}}% <i class="fas fa-arrow-down"></i> Then last month</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-primary text-white shadow-sm p-3 mb-5 rounded">
+        <h5 class="card-title">Total Balance</h5>
+        <p class="display-4">{{totalBalance | currency}}</p>
+        <p>Valid thru: {{cardValidThru}} CVV: ***</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Invoice History Section -->
+  <div class="card shadow-sm p-3 mb-3 bg-white rounded">
+    <h5 class="card-title">Invoice History</h5>
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Invoice ID</th>
+          <th scope="col">Date</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let invoice of invoiceHistory">
+          <td>{{invoice.id}}</td>
+          <td>{{invoice.date | date:'dd MMM yyyy'}}</td>
+          <td>{{invoice.amount | currency}}</td>
+          <td><span [ngClass]="getStatusClass(invoice.status)">{{invoice.status}}</span></td>
+          <td><button class="btn btn-primary"><i class="fas fa-eye"></i></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="container my-5">
+  <h2 class="custom-heading custom">My Bookings</h2>
+
+
+  <!-- Tabs Navigation -->
+  <ul class="nav nav-tabs mb-4">
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'upcoming'" (click)="setActiveTab('upcoming')">
+        <i class="fas fa-calendar-alt"></i> Upcoming Booking
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'canceled'" (click)="setActiveTab('canceled')">
+        <i class="fas fa-ban"></i> Canceled Booking
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'completed'" (click)="setActiveTab('completed')">
+        <i class="fas fa-check-circle"></i> Completed Booking
+      </a>
+    </li>
+  </ul>
+
+  <!-- Upcoming Bookings Section -->
+  <div *ngIf="activeTab === 'upcoming'">
+    <div class="alert alert-info animate-alert">
+      Upcoming bookings will be displayed here.
+    </div>
+  </div>
+
+  <!-- Canceled Bookings Section -->
+  <div *ngIf="activeTab === 'canceled'">
+    <div class="card mb-3 border-danger animate-card">
+      <div class="card-body">
+        <h5 class="card-title">Courtyard by Marriott New York</h5>
+        <p class="card-text"><strong>Booking ID:</strong> CGDSUAH12548 • AC</p>
+        <p class="card-text"><strong>Check-in time:</strong> Tue 05 Aug 12:00 AM</p>
+        <p class="card-text"><strong>Check-out time:</strong> Tue 12 Aug 4:00 PM</p>
+        <p class="card-text"><strong>Booked by:</strong> Frances Guerrero</p>
+        <span class="text-danger font-weight-bold ml-3">Booking canceled</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Completed Bookings Section -->
+  <div *ngIf="activeTab === 'completed'">
+    <ng-container *ngIf="completedBookings.length > 0; else noBookings">
+      <div class="card mb-3 animate-card" *ngFor="let booking of completedBookings">
+        <div class="card-body">
+          <h5 class="card-title">{{ booking.title }}</h5>
+          <p class="card-text"><strong>Booking ID:</strong> {{ booking.id }} • {{ booking.type }}</p>
+          <p class="card-text">{{ booking.timeDetails }}</p>
+          <p class="card-text"><strong>Booked by:</strong> {{ booking.bookedBy }}</p>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noBookings>
+      <div class="alert alert-warning animate-alert">No completed bookings available.</div>
+    </ng-template>
+  </div>
+</div>

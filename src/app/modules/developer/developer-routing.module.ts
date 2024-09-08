@@ -27,6 +27,12 @@ import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.compon
 import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
 import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
 import { UserlayoutComponent } from './Components/userlayout/userlayout.component';
+import { QuizListComponent } from './Components/quiz-list/quiz-list.component';
+import { QuizDetailsComponent } from './Components/quiz-details/quiz-details.component';
+import { ProfileSideBarComponent } from './Components/profile-side-bar/profile-side-bar.component';
+import path from 'path';
+import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
+import { ContactAdminComponent } from '../mentor/contact-admin/contact-admin.component';
 import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.component';
 import { QueryAnswerComponent } from './Components/query-answer/query-answer.component';
 import { ProfileLayoutComponent } from './Components/profile-layout/profile-layout.component';
@@ -34,9 +40,57 @@ import { ReviewsListComponent } from './Components/reviews-list/reviews-list.com
 import { QuizListComponent } from './Components/quiz-list/quiz-list.component';
 import { MentorAnswerQueryComponent } from '../mentor/Components/mentor-answer-query/mentor-answer-query.component';
 const routes: Routes = [
+
+  {
+    path: '',
+    component: UserlayoutComponent,
+    children: [
+      { path: 'step-one', component: StepOneComponent },
+      { path: 'payment', component: PaymentComponent },
+      { path: 'step-two', component: StepTwoComponent },
+      { path: 'step-three', component: StepThreeComponent },
+      { path: 'step-four', component: StepFourComponent },
+      { path: 'step-five', component: StepFiveComponent },
+      { path: 'mentors', component: MentorListComponent },
+      { path: 'mentors/:id', component: MentorProfileComponent }, // Updated route
+      { path: 'hr', component: HRListComponent },
+      { path: 'hr/:id', component: HrProfileComponent },
+      { path: 'contactus', component: ContactUsComponent },
+      { path: 'skill-assessments', component: SkillAssessmentsComponent },
+      { path: 'skill-instructions', component: SkillInstructionsComponent },
+      { path: 'quiz', component: QuizComponent },
+      { path: 'finish-quiz', component: FinishQuizComponent },
+      { path: 'quiz-list', component: QuizListComponent },
+      { path: 'quiz-details', component: QuizDetailsComponent },
+      { path: 'aboutus', component: AboutUsComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'userlayout', component: UserlayoutComponent },
+      { path: 'home', component: HomeComponent },
+      { path: 'forgetpassword', component: Forget_passwordComponent },
+      { path: 'faq-and-licence', component: FaqComponent },
+      { path: 'updateprofile', component: Update_profileComponent },
+      { path: 'sidebar', component: ProfileSideBarComponent },
+      { path: 'reviews', component: ReviewsListComponent },
+      { path: 'booking', component: BookingComponent },
+      { path: 'query', component: QueryComponent },
+      { path: 'confirmation', component: BookingConfirmationComponent },
+    ],
+  },
+
+  { path: '**', redirectTo: 'notfound' },
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+
+  //   ]
+  //  },
+  { path: 'contact_admin', component: ContactAdminComponent },
+  { path: 'booking', component: BookingComponent },
+  { path: 'query', component: QueryComponent },
+  { path: 'confirmation', component: BookingConfirmationComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },  
+  { path: '**', redirectTo: 'notfound' },
 
   {path:"",component:UserlayoutComponent,children:
   [
@@ -57,12 +111,9 @@ const routes: Routes = [
           { path: 'finish-quiz', component: FinishQuizComponent },
           { path: 'aboutus', component: AboutUsComponent },
          
-          // { path: 'userlayout', component: UserlayoutComponent },
           { path: 'home', component: HomeComponent },
           { path: 'forgetpassword', component: Forget_passwordComponent },
           { path: 'faq-and-licence', component: FaqComponent },
-          // { path: '', redirectTo: 'userlayout', pathMatch: 'full' },
-          // { path: '**', redirectTo: 'userlayout' },
           { path: 'booking', component: BookingComponent },
           { path: 'query', component: QueryComponent },
           { path: 'confirmation', component: BookingConfirmationComponent },
@@ -88,6 +139,7 @@ const routes: Routes = [
 }
 
   
+
 
 
 
