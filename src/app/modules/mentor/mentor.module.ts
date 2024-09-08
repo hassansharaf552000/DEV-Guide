@@ -1,13 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MentorRoutingModule } from './mentor-routing.module';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MentorRoutingModule } from '../developer/Components/mentor/mentor-routing.module';
+
+
+
+
+
+
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    
+  ],
   imports: [
-    CommonModule,
+    CommonModule,FormsModule,
+    ReactiveFormsModule,
     MentorRoutingModule
   ]
 })

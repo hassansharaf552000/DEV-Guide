@@ -32,6 +32,7 @@ import { QuizDetailsComponent } from './Components/quiz-details/quiz-details.com
 import { ProfileSideBarComponent } from './Components/profile-side-bar/profile-side-bar.component';
 import path from 'path';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
+import { ContactAdminComponent } from '../mentor/contact-admin/contact-admin.component';
 const routes: Routes = [
   { path: 'step-one', component: StepOneComponent },
   { path: 'payment', component: PaymentComponent },
@@ -68,10 +69,11 @@ const routes: Routes = [
 
   //   ]
   //  },
+  { path: 'contact_admin', component: ContactAdminComponent },
   { path: 'booking', component: BookingComponent },
   { path: 'query', component: QueryComponent },
   { path: 'confirmation', component: BookingConfirmationComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },  
   { path: '**', redirectTo: 'notfound' },
 ];
 @NgModule({
