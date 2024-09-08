@@ -30,6 +30,9 @@ import { UserlayoutComponent } from './Components/userlayout/userlayout.componen
 import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.component';
 import { QueryAnswerComponent } from './Components/query-answer/query-answer.component';
 import { ProfileLayoutComponent } from './Components/profile-layout/profile-layout.component';
+import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
+import { QuizListComponent } from './Components/quiz-list/quiz-list.component';
+import { MentorAnswerQueryComponent } from '../mentor/Components/mentor-answer-query/mentor-answer-query.component';
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: 'login', component: LoginComponent },
@@ -67,6 +70,7 @@ const routes: Routes = [
           { path: '**', redirectTo: 'notfound' },
           {path:'reply', component:MentorReplyComponent},
           {path:'answer_query', component:QueryAnswerComponent},
+          { path: 'mentor-answer', component: MentorAnswerQueryComponent }
 
 
          
@@ -75,6 +79,8 @@ const routes: Routes = [
 
   {path:'profile',component:ProfileLayoutComponent,children:[
     { path: 'updateprofile', component: Update_profileComponent },
+     {path:'reviews',component:ReviewsListComponent},
+     {path:'quizzes',component:QuizListComponent}
   
 
 

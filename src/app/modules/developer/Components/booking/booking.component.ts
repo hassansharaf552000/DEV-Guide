@@ -13,4 +13,15 @@ export class BookingComponent {
   constructor() {
     this.list = [];
   }
+
+
+
+
+
+
+
+
+
+
+  
 }

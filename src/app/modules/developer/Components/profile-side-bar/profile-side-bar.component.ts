@@ -15,13 +15,14 @@ export class ProfileSideBarComponent {
   };
   menuItems = [
     { path: '/profile', label: 'Profile', icon: 'bi bi-person' },
-    { path: '/developer/updateprofile', label: 'Edit Profile', icon: 'bi bi-pencil-square' },
-    { path: '/developer/quiz', label: 'Quizzes', icon: 'bi bi-question-circle' },
+    { path: '/developer/profile/updateprofile', label: 'Edit Profile', icon: 'bi bi-pencil-square' },
+    { path: '/developer/profile/quizzes', label: 'Quizzes', icon: 'bi bi-question' },
     { path: '/developer/query', label: 'Queries', icon: 'bi bi-chat-square-dots' },
     { path: '/profile-requests', label: 'Requests', icon: 'bi bi-envelope' },
     { path: '/settings', label: 'Settings', icon: 'bi bi-gear' },
     { path: '/developer/booking', label: 'Sessions', icon: 'bi bi-calendar-check' },
-    { path: '/developer/reviews', label: 'Reviews', icon: 'bi bi-star' },
+    { path: '/developer/profile/reviews', label: 'Reviews', icon: 'bi bi-star' },
+    
     //{ path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' }
   ];
   logoutItem = { path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' };
