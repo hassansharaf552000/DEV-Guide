@@ -1,0 +1,92 @@
+.custom {
+  margin-top: 80px;
+}
+
+/* Custom Heading Style */
+.custom-heading {
+  color: #6c63ff;
+  /* Custom color */
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Tab Navigation Enhancements */
+.nav-tabs .nav-link {
+  color: #6c63ff;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #e4dfff;
+  color: #4a43d6;
+  border-color: #6c63ff;
+}
+
+/* Card and Alert Animations */
+.animate-card, .animate-alert {
+  animation: slideIn 0.6s ease-out;
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Custom Alert Style */
+.alert-info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border-color: #bee5eb;
+}
+
+.alert-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border-color: #ffeeba;
+}
+
+/* Custom Button Style */
+.btn-outline-primary {
+  background-color: #6c63ff;
+  color: #fff;
+  border-color: #6c63ff;
+}
+
+.btn-outline-primary:hover {
+  background-color: #4a43d6;
+  border-color: #4a43d6;
+}
+
+/* Card Style Enhancements */
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.border-danger {
+  border-color: #f5c6cb !important;
+}
+
+.text-danger {}
