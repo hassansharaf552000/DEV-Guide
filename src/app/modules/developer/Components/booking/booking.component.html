@@ -133,31 +133,31 @@
                                             <button id="addEvent" class="btn btn-primary btn-block" click="addEvent()">
                                                 Add
                                             </button>
-                                     
+
                                         </div>
-                                    </div> 
+                                    </div>
                                 </div>
 
 
                                 <div class="card border-success mb-2    col-12">
                                     <div class="card-header bg-transparent border-success ">Now select time</div>
                                     <div class="card-body text-success">
-                
+
                                     </div>
                                     <div class="time-row row row-cols-3">
-                
+
                                         @for (item of list; track $index) {
                                         <div class="time-option col-3">from: {{item.from}} to:{{item.to}}</div>
-                
+
                                         }
-                
+
                                     </div>
                                 </div>
-                                <button class="btn btn-primary btn-block mt-0">Continue</button>
+                                <button class="btn btn-primary btn-block mt-0" [routerLink]="'/developer/payment'">Continue</button>
                         </article>
                     </section>
                 </div>
-               
+
             </div>
 
 
