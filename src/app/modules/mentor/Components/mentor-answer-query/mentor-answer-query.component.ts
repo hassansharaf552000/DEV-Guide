@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-mentor-answer-query',
@@ -9,9 +10,18 @@ import { Component } from '@angular/core';
 export class MentorAnswerQueryComponent {
   querymessage:any;
   QueryArray:Array<any>=[];
+  values:string="";
   
   selectedFile: File | null = null;
-  constructor(private http: HttpClient) {}
+  form: FormGroup;
+  constructor(private http: HttpClient , private builder: FormBuilder) {
+    this.form= this.builder.group(
+      {
+        query:["",[Validators.required]]
+      }
+    )
+
+  }
 
   downloadFile() {
     this.http.get('path/to/your/file.pdf', { responseType: 'blob' }).subscribe((blob) => {
@@ -47,6 +57,11 @@ export class MentorAnswerQueryComponent {
   }
 
   
+  send(){
+   this.values=this.form.value
+    console.log(this.values)
+   
+  }
 
   GetQuery(obj: any) {
      this.QueryArray.push(obj)
