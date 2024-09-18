@@ -1,155 +1,108 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
-import { NgModule } from '@angular/core';
-import { log, time } from 'node:console';
-
 
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
-  styleUrl: './schedule.component.css'
+  styleUrls: ['./schedule.component.css'],
 })
-
 export class ScheduleComponent {
-  // form: FormGroup;
-  constructor() {
-
-  }
-  Working_Hours: Array<any> =
-    [{
-      Day: 'Saturday',
-      Available: false,
-      Start: "",
-      End: ""
-    }
-      ,
-    {
-      Day: 'Sunday',
-      Available: false,
-      Start: "",
-      End: ""
-    }
-      ,
-    {
-      Day: 'Monday',
-      Available: false,
-      Start: "",
-      End: ""
-    }
-      ,
-    {
-      Day: 'Tuesday',
-      Available: false,
-      Start: "",
-      End: ""
-    }
-      ,
-    {
-      Day: 'Wednesday',
-      Available: false,
-      Start: "",
-      End: ""
-    }
-      ,
-    {
-      Day: 'Thursday',
-      Available: false,
-      Start: "",
-      End: ""
-    }
-      , {
-      Day: 'Friday',
-      Available: false,
-      Start: "",
-      End: ""
-    }
-
-    ];
+  Working_Hours: Array<any> = [
+    { Day: 'Saturday', Available: false, Start: '', End: '' },
+    { Day: 'Sunday', Available: false, Start: '', End: '' },
+    { Day: 'Monday', Available: false, Start: '', End: '' },
+    { Day: 'Tuesday', Available: false, Start: '', End: '' },
+    { Day: 'Wednesday', Available: false, Start: '', End: '' },
+    { Day: 'Thursday', Available: false, Start: '', End: '' },
+    { Day: 'Friday', Available: false, Start: '', End: '' },
+  ];
 
   SessionPrice: number = 0;
-  AllDone: boolean = true;
-  isOpen: any = false;
-  priceError: string = ""
+  AllDone: boolean = true; // Initially disabled button
+  priceError: string = '';
   Errors: Array<string> = [];
+  isOpen: boolean = false;
 
-
-  checkPrice(price: string): boolean {
-    this.SessionPrice = parseInt(price)
+  // Check if price is valid
+  checkPrice(price: string): void {
+    this.SessionPrice = parseInt(price, 10);
     if (this.SessionPrice <= 0) {
-      this.priceError = "Price Must be more than zero"
-      return false;
+      this.priceError = 'Price must be more than zero';
     } else {
-      this.priceError = ""
-      return true;
+      this.priceError = '';
     }
-
+    this.validateForm();
   }
-  available(index: number) {
+
+  // Mark a day as available
+  available(index: number): void {
     this.Working_Hours[index].Available = true;
     this.checkTime(index);
-    this.validateForm(); // Check entire form after this change
+    this.validateForm();
   }
 
-  notavailable(index: number) {
+  // Mark a day as not available
+  notavailable(index: number): void {
     this.Working_Hours[index].Available = false;
-    this.Working_Hours[index].Start = "";
-    this.Working_Hours[index].End = "";
-    this.isOpen = this.Working_Hours.some(i => i.Available === true);
-    this.Errors[index] = "";
-    this.validateForm(); // Check entire form after this change
+    this.Working_Hours[index].Start = '';
+    this.Working_Hours[index].End = '';
+    this.Errors[index] = '';
+    this.validateForm();
   }
 
-  setTime(index: number, isStart: boolean, element: any) {
+  // Set time for start or end
+  setTime(index: number, isStart: boolean, event: any): void {
+    const value = event.target.value;
     if (isStart) {
-      this.Working_Hours[index].Start = element.target.value;
+      this.Working_Hours[index].Start = value;
     } else {
-      this.Working_Hours[index].End = element.target.value;
+      this.Working_Hours[index].End = value;
     }
     this.checkTime(index);
-    this.validateForm(); // Check entire form after this change
+    this.validateForm();
   }
 
-
-
+  // Check if the time range for a day is valid
   checkTime(index: number): boolean {
-    if (this.Working_Hours[index].Start === this.Working_Hours[index].End) {
-      this.Errors[index] = `Sorry, your duration in ${this.Working_Hours[index].Day} is NOT valid.`;
+    const start = this.Working_Hours[index].Start;
+    const end = this.Working_Hours[index].End;
+
+    if (start === end) {
+      this.Errors[
+        index
+      ] = `Start and end time for ${this.Working_Hours[index].Day} cannot be the same.`;
       return false;
-    } else if (this.Working_Hours[index].Start > this.Working_Hours[index].End) {
-      this.Errors[index] = `Sorry, your duration in ${this.Working_Hours[index].Day} is NOT valid.`;
+    } else if (start > end) {
+      this.Errors[
+        index
+      ] = `Start time for ${this.Working_Hours[index].Day} cannot be later than the end time.`;
       return false;
     } else {
-      this.Errors[index] = "";
+      this.Errors[index] = '';
       return true;
     }
   }
 
+  // Validate the entire form
+  validateForm(): void {
+    let validDaysCount = 0;
+    let allTimesValid = true;
 
-
-
-  validateForm() {
-    let hasAvailableDay = false; // Flag to check if at least one day is available
-    let isGood = true; // Assume form is valid initially
-
+    // Check if at least two days are valid
     this.Working_Hours.forEach((element, index) => {
       if (element.Available) {
-        hasAvailableDay = true; // Mark that there's at least one available day
-        if (!this.checkTime(index)) {
-          isGood = true; // If any available day has invalid times, mark as not good
+        if (this.checkTime(index)) {
+          validDaysCount++;
+        } else {
+          allTimesValid = false;
         }
-
       }
     });
 
-    // Check if price is valid and there is at least one available day with valid time
-    if (this.checkPrice(this.SessionPrice.toString()) && !hasAvailableDay && !isGood) {
-      this.AllDone = true; // Enable submit button
+    // Final validation: At least two valid days and a valid price
+    if (validDaysCount >= 1 && allTimesValid && this.SessionPrice > 0) {
+      this.AllDone = false; // Enable the submit button
     } else {
-      this.AllDone = false; // Disable submit button
+      this.AllDone = true; // Disable the submit button
     }
   }
-
-
 }
-
-
