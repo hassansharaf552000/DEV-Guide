@@ -8,6 +8,7 @@ import { BookingComponent } from './Components/booking-mentor/booking.component'
 import { MentorlayoutComponent } from './Components/mentorlayout/mentorlayout.component';
 import { MentorPaymentsComponent } from './Components/mentor-payments/mentor-payments.component';
 import { SidebarlayoutComponent } from './Components/sidebarlayout/sidebarlayout.component';
+import { MentorAnswerQueryComponent } from './Components/mentor-answer-query/mentor-answer-query.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
     children: [
       { path: 'mentor-payments', component: MentorPaymentsComponent },
       { path: 'booking', component: BookingComponent },
+      { path: 'mentor-answer-query', component: MentorAnswerQueryComponent },
     ],
   },
 
@@ -27,10 +29,12 @@ const routes: Routes = [
   { path: '', redirectTo: 'mentorlayout', pathMatch: 'full' },
 
   { path: '**', redirectTo: 'mentorlayout' },
-];
+]; 
 
 @NgModule({
-  imports: [RouterModule.forChild(routes), SharedModule],
+
+  declarations: [],
+  imports: [RouterModule.forChild(routes) ],
   exports: [RouterModule],
 })
 export class MentorRoutingModule {}
