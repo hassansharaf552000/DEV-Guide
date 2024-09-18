@@ -8,7 +8,11 @@ import { BookingComponent } from './Components/booking-mentor/booking.component'
 import { MentorlayoutComponent } from './Components/mentorlayout/mentorlayout.component';
 import { MentorPaymentsComponent } from './Components/mentor-payments/mentor-payments.component';
 import { SidebarlayoutComponent } from './Components/sidebarlayout/sidebarlayout.component';
+
 import { MentorAnswerQueryComponent } from './Components/mentor-answer-query/mentor-answer-query.component';
+
+import { ScheduleComponent } from './Components/schedule/schedule.component';
+
 
 const routes: Routes = [
   {
@@ -17,7 +21,11 @@ const routes: Routes = [
     children: [
       { path: 'mentor-payments', component: MentorPaymentsComponent },
       { path: 'booking', component: BookingComponent },
+
       { path: 'mentor-answer-query', component: MentorAnswerQueryComponent },
+
+      { path: 'secdule', component: ScheduleComponent },
+
     ],
   },
 

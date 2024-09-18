@@ -37,9 +37,6 @@ import { ProfileSideBarComponent } from './Components/profile-side-bar/profile-s
 import { ReviewsCardComponent } from './Components/reviews-card/reviews-card.component';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
 import { ContactAdminComponent } from '../mentor/Components/contact-admin/contact-admin.component';
-import { QueryAnswerComponent } from './Components/query-answer/query-answer.component';
-import { QueryComponent } from './Components/query/query.component';
-import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.component';
 
 @NgModule({
   declarations: [
@@ -76,9 +73,6 @@ import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.com
     ReviewsListComponent,
     ContactAdminComponent,
     ReviewsListComponent,
-    QueryComponent,
-    MentorReplyComponent,
-    QueryAnswerComponent
   ],
   imports: [
     CommonModule,
