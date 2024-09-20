@@ -9,26 +9,30 @@ import { MentorlayoutComponent } from './Components/mentorlayout/mentorlayout.co
 import { MentorPaymentsComponent } from './Components/mentor-payments/mentor-payments.component';
 import { SidebarlayoutComponent } from './Components/sidebarlayout/sidebarlayout.component';
 import { ScheduleComponent } from './Components/schedule/schedule.component';
+import { MentorAnswerQueryComponent } from './Components/mentor-answer-query/mentor-answer-query.component';
+import { SessionDetailsComponent } from './Components/session-details/session-details.component';
+import { Update_profileComponent } from '../../shared/components/update_profile/update_profile.component';
 
 const routes: Routes = [
   {
-    path: 'mentorlayout',
+    path: '',
     component: MentorlayoutComponent,
     children: [
+      {path:'updateprofile',component:Update_profileComponent},
       { path: 'mentor-payments', component: MentorPaymentsComponent },
       { path: 'booking', component: BookingComponent },
-      { path: 'secdule', component: ScheduleComponent },
+      { path: 'schedule', component: ScheduleComponent },
+      { path: 'contact_admin', component: ContactAdminComponent },
+      { path: 'reviews', component: ReviewsListComponent },
+      {path:'queryanswers',component:MentorAnswerQueryComponent},
+      {path:'session-details',component:SessionDetailsComponent},
+      {path:'home',component:MentorlayoutComponent},
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '**', redirectTo: 'notfound' },
     ],
   },
 
-  {
-    path: 'SidebarlayoutComponent',
-    component: SidebarlayoutComponent,
-    children: [],
-  },
-  { path: '', redirectTo: 'mentorlayout', pathMatch: 'full' },
 
-  { path: '**', redirectTo: 'mentorlayout' },
 ];
 
 @NgModule({

@@ -1,1 +1,27 @@
-<p>sidebarlayout works!</p>
+<nav class="sidebar">
+  <div class="profile-section">
+    <img [src]="profile.imageUrl" alt="Profile Image" class="profile-image" />
+    <h3>{{ profile.name }}</h3>
+    <p>{{ profile.email }}</p>
+    <div class="progress-bar-wrapper">
+      <div class="progress-bar">
+        <div class="progress" [style.width.%]="profile.profileCompletion"></div>
+      </div>
+      <span class="progress-percentage">{{ profile.profileCompletion }}%</span>
+    </div>
+  </div>
+
+  <ul>
+    <li *ngFor="let item of menuItems">
+      <a [routerLink]="item.path" routerLinkActive="active">
+        <i [class]="item.icon"></i> {{ item.label }}
+      </a>
+    </li>
+    <div class="logout-section mt-3">
+      <button class="btn btn-danger d-flex justify-content-center align-items-center wide-button" (click)="logout()" style="width: 200px;">
+        <i [class]="logoutItem.icon" class="mr-2"></i> <!-- Logout Icon -->
+        <span>{{ logoutItem.label }}</span> <!-- Logout Text -->
+      </button>
+    </div>
+  </ul>
+</nav>
