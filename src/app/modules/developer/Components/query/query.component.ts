@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-query',
@@ -11,7 +12,14 @@ export class QueryComponent {
   QueryArray:Array<any>=[];
   
   selectedFile: File | null = null;
-  constructor(private http: HttpClient) {}
+  form: FormGroup;
+  constructor(private http: HttpClient,private builder: FormBuilder) {
+    this.form= this.builder.group(
+      {
+        query:["",[Validators.required]]
+      })
+
+  }
 
   onFileSelected(event: any): void {
     const file = event.target.files[0];
@@ -33,7 +41,10 @@ export class QueryComponent {
     }
   }
 
-  
+  send(){
+    console.log( this.form.value)
+   
+  }
 
   GetQuery(obj: any) {
      this.QueryArray.push(obj)

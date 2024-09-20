@@ -12,6 +12,7 @@ import { BookingComponent } from './Components/booking-mentor/booking.component'
 import { MentorPaymentsComponent } from './Components/mentor-payments/mentor-payments.component';
 import { MentorlayoutComponent } from './Components/mentorlayout/mentorlayout.component';
 import { SidebarlayoutComponent } from './Components/sidebarlayout/sidebarlayout.component';
+import { MentorAnswerQueryComponent } from './Components/mentor-answer-query/mentor-answer-query.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +24,9 @@ import { SidebarlayoutComponent } from './Components/sidebarlayout/sidebarlayout
     BookingComponent,
     ReviewsCardComponent,
     ReviewsListComponent,
-  ],
-  imports: [
+    MentorAnswerQueryComponent
+  ]
+ , imports: [
     CommonModule,
     MentorRoutingModule,
     ReactiveFormsModule,

@@ -8,11 +8,10 @@ import { BookingComponent } from './Components/booking-mentor/booking.component'
 import { MentorlayoutComponent } from './Components/mentorlayout/mentorlayout.component';
 import { MentorPaymentsComponent } from './Components/mentor-payments/mentor-payments.component';
 import { SidebarlayoutComponent } from './Components/sidebarlayout/sidebarlayout.component';
-import { ScheduleComponent } from './Components/schedule/schedule.component';
 import { MentorAnswerQueryComponent } from './Components/mentor-answer-query/mentor-answer-query.component';
+import { ScheduleComponent } from './Components/schedule/schedule.component';
 import { SessionDetailsComponent } from './Components/session-details/session-details.component';
 import { Update_profileComponent } from '../../shared/components/update_profile/update_profile.component';
-
 const routes: Routes = [
   {
     path: '',
@@ -32,11 +31,14 @@ const routes: Routes = [
     ],
   },
 
-
 ];
+  { path: '**', redirectTo: 'mentorlayout' },
+]; 
 
 @NgModule({
-  imports: [RouterModule.forChild(routes), SharedModule],
+
+  declarations: [],
+  imports: [RouterModule.forChild(routes) ],
   exports: [RouterModule],
 })
 export class MentorRoutingModule {}

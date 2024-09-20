@@ -65,7 +65,6 @@ const routes: Routes = [
       { path: 'booking', component: BookingComponent },
       { path: 'query', component: QueryComponent },
       { path: 'confirmation', component: BookingConfirmationComponent },
-      { path: 'mentor-answer', component: MentorAnswerQueryComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'notfound' },
     ],
