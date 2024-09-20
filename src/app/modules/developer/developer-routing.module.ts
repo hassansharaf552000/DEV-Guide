@@ -83,7 +83,6 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'contact_admin', component: ContactAdminComponent },
   { path: 'booking', component: BookingComponent },
   { path: 'query', component: QueryComponent },
   { path: 'confirmation', component: BookingConfirmationComponent },
