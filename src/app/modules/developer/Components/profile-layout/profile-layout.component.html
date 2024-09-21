@@ -1,14 +1,66 @@
+<div class="container-fluid px-0">
+  <div class="row no-gutters">
 
-    <div class="row">
-      <!-- Sidebar -->
-      <div class="col-2">
-        <app-profile-side-bar></app-profile-side-bar>
-      </div>
-  
-      <!-- Main Content -->
-      <div class="col-10">
-        <router-outlet></router-outlet>
-      </div>
+    <!-- Sidebar (visible on larger screens and tablets) -->
+    <div class="col-lg-3 col-md-4 d-none d-md-block">
+      <app-profile-side-bar></app-profile-side-bar> <!-- Sidebar remains for larger screens and tablets -->
     </div>
-  
-  
+
+    <!-- Mobile Navbar (visible on smaller screens, including tablets in collapse mode) -->
+    <nav class="navbar navbar-expand-md navbar-light d-md-none w-100 text-center"
+      style="color: #415bcf;background-color: white;">
+      <button class="navbar-toggler mr-auto" type="button" (click)="toggleSidebar()" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Brand name (centered) -->
+      <a class="navbar-brand  mx-auto fw-bold" style="color: #415bcf;" href="#">Developer Profile</a>
+
+
+      <!-- Profile Image (aligned right) -->
+      <div class="navbar-profile ml-auto">
+        <img src="01.jpg" alt="Profile Image" class="profile-image rounded-circle"
+          style="width: 40px; height: 40px;">
+      </div>
+
+      <div class="collapse navbar-collapse" [ngClass]="{'show': isSidebarOpen}">
+        <ul class="navbar-nav ml-auto" style="color: #415bcf;">
+          <!-- Loop through menu items and apply blue color to items and icons -->
+          <li class="nav-item" *ngFor="let item of menuItems">
+            <a class="nav-link d-flex align-items-center menu-item" [routerLink]="item.path" (click)="closeSidebar()">
+              <i [class]="item.icon"></i>
+              <br> <!-- Icon class bound from menuItems -->
+              <span class="ml-2">{{ item.label }}</span> <!-- Text label next to the icon -->
+            </a>
+          </li>
+
+
+        </ul>
+        <!-- Static Section for Logout -->
+      <br>
+      <ul class="list-unstyled ms-n2 mb-0">
+        <li class="nav-item text-center"> <!-- Add 'text-center' to center text -->
+          <a class="nav-link logout-btn" (click)="logout()"> <!-- Add custom class 'logout-btn' -->
+            <i [class]="logoutItem.icon" style="color: white;"></i> <!-- Bind logout icon -->
+            {{ logoutItem.label }} <!-- Bind logout label -->
+          </a>
+        </li>
+        <br>
+        <li class="nav-item text-center">
+          <a class="nav-link home-btn" (click)="backhome()">
+            <i [class]="homeItem.icon" style="color: white;"></i> <!-- Bind logout icon -->
+            {{ homeItem.label }} <!-- Bind logout label -->
+          </a>
+        </li>
+      </ul>
+      </div>
+
+    </nav>
+
+    <!-- Main Content -->
+    <div class="col-lg-9 col-md-8 col-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
