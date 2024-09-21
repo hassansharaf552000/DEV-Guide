@@ -1,20 +1,143 @@
-.sidebar {
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-right: 1px solid #dee2e6;
+/* Top navbar for mobile view */
+.navbar {
+  background-color: #f8f9fa;
+  padding: 10px 15px;
+  text-align: center;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.nav-link {
+  padding: 10px 20px;
+  color: #fffafa;
+  transition: background 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #e2e6ea;
+  color: #007bff;
+}
+
+/* Make menu items and icons blue */
+.menu-item {
+  color: #415bcf !important; /* Blue text color */
+  font-weight: 500; /* Optional: Make text slightly bold */
+}
+
+.menu-item i {
+  color: #415bcf; /* Make icons blue */
+  font-size: 1.2rem; /* Optional: Adjust icon size */
+}
+
+.menu-item:hover {
+  text-decoration: underline; /* Optional: Add underline on hover */
+}
+
+
+/* Sidebar (only for larger screens) */
+@media (min-width: 768px) {
+  .sidebar {
+    width: 250px;
+    background-color: #415bcf;
+    color: #ffffff;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow-y: auto;
   }
-  
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
+}
+
+/* Main content adjustments */
+.main-content {
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    margin-left: 250px;
   }
-  
-  .sidebar ul li {
-    margin-bottom: 10px;
+}
+
+/* Ensure container takes full width and height */
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+  height: 100vh;
+}
+
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  .navbar-toggler {
+    position: relative;
+    top: 1px;
+    left: 10px;
+    z-index: 1000;
+    /* color: white; */
   }
-  
-  .sidebar ul li a {
-    text-decoration: none;
-    color: #000;
+
+  .nav-item{
+    color: #415bcf;
   }
-  
+
+  .navbar-collapse.show {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .sidebar {
+    width: 50px; /* Adjust as needed */
+  }
+}
+
+
+/* Style for the logout button */
+.logout-btn {
+  background-color: red; /* Red background */
+  color: white !important; /* White text */
+  padding: 10px; /* Add some padding for better appearance */
+  border-radius: 5px; /* Rounded corners */
+  display: inline-block; /* Keep the button inline */
+  width: 70%; /* Make the button span full width */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline from the link */
+}
+
+.logout-btn i {
+  color: white; /* White icon */
+}
+
+.logout-btn:hover {
+  background-color: darkred; /* Darken the background on hover */
+}
+
+
+.home-btn {
+  color: white; /* White text */
+  background-color: #415bcf; /* Red background */
+  padding: 10px; /* Add padding for better spacing */
+  border-radius: 5px; /* Add rounded corners */
+  display: inline-block; /* Keep the button inline */
+  width: 70%; /* Ensure the button spans the full width */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline from the link */
+}
+
+.home-btn:hover {
+  background-color: rgb(0, 0, 0); /* Darken the background on hover */
+}
