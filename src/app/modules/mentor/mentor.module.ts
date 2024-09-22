@@ -13,6 +13,7 @@ import { MentorPaymentsComponent } from './Components/mentor-payments/mentor-pay
 import { MentorlayoutComponent } from './Components/mentorlayout/mentorlayout.component';
 import { SidebarlayoutComponent } from './Components/sidebarlayout/sidebarlayout.component';
 import { MentorAnswerQueryComponent } from './Components/mentor-answer-query/mentor-answer-query.component';
+import { MentorSummryComponent } from './Components/mentor-summry/mentor-summry.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,10 @@ import { MentorAnswerQueryComponent } from './Components/mentor-answer-query/men
     BookingComponent,
     ReviewsCardComponent,
     ReviewsListComponent,
-    MentorAnswerQueryComponent
-  ]
- , imports: [
+    MentorAnswerQueryComponent,
+    MentorSummryComponent,
+  ],
+  imports: [
     CommonModule,
     MentorRoutingModule,
     ReactiveFormsModule,
