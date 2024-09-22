@@ -1,15 +1,35 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
+
 <div class="background">
   <div class=" card-img-overlay d-flex align-items-center justify-content-center text-center z-index-2  ">
-      <h1 class="display-4 text-white">Meet Our Talented Developers</h1>
+    <h1 class="display-4 text-white">Meet Our Talented Developers</h1>
   </div>
+</div>
+<br>
+<br>
+<h3 class="display-4 fw-bold text-center" style="font-family: Edu AU VIC WA NT Hand, cursive;font-optical-sizing: auto;font-style: normal;">
+Clients Feedbacks
+</h3>
+
+<div class="container mt-5">
+  <div class="row">
+    @for (item of clientsfeedbacks; track $index){
+    <div class="col-md-4">
+      <app-developercard [deve]="item"></app-developercard>
+    </div>
+    }
   </div>
-  
-  <div class="container mt-5">
-      <div class="row">
-          @for (item of Developers; track $index){
-          <div class="col-md-4">
-              <app-developercard [deve]="item"></app-developercard>
-          </div>
-          }
-      </div>
-  </div>
+</div>
+<br>
+<br>
+<h3 class="display-4 fw-bold text-center" style="font-family: Edu AU VIC WA NT Hand, cursive;font-optical-sizing: auto;font-style: normal;">
+  Our Sponsers
+  </h3>
+<br>
+<div class="d-flex justify-content-evenly align-items-b vh-50">
+  <img src="iti logo_processed.png" class="image-size ms-3">
+  <img src="minstrylogo.png" class="image-size ms-3">
+</div>
+
