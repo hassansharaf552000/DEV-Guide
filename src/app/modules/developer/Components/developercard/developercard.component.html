@@ -1,18 +1,60 @@
-
-
-<div class="container mt-5">
-    <!-- <div class="row justify-content-center"> -->
-        <!-- <div class="col-md-4"> -->
-            <div class="card text-center">
-                <img [src]="deve.imgURL" class="card-img-top" alt="Developer Image">
-                <div class="card-body">
-                    <h5 class="card-title"><a class="text-decoration-none text-black" href="#">{{deve.name}}</a></h5>
-                    <p class="card-text">{{deve.job}}</p>
-                    <app-developerrate [value]="deve.rate"></app-developerrate>
-                </div>
-            </div>
-        <!-- </div> -->
-    <!-- </div> -->
+<!-- <div class="container mt-5">
+  <div class="card text-center">
+    <img [src]="deve.imgURL" class="card-img-top" alt="Developer Image">
+    <div class="card-body">
+      <h5 class="card-title"><a class="text-decoration-none text-black" href="#">{{deve.name}}</a></h5>
+      <p class="card-text">{{deve.job}}</p>
+      <app-developerrate [value]="deve.rate"></app-developerrate>
     </div>
-    
-    
+  </div>
+
+</div> -->
+
+<!-- <div class="container d-flex justify-content-center align-items-center height-vh">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8">
+      <div class="d-flex flex-column" id="comment-container">
+        <div class="bg-white">
+          <div class="flex-row d-flex">
+            <img [src]="deve.imgURL" width="40" class="rounded-circle">
+            <div class="d-flex flex-column justify-content-start ml-2">
+              <span class="d-block font-weight-bold name">{{deve.name}}</span>
+              <app-developerrate [value]="deve.rate"></app-developerrate>
+            </div>
+          </div>
+          <div class="mt-3">
+            <p class="comment-text">{{deve.comment}}</p>
+          </div>
+        </div>
+        <div class="bg-white">
+          <div class="d-flex flex-row fs-14">
+            <div class="p-2 cursor p-2"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div>
+            <div class="p-2 cursor p-2"><i class="fa fa-comment"></i><span class="ml-1">Reply</span></div>
+            <div class="p-2 cursor p-2"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="card review-card">
+  <div class="card-body">
+    <div class="review-header d-flex align-items-center">
+      <div class="profile-picture me-3">
+        <img [src]="deve.imgURL" alt="User Profile" class="rounded-circle" />
+      </div>
+      <div class="review-info">
+        <h5 class="reviewer-name mb-1">{{ deve.name }}</h5>
+      </div>
+      <div class="review-rating ms-auto d-flex align-items-center">
+        <app-developerrate [value]="deve.rate"></app-developerrate>
+      </div>
+    </div>
+    <hr>
+    <h6 class="review-text mt-3">{{ deve.comment }}</h6>
+  </div>
+</div>
+
+
+
