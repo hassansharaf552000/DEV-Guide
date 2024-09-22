@@ -13,6 +13,10 @@ import { Forget_passwordComponent } from './components/forget_password/forget_pa
 import { RouterModule } from '@angular/router';
 import { FaqComponent } from './components/faq/faq.component';
 
+import { AdminUIComponent } from './components/admin-ui/admin-ui.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { CustomPaginationComponent } from './components/custom-pagination/custom-pagination.component';
+
 
 
 @NgModule({
@@ -25,10 +29,12 @@ import { FaqComponent } from './components/faq/faq.component';
     LoginComponent,
     RegisterComponent,
     Forget_passwordComponent,
-    FaqComponent
+    FaqComponent,
+    AdminUIComponent,
+    CustomPaginationComponent
   ],
 
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule,NgxPaginationModule],
 
   exports: [NavbarComponent, FooterComponent],
   providers: [provideClientHydration()],
