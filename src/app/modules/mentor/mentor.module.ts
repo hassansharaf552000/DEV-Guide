@@ -14,6 +14,7 @@ import { MentorlayoutComponent } from './Components/mentorlayout/mentorlayout.co
 import { SidebarlayoutComponent } from './Components/sidebarlayout/sidebarlayout.component';
 import { MentorAnswerQueryComponent } from './Components/mentor-answer-query/mentor-answer-query.component';
 import { MentorSummryComponent } from './Components/mentor-summry/mentor-summry.component';
+import { MentorRequestComponent } from './Components/mentor-request/mentor-request.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MentorSummryComponent } from './Components/mentor-summry/mentor-summry.
     ReviewsListComponent,
     MentorAnswerQueryComponent,
     MentorSummryComponent,
+    MentorRequestComponent,
   ],
   imports: [
     CommonModule,
