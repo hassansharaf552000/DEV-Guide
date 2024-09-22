@@ -7,12 +7,12 @@ import { Component } from '@angular/core';
   styleUrl: './profile-side-bar.component.css'
 })
 export class ProfileSideBarComponent {
-  profile = {
-    imageUrl: '01.jpg', // Path to the profile image
-    name: 'John Doe',
-    email: 'johndoe@example.com',
-    profileCompletion: 50 // Percentage of profile completion
-  };
+//   profile = {
+//     imageUrl: '01.jpg', // Path to the profile image
+//     name: 'John Doe',
+//     email: 'johndoe@example.com',
+//     profileCompletion: 50 // Percentage of profile completion
+//   };
   menuItems = [
     { path: '/profile', label: 'Profile', icon: 'bi bi-person' },
     { path: '/developer/profile/updateprofile', label: 'Edit Profile', icon: 'bi bi-pencil-square' },
@@ -26,10 +26,14 @@ export class ProfileSideBarComponent {
     //{ path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' }
   ];
   logoutItem = { path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' };
+  homeItem = { path: '/home', label: 'Back To Home', icon: 'bi bi-house-door-fill' };
   constructor(private router: Router) {}
 
 logout(){
   this.router.navigate([this.logoutItem.path]);
+}
+backhome(){
+  this.router.navigate([this.homeItem.path]);
 }
 
 

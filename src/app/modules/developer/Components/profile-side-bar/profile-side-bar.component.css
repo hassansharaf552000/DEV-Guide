@@ -1,115 +1,85 @@
-.sidebar {
-  width: 250px;
-  background-color:#415bcf;
-  color: #ffffff;
+
+.sidenav {
+  background-color: #ffffff;
+  padding: 15px;
   height: 100vh;
+  width: 250px;
   position: fixed;
-  top: 0;
   left: 0;
-  padding-top: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-  overflow-y: auto; /* Enable scrolling if content overflows */
+  top: 0;
+  overflow-y: auto;
 }
 
-.profile-section {
-  text-align: center;
-  margin-bottom: 20px;
-}
 
-.profile-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-.profile-section h3 {
-  margin: 10px 0 5px;
-  font-size: 18px;
-  color: #ffffff;
-}
-
-.profile-section p {
-  font-size: 14px;
-  color: #fcfdfd;
-  margin-bottom: 15px;
-}
-
-.progress-bar-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.progress-bar {
-  background-color: #fdfdfd;
-  border-radius: 4px;
-  height: 10px;
-  width: 60%; /* Adjust the width as needed */
-  overflow: hidden;
-  margin-right: 10px; /* Add spacing between the bar and percentage */
-}
-
-.progress {
-  background-color: #1abc9c;
-  height: 100%;
-  transition: width 0.3s ease;
-}
-
-.progress-percentage {
-  font-size: 14px;
-  color: #ffffff;
-}
-
-.sidebar ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.sidebar ul li {
-  padding: 10px 20px;
-  margin-bottom: 10px;
-}
-
-.sidebar ul li a {
-  color: #ffffff;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-}
-
-.sidebar ul li a i {
-  margin-right: 10px;
-}
-
-.sidebar ul li a.active {
-  background-color: #415bcf;
-  border-radius: 4px;
-}
-.logout-section {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.logout-button {
-  background-color: #e74c3c;
-  color: #ffffff;
-  padding: 10px 20px;
+.navbar-toggler {
   border: none;
+}
+
+
+.nav-item {
+  margin-bottom: 10px;
+}
+
+.nav-link {
+  color:#415bcf;;
+  padding: 10px 20px;
   border-radius: 4px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80%;
-  margin: 0 auto;
+  transition: background 0.3s ease;
 }
 
-.logout-button i {
+.nav-link:hover {
+  background-color: #dedede;
+  text-decoration: none;
+}
+
+.nav-item.active .nav-link {
+  background-color: #415bcf;;
+  color: #fff;
+}
+
+.nav-link i {
   margin-right: 10px;
+  color: #415bcf;
+  font-size: 1.2rem;
 }
 
-.logout-button:hover {
-  background-color: #c0392b;
+
+.navbar-header {
+  font-size: 1.2rem;
+  color:#415bcf;;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+
+/* Custom style for the logout button */
+.logout-btn {
+  color: white; /* White text */
+  background-color: red; /* Red background */
+  padding: 10px; /* Add padding for better spacing */
+  border-radius: 5px; /* Add rounded corners */
+  display: inline-block; /* Keep the button inline */
+  width: 100%; /* Ensure the button spans the full width */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline from the link */
+}
+
+.logout-btn:hover {
+  background-color: darkred; /* Darken the background on hover */
+}
+
+
+.home-btn {
+  color: white; /* White text */
+  background-color: #415bcf; /* Red background */
+  padding: 10px; /* Add padding for better spacing */
+  border-radius: 5px; /* Add rounded corners */
+  display: inline-block; /* Keep the button inline */
+  width: 100%; /* Ensure the button spans the full width */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline from the link */
+}
+
+.home-btn:hover {
+  background-color: rgb(0, 0, 0); /* Darken the background on hover */
 }
