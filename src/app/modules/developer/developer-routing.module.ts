@@ -38,6 +38,8 @@ import { ProfileLayoutComponent } from './Components/profile-layout/profile-layo
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
 import { QuizListComponent } from './Components/quiz-list/quiz-list.component';
 import { MentorAnswerQueryComponent } from '../mentor/Components/mentor-answer-query/mentor-answer-query.component';
+import { AdminUIComponent } from '../../shared/components/admin-ui/admin-ui.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -66,7 +68,8 @@ const routes: Routes = [
       { path: 'query', component: QueryComponent },
       { path: 'confirmation', component: BookingConfirmationComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: '**', redirectTo: 'notfound' },
+     { path: '**', redirectTo: 'notfound' },
+      //{ path: 'AdminUi', component: AdminUIComponent }
     ],
   },
 
@@ -79,6 +82,7 @@ const routes: Routes = [
       { path: 'quizzes', component: QuizListComponent },
       { path: 'reply', component: MentorReplyComponent },
       { path: 'answer-query', component: QueryAnswerComponent },
+      { path: 'AdminUi', component: AdminUIComponent }
     ],
   },
   { path: 'login', component: LoginComponent },

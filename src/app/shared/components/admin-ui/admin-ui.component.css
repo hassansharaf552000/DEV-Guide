@@ -1,0 +1,192 @@
+/* General container styling */
+.container {
+  width: 80%;
+  margin: 0 auto;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+/* Styling for Users Management heading */
+.text-center {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #3498db;  /* A nice blue color */
+  margin-bottom: 20px;
+  letter-spacing: 1px;  /* Slight spacing between letters */
+  text-transform: uppercase;  /* Makes the text all uppercase */
+  position: relative;
+}
+
+/* Add a subtle shadow effect for depth */
+.text-center::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #3498db;
+  margin: 10px auto 0;  /* Centered and spaced below the text */
+  border-radius: 2px;
+}
+
+.text-center:hover {
+  color: #2980b9;  /* Slight color change on hover */
+}
+
+
+/* Centered Address */
+.centered-address {
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.centered-address strong {
+  font-size: 18px;
+  color: #333;
+}
+
+/* Tabs for switching between models */
+.tabs {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+}
+
+.tabs li {
+  padding: 12px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: #3498db;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s;
+}
+
+.tabs li.active {
+  background-color: #3498db;
+  color: white;
+  border-color: #3498db;
+}
+
+.tabs li:hover {
+  background-color: #2980b9;
+  color: white;
+}
+
+/* Table container */
+.table-container {
+  text-align: center;
+  margin: 0 auto;
+}
+
+h3 {
+  color: #333;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+/* Centering the table and content */
+table {
+  width: 90%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+table th,
+table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center; /* Center content in table */
+}
+
+table th {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+table tr:hover {
+  background-color: #f9f9f9;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+/* Pagination component styling */
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.custom-pagination button {
+  background-color: #3498db;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin: 0 5px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.custom-pagination button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.custom-pagination button:hover:not(:disabled) {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.custom-pagination span {
+  font-size: 16px;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.custom-pagination button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 15px;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  table th, table td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .tabs li {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .custom-pagination button {
+    padding: 8px 15px;
+    font-size: 12px;
+  }
+}
