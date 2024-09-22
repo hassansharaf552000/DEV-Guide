@@ -13,6 +13,7 @@ import { ScheduleComponent } from './Components/schedule/schedule.component';
 import { SessionDetailsComponent } from './Components/session-details/session-details.component';
 import { Update_profileComponent } from '../../shared/components/update_profile/update_profile.component';
 import { MentorSummryComponent } from './Components/mentor-summry/mentor-summry.component';
+import { MentorRequestComponent } from './Components/mentor-request/mentor-request.component';
 const routes: Routes = [
   {
     path: '',
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: 'mentor-payments', component: MentorPaymentsComponent },
       { path: 'booking', component: BookingComponent },
       { path: 'mentor-summry', component: MentorSummryComponent },
+      { path: 'mentor-request', component: MentorRequestComponent },
       { path: 'schedule', component: ScheduleComponent },
       { path: 'contact_admin', component: ContactAdminComponent },
       { path: 'reviews', component: ReviewsListComponent },
