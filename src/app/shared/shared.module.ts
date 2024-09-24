@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Forget_passwordComponent } from './components/forget_password/forget_password.component';
 import { RouterModule } from '@angular/router';
 import { FaqComponent } from './components/faq/faq.component';
+import { CommunicationComponent } from './components/communication/communication.component';
 
 import { AdminUIComponent } from './components/admin-ui/admin-ui.component';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -30,6 +31,7 @@ import { CustomPaginationComponent } from './components/custom-pagination/custom
     RegisterComponent,
     Forget_passwordComponent,
     FaqComponent,
+    CommunicationComponent
     AdminUIComponent,
     CustomPaginationComponent
   ],
