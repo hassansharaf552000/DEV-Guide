@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-query',
@@ -10,10 +11,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class QueryComponent {
   querymessage:any;
   QueryArray:Array<any>=[];
-  
+  isModalVisible = false;
   selectedFile: File | null = null;
   form: FormGroup;
-  constructor(private http: HttpClient,private builder: FormBuilder) {
+  constructor(private http: HttpClient,private builder: FormBuilder,private router: Router) {
     this.form= this.builder.group(
       {
         query:["",[Validators.required]]
@@ -43,11 +44,47 @@ export class QueryComponent {
 
   send(){
     console.log( this.form.value)
-   
+
   }
 
   GetQuery(obj: any) {
      this.QueryArray.push(obj)
     }
+
+
+
+  // Message to display in the modal
+  modalMessage = 'The Query Send Successfuly!';
+
+  isConfirmationVisible = false;
+  // Method to show the modal when button is clicked
+  showModal() {
+
+  }
+
+  // Method to hide the modal and navigate to the home page
+  goToHome() {
+    this.isModalVisible = false; // Hide the modal
+    this.router.navigate(['/home']); // Navigate to the home page
+  }
+
+
+
+  // Show the confirmation modal when "Send" button is clicked
+  showConfirmationModal() {
+    this.isConfirmationVisible = true;
+  }
+
+  // Confirm the action and send the file (navigate to '/answer_query')
+  confirmSend() {
+    this.isModalVisible = true;
+    this.isConfirmationVisible = false;  // Hide the modal
+  }
+
+  // Cancel the action and hide the confirmation modal
+  cancelSend() {
+    this.isConfirmationVisible = false;
+  }
+
 
 }

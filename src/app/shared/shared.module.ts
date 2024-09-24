@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Forget_passwordComponent } from './components/forget_password/forget_password.component';
 import { RouterModule } from '@angular/router';
 import { FaqComponent } from './components/faq/faq.component';
+import { CommunicationComponent } from './components/communication/communication.component';
 
 
 
@@ -25,7 +26,8 @@ import { FaqComponent } from './components/faq/faq.component';
     LoginComponent,
     RegisterComponent,
     Forget_passwordComponent,
-    FaqComponent
+    FaqComponent,
+    CommunicationComponent
   ],
 
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],

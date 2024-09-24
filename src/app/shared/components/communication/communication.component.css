@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.chat-layout {
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.chat-body {
+    display: flex;
+    flex-direction: column; 
+    height: calc(100vh - 60px); 
+    overflow-y: hidden; 
+}
+
+.chat-message {
+    flex: 1; 
+    overflow-y: auto; 
+}
+
+.chat-footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    z-index: 1500;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+.bottom-1{
+    bottom:20px ;
+}
+@media (max-width: 1200px) {
+    .chat-layout .chat-body {
+        background: #f1f5f9;
+        bottom: 0;
+        height: calc(100vh - 60px); 
+        left: 0;
+        position: fixed;
+        top: 0;
+        transform: translateX(100%);
+        transition: transform .3s ease, visibility .3s ease;
+        visibility: hidden;
+        width: 100%;
+        z-index: 1020;
+    }
+
+    .chat-layout .chat-body.chat-body-visible {
+        transform: translateX(0); /* Show chat body */
+        visibility: visible;
+    }
+
+    .chat-layout .chat-footer {
+        bottom: 0;
+        position: fixed;
+        width: 100%;
+        transform: translateY(100%);
+        transition: transform .3s ease, visibility .3s ease;
+        visibility: hidden;
+    }
+
+    .chat-layout .chat-footer.chat-footer-visible {
+        transform: translateY(0); /* Show footer */
+        visibility: visible;
+    }
+}
+
+#db-wrapper {
+    display: flex;
+    overflow-x: hidden;
+}
+
+.px-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.border-top {
+    border-top: 1px solid !important;
+}
+
+.border-end {
+    border-right: 1px solid;
+}
+
+.sticky-top {
+    top: 0
+}
+
+.sticky-top {
+    position: sticky;
+    z-index: 1020
+}
+
+.chat-item:hover {
+    background-color: #eaecee7e;
+}
+
+.chat-item {
+    position: relative;
+    transition: background-color .3s
+}
+
+.avatar {
+    display: inline-block;
+    height: 3rem;
+    position: relative;
+    width: 3rem
+}
+
+.avatar-sm {
+    height: 2rem;
+    width: 2rem
+}
+
+.avatar-md {
+    height: 2.5rem;
+    width: 2.5rem
+}
+
+.avatar img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%
+}
+
+.avatar-offline:before {
+    background-color: #94a3b8;
+}
+
+
+.avatar-online:before {
+    background-color: #38a169
+}
+
+.avatar-indicators:before {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    bottom: 0;
+    content: "";
+    display: table;
+    height: 30%;
+    position: absolute;
+    right: 5%;
+    width: 30%
+}
+
+.avatar-initials {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    pointer-events: none;
+    text-transform: uppercase;
+    width: 100%
+}
+
+.avatar-indicators:before {
+    right: 16%
+}
+
+a {
+    color: rgb(133, 127, 127);
+    text-decoration: none
+}
+
+a h5 {
+    color: rgb(19, 18, 18);
+}
+
+a:hover p {
+    color: rgb(88, 51, 223);
+}
+
+.mt-n7 {
+    margin-top: -48px !important;
+}
+
+
+.fs-3 {
+    font-size: 20px !important;
+}
+
+.fs-4 {
+    font-size: 16px !important;
+}
+
+.fs-6 {
+    font-size: 12px !important;
+}
+
+.h1,
+.h2,
+.h4,
+.h5,
+h1,
+h2,
+h4,
+h5 {
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    margin-top: 0;
+}
+
+.h1,
+h1 {
+    font-size: calc(21.2px + 0.9vw);
+}
+
+@media (min-width:1200px) {
+
+    .h1,
+    h1 {
+        font-size: 32px;
+    }
+}
+
+.h2,
+h2 {
+    font-size: calc(20.4px + 0.3vw);
+}
+
+@media (min-width:1200px) {
+
+    .h2,
+    h2 {
+        font-size: 24px;
+    }
+}
+
+.h4,
+h4 {
+    font-size: 16px;
+}
+
+.h5,
+h5 {
+    font-size: 14px;
+}
+
+.bg-primary {
+    background-color: #754ffe !important;
+}
+
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.sticky-top {
+    top: 0;
+    position: sticky;
+    z-index: 1020;
+}
+
+.date-separator {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .date-line {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+  }
+  
+  .date-line::before, .date-line::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background: #ccc;
+    position: relative;
+    top: 0.5em;
+  }
+  
+  .date-line::before {
+    margin-right: 10px;
+  }
+  
+  .date-line::after {
+    margin-left: 10px;
+  }
+  
+  .date-label {
+    background-color: #f9f9f9;
+    padding: 0 10px;
+    font-size: 12px;
+    color: #666;
+  }
+  

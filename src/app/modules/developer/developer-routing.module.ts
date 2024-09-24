@@ -38,6 +38,7 @@ import { ProfileLayoutComponent } from './Components/profile-layout/profile-layo
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
 import { QuizListComponent } from './Components/quiz-list/quiz-list.component';
 import { MentorAnswerQueryComponent } from '../mentor/Components/mentor-answer-query/mentor-answer-query.component';
+import { CommunicationComponent } from '../../shared/components/communication/communication.component';
 const routes: Routes = [
   {
     path: '',
@@ -86,6 +87,7 @@ const routes: Routes = [
   { path: 'booking', component: BookingComponent },
   { path: 'query', component: QueryComponent },
   { path: 'confirmation', component: BookingConfirmationComponent },
+  { path: 'communication', component: CommunicationComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'notfound' },
 ];
