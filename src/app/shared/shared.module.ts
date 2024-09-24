@@ -31,7 +31,7 @@ import { CustomPaginationComponent } from './components/custom-pagination/custom
     RegisterComponent,
     Forget_passwordComponent,
     FaqComponent,
-    CommunicationComponent
+    CommunicationComponent,
     AdminUIComponent,
     CustomPaginationComponent
   ],
