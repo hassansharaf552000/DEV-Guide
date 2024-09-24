@@ -1,4 +1,4 @@
-
+<!--
 <nav class="navbar navbar-expand-md shadow  mb-4 mb-lg-0 sidenav">
 
   <a class="d-xl-none d-lg-none d-md-none text-inherit fw-bold" href="#">Menu</a>
@@ -81,6 +81,62 @@
           </a>
         </li>
       </ul>
+    </div>
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-md shadow mb-4 mb-lg-0 sidenav">
+  <a class="d-xl-none d-lg-none d-md-none text-inherit fw-bold" href="#">Menu</a>
+
+  <button
+    class="navbar-toggler d-md-none icon-shape icon-sm rounded bg-primary text-light"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#sidenav"
+    aria-controls="sidenav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="fe fe-menu"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="sidenav" style="box-shadow: 50px !important;">
+    <div class="navbar-nav flex-column">
+      <!-- Dynamic Section for Menu Items -->
+      <span class="navbar-header fw-bold">Account Settings</span>
+      <ul class="list-unstyled ms-n2 mb-4">
+        <!-- Loop through menuItems array -->
+        <li class="nav-item" *ngFor="let item of menuItems">
+          <a class="nav-link" [routerLink]="item.path">
+            <i [class]="item.icon"></i> <!-- Bind icon dynamically -->
+            {{ item.label }} <!-- Display label -->
+          </a>
+        </li>
+      </ul>
+
+      <!-- Static Section for Logout -->
+      <span class="navbar-header fw-bold">Other Actions</span>
+
+
+
+      <ul class="list-unstyled ms-n2 mb-0">
+        <li class="nav-item text-center"> <!-- Add 'text-center' to center text -->
+          <a class="nav-link logout-btn" (click)="logout()"> <!-- Add custom class 'logout-btn' -->
+            <i [class]="logoutItem.icon" style="color: white;"></i> <!-- Bind logout icon -->
+            {{ logoutItem.label }} <!-- Bind logout label -->
+          </a>
+        </li>
+
+        <li class="nav-item text-center">
+          <a class="nav-link home-btn" (click)="backhome()">
+            <i [class]="homeItem.icon" style="color: white;"></i> <!-- Bind logout icon -->
+            {{ homeItem.label }} <!-- Bind logout label -->
+          </a>
+        </li>
+      </ul>
+
+
+
     </div>
   </div>
 </nav>

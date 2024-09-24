@@ -1,20 +1,20 @@
-.card {
-    border-radius: 20px; /* Increased border radius for the card */
+/* .card {
+    border-radius: 20px;
     overflow: hidden;
-    padding-top: 75px; /* Adjust padding to account for the shifted image */
+    padding-top: 75px;
 }
 .card-img-top {
     width: 150px;
     height: 150px;
-    border-radius: 50%; /* Make the image a circle */
-    object-fit: cover; /* Ensure the image covers the circle */
-    margin: -75px auto 0; /* Center the image and position it above the card body */
-    border: 5px solid white; /* Optional: add a border around the image */
+    border-radius: 50%;
+    object-fit: cover;
+    margin: -75px auto 0;
+    border: 5px solid white;
     position: relative;
     z-index: 10;
 }
 .card-body {
-    padding-top: 50px; /* Add padding to accommodate the image */
+    padding-top: 50px;
     text-align: center;
 }
 .card-rating {
@@ -25,4 +25,87 @@
 }
 .card-text {
     margin-bottom: 0.5rem;
+} */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700');
+ *{
+   border-radius: 0px !important;
+   border: 0px !important;
+ }
+
+ body{
+   margin: 0px;
+   font-family: "Poppins", sans-serif !important;
+   background: #FED18C !important;
+ }
+
+ .height-vh{
+   height: 100vh;
+ }
+
+#comment-container{
+  padding: 40px !important;
+  background: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
+
+.date{
+  font-size: 12px;
+}
+
+.comment-text{
+  font-size: 14px;
+  line-height: 1.2rem;
+}
+
+.fs-14{
+  font-size: 14px;
+}
+
+.name{
+  color: #FE654F;
+}
+
+.cursor{
+  cursor: pointer;
+}
+
+.cursor:hover{
+  color: blue;
+} */
+
+.review-card {
+  border: 3px solid #415bcf; /* Border color */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow */
+  margin-bottom: 20px;
+}
+
+.profile-picture img {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #415bcf; /* Border around the profile image */
+}
+
+.reviewer-name {
+  font-size: 1.2rem;
+  color: #415bcf; /* Reviewer name color */
+}
+
+.review-date {
+  font-size: 0.875rem;
+  color: #6c757d; /* Date color */
+}
+
+.review-rating .rating-value {
+  font-size: 1.25rem;
+  color: #415bcf; /* Rating value color */
+}
+
+.review-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #000000; /* Review text color */
+}
+
+

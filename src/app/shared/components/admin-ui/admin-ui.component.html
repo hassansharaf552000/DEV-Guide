@@ -1,0 +1,99 @@
+
+  <div >
+    <h2 class="text-center" >Users Management</h2>
+  </div>
+
+  <!-- Model Pagination: Switch between HR, Developer, Monitor tables -->
+  <ul class="tabs">
+    <li *ngFor="let model of models" (click)="switchModel(model)" [ngClass]="{'active': currentModel === model}">
+      {{ model }} Users
+    </li>
+  </ul>
+
+  <!-- HR Users Table -->
+  <div *ngIf="currentModel === 'HR'" class="table-container">
+    <h3>HR Users</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Name</th>
+          <th>Password</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of hrUsers | paginate: { itemsPerPage: 5, currentPage: hrPage }">
+          <td>{{ user.User_Id }}</td>
+          <td>{{ user.Name }}</td>
+          <td>{{ user.Password }}</td>
+          <td>{{ user.Email }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Pagination controls for HR Users -->
+    <app-custom-pagination 
+      [totalPages]="totalPagesForHr"
+      [currentPage]="hrPage"
+      (pageChange)="hrPage = $event">
+    </app-custom-pagination>
+  </div>
+
+  <!-- Developer Users Table -->
+  <div *ngIf="currentModel === 'Developer'" class="table-container">
+    <h3>Developer Users</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Name</th>
+          <th>Password</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of developerUsers | paginate: { itemsPerPage: 5, currentPage: devPage }">
+          <td>{{ user.User_Id }}</td>
+          <td>{{ user.Name }}</td>
+          <td>{{ user.Password }}</td>
+          <td>{{ user.Email }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Pagination controls for Developer Users -->
+    <app-custom-pagination 
+      [totalPages]="totalPagesForDev"
+      [currentPage]="devPage"
+      (pageChange)="devPage = $event">
+    </app-custom-pagination>
+  </div>
+
+  <!-- Monitor Users Table -->
+  <div *ngIf="currentModel === 'Monitor'" class="table-container">
+    <h3>Monitor Users</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Name</th>
+          <th>Password</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of monitorUsers | paginate: { itemsPerPage: 5, currentPage: monitorPage }">
+          <td>{{ user.User_Id }}</td>
+          <td>{{ user.Name }}</td>
+          <td>{{ user.Password }}</td>
+          <td>{{ user.Email }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Pagination controls for Monitor Users -->
+    <app-custom-pagination 
+      [totalPages]="totalPagesForMonitor"
+      [currentPage]="monitorPage"
+      (pageChange)="monitorPage = $event">
+    </app-custom-pagination>
+  </div>
+

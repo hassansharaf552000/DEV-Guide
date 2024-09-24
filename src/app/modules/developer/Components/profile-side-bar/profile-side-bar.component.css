@@ -1,6 +1,6 @@
 
 .sidenav {
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   padding: 15px;
   height: 100vh;
   width: 250px;
@@ -21,32 +21,65 @@
 }
 
 .nav-link {
-  color: #333;
+  color:#415bcf;;
   padding: 10px 20px;
   border-radius: 4px;
   transition: background 0.3s ease;
 }
 
 .nav-link:hover {
-  background-color: #e2e6ea;
+  background-color: #dedede;
   text-decoration: none;
 }
 
 .nav-item.active .nav-link {
-  background-color: #007bff;
+  background-color: #415bcf;;
   color: #fff;
 }
 
 .nav-link i {
   margin-right: 10px;
-  color: #6c757d;
+  color: #415bcf;
   font-size: 1.2rem;
 }
 
 
 .navbar-header {
   font-size: 1.2rem;
-  color: #495057;
+  color:#415bcf;;
   margin-bottom: 10px;
   text-transform: uppercase;
+}
+
+
+/* Custom style for the logout button */
+.logout-btn {
+  color: white; /* White text */
+  background-color: red; /* Red background */
+  padding: 10px; /* Add padding for better spacing */
+  border-radius: 5px; /* Add rounded corners */
+  display: inline-block; /* Keep the button inline */
+  width: 100%; /* Ensure the button spans the full width */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline from the link */
+}
+
+.logout-btn:hover {
+  background-color: darkred; /* Darken the background on hover */
+}
+
+
+.home-btn {
+  color: white; /* White text */
+  background-color: #415bcf; /* Red background */
+  padding: 10px; /* Add padding for better spacing */
+  border-radius: 5px; /* Add rounded corners */
+  display: inline-block; /* Keep the button inline */
+  width: 100%; /* Ensure the button spans the full width */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline from the link */
+}
+
+.home-btn:hover {
+  background-color: rgb(0, 0, 0); /* Darken the background on hover */
 }

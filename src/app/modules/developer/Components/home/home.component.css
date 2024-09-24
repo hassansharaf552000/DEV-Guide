@@ -6,5 +6,86 @@
     background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://mizzle.webestica.com/assets/images/bg/04.jpg');
     height: 75vh;
     font-family: 'Poppins', sans-serif;
-    
+
 }
+
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+.carousel-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px; /* Adjust as per the size of your cards */
+}
+
+.carousel-nav button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.carousel-nav button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-nav button:first-of-type {
+  left: 0;
+}
+
+.carousel-nav button:last-of-type {
+  right: 0;
+}
+
+.carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel-item {
+  min-width: 33.33%; /* Show 3 cards at a time, adjust for responsive */
+  flex-shrink: 0;
+}
+
+.prev-btn, .next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.prev-btn {
+  left: 0;
+}
+
+.next-btn {
+  right: 0;
+}
+
+.image-size {
+  width: 15%;
+  height: auto;
+}
+

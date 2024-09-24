@@ -37,7 +37,8 @@ import { ProfileSideBarComponent } from './Components/profile-side-bar/profile-s
 import { ReviewsCardComponent } from './Components/reviews-card/reviews-card.component';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
 import { ContactAdminComponent } from '../mentor/Components/contact-admin/contact-admin.component';
-
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     StepOneComponent,
@@ -81,6 +82,9 @@ import { ContactAdminComponent } from '../mentor/Components/contact-admin/contac
     ReactiveFormsModule,
     NgSelectModule,
     SharedModule,
+
+
+
   ],
 })
 export class DeveloperModule {}

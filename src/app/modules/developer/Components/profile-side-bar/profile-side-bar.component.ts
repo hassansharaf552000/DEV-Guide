@@ -13,24 +13,28 @@ export class ProfileSideBarComponent {
 //     email: 'johndoe@example.com',
 //     profileCompletion: 50 // Percentage of profile completion
 //   };
-//   menuItems = [
-//     { path: '/profile', label: 'Profile', icon: 'bi bi-person' },
-//     { path: '/developer/profile/updateprofile', label: 'Edit Profile', icon: 'bi bi-pencil-square' },
-//     { path: '/developer/profile/quizzes', label: 'Quizzes', icon: 'bi bi-question' },
-//     { path: '/developer/profile/reply', label: 'Queries', icon: 'bi bi-chat-square-dots' },
-//     { path: '/profile-requests', label: 'Requests', icon: 'bi bi-envelope' },
-//     { path: '/settings', label: 'Settings', icon: 'bi bi-gear' },
-//     { path: '/developer/booking', label: 'Sessions', icon: 'bi bi-calendar-check' },
-//     { path: '/developer/profile/reviews', label: 'Reviews', icon: 'bi bi-star' },
+  menuItems = [
+    { path: '/profile', label: 'Profile', icon: 'bi bi-person' },
+    { path: '/developer/profile/updateprofile', label: 'Edit Profile', icon: 'bi bi-pencil-square' },
+    { path: '/developer/profile/quizzes', label: 'Quizzes', icon: 'bi bi-question' },
+    { path: '/developer/profile/reply', label: 'Queries', icon: 'bi bi-chat-square-dots' },
+    { path: '/profile-requests', label: 'Requests', icon: 'bi bi-envelope' },
+    { path: '/settings', label: 'Settings', icon: 'bi bi-gear' },
+    { path: '/developer/booking', label: 'Sessions', icon: 'bi bi-calendar-check' },
+    { path: '/developer/profile/reviews', label: 'Reviews', icon: 'bi bi-star' },
 
-//     //{ path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' }
-//   ];
-//   logoutItem = { path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' };
-//   constructor(private router: Router) {}
+    //{ path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' }
+  ];
+  logoutItem = { path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' };
+  homeItem = { path: '/home', label: 'Back To Home', icon: 'bi bi-house-door-fill' };
+  constructor(private router: Router) {}
 
-// logout(){
-//   this.router.navigate([this.logoutItem.path]);
-// }
+logout(){
+  this.router.navigate([this.logoutItem.path]);
+}
+backhome(){
+  this.router.navigate([this.homeItem.path]);
+}
 
 
 }

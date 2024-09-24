@@ -4,10 +4,18 @@ nav {
   bottom: 5;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(85, 84, 84, 0.431);
+  background-color: rgb(255, 255, 255);
   height: 10vh;
 }
 
 .nav-link, .active, .navbar-brand {
-  color: white !important;
+  color: #415bcf !important;
+  font-weight: bold;
+}
+.nav-link:hover{
+  text-decoration: underline;
+  color: #415bcf;
+}
+.nav-image{
+  width: 20%;
 }

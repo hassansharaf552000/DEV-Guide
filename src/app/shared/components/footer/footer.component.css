@@ -1,3 +1,9 @@
+footer{
+ background-color: #415bcf;
+}
+.footer-image{
+  width: 60%;
+}
 footer .container {
     max-width: 1200px;
 }
@@ -23,19 +29,19 @@ footer .list-inline-item {
     footer .col-md-4 {
         text-align: center !important;
     }
-    
+
     footer .col-md-8 {
         text-align: center;
     }
-    
+
     footer .col-12.col-md-3 {
         text-align: center;
     }
-    
+
     footer .col-12.col-md-9 {
         justify-content: center !important;
     }
-    
+
     footer .list-inline {
         justify-content: center !important;
     }

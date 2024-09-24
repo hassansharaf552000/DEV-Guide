@@ -12,20 +12,24 @@ import { MentorAnswerQueryComponent } from './Components/mentor-answer-query/men
 import { ScheduleComponent } from './Components/schedule/schedule.component';
 import { SessionDetailsComponent } from './Components/session-details/session-details.component';
 import { Update_profileComponent } from '../../shared/components/update_profile/update_profile.component';
+import { MentorSummryComponent } from './Components/mentor-summry/mentor-summry.component';
+import { MentorRequestComponent } from './Components/mentor-request/mentor-request.component';
 const routes: Routes = [
   {
     path: '',
     component: MentorlayoutComponent,
     children: [
-      {path:'updateprofile',component:Update_profileComponent},
+      { path: 'updateprofile', component: Update_profileComponent },
       { path: 'mentor-payments', component: MentorPaymentsComponent },
       { path: 'booking', component: BookingComponent },
+      { path: 'mentor-summry', component: MentorSummryComponent },
+      { path: 'mentor-request', component: MentorRequestComponent },
       { path: 'schedule', component: ScheduleComponent },
       { path: 'contact_admin', component: ContactAdminComponent },
       { path: 'reviews', component: ReviewsListComponent },
-      {path:'queryanswers',component:MentorAnswerQueryComponent},
-      {path:'session-details',component:SessionDetailsComponent},
-      {path:'home',component:MentorlayoutComponent},
+      { path: 'queryanswers', component: MentorAnswerQueryComponent },
+      { path: 'session-details', component: SessionDetailsComponent },
+      { path: 'home', component: MentorlayoutComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'notfound' },
     ],
@@ -34,9 +38,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-
   declarations: [],
-  imports: [RouterModule.forChild(routes) ],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class MentorRoutingModule {}
