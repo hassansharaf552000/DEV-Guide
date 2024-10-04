@@ -68,7 +68,7 @@ export class HRListComponent {
       }
     ];
     this.updateRange();
-    this.loadMentors();
+    this.loadHRs();
   }
 
   priceMin: number = 100;
@@ -123,8 +123,8 @@ export class HRListComponent {
     }
     this.updateRange();
   }
-  loadMentors(): void {
-    // Load your mentors here and calculate totalPages
+  loadHRs(): void {
+    // Load your HRs here and calculate totalPages
     // Example:
     this.totalPages = Math.ceil(this.Hr.length / 9); // Assuming 9 cards per page
     // Add logic to fetch and slice data for the current page
@@ -132,14 +132,14 @@ export class HRListComponent {
   prevPage(): void {
     if (this.currentPage > 1) {
       this.currentPage--;
-      this.loadMentors(); // Update mentors for the new page
+      this.loadHRs(); // Update HRs for the new page
     }
   }
 
   nextPage(): void {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.loadMentors(); // Update mentors for the new page
+      this.loadHRs(); // Update HRs for the new page
     }
   }
 }

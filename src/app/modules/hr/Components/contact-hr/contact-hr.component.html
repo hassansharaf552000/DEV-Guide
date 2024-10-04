@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="form-wrapper">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <!-- Email Field -->
+        <div class="form-group">
+          <label for="email" class="form-label">Email:</label>
+          <input
+            id="email"
+            formControlName="email"
+            type="email"
+            class="form-control"
+            placeholder="Your Email"
+          />
+          <div *ngIf="contactForm.get('email')?.invalid && (contactForm.get('email')?.dirty || contactForm.get('email')?.touched)">
+            <small class="form-error" *ngIf="contactForm.get('email')?.errors?.['required']">Email is required.</small>
+            <small class="form-error" *ngIf="contactForm.get('email')?.errors?.['email']">Please enter a valid email address.</small>
+          </div>
+        </div>
+  
+        <!-- Subject Field -->
+        <div class="form-group">
+          <label for="subject" class="form-label">Subject:</label>
+          <select id="subject" formControlName="subject" class="form-select">
+            <option value="" disabled>Select a subject</option>
+            <option *ngFor="let s of subjects" [value]="s.value">{{ s.label }}</option>
+          </select>
+          <div *ngIf="contactForm.get('subject')?.invalid && (contactForm.get('subject')?.dirty || contactForm.get('subject')?.touched)">
+            <small class="form-error" *ngIf="contactForm.get('subject')?.errors?.['required']">Subject is required.</small>
+          </div>
+        </div>
+  
+        <!-- Details Field -->
+        <div class="form-group">
+          <label for="details" class="form-label">Details:</label>
+          <textarea
+            id="details"
+            formControlName="details"
+            class="form-control"
+            rows="6"
+            placeholder="Your details here"
+          ></textarea>
+          <div *ngIf="contactForm.get('details')?.invalid && (contactForm.get('details')?.dirty || contactForm.get('details')?.touched)">
+            <small class="form-error" *ngIf="contactForm.get('details')?.errors?.['required']">Details are required.</small>
+            <small class="form-error" *ngIf="contactForm.get('details')?.errors?.['minlength']">Details must be at least 10 characters long.</small>
+          </div>
+        </div>
+        <!-- File Input Field -->
+  <div class="form-group">
+    <label for="file" class="form-label">Attach File:</label>
+    <input
+      id="file"
+      formControlName="file"
+      type="file"
+      class="form-control"
+      (change)="onFileChange($event)"
+    />
+    <div *ngIf="contactForm.get('file')?.invalid && (contactForm.get('file')?.dirty || contactForm.get('file')?.touched)">
+      <small class="form-error" *ngIf="contactForm.get('file')?.errors?.['required']">File is required.</small>
+      <!-- You can add other validation messages here -->
+    </div>
+  </div>
+  
+  
+        <!-- Submit Button -->
+        <div class="text-center">
+          <button type="submit" class="btn-submit" [disabled]="contactForm.invalid">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

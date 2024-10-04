@@ -1,0 +1,34 @@
+.review-card {
+    border: 1px solid #415bcf; /* Border color */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow */
+    margin-bottom: 20px;
+  }
+  
+  .profile-picture img {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #415bcf; /* Border around the profile image */
+  }
+  
+  .reviewer-name {
+    font-size: 1.2rem;
+    color: #415bcf; /* Reviewer name color */
+  }
+  
+  .review-date {
+    font-size: 0.875rem;
+    color: #6c757d; /* Date color */
+  }
+  
+  .review-rating .rating-value {
+    font-size: 1.25rem;
+    color: #415bcf; /* Rating value color */
+  }
+  
+  .review-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #000000; /* Review text color */
+  }
+  
