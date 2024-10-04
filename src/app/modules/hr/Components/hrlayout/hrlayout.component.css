@@ -1,0 +1,88 @@
+/* Top navbar for mobile view */
+.navbar {
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    text-align: center;
+  }
+  
+  .navbar-toggler {
+    border: none;
+  }
+  
+  .navbar-nav {
+    margin-left: auto;
+  }
+  
+  .nav-link {
+    padding: 10px 20px;
+    color: #fffafa;
+    transition: background 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    background-color: #e2e6ea;
+    color: #007bff;
+  }
+  
+  /* Sidebar (only for larger screens) */
+  @media (min-width: 768px) {
+    .sidebar {
+      width: 250px;
+      background-color: #415bcf;
+      color: #ffffff;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding-top: 20px;
+      padding-left: 10px;
+      padding-right: 10px;
+      overflow-y: auto;
+    }
+  }
+  
+  /* Main content adjustments */
+  .main-content {
+    padding: 20px;
+  }
+  
+  @media (min-width: 768px) {
+    .main-content {
+      margin-left: 250px;
+    }
+  }
+  
+  /* Ensure container takes full width and height */
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+    height: 100vh;
+  }
+  
+  .row.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  
+  /* Mobile-specific adjustments */
+  @media (max-width: 768px) {
+    .navbar-toggler {
+      position: relative;
+      top: 1px;
+      left: 10px;
+      z-index: 1000;
+      /* color: white; */
+      background-color: #ffffff;
+    }
+  
+    .navbar-collapse.show {
+      display: block;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 991px) {
+    .sidebar {
+      width: 50px; /* Adjust as needed */
+    }
+  }
+  

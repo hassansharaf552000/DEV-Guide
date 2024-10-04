@@ -1,0 +1,149 @@
+<section class="pt-5 pb-5 ">
+    <div class="container">
+        <!-- User info -->
+        <div class="align-items-center">
+          
+        </div>
+
+        <!-- Content -->
+
+        <div class="mt-0 mt-md-4  ">
+            <div class=" ">
+                <!-- Side navbar -->
+                
+            </div>
+
+
+
+            <div class="">
+                <!-- Card -->
+                <div class="card border-0">
+                    <!-- Card header -->
+
+
+                    <div id="ps-0 mb-5">
+                        <div class="comment pe-5 ps-2 pt-2 ">
+                            <img src="05 (1).jpg" class="avatar-xl rounded-circle border border-4 border-white"
+                                style="height: 70px; size: 6px;" alt="avatar">
+
+                            <div class="comment-content">
+
+                                <p class="mt-2"><strong> Stella Flores </strong>
+                                    Career Development | Career Growth | Leadership | Career Coaching |
+                                    Career Advice </p>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card-header d-lg-flex justify-content-between align-items-center mt-4">
+
+                        <div class="mb-3 mb-lg-0">
+
+                            <h3 class="mb-0">Queries</h3>
+
+                        </div>
+
+                    </div>
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="border-bottom pt-0 pb-0">
+
+
+                            <div class=" ">
+                                <div class=" mb-2 mb-lg-0  mt-2 pb-2 gap-0 ">
+                                    <span class=" ">Asked On : </span>
+                                    <span class="mb-0 ">Oct 1, 2020</span>
+                                </div>
+
+                          
+
+                                <div id="ps-0">
+                                    <div class="answer pe-5 ps-2 pt-0 mb-3  ">
+                                        <div class="comment-content">
+
+                                            <div class="comment-actions">
+
+                                                <div class="mt-3 me-5 ms-2">
+                                                    <p class="ms-2"><strong class="">Query : </strong> Lorem ipsum
+                                                        dolor, sit amet consectetur
+                                                        adipisicing elit. Deserunt at iusto fugiat aliquid nobis sint.
+                                                        out.</p>
+
+                                                    <button class="btn btn-outline-primary btn-sm ms-0  "
+                                                        style="border-radius: 25px;" (click)="downloadFile()">Download
+                                                        File</button>
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class=" mb-0 mb-lg-0  mt-4 pb-2 gap-0 ">
+                                    <span class=" ">Aswered On : </span>
+                                    <span class="mb-0 ">Oct 1, 2020</span>
+                                </div>
+
+                                <div id="ps-0 ">
+                                    <div class="answer pe-5 ps-2 pt-2">
+                                        <div class="comment-content">
+
+                                            <div class="comment-actions">
+
+                                                <div class="mt-0 me-5 ">
+                                                    <p><strong class="ms-3"> Your Answer : </strong> Lorem ipsum dolor,
+                                                        sit amet consectetur
+                                                        adipisicing elit. Deserunt at iusto fugiat aliquid nobis sint.
+                                                    </p>
+                                                    <button class="btn btn-outline-primary btn-sm ms-0  "
+                                                    style="border-radius: 25px;" (click)="downloadFile()">Download
+                                                    File</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div>
+                                    <h5 class="mt-4">Enter your answer*</h5>
+                                    <!-- <p class=" text-muted">You can also edit this once payment is done</p> -->
+                                     <form [formGroup]="form" (ngSubmit)="send()"> 
+                                    <textarea  FormControlName="query" class="form-control mb-3 p-4" id="validationTextarea" placeholder="Answer Query"
+                                        ></textarea>
+
+  
+
+                                    <h5 class=" mt-3">Attach file</h5>
+                                    <p class="text-muted">Accepted file types are pdf, doc. It should not be more than
+                                        50 MB.</p>
+                                    <div class="upload-container border p-3 text-center row">
+                                        <input type="file" id="file-upload" class="upload-input text-center"
+                                            (change)="onFileSelected($event)">
+
+                                        <label for="file-upload" class="upload-label col-12">
+                                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                                            <p class="upload-text">Click here to upload File</p>
+                                        </label>
+                                    </div>
+
+
+                                    <button type="submit"
+                                        class=" mb-3 p-2 px-5 mt-3 btn btn-outline-primary btn-sm ms-0 " >Send</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
