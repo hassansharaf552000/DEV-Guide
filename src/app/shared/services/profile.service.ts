@@ -7,16 +7,20 @@ import { Profile } from '../profile';
 })
 export class ProfileService {
   private profile: Profile = {
-    UserName: '',
-    Email: '',
-    Password: '',
-    PHoneNumber: '',
-    PersonalDetails: '',
-    Skills: '',
-    Experience: '',
-    Portfolio: '',
-    AssignedTasks: '',
-    Rating: '',
+    id: '',                     // Optional string
+    name: '',                   // Required string
+    cv: '',                     // Optional string
+    country: '',                // Optional string
+    degree: '',                 // Optional string
+    fieldOfStudy: '',           // Optional string
+    university: '',             // Optional string
+    countryOfStudy: '',         // Optional string
+    startDate: undefined,       // Optional Date object
+    endDate: undefined,         // Optional Date object
+    yearsOfExperience: undefined, // Optional number
+    level: '',                  // Optional string
+    image: '',                  // Optional string
+    price: undefined,           // Optional number
   };
 
   constructor() {}
