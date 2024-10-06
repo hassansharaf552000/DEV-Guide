@@ -1,26 +1,6 @@
 import { Component} from '@angular/core';
-
-
-interface Chat {
-  id:number;
-   sender_img: string;            
-  sender: string;           
-  bio: string;            
-  lastSeen: string | Date; 
-  state:string;
-  receiver:string;
-  receiver_img: string
-  
-}
-
-interface UserMessages {
-  Chat_id : number,
-  Time: string, 
-  Message:string,
-  Code:string,
-  Timestamp: Date,
-  
-}
+import { UserMessages } from '../../../core/enums/UserMessages';
+import { Chat } from '../../../core/enums/Chat';
 
 @Component({
   selector: 'app-communication',
@@ -28,7 +8,6 @@ interface UserMessages {
   styleUrl: './communication.component.css'
 })
 export class CommunicationComponent {
- 
 searchQuery: string = '';
 // Create an array of objects using the Person interface
 people: Chat[] = [
