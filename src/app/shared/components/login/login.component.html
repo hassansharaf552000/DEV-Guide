@@ -1,26 +1,62 @@
-<div class="container">
-  <div class="login-form">
-    <h2 class="text-center">Login</h2>
-    <form>
-      <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
+
+<div class="login-page">
+  <div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+      <div class="col-md-8 col-lg-6">
+        <div class="card login-card shadow-sm">
+          <div class="card-body">
+            <img src="logo 3_processed.jpg" class="card-image">
+            <h3 class="text-center mb-4" style="font-family: Edu AU VIC WA NT Hand, cursive;font-optical-sizing: auto;font-style: normal;">Log in</h3>
+            <form>
+              <div class="form-group mb-3">
+                <label for="email">UserName or Email</label>
+                <br>
+
+                <input
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  placeholder="Enter your UserName or Email"
+                  required
+                />
+              </div>
+              <div class="form-group mb-3">
+                <label for="password">Password</label>
+                <br>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Enter your password"
+                  required
+                />
+              </div>
+
+              <!-- Remember Me checkbox -->
+              <div class="form-group form-check mb-3">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="rememberMe"
+                />
+                <label class="form-check-label" for="rememberMe">Remember me</label>
+              </div>
+
+              <button type="submit" class="btn-custom mx-auto d-block">Login</button>
+            </form>
+            <div class="text-center mt-3">
+              <a [routerLink]="['/forgetpassword']" class="text-muted">Forgot password?</a>
+            </div>
+
+            <div class="text-center mt-3">
+              <a [routerLink]="['/register']" class="text-muted">Don't have an account? Create one</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Password">
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="rememberMe">
-        <label class="form-check-label" for="rememberMe">Remember me</label>
-      </div>
-      <button type="submit" class="btn btn-primary btn-block" routerLink="/developer/step-one">Submit</button>
-      <p class="text-center mt-3">
-        <a routerLink="/developer/forgetpassword">Forgot your password?</a>
-      </p>
-      <p class="text-center">
-        <a routerLink="/developer/register">Create an account</a>
-      </p>
-    </form>
+    </div>
   </div>
 </div>
