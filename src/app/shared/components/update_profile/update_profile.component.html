@@ -1,76 +1,72 @@
-<div class="container ">
+<div class="container">
   <h2 class="text-center mb-4">Update Profile</h2>
 
   <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
-    <div class="row ">
-      <div class="col-6 p-5 "> <!-- Added pr-4 for padding right -->
+    <div class="row">
+      <div class="col-md-6">
         <div class="form-group">
-          <label for="id">ID</label>
-          <input id="id" type="text" formControlName="id" class="form-control" readonly />
-        </div>
-  
-        <div class="form-group">
-          <label for="name">Name</label>
+          <label for="name">Name:</label>
           <input id="name" type="text" formControlName="name" class="form-control" required />
           <div *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched" class="text-danger">
             Name is required.
           </div>
         </div>
-  
+
         <div class="form-group">
           <label for="cv" class="custom-file-upload">
-            <input id="cv" type="file" formControlName="cv" />
+            <input id="cv" type="file" formControlName="cv" (change)="onFileSelected($event)" />
             Upload CV
           </label>
+          <span *ngIf="selectedFileName">{{ selectedFileName }}</span>
         </div>
-  
+
         <div class="form-group">
-          <label for="country">Country</label>
+          <label for="country">Country:</label>
           <input id="country" type="text" formControlName="country" class="form-control" />
         </div>
-  
+
         <div class="form-group">
-          <label for="degree">Degree</label>
+          <label for="degree">Degree:</label>
           <input id="degree" type="text" formControlName="degree" class="form-control" />
         </div>
-  
+
         <div class="form-group">
-          <label for="fieldOfStudy">Field of Study</label>
+          <label for="fieldOfStudy">Field of Study:</label>
           <input id="fieldOfStudy" type="text" formControlName="fieldOfStudy" class="form-control" />
         </div>
-  
+
         <div class="form-group">
-          <label for="university">University</label>
+          <label for="university">University:</label>
           <input id="university" type="text" formControlName="university" class="form-control" />
         </div>
 
         <div class="form-group">
-          <label for="countryOfStudy">Country of Study</label>
+          <label for="countryOfStudy">Country of Study:</label>
           <input id="countryOfStudy" type="text" formControlName="countryOfStudy" class="form-control" />
         </div>
       </div>
-  
-      <div class="col-6 p-5">
+
+      <div class="col-md-6">
         <div class="form-group">
-          <label for="startDate">Start Date</label>
+          <label for="startDate">Start Date:</label>
           <input id="startDate" type="date" formControlName="startDate" class="form-control" />
         </div>
-  
+
         <div class="form-group">
-          <label for="endDate">End Date</label>
+          <label for="endDate">End Date:</label>
           <input id="endDate" type="date" formControlName="endDate" class="form-control" />
         </div>
-  
+
         <div class="form-group">
-          <label for="yearsOfExperience">Years of Experience</label>
+          <label for="yearsOfExperience">Years of Experience:</label>
           <input id="yearsOfExperience" type="number" formControlName="yearsOfExperience" class="form-control" />
         </div>
-  
+
         <div class="form-group">
-          <label for="level">Level</label>
+          <label for="level">Level:</label>
           <input id="level" type="text" formControlName="level" class="form-control" />
         </div>
-  
+
         <div class="form-group">
           <label for="image" class="custom-file-upload">
             <input id="image" type="file" (change)="onImageChange($event)" />
@@ -78,64 +74,38 @@
           </label>
           <img *ngIf="selectedImage" [src]="selectedImage" alt="Profile Image" class="mt-2 preview-image" />
         </div>
-  
+
         <div class="form-group">
-          <label for="price">Price</label>
+          <label for="price">Price:</label>
           <input id="price" type="number" formControlName="price" class="form-control" />
         </div>
+
         <button type="submit" class="btn btn-primary" [disabled]="profileForm.invalid">Update Profile</button>
       </div>
     </div>
   </form>
 
+  <h2 class="text-center mb-4 mt-5">Change Password</h2>
 
+  <h2 class="text-center mb-4 mt-5">Change Password</h2>
+
+  <form [formGroup]="changepasswordform" (ngSubmit)="ChangePassword()">
+    <div class="form-group">
+      <label for="currentPassword">Current Password:</label>
+      <input type="password" id="currentPassword" formControlName="CurrentPassword" class="form-control" required />
+    </div>
   
-  <div class="row">
-    <div class="col-6 p-5">
-
-  <h3 class="mt-4">Change Password</h3>
+    <div class="form-group">
+      <label for="newPassword">New Password:</label>
+      <input type="password" id="newPassword" formControlName="Newpassword" class="form-control" required />
+    </div>
   
-  <form [formGroup]="passwordForm" (ngSubmit)="onUpdatePassword()">
     <div class="form-group">
-      <label for="currentPassword">Current Password</label>
-      <input id="currentPassword" type="password" formControlName="currentPassword" class="form-control" />
+      <label for="confirmPassword">Confirm New Password:</label>
+      <input type="password" id="confirmPassword" formControlName="ConfirmPassword" class="form-control" required />
     </div>
-
-    <div class="form-group">
-      <label for="newPassword">New Password</label>
-      <input id="newPassword" type="password" formControlName="newPassword" class="form-control" />
-    </div>
-
-    <div class="form-group">
-      <label for="confirmPassword">Confirm New Password</label>
-      <input id="confirmPassword" type="password" formControlName="confirmPassword" class="form-control" />
-      <div *ngIf="passwordForm.errors?.['mismatch']" class="text-danger">
-        Passwords do not match.
-      </div>
-    </div>
-    
-
-    <button type="submit" class="btn btn-success" [disabled]="passwordForm.invalid">Change Password</button>
-    <div *ngIf="message" class="mt-2 text-success">{{ message }}</div>
+  
+    <button type="submit" class="btn btn-secondary">Change Password</button>
   </form>
-</div>
-<div class="col-6 p-5">
-  <h3 class="mt-4">Update Email</h3>
-  <form (ngSubmit)="onUpdateEmail()">
-    <div class="form-group">
-      <label for="email">Email Address</label>
-      <input id="email" type="email" class="form-control" />
-    </div>
-    <button type="submit" class="btn btn-warning">Update Email</button>
-  </form>
-</div>
-</div>
-
-  <h3 class="mt-4">Connect to Social Media</h3>
-  <button class="btn btn-outline-primary m-3" (click)="onConnectGoogle()">Connect to Google</button>
-  <button class="btn btn-outline-info m-3" (click)="onConnectLinkedIn()">Connect to LinkedIn</button>
-  <button class="btn btn-outline-danger m-3" (click)="onConnectFacebook()">Connect to Facebook</button>
-
   
-
 </div>

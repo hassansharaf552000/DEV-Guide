@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ProfileService } from '../../services/profile.service'; // Import the ProfileService
 import { Profile } from '../../profile';
+import { ChangePassword } from '../../change-password';
+import { AuthService } from '../../services/Auth/auth.service';
 //import { Profile } from '../profile'; // Import the Profile interface
 
 @Component({
@@ -12,15 +14,17 @@ import { Profile } from '../../profile';
 })
 export class Update_profileComponent implements OnInit {
   profileForm: FormGroup;
+  changepasswordform: FormGroup;
   selectedImage: string | ArrayBuffer | null = '01.jpg'; // Default image
-  passwordForm: FormGroup;
+  
   message: string | null = null;
   newPasswordVisible: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private profileService: ProfileService // Inject the ProfileService
+    private profileService: ProfileService ,
+    private authService: AuthService
   ) {
     this.profileForm = this.fb.group({
       id: [''], // Add id field for the profile
@@ -38,51 +42,49 @@ export class Update_profileComponent implements OnInit {
       image: [''],
       price: [undefined],
     });
+    this.changepasswordform = this.fb.group({
+      CurrentPassword: ['', Validators.required],
+      Newpassword: ['', Validators.required],
+      ConfirmPassword: ['', Validators.required]
+    });
+  
+    
 
-    this.passwordForm = this.fb.group(
-      {
-        currentPassword: ['', Validators.required],
-        newPassword: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', Validators.required],
-      },
-      { validator: [this.passwordMatchValidator] }
-    );
   }
+
 
   ngOnInit(): void {
     // Get the existing profile when the component initializes
-    this.profileService.getProfile().subscribe((profile) => {
-      this.profileForm.patchValue(profile); // Fill the form with the existing profile data
-    });
+    
   }
 
-  onUpdatePassword(): void {
-    if (this.passwordForm.valid) {
-      const { currentPassword, newPassword } = this.passwordForm.value;
-      // Simulate password update (replace with actual logic)
-      this.message = 'Password changed successfully!';
-      this.passwordForm.reset();
-    } else {
-      this.message = 'Please fill in all fields correctly.';
+  ChangePassword(): void {
+    if (this.changepasswordform.invalid) {
+      alert('Form is invalid!');
+      return;
     }
-  }
-
-  toggleNewPassword(): void {
-    this.newPasswordVisible = !this.newPasswordVisible;
-    const newPasswordField = document.querySelector(
-      'input[formControlName="newPassword"]'
-    ) as HTMLInputElement;
-    newPasswordField.type = this.newPasswordVisible ? 'text' : 'password';
-  }
-
-  private passwordMatchValidator(group: FormGroup): void {
-    const { newPassword, confirmPassword } = group.controls;
-    if (newPassword.value !== confirmPassword.value) {
-      confirmPassword.setErrors({ mismatch: true });
-    } else {
-      confirmPassword.setErrors(null);
+  
+    const changepasswordValues = this.changepasswordform.value;
+  
+    // Ensure passwords match
+    if (changepasswordValues.Newpassword !== changepasswordValues.ConfirmPassword) {
+      alert('Passwords do not match!');
+      return;
     }
+  
+    // Call the AuthService to change the password
+    this.profileService.ChangePassword(changepasswordValues).subscribe(
+      response => {
+        alert('Password changed successfully!');
+      },
+      error => {
+        alert('Error changing password.');
+      }
+    );
   }
+  
+
+  
 
   onImageChange(event: Event): void {
     console.log('onImageChange triggered', event);
@@ -115,9 +117,10 @@ export class Update_profileComponent implements OnInit {
   onSubmit(): void {
     if (this.profileForm.valid) {
       const updatedProfile: Profile = this.profileForm.value; // Get the updated profile data
-      this.profileService.updateProfile(updatedProfile).subscribe((profile) => {
+      this.profileService.UpdateProfile(updatedProfile).subscribe((profile) => {
         console.log('Profile updated:', profile);
       });
+
     } else {
       console.log('Form is invalid');
     }
@@ -140,6 +143,14 @@ export class Update_profileComponent implements OnInit {
 
   onUpdateEmail() {
     console.log('Email update submitted');
-    // Add your email update logic here
+    
+  }
+  selectedFileName: string | null = null;
+
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.selectedFileName = file.name;
+    }
   }
 }
