@@ -10,7 +10,7 @@
           <div class="card-body">
             <img src="logo 3_processed.jpg" class="card-image">
             <h3 class="text-center mb-4" style="font-family: Edu AU VIC WA NT Hand, cursive;font-optical-sizing: auto;font-style: normal;">Log in</h3>
-            <form>
+            <form (ngSubmit)="login()">
               <div class="form-group mb-3">
                 <label for="email">UserName or Email</label>
                 <br>
@@ -19,6 +19,8 @@
                   type="text"
                   class="form-control"
                   id="email"
+                  [(ngModel)]="loginMethod"
+                  [ngModelOptions]="{standalone: true}"
                   placeholder="Enter your UserName or Email"
                   required
                 />
@@ -28,17 +30,26 @@
                 <br>
                 <input
                   type="password"
+                  [(ngModel)]="password"
+                  [ngModelOptions]="{standalone: true}"
                   class="form-control"
                   id="password"
                   placeholder="Enter your password"
                   required
                 />
+
+                <button type="button" class="btn btn-link position-absolute end-0 top-0 mt-2 me-3" (click)="togglePasswordVisibility()">
+                  <i class="bi" [ngClass]="passwordVisible ? 'bi-eye-slash' : 'bi-eye'"></i>
+                </button>
               </div>
+
 
               <!-- Remember Me checkbox -->
               <div class="form-group form-check mb-3">
                 <input
                   type="checkbox"
+                  [(ngModel)]="rememberMe"
+                  [ngModelOptions]="{standalone: true}"
                   class="form-check-input"
                   id="rememberMe"
                 />
@@ -47,6 +58,8 @@
 
               <button type="submit" class="btn-custom mx-auto d-block">Login</button>
             </form>
+            <p *ngIf="successMessage" class="text-success text-center mt-3">{{ successMessage }}</p>
+            <p *ngIf="errorMessage" class="text-danger text-center mt-3">{{ errorMessage }}</p>
             <div class="text-center mt-3">
               <a [routerLink]="['/forgetpassword']" class="text-muted">Forgot password?</a>
             </div>
