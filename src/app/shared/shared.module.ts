@@ -13,11 +13,11 @@ import { Forget_passwordComponent } from './components/forget_password/forget_pa
 import { RouterModule } from '@angular/router';
 import { FaqComponent } from './components/faq/faq.component';
 import { CommunicationComponent } from './components/communication/communication.component';
-
 import { AdminUIComponent } from './components/admin-ui/admin-ui.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CustomPaginationComponent } from './components/custom-pagination/custom-pagination.component';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { authInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
 
 
 @NgModule({
@@ -39,6 +39,12 @@ import { CustomPaginationComponent } from './components/custom-pagination/custom
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule,NgxPaginationModule],
 
   exports: [NavbarComponent, FooterComponent],
-  providers: [provideClientHydration()],
+  providers: [provideClientHydration(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: authInterceptorInterceptor,
+      multi: true  // This ensures that multiple interceptors can be chained
+    }
+  ],
 })
 export class SharedModule {}
