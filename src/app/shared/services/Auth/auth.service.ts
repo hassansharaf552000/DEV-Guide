@@ -1,40 +1,41 @@
 
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private loginapi = 'http://localhost:22316/api/Account/Login';
+  private loginapi = 'http://localhost:5164/api/Account/Login';
+  private RegisterURL = 'http://localhost:5164/api/Account/Register';
+  isloggedUserSubject: BehaviorSubject<boolean>
 
+  constructor(private http: HttpClient) {this.isloggedUserSubject = new BehaviorSubject<boolean>(this.isloggedUser())}
 
-  constructor(private http: HttpClient) {}
+  // login(LoginMethod: string, password: string): Observable<any> {
+  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  //   const body = JSON.stringify({ LoginMethod, password });
 
-  login(LoginMethod: string, password: string): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const body = JSON.stringify({ LoginMethod, password });
-
-    return this.http.post<any>(this.loginapi, body, { headers }).pipe(
-      map(response => {
-        // Check if the response indicates a successful login
-        if (response.statusCode == 200 && response.token) {
-          // Store the token
-          localStorage.setItem('authToken', response.token);
-          return response;
-        } else {
-          // Handle invalid login response, assuming the API returns a message
-          throw new Error(response.message || 'Invalid login credentials');
-        }
-      }),
-      catchError(this.handleError) // Handle errors like wrong login details
-    );
+  //   return this.http.post<any>(this.loginapi, body, { headers }).pipe(
+  //     map(response => {
+  //       // Check if the response indicates a successful login
+  //       if (response.statusCode == 200 && response.token) {
+  //         // Store the token
+  //         localStorage.setItem('authToken', response.token);
+  //         return response;
+  //       } else {
+  //         // Handle invalid login response, assuming the API returns a message
+  //         throw new Error(response.message || 'Invalid login credentials');
+  //       }
+  //     }),
+  //     catchError(this.handleError) // Handle errors like wrong login details
+  //   );
+  // }
+  login(obj: any) {
+    return this.http.post(this.loginapi, obj)
   }
 
   logout(): void {
@@ -63,14 +64,24 @@ export class AuthService {
 
     return throwError(errorMessage);
   }
-}
-
-  private RegisterURL = 'http://localhost:5164/api/Account/Register';
-
-  constructor(private http: HttpClient) { }
-
   register(user: any) {
     return this.http.post(this.RegisterURL, user);
-  }
+}
+isloggedUser(): boolean {
+  return (localStorage.getItem('bxmnczxhcv') == null) ? false : true
+}
+getToken():string{
+  return localStorage.getItem('bxmnczxhcv') ?? ""
+}
+
+userlogin(token: string) {
+  localStorage.setItem('bxmnczxhcv', token)
+  this.isloggedUserSubject.next(true)
+}
+userlogout() {
+  localStorage.removeItem('bxmnczxhcv')
+  this.isloggedUserSubject.next(false)
+}
+
 }
 
