@@ -53,6 +53,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from '../../../../shared/services/Account/account.service';
+import { SkillService } from '../../../../shared/services/Skill/skill.service';
 
 @Component({
   selector: 'app-step-four',
@@ -61,20 +62,25 @@ import { AccountService } from '../../../../shared/services/Account/account.serv
 })
 export class StepFourComponent implements OnInit {
   stepFourForm!: FormGroup;
-  skills = [
-    { id: 'angular', name: 'Angular' },
-    { id: 'react', name: 'React' },
-    { id: 'vue', name: 'Vue' },
-    { id: 'node', name: 'Node.js' },
-    // Add more skills as needed
-  ];
+  Skills :any[] = []
+  // skills = [
+  //   { id: 'angular', name: 'Angular' },
+  //   { id: 'react', name: 'React' },
+  //   { id: 'vue', name: 'Vue' },
+  //   { id: 'node', name: 'Node.js' },
+  //   // Add more skills as needed
+  // ];
 
-  constructor(private fb: FormBuilder, private router: Router,private Account:AccountService) {}
+  constructor(private fb: FormBuilder, private router: Router,private Account:AccountService,private SkillService:SkillService) {
+    this.SkillService.getAll().subscribe((res:any)=>{
+      this.Skills = res
+    })
+  }
 
   ngOnInit(): void {
     this.stepFourForm = this.fb.group({
       experience: ['', Validators.required],
-      role: ['', Validators.required],
+      // role: ['', Validators.required],
       skills: [[], Validators.required],
     });
   }
