@@ -17,7 +17,21 @@ export class LoginComponent implements OnInit {
   passwordVisible: boolean = false;
   form:FormGroup;
    returnUrl='/home'
-  constructor(private authService: AuthService, private router: Router,private builder:FormBuilder) {  // Inject Router
+  constructor(private authService: AuthService, private router: Router,private builder:FormBuilder) { 
+    this.form = this.builder.group({
+      LoginMethod: ["", [Validators.required]],
+      Password: ["", [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/)]],})
+
+
+
+    const storedLogin = localStorage.getItem('login');
+    const storedPassword = localStorage.getItem('password');
+    if (storedLogin && storedPassword) {
+      this.loginMethod = storedLogin;
+      this.password = storedPassword;
+      this.rememberMe = true;  
+    }
+   }
 
 
   private isBrowser(): boolean {
@@ -32,27 +46,15 @@ export class LoginComponent implements OnInit {
       }
     }
   }
-
+  
   
     // Check if credentials are stored in localStorage
-    this.form = this.builder.group({
-      LoginMethod: ["", [Validators.required]],
-      Password: ["", [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/)]],})
-
-
-
-    const storedLogin = localStorage.getItem('login');
-    const storedPassword = localStorage.getItem('password');
-    if (storedLogin && storedPassword) {
-      this.loginMethod = storedLogin;
-      this.password = storedPassword;
-      this.rememberMe = true;  
-    }
-  }
-
+    
+  
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;  // Toggle the visibility
   }
+
 
 //   login() {
 //     this.authService.login(this.loginMethod, this.password).subscribe({
