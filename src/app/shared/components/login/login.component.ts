@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';  // Import the Router for navigation
 import { AuthService } from '../../services/Auth/auth.service';
 
@@ -7,13 +7,26 @@ import { AuthService } from '../../services/Auth/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],  // Corrected 'styleUrl' to 'styleUrls'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginMethod: string = '';  // Holds either the username or email
   password: string = '';
   rememberMe: boolean = false;  // Flag for Remember Me
   errorMessage: string = '';  // Error message for login failures
   successMessage: string = '';  // Success message for login successes
   passwordVisible: boolean = false;
+
+  private isBrowser(): boolean {
+    return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+  }
+  ngOnInit(): void {
+    // Check if localStorage is available in the current environment
+    if (this.isBrowser()) {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        // Handle logged-in state, e.g., redirect or load user data
+      }
+    }
+  }
 
   constructor(private authService: AuthService, private router: Router) {  // Inject Router
     // Check if credentials are stored in localStorage
