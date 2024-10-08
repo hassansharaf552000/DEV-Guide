@@ -10,54 +10,78 @@
               <input id="university" type="text" class="form-control" formControlName="university"
                 placeholder="University / School">
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="country">Country</label>
                 <select id="country" class="form-control" formControlName="country">
                   <option value="">Select your country</option>
                   <option value="Afghanistan">Afghanistan</option>
-                  <!-- Add more countries as needed -->
+           
                 </select>
-              </div>
+              </div> -->
               <div class="form-group">
+                <label for="country">Country of Residence</label>
+                <select id="country" class="form-control" formControlName="country">
+                  <option value="">Select your country</option>
+                  <option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</option>
+                </select>
+                <div *ngIf="stepThreeForm.get('country')?.invalid && stepThreeForm.get('country')?.touched" class="text-danger">
+                  Country of residence is required
+                </div>
+              </div>  
+              <!-- <div class="form-group">
                 <label for="degree">Degree</label>
                 <select id="degree" class="form-control" formControlName="degree">
                   <option value="">Select your degree</option>
                   <option value="Doctorate">Doctorate (or equivalent)</option>
-                  <!-- Add more degrees as needed -->
+                
+                </select>
+              </div> -->
+              <div class="form-group">
+                <label for="degree">Degree</label>
+                <select id="degree" class="form-control" formControlName="degree">
+                  <option value="">Select your degree</option>
+                  <option value="High School Diploma">High School Diploma</option>
+                  <option value="Associate Degree">Associate Degree</option>
+                  <option value="Bachelor's Degree">Bachelor's Degree</option>
+                  <option value="Master's Degree">Master's Degree</option>
+                  <option value="Doctorate">Doctorate (or equivalent)</option>
+                  <option value="Professional Degree">Professional Degree (e.g., JD, MD)</option>
+                  <option value="Postdoctoral Studies">Postdoctoral Studies</option>
                 </select>
               </div>
+              
               <div class="form-group">
                 <label for="fieldOfStudy">Field of study</label>
                 <input id="fieldOfStudy" type="text" class="form-control" formControlName="fieldOfStudy"
                   placeholder="Field of study">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="startDate">Start Date</label>
                   <div class="d-flex">
                     <select class="form-control mr-2" formControlName="startYear">
                       <option value="">Year</option>
                       <option value="2016">2016</option>
-                      <!-- Add more years as needed -->
+                    
                     </select>
                     <select class="form-control" formControlName="startMonth">
                       <option value="">Month</option>
                       <option value="January">January</option>
-                      <!-- Add more months as needed -->
+                      
                     </select>
                   </div>
-                </div>
-                <div class="form-group">
+                </div> -->
+                <!-- <div class="form-group">
                   <label for="endDate">End Date</label>
                   <div class="d-flex">
                     <select class="form-control mr-2" formControlName="endYear">
                       <option value="">Year</option>
                       <option value="2020">2020</option>
-                      <!-- Add more years as needed -->
+                    
                     </select>
                     <select class="form-control" formControlName="endMonth">
                       <option value="">Month</option>
                       <option value="January">January</option>
-                      <!-- Add more months as needed -->
+                    
                     </select>
                   </div>
                   @if (stepThreeForm.get('endMonth')?.invalid && stepThreeForm.get('endMonth')?.touched) {
@@ -66,14 +90,24 @@
                       Please provide a valid month
                     </div>
                   }
+                </div> -->
+                <div class="form-group">
+                  <label for="startDate">Start Date</label>
+                  <input id="startDate" type="date" class="form-control" formControlName="startDate">
                 </div>
+                
+                <div class="form-group">
+                  <label for="endDate">End Date</label>
+                  <input id="endDate" type="date" class="form-control" formControlName="endDate">
+                </div>
+                
                 <div class="form-group form-check">
                   <input type="checkbox" class="form-check-input" id="currentlyStudying"
                     formControlName="currentlyStudying">
                     <label class="form-check-label" for="currentlyStudying">Currently studying</label>
                   </div>
                   <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
-                  <button type="submit" class="btn btn-primary mt-3 ms-3" (click)="onNext()">Next</button>
+                  <button type="submit" class="btn btn-primary mt-3 ms-3" (click)="onNext()" [disabled]="stepThreeForm.invalid">Next</button>
                 </form>
               </div>
             </div>

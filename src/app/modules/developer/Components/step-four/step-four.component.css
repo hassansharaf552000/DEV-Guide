@@ -54,3 +54,14 @@
     transform: translateY(0);
   }
 }
+
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: green !important;
+}
