@@ -24,7 +24,7 @@
             </div> -->
             <div class="form-group">
               <label for="skills">Skills</label>
-              <ng-select [items]="skills" bindLabel="name" bindValue="id" formControlName="skills" multiple
+              <ng-select [items]="Skills" bindLabel="name" bindValue="id" formControlName="skills" multiple
                 class="custom-ng-select form-control " style="background-color: white;">
               </ng-select>
               @if (stepFourForm.get('skills')?.invalid && stepFourForm.get('skills')?.touched) {
@@ -34,8 +34,8 @@
                 </div>
               }
             </div>
-            <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()" [disabled]="stepFourForm.invalid">Back</button>
-            <button type="submit" class="btn btn-primary mt-3 ms-3">Next</button>
+            <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()" >Back</button>
+            <button type="submit" class="btn btn-primary mt-3 ms-3"(click)="onNext()" [disabled]="stepFourForm.invalid">Next</button>
           </form>
         </div>
       </div>
