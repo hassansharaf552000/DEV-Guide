@@ -4,115 +4,11 @@
       <div class="card custom-card">
         <div class="card-body">
           <h3 class="card-title">Education</h3>
-          <form [formGroup]="stepThreeForm" (ngSubmit)="onNext()">
-
-    
-            <div class="form-group">
-              <label for="university">University / School</label>
-              <input id="university" type="text" class="form-control" formControlName="university"
-                placeholder="University / School ex.Assuit University">
-              <div *ngIf="stepThreeForm.get('university')?.invalid && stepThreeForm.get('university')?.touched"
-                class="text-danger">
-                University is required
-              </div>
-            </div>
-
-   
-            <div class="form-group">
-              <label for="faculty">Faculty</label>
-              <input id="faculty" type="text" class="form-control" formControlName="faculty"
-                placeholder="Computer Science">
-              <div *ngIf="stepThreeForm.get('faculty')?.invalid && stepThreeForm.get('faculty')?.touched"
-                class="text-danger">
-                Faculty is required
-              </div>
-            </div>
-
-     
-            <div class="form-group">
-              <label for="fieldOfStudy">Field of study</label>
-              <input id="fieldOfStudy" type="text" class="form-control" formControlName="fieldOfStudy" placeholder="CS">
-              <div *ngIf="stepThreeForm.get('fieldOfStudy')?.invalid && stepThreeForm.get('fieldOfStudy')?.touched"
-                class="text-danger">
-                Field of study is required
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="country">Country of Study</label>
-              <select id="country" class="form-control" formControlName="country">
-                <option value="">Select your country</option>
-                <option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</option>
-              </select>
-              <div *ngIf="stepThreeForm.get('country')?.invalid && stepThreeForm.get('country')?.touched"
-                class="text-danger">
-                Country of residence is required
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="degree">Degree</label>
-              <select id="degree" class="form-control" formControlName="degree">
-                <option value="">Select your degree</option>
-                <option value="High School Diploma">High School Diploma</option>
-                <option value="Associate Degree">Associate Degree</option>
-                <option value="Bachelor's Degree">Bachelor's Degree</option>
-                <option value="Master's Degree">Master's Degree</option>
-                <option value="Doctorate">Doctorate (or equivalent)</option>
-                <option value="Professional Degree">Professional Degree (e.g., JD, MD)</option>
-                <option value="Postdoctoral Studies">Postdoctoral Studies</option>
-              </select>
-              <div *ngIf="stepThreeForm.get('degree')?.invalid && stepThreeForm.get('degree')?.touched"
-                class="text-danger">
-                Degree is required
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="startDate">Start Date</label>
-              <input id="startDate" type="date" class="form-control" formControlName="startDate">
-              <div *ngIf="stepThreeForm.get('startDate')?.invalid && stepThreeForm.get('startDate')?.touched"
-                class="text-danger">
-                Start date is required
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="endDate">End Date</label>
-              <input id="endDate" type="date" class="form-control" formControlName="endDate">
-              <div *ngIf="stepThreeForm.get('endDate')?.invalid && stepThreeForm.get('endDate')?.touched"
-                class="text-danger">
-                End date is required
-              </div>
-            </div>
-
-            <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="currentlyStudying"
-                formControlName="currentlyStudying">
-              <label class="form-check-label" for="currentlyStudying">Currently Studying</label>
-            </div>
-
-            <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
-            <button type="submit" class="btn btn-primary mt-3 ms-3" [disabled]="stepThreeForm.invalid">Next</button>
-
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<div class="container mt-3">
-  <div class="row justify-content-center">
-    <div class="col-md-12">
-      <div class="card custom-card">
-        <div class="card-body">
-          <h3 class="card-title">Education</h3>
           <form [formGroup]="formArray" (ngSubmit)="onNext()">
             <div formArrayName="educations">
               <div *ngFor="let education of educations.controls; let i = index" [formGroupName]="i" class="mb-3">
-                
-                <!-- University -->
+
+
                 <div class="form-group">
                   <label for="university-{{i}}">University / School</label>
                   <input id="university-{{i}}" type="text" class="form-control" formControlName="university" placeholder="University / School ex.Assuit University">
@@ -121,7 +17,6 @@
                   </div>
                 </div>
 
-                <!-- Faculty -->
                 <div class="form-group">
                   <label for="faculty-{{i}}">Faculty</label>
                   <input id="faculty-{{i}}" type="text" class="form-control" formControlName="faculty" placeholder="Computer Science">
@@ -130,7 +25,7 @@
                   </div>
                 </div>
 
-                <!-- Field of Study -->
+
                 <div class="form-group">
                   <label for="fieldOfStudy-{{i}}">Field of study</label>
                   <input id="fieldOfStudy-{{i}}" type="text" class="form-control" formControlName="fieldOfStudy" placeholder="CS">
@@ -139,7 +34,7 @@
                   </div>
                 </div>
 
-                <!-- Country -->
+
                 <div class="form-group">
                   <label for="country-{{i}}">Country of Study</label>
                   <select id="country-{{i}}" class="form-control" formControlName="country">
@@ -151,7 +46,7 @@
                   </div>
                 </div>
 
-                <!-- Degree -->
+
                 <div class="form-group">
                   <label for="degree-{{i}}">Degree</label>
                   <select id="degree-{{i}}" class="form-control" formControlName="degree">
@@ -169,7 +64,7 @@
                   </div>
                 </div>
 
-                <!-- Start Date -->
+
                 <div class="form-group">
                   <label for="startDate-{{i}}">Start Date</label>
                   <input id="startDate-{{i}}" type="date" class="form-control" formControlName="startDate">
@@ -178,7 +73,6 @@
                   </div>
                 </div>
 
-                <!-- End Date -->
                 <div class="form-group">
                   <label for="endDate-{{i}}">End Date</label>
                   <input id="endDate-{{i}}" type="date" class="form-control" formControlName="endDate">
@@ -187,7 +81,7 @@
                   </div>
                 </div>
 
-                <!-- Currently Studying Checkbox -->
+
                 <div class="form-group form-check">
                   <input type="checkbox" class="form-check-input" id="currentlyStudying-{{i}}" formControlName="currentlyStudying">
                   <label class="form-check-label" for="currentlyStudying-{{i}}">Currently Studying</label>
@@ -205,6 +99,120 @@
           </form>
         </div>
       </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <div class="card custom-card">
+        <div class="card-body">
+          <h3 class="card-title">Education</h3>
+          <form >
+            <div>
+              <div *ngFor="let education of educationslist; let i = index" class="mb-3">
+                <button type="button" (click)="removeEducation(i)" class="btn btn-danger">X</button>
+                <!-- University -->
+                <div class="form-group">
+                  <label for="university-{{i}}">University / School</label>
+                  <input name="university-{{i}}" type="text" class="form-control"
+                    [(ngModel)]="educationslist[i].University" placeholder="University / School ex.Assuit University">
+                  <div *ngIf="educationslist[i].University==''" class="text-danger">
+                    University is required
+                  </div>
+                </div>
+
+                <!-- Faculty -->
+                <div class="form-group">
+                  <label for="faculty-{{i}}">Faculty</label>
+                  <input name="faculty-{{i}}" type="text" class="form-control" [(ngModel)]="educationslist[i].Faculty"
+                    placeholder="Computer Science">
+                  <div *ngIf="educationslist[i].University==''" class="text-danger">
+                    Faculty is required
+                  </div>
+                </div>
+
+                <!-- Field of Study -->
+                <div class="form-group">
+                  <label for="fieldOfStudy-{{i}}">Field of study</label>
+                  <input name="fieldOfStudy-{{i}}" type="text" class="form-control"
+                    [(ngModel)]="educationslist[i].FieldOfStudy" placeholder="CS">
+                  <div *ngIf="educationslist[i].FieldOfStudy==''" class="text-danger">
+                    Field of study is required
+                  </div>
+                </div>
+
+                <!-- Country -->
+                <div class="form-group">
+                  <label for="country-{{i}}">Country of Study</label>
+                  <select name="country-{{i}}" class="form-control" [(ngModel)]="educationslist[i].CountryOfStudy">
+                    <option value="">Select your country</option>
+                    <option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</option>
+                  </select>
+                  <div *ngIf="educationslist[i].CountryOfStudy==''" class="text-danger">
+                    Country of residence is required
+                  </div>
+                </div>
+
+                <!-- Degree -->
+                <div class="form-group">
+                  <label for="degree-{{i}}">Degree</label>
+                  <select name="degree-{{i}}" class="form-control" [(ngModel)]="educationslist[i].Degree">
+                    <option value="">Select your degree</option>
+                    <option value="High School Diploma">High School Diploma</option>
+                    <option value="Associate Degree">Associate Degree</option>
+                    <option value="Bachelor's Degree">Bachelor's Degree</option>
+                    <option value="Master's Degree">Master's Degree</option>
+                    <option value="Doctorate">Doctorate (or equivalent)</option>
+                    <option value="Professional Degree">Professional Degree (e.g., JD, MD)</option>
+                    <option value="Postdoctoral Studies">Postdoctoral Studies</option>
+                  </select>
+                  <div *ngIf="educationslist[i].Degree==''" class="text-danger">
+                    Degree is required
+                  </div>
+                </div>
+
+                <!-- Start Date -->
+                <div class="form-group">
+                  <label for="startDate-{{i}}">Start Date</label>
+                  <input name="startDate-{{i}}" type="date" class="form-control"
+                    [(ngModel)]="educationslist[i].StartDate">
+                  <div *ngIf="educationslist[i].StartDate.toString()==''" class="text-danger">
+                    Start date is required
+                  </div>
+                </div>
+
+                <!-- End Date -->
+                <div class="form-group" *ngIf="!educationslist[i].TillNow">
+                  <label for="endDate-{{i}}">End Date</label>
+                  <input name="endDate-{{i}}" type="date" class="form-control" [(ngModel)]="educationslist[i].EndDate">
+                  <div *ngIf="educationslist[i].EndDate?.toString()==''" class="text-danger">
+                    End date is required
+                  </div>
+                </div>
+
+                <!-- Currently Studying Checkbox -->
+                <div class="form-group form-check">
+                  <input type="checkbox" class="form-check-input" name="currentlyStudying-{{i}}"
+                    [(ngModel)]="educationslist[i].TillNow">
+                  <label class="form-check-label" for="currentlyStudying-{{i}}">Currently Studying</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row justify-content-between">
+              <button type="button" class="btn btn-primary mt-3 me-3  col-6" (click)="addEducation()"
+                title="Click to add another education entry">+</button>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+      <button type="button" class="btn btn-secondary mt-3 ms-3  col-2"
+      (click)="goToPreviousStep()">Back</button>
+    <button type="button" class="btn btn-primary mt-3 ms-3 col-2" [disabled]="checklist()!=undefined" (click)="onNext()">Next</button>
     </div>
   </div>
 </div>

@@ -37,7 +37,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule,NgxPaginationModule],
 
-  exports: [NavbarComponent, FooterComponent],
- 
+  exports: [NavbarComponent, FooterComponent, SpinnerComponent],
+
 })
 export class SharedModule {}

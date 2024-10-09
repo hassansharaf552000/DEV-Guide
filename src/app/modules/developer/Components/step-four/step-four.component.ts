@@ -31,7 +31,7 @@
 //   }
 
 //   ngOnInit(): void {
-   
+
 //     this.stepFourForm = this.fb.group({
 //       experience: ['', Validators.required],
 //       selectedSkills: this.fb.array([], Validators.required), // FormArray for skills
@@ -115,17 +115,22 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from '../../../../shared/services/Account/account.service';
 import { SkillService } from '../../../../shared/services/Skill/skill.service';
+import { ExperienceViewModel } from '../../interfaces/UserExperance';
 
 @Component({
   selector: 'app-step-four',
   templateUrl: './step-four.component.html',
   styleUrls: ['./step-four.component.css'],
 })
-export class StepFourComponent implements OnInit {
-  stepFourForm!: FormGroup;
+export class StepFourComponent {
   Skills: any[] = [];
   filteredSkills: any[] = [];
   searchQuery: string = '';
+  SelectedSkilles:any [] = []
+  Experiencees:ExperienceViewModel [] = []
+  Level=""
+  About=""
+  YearsOfExperience = 0
 
   constructor(
     private fb: FormBuilder,
@@ -133,58 +138,38 @@ export class StepFourComponent implements OnInit {
     private Account: AccountService,
     private SkillService: SkillService
   ) {
+    this.Experiencees = [
+      { StartDate: new Date(), EndDate: null,  Organization: "", FieldOfStudy: "", TillNow: null }
+    ]
     // Fetch skills from the service
     this.SkillService.getAll().subscribe((res: any) => {
       this.Skills = res;
       this.filteredSkills = [...this.Skills]; // Initialize with all skills
     });
-
-    // Initialize the stepFourForm with FormArray for experiences and validators
-    this.stepFourForm = this.fb.group({
-      experience: ['', [Validators.required, Validators.min(0)]], // Ensure non-negative numbers
-      selectedSkills: this.fb.array([], Validators.required), // FormArray for selected skills with required validation
-      experiences: this.fb.array([]), // FormArray for work experiences
-    });
   }
 
-  ngOnInit(): void {}
-
-  // Access the experiences FormArray
-  get experiences(): FormArray {
-    return this.stepFourForm.get('experiences') as FormArray; // Access FormArray correctly
-  }
-
-  // Add a new experience entry
   addExperience(): void {
-    const experienceGroup = this.fb.group({
-      organization: ['', Validators.required],
-      field: ['', Validators.required],
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
-      tillnow: [false],
-    });
-
-    this.experiences.push(experienceGroup); // Push to the experiences FormArray
+    this.Experiencees.push(
+      { StartDate: new Date(), EndDate: null,  Organization: "", FieldOfStudy: "", TillNow: null }
+    )
   }
-
-  // Access the selectedSkills FormArray
-  get selectedSkillsArray(): FormArray {
-    return this.stepFourForm.get('selectedSkills') as FormArray;
+  removeExperience(index: number) {
+    this.Experiencees.splice(index, 1)
   }
 
   // Add skill from suggestion
   addSkillFromSuggestion(skill: string): void {
     // Add to the FormArray if not already included
-    if (!this.selectedSkillsArray.controls.some(control => control.value === skill)) {
-      this.selectedSkillsArray.push(this.fb.control(skill));
+    if (!this.SelectedSkilles.some(val => val === skill)) {
+      this.SelectedSkilles.push(this.fb.control(skill));
     }
   }
 
   // Remove skill from the selected list
   removeSkill(skill: string): void {
-    const index = this.selectedSkillsArray.controls.findIndex(control => control.value === skill);
+    const index = this.SelectedSkilles.findIndex(val => val === skill);
     if (index >= 0) {
-      this.selectedSkillsArray.removeAt(index);
+      this.SelectedSkilles.splice(index,1);
     }
   }
 
@@ -192,16 +177,6 @@ export class StepFourComponent implements OnInit {
   onSearchInputChange(input: string): void {
     this.searchQuery = input;
     this.filterSkills(); // Filter skills on input change
-  }
-
-  // Access the experience control for validation
-  get experienceControl() {
-    return this.stepFourForm.get('experience');
-  }
-
-  // Access the selected skills control for validation
-  get selectedSkillsControl() {
-    return this.stepFourForm.get('selectedSkills');
   }
 
   // Filter suggested skills based on input
@@ -219,17 +194,26 @@ export class StepFourComponent implements OnInit {
 
   // Validate and navigate to the next step
   onNext(): void {
-    if (this.stepFourForm.valid) {
-      Object.keys(this.stepFourForm.controls).forEach((key) => {
-        this.Account.updateFormData(key, this.stepFourForm.get(key)?.value);
-      });
-      this.router.navigate(['/developer/step-five']);
-    } else {
-      // Optional: Mark all controls as touched to trigger validation messages
-      this.stepFourForm.markAllAsTouched();
+    if (this.Experiencees.length > 0 && this.SelectedSkilles.length>0 &&this.checklist() == undefined) {
+      this.Account.updateFormData("About", this.About);
+      this.Account.updateFormData("Level", this.Level);
+      this.Account.updateFormData("YearsOfExperience", this.YearsOfExperience);
+      this.Experiencees.forEach(i => {
+        this.Account.updateFormData("Experience", JSON.stringify(i));
+      })
+      this.Account.updateFormData("Skills", JSON.stringify(this.SelectedSkilles));
+      //call back
+
+    }
+    else {
+console.log("error Happaned");
+
     }
   }
-
+  checklist(): ExperienceViewModel|undefined{
+    let res=  this.Experiencees.find(i => i.Organization == "" || i.FieldOfStudy == "" || i.StartDate == new Date())
+    return res;
+  }
   // Navigate to the previous step
   goToPreviousStep(): void {
     this.router.navigate(['/developer/step-three']);

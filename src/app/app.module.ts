@@ -13,6 +13,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o'; // Correct import
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Needed for animations
 import { CommonModule } from '@angular/common';
 import { authInterceptor } from './shared/interceptors/auth.interceptor';
+import { loaderInterceptor } from './shared/interceptors/loader.interceptor';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,9 +23,9 @@ import { authInterceptor } from './shared/interceptors/auth.interceptor';
     AppRoutingModule,
     RouterModule,
     CommonModule,
-   
+    SharedModule
   ],
-  providers: [provideClientHydration(), provideHttpClient(withFetch(), withInterceptors([authInterceptor]))],
+  providers: [provideClientHydration(), provideHttpClient(withFetch(), withInterceptors([authInterceptor,loaderInterceptor]))],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
