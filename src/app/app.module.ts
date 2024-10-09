@@ -6,6 +6,7 @@ import {
 } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CarouselModule } from 'ngx-owl-carousel-o'; // Correct import
@@ -19,7 +20,8 @@ import { authInterceptor } from './shared/interceptors/auth.interceptor';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    CommonModule
+    CommonModule,
+   
   ],
   providers: [provideClientHydration(), provideHttpClient(withFetch(), withInterceptors([authInterceptor]))],
   bootstrap: [AppComponent],

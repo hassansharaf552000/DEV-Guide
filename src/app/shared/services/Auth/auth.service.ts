@@ -1,3 +1,8 @@
+
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ChangePassword } from '../../change-password';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map} from "rxjs";
@@ -9,6 +14,26 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+
+  private apiUrl = 'http://localhost:5164/api/Account/change-password'; // Your API base URL
+
+  constructor(private http: HttpClient) { }
+
+
+ 
+
+  // Change password method
+  ChangePassword(changePassword: ChangePassword): Observable<ChangePassword> {
+    return this.http.put<ChangePassword>(`${this.apiUrl}/change-password`, changePassword);
+  }
+
+
+  }
+
+
+  
+
+
   private loginapi = 'http://localhost:5164/api/Account/Login';
   private RegisterURL = 'http://localhost:5164/api/Account/Register';
   isloggedUserSubject: BehaviorSubject<boolean>
@@ -84,6 +109,7 @@ userlogout() {
 }
 
 }
+
 
 
 
