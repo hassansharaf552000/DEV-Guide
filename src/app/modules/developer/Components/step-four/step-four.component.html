@@ -1,4 +1,4 @@
-<div class="container mt-5">
+ <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-12">
       <div class="card custom-card">
@@ -6,36 +6,91 @@
           <h3 class="card-title">Technical skills</h3>
           <form [formGroup]="stepFourForm" (ngSubmit)="onNext()">
             <div class="form-group">
-              <label for="experience">Years of full-time work experience</label>
+              <label for="experience">Years of work experience</label>
               <input type="number" id="experience" class="form-control" formControlName="experience">
+              <div *ngIf="experienceControl?.invalid && experienceControl?.touched" class="text-danger">
+                <div *ngIf="experienceControl?.invalid">Experience is required.</div>
+                <!-- <div *ngIf="experienceControl?.errors?.min">Experience must be a non-negative number.</div> -->
+              </div>
             </div>
-            <!-- <div class="form-group">
-              <label for="role">Preferred role</label>
-              <select id="role" class="form-control" formControlName="role">
-                <option value="">Select your preferred role</option>
-                <option value="Developer">Developer</option>
-                <option value="Designer">Designer</option>
-              </select>
-              @if (stepFourForm.get('role')?.invalid && stepFourForm.get('role')?.touched) {
-                <div class="text-danger">
-                  Preferred role is required
-                </div>
-              }
-            </div> -->
-            <div class="form-group">
-              <label for="skills">Skills</label>
-              <ng-select [items]="Skills" bindLabel="name" bindValue="id" formControlName="skills" multiple
-                class="custom-ng-select form-control " style="background-color: white;">
-              </ng-select>
-              @if (stepFourForm.get('skills')?.invalid && stepFourForm.get('skills')?.touched) {
-                <div
-                  class="text-danger">
-                  Select at least one skill
-                </div>
-              }
+
+            <div class="skill-selector">
+              <div class="selected-skills">
+                <span class="skill-tag" *ngFor="let skill of selectedSkillsArray.controls; let i = index">
+                  {{skill.value}}
+                  <span class="remove-skill" (click)="removeSkill(skill.value)">&#10005;</span>
+                </span>
+              </div>
+
+              <input type="search" #searchInput (input)="onSearchInputChange(searchInput.value)"
+              [value]="searchQuery" class="form-control form-control-sm" placeholder="Search skills..." />
+
+              <h6>Suggested Skills</h6>
+              <div class="suggested-skills">
+                <span class="skill-suggestion" *ngFor="let skill of filteredSkills" (click)="addSkillFromSuggestion(skill)">
+                  {{skill}}
+                </span>
+              </div>
             </div>
-            <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()" >Back</button>
-            <button type="submit" class="btn btn-primary mt-3 ms-3"(click)="onNext()" [disabled]="stepFourForm.invalid">Next</button>
+
+            <div *ngIf="selectedSkillsControl?.invalid && selectedSkillsControl?.touched" class="text-danger">
+              Please select at least one skill.
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card-body">
+                  <h3 class="card-title">Experience</h3>
+                  <div formArrayName="experiences">
+                    <div *ngFor="let exp of experiences.controls; let i = index" [formGroupName]="i" class="mb-3">
+                      <div class="form-group">
+                        <label for="organization-{{i}}">Organization </label>
+                        <input id="organization-{{i}}" type="text" class="form-control" formControlName="organization" placeholder="Organization">
+                        <div *ngIf="exp.get('organization')?.invalid && exp.get('organization')?.touched" class="text-danger">
+                          Organization is required
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="field-{{i}}">Field</label>
+                        <input id="field-{{i}}" type="text" class="form-control" formControlName="field" placeholder="CS">
+                        <div *ngIf="exp.get('field')?.invalid && exp.get('field')?.touched" class="text-danger">
+                          Field is required
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="startDate-{{i}}">Start Date</label>
+                        <input id="startDate-{{i}}" type="date" class="form-control" formControlName="startDate">
+                        <div *ngIf="exp.get('startDate')?.invalid && exp.get('startDate')?.touched" class="text-danger">
+                          Start date is required
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="endDate-{{i}}">End Date</label>
+                        <input id="endDate-{{i}}" type="date" class="form-control" formControlName="endDate">
+                        <div *ngIf="exp.get('endDate')?.invalid && exp.get('endDate')?.touched" class="text-danger">
+                          End date is required
+                        </div>
+                      </div>
+
+                      <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="tillnow-{{i}}" formControlName="tillnow">
+                        <label class="form-check-label" for="tillnow-{{i}}">Till Now</label>
+                      </div>
+
+                      <hr />
+                    </div>
+                  </div>
+
+                  <button type="button" class="btn btn-primary mt-3 me-3 col-6" (click)="addExperience()" title="Click to add another experience entry">+</button>
+                </div>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
+            <button type="submit" class="btn btn-primary mt-3 ms-3" [disabled]="stepFourForm.invalid">Next</button>
           </form>
         </div>
       </div>

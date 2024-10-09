@@ -64,7 +64,7 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('authToken'); // Clear the token on logout
+    localStorage.removeItem('bxmnczxhcv'); // Clear the token on logout
   }
 
   private handleError(error: HttpErrorResponse) {

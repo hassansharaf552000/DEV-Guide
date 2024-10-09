@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from '../../../../shared/services/Account/account.service';
 
@@ -9,7 +9,8 @@ import { AccountService } from '../../../../shared/services/Account/account.serv
   styleUrl: './step-three.component.css',
 })
 export class StepThreeComponent implements OnInit {
-  stepThreeForm!: FormGroup;
+  // stepThreeForm!: FormGroup;
+  formArray: FormGroup;
   countries = [
     { id: 'AF', name: 'Afghanistan' },
     { id: 'AL', name: 'Albania' },
@@ -259,35 +260,85 @@ export class StepThreeComponent implements OnInit {
     { id: 'ZW', name: 'Zimbabwe' },
   ];
 
-  constructor(private fb: FormBuilder, private router: Router,private Account:AccountService) {}
-
-  ngOnInit(): void {
-    this.stepThreeForm = this.fb.group({
-      university: ['', Validators.required],
-      country: ['', Validators.required],
-      degree: ['', Validators.required],
-      fieldOfStudy: ['', Validators.required],
-      startYear: ['', Validators.required],
-      startMonth: ['', Validators.required],
-      endYear: ['', Validators.required],
-      endMonth: ['', Validators.required],
-      currentlyStudying: [false],
-    });
+  constructor(private fb: FormBuilder, private router: Router,private Account:AccountService) {
+    this.formArray = this.fb.group({
+      educations: this.fb.array([])})
   }
 
-  onNext(): void {
-    if (this.stepThreeForm.valid) {
-      for (const element in this.stepThreeForm.controls) {
-        Object.keys(this.stepThreeForm.controls).forEach((key) => {
-          this.Account.updateFormData(key, this.stepThreeForm.get(key)?.value);
-        });
-        // this.Account.updateFormData(element,this.stepThreeForm.controls[element] )
-        console.log(element);
-        console.log(this.stepThreeForm.controls[element]);
+  // ngOnInit(): void {
+   
+  //   this.stepThreeForm = this.fb.group({
+  //     university: ['', Validators.required],
+  //     country: ['', Validators.required],
+  //     degree: ['', Validators.required],
+  //     fieldOfStudy: ['', Validators.required],
+  //     startDate: ['', Validators.required],
+  //     endDate: ['', Validators.required],
+  //     faculty: ['', Validators.required],
+  //     currentlyStudying: [false],
+  //   });
+  //   this.stepThreeForm.get('currentlyStudying')?.valueChanges.subscribe((isChecked) => {
+  //     if (isChecked) {
+  //       this.stepThreeForm.get('endDate')?.disable();
+  //     } else {
+  //       this.stepThreeForm.get('endDate')?.enable();
+  //     }
+  //   });
+  // }
+
+  // onNext(): void {
+  //   if (this.stepThreeForm.valid) {
+  //     for (const element in this.stepThreeForm.controls) {
+  //       Object.keys(this.stepThreeForm.controls).forEach((key) => {
+  //         this.Account.updateFormData(key, this.stepThreeForm.get(key)?.value);
+  //       });
+  //       // this.Account.updateFormData(element,this.stepThreeForm.controls[element] )
+  //       console.log(element);
+  //       console.log(this.stepThreeForm.controls[element]);
         
-      }
+  //     }
+  //     this.router.navigate(['/developer/step-four']);
+  //   }
+  // }
+  ngOnInit(): void {
+    this.addEducation(); // Add one education entry by default
+  }
+
+  get educations(): FormArray {
+    return this.formArray.get('educations') as FormArray;
+  }
+
+  addEducation(): void {
+    const educationGroup = this.fb.group({
+      university: ['', Validators.required],
+      faculty: ['', Validators.required],
+      fieldOfStudy: ['', Validators.required],
+      country: ['', Validators.required],
+      degree: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
+      currentlyStudying: [false],
+    });
+
+    this.educations.push(educationGroup);
+  }
+  onNext(): void {
+    if (this.formArray.valid) {
+      const formData = this.formArray.value;
+      Object.keys(formData).forEach(key => {
+        this.Account.updateFormData(key, formData[key]);
+      });
       this.router.navigate(['/developer/step-four']);
+    
+      console.log(this.formArray.value);
     }
+    // if (this.stepThreeForm.valid) {
+    //   const formData = this.stepThreeForm.value;
+    //   Object.keys(formData).forEach(key => {
+    //     this.Account.updateFormData(key, formData[key]);
+    //   });
+    //   this.router.navigate(['/developer/step-four']);
+    // }
   }
 
   goToPreviousStep(): void {

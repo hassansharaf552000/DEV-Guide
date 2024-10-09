@@ -17,7 +17,6 @@ import { AdminUIComponent } from './components/admin-ui/admin-ui.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CustomPaginationComponent } from './components/custom-pagination/custom-pagination.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { authInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
 
 
 @NgModule({
@@ -39,12 +38,6 @@ import { authInterceptorInterceptor } from './interceptors/auth-interceptor.inte
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule,NgxPaginationModule],
 
   exports: [NavbarComponent, FooterComponent],
-  providers: [provideClientHydration(),
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: authInterceptorInterceptor,
-      multi: true  // This ensures that multiple interceptors can be chained
-    }
-  ],
+ 
 })
 export class SharedModule {}
