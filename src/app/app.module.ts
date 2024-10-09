@@ -5,12 +5,13 @@ import {
   provideClientHydration,
 } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CarouselModule } from 'ngx-owl-carousel-o'; // Correct import
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Needed for animations
 import { CommonModule } from '@angular/common';
+import { authInterceptor } from './shared/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,7 @@ import { CommonModule } from '@angular/common';
     RouterModule,
     CommonModule
   ],
-  providers: [provideClientHydration(), provideHttpClient(withFetch())],
+  providers: [provideClientHydration(), provideHttpClient(withFetch(), withInterceptors([authInterceptor]))],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
