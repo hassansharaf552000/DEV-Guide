@@ -1,7 +1,3 @@
-
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { ChangePassword } from '../../change-password';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
@@ -17,17 +13,11 @@ export class AuthService {
 
   private apiUrl = 'http://localhost:5164/api/Account/change-password'; // Your API base URL
 
-  constructor(private http: HttpClient) { }
-
-
- 
+  constructor(private http: HttpClient) {this.isloggedUserSubject = new BehaviorSubject<boolean>(this.isloggedUser())}
 
   // Change password method
   ChangePassword(changePassword: ChangePassword): Observable<ChangePassword> {
     return this.http.put<ChangePassword>(`${this.apiUrl}/change-password`, changePassword);
-  }
-
-
   }
 
 
@@ -38,8 +28,7 @@ export class AuthService {
   private RegisterURL = 'http://localhost:5164/api/Account/Register';
   isloggedUserSubject: BehaviorSubject<boolean>
 
-  constructor(private http: HttpClient) {this.isloggedUserSubject = new BehaviorSubject<boolean>(this.isloggedUser())}
-
+ 
   // login(LoginMethod: string, password: string): Observable<any> {
   //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   //   const body = JSON.stringify({ LoginMethod, password });
