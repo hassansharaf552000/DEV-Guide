@@ -12,9 +12,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CarouselModule } from 'ngx-owl-carousel-o'; // Correct import
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Needed for animations
 import { CommonModule } from '@angular/common';
+
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { authInterceptor } from './shared/interceptors/auth.interceptor';
 import { loaderInterceptor } from './shared/interceptors/loader.interceptor';
 import { SharedModule } from './shared/shared.module';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,8 +26,13 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    CommonModule,
+    CommonModule
+
+    ReactiveFormsModule
+ 
+
     SharedModule
+
   ],
   providers: [provideClientHydration(), provideHttpClient(withFetch(), withInterceptors([authInterceptor,loaderInterceptor]))],
   bootstrap: [AppComponent],

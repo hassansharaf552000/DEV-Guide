@@ -10,7 +10,6 @@ import { StepThreeComponent } from './Components/step-three/step-three.component
 import { StepTwoComponent } from './Components/step-two/step-two.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { SharedModule } from '../../shared/shared.module';
-import { Update_profileComponent } from '../../shared/components/update_profile/update_profile.component';
 import { LoginComponent } from '../../shared/components/login/login.component';
 import { RegisterComponent } from '../../shared/components/register/register.component';
 import { Forget_passwordComponent } from '../../shared/components/forget_password/forget_password.component';
@@ -40,6 +39,7 @@ import { QuizListComponent } from './Components/quiz-list/quiz-list.component';
 import { MentorAnswerQueryComponent } from '../mentor/Components/mentor-answer-query/mentor-answer-query.component';
 import { CommunicationComponent } from '../../shared/components/communication/communication.component';
 import { AdminUIComponent } from '../../shared/components/admin-ui/admin-ui.component';
+import { Update_ProfileComponent } from '../../shared/components/update_profile/update_profile.component';
 const routes: Routes = [
   {
     path: '',
@@ -77,7 +77,7 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileLayoutComponent,
     children: [
-      { path: 'updateprofile', component: Update_profileComponent },
+      { path: 'updateprofile', component: Update_ProfileComponent },
       { path: 'reviews', component: ReviewsListComponent },
       { path: 'quizzes', component: QuizListComponent },
       { path: 'reply', component: MentorReplyComponent },
