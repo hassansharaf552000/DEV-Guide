@@ -13,11 +13,14 @@ import { Forget_passwordComponent } from './components/forget_password/forget_pa
 import { RouterModule } from '@angular/router';
 import { FaqComponent } from './components/faq/faq.component';
 import { CommunicationComponent } from './components/communication/communication.component';
-
 import { AdminUIComponent } from './components/admin-ui/admin-ui.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CustomPaginationComponent } from './components/custom-pagination/custom-pagination.component';
+
 import { Update_ProfileComponent } from './components/update_profile/update_profile.component';
+
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 
@@ -38,7 +41,7 @@ import { Update_ProfileComponent } from './components/update_profile/update_prof
 
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule,NgxPaginationModule,],
 
-  exports: [NavbarComponent, FooterComponent],
-  providers: [provideClientHydration()],
+  exports: [NavbarComponent, FooterComponent, SpinnerComponent],
+
 })
 export class SharedModule {}

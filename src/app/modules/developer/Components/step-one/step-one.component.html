@@ -5,11 +5,11 @@
         <div class="card-body">
           <h3 class="card-title">Get your profile ready in no time!</h3>
           <p class="card-text">Add your resume or LinkedIn URL, and we'll autofill your profile to save you time.</p>
-          <form>
+          <form (ngSubmit)="goToNextStep()">
             <div class="form-group">
-              <input type="file" class="form-control-file" id="portfolioUpload">
+              <input type="file" class="form-control-file form-control" id="portfolioUpload" (change)="SelectFile($event)" accept=".docx, .pdf">
             </div>
-            <button type="button" class="btn btn-primary mt-3" (click)="goToNextStep()">Continue</button>
+            <button type="submit" class="btn btn-primary mt-3">Continue</button>
           </form>
         </div>
       </div>

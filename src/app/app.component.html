@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+@if(isLoading|async){
+
+  <app-spinner></app-spinner>
+}@else{
+
+  <router-outlet></router-outlet>
+}
