@@ -17,7 +17,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CustomPaginationComponent } from './components/custom-pagination/custom-pagination.component';
 import { Update_ProfileComponent } from './components/update_profile/update_profile.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { authInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
 import { QuizCardComponent } from './components/quiz-card/quiz-card.component';
 import { QuizzesListComponent } from './components/quizzes-list/quizzes-list.component';
 import { QuizzesDetailsComponent } from './components/quizzes-details/quizzes-details.component';
@@ -36,11 +35,11 @@ import { QuizzesDetailsComponent } from './components/quizzes-details/quizzes-de
     CustomPaginationComponent,
     QuizCardComponent,
     QuizzesDetailsComponent,
-    QuizzesListComponent
+    QuizzesListComponent,
     CustomPaginationComponent,Update_ProfileComponent
   ],
 
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule,NgxPaginationModule,],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule,NgxPaginationModule],
 
   exports: [NavbarComponent, FooterComponent, SpinnerComponent],
 
