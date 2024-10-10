@@ -93,31 +93,36 @@ export class Update_ProfileComponent implements OnInit {
     }
   }
 
+  submitinformationform():void{
+    const updatedProfile: Profile = {
+      ...this.InformationForm.value,
+      imagePath: this.selectedImage as string,
+      cvPath: this.selectedCV ? this.selectedCV.name : this.profile.cvPath,
+    };
+    console.log('Updated Profile:', updatedProfile);
+
+    // Prepare FormData for file uploads
+    const formData = new FormData();
+    Object.keys(this.InformationForm.controls).forEach(key => {
+      const controlValue = this.InformationForm.get(key)?.value;
+      if (controlValue instanceof File) {
+        formData.append(key, controlValue);
+      } else {
+        formData.append(key, controlValue);
+      }
+    });
+  }
+
   onSubmit(): void {
     if (this.InformationForm.valid) {
-      const updatedProfile: Profile = {
-        ...this.InformationForm.value,
-        imagePath: this.selectedImage as string,
-        cvPath: this.selectedCV ? this.selectedCV.name : this.profile.cvPath,
-      };
-      console.log('Updated Profile:', updatedProfile);
-
-      // Prepare FormData for file uploads
-      const formData = new FormData();
-      Object.keys(this.InformationForm.controls).forEach(key => {
-        const controlValue = this.InformationForm.get(key)?.value;
-        if (controlValue instanceof File) {
-          formData.append(key, controlValue);
-        } else {
-          formData.append(key, controlValue);
-        }
-      });
+      this.submitinformationform()
 
       // Call your API service to update the profile data in the database
       // this.profileService.updateProfile(formData).subscribe(...);
-    } else {
-      this.InformationForm.markAllAsTouched();
-    }
+    } // else {
+    //   this.InformationForm.markAllAsTouched();
+    // }
+    
   }
 }
 
