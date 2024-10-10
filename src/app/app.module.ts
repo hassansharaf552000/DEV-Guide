@@ -26,12 +26,12 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    CommonModule
+    CommonModule,
 
-    ReactiveFormsModule
+    ReactiveFormsModule,
  
 
-    SharedModule
+    SharedModule,
 
   ],
   providers: [provideClientHydration(), provideHttpClient(withFetch(), withInterceptors([authInterceptor,loaderInterceptor]))],
