@@ -11,6 +11,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CarouselModule } from 'ngx-owl-carousel-o'; // Correct import
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Needed for animations
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     RouterModule,
     CommonModule,
+    ReactiveFormsModule
    
   ],
   providers: [provideClientHydration(), provideHttpClient(withFetch())],
