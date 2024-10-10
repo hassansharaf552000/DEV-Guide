@@ -39,7 +39,13 @@ import { QuizListComponent } from './Components/quiz-list/quiz-list.component';
 import { MentorAnswerQueryComponent } from '../mentor/Components/mentor-answer-query/mentor-answer-query.component';
 import { CommunicationComponent } from '../../shared/components/communication/communication.component';
 import { AdminUIComponent } from '../../shared/components/admin-ui/admin-ui.component';
+
+import { QuizzesListComponent } from '../../shared/components/quizzes-list/quizzes-list.component';
+import { QuizzesDetailsComponent } from '../../shared/components/quizzes-details/quizzes-details.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
 import { Update_ProfileComponent } from '../../shared/components/update_profile/update_profile.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -67,6 +73,8 @@ const routes: Routes = [
       { path: 'booking', component: BookingComponent },
       { path: 'query', component: QueryComponent },
       { path: 'confirmation', component: BookingConfirmationComponent },
+      {path:'Quizzes',component:QuizzesListComponent},
+      {path:'Quiz/:id',component:QuizzesDetailsComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full' },
      { path: '**', redirectTo: 'notfound' },
       //{ path: 'AdminUi', component: AdminUIComponent }
@@ -91,11 +99,12 @@ const routes: Routes = [
   { path: 'query', component: QueryComponent },
   { path: 'confirmation', component: BookingConfirmationComponent },
   { path: 'communication', component: CommunicationComponent },
+
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'notfound' },
 ];
 @NgModule({
-  imports: [RouterModule.forChild(routes), SharedModule],
+  imports: [RouterModule.forChild(routes),SharedModule],
   exports: [RouterModule],
 })
 export class DeveloperRoutingModule {}

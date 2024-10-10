@@ -1,0 +1,43 @@
+.quiz-card {
+  background-color:  #ffffff;
+  border: 2px solid #415bcf;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 350px;
+  text-align: center;
+  margin: 20px auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.quiz-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px  #415bcf;
+}
+
+
+
+.skill-name {
+  font-size: 1.5rem;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.skill-description {
+  font-size: 1rem;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.card-actions .btn {
+  background-color: #415bcf;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border-color: #415bcf;
+  color:  #ffffff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+

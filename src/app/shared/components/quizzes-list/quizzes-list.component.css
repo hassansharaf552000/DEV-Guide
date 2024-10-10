@@ -1,0 +1,43 @@
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 100px;
+}
+
+/* .quiz-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  margin: 20px auto;
+  padding: 20px;
+  transition: transform 0.3s ease;
+  text-align: center;
+} */
+
+.quiz-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.quiz-card p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* .quiz-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+} */
+
+.quiz-card:hover h2 {
+  color: #007BFF;
+}
+
+.quiz-card:hover p {
+  color: #333;
+}
