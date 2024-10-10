@@ -10,7 +10,6 @@ import { StepThreeComponent } from './Components/step-three/step-three.component
 import { StepTwoComponent } from './Components/step-two/step-two.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { SharedModule } from '../../shared/shared.module';
-import { Update_profileComponent } from '../../shared/components/update_profile/update_profile.component';
 import { LoginComponent } from '../../shared/components/login/login.component';
 import { RegisterComponent } from '../../shared/components/register/register.component';
 import { Forget_passwordComponent } from '../../shared/components/forget_password/forget_password.component';
@@ -40,6 +39,13 @@ import { QuizListComponent } from './Components/quiz-list/quiz-list.component';
 import { MentorAnswerQueryComponent } from '../mentor/Components/mentor-answer-query/mentor-answer-query.component';
 import { CommunicationComponent } from '../../shared/components/communication/communication.component';
 import { AdminUIComponent } from '../../shared/components/admin-ui/admin-ui.component';
+
+import { QuizzesListComponent } from '../../shared/components/quizzes-list/quizzes-list.component';
+import { QuizzesDetailsComponent } from '../../shared/components/quizzes-details/quizzes-details.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
+import { Update_ProfileComponent } from '../../shared/components/update_profile/update_profile.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -67,6 +73,8 @@ const routes: Routes = [
       { path: 'booking', component: BookingComponent },
       { path: 'query', component: QueryComponent },
       { path: 'confirmation', component: BookingConfirmationComponent },
+      {path:'Quizzes',component:QuizzesListComponent},
+      {path:'Quiz/:id',component:QuizzesDetailsComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full' },
      { path: '**', redirectTo: 'notfound' },
       //{ path: 'AdminUi', component: AdminUIComponent }
@@ -77,7 +85,7 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileLayoutComponent,
     children: [
-      { path: 'updateprofile', component: Update_profileComponent },
+      { path: 'updateprofile', component: Update_ProfileComponent },
       { path: 'reviews', component: ReviewsListComponent },
       { path: 'quizzes', component: QuizListComponent },
       { path: 'reply', component: MentorReplyComponent },
@@ -91,11 +99,12 @@ const routes: Routes = [
   { path: 'query', component: QueryComponent },
   { path: 'confirmation', component: BookingConfirmationComponent },
   { path: 'communication', component: CommunicationComponent },
+
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'notfound' },
 ];
 @NgModule({
-  imports: [RouterModule.forChild(routes), SharedModule],
+  imports: [RouterModule.forChild(routes),SharedModule],
   exports: [RouterModule],
 })
 export class DeveloperRoutingModule {}

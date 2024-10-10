@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   // Change password method
-  ChangePassword(changePassword: ChangePassword): Observable<ChangePassword> {
+  ChangePasswordgit(changePassword: ChangePassword): Observable<ChangePassword> {
     return this.http.put<ChangePassword>(`${this.apiUrl}/change-password`, changePassword);
   }
 

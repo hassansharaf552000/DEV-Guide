@@ -1,111 +1,356 @@
-<div class="container">
-  <h2 class="text-center mb-4">Update Profile</h2>
+<div class="card">
+  <div class="card-header">
+    <img [src]="selectedImage ? selectedImage : profile.imagePath" alt="Profile Image" class="img-fluid rounded-circle" width="30%" height="15%" />
+  </div>
+  <div class="card-body">
+    <div class="text-center">
+      <input type="file" (change)="onImageChange($event)" class="form-control-file mt-2" accept="image/*">
+    </div>
 
-  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input id="name" type="text" formControlName="name" class="form-control" required />
-          <div *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched" class="text-danger">
-            Name is required.
-          </div>
+    <form [formGroup]="InformationForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input id="firstName" type="text" class="form-control" formControlName="firstName">
+        <div *ngIf="InformationForm.get('firstName')?.invalid && (InformationForm.get('firstName')?.dirty || InformationForm.get('firstName')?.touched)" class="text-danger">
+          <div *ngIf="InformationForm.get('firstName')?.errors?.['required']">First Name is required.</div>
+          <div *ngIf="InformationForm.get('firstName')?.errors?.['minlength']">First Name must be at least 4 characters.</div>
+          <div *ngIf="InformationForm.get('firstName')?.errors?.['maxlength']">First Name cannot exceed 15 characters.</div>
         </div>
+      </div>
+      
 
-        <div class="form-group">
-          <label for="cv" class="custom-file-upload">
-            <input id="cv" type="file" formControlName="cv" (change)="onFileSelected($event)" />
-            Upload CV
-          </label>
-          <span *ngIf="selectedFileName">{{ selectedFileName }}</span>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" class="form-control" formControlName="lastName">
+        <div *ngIf="InformationForm.get('lastName').invalid && (InformationForm.get('lastName').dirty || InformationForm.get('lastName').touched)" class="text-danger">
+          <div *ngIf="InformationForm.get('lastName').errors?.['required']">Last Name is required.</div>
+          <div *ngIf="InformationForm.get('lastName').errors?.['minlength']">Last Name must be at least 4 characters.</div>
+          <div *ngIf="InformationForm.get('lastName').errors?.['maxlength']">Last Name cannot exceed 15 characters.</div>
         </div>
+      </div>
+       <!-- Title -->
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input id="title" type="text" class="form-control" formControlName="title">
+      <div *ngIf="InformationForm.get('title').invalid && (InformationForm.get('title').dirty || InformationForm.get('title').touched)" class="text-danger">
+        <div *ngIf="InformationForm.get('title').errors?.['required']">Title is required.</div>
+        <div *ngIf="InformationForm.get('title').errors?.['minlength']">Title must be at least 5 characters.</div>
+        <div *ngIf="InformationForm.get('title').errors?.['maxlength']">Title cannot exceed 100 characters.</div>
+      </div>
+    </div>
 
-        <div class="form-group">
-          <label for="country">Country:</label>
-          <input id="country" type="text" formControlName="country" class="form-control" />
-        </div>
+    <!-- Price -->
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input id="price" type="number" class="form-control" formControlName="price">
+      <div *ngIf="InformationForm.get('price').invalid && (InformationForm.get('price').dirty || InformationForm.get('price').touched)" class="text-danger">
+        <div *ngIf="InformationForm.get('price').errors?.['required']">Price is required.</div>
+        <div *ngIf="InformationForm.get('price').errors?.['min']">Price must be at least 5.</div>
+      </div>
+    </div>
 
-        <div class="form-group">
-          <label for="degree">Degree:</label>
-          <input id="degree" type="text" formControlName="degree" class="form-control" />
-        </div>
+    <!-- Level -->
+    <div class="form-group">
+      <label for="level">Level</label>
+      <select id="level" class="form-control" formControlName="level">
+        <option value="" disabled selected>Select Level</option>
+        <option value="Junior">Junior</option>
+        <option value="Middle">Middle</option>
+        <option value="Senior">Senior</option>
+        <option value="TeamLeader">TeamLeader</option>
+      </select>
+    </div>
 
-        <div class="form-group">
-          <label for="fieldOfStudy">Field of Study:</label>
-          <input id="fieldOfStudy" type="text" formControlName="fieldOfStudy" class="form-control" />
-        </div>
+    <!-- Country -->
+    <!-- Country Dropdown -->
+<div class="form-group">
+  <label for="country">Country</label>
+  <select id="country" class="form-control" formControlName="country">
+    <option  value="" disabled>Select Country</option>
+    <option value="Afghanistan">Afghanistan</option>
+    <option value="Albania">Albania</option>
+    <option value="Algeria "  selected>Algeria</option>
+    <option value="Andorra">Andorra</option>
+    <option value="Angola">Angola</option>
+    <option value="Argentina">Argentina</option>
+    <option value="Armenia">Armenia</option>
+    <option value="Australia">Australia</option>
+    <option value="Austria">Austria</option>
+    <option value="Azerbaijan">Azerbaijan</option>
+    <option value="Bahamas">Bahamas</option>
+    <option value="Bahrain">Bahrain</option>
+    <option value="Bangladesh">Bangladesh</option>
+    <option value="Barbados">Barbados</option>
+    <option value="Belarus">Belarus</option>
+    <option value="Belgium">Belgium</option>
+    <option value="Belize">Belize</option>
+    <option value="Benin">Benin</option>
+    <option value="Bhutan">Bhutan</option>
+    <option value="Bolivia">Bolivia</option>
+    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+    <option value="Botswana">Botswana</option>
+    <option value="Brazil">Brazil</option>
+    <option value="Brunei">Brunei</option>
+    <option value="Bulgaria">Bulgaria</option>
+    <option value="Burkina Faso">Burkina Faso</option>
+    <option value="Burundi">Burundi</option>
+    <option value="Cambodia">Cambodia</option>
+    <option value="Cameroon">Cameroon</option>
+    <option value="Canada">Canada</option>
+    <option value="Cape Verde">Cape Verde</option>
+    <option value="Central African Republic">Central African Republic</option>
+    <option value="Chad">Chad</option>
+    <option value="Chile">Chile</option>
+    <option value="China">China</option>
+    <option value="Colombia">Colombia</option>
+    <option value="Comoros">Comoros</option>
+    <option value="Congo">Congo</option>
+    <option value="Costa Rica">Costa Rica</option>
+    <option value="Croatia">Croatia</option>
+    <option value="Cuba">Cuba</option>
+    <option value="Cyprus">Cyprus</option>
+    <option value="Czech Republic">Czech Republic</option>
+    <option value="Denmark">Denmark</option>
+    <option value="Djibouti">Djibouti</option>
+    <option value="Dominica">Dominica</option>
+    <option value="Dominican Republic">Dominican Republic</option>
+    <option value="Ecuador">Ecuador</option>
+    <option  value="Egypt">Egypt</option>
+    <option value="El Salvador">El Salvador</option>
+    <option value="Equatorial Guinea">Equatorial Guinea</option>
+    <option value="Eritrea">Eritrea</option>
+    <option value="Estonia">Estonia</option>
+    <option value="Eswatini">Eswatini</option>
+    <option value="Ethiopia">Ethiopia</option>
+    <option value="Fiji">Fiji</option>
+    <option value="Finland">Finland</option>
+    <option value="France">France</option>
+    <option value="Gabon">Gabon</option>
+    <option value="Gambia">Gambia</option>
+    <option value="Georgia">Georgia</option>
+    <option value="Germany">Germany</option>
+    <option value="Ghana">Ghana</option>
+    <option value="Greece">Greece</option>
+    <option value="Grenada">Grenada</option>
+    <option value="Guatemala">Guatemala</option>
+    <option value="Guinea">Guinea</option>
+    <option value="Guinea-Bissau">Guinea-Bissau</option>
+    <option value="Guyana">Guyana</option>
+    <option value="Haiti">Haiti</option>
+    <option value="Honduras">Honduras</option>
+    <option value="Hungary">Hungary</option>
+    <option value="Iceland">Iceland</option>
+    <option value="India">India</option>
+    <option value="Indonesia">Indonesia</option>
+    <option value="Iran">Iran</option>
+    <option value="Iraq">Iraq</option>
+    <option value="Ireland">Ireland</option>   
+    <option value="Italy">Italy</option>
+    <option value="Ivory Coast">Ivory Coast</option>
+    <option value="Jamaica">Jamaica</option>
+    <option value="Japan">Japan</option>
+    <option value="Jordan">Jordan</option>
+    <option value="Kazakhstan">Kazakhstan</option>
+    <option value="Kenya">Kenya</option>
+    <option value="Kiribati">Kiribati</option>
+    <option value="Kuwait">Kuwait</option>
+    <option value="Kyrgyzstan">Kyrgyzstan</option>
+    <option value="Laos">Laos</option>
+    <option value="Latvia">Latvia</option>
+    <option value="Lebanon">Lebanon</option>
+    <option value="Lesotho">Lesotho</option>
+    <option value="Liberia">Liberia</option>
+    <option value="Libya">Libya</option>
+    <option value="Liechtenstein">Liechtenstein</option>
+    <option value="Lithuania">Lithuania</option>
+    <option value="Luxembourg">Luxembourg</option>
+    <option value="Madagascar">Madagascar</option>
+    <option value="Malawi">Malawi</option>
+    <option value="Malaysia">Malaysia</option>
+    <option value="Maldives">Maldives</option>
+    <option value="Mali">Mali</option>
+    <option value="Malta">Malta</option>
+    <option value="Marshall Islands">Marshall Islands</option>
+    <option value="Mauritania">Mauritania</option>
+    <option value="Mauritius">Mauritius</option>
+    <option value="Mexico">Mexico</option>
+    <option value="Micronesia">Micronesia</option>
+    <option value="Moldova">Moldova</option>
+    <option value="Monaco">Monaco</option>
+    <option value="Mongolia">Mongolia</option>
+    <option value="Montenegro">Montenegro</option>
+    <option value="Morocco">Morocco</option>
+    <option value="Mozambique">Mozambique</option>
+    <option value="Myanmar">Myanmar</option>
+    <option value="Namibia">Namibia</option>
+    <option value="Nauru">Nauru</option>
+    <option value="Nepal">Nepal</option>
+    <option value="Netherlands">Netherlands</option>
+    <option value="New Zealand">New Zealand</option>
+    <option value="Nicaragua">Nicaragua</option>
+    <option value="Niger">Niger</option>
+    <option value="Nigeria">Nigeria</option>
+    <option value="North Korea">North Korea</option>
+    <option value="North Macedonia">North Macedonia</option>
+    <option value="Norway">Norway</option>
+    <option value="Oman">Oman</option>
+    <option value="Palestine">Palestine</option>
+    <option value="Pakistan">Pakistan</option>
+    <option value="Palau">Palau</option>
+    <option value="Panama">Panama</option>
+    <option value="Papua New Guinea">Papua New Guinea</option>
+    <option value="Paraguay">Paraguay</option>
+    <option value="Peru">Peru</option>
+    <option value="Philippines">Philippines</option>
+    <option value="Poland">Poland</option>
+    <option value="Portugal">Portugal</option>
+    <option value="Qatar">Qatar</option>
+    <option value="Romania">Romania</option>
+    <option value="Russia">Russia</option>
+    <option value="Rwanda">Rwanda</option>
+    <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+    <option value="Saint Lucia">Saint Lucia</option>
+    <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+    <option value="Samoa">Samoa</option>
+    <option value="San Marino">San Marino</option>
+    <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+    <option value="Saudi Arabia">Saudi Arabia</option>
+    <option value="Senegal">Senegal</option>
+    <option value="Serbia">Serbia</option>
+    <option value="Seychelles">Seychelles</option>
+    <option value="Sierra Leone">Sierra Leone</option>
+    <option value="Singapore">Singapore</option>
+    <option value="Slovakia">Slovakia</option>
+    <option value="Slovenia">Slovenia</option>
+    <option value="Solomon Islands">Solomon Islands</option>
+    <option value="Somalia">Somalia</option>
+    <option value="South Africa">South Africa</option>
+    <option value="South Korea">South Korea</option>
+    <option value="South Sudan">South Sudan</option>
+    <option value="Spain">Spain</option>
+    <option value="Sri Lanka">Sri Lanka</option>
+    <option value="Sudan">Sudan</option>
+    <option value="Suriname">Suriname</option>
+    <option value="Sweden">Sweden</option>
+    <option value="Switzerland">Switzerland</option>
+    <option value="Syria">Syria</option>
+    <option value="Taiwan">Taiwan</option>
+    <option value="Tajikistan">Tajikistan</option>
+    <option value="Tanzania">Tanzania</option>
+    <option value="Thailand">Thailand</option>
+    <option value="Togo">Togo</option>
+    <option value="Tonga">Tonga</option>
+    <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+    <option value="Tunisia">Tunisia</option>
+    <option value="Turkey">Turkey</option>
+    <option value="Turkmenistan">Turkmenistan</option>
+    <option value="Tuvalu">Tuvalu</option>
+    <option value="Uganda">Uganda</option>
+    <option value="Ukraine">Ukraine</option>
+    <option value="United Arab Emirates">United Arab Emirates</option>
+    <option value="United Kingdom">United Kingdom</option>
+    <option value="United States">United States</option>
+    <option value="Uruguay">Uruguay</option>
+    <option value="Uzbekistan">Uzbekistan</option>
+    <option value="Vanuatu">Vanuatu</option>
+    <option value="Vatican City">Vatican City</option>
+    <option value="Venezuela">Venezuela</option>
+    <option value="Vietnam">Vietnam</option>
+    <option value="Yemen">Yemen</option>
+    <option value="Zambia">Zambia</option>
+    <option value="Zimbabwe">Zimbabwe</option>
+  </select>
+</div>
 
-        <div class="form-group">
-          <label for="university">University:</label>
-          <input id="university" type="text" formControlName="university" class="form-control" />
-        </div>
 
-        <div class="form-group">
-          <label for="countryOfStudy">Country of Study:</label>
-          <input id="countryOfStudy" type="text" formControlName="countryOfStudy" class="form-control" />
+    <!-- Phone Number -->
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number</label>
+      <input id="phoneNumber" type="text" class="form-control" formControlName="phoneNumber">
+      <div *ngIf="InformationForm.get('phoneNumber').invalid && (InformationForm.get('phoneNumber').dirty || InformationForm.get('phoneNumber').touched)" class="text-danger">
+        <div *ngIf="InformationForm.get('phoneNumber').errors?.['required']">Phone Number is required.</div>
+        <div *ngIf="InformationForm.get('phoneNumber').errors?.['pattern']">Phone Number must be between 10 to 15 digits.</div>
+      </div>
+    </div>
+
+    <!-- Years of Experience -->
+    <div class="form-group">
+      <label for="yearsOfExperience">Years of Experience</label>
+      <input id="yearsOfExperience" type="number" class="form-control" formControlName="yearsOfExperience">
+      <div *ngIf="InformationForm.get('yearsOfExperience').invalid && (InformationForm.get('yearsOfExperience').dirty || InformationForm.get('yearsOfExperience').touched)" class="text-danger">
+        <div *ngIf="InformationForm.get('yearsOfExperience').errors?.['required']">Years of Experience is required.</div>
+        <div *ngIf="InformationForm.get('yearsOfExperience').errors?.['min']">Years of Experience cannot be negative.</div>
+        <div *ngIf="InformationForm.get('yearsOfExperience').errors?.['max']">Years of Experience cannot exceed 50.</div>
+      </div>
+    </div>
+
+
+
+    <!-- CV Upload -->
+    <div class="form-group ">
+      <label for="cv">Upload CV</label><br>
+      <input id="cv" type="file" (change)="onCVChange($event)" class="form-control-file" formControlName="cv" accept=".pdf,.doc,.docx">
+      <div *ngIf="InformationForm.get('cv').invalid && (InformationForm.get('cv').dirty || InformationForm.get('cv').touched)" class="text-danger">
+        <div *ngIf="InformationForm.get('cv').errors?.['required']">CV is required.</div>
+      </div>
+    </div>
+   
+
+
+      <!-- <div class="form-group">
+        <label for="title">Title</label>
+        <input id="title" type="text" class="form-control" formControlName="title">
+        <div *ngIf="InformationForm.controls.title.invalid && (InformationForm.controls.title.dirty || InformationForm.controls.title.touched)" class="text-danger">
+          <div *ngIf="InformationForm.controls.title.errors?.maxlength">Title cannot exceed 100 characters.</div>
         </div>
       </div>
 
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="startDate">Start Date:</label>
-          <input id="startDate" type="date" formControlName="startDate" class="form-control" />
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input id="price" type="number" class="form-control" formControlName="price">
+        <div *ngIf="InformationForm.controls.price.invalid && (InformationForm.controls.price.dirty || InformationForm.controls.price.touched)" class="text-danger">
+          <div *ngIf="InformationForm.controls.price.errors?.min">Price must be at least 5.</div>
         </div>
-
-        <div class="form-group">
-          <label for="endDate">End Date:</label>
-          <input id="endDate" type="date" formControlName="endDate" class="form-control" />
-        </div>
-
-        <div class="form-group">
-          <label for="yearsOfExperience">Years of Experience:</label>
-          <input id="yearsOfExperience" type="number" formControlName="yearsOfExperience" class="form-control" />
-        </div>
-
-        <div class="form-group">
-          <label for="level">Level:</label>
-          <input id="level" type="text" formControlName="level" class="form-control" />
-        </div>
-
-        <div class="form-group">
-          <label for="image" class="custom-file-upload">
-            <input id="image" type="file" (change)="onImageChange($event)" />
-            Choose Profile Image
-          </label>
-          <img *ngIf="selectedImage" [src]="selectedImage" alt="Profile Image" class="mt-2 preview-image" />
-        </div>
-
-        <div class="form-group">
-          <label for="price">Price:</label>
-          <input id="price" type="number" formControlName="price" class="form-control" />
-        </div>
-
-        <button type="submit" class="btn btn-primary" [disabled]="profileForm.invalid">Update Profile</button>
       </div>
-    </div>
-  </form>
 
-  <h2 class="text-center mb-4 mt-5">Change Password</h2>
+      <div class="form-group">
+        <label for="level">Level</label>
+        <input id="level" type="text" class="form-control" formControlName="level">
+      </div>
 
-  <h2 class="text-center mb-4 mt-5">Change Password</h2>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input id="country" type="text" class="form-control" formControlName="country">
+      </div>
 
-  <form [formGroup]="changepasswordform" (ngSubmit)="ChangePassword()">
-    <div class="form-group">
-      <label for="currentPassword">Current Password:</label>
-      <input type="password" id="currentPassword" formControlName="CurrentPassword" class="form-control" required />
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input id="phoneNumber" type="text" class="form-control" formControlName="phoneNumber">
+        <div *ngIf="InformationForm.controls.phoneNumber.invalid && (InformationForm.controls.phoneNumber.dirty || InformationForm.controls.phoneNumber.touched)" class="text-danger">
+          <div *ngIf="InformationForm.controls.phoneNumber.errors?.pattern">Phone Number must be between 10 to 15 digits.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="yearsOfExperience">Years of Experience</label>
+        <input id="yearsOfExperience" type="number" class="form-control" formControlName="yearsOfExperience">
+        <div *ngIf="InformationForm.controls.yearsOfExperience.invalid && (InformationForm.controls.yearsOfExperience.dirty || InformationForm.controls.yearsOfExperience.touched)" class="text-danger">
+          <div *ngIf="InformationForm.controls.yearsOfExperience.errors?.min">Years of Experience cannot be negative.</div>
+          <div *ngIf="InformationForm.controls.yearsOfExperience.errors?.max">Years of Experience cannot exceed 50.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="cv">Upload CV</label>
+        <input type="file" (change)="onCVChange($event)" class="form-control-file" accept=".pdf,.doc,.docx">
+        <div *ngIf="InformationForm.controls.cv.invalid && (InformationForm.controls.cv.dirty || InformationForm.controls.cv.touched)" class="text-danger">
+          <div *ngIf="InformationForm.controls.cv.errors?.required">CV is required.</div>
+        </div>
+      </div> -->
+      
+  <div class="mohamed">
+      <button type="submit" class="btn btn-primary w-50 " [disabled]="InformationForm.invalid">Update Profile</button>
     </div>
-  
-    <div class="form-group">
-      <label for="newPassword">New Password:</label>
-      <input type="password" id="newPassword" formControlName="Newpassword" class="form-control" required />
-    </div>
-  
-    <div class="form-group">
-      <label for="confirmPassword">Confirm New Password:</label>
-      <input type="password" id="confirmPassword" formControlName="ConfirmPassword" class="form-control" required />
-    </div>
-  
-    <button type="submit" class="btn btn-secondary">Change Password</button>
-  </form>
-  
+    </form>
+  </div>
 </div>

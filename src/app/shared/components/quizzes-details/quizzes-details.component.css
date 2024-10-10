@@ -1,0 +1,95 @@
+.container {
+  max-width: 1200px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.card p {
+  margin: 0;
+  font-size: large;
+  width: 100%;
+}
+
+.text-description {
+  color: #415bcf; /* Bootstrap primary color, adjust if necessary */
+}
+
+.text-secondary {
+  color: #6c757d; /* Bootstrap secondary color */
+}
+
+.mt-4 {
+  margin-top: 1.5rem !important;
+}
+
+.shadow-sm {
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.075);
+}
+
+/* Custom button style */
+button.btn-primary {
+  background-color:  #415bcf;
+  border-color:  #415bcf;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+}
+
+button.btn-primary:hover {
+  background-color:  #ffffff;
+  border-color:  #415bcf;
+  color: #415bcf;
+  font-weight: bold;
+}
+
+/* Adjust card spacing and padding */
+.card {
+  margin-bottom: 1.5rem;
+  border: 2px solid #415bcf;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+h6 {
+  font-weight: bold;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+ul li {
+  list-style-type: disc;
+  margin-bottom: 0.5rem;
+}
+.nav-image{
+  width: 40%;
+}
+
+/* Mobile responsiveness: Adjust margins on smaller screens */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+}

@@ -12,20 +12,16 @@ export class ProfileService {
   private apiurl1="http://localhost:5164/api/Account/change-password";
   //constructor(private http:HttpClient){}
   private profile: Profile = {
-    id: '',                     // Optional string
-    name: '',                   // Required string
-    cv: '',                     // Optional string
-    country: '',                // Optional string
-    degree: '',                 // Optional string
-    fieldOfStudy: '',           // Optional string
-    university: '',             // Optional string
-    countryOfStudy: '',         // Optional string
-    startDate: undefined,       // Optional Date object
-    endDate: undefined,         // Optional Date object
-    yearsOfExperience: undefined, // Optional number
-    level: '',                  // Optional string
-    image: '',                  // Optional string
-    price: undefined,           // Optional number
+    imagePath: '',      // Path to the user's image
+    firstName: '',
+    lastName: '',
+    title: '',
+    price: 0,
+    cvPath: '',         // Path to the user's CV
+    level: 'string',
+    country: 'string',
+    phoneNumber: 'string',
+    yearsOfExperience: 0,      // Optional number
   };
   private changepassword:ChangePassword={
     CurrentPassword:'',
