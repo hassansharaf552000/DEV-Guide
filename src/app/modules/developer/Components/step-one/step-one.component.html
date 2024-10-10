@@ -7,7 +7,7 @@
           <p class="card-text">Add your resume or LinkedIn URL, and we'll autofill your profile to save you time.</p>
           <form (ngSubmit)="goToNextStep()">
             <div class="form-group">
-              <input type="file" class="form-control-file form-control" id="portfolioUpload" [(ngModel)]="formData.CV" accept=".docx, .pdf">
+              <input type="file" class="form-control-file form-control" id="portfolioUpload" (change)="SelectFile($event)" accept=".docx, .pdf">
             </div>
             <button type="submit" class="btn btn-primary mt-3">Continue</button>
           </form>

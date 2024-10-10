@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HrlayoutComponent } from './Components/hrlayout/hrlayout.component';
-import { Update_profileComponent } from '../../shared/components/update_profile/update_profile.component';
+import { Update_ProfileComponent } from '../../shared/components/update_profile/update_profile.component';
 import { HrPaymentsComponent } from './Components/hr-payments/hr-payments.component';
 import { BookingHrComponent } from './Components/booking-hr/booking-hr.component';
 import { HrSummaryComponent } from './Components/hr-summary/hr-summary.component';
@@ -20,7 +20,7 @@ const routes: Routes = [
     component: HrlayoutComponent,
     children: [
       { path: 'profile', component:HrProfileComponent },
-      { path: 'updateprofile', component: Update_profileComponent },
+      { path: 'updateprofile', component: Update_ProfileComponent },
       { path: 'hr-payments', component: HrPaymentsComponent },
       { path: 'booking', component:BookingHrComponent },
       { path: 'hr-summry', component: HrSummaryComponent },

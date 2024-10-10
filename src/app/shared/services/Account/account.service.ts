@@ -8,8 +8,8 @@ import { BehaviorSubject } from 'rxjs';
 export class AccountService {
    formData: BehaviorSubject<FormData>;
  urlCompleteProfile = "http://localhost:5164/api/Account/CompleteProfile"
-  constructor(private http:HttpClient) { 
-    this.formData = new BehaviorSubject<FormData>(new FormData()); 
+  constructor(private http:HttpClient) {
+    this.formData = new BehaviorSubject<FormData>(new FormData());
   }
 
   updateFormData(key: string, data: any) {
@@ -23,7 +23,7 @@ export class AccountService {
     return this.formData.value;
   }
 
-  CompleteProfile(data:any){
-    return this.http.put(this.urlCompleteProfile, data)
+  CompleteProfile(){
+    return this.http.put(this.urlCompleteProfile, this.formData.value)
   }
 }

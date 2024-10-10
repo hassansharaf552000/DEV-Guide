@@ -10,7 +10,8 @@ import { AccountService } from '../../../../shared/services/Account/account.serv
 })
 export class StepTwoComponent implements OnInit {
   stepTwoForm!: FormGroup;
-
+  invalidProfileImage = true;
+  ProfileImage:File|null = null
   // Static array of countries
   countries = [
     { id: 'AF', name: 'Afghanistan' },
@@ -260,28 +261,31 @@ export class StepTwoComponent implements OnInit {
     { id: 'ZM', name: 'Zambia' },
     { id: 'ZW', name: 'Zimbabwe' },
   ];
-  
+
 
   constructor(private fb: FormBuilder, private router: Router, private accountService: AccountService) {}
 
   ngOnInit(): void {
     this.stepTwoForm = this.fb.group({
-      profileImage: [null, Validators.required], // Ensure this field is validated
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
       country: ['', Validators.required],
-      phone: ['', Validators.required],
+      phone: ['',[ Validators.required,Validators.minLength(11),Validators.maxLength(12)]],
     });
   }
 
   onNext(): void {
-    if (this.stepTwoForm.valid) {
-      // Handle form submission logic
-      console.log(this.stepTwoForm.value); // You can remove this in production
+    if (this.stepTwoForm.valid && !this.invalidProfileImage) {
+      this.accountService.updateFormData("Country",this.stepTwoForm.controls["country"].value)
+      this.accountService.updateFormData("PhoneNumber",this.stepTwoForm.controls["phone"].value)
+      this.accountService.updateFormData("Image",this.ProfileImage)
+
       this.router.navigate(['/developer/step-three']);
     }
   }
-
+  SelectFile(event:any){
+    const file = event.target.files[0];
+    this.ProfileImage = file;
+    this.invalidProfileImage = false;
+  }
   goToPreviousStep(): void {
     this.router.navigate(['/developer/step-one']);
   }
@@ -325,11 +329,11 @@ export class StepTwoComponent implements OnInit {
 //   onNext(): void {
 //     if (this.stepTwoForm.valid) {
 //       const formData = new FormData(); // Create FormData object to handle file upload
-      
+
 //       // Append form fields to FormData
 //       Object.keys(this.stepTwoForm.controls).forEach((key) => {
 //         const controlValue = this.stepTwoForm.get(key)?.value;
-        
+
 //         // Check if the current control is for 'profileImage' and handle it properly
 //         if (key === 'profileImage' && controlValue instanceof FileList) {
 //           if (controlValue.length > 0) {
@@ -338,10 +342,10 @@ export class StepTwoComponent implements OnInit {
 //         } else {
 //           formData.append(key, controlValue);
 //         }
-        
+
 //         this.Account.updateFormData(key, controlValue);
 //       });
-  
+
 //       // Pass formData to Account service or other logic to handle file upload
 //       this.router.navigate(['/developer/step-three']);
 //     }
@@ -385,7 +389,7 @@ export class StepTwoComponent implements OnInit {
 // //         // this.Account.updateFormData(element,this.stepTwoForm.controls[element] )
 // //         console.log(element);
 // //         console.log(this.stepTwoForm.controls[element]);
-        
+
 // //       }
 // //       this.router.navigate(['/developer/step-three']);
 // //     }

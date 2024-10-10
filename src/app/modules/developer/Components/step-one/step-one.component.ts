@@ -9,14 +9,21 @@ import { log } from 'console';
   styleUrl: './step-one.component.css',
 })
 export class StepOneComponent {
-  formData: any = {
-    CV: File,
-  };
   constructor(private router: Router,private Account:AccountService) {}
+  CVFile: File|null = null;
 
   goToNextStep() {
-    this.Account.updateFormData('CV', this.formData);
-    this.router.navigate(['/developer/step-two']);
-    
+    if(this.CVFile!= null){
+      this.Account.updateFormData('CV', this.CVFile);
+      this.router.navigate(['/developer/step-two']);
+    }
+
+  }
+  SelectFile(event:any){
+    const file = event.target.files[0];
+    this.CVFile = file;
+
+    console.log(this.CVFile);
+
   }
 }

@@ -1,3 +1,4 @@
+import { ChangePassword } from '../../change-password';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map} from "rxjs";
@@ -9,12 +10,25 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+
+  private apiUrl = 'http://localhost:5164/api/Account/change-password'; // Your API base URL
+
+  constructor(private http: HttpClient) {this.isloggedUserSubject = new BehaviorSubject<boolean>(this.isloggedUser())}
+
+  // Change password method
+  ChangePasswordgit(changePassword: ChangePassword): Observable<ChangePassword> {
+    return this.http.put<ChangePassword>(`${this.apiUrl}/change-password`, changePassword);
+  }
+
+
+  
+
+
   private loginapi = 'http://localhost:5164/api/Account/Login';
   private RegisterURL = 'http://localhost:5164/api/Account/Register';
   isloggedUserSubject: BehaviorSubject<boolean>
 
-  constructor(private http: HttpClient) {this.isloggedUserSubject = new BehaviorSubject<boolean>(this.isloggedUser())}
-
+ 
   // login(LoginMethod: string, password: string): Observable<any> {
   //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   //   const body = JSON.stringify({ LoginMethod, password });
@@ -39,7 +53,7 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('authToken'); // Clear the token on logout
+    localStorage.removeItem('bxmnczxhcv'); // Clear the token on logout
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -84,6 +98,7 @@ userlogout() {
 }
 
 }
+
 
 
 
