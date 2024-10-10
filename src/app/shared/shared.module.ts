@@ -18,6 +18,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CustomPaginationComponent } from './components/custom-pagination/custom-pagination.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { authInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
+import { QuizCardComponent } from './components/quiz-card/quiz-card.component';
+import { QuizzesListComponent } from './components/quizzes-list/quizzes-list.component';
+import { QuizzesDetailsComponent } from './components/quizzes-details/quizzes-details.component';
 
 
 @NgModule({
@@ -33,7 +36,10 @@ import { authInterceptorInterceptor } from './interceptors/auth-interceptor.inte
     FaqComponent,
     CommunicationComponent,
     AdminUIComponent,
-    CustomPaginationComponent
+    CustomPaginationComponent,
+    QuizCardComponent,
+    QuizzesDetailsComponent,
+    QuizzesListComponent
   ],
 
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule,NgxPaginationModule],

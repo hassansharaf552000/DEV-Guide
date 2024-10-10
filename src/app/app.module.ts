@@ -18,7 +18,9 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    CommonModule
+    CommonModule,
+    CarouselModule,
+
   ],
   providers: [provideClientHydration(), provideHttpClient(withFetch())],
   bootstrap: [AppComponent],

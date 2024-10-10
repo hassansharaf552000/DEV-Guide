@@ -1,0 +1,76 @@
+<br>
+<br>
+<div class="container mt-5">
+  <!-- Row to split content into two columns -->
+  <div class="row">
+
+    <!-- Left Column: Header and Assessment Info (col-6) -->
+    <div class="col-md-6">
+      <img src="logo 3_processed.jpg" class="nav-image">
+
+      <!-- Header -->
+      <div class="d-flex justify-content-between align-items-center mb-3" *ngIf="selectedQuiz">
+        <div class="d-flex align-items-center">
+
+          <h2 class="ms-2">{{selectedQuiz.name}}</h2>
+        </div>
+      </div>
+
+      <!-- Assessment Info -->
+      <div class="card p-4 shadow-sm">
+        <h4 class="text-description">{{selectedQuiz.description}}</h4>
+
+        <div class="col mt-3">
+          <div class="col-md-6">
+            <p><strong>Assessment Duration:</strong> 45 Minutes</p>
+          </div>
+          <div class="col-md-6">
+            <p><strong>No. of Questions:</strong> 30 Questions</p>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-6">
+              <button class="btn btn-primary">Start With AI</button>
+            </div>
+            <div class="col-md-6">
+              <button class="btn btn-primary">Start With Your Own</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Column: Guidelines (col-6) -->
+    <div class="col-md-6">
+
+      <!-- Guidelines -->
+      <div class="card mt-4 mt-md-0 p-4 shadow-sm">
+        <h5 class="text-secondary">Assessment Guidelines</h5>
+        <p>Kindly read through the following key instructions and important guidelines for this assessment:</p>
+
+        <h6 class="mt-4">Timelines & Questions:</h6>
+        <ul>
+          <li>Assessment Duration: 00:45:00 (hh:mm:ss)</li>
+          <li>Total Questions to be answered: 30 Questions</li>
+          <li>You can attempt the assessment anytime between the provided assessment window.</li>
+          <li>Ensure that you attempt the assessment in one sitting as the timer won’t stop once you start.</li>
+        </ul>
+
+        <h6 class="mt-4">Marking:</h6>
+        <p>Each participant's ranking will be determined based on the accuracy of their answers.</p>
+
+        <h6 class="mt-4">Key Instructions:</h6>
+        <ul>
+          <li>Access the assessment from the opportunity page itself where you registered.</li>
+          <li>Only the registered person can take the assessment.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Start Button: Full width at the bottom -->
+
+</div>
