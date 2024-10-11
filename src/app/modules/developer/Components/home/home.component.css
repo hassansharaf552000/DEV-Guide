@@ -10,82 +10,54 @@
 }
 
 
-.carousel-wrapper {
-  position: relative;
+/* Ensure each carousel item takes the full width of the carousel */
+.carousel-item {
   width: 100%;
-  max-width: 400px;
-  margin: auto;
-}
-
-.carousel-content {
-  display: flex;
+  display: flex; /* Center the card in the carousel */
   justify-content: center;
   align-items: center;
-  height: 300px; /* Adjust as per the size of your cards */
+  padding: 30px; /* Add padding for better visual separation */
 }
 
-.carousel-nav button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
-  font-size: 24px;
-  padding: 10px;
-  cursor: pointer;
+/* Style the carousel controls (prev/next buttons) */
+.carousel-control-prev, .carousel-control-next {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  border-radius: 50%; /* Make them circular */
+  width: 40px;
+  height: 40px;
 }
 
-.carousel-nav button:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+.carousel-control-prev:hover, .carousel-control-next:hover {
+  background-color: rgba(0, 0, 0, 0.7); /* Darker on hover */
 }
 
-.carousel-nav button:first-of-type {
-  left: 0;
+/* Style the developer card to be visually appealing */
+app-developercard {
+  width: 350px; /* Ensure a standard card width */
+  height: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
-.carousel-nav button:last-of-type {
-  right: 0;
+/* Add styles for carousel indicators */
+.carousel-indicators button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: gray;
 }
 
-.carousel-wrapper {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
+.carousel-indicators .active {
+  background-color: black;
 }
 
-.carousel {
-  display: flex;
-  transition: transform 0.3s ease-in-out;
-}
-
-.carousel-item {
-  min-width: 33.33%; /* Show 3 cards at a time, adjust for responsive */
-  flex-shrink: 0;
-}
-
-.prev-btn, .next-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 1;
-}
-
-.prev-btn {
-  left: 0;
-}
-
-.next-btn {
-  right: 0;
-}
 
 .image-size {
   width: 15%;
   height: auto;
 }
+
+
+
+
 

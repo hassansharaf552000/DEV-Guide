@@ -11,27 +11,9 @@
             <!-- Profile image input -->
             <div class="form-group">
               <label for="profileImage">Profile Image</label>
-              <input type="file" class="form-control" id="profileImage" formControlName="profileImage" accept="image/*">
-              <div *ngIf="stepTwoForm.get('profileImage')?.invalid && stepTwoForm.get('profileImage')?.touched" class="text-danger">
+              <input type="file" class="form-control" id="profileImage" (change)="SelectFile($event)" accept="image/*">
+              <div *ngIf="invalidProfileImage" class="text-danger">
                 Profile image is required
-              </div>
-            </div>
-
-            <!-- First Name -->
-            <div class="form-group">
-              <label for="firstName">First name</label>
-              <input id="firstName" type="text" class="form-control" formControlName="firstName" placeholder="First name">
-              <div *ngIf="stepTwoForm.get('firstName')?.invalid && stepTwoForm.get('firstName')?.touched" class="text-danger">
-                First Name is required
-              </div>
-            </div>
-
-            <!-- Last Name -->
-            <div class="form-group">
-              <label for="lastName">Last name</label>
-              <input id="lastName" type="text" class="form-control" formControlName="lastName" placeholder="Last name">
-              <div *ngIf="stepTwoForm.get('lastName')?.invalid && stepTwoForm.get('lastName')?.touched" class="text-danger">
-                Last Name is required
               </div>
             </div>
 
@@ -40,7 +22,7 @@
               <label for="country">Country of Residence</label>
               <select id="country" class="form-control" formControlName="country">
                 <option value="">Select your country</option>
-                <option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</option>
+                <option *ngFor="let country of countries" [value]="country.name">{{ country.name }}</option>
               </select>
               <div *ngIf="stepTwoForm.get('country')?.invalid && stepTwoForm.get('country')?.touched" class="text-danger">
                 Country of residence is required
@@ -51,14 +33,20 @@
             <div class="form-group">
               <label for="phone">Phone number</label>
               <input id="phone" type="text" class="form-control" formControlName="phone" placeholder="Phone number">
-              <div *ngIf="stepTwoForm.get('phone')?.invalid && stepTwoForm.get('phone')?.touched" class="text-danger">
+              <div *ngIf="stepTwoForm.get('phone')?.invalid && stepTwoForm.get('phone')?.touched && stepTwoForm.get('phone')?.hasError('required') " class="text-danger">
                 Phone number is required
+              </div>
+              <div *ngIf="stepTwoForm.get('phone')?.invalid && stepTwoForm.get('phone')?.touched && stepTwoForm.get('phone')?.hasError('minlength')" class="text-danger">
+                Phone number must be atleast 11 Digit
+              </div>
+              <div *ngIf="stepTwoForm.get('phone')?.invalid && stepTwoForm.get('phone')?.touched && stepTwoForm.get('phone')?.hasError('maxlength')" class="text-danger">
+                Phone number must be Max 12 Digit
               </div>
             </div>
 
             <!-- Navigation buttons -->
             <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
-            <button type="submit" class="btn btn-primary mt-3 ms-3" [disabled]="stepTwoForm.invalid">Next</button>
+            <button type="submit" class="btn btn-primary mt-3 ms-3" [disabled]="stepTwoForm.invalid || invalidProfileImage">Next</button>
           </form>
         </div>
       </div>
@@ -76,7 +64,7 @@
             Filling out this form helps us match you with job opportunities that best align with your skills.
           </p>
           <form [formGroup]="stepTwoForm" (ngSubmit)="onNext()">
-    
+
             <div class="form-group">
               <label for="profileImage">Profile Image</label>
               <input type="file" class="form-control" id="profileImage" formControlName="profileImage" accept="image/*">
@@ -110,7 +98,7 @@
                 <option value="">Select your country</option>
                 <option value="country1">Country 1</option>
                 <option value="country2">Country 2</option>
-              
+
               </select>
               @if (stepTwoForm.get('country')?.invalid && stepTwoForm.get('country')?.touched) {
               <div class="text-danger">
@@ -173,7 +161,7 @@
                 <option value="">Select your country</option>
                 <option value="country1">Country 1</option>
                 <option value="country2">Country 2</option>
-              
+
               </select>
               @if (stepTwoForm.get('country')?.invalid && stepTwoForm.get('country')?.touched) {
               <div class="text-danger">
@@ -197,4 +185,4 @@
       </div>
     </div>
   </div>
-</div> --> 
+</div> -->

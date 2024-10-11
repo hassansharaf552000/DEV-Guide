@@ -11,7 +11,7 @@ import { SidebarlayoutComponent } from './Components/sidebarlayout/sidebarlayout
 import { MentorAnswerQueryComponent } from './Components/mentor-answer-query/mentor-answer-query.component';
 import { ScheduleComponent } from './Components/schedule/schedule.component';
 import { SessionDetailsComponent } from './Components/session-details/session-details.component';
-import { Update_profileComponent } from '../../shared/components/update_profile/update_profile.component';
+import { Update_ProfileComponent } from '../../shared/components/update_profile/update_profile.component';
 import { MentorSummryComponent } from './Components/mentor-summry/mentor-summry.component';
 import { MentorRequestComponent } from './Components/mentor-request/mentor-request.component';
 const routes: Routes = [
@@ -19,7 +19,7 @@ const routes: Routes = [
     path: '',
     component: MentorlayoutComponent,
     children: [
-      { path: 'updateprofile', component: Update_profileComponent },
+      { path: 'updateprofile', component: Update_ProfileComponent },
       { path: 'mentor-payments', component: MentorPaymentsComponent },
       { path: 'booking', component: BookingComponent },
       { path: 'mentor-summry', component: MentorSummryComponent },

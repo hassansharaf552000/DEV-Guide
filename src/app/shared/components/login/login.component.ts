@@ -18,10 +18,25 @@ export class LoginComponent implements OnInit {
   passwordVisible: boolean = false;
   form:FormGroup;
    returnUrl='/home'
-<<<<<<< HEAD
+
   constructor(private authService: AuthService, private router: Router,private builder:FormBuilder,private toastr: ToastrService) {  // Inject Router
-=======
-  constructor(private authService: AuthService, private router: Router,private builder:FormBuilder) {  // Inject Router
+
+
+    this.form = this.builder.group({
+      LoginMethod: ["", [Validators.required]],
+      Password: ["", [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/)]],})
+
+
+
+    const storedLogin = localStorage.getItem('login');
+    const storedPassword = localStorage.getItem('password');
+    if (storedLogin && storedPassword) {
+      this.loginMethod = storedLogin;
+      this.password = storedPassword;
+      this.rememberMe = true;  
+    }
+   }
+
 
 
   private isBrowser(): boolean {
@@ -36,31 +51,19 @@ export class LoginComponent implements OnInit {
       }
     }
   }
-
   
->>>>>>> a2d1b6eff1ef83a0577fa0b648d98f8528096e47
+  
+
     // Check if credentials are stored in localStorage
-    this.form = this.builder.group({
-      LoginMethod: ["", [Validators.required]],
-      Password: ["", [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/)]],})
-
-
-
-    const storedLogin = localStorage.getItem('login');
-    const storedPassword = localStorage.getItem('password');
-    if (storedLogin && storedPassword) {
-      this.loginMethod = storedLogin;
-      this.password = storedPassword;
-      this.rememberMe = true;  
-    }
-  }
-
+    
+  
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;  // Toggle the visibility
   }
-  // ngOnInit() {
-  //   this.toastr.success('Toastr is working!', 'Success');
-  // }
+
+
+
+
 //   login() {
 //     this.authService.login(this.loginMethod, this.password).subscribe({
 //       next: (response) => {
@@ -118,6 +121,7 @@ login() {
   })
 
 }
+
 }
 
 // login() {
@@ -149,3 +153,6 @@ login() {
 //   });
 // }
 // }
+
+}
+

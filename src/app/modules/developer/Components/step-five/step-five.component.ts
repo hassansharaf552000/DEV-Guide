@@ -63,13 +63,13 @@ export class StepFiveComponent implements OnInit {
     });
 
     // Send form data to the server via the AccountService
-    this.accountService.CompleteProfile(this.accountService.formData.value).subscribe(
+    this.accountService.CompleteProfile().subscribe(
       (res:any)=>{
         console.log(res);
-        
+
         if(res.success == true){
-          this.accountService.CompleteProfile(res.result)
-        } 
+          this.router.navigate(['/']);
+        }
       },
       (err)=>{
         console.log(err);

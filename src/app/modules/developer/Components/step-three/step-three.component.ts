@@ -1,5 +1,6 @@
+import { EducationViewModel } from './../../interfaces/UserEducation';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from '../../../../shared/services/Account/account.service';
 
@@ -8,8 +9,12 @@ import { AccountService } from '../../../../shared/services/Account/account.serv
   templateUrl: './step-three.component.html',
   styleUrl: './step-three.component.css',
 })
-export class StepThreeComponent implements OnInit {
-  stepThreeForm!: FormGroup;
+export class StepThreeComponent {
+  // stepThreeForm!: FormGroup;
+  // formArray: FormGroup;
+  invalid = true;
+  educationslist: EducationViewModel[];
+
   countries = [
     { id: 'AF', name: 'Afghanistan' },
     { id: 'AL', name: 'Albania' },
@@ -259,38 +264,49 @@ export class StepThreeComponent implements OnInit {
     { id: 'ZW', name: 'Zimbabwe' },
   ];
 
-  constructor(private fb: FormBuilder, private router: Router,private Account:AccountService) {}
-
-  ngOnInit(): void {
-    this.stepThreeForm = this.fb.group({
-      university: ['', Validators.required],
-      country: ['', Validators.required],
-      degree: ['', Validators.required],
-      fieldOfStudy: ['', Validators.required],
-      startYear: ['', Validators.required],
-      startMonth: ['', Validators.required],
-      endYear: ['', Validators.required],
-      endMonth: ['', Validators.required],
-      currentlyStudying: [false],
-    });
+  constructor(private fb: FormBuilder, private router: Router, private Account: AccountService) {
+    this.educationslist = [
+      { StartDate: new Date(), EndDate: null, CountryOfStudy: "", University: "", Faculty: "", Degree: "", FieldOfStudy: "", TillNow: null }
+    ]
   }
 
+
+  addEducation(): void {
+    this.educationslist.push(
+      { StartDate: new Date(), EndDate: null, CountryOfStudy: "", University: "", Faculty: "", Degree: "", FieldOfStudy: "", TillNow: null }
+    )
+  }
+  removeEducation(index: number) {
+    this.educationslist.splice(index, 1)
+  }
   onNext(): void {
-    if (this.stepThreeForm.valid) {
-      for (const element in this.stepThreeForm.controls) {
-        Object.keys(this.stepThreeForm.controls).forEach((key) => {
-          this.Account.updateFormData(key, this.stepThreeForm.get(key)?.value);
-        });
-        // this.Account.updateFormData(element,this.stepThreeForm.controls[element] )
-        console.log(element);
-        console.log(this.stepThreeForm.controls[element]);
-        
-      }
+    if (this.educationslist.length > 0 && this.checklist() == undefined) {
+      this.educationslist.forEach(i => {
+        this.Account.updateFormData("Education", JSON.stringify(i));
+
+        // this.Account.updateFormData("StartDate", i.StartDate);
+        // this.Account.updateFormData("EndDate", i.EndDate);
+        // this.Account.updateFormData("CountryOfStudy", i.CountryOfStudy);
+        // this.Account.updateFormData("University", i.University);
+        // this.Account.updateFormData("Faculty", i.Faculty);
+        // this.Account.updateFormData("Degree", i.Degree);
+        // this.Account.updateFormData("FieldOfStudy", i.FieldOfStudy);
+        // this.Account.updateFormData("TillNow", i.TillNow);
+      })
       this.router.navigate(['/developer/step-four']);
+    }
+    else {
+console.log("error Happaned");
+
     }
   }
 
   goToPreviousStep(): void {
     this.router.navigate(['/developer/step-two']);
+  }
+  checklist(): EducationViewModel|undefined{
+    console.log(this.educationslist);
+    let res=  this.educationslist.find(i => i.CountryOfStudy == "" || i.Degree == "" || i.Faculty == "" || i.FieldOfStudy == "" || i.University == "")
+    return res;
   }
 }

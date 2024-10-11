@@ -1,317 +1,114 @@
-/* Container and Card */ 
-.container {
-  max-width: 90%;
-  margin: 30px auto;
-  padding: 50px;
-}
-
-.card {
-  background-color: #ffffff; /* White background for contrast */
-  border: 1px solid #e0e0e0; /* Subtle border */
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px; /* Space between cards */
+/* .card {
+  max-width: 600px;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .card-header {
-  font-size: 1.5rem;
-  font-weight: 700;
-  background-color: #007bff; /* Bootstrap primary color */
-  color: white;
-  padding: 15px;
-  border-bottom: 2px solid #0056b3; /* Darker border */
-  border-radius: 10px 10px 0 0;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
 }
 
 .card-body {
-  padding: 25px;
+  padding: 20px;
 }
 
-/* Form Elements */
 .form-group {
-  margin-bottom: 1.5rem; /* Increased spacing */
-}
-
-.form-group label {
-  font-weight: 600;
-  color: #333;
-  display: block; /* Ensures label takes full width */
+  margin-bottom: 15px;
 }
 
 .form-control {
-  border-radius: 5px;
-  border: 1px solid #ccc; /* Light gray border */
+  width: 100%;
   padding: 10px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
 }
 
-.form-control:focus {
-  border-color: #007bff; /* Focus border color */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25); /* Focus shadow */
+.text-danger {
+  color: red;
+  font-size: 12px;
 }
 
-/* Image */
-.img-fluid {
-  border-radius: 50%;
-  border: 3px solid #007bff; /* Profile image border color */
-  transition: transform 0.3s ease;
-}
-
-.img-fluid:hover {
-  transform: scale(1.05); /* Hover effect */
-}
-
-/* Buttons */
-.btn {
-  border-radius: 30px;
-  padding: 12px 24px; /* Increased padding */
-  font-size: 1rem;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  border: none; /* No border */
-}
-
-.btn-primary {
-  background-color: #007bff; /* Primary button color */
-  color: white; /* Button text color */
-}
-
-.btn-primary:hover {
-  background-color: #0056b3; /* Darker hover color */
-  box-shadow: 0 4px 15px rgba(0, 91, 187, 0.5); /* Shadow effect */
-}
-
-/* Additional Styling */
-.text-capitalize {
-  text-transform: capitalize;
-}
-
-.containerbtn {
-  text-align: center; /* Centering buttons */
-}
-
-.mt-2, .mt-3, .mt-4 {
-  margin-top: 1.5rem !important; /* Increased margin for better spacing */
-}
-
-.mb-2, .mb-3, .mb-4 {
-  margin-bottom: 1.5rem !important; /* Increased margin for better spacing */
-}
-
-/* Social Media Icons */
-.text-facebook {
-  color: #3b5998; /* Facebook color */
-}
-
-.text-linkedin {
-  color: #0077b5; /* LinkedIn color */
-}
-
-.text-google-icon {
-  color: #db4437; /* Google color */
-}
-
-.text-twitter {
-  color: #1da1f2; /* Twitter color */
-}
-
-.text-instagram-gradient {
-  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.text-youtube {
-  color: #ff0000; /* YouTube color */
-}
-
-.brder1 {
-  border: 5px solid gray; /* Custom border */
-}
-
-/* Hide the default file input */
-.form-group input[type="file"] {
-  display: none; /* Hide input */
-}
-
-/* Container for the file upload and image preview */
-.image-upload-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+button {
   margin-top: 20px;
 }
 
-/* Style the custom file upload button */
-.custom-file-upload {
-  display: inline-block;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #007bff;
+
+
+
+
+
+ */
+
+
+ .card {
+  /* border: 1px solid #ccc; */
   border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 1200px;
+}
+
+.card-header {
   text-align: center;
-  margin-bottom: 20px;
-  position: relative;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+  background-color: white;
 }
 
-/* Hover and active effects for custom file upload button */
-.custom-file-upload:hover {
-  background-color: #0056b3; /* Darker on hover */
+.card-body {
+  margin-top: 15px;
 }
 
-.custom-file-upload:active {
-  transform: scale(0.98); /* Slight scale down on click */
+.img-fluid {
+  border-radius: 50%;
+  margin-bottom: 15px;
 }
 
-/* Image preview styling */
-.image-preview {
-  margin-bottom: 20px;
-}
-
-.preview-image {
-  max-width: 100%;
-  max-height: 300px;
-  border-radius: 8px;
-  border: 2px solid #007bff; /* Border for image preview */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-/* General Styles */
-body {
-  font-family: 'Arial', sans-serif; /* Font family for the entire document */
-  background-color: #f4f7fa; /* Light background color */
-  margin: 0; /* Remove default margin */
-  padding: 20px; /* Padding for the body */
-}
-
-h2 {
-  color: #007bff; /* Primary color for headings */
-}
-
-/* Form Container */
-.profile-form {
-  background: white; /* White background for the form */
-  padding: 30px; /* Padding around the form */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-}
-
-/* Form Groups */
 .form-group {
-  margin-bottom: 1.5rem; /* Space between form groups */
+  margin-bottom: 15px;
 }
 
-.form-group label {
-  font-weight: bold; /* Bold labels */
-  color: #333; /* Dark text color */
-}
-
-/* Input Styles */
 .form-control {
-  border: 1px solid #ccc; /* Light gray border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 10px; /* Padding inside inputs */
-  transition: border-color 0.3s; /* Smooth transition for border color */
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  transition: border-color 0.3s;
 }
 
 .form-control:focus {
-  border-color: #007bff; /* Change border color on focus */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25); /* Shadow effect on focus */
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Error Message */
-.text-danger {
-  font-size: 0.875rem; /* Smaller font size for error messages */
-  margin-top: 5px; /* Space above error messages */
+.form-control-file {
+  margin-top: 10px;
 }
 
-/* Button Styles */
 .btn {
-  background-color: #007bff; /* Primary button color */
-  color: white; /* Button text color */
-  padding: 10px 20px; /* Button padding */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners for buttons */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s; /* Smooth transition for background color */
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .btn:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: #0056b3;
 }
 
-/* Preview Image */
-.preview-image {
-  max-width: 100px; /* Max width for preview images */
-  border-radius: 5px; /* Rounded corners */
-  margin-top: 10px; /* Space above the image */
+.text-danger {
+  font-size: 12px;
+  color: red;
 }
+.mohamed{
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .col-6 {
-    flex: 0 0 100%; /* Full width on smaller screens */
-    max-width: 100%; /* Max width for smaller screens */
-  }
+  text-align: center;
 }
-/* Hide the default file input */
-.form-group input[type="file"] {
-  display: none; /* Hide the input element */
-}
-
-/* Custom label for the file input */
-.custom-file-upload {
-  display: inline-block; /* Inline-block to allow margin and padding */
-  padding: 10px 20px; /* Padding for the button */
-  cursor: pointer; /* Pointer cursor on hover */
-  background-color: #007bff; /* Background color */
-  color: white; /* Text color */
-  border-radius: 5px; /* Rounded corners */
-  font-weight: bold; /* Bold text */
-  text-align: center; /* Center text */
-  transition: background-color 0.3s; /* Smooth transition for background color */
-}
-
-/* Hover effect for the button */
-.custom-file-upload:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-}
-/* Hide the default file input */
-.form-group input[type="file"] {
-  display: none; /* Hide the input element */
-}
-
-/* Custom label for the file input */
-.custom-file-upload {
-  display: inline-block; /* Inline-block to allow margin and padding */
-  padding: 10px 20px; /* Padding for the button */
-  cursor: pointer; /* Pointer cursor on hover */
-  background-color: #007bff; /* Background color */
-  color: white; /* Text color */
-  border-radius: 5px; /* Rounded corners */
-  font-weight: bold; /* Bold text */
-  text-align: center; /* Center text */
-  transition: background-color 0.3s; /* Smooth transition for background color */
-}
-
-/* Hover effect for the button */
-.custom-file-upload:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-}
-
-/* Styling for the preview image */
-.preview-image {
-  max-width: 100px; /* Set max width for the image */
-  max-height: 100px; /* Set max height for the image */
-  border-radius: 5px; /* Rounded corners for the image */
-  margin-top: 10px; /* Space above the image */
-  display: block; /* Make sure it behaves like a block element */
-  border: 1px solid #ddd; /* Light border around the image */
-}
-
-
-
-
-
