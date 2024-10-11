@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],  // Corrected 'styleUrl' to 'styleUrls'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginMethod: string = '';  // Holds either the username or email
   password: string = '';
   rememberMe: boolean = false;  // Flag for Remember Me
@@ -18,7 +18,27 @@ export class LoginComponent {
   passwordVisible: boolean = false;
   form:FormGroup;
    returnUrl='/home'
+<<<<<<< HEAD
   constructor(private authService: AuthService, private router: Router,private builder:FormBuilder,private toastr: ToastrService) {  // Inject Router
+=======
+  constructor(private authService: AuthService, private router: Router,private builder:FormBuilder) {  // Inject Router
+
+
+  private isBrowser(): boolean {
+    return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+  }
+  ngOnInit(): void {
+    // Check if localStorage is available in the current environment
+    if (this.isBrowser()) {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        // Handle logged-in state, e.g., redirect or load user data
+      }
+    }
+  }
+
+  
+>>>>>>> a2d1b6eff1ef83a0577fa0b648d98f8528096e47
     // Check if credentials are stored in localStorage
     this.form = this.builder.group({
       LoginMethod: ["", [Validators.required]],
