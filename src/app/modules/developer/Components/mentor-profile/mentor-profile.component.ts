@@ -27,8 +27,10 @@ export class MentorProfileComponent {
         category: 'Web Development',
         title: 'Senior Developer',
         rate: 3,
-        currentprice: 99.99
-      },
+        currentprice: 99.99,
+         yearsofexperience:5,
+        about:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+        skills: ['Front End', 'UI/UX', 'Angular', 'HTML', 'CSS'],      },
       {
         id: 2,
         name: 'Jane Smith',
@@ -36,7 +38,10 @@ export class MentorProfileComponent {
         category: 'Data Science',
         title: 'Data Scientist',
         rate: 2,
-        currentprice: 149.99
+        currentprice: 149.99,
+        yearsofexperience:5,
+       about:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+       skills: ['Front End', 'UI/UX'],
       },
       {
         id: 3,
@@ -45,7 +50,10 @@ export class MentorProfileComponent {
         category: 'Machine Learning',
         title: 'Machine Learning Engineer',
         rate: 1,
-        currentprice: 199.99
+        currentprice: 199.99,
+        yearsofexperience:5,
+       about:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+       skills: ['Front End', 'UI/UX'], 
       },
       {
         id:4,
@@ -54,7 +62,10 @@ export class MentorProfileComponent {
         category: 'Machine Learning',
         title: 'Machine Learning Engineer',
         rate: 5,
-        currentprice: 199.99
+        currentprice: 199.99,
+        yearsofexperience:5,
+       about:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+       skills: ['Front End', 'UI/UX'],
       },
       {
         id:5,
@@ -63,7 +74,10 @@ export class MentorProfileComponent {
         category: 'Machine Learning',
         title: 'Machine Learning Engineer',
         rate: 2,
-        currentprice: 199.99
+        currentprice: 199.99,
+        yearsofexperience:5,
+       about:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+       skills: ['Front End', 'UI/UX'],
       },
       {
         id:6,
@@ -72,7 +86,10 @@ export class MentorProfileComponent {
         category: 'Machine Learning',
         title: 'Machine Learning Engineer',
         rate: 3,
-        currentprice: 199.99
+        currentprice: 199.99,
+        yearsofexperience:5,
+       about:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+       skills: ['Front End', 'UI/UX'],
       }
     ];
     this.mentorProfile = mentorlist.find(mentor=> mentor.id === id);

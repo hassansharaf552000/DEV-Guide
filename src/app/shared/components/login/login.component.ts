@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';  // Import the Router for navigation
 import { AuthService } from '../../services/Auth/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,10 @@ export class LoginComponent implements OnInit {
   passwordVisible: boolean = false;
   form:FormGroup;
    returnUrl='/home'
-  constructor(private authService: AuthService, private router: Router,private builder:FormBuilder) { 
+
+  constructor(private authService: AuthService, private router: Router,private builder:FormBuilder,private toastr: ToastrService) {  // Inject Router
+
+
     this.form = this.builder.group({
       LoginMethod: ["", [Validators.required]],
       Password: ["", [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/)]],})
@@ -34,6 +38,7 @@ export class LoginComponent implements OnInit {
    }
 
 
+
   private isBrowser(): boolean {
     return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
   }
@@ -48,12 +53,15 @@ export class LoginComponent implements OnInit {
   }
   
   
+
     // Check if credentials are stored in localStorage
     
   
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;  // Toggle the visibility
   }
+
+
 
 
 //   login() {
@@ -91,7 +99,6 @@ export class LoginComponent implements OnInit {
 login() {
   console.log(this.form.value);
   
-  
   this.authService.login(this.form.value).subscribe({
     next:(res:any)=>{
       console.log(res);
@@ -101,15 +108,51 @@ login() {
         this.router.navigateByUrl(this.returnUrl)
 
       }else{
-        alert("Sorry try again leter")
+        // alert("Sorry try again leter")
+        this.toastr.error('Login is Failed', res.message);
       }
       
     },
     error:(err)=>{
       console.log(err);
-      alert("Sorry try again leter")
+      this.toastr.error('Sorry, please try again later', 'Login Failed');
+   
     }
   })
 
 }
+
 }
+
+// login() {
+//   console.log(this.form.value);
+  
+//   this.authService.login(this.form.value).subscribe({
+//     next: (res: any) => {
+//       console.log(res);
+      
+//       if (res.success === true) {
+//         this.authService.userlogin(res.result);
+//         if (this.rememberMe) {
+//           localStorage.setItem('login', this.loginMethod);
+//           localStorage.setItem('password', this.password);
+//         } else {
+//           localStorage.removeItem('login');
+//           localStorage.removeItem('password');
+//         }
+//         this.router.navigateByUrl(this.returnUrl);
+//         this.toastr.success('Successfully logged in!', 'Success');
+//       } else {
+//         this.toastr.error('Login failed. Please try again.', 'Error');
+//       }
+//     },
+//     error: (err) => {
+//       console.log(err);
+//       this.toastr.error('Sorry, please try again later', err);
+//     }
+//   });
+// }
+// }
+
+}
+

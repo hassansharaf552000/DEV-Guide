@@ -1,6 +1,22 @@
-<div class="container">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
+
+<div class="login-page">
+  <div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+      <div class="col-md-8 col-lg-6">
+        <div class="card login-card shadow-sm">
+          <div class="card-body">
+            <img src="logo 1.jpg" class="card-image">
+            <h3 class="text-center mb-4" style="font-family: Edu AU VIC WA NT Hand, cursive;font-optical-sizing: auto;font-style: normal;">Sign up</h3>
+
+
+
+
+<div class="">
   <div class="signup-form">
-    <h2 class="text-center">Sign up</h2>
+    <!-- <h2 class="text-center">Sign up</h2> -->
     <form [formGroup]="form" (ngSubmit)="send()">
       <div class="form-group">
         <label for="email">Email address</label>
@@ -124,11 +140,18 @@
         <button type="button" (click)="setRole('HR')"> HR</button>
         <button type="button" (click)="setRole('Monitor')">Monitor</button>
      </form>
-      <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-block text-center justify-content-center">Sign Up</button>
+
+      <button type="submit" [disabled]="form.invalid" class="form-group mt-4 ps-4 btn btn-primary btn-block ms-4 text-center justify-content-center">Sign Up</button>
       <p class="text-center mt-3">
         Already have an account?
         <a routerLink="/developer/login">login</a>
       </p>
     </form>
   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
