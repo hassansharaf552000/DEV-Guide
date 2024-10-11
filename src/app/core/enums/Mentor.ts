@@ -5,5 +5,8 @@ imageurl:String
 category:String
 title:String
 rate:number
-currentprice:number
+currentprice:number 
+yearsofexperience:number
+about:string
+skills: Array<any>; 
 }

@@ -123,14 +123,46 @@
 }
 
 .btn-primary-search {
+  /* background-color: #415bcf;
+   */
+   background-color:#ffffff;
+   color: #1c4980;
+  border-color: #415bcf;
+  width: 250px;
+  height: 50px;
+  /* color: white; */
+  text-align: center !important;
+  /* text-align: center; */
+  /* justify-content: center; */
+  /* display: flex; */
+  /* margin-left: 530px !important; */
+}
+.btn-primary-search:hover {
   background-color: #415bcf;
+  
+   /* background-color:#ffffff; */
+   /* color: #1c4980; */
   border-color: #415bcf;
   width: 250px;
   height: 50px;
   color: white;
   text-align: center;
+  /* margin-left: 1000px !important; */
+}
+.btn-next{
+  background-color:#ffffff;
+  color: #1c4980;
+ border-color: #415bcf;
+ width: 150px;
+height: 40px;
 }
 
+.btn-next:hover{
+  background-color: #415bcf;
+  border-color: #415bcf;
+  
+  color: white;
+}
 .form-check-inline .form-check-input[type="radio"] {
   display: none;
 }
@@ -145,8 +177,30 @@
   transform: scale(1.2);
 }
 .star-rating {
+  padding-right: 130px;
+  /* padding-top: 30px; */
   direction: rtl;
   display: inline-flex;
+}
+@media (max-width: 1100px) {
+  .star-rating {
+  padding-left:50%;
+  padding-right: 0px;
+  /* padding-top: 30px; */
+  padding-bottom: 40px;
+    direction: rtl;
+    display: inline-flex;
+  }
+}
+@media (max-width: 770px) {
+  .star-rating {
+  padding-left: 160px;
+  /* padding-right: 0px; */
+  /* padding-top: 30px; */
+  padding-bottom: 40px;
+    direction: rtl;
+    display: inline-flex;
+  }
 }
 
 .star-rating input[type="radio"] {
@@ -158,12 +212,15 @@
   font-size: 2em;
   padding: 0 0.1em;
   cursor: pointer;
-  border: 2px solid rgb(144, 141, 141); /* Border for unselected stars */
+  /* border: 2px solid rgb(144, 141, 141);  */
+  
+  /* Border for unselected stars */
       transition: background-color 0.2s, border-color 0.2s, fill 0.2s;
       display: inline-flex;
       align-items: center;
       justify-content: center;
 }
+
 
 .star-rating label:hover,
 .star-rating label:hover ~ label,
@@ -176,12 +233,17 @@
 .star-rating input[type="radio"]:checked ~ label svg {
   fill: yellow;
 }
+.star-rating label svg,.star-rating label ~ label svg,.star-rating input[type="radio"] ~ label svg{
+  fill: gray;
+}
 
 /* Container for the slider */
 .slider-container {
   position: relative;
-  width: 100%;
-  margin-top: 20px; /* Adjust spacing if needed */
+  width: 35% !important;
+  margin-top: 10px; /* Adjust spacing if needed */
+  /* margin-left: 700px !important; */
+  margin-right: 200px !important;
 }
 
 /* Base styling for the range input */
@@ -205,7 +267,7 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer;
   position: relative;
   z-index: 2;
-  box-shadow: 0 0 0 2px #ddd; /* Add border to thumb */
+  box-shadow: 0 0 0 2px #ddd; 
 }
 
 /* Firefox slider thumb styling */
@@ -304,4 +366,12 @@ input[type="range"]::-ms-track {
   position: relative;
 }
 
-
+ /* .cardd{
+  width: 
+  500% !important;
+  height: 300px;
+}  */
+.client{
+ justify-self: start;
+ margin-right: 400px !important;
+}
