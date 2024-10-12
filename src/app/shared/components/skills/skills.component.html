@@ -1,0 +1,86 @@
+<div class="container">
+  <!-- Add Skill Icon -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap"
+    rel="stylesheet">
+  <br>
+  <br>
+  <h3 class="display-4 fw-bold text-center" style="
+        font-family: Edu AU VIC WA NT Hand, cursive;
+        font-optical-sizing: auto;
+        font-style: normal;
+  ">Your Skills</h3>
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary btn-circle" (click)="openAddSkillModal()">
+      <i class="bi bi-plus-lg"></i>
+    </button>
+  </div>
+
+  <!-- Skill Cards in Row -->
+  <div class="d-flex flex-wrap justify-content-start gap-3 mt-4">
+    <div class="card" *ngFor="let skill of skills">
+      <div class="card-body text-center">
+        <h5 class="card-title">{{ skill.name }}</h5>
+        <button class="btn btn-success btn-circle me-2" (click)="openEditSkillModal(skill)">
+          <i class="bi bi-pencil"></i>
+        </button>
+        <button class="btn btn-danger btn-circle" (click)="deleteSkill(skill.id)">
+          <i class="bi bi-trash"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Add Skill Modal -->
+<div class="modal fade show" tabindex="-1" role="dialog" *ngIf="showAddSkillModal" style="display: block;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-card">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Skill</h5>
+        <button type="button" class="btn-close" (click)="closeAddSkillModal()"></button>
+      </div>
+      <div class="modal-body">
+        <input [(ngModel)]="newSkillName" (input)="filterSuggestions()" placeholder="Skill Name" class="form-control">
+        <div class="d-flex flex-wrap mt-2">
+          <span *ngFor="let suggestion of filteredSuggestions" class="suggestion-circle me-2"
+            (click)="selectSuggestion(suggestion)">
+            {{ suggestion.name }}
+          </span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="closeAddSkillModal()">Cancel</button>
+        <button class="btn btn-primary" (click)="addSkill()">Add Skill</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Skill Modal -->
+<div class="modal fade show" tabindex="-1" role="dialog" *ngIf="showEditSkillModal" style="display: block;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-card">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Skill</h5>
+        <button type="button" class="btn-close" (click)="closeEditSkillModal()"></button>
+      </div>
+      <div class="modal-body">
+        <input [(ngModel)]="selectedSkill!.name" (input)="filterSuggestions()" placeholder="Skill Name"
+          class="form-control">
+        <div class="d-flex flex-wrap mt-2">
+          <span *ngFor="let suggestion of filteredSuggestions" class="suggestion-circle me-2"
+            (click)="selectSuggestion(suggestion)">
+            {{ suggestion.name }}
+          </span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="closeEditSkillModal()">Cancel</button>
+        <button class="btn btn-primary" (click)="updateSkill()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>

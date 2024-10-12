@@ -25,4 +25,5 @@
     country: string;
     phoneNumber: string;
     yearsOfExperience: number;
+    About:string;
 }

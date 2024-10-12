@@ -45,6 +45,8 @@ import { QuizzesDetailsComponent } from '../../shared/components/quizzes-details
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { Update_ProfileComponent } from '../../shared/components/update_profile/update_profile.component';
+import { ChangepasswordComponent } from '../../shared/components/changepassword/changepassword.component';
+import { SkillsComponent } from '../../shared/components/skills/skills.component';
 
 const routes: Routes = [
   {
@@ -86,6 +88,8 @@ const routes: Routes = [
     component: ProfileLayoutComponent,
     children: [
       { path: 'updateprofile', component: Update_ProfileComponent },
+      {path:'change-password',component:ChangepasswordComponent},
+      {path:'skills',component:SkillsComponent},
       { path: 'reviews', component: ReviewsListComponent },
       { path: 'quizzes', component: QuizListComponent },
       { path: 'reply', component: MentorReplyComponent },
