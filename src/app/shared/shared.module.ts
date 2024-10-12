@@ -20,6 +20,11 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { QuizCardComponent } from './components/quiz-card/quiz-card.component';
 import { QuizzesListComponent } from './components/quizzes-list/quizzes-list.component';
 import { QuizzesDetailsComponent } from './components/quizzes-details/quizzes-details.component';
+import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
+import { SkillsComponent } from './components/skills/skills.component';
+import { SkillCardComponent } from './components/skill-card/skill-card.component';
+import { AddSkillComponent } from './components/add-skill/add-skill.component';
+import { EditSkillComponent } from './components/edit-skill/edit-skill.component';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -36,7 +41,7 @@ import { QuizzesDetailsComponent } from './components/quizzes-details/quizzes-de
     QuizCardComponent,
     QuizzesDetailsComponent,
     QuizzesListComponent,
-    CustomPaginationComponent,Update_ProfileComponent
+    CustomPaginationComponent,Update_ProfileComponent, ChangepasswordComponent, SkillsComponent, SkillCardComponent, AddSkillComponent, EditSkillComponent
   ],
 
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule,NgxPaginationModule],

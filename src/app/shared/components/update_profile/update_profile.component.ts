@@ -35,10 +35,11 @@ export class Update_ProfileComponent implements OnInit {
       country: ['', Validators.required],
       phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10,15}$')]],
       yearsOfExperience: [null, [Validators.required, Validators.min(0), Validators.max(50)]],
-      image: [null, Validators.required],
-      imagePath: ['', Validators.maxLength(255)],
-      cv: [null, Validators.required],
-      cvPath: ['', Validators.maxLength(255)],
+      About:['',[Validators.required,Validators.minLength(500)]],
+      image: [Validators.required],
+      imagePath: ['',Validators.required],
+      cv: [Validators.required],
+      cvPath: ['',Validators.required],
     });
 
     // Then load the profile data
@@ -47,36 +48,49 @@ export class Update_ProfileComponent implements OnInit {
 
   loadProfileData() {
     this.profile = {
-      imagePath: 'default-image-path.jpg',
-      firstName: 'John',
+      imagePath: 'images.jpg',
+      firstName: 'Joh',
       lastName: 'Doe',
       title: 'Software Developer',
       price: 5000,
-      cvPath: 'cv-path.pdf',
+      cvPath: 'cv.pdf',
       level: 'Senior',
-      country: 'USA',
+      country: 'Egypt',
       phoneNumber: '1234567890', // Match pattern (numbers only)
       yearsOfExperience: 5,
+      About:"I am Adham Hamdy From Aswan"
     };
 
     // Initialize the form with current profile data
     this.InformationForm.patchValue(this.profile);
   }
 
-  onImageChange(event: Event): void {
-    const input = event.target as HTMLInputElement;
-
-    if (input.files && input.files[0]) {
-      const file = input.files[0];
+  onImageChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const img = new Image();
       const reader = new FileReader();
-      reader.onload = () => {
-        this.selectedImage = reader.result; // Store the image data
-        this.InformationForm.patchValue({ image: file });
-        this.InformationForm.get('image')?.markAsTouched();
-        this.InformationForm.get('image')?.markAsDirty();
-        this.InformationForm.get('image')?.updateValueAndValidity();
+
+      reader.onload = (e: any) => {
+        img.src = e.target.result;
+
+        img.onload = () => {
+          const width = img.width;
+          const height = img.height;
+
+          // Set the required width and height
+          const requiredWidth = 300; // Example size in pixels
+          const requiredHeight = 300;
+
+          if (width <= requiredWidth && height <= requiredHeight) {
+            this.selectedImage = e.target.result; // Display the image
+          } else {
+            alert(`Invalid image size. Please upload an image with ${requiredWidth}x${requiredHeight} dimensions.`);
+          }
+        };
       };
-      reader.readAsDataURL(file);
+
+      reader.readAsDataURL(file); // Read the uploaded file as a data URL
     }
   }
 
@@ -94,35 +108,42 @@ export class Update_ProfileComponent implements OnInit {
   }
 
   submitinformationform():void{
-    const updatedProfile: Profile = {
-      ...this.InformationForm.value,
-      imagePath: this.selectedImage as string,
-      cvPath: this.selectedCV ? this.selectedCV.name : this.profile.cvPath,
-    };
-    console.log('Updated Profile:', updatedProfile);
+    if(this.InformationForm.valid){
+      const updatedProfile: Profile = {
+        ...this.InformationForm.value,
+        imagePath: this.selectedImage as string,
+        cvPath: this.selectedCV ? this.selectedCV.name : this.profile.cvPath,
+      };
+      console.log('Updated Profile:', updatedProfile);
 
-    // Prepare FormData for file uploads
-    const formData = new FormData();
-    Object.keys(this.InformationForm.controls).forEach(key => {
-      const controlValue = this.InformationForm.get(key)?.value;
-      if (controlValue instanceof File) {
-        formData.append(key, controlValue);
-      } else {
-        formData.append(key, controlValue);
-      }
-    });
+      // Prepare FormData for file uploads
+      const formData = new FormData();
+      Object.keys(this.InformationForm.controls).forEach(key => {
+        const controlValue = this.InformationForm.get(key)?.value;
+        if (controlValue instanceof File) {
+          formData.append(key, controlValue);
+        } else {
+          formData.append(key, controlValue);
+        }
+      });
+    }
+    else{
+      this.InformationForm.markAllAsTouched();
+    }
+
+
   }
 
   onSubmit(): void {
-    if (this.InformationForm.valid) {
+
       this.submitinformationform()
 
       // Call your API service to update the profile data in the database
       // this.profileService.updateProfile(formData).subscribe(...);
-    } // else {
+     // else {
     //   this.InformationForm.markAllAsTouched();
     // }
-    
+
   }
 }
 
@@ -192,7 +213,7 @@ export class Update_ProfileComponent implements OnInit {
   // //   });
 
   // //   this.loadUserData();
-  // //   this.loadAvailableSkills(); 
+  // //   this.loadAvailableSkills();
   // //   this.loadEducationData();
   // //   this.loadExperienceData();
   // //   this.updateForm.get('skillInput')!.valueChanges.subscribe(value => {
@@ -309,7 +330,7 @@ export class Update_ProfileComponent implements OnInit {
 
   // // filterSkills(query: string) {
   // //   if (query) {
-  // //     this.filteredSkills = this.skills.filter(skill => 
+  // //     this.filteredSkills = this.skills.filter(skill =>
   // //       skill.name.toLowerCase().includes(query.toLowerCase())
   // //     );
   // //   } else {
