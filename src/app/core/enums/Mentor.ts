@@ -1,12 +1,14 @@
 export interface IMentor{
-id:number;
-name:String
-imageurl:String
-category:String
-title:String
-rate:number
-currentprice:number 
-yearsofexperience:number
-about:string
-skills: Array<any>; 
+id:number
+FirstName:string
+LastName:string
+Image:string
+Title:string
+AverageRate:number
+Price:number 
+YearsOfExperience:number
+About:string
+Skills: Array<any>
+SocialAccounts:Array<string>
+category:string
 }

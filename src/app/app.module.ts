@@ -6,6 +6,7 @@ import {
 } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CarouselModule } from 'ngx-owl-carousel-o'; // Correct import
@@ -29,14 +30,13 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     RouterModule,
     CommonModule,
-
-    
+    NgxPaginationModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({ // ToastrModule added
       timeOut: 3000, // duration for toast notifications
       positionClass: 'toast-top-right', // position for toast notifications
       preventDuplicates: true, // prevent duplicate notifications
-      progressBar: true, 
+      progressBar: true,
     }),
 
     CarouselModule,
@@ -44,7 +44,10 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
 
   ],
-  providers: [provideClientHydration(), provideHttpClient(withFetch(), withInterceptors([authInterceptor,loaderInterceptor]))],
+  providers: [
+    CookieService,
+    provideClientHydration(), 
+    provideHttpClient(withFetch(), withInterceptors([authInterceptor,loaderInterceptor]))],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

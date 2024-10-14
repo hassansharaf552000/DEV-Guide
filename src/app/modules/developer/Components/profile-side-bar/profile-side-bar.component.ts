@@ -14,8 +14,11 @@ export class ProfileSideBarComponent {
 //     profileCompletion: 50 // Percentage of profile completion
 //   };
   menuItems = [
-    { path: '/profile', label: 'Profile', icon: 'bi bi-person' },
     { path: '/developer/profile/updateprofile', label: 'Edit Profile', icon: 'bi bi-pencil-square' },
+    { path: '/developer/profile/change-password', label: 'Change Password', icon: 'bi-key' },
+    { path: '/developer/profile/skills', label: 'Skills', icon: 'bi-person-check' },
+    { path: '/developer/profile/educations', label: 'Education', icon: 'bi-person'},
+    { path: '/developer/profile/experiences', label: 'Experience', icon: 'bi-person'},
     { path: '/developer/profile/quizzes', label: 'Quizzes', icon: 'bi bi-question' },
     { path: '/developer/profile/reply', label: 'Queries', icon: 'bi bi-chat-square-dots' },
     { path: '/profile-requests', label: 'Requests', icon: 'bi bi-envelope' },

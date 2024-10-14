@@ -19,10 +19,10 @@
     firstName: string;
     lastName: string;
     title: string;
-    price: number;
     cvPath: string;         // Path to the user's CV
     level: string;
     country: string;
     phoneNumber: string;
     yearsOfExperience: number;
+    About:string;
 }
