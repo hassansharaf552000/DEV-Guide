@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ education.degree }} in {{ education.fieldOfStudy }}</mat-card-title>
+    <mat-card-subtitle>{{ education.university }} - {{ education.countryOfStudy }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p *ngIf="education.faculty">Faculty: {{ education.faculty }}</p>
+    <p>
+      Dates: {{ formatDate(education.startDate) }} -
+      <span *ngIf="education.tillNow; else endDate">
+        Present
+      </span>
+      <ng-template #endDate>
+        {{ education.endDate ? formatDate(education.endDate) : 'N/A' }}
+      </ng-template>
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-icon-button aria-label="Edit education" (click)="openEditDialog()">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+

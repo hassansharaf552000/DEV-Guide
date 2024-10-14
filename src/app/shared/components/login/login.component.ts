@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     if (storedLogin && storedPassword) {
       this.loginMethod = storedLogin;
       this.password = storedPassword;
-      this.rememberMe = true;  
+      this.rememberMe = true;
     }
    }
 
@@ -51,12 +51,12 @@ export class LoginComponent implements OnInit {
       }
     }
   }
-  
-  
+
+
 
     // Check if credentials are stored in localStorage
-    
-  
+
+
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;  // Toggle the visibility
   }
@@ -98,11 +98,11 @@ export class LoginComponent implements OnInit {
 
 login() {
   console.log(this.form.value);
-  
+
   this.authService.login(this.form.value).subscribe({
     next:(res:any)=>{
       console.log(res);
-      
+
       if(res.success == true){
         this.authService.userlogin(res.result);
         this.router.navigateByUrl(this.returnUrl)
@@ -111,12 +111,12 @@ login() {
         // alert("Sorry try again leter")
         this.toastr.error('Login is Failed', res.message);
       }
-      
+
     },
     error:(err)=>{
       console.log(err);
       this.toastr.error('Sorry, please try again later', 'Login Failed');
-   
+
     }
   })
 
@@ -126,11 +126,11 @@ login() {
 
 // login() {
 //   console.log(this.form.value);
-  
+
 //   this.authService.login(this.form.value).subscribe({
 //     next: (res: any) => {
 //       console.log(res);
-      
+
 //       if (res.success === true) {
 //         this.authService.userlogin(res.result);
 //         if (this.rememberMe) {
@@ -154,5 +154,5 @@ login() {
 // }
 // }
 
-}
+
 

@@ -30,13 +30,14 @@ import { SharedModule } from './shared/shared.module';
     RouterModule,
     CommonModule,
 
-    
+
+
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({ // ToastrModule added
       timeOut: 3000, // duration for toast notifications
       positionClass: 'toast-top-right', // position for toast notifications
       preventDuplicates: true, // prevent duplicate notifications
-      progressBar: true, 
+      progressBar: true,
     }),
 
     CarouselModule,
