@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
     this.form = this.builder.group({
       LoginMethod: ["", [Validators.required]],
-      Password: ["", [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/)]],})
+      Password: ["", [Validators.required, Validators.pattern(/^(?=.\d)(?=.[A-Z])(?=.[a-z])(?=.[^\w\d\s:])([^\s]){8,16}$/)]],})
    }
 // Inject Router
 
@@ -84,15 +84,13 @@ login() {
   this.authService.login(this.form.value).subscribe({
     next:(res:any)=>{
       console.log(res);
-
       if(res.Success == true){
         this.authService.userlogin(res.result);
-        this.toastr.success('Login is success', res.Message);
         this.router.navigateByUrl(this.returnUrl)
 
       }else{
         // alert("Sorry try again leter")
-        this.toastr.error('Login is Failed', res.Message);
+        this.toastr.error('Login is Failed', res.message);
       }
 
     },
@@ -135,7 +133,6 @@ login() {
 //   });
 // }
 // }
-
 
 
 // }
