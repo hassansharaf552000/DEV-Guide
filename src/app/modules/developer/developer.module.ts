@@ -39,6 +39,7 @@ import { ReviewsListComponent } from './Components/reviews-list/reviews-list.com
 import { ContactAdminComponent } from '../mentor/Components/contact-admin/contact-admin.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { QueryComponent } from './Components/query/query.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReviewsListComponent,
     ContactAdminComponent,
     ReviewsListComponent,
+    QueryComponent
   ],
   imports: [
     CommonModule,
@@ -83,7 +85,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     NgSelectModule,
     SharedModule,
-    CarouselModule
+    CarouselModule, 
+    
 
 
 

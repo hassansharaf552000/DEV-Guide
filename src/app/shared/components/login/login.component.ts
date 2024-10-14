@@ -103,13 +103,14 @@ login() {
     next:(res:any)=>{
       console.log(res);
       
-      if(res.success == true){
+      if(res.Success == true){
         this.authService.userlogin(res.result);
+        this.toastr.success('Login is success', res.Message);
         this.router.navigateByUrl(this.returnUrl)
 
       }else{
         // alert("Sorry try again leter")
-        this.toastr.error('Login is Failed', res.message);
+        this.toastr.error('Login is Failed', res.Message);
       }
       
     },
@@ -154,5 +155,5 @@ login() {
 // }
 // }
 
-}
+// }
 

@@ -1,16 +1,15 @@
+<div class="container">
 <div class="ml-auto d-flex mb-2">
   <a href="#" class="btn btn-light mr-2"> <i class="fa-solid fa-arrow-left-long"></i></a>
   <h3 class="ms-2">Harshad Sawant</h3>
 </div>
+
 <div class="row">
   <div class="col-xl-7 col-12">
-    <!-- Main Card -->
     <div class="card p-5" style="border-radius: 15px;">
-      <!-- Header with Background -->
       <div style="border-radius: 15px 15px 0 0; padding: 20px;">
         <div class="d-flex align-items-center">
-          <span class="badge badge-pill badge-light"
-            style="background-color: #ffe0e6; color: #ff3366; font-weight: bold;">
+          <span class="badge badge-pill badge-light" style="background-color: #ffe0e6; color: #ff3366; font-weight: bold;">
             Query<i class="bi bi-person-raised-hand"></i>
           </span>
         </div>
@@ -19,10 +18,7 @@
         <h6>About Service</h6>
         <p class="text-muted">Query Query</p>
         <h6>Skills</h6>
-        <p>
-          Career Development | Career Growth | Leadership | Career Coaching | Career Advice | Interview
-          Preparations | People Management | Project Management | Team Building | Team Leadership
-        </p>
+        <p>Career Development | Career Growth | Leadership | Career Coaching | Career Advice | Interview Preparations | People Management | Project Management | Team Building | Team Leadership</p>
         <div class="card">
           <div class="card-body" style="color: #ff3366;">
             <i class="fa-solid fa-clock-rotate-left"></i> Reverts within 48 Hrs
@@ -30,16 +26,12 @@
         </div>
       </div>
 
-      <!-- Footer with Profile -->
       <hr>
       <div class="d-flex align-items-center mt-1 p-1">
         <img src="66b372a33d0f5.webp" alt="Harshad Sawant" class="rounded-circle mr-3" width="60">
         <div class="p-3">
           <h6>Harshad Sawant</h6>
-          <p class="text-muted">
-            Director & Head - Global CyberSecurity Engineering at PepsiCo | IIM Ahmedabad | IT leadership |
-            18 years of experience
-          </p>
+          <p class="text-muted">Director & Head - Global CyberSecurity Engineering at PepsiCo | IIM Ahmedabad | IT leadership | 18 years of experience</p>
         </div>
         <div class="ml-auto d-flex">
           <a href="#" class="btn btn-light mr-2"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -53,14 +45,15 @@
     <div class="card border mt-2 mb-3" style="max-width: 25rem;">
       <div class="card-header bg-transparent border-success" style="font-weight: bold;">Query submission</div>
       <div class="card-body text-black">
+        <form (ngSubmit)="  submitQuery()" [formGroup]="queryForm">
         <h5 class="card-title">Ask your query*</h5>
         <p class="card-text text-muted">You can also edit this once payment is done</p>
-        <textarea class="form-control mb-3 p-4" id="validationTextarea" placeholder="Query" required></textarea>
+        <textarea class="form-control mb-3 p-4" id="validationTextarea" placeholder="Query" formControlName="Question" required></textarea>
 
         <h5 class="card-title mt-3">Attach file</h5>
         <p class="card-text text-muted">Accepted file types are pdf, doc. It should not be more than 50 MB.</p>
         <div class="upload-container border p-3 text-center">
-          <input type="file" id="file-upload" class="upload-input" (change)="onFileSelected($event)">
+          <input type="file" id="file-upload" (change)="onFileSelected($event)" class="upload-input">
           <label for="file-upload" class="upload-label">
             <i class="fa-solid fa-cloud-arrow-up"></i>
             <p class="upload-text">Click here to upload File</p>
@@ -69,54 +62,42 @@
 
         <button class="btn btn-primary btn-block mt-2 ps-5 pe-5 mt-2" (click)="showConfirmationModal()">Send</button>
 
-        <!-- Button to trigger the success modal -->
-        <!-- <button (click)="showModal()">Complete Action</button> -->
-
-        <!-- Modal structure, shown conditionally based on isModalVisible -->
-         @if(isModalVisible){
-          <div class="modal-backdrop">
-            <div class="modal-container">
-              <div class="modal-header">
-                <!-- Success icon with green color -->
-                <span class="modal-icon checkmark">✔️</span>
-              </div>
-              <div class="modal-message">
-                <!-- Success message -->
-                <p>{{ modalMessage }}</p>
-              </div>
-              <div class="modal-actions">
-                <!-- Button to go to Home -->
-                <button (click)="goToHome()" class="btn btn-success">Go to Home</button>
-
-              </div>
+        <!-- Confirmation Modal -->
+        @if(isConfirmationVisible){
+        <div class="modal-backdrop">
+          <div class="modal-container">
+            <div class="modal-header">
+              <h4>Confirm Action</h4>
+            </div>
+            <div class="modal-message">
+              <p>Are you sure you want to send this file?</p>
+            </div>
+            <div class="modal-actions">
+              <button class="btn btn-success" (click)="confirmSend()">Confirm</button>
+              <button class="btn btn-danger" (click)="cancelSend()">Cancel</button>
             </div>
           </div>
-         }
+        </div>}
 
-         @if(isConfirmationVisible){
-          <div class="modal-backdrop">
-            <div class="modal-container">
-              <div class="modal-header">
-                <!-- Optional icon or header text -->
-                <h4>Confirm Action</h4>
-              </div>
-              <div class="modal-message">
-                <p>Are you sure you want to send this file?</p>
-              </div>
-              <div class="modal-actions">
-                <!-- Confirm and Cancel buttons -->
-                <button class="btn btn-success" (click)="confirmSend()">Confirm</button>
-                <button class="btn btn-danger" (click)="cancelSend()">Cancel</button>
-              </div>
+        <!-- Success Modal -->
+        @if(isModalVisible){
+        <div  class="modal-backdrop">
+          <div class="modal-container">
+            <div class="modal-header">
+              <span class="modal-icon checkmark">✔️</span>
+            </div>
+            <div class="modal-message">
+              <p>{{ modalMessage }}</p>
+            </div>
+            <div class="modal-actions">
+              <button (click)="goToHome()" class="btn btn-success">Go to Home</button>
             </div>
           </div>
-         }
-
-
-
-
+        </div>
+      }
+    </form>
       </div>
     </div>
   </div>
 </div>
-
+</div>

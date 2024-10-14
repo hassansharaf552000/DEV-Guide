@@ -95,8 +95,8 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'booking', component: BookingComponent },
-  { path: 'query', component: QueryComponent },
+  { path: 'booking/:id', component: BookingComponent },
+  { path: 'query/:id', component: QueryComponent },
   { path: 'confirmation', component: BookingConfirmationComponent },
   { path: 'communication', component: CommunicationComponent },
 

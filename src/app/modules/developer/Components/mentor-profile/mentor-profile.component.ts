@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IMentor } from '../../../../core/enums/Mentor';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-mentor-profile',
@@ -8,14 +10,15 @@ import { IMentor } from '../../../../core/enums/Mentor';
   styleUrl: './mentor-profile.component.css'
 })
 export class MentorProfileComponent {
+  id : string;
   mentorId: string | null = null;
   mentorProfile: IMentor | undefined;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute ,private httpClient: HttpClient) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.loadMentorProfile(Number(id));
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.loadMentorProfile(Number(this.id));
   }
 
   loadMentorProfile(id:Number):void{
@@ -94,4 +97,28 @@ export class MentorProfileComponent {
     ];
     this.mentorProfile = mentorlist.find(mentor=> mentor.id === id);
   }
+
+
+
+//   ngOnInit(): void {
+//     this.id = this.route.snapshot.paramMap.get('id')!;
+//     this.loadMentorProfile(Number(this.id));
+//   }
+
+//   loadMentorProfile(id: number): void {
+//     this.getMentorById(id).subscribe(
+//       (mentor: IMentor) => {
+//         this.mentorProfile = mentor;
+//       },
+//       (error) => {
+//         console.error('Error fetching mentor data:', error);
+//       }
+//     );
+//   }
+
+//   // Method to fetch mentor data by ID
+//   getMentorById(id: number): Observable<IMentor> {
+//     // const apiUrl = `http://localhost:5164/api/Account/AddQuery/${id}`;
+//     return this.httpClient.get<IMentor>(apiUrl);
+//   }
 }

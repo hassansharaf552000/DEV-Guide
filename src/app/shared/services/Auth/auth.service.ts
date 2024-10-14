@@ -29,25 +29,7 @@ export class AuthService {
   isloggedUserSubject: BehaviorSubject<boolean>
 
  
-  // login(LoginMethod: string, password: string): Observable<any> {
-  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  //   const body = JSON.stringify({ LoginMethod, password });
 
-  //   return this.http.post<any>(this.loginapi, body, { headers }).pipe(
-  //     map(response => {
-  //       // Check if the response indicates a successful login
-  //       if (response.statusCode == 200 && response.token) {
-  //         // Store the token
-  //         localStorage.setItem('authToken', response.token);
-  //         return response;
-  //       } else {
-  //         // Handle invalid login response, assuming the API returns a message
-  //         throw new Error(response.message || 'Invalid login credentials');
-  //       }
-  //     }),
-  //     catchError(this.handleError) // Handle errors like wrong login details
-  //   );
-  // }
   login(obj: any) {
     return this.http.post(this.loginapi, obj)
   }
