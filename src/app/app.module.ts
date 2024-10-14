@@ -30,9 +30,7 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     RouterModule,
     CommonModule,
-
-
-
+    NgxPaginationModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({ // ToastrModule added
       timeOut: 3000, // duration for toast notifications

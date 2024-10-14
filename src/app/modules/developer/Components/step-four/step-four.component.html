@@ -27,13 +27,12 @@
                 </div>
               </div>
               <div class="form-group">
-
                 <label for="title">Job Title</label>
-                <textarea name="title" class="form-control" [(ngModel)]="Title"></textarea>
+                <input type="text" name="title" class="form-control" [(ngModel)]="Title"></input>
                 <div *ngIf="Title==''" class="text-danger">
                   Title is required.
                 </div>
-              </div>
+
               <div class="skill-selector">
                 <div class="selected-skills">
                   <span class="skill-tag" *ngFor="let skill of SelectedSkilles; let i = index">
@@ -51,11 +50,10 @@
                     (click)="addSkillFromSuggestion(skill)">
                     {{skill.Name}}
                   </span>
-                </div>
-              </div>
-
-              <div *ngIf="SelectedSkilles.length<1" class="text-danger">
+                  <div *ngIf="SelectedSkilles.length<1" class="text-danger">
                 Please select at least one skill.
+              </div>
+                </div>
               </div>
 
               <div class="row">
@@ -106,9 +104,6 @@
                             [(ngModel)]="Experiences[i].TillNow">
                           <label class="form-check-label" for="tillnow-{{i}}">Till Now</label>
                         </div>
-
-                        <hr />
-                      </div>
                     </div>
                   </div>
 

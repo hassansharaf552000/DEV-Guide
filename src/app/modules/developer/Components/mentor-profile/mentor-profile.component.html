@@ -4,13 +4,13 @@
   <div class="row">
     <!-- Profile Picture and Details -->
     <div class="col-md-4 text-center">
-      <img [src]="mentorProfile?.imageurl" alt="{{ mentorProfile?.name }}" class="profile-img rounded-circle shadow-lg">
+      <img [src]="mentorProfile?.Image" alt="{{ mentorProfile?.FirstName }}" class="profile-img rounded-circle shadow-lg">
     </div>
 
     <div class="col-md-8 d-flex flex-column justify-content-center">
-      <h2 class="fw-bold">{{ mentorProfile?.name }}</h2>
-      <h1 class="mb-3"><app-rate [value]="mentorProfile?.rate" style="font-size: xx-large;"></app-rate></h1>
-      <h5 class="session-price"><strong>Session Price:</strong> ${{ mentorProfile?.currentprice }}</h5>
+      <h2 class="fw-bold">{{ mentorProfile?.FirstName }}</h2>
+      <h1 class="mb-3"><app-rate [value]="mentorProfile?.AverageRate" style="font-size: xx-large;"></app-rate></h1>
+      <h5 class="session-price"><strong>Session Price:</strong> ${{ mentorProfile?.Price }}</h5>
     </div>
   </div>
   <br>
@@ -41,15 +41,15 @@
           <form>
             <div class="form-group mb-3">
               <label for="name">Name</label>
-              <input type="text" class="form-control" id="name" [value]="mentorProfile?.name" readonly>
+              <input type="text" class="form-control" id="name" [value]="mentorProfile?.FirstName" readonly>
             </div>
             <div class="form-group mb-3">
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" [value]="mentorProfile?.name+ '@gmail.com'" readonly>
+              <input type="email" class="form-control" id="email" [value]="mentorProfile?.FirstName+ '@gmail.com'" readonly>
             </div>
             <div class="form-group mb-3">
               <label for="title">Title</label>
-              <input type="text" class="form-control" id="title" [value]="mentorProfile?.title" readonly>
+              <input type="text" class="form-control" id="title" [value]="mentorProfile?.Title" readonly>
             </div>
             <div class="form-group mb-3">
               <label for="department">Department</label>
