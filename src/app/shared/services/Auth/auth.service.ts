@@ -37,10 +37,10 @@ export class AuthService {
 
 
 
- 
 
-  login(obj: any) {
-    return this.http.post(this.loginapi, obj)
+
+  // login(obj: any) {
+  //   return this.http.post(this.loginapi, obj)
 
   userlogin(token: string) {
     if(token=="")
