@@ -47,6 +47,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { Update_ProfileComponent } from '../../shared/components/update_profile/update_profile.component';
 import { ChangepasswordComponent } from '../../shared/components/changepassword/changepassword.component';
 import { SkillsComponent } from '../../shared/components/skills/skills.component';
+import { EducationsComponent } from '../../shared/components/education-list/education-list.component';
+import { ExperienceListComponent } from '../../shared/components/experience-list/experience-list.component';
 
 const routes: Routes = [
   {
@@ -90,6 +92,8 @@ const routes: Routes = [
       { path: 'updateprofile', component: Update_ProfileComponent },
       {path:'change-password',component:ChangepasswordComponent},
       {path:'skills',component:SkillsComponent},
+      {path:'educations',component:EducationsComponent},
+      {path:'experiences',component:ExperienceListComponent},
       { path: 'reviews', component: ReviewsListComponent },
       { path: 'quizzes', component: QuizListComponent },
       { path: 'reply', component: MentorReplyComponent },

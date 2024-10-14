@@ -25,6 +25,26 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { SkillCardComponent } from './components/skill-card/skill-card.component';
 import { AddSkillComponent } from './components/add-skill/add-skill.component';
 import { EditSkillComponent } from './components/edit-skill/edit-skill.component';
+import { EducationsComponent } from './components/education-list/education-list.component';
+import { EducationCardComponent } from './components/education-card/education-card.component';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { EditEducationComponent } from './components/edit-education/edit-education.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { AddEducationComponent } from './components/add-education/add-education.component';
+import { ExperienceCardComponent } from './components/experience-card/experience-card.component';
+import { AddExperienceComponent } from './components/add-experience/add-experience.component';
+import { EditExperienceComponent } from './components/edit-experience/edit-experience.component';
+import { ExperienceListComponent } from './components/experience-list/experience-list.component';
+
+
+
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -41,12 +61,37 @@ import { EditSkillComponent } from './components/edit-skill/edit-skill.component
     QuizCardComponent,
     QuizzesDetailsComponent,
     QuizzesListComponent,
-    CustomPaginationComponent,Update_ProfileComponent, ChangepasswordComponent, SkillsComponent, SkillCardComponent, AddSkillComponent, EditSkillComponent
+    CustomPaginationComponent,
+    Update_ProfileComponent,
+    ChangepasswordComponent,
+    SkillsComponent,
+    SkillCardComponent,
+    AddSkillComponent,
+    EditSkillComponent,
+    EducationsComponent,
+    EducationCardComponent,
+    EditEducationComponent,
+    AddEducationComponent,
+    ExperienceCardComponent,
+    AddExperienceComponent,
+    EditExperienceComponent,
+    ExperienceListComponent
   ],
 
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule,NgxPaginationModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, NgxPaginationModule,
+    MatFormFieldModule,        // Material Form field
+    MatInputModule,            // Material input field
+    MatButtonModule,           // Material button
+    MatDialogModule,           // Material dialog
+    MatDatepickerModule,       // Material datepicker
+    MatNativeDateModule,       // Native date adapter for datepicker
+    MatCheckboxModule,
+    MatCardModule,       // Material Card module
+    MatIconModule,       // Material Icon module
+    MatButtonModule
+  ],
 
   exports: [NavbarComponent, FooterComponent, SpinnerComponent],
 
 })
-export class SharedModule {}
+export class SharedModule { }
