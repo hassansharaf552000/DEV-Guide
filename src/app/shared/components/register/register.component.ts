@@ -73,17 +73,17 @@ setRole(Role: string) {
 // }
 
 send() {
-  console.log(this.form.value);
-
   this.authService.register(this.form.value).subscribe({
     next: (res: any) => {
       console.log(res);
 
-      if (res) {
-        // Display success message
-        this.toastr.success('Registration succeeded!', res.message);
-        this.router.navigateByUrl(this.returnUrl);
-      }
+      
+      if(res.Success == true){
+        this.authService.userlogin(res.Result)
+        this.router.navigateByUrl(this.returnUrl)
+
+
+      
     },
 
     error: (err) => {

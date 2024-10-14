@@ -17,49 +17,31 @@ export class LoginComponent implements OnInit {
   successMessage: string = '';  // Success message for login successes
   passwordVisible: boolean = false;
   form:FormGroup;
+
    returnUrl='/home'
 
-  constructor(private authService: AuthService, private router: Router,private builder:FormBuilder,private toastr: ToastrService) {  // Inject Router
-
-
+  constructor(private authService: AuthService, private router: Router,private builder:FormBuilder,private toastr: ToastrService) { 
+    
+    
     this.form = this.builder.group({
       LoginMethod: ["", [Validators.required]],
       Password: ["", [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/)]],})
-
-
-
-    const storedLogin = localStorage.getItem('login');
-    const storedPassword = localStorage.getItem('password');
-    if (storedLogin && storedPassword) {
-      this.loginMethod = storedLogin;
-      this.password = storedPassword;
-      this.rememberMe = true;
-    }
    }
-
+// Inject Router
 
 
   private isBrowser(): boolean {
     return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
   }
+
   ngOnInit(): void {
-    // Check if localStorage is available in the current environment
-    if (this.isBrowser()) {
-      const token = localStorage.getItem('authToken');
-      if (token) {
-        // Handle logged-in state, e.g., redirect or load user data
-      }
-    }
+
   }
-
-
-
-    // Check if credentials are stored in localStorage
-
 
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;  // Toggle the visibility
   }
+
 
 
 
@@ -122,7 +104,6 @@ login() {
 
 }
 
-}
 
 // login() {
 //   console.log(this.form.value);
