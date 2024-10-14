@@ -1,4 +1,4 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
 <br>
@@ -7,8 +7,7 @@
   <h3 class="display-4 fw-bold text-center" style="
       font-family: Edu AU VIC WA NT Hand, cursive;
       font-optical-sizing: auto;
-      font-style: normal;
-">Our Mentors</h3>
+      font-style: normal;">Our Mentors</h3>
   <br>
   <!-- Filters and Cards Section -->
   <div class="row mt-4">
@@ -20,31 +19,29 @@
       <form class="form-inline row  ">
         <!-- Search Button -->
         <div class="col-12 d-flex justify-content-center">
-          <button type="button" class="btn btn-primary-search mb-4 justify-content-center text-center">
+          <button type="button"  class="btn btn-primary-search mb-4 justify-content-center text-center">
             <i class="fas fa-search"></i> Search
           </button>
         </div>
         <!-- HR Name Input -->
         <!-- <h4 class="mb-3">Mentor-Name</h4> -->
         <div class="form-group mb-3 col-4">
-          <input class="form-control " placeholder="Mentor Name" type="text">
+          <input class="form-control " placeholder="Expert Name" type="text" [(ngModel)]="name" name="name">
         </div>
 
         <!-- HR Role Input -->
         <!-- <h4 class="mb-3">Mentor-Role</h4> -->
         <div class="form-group mb-3 col-4">
-          <input class="form-control " placeholder="Mentor Role" type="text">
+          <input class="form-control " placeholder="Expert Title" type="text" [(ngModel)]="title" name="title">
         </div>
 
         <!-- Department Dropdown -->
         <!-- <h4 class="mb-3">Department</h4> -->
         <div class="form-group mb-3 col-4">
-          <select class="form-select" style="border: 2px solid #1c4980;">
-            <option selected>Select Department</option>
+          <select class="form-select" style="border: 2px solid #1c4980;" [(ngModel)]="role" name="role">
+            <option selected>Select Role</option>
             <option value="HR">HR</option>
-            <option value="Finance">Finance</option>
-            <option value="IT">IT</option>
-            <option value="Marketing">Marketing</option>
+            <option value="Finance">Mentor</option>
             <!-- Add more options as needed -->
           </select>
         </div>
@@ -54,7 +51,7 @@
           <div class="row col-6">
             <h4 class="mb-3 col-3">Rate</h4>
             <div class="rate-filter mb-3 star-rating col-5 ms-5">
-              <input type="radio" name="rate" id="rate5" value="5">
+              <input type="radio" name="rate" id="rate5" value="5" [(ngModel)]="rate">
               <label for="rate5">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
                   viewBox="0 0 16 16">
@@ -97,7 +94,7 @@
             </div>
           </div>
           <!-- Price Range -->
-          <div class="row col-6">
+          <!-- <div class="row col-6">
             <h4 class="mb-3 col-3">Price</h4>
             <div class="slider-container mb-3 col-8" style="position: relative; margin-right: 300px;">
               <input id="priceMin" type="range" min="100" max="10000" [(ngModel)]="priceMin" (input)="updateRange()"
@@ -116,7 +113,7 @@
               </div>
             </div>
 
-          </div>
+          </div> -->
         </div>
         <br>
 
@@ -130,24 +127,38 @@
     <!-- Cards Section -->
     <div class="col-md-12">
       <!-- Button Container -->
-      <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
-        <button type="button" class="btn btn-next" (click)="prevPage()">Prev</button>
+      <!-- <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
+        <button type="button" class="btn btn-next" (click)="prevPage()">Prev</button> -->
 
         <!-- Counter -->
-        <div class="counter">
+        <!-- <div class="counter">
           <span>{{ currentPage }} / {{ totalPages }}</span>
         </div>
 
         <button type="button" class="btn btn-next me-3" (click)="nextPage()">Next</button>
-      </div>
-
+      </div> -->
+      
       <!-- Cards Container -->
       <div class="row mt-4 ">
         <div *ngFor="let mentor of mentors; let index = index" class="col-12 col-md-12 col-lg-12 mb-4 cardd">
           <app-mentor-card [mentor]="mentor"></app-mentor-card>
         </div>
       </div>
+      <!-- <div class="row mt-4 ">
+        <div *ngFor="let mentor of mentors | paginate: { itemsPerPage: pageSize, currentPage: p , totalItems: totalItems}" class="col-12 col-md-12 col-lg-12 mb-4 cardd">
+          <app-mentor-card [mentor]="mentor"></app-mentor-card>
+        </div>
+        <pagination-controls (pageChange)="OnpageChange($event) "></pagination-controls>
+      </div> -->
     </div>
+  
 
   </div>
-</div>
+
+</div> 
+<!-- <ul>
+  <li *ngFor="let item of collection | paginate: { itemsPerPage: pageSize, currentPage: p , totalItems: totalItems}"> ... </li>
+
+</ul> -->
+           
+<!-- <pagination-controls (pageChange)="OnpageChange($event) "></pagination-controls> -->

@@ -1,13 +1,13 @@
 <div class="card-client  row g-0">
-  <div class="user-picture col-2 mt-5">
-    <img [src]="mentor.imageurl" style="width: 100%; height: 100%; border-radius: 10px;">
+ <div class="user-picture col-2 mt-5">
+    <img src="http://localhost:5164/{{mentor.Image}}" style="width: 100%; height: 100%; border-radius: 10px;">
   </div>
   <div class="row  col-10 m-0 client" style="text-align: start;">
     <div class="d-flex col-12 justify-content-between">
       <div class="me-0 ms-0 mb-1">
-        <h2 class="name-client fw-bold mb-0 pb-0 mt-0 pt-0 " style="font-size: x-large; height: 45px; "> {{mentor.name}}
+        <h2 class="name-client fw-bold mb-0 pb-0 mt-0 pt-0 " style="font-size: x-large; height: 45px; "><span>{{mentor.FirstName}}</span>&nbsp;<span>{{mentor.LastName}}</span>
         </h2>
-        <p class="title-client fw-light mt-0 pt-0" style="font-size: smaller;"> {{mentor.title}}</p>
+        <p class="title-client fw-light mt-0 pt-0" style="font-size: smaller;"> {{mentor.Title}}</p>
       </div>
       <div class="ms-5 mt-3 " style="text-align: end;">
         <button type="button" class="btn btn-dark " style=" width: fit-content; height: 50px;"
@@ -18,17 +18,17 @@
     </div>
     <div class="row mb-4 mt-3">
       <div class="mentor-skills col-12 mb-0 mt-3" style="height: 30px;">
-        <div *ngFor="let skill of mentor.skills" class="skill-circle">
+        <div *ngFor="let skill of mentor.Skills" class="skill-circle">
           {{ skill }}
         </div>
       </div>
       <div class=" col-12 row mt-0">
 
-        <p class="category-client mt-5 col-2 ms-0"> {{mentor.yearsofexperience}}yrs Exp</p>
+        <p class="category-client mt-5 col-2 ms-0"> {{mentor.YearsOfExperience}}yrs Exp</p>
 
 
-        <p class="category-client  col-3 mt-5"> Rate: <app-rate  [value]="mentor.rate"></app-rate></p>
-        <p class="price-client mt-5 col-3">Session Price: ${{ mentor.currentprice}}</p>
+        <p class="category-client  col-3 mt-5"> Rate: <app-rate  [value]="mentor.AverageRate"></app-rate></p>
+        <p class="price-client mt-5 col-3">Session Price: ${{ mentor.Price}}</p>
 
         <div class="social-media mt-0 pt-0 col-4 mb-5 mb-0 ps-5 ps-1" style="text-align: end;">
           <a href="#">

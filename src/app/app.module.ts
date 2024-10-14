@@ -29,7 +29,7 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     RouterModule,
     CommonModule,
-
+    NgxPaginationModule,
     
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({ // ToastrModule added

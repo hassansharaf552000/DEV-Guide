@@ -30,7 +30,7 @@
             <div class="skill-selector">
               <div class="selected-skills">
                 <span class="skill-tag" *ngFor="let skill of SelectedSkilles; let i = index">
-                  {{skill.value}}
+                  {{skill.Name}}
                   <span class="remove-skill" (click)="removeSkill(skill.value)">&#10005;</span>
                 </span>
               </div>
@@ -41,7 +41,7 @@
               <h6>Suggested Skills</h6>
               <div class="suggested-skills">
                 <span class="skill-suggestion" *ngFor="let skill of filteredSkills" (click)="addSkillFromSuggestion(skill)">
-                  {{skill}}
+                  {{skill.Name}}
                 </span>
               </div>
             </div>
@@ -89,7 +89,7 @@
                       </div>
 
                       <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="tillnow-{{i}}" [(ngModel)]="Experiencees[i].TillNow">
+                        <input type="checkbox" class="form-check-input" name="tillnow-{{i}}" [(ngModel)]="Experiencees[i].TillNow">
                         <label class="form-check-label" for="tillnow-{{i}}">Till Now</label>
                       </div>
 
