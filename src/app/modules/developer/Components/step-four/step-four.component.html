@@ -5,33 +5,33 @@
         <div class="card-body">
           <h3 class="card-title">Technical skills</h3>
           <form>
-              <div class="form-group">
-                <label for="experience">Years of work experience</label>
-                <input type="number" name="experience" class="form-control" [(ngModel)]="YearsOfExperience">
-                <div *ngIf="YearsOfExperience<0" class="text-danger">
-                  Experience is required.
-                </div>
+            <div class="form-group">
+              <label for="experience">Years of work experience</label>
+              <input type="number" name="experience" class="form-control" [(ngModel)]="YearsOfExperience">
+              <div *ngIf="YearsOfExperience<0" class="text-danger">
+                Experience is required.
               </div>
-              <div class="form-group">
-                <label for="level">Level</label>
-                <input type="text" name="level" class="form-control" [(ngModel)]="Level">
-                <div *ngIf="Level==''" class="text-danger">
-                  Level is required.
-                </div>
+            </div>
+            <div class="form-group">
+              <label for="level">Level</label>
+              <input type="text" name="level" class="form-control" [(ngModel)]="Level">
+              <div *ngIf="Level==''" class="text-danger">
+                Level is required.
               </div>
-              <div class="form-group">
-                <label for="about">Give me Overiew about You</label>
-                <textarea name="about" class="form-control" [(ngModel)]="About"></textarea>
-                <div *ngIf="About==''" class="text-danger">
-                  About is required.
-                </div>
+            </div>
+            <div class="form-group">
+              <label for="about">Give me Overiew about You</label>
+              <textarea name="about" class="form-control" [(ngModel)]="About"></textarea>
+              <div *ngIf="About==''" class="text-danger">
+                About is required.
               </div>
-              <div class="form-group">
-                <label for="title">Job Title</label>
-                <input type="text" name="title" class="form-control" [(ngModel)]="Title"></input>
-                <div *ngIf="Title==''" class="text-danger">
-                  Title is required.
-                </div>
+            </div>
+            <div class="form-group">
+              <label for="title">Job Title</label>
+              <input type="text" name="title" class="form-control" [(ngModel)]="Title">
+              <div *ngIf="Title==''" class="text-danger">
+                Title is required.
+              </div>
 
               <div class="skill-selector">
                 <div class="selected-skills">
@@ -51,8 +51,8 @@
                     {{skill.Name}}
                   </span>
                   <div *ngIf="SelectedSkilles.length<1" class="text-danger">
-                Please select at least one skill.
-              </div>
+                    Please select at least one skill.
+                  </div>
                 </div>
               </div>
 
@@ -62,7 +62,7 @@
                     <h3 class="card-title">Experience</h3>
                     <div>
                       <div *ngFor="let exp of Experiences; let i = index" class="mb-3">
-              <button type="button" (click)="removeExperience(i)" class="btn btn-danger">X</button>
+                        <button type="button" (click)="removeExperience(i)" class="btn btn-danger">X</button>
                         <div class="form-group">
                           <label for="organization-{{i}}">Organization </label>
                           <input name="organization-{{i}}" type="text" class="form-control"
@@ -104,21 +104,26 @@
                             [(ngModel)]="Experiences[i].TillNow">
                           <label class="form-check-label" for="tillnow-{{i}}">Till Now</label>
                         </div>
+                      </div>
                     </div>
+
                   </div>
-
                 </div>
-              </div>
-           
-            <button type="button" class="btn btn-primary mt-3 me-3 col-6" (click)="addExperience()"
-              title="Click to add another experience entry">+</button>
 
+                <button type="button" class="btn btn-primary mt-3 me-3 col-6" (click)="addExperience()"
+                  title="Click to add another experience entry">+</button>
+              </div>
+            </div>
+              
           </form>
+
+
+
+          <!-- <button (click)="testbehvior()">testtttt</button> -->
+          <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
+          <button type="submit" class="btn btn-primary mt-3 ms-3" (click)="onNext()" [disabled]="">Next</button>
         </div>
       </div>
-      <!-- <button (click)="testbehvior()">testtttt</button> -->
-      <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
-      <button type="submit" class="btn btn-primary mt-3 ms-3"(click)="onNext()" [disabled]="">Next</button>
     </div>
   </div>
 </div>
