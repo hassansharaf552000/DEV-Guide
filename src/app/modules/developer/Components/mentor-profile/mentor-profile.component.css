@@ -103,3 +103,72 @@
   margin-bottom: 1rem;
 }
 
+.img-fluid{
+  position: relative;
+  /* top: 50px; */
+  width: 200PX;
+  bottom: 170px !important;
+}
+
+
+.mentor-skills {
+  display: flex;
+  flex-wrap: wrap; /* Ensures that the circles will wrap if there's not enough horizontal space */
+  gap: 10px; /* Spacing between the circles */
+}
+
+.skill-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content; /* Adjust width as needed */
+  height: fit-content; /* The same height as the width to make it a circle */
+  border-radius: 25px; /* This makes the div a circle */
+  background-color: #fff; 
+  border: 1px solid black;
+  color: black; /* Text color inside the circle */
+  font-size: 14px; /* Adjust font size */
+  text-align: center;
+  padding: 5px 15px;
+}
+
+.avatar{
+
+  width: 60px !important;
+}
+.text-reset{
+  font-size: 25px !important;
+  text-decoration: none !important;
+}
+
+.profile-section {
+  margin: 20px;
+  padding: 20px;
+  /* background-color: #f9f9f9; */
+  border-radius: 8px;
+}
+
+.profile-section h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.education-item, .experience-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.education-item:last-child, .experience-item:last-child {
+  border-bottom: none;
+}
+
+.education-item p, .experience-item p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.education-item p strong, .experience-item p strong {
+  color: #333;
+}
