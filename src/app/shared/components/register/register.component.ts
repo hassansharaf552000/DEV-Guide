@@ -27,7 +27,7 @@ export class RegisterComponent {
       Role: [''],
       //Role: ['', Validators.required]
 
-    
+
   })
 }
 // send() {
@@ -52,7 +52,7 @@ setRole(Role: string) {
 //   this.authService.register(this.form.value).subscribe({
 //     next:(res:any)=>{
 //       console.log(res);
-      
+
 //       if(res){
 //       // alert("registered successfully");
 //       this.toastr.success('Register is successed', res.message);
@@ -60,14 +60,14 @@ setRole(Role: string) {
 
 
 //       }
-      
+
 //     },
 
 //     error:(err)=>{
 //       console.log(err);
 //       this.toastr.error('Register is failed', err.message);
 //       // alert("Sorry try again leter")
-    
+
 //   })
 // }
 // }
@@ -77,13 +77,14 @@ send() {
     next: (res: any) => {
       console.log(res);
 
-      
+
       if(res.Success == true){
         this.authService.userlogin(res.Result)
         this.router.navigateByUrl(this.returnUrl)
+      }
 
 
-      
+
     },
 
     error: (err) => {
