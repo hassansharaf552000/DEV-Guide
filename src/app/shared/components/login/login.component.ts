@@ -20,9 +20,9 @@ export class LoginComponent implements OnInit {
 
    returnUrl='/home'
 
-  constructor(private authService: AuthService, private router: Router,private builder:FormBuilder,private toastr: ToastrService) { 
-    
-    
+  constructor(private authService: AuthService, private router: Router,private builder:FormBuilder,private toastr: ToastrService) {
+
+
     this.form = this.builder.group({
       LoginMethod: ["", [Validators.required]],
       Password: ["", [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/)]],})
@@ -85,7 +85,7 @@ login() {
     next:(res:any)=>{
       console.log(res);
 
-      if(res.success == true){
+      if(res.Success == true){
         this.authService.userlogin(res.result);
         this.router.navigateByUrl(this.returnUrl)
 
@@ -137,3 +137,4 @@ login() {
 
 
 
+}
