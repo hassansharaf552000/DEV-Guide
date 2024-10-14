@@ -1,0 +1,23 @@
+<div class="modal" tabindex="-1" role="dialog" id="addSkillModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Skill</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="suggestedSkills">Suggested Skills</label>
+        <select id="suggestedSkills" [(ngModel)]="selectedSuggestedSkill">
+          <option *ngFor="let skill of suggestedSkills" [value]="skill.id">{{ skill.name }}</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="addSkill()">Add Skill</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

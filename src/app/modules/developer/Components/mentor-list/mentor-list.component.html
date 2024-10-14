@@ -13,26 +13,32 @@
   <!-- Filters and Cards Section -->
   <div class="row mt-4">
     <!-- Filters Section -->
-     <br>
-     <br>
-     <br>
-    <div class="col-md-3">
-      <form class="form-inline d-flex flex-column align-items-start">
+    <br>
+    <br>
+    <br>
+    <div class="">
+      <form class="form-inline row  ">
+        <!-- Search Button -->
+        <div class="col-12 d-flex justify-content-center">
+          <button type="button" class="btn btn-primary-search mb-4 justify-content-center text-center">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </div>
         <!-- HR Name Input -->
-        <h4 class="mb-3">Mentor-Name</h4>
-        <div class="form-group mb-3">
-          <input class="form-control" placeholder="Mentor Name" type="text">
+        <!-- <h4 class="mb-3">Mentor-Name</h4> -->
+        <div class="form-group mb-3 col-4">
+          <input class="form-control " placeholder="Mentor Name" type="text">
         </div>
 
         <!-- HR Role Input -->
-        <h4 class="mb-3">Mentor-Role</h4>
-        <div class="form-group mb-3">
-          <input class="form-control" placeholder="Mentor Role" type="text">
+        <!-- <h4 class="mb-3">Mentor-Role</h4> -->
+        <div class="form-group mb-3 col-4">
+          <input class="form-control " placeholder="Mentor Role" type="text">
         </div>
 
         <!-- Department Dropdown -->
-        <h4 class="mb-3">Department</h4>
-        <div class="form-group mb-3">
+        <!-- <h4 class="mb-3">Department</h4> -->
+        <div class="form-group mb-3 col-4">
           <select class="form-select" style="border: 2px solid #1c4980;">
             <option selected>Select Department</option>
             <option value="HR">HR</option>
@@ -44,117 +50,100 @@
         </div>
 
         <!-- Rate Filter -->
-        <h4 class="mb-3">Rate</h4>
-        <div class="rate-filter mb-3 star-rating">
-          <input type="radio" name="rate" id="rate5" value="5">
-          <label for="rate5">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
-              viewBox="0 0 16 16">
-              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-            </svg>
-          </label>
-          <input type="radio" name="rate" id="rate4" value="4">
-          <label for="rate4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
-              viewBox="0 0 16 16">
-              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-            </svg>
-          </label>
-          <input type="radio" name="rate" id="rate3" value="3">
-          <label for="rate3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
-              viewBox="0 0 16 16">
-              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-            </svg>
-          </label>
-          <input type="radio" name="rate" id="rate2" value="2">
-          <label for="rate2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
-              viewBox="0 0 16 16">
-              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-            </svg>
-          </label>
-          <input type="radio" name="rate" id="rate1" value="1">
-          <label for="rate1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
-              viewBox="0 0 16 16">
-              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-            </svg>
-          </label>
-        </div>
+        <div class="row">
+          <div class="row col-6">
+            <h4 class="mb-3 col-3">Rate</h4>
+            <div class="rate-filter mb-3 star-rating col-5 ms-5">
+              <input type="radio" name="rate" id="rate5" value="5">
+              <label for="rate5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                </svg>
+              </label>
+              <input type="radio" name="rate" id="rate4" value="4">
+              <label for="rate4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                </svg>
+              </label>
+              <input type="radio" name="rate" id="rate3" value="3">
+              <label for="rate3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                </svg>
+              </label>
+              <input type="radio" name="rate" id="rate2" value="2">
+              <label for="rate2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                </svg>
+              </label>
+              <input type="radio" name="rate" id="rate1" value="1">
+              <label for="rate1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                </svg>
+              </label>
+            </div>
+          </div>
+          <!-- Price Range -->
+          <div class="row col-6">
+            <h4 class="mb-3 col-3">Price</h4>
+            <div class="slider-container mb-3 col-8" style="position: relative; margin-right: 300px;">
+              <input id="priceMin" type="range" min="100" max="10000" [(ngModel)]="priceMin" (input)="updateRange()"
+                step="10">
+              <input id="priceMax" type="range" min="100" max="10000" [(ngModel)]="priceMax" (input)="updateRange()"
+                step="10">
+              <div class="track">
+                <div class="range-fill"
+                  [ngStyle]="{ 'left.%': getRangeMinPercent(), 'width.%': getRangeWidthPercent() }"></div>
+              </div>
+              <div class="tooltip" id="priceMinTooltip" [ngStyle]="{ 'left.%': getRangeMinPercent() }">
+                {{ priceMin }}
+              </div>
+              <div class="tooltip" id="priceMaxTooltip" [ngStyle]="{ 'left.%': getRangeMaxPercent() }">
+                {{ priceMax }}
+              </div>
+            </div>
 
-        <!-- Price Range -->
-        <h4 class="mb-3">Price</h4>
-        <div class="slider-container mb-3" style="position: relative; margin-right: 300px;">
-          <input
-            id="priceMin"
-            type="range"
-            min="100"
-            max="10000"
-            [(ngModel)]="priceMin"
-            (input)="updateRange()"
-            step="10"
-          >
-          <input
-            id="priceMax"
-            type="range"
-            min="100"
-            max="10000"
-            [(ngModel)]="priceMax"
-            (input)="updateRange()"
-            step="10"
-          >
-          <div class="track">
-            <div
-              class="range-fill"
-              [ngStyle]="{ 'left.%': getRangeMinPercent(), 'width.%': getRangeWidthPercent() }"
-            ></div>
-          </div>
-          <div
-            class="tooltip"
-            id="priceMinTooltip"
-            [ngStyle]="{ 'left.%': getRangeMinPercent() }"
-          >
-            {{ priceMin }}
-          </div>
-          <div
-            class="tooltip"
-            id="priceMaxTooltip"
-            [ngStyle]="{ 'left.%': getRangeMaxPercent() }"
-          >
-            {{ priceMax }}
           </div>
         </div>
-
-
         <br>
 
-        <!-- Search Button -->
-        <button type="button" class="btn btn-primary-search">
-          <i class="fas fa-search"></i> Search
-        </button>
+
       </form>
     </div>
 
-
+    <br>
+    <hr>
 
     <!-- Cards Section -->
-    <div class="col-md-9">
+    <div class="col-md-12">
       <!-- Button Container -->
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <button type="button" class="btn btn-primary" (click)="prevPage()">Prev</button>
+      <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
+        <button type="button" class="btn btn-next" (click)="prevPage()">Prev</button>
 
         <!-- Counter -->
         <div class="counter">
           <span>{{ currentPage }} / {{ totalPages }}</span>
         </div>
 
-        <button type="button" class="btn btn-primary" (click)="nextPage()">Next</button>
+        <button type="button" class="btn btn-next me-3" (click)="nextPage()">Next</button>
       </div>
 
       <!-- Cards Container -->
-      <div class="row mt-4 justify-content-center">
-        <div *ngFor="let mentor of mentors; let index = index" class="col-12 col-md-6 col-lg-4 mb-4 d-flex justify-content-center">
+      <div class="row mt-4 ">
+        <div *ngFor="let mentor of mentors; let index = index" class="col-12 col-md-12 col-lg-12 mb-4 cardd">
           <app-mentor-card [mentor]="mentor"></app-mentor-card>
         </div>
       </div>

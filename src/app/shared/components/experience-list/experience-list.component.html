@@ -1,0 +1,27 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
+<br>
+<br>
+<h3 class="display-4 fw-bold text-center" style="
+        font-family: Edu AU VIC WA NT Hand, cursive;
+        font-optical-sizing: auto;
+        font-style: normal;
+  ">Your Experiences</h3>
+  <button mat-raised-button color="primary" (click)="openAddExperienceDialog()">
+    Add Experience
+  </button>
+
+  <!-- List of education cards -->
+  <div *ngFor="let experience of experienceList">
+    <app-experience-card [experience]="experience"></app-experience-card>
+  </div>
+
+<!-- <div *ngFor="let education of educationList">
+  <app-education-card [education]="education"></app-education-card>
+</div> -->
+
+
+<!-- List of educations -->
+
+

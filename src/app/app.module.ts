@@ -10,12 +10,17 @@ import { CookieService } from 'ngx-cookie-service';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CarouselModule } from 'ngx-owl-carousel-o'; // Correct import
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Needed for animations
 import { CommonModule } from '@angular/common';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { authInterceptor } from './shared/interceptors/auth.interceptor';
 import { loaderInterceptor } from './shared/interceptors/loader.interceptor';
 import { SharedModule } from './shared/shared.module';
+
 
 
 @NgModule({
@@ -25,9 +30,21 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     RouterModule,
     CommonModule,
+
+
+
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot({ // ToastrModule added
+      timeOut: 3000, // duration for toast notifications
+      positionClass: 'toast-top-right', // position for toast notifications
+      preventDuplicates: true, // prevent duplicate notifications
+      progressBar: true,
+    }),
+
     CarouselModule,
     ReactiveFormsModule,
     SharedModule,
+
   ],
   providers: [
     CookieService,

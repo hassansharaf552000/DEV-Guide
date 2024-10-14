@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Job : {{experience.job}} </mat-card-title>
+    <mat-card-subtitle> Organization : {{ experience.organization }} </mat-card-subtitle>
+
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>
+      Dates: {{ formatDate(experience.startDate) }} -
+      <span *ngIf="experience.tillNow; else endDate">
+        Present
+      </span>
+      <ng-template #endDate>
+        {{ experience.endDate ? formatDate(experience.endDate) : 'N/A' }}
+      </ng-template>
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-icon-button aria-label="Edit experience" (click)="openEditDialog()">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+
+

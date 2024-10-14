@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>Edit Education</h2>
+<mat-dialog-content>
+  <form [formGroup]="educationForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Degree</mat-label>
+      <input matInput formControlName="degree" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Field of Study</mat-label>
+      <input matInput formControlName="fieldOfStudy" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>University</mat-label>
+      <input matInput formControlName="university" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Faculty</mat-label>
+      <input matInput formControlName="faculty" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Country of Study</mat-label>
+      <input matInput formControlName="countryOfStudy" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Start Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="startDate" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="tillNow">Still Studying</mat-checkbox>
+
+    <mat-form-field appearance="fill" *ngIf="!educationForm.get('tillNow')?.value">
+      <mat-label>End Date</mat-label>
+      <input matInput [matDatepicker]="endPicker" formControlName="endDate" />
+      <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button [disabled]="!educationForm.valid" (click)="onSave()">Save</button>
+</mat-dialog-actions>
+
