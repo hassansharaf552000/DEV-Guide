@@ -39,8 +39,7 @@ export class AuthService {
 
 
 
-  // login(obj: any) {
-  //   return this.http.post(this.loginapi, obj)
+
 
   userlogin(token: string) {
     if(token=="")
@@ -56,7 +55,6 @@ export class AuthService {
   // Set token in cookies
   setToken(token: string): void {
     this.CookieServ.set(this.tokenKey , token)
-
   }
 
   // Get token from cookies
@@ -70,10 +68,3 @@ export class AuthService {
   }
 
 }
-
-
-
-
-
-
-
