@@ -1,6 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ExperienceViewModel } from '../../../modules/developer/interfaces/UserExperance';
+import { EducationViewModel } from '../../../modules/developer/interfaces/UserEducation';
+import { Profile } from '../../profile';
+import { skillItem } from '../../../modules/developer/interfaces/Profile';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +15,11 @@ export class AccountService {
   CompleteProfileURL = "http://localhost:5164/api/Account/CompleteProfile"
   // ExpertsListURL="http://localhost:5164/api/Account/Filter"
  ExpertsListURL="http://localhost:5164/api/Account/GetAll"
+  Experiences:ExperienceViewModel[]=[]
+  Educations:EducationViewModel[]=[]
+  skills:skillItem[]=[]
+  AddExperienceURL = "http://localhost:5164/api/Account/AddExperience"
+  AddEducationURL = "http://localhost:5164/api/Account/AddEducation"
 
   constructor(private http: HttpClient) {
     this.formData = new BehaviorSubject<FormData>(new FormData());
@@ -20,11 +30,12 @@ export class AccountService {
     oldData.append(key, data)
     this.formData.next(oldData); // Update the BehaviorSubject
   }
-
+  
   // Retrieve the complete form data
   getFormData() {
     return this.formData.value;
   }
+  
 
   CompleteProfile() {
     return this.http.put(this.CompleteProfileURL, this.formData.value)
@@ -54,5 +65,11 @@ export class AccountService {
   
   getall(){
     return this.http.get(this.ExpertsListURL)
+  }
+  AddExperience(formData:any) {
+    return this.http.put(this.AddExperienceURL, formData)
+  }
+  AddEducation(formData:any) {
+    return this.http.put(this.AddEducationURL, formData)
   }
 }

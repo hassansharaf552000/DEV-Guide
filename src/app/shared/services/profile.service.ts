@@ -21,19 +21,20 @@ export class ProfileService {
     level: 'string',
     country: 'string',
     phoneNumber: 'string',
-    yearsOfExperience: 0,      // Optional number
+    yearsOfExperience: 0,
+    About:'string'     // Optional number
   };
   private changepassword:ChangePassword={
     CurrentPassword:'',
     Newpassword:'',
-    ComformPassword:''
+    ConfirmPassword:''
   }
-  
+
 
   constructor(private http:HttpClient) {}
 
- 
- 
+
+
 
   UpdateProfile(profile: Profile): Observable<Profile> {
     this.profile = profile;
