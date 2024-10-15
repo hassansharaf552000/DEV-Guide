@@ -29,11 +29,6 @@ export class LoginComponent implements OnInit {
    }
 // Inject Router
 
-
-  private isBrowser(): boolean {
-    return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
-  }
-
   ngOnInit(): void {
 
   }

@@ -14,16 +14,16 @@ export class QueryAnswerComponent {
   constructor(private http: HttpClient) {}
 
   downloadFile() {
-    this.http.get('path/to/your/file.pdf', { responseType: 'blob' }).subscribe((blob) => {
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'my-file.pdf';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);
-    });
+    // this.http.get('path/to/your/file.pdf', { responseType: 'blob' }).subscribe((blob) => {
+    //   const url = window.URL.createObjectURL(blob);
+    //   const a = document.createElement('a');
+    //   a.href = url;
+    //   a.download = 'my-file.pdf';
+    //   document.body.appendChild(a);
+    //   a.click();
+    //   document.body.removeChild(a);
+    //   window.URL.revokeObjectURL(url);
+    // });
   }
 
   onFileSelected(event: any): void {

@@ -40,6 +40,8 @@ import { ContactAdminComponent } from '../mentor/Components/contact-admin/contac
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng5SliderModule } from 'ng5-slider';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -86,6 +88,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SharedModule,
     CarouselModule,
     NgxPaginationModule,
+    NgxSliderModule  ,
 
 
 
