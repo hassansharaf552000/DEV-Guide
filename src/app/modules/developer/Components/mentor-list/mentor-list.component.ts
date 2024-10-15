@@ -227,7 +227,7 @@ export class MentorListComponent implements OnInit {
             });
         
           }
-        
+ 
           this.cdr.detectChanges();
         }
       });
@@ -239,6 +239,7 @@ export class MentorListComponent implements OnInit {
     return Math.ceil(this.totalItems / this.pageSize);
   }
 
+  
   // Method to handle page change
   OnpageChange(newPage: number): void {
     if (newPage > 0 && newPage <= this.totalPge()) {
@@ -246,6 +247,7 @@ export class MentorListComponent implements OnInit {
       this.filter();    // Fetch data for the new page
     }
   }
+
 
 
   onPriceMinChange(newMinValue: number): void {
@@ -258,6 +260,6 @@ export class MentorListComponent implements OnInit {
     console.log('Updated Price Max:', this.priceMax);
   }
   
-  
+ r
 }
 

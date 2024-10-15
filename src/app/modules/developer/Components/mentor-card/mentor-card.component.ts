@@ -28,6 +28,7 @@
 // }
 import { Component, Input } from '@angular/core';
 import { IMentor } from '../../../../core/enums/Mentor';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mentor-card',
@@ -35,7 +36,10 @@ import { IMentor } from '../../../../core/enums/Mentor';
   styleUrls: ['./mentor-card.component.css']
 })
 export class MentorCardComponent {
-  @Input() mentor!: IMentor;
+  @Input() mentor!: any;
+ 
+ 
+  
 
   getStars(rate: number): string[] {
     const fullStars = Math.floor(rate);
@@ -51,4 +55,14 @@ export class MentorCardComponent {
   // Facebook=this.mentor.SocialAccounts[0]
   // LinkedIn=this.mentor.SocialAccounts[1]
   // GitHub=this.mentor.SocialAccounts[2]
+
+  constructor(  private router: Router) {
+    console.log(this.mentor);
+    
+  }
+
+
+  // goToMentorProfile(id: string) {
+  //   this.router.navigate(['/mentors', id]);
+  // }
 }

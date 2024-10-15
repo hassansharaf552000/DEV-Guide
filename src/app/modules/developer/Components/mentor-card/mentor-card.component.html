@@ -8,16 +8,18 @@
   style="width: 100%; height: 100%; border-radius: 10px;" 
   onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default.png';"
 ></div>
+
   <div class="row  col-10 m-0 client" style="text-align: start;">
     <div class="d-flex col-12 justify-content-between">
       <div class="me-0 ms-0 mb-1">
         <h2 class="name-client fw-bold mb-0 pb-0 mt-0 pt-0 " style="font-size: x-large; height: 45px; "><span>{{mentor.FirstName}}</span>&nbsp;<span>{{mentor.LastName}}</span>
         </h2>
         <p class="title-client fw-light mt-0 pt-0" style="font-size: smaller;"> {{mentor.Title}}</p>
+        <!-- <div class="hidden">{{mentor.ID}}</div> -->
       </div>
       <div class="ms-5 mt-3 " style="text-align: end;">
         <button type="button" class="btn btn-dark " style=" width: fit-content; height: 50px;"
-          [routerLink]="['/mentors', mentor.id]" routerLinkActive="active">
+          [routerLink]="['/mentors',mentor.ID]" routerLinkActive="active">
           <i class="fas fa-user"></i> View Profile
         </button>
       </div>
