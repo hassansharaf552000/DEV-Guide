@@ -66,6 +66,9 @@ export class AccountService {
   getall(){
     return this.http.get(this.ExpertsListURL)
   }
+  getMentorById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.ExpertsListURL}/${id}`);
+  }
   AddExperience(formData:any) {
     return this.http.put(this.AddExperienceURL, formData)
   }
