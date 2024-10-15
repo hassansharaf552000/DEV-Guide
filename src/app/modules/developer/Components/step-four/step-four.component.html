@@ -41,20 +41,6 @@
                   </span>
                 </div>
 
-              </div>
-<!--               <input name="search" type="search" #searchInput (input)="onSearchInputChange(searchInput.value)"
-                [value]="searchQuery" class="form-control form-control-sm" placeholder="Search skills..." />
-
-              <h6>Suggested Skills</h6>
-              <div class="suggested-skills">
-                <span class="skill-suggestion" *ngFor="let skill of filteredSkills"
-                  (click)="addSkillFromSuggestion(skill)">
-                  {{skill.Name}}
-                </span>
-                <div *ngIf="SelectedSkilles.length<1" class="text-danger">
-                  Please select at least one skill. -->
-
-
                 <input name="search" type="search" #searchInput (input)="onSearchInputChange(searchInput.value)"
                   [value]="searchQuery" class="form-control form-control-sm" placeholder="Search skills..." />
 
@@ -67,25 +53,8 @@
                   <div *ngIf="SelectedSkilles.length<1" class="text-danger">
                     Please select at least one skill.
                   </div>
-
                 </div>
               </div>
-            </div>
-
-
-<!--             <div class="row">
-              <div class="col-md-12">
-                <div class="card-body">
-                  <h3 class="card-title">Experience</h3>
-                  <div>
-                    <div *ngFor="let exp of Experiences; let i = index" class="mb-3">
-                      <button type="button" (click)="removeExperience(i)" class="btn btn-danger">X</button>
-                      <div class="form-group">
-                        <label for="organization-{{i}}">Organization </label>
-                        <input name="organization-{{i}}" type="text" class="form-control"
-                          [(ngModel)]="Experiences[i].Organization" placeholder="Organization">
-                        <div *ngIf="Experiences[i].Organization==''" class="text-danger">
-                          Organization is required -->
 
               <div class="row">
                 <div class="col-md-12">
@@ -101,61 +70,45 @@
                           <div *ngIf="Experiences[i].Organization==''" class="text-danger">
                             Organization is required
                           </div>
-
                         </div>
-                      </div>
 
-                      <div class="form-group">
-                        <label for="field-{{i}}">Field</label>
-                        <input name="field-{{i}}" type="text" class="form-control"
-                          [(ngModel)]="Experiences[i].FieldOfStudy" placeholder="CS">
-                        <div *ngIf="Experiences[i].Organization==''" class="text-danger">
-                          Field is required
+                        <div class="form-group">
+                          <label for="field-{{i}}">Field</label>
+                          <input name="field-{{i}}" type="text" class="form-control"
+                            [(ngModel)]="Experiences[i].FieldOfStudy" placeholder="CS">
+                          <div *ngIf="Experiences[i].Organization==''" class="text-danger">
+                            Field is required
+                          </div>
                         </div>
-                      </div>
 
-                      <div class="form-group">
-                        <label for="startDate-{{i}}">Start Date</label>
-                        <input name="startDate-{{i}}" type="date" class="form-control"
-                          [(ngModel)]="Experiences[i].StartDate">
-                        <div *ngIf="Experiences[i].StartDate.toString()==''" class="text-danger">
-                          Start date is required
+                        <div class="form-group">
+                          <label for="startDate-{{i}}">Start Date</label>
+                          <input name="startDate-{{i}}" type="date" class="form-control"
+                            [(ngModel)]="Experiences[i].StartDate">
+                          <div *ngIf="Experiences[i].StartDate.toString()==''" class="text-danger">
+                            Start date is required
+                          </div>
                         </div>
-                      </div>
 
-                      <div class="form-group">
-                        <label for="endDate-{{i}}">End Date</label>
-                        <input name="endDate-{{i}}" type="date" class="form-control"
-                          [(ngModel)]="Experiences[i].EndDate">
-                        <!-- <div *ngIf="Experiences[i].EndDate?.toString()" class="text-danger">
+                        <div class="form-group">
+                          <label for="endDate-{{i}}">End Date</label>
+                          <input name="endDate-{{i}}" type="date" class="form-control"
+                            [(ngModel)]="Experiences[i].EndDate">
+                          <!-- <div *ngIf="Experiences[i].EndDate?.toString()" class="text-danger">
                             End date is required
                           </div> -->
-                      </div>
+                        </div>
 
-
-<!--                       <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" name="tillnow-{{i}}"
-                          [(ngModel)]="Experiences[i].TillNow">
-                        <label class="form-check-label" for="tillnow-{{i}}">Till Now</label>
- -->
                         <div class="form-group form-check">
                           <input type="checkbox" class="form-check-input" name="tillnow-{{i}}"
                             [(ngModel)]="Experiences[i].TillNow">
                           <label class="form-check-label" for="tillnow-{{i}}">Till Now</label>
                         </div>
-
                       </div>
                     </div>
 
                   </div>
                 </div>
-
-              </div>
-
-<!--               <button type="button" class="btn btn-primary mt-3 me-3 col-6" (click)="addExperience()"
-                title="Click to add another experience entry">+</button>
-            </div> -->
-
 
                 <button type="button" class="btn btn-primary mt-3 me-3 col-6" (click)="addExperience()"
                   title="Click to add another experience entry">+</button>
@@ -171,10 +124,6 @@
           <button type="submit" class="btn btn-primary mt-3 ms-3" (click)="onNext()" [disabled]="">Next</button>
         </div>
       </div>
-      <!-- <button (click)="testbehvior()">testtttt</button> -->
-<!--       <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
-      <button type="submit" class="btn btn-primary mt-3 ms-3" (click)="onNext()" [disabled]="">Next</button> -->
-
     </div>
   </div>
 </div>
