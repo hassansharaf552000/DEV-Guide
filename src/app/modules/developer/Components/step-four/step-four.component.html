@@ -14,7 +14,14 @@
             </div>
             <div class="form-group">
               <label for="level">Level</label>
-              <input type="text" name="level" class="form-control" [(ngModel)]="Level">
+              <!-- <input type="text" name="level" class="form-control" [(ngModel)]="Level"> -->
+              <select id="level" class="form-control" formControlName="level" name="level"  [(ngModel)]="Level">
+                <option value="" disabled selected>Select Level</option>
+                <option value="Junior">Junior</option>
+                <option value="Middle">Middle</option>
+                <option value="Senior">Senior</option>
+                <option value="TeamLeader">TeamLeader</option>
+              </select>
               <div *ngIf="Level==''" class="text-danger">
                 Level is required.
               </div>

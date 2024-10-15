@@ -33,17 +33,6 @@
           <input class="form-control" placeholder="Expert Title" type="text" [(ngModel)]="title" name="title" (keydown.enter)="filter()">
         </div>
 
-        <!-- Department Dropdown -->
-        <div class="form-group mb-3 col-4">
-          <select class="form-select" style="border: 2px solid #1c4980;" [(ngModel)]="role" name="role" (keydown.enter)="filter()">
-            <option value="" disabled selected hidden>Select Role</option>
-            <option></option>
-            <option value="HR">HR</option>
-            <option value="Mentor">Mentor</option>
-            <!-- Add more options as needed -->
-          </select>
-        </div>
-
         <!-- Rate Filter -->
         <div class="row">
           <div class="row col-6">
@@ -85,7 +74,20 @@
               </label>
             </div>
           </div>
+          <ngx-slider *ngIf="isBrowser"
+  class="small-slider"
+  [(value)]="priceMin"
+  [(highValue)]="priceMax"
+  [options]="options"
+  (valueChange)="onPriceMinChange($event)"
+  (highValueChange)="onPriceMaxChange($event)" (keydown.enter)="filter()">
+</ngx-slider>
+
+
+        <!-- <ngx-slider *ngIf="isBrowser" class="small-slider" [(value)]="priceMin" [(highValue)]="priceMax" [options]="options" ></ngx-slider> -->
+
         </div>
+        
 
       </form>
     </div>
@@ -94,7 +96,7 @@
     <hr>
 
     <!-- Cards Section -->
-    <div class="col-md-12">
+    <div class="col-md-12 col-lg-9">
       <!-- Cards Container -->
       <div class="row mt-4">
         <div *ngFor="let mentor of mentors | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }" class="col-12 col-md-12 col-lg-12 mb-4 cardd">
@@ -110,34 +112,5 @@
 
 </div>
 
-<!-- 
-  <div class="d-flex">
-    <div class="wrapper">
-      <header>
-        <h2>Price Range</h2>
-        <p>Use slider or enter min and max price</p>
-      </header>
-      <div class="price-input">
-        <div class="field">
-          <span>Min</span>
-          <input type="number" class="input-min" value="2500">
-        </div>
-        <div class="separator">-</div>
-        <div class="field">
-          <span>Max</span>
-          <input type="number" class="input-max" value="7500">
-        </div>
-      </div>
-      <div class="slider">
-        <div class="progress"></div>
-      </div>
-      <div class="range-input">
-        <input type="range" class="range-min" min="0" max="10000" value="2500" step="100">
-        <input type="range" class="range-max" min="0" max="10000" value="7500" step="100">
-      </div>
-    </div> -->
 
-    <!--   Support Section -->
-   
-  <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
 

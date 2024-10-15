@@ -28,7 +28,7 @@ export class ProfileLayoutComponent {
     this.checkScreenWidth();
   }
 
-  // Listener to detect window resizing
+ // Listener to detect window resizing
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.checkScreenWidth();
