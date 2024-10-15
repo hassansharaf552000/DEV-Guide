@@ -9,6 +9,6 @@ Price:number
 YearsOfExperience:number
 About:string
 Skills: Array<any>
-SocialAccounts:Array<string>
+SocialAccounts:Array<any>
 category:string
 }
