@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
     this.form = this.builder.group({
       LoginMethod: ["", [Validators.required]],
-      Password: ["", [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/)]],})
+      Password: ["", [Validators.required, Validators.pattern(/^(?=.\d)(?=.[A-Z])(?=.[a-z])(?=.[^\w\d\s:])([^\s]){8,16}$/)]],})
    }
 // Inject Router
 

@@ -1,103 +1,49 @@
-
-  <div class="container">
-    <!-- User info -->
-    <div class=" align-items-center ">
-      
-    </div>
-
-      <div class="">
-        <!-- Card -->
-        <div class="card border-0">
-          <!-- Card header -->
-          <div class="card-header d-lg-flex justify-content-between align-items-center">
-            <div class="mb-3 mb-lg-0">
-              <h3 class="mb-0">My Questions</h3>
-              <p class="mb-0">Here is list of questions/queres that you have asked
-              </p>
-            </div>
-          </div>
-          <!-- Card body -->
-          <div class="card-body">
-            <div class="border-bottom pt-0 pb-0">
-              <div class="row mb-4">
-                <div class="col-lg-6 col-md-8 col-7 mb-2 mb-lg-0">
-
-                  <div class="row">
-                    <span class="me-2 position-relative mt-5 justify-content-end align-items-end mt-n5 col-lg-3 col-12">
-                      <img src="66b372a33d0f5.webp" class="avatar-xl rounded-circle border border-4 border-white"
-                        style="height: 110px; size: 10px;" alt="avatar">
-                    </span>
-
-                    <span class="d-block col-xl-8 col-12 mt-4 mb-0 ">
-                      <span class="h4">Harshad Sawant</span>
-                      <span class="badge bg-success ms-2">Answered</span>
-                    </span>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-5 mb-2 mb-lg-0">
-               
-                </div>
-                <div class="col-lg-3 col-md-12 col-12 d-lg-flex align-items-start justify-content-end">
-                  <a routerLink="/developer/profile/answer-query" class="btn btn-outline-primary btn-sm " style="border-radius: 25px;">Go To Answer</a>
-                </div>
-              </div>
-              <!-- Pricing data -->
+<div class="container">
+  <div class="">
+    <div class="card border-0">
+      <div class="card-header d-lg-flex justify-content-between align-items-center">
+        <div class="mb-3 mb-lg-0">
+          <h3 class="mb-0">My Questions</h3>
+          <p class="mb-0">Here is a list of questions/queries that you have asked</p>
+        </div>
+      </div>
+      <div class="card-body" *ngFor="let query of userQueries">
+        <div class="border-bottom pt-0 pb-0">
+          <div class="row mb-4">
+            <div class="col-lg-6 col-md-8 col-7 mb-2 mb-lg-0">
               <div class="row">
+                <span class="me-2 position-relative mt-5 justify-content-end align-items-end mt-n5 col-lg-3 col-12">
+                  <img [src]="query.MentorImageUrl || 'default-avatar.png'" class="avatar-xl rounded-circle border border-4 border-white"
+                    style="height: 110px; size: 10px;" alt="avatar">
+                </span>
 
-
-                <span class="col-8 row">
-                  <h4 class="text-muted mt-0 ms-0">Your query</h4>
-                  <p class="col-12" style="width: 100%;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Obcaecati ullam quia nam doloremque voluptas ducimus?</p>
+                <span class="d-block col-xl-8 col-12 mt-4 mb-0">
+                  <span class="h4">{{ query.MentorName }}</span>
+                  <span >
+                    <!-- {{ getBadgeText(query.QueryAnswers.length) }} -->
+                  </span>
                 </span>
               </div>
             </div>
-            <div class="pt-5">
-              <div class="row mb-4">
-                <div class="row mb-4">
-                  <div class="col-lg-6 col-md-8 col-7 mb-2 mb-lg-0">
 
-                    <div class="row">
-                      <span
-                        class="me-2 position-relative mt-5 justify-content-end align-items-end mt-n5 col-lg-3 col-12">
-                        <img src="66b372a33d0f5.webp" class="avatar-xl rounded-circle border border-4 border-white"
-                          style="height: 110px; size: 10px;" alt="avatar">
-                      </span>
-
-                      <span class="d-block col-xl-8 col-10 col-12 mt-4 mb-0 ">
-                        <span class="h4">Harshad Sawant</span>
-                        <span class="badge bg-danger ms-2">No Answer yet</span>
-                
-
-                      </span>
-                    </div>
-                    
-                  </div>
-                  <div class="col-lg-3 col-md-4 col-5 mb-2 mb-lg-0">
-                  
-                  </div>
-                  <div class="col-lg-3 col-md-12 col-12 d-lg-flex align-items-start justify-content-end">
-                    <a href="#" class="btn btn-outline-primary btn-sm disabled"
-                      style="border-radius: 25px;">Pendding</a>
-                  </div>
-
-              
-                </div>
-                <div class="row">
-
-
-                  <span class="col-8 row">
-                    <h4 class="text-muted mt-0 ms-0">Your query</h4>
-                    <p class="col-12" style="width: 100%;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Obcaecati ullam quia nam doloremque voluptas ducimus?</p>
-                  </span>
-                </div>
-               
-              </div>
+            <div class="col-lg-3 col-md-12 col-12 d-lg-flex align-items-start justify-content-end">
+              <a *ngIf="query.QueryAnswers.length > 0" class="btn btn-outline-primary btn-sm" style="border-radius: 25px;">
+                Go To Answer
+              </a>
+              <a *ngIf="query.QueryAnswers.length === 0" class="btn btn-outline-primary btn-sm disabled" style="border-radius: 25px;">
+                Pending
+              </a>
             </div>
+          </div>
+
+          <div class="row">
+            <span class="col-8 row">
+              <h4 class="text-muted mt-0 ms-0">Your query</h4>
+              <p class="col-12" style="width: 100%;">{{ query.Question }}</p>
+            </span>
           </div>
         </div>
       </div>
-   
+    </div>
   </div>
-
+</div>

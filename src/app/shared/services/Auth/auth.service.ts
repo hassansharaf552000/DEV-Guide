@@ -36,6 +36,11 @@ export class AuthService {
   }
 
 
+
+
+
+
+
   userlogin(token: string) {
     if(token=="")
     this.isloggedUserSubject.next(false)
@@ -63,10 +68,3 @@ export class AuthService {
   }
 
 }
-
-
-
-
-
-
-
