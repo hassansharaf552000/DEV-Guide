@@ -181,7 +181,7 @@ export class MentorListComponent {
           this.mentors = res.Data as any[];
           this.totalItems = res.TotalCount;
           this.pageSize = res.PageSize;
-          console.log("Filtered data:", res.Data);
+          console.log("Filtered data:", res.Data[0]);
           this.cdr.detectChanges();
         }
       });
@@ -192,6 +192,7 @@ export class MentorListComponent {
     return Math.ceil(this.totalItems / this.pageSize);
   }
 
+  
   // Method to handle page change
   OnpageChange(newPage: number): void {
     if (newPage > 0 && newPage <= this.totalPge()) {
@@ -199,6 +200,7 @@ export class MentorListComponent {
       this.filter();    // Fetch data for the new page
     }
   }
+
 
 
   minValue: number = 100;
