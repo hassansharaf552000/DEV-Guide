@@ -3,7 +3,7 @@ import { IMentor } from '../../../../core/enums/Mentor';
 import { getLocaleEraNames } from '@angular/common';
 import { FormControl } from '@angular/forms';
 import { AccountService } from '../../../../shared/services/Account/account.service';
-
+import { Options, LabelType } from "@angular-slider/ngx-slider";
 @Component({
   selector: 'app-mentor-list',
   templateUrl: './mentor-list.component.html',
@@ -95,60 +95,127 @@ import { AccountService } from '../../../../shared/services/Account/account.serv
 
 //   }
 // }
+  
+
+// this os the final 
+
+// export class MentorListComponent {
+//   name: string = ""; 
+//   role: string = ""; 
+//   title: string = "";
+//   priceMin: number = 0;
+//   priceMax: number = 0;
+//   rate: any;
+//   p: number = 1;          // Ensure this is initialized
+//   pageSize: number = 10;   // Default page size
+//   mentors: any[] = [];
+//   totalItems: number;
+
+//   constructor(private AccountServ: AccountService,private cdr: ChangeDetectorRef) {
+//     // Fetch initial data for page 1
+//     // this.AccountServ.getall()
+//     // .subscribe({
+//     //   next: (res: any) => {
+//     //     this.mentors = res
+//     //     console.log("resssss",res);
+        
+//     //   }
+//     // });
+//      this.filter();
+//   }
+
+//   // Fetch mentors based on filters and pagination
+//   // // this is the final one 
+//   filter(): void {
+//     this.AccountServ.getall(this.name, this.role, this.title, this.priceMin, this.priceMax, this.rate, this.p, this.pageSize)
+//       .subscribe({
+//         next: (res: any) => {
+//           this.mentors = res.Data as any[];
+//           this.totalItems = res.TotalCount;
+//           this.p = res.PageSize;
+//           console.log("Filtered data:", res.Data);
+//           this.cdr.detectChanges();
+//         }
+//       });
+//   }
+//   // Calculate the total number of pages
+//   totalPge(): number {
+//     return Math.ceil(this.totalItems / this.pageSize);
+//   }
+//   // Method to handle page change
+//   OnpageChange(newPage: number): void {
+//     console.log('Page changed to:', newPage); // Debugging line
+//     if (newPage > 0 && newPage <= this.totalPge()) {
+//       this.p = newPage; // Update the current page number
+//       this.filter();
+//       console.log('Mentors:', this.mentors);
+//        // Fetch data for the new page
+
+//     }
+//   }
 
 
+// }
 export class MentorListComponent {
   name: string = ""; 
   role: string = ""; 
   title: string = "";
   priceMin: number = 0;
   priceMax: number = 0;
-  rate: any;
-  p: number = 1;          // Ensure this is initialized
-  pageSize: number = 10;   // Default page size
+  rate: number;            // Declare rate as number
+  p: number = 1;           // Current page number
+  pageSize: number = 5;    // Default page size
   mentors: any[] = [];
   totalItems: number;
 
-  constructor(private AccountServ: AccountService,private cdr: ChangeDetectorRef) {
-    // Fetch initial data for page 1
-    this.AccountServ.getall()
-    .subscribe({
-      next: (res: any) => {
-        this.mentors = res
-        console.log("resssss",res);
-        
-      }
-    });
-    // this.filter();
+  constructor(private AccountServ: AccountService, private cdr: ChangeDetectorRef) {
+    this.filter(); // Initial data fetch
   }
 
   // Fetch mentors based on filters and pagination
-  // // this is the final one 
-  // filter(): void {
-  //   this.AccountServ.getall(this.name, this.role, this.title, this.priceMin, this.priceMax, this.rate, this.p, this.pageSize)
-  //     .subscribe({
-  //       next: (res: any) => {
-  //         this.mentors = res.Data as any[];
-  //         this.totalItems = res.TotalCount;
-  //         this.p = res.PageSize;
-  //         console.log("Filtered data:", res);
-  //         this.cdr.detectChanges();
-  //       }
-  //     });
-  // }
-  // Calculate the total number of pages
+  filter(): void {
+    console.log("Selected Rate:", this.rate); // Debugging line to check selected rate value
+    this.AccountServ.getall(this.name, this.role, this.title, this.priceMin, this.priceMax, this.rate, this.p, this.pageSize)
+      .subscribe({
+        next: (res: any) => {
+          this.mentors = res.Data as any[];
+          this.totalItems = res.TotalCount;
+          this.pageSize = res.PageSize;
+          console.log("Filtered data:", res.Data);
+          this.cdr.detectChanges();
+        }
+      });
+  }
+
+  // Calculate total number of pages
   totalPge(): number {
     return Math.ceil(this.totalItems / this.pageSize);
   }
+
   // Method to handle page change
-  // OnpageChange(newPage: number): void {
-  //   console.log('Page changed to:', newPage); // Debugging line
-  //   if (newPage > 0 && newPage <= this.totalPge()) {
-  //     this.p = newPage; // Update the current page number
-  //     this.filter(); // Fetch data for the new page
-
-  //   }
-  // }
+  OnpageChange(newPage: number): void {
+    if (newPage > 0 && newPage <= this.totalPge()) {
+      this.p = newPage; // Update current page number
+      this.filter();    // Fetch data for the new page
+    }
+  }
 
 
+  minValue: number = 100;
+  maxValue: number = 400;
+  options: Options = {
+    floor: 0,
+    ceil: 500,
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return "<b>Min price:</b> $" + value;
+        case LabelType.High:
+          return "<b>Max price:</b> $" + value;
+        default:
+          return "$" + value;
+      }
+    }
+  };
 }
+

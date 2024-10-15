@@ -13,8 +13,8 @@ import { skillItem } from '../../../modules/developer/interfaces/Profile';
 export class AccountService {
   formData: BehaviorSubject<FormData>;
   CompleteProfileURL = "http://localhost:5164/api/Account/CompleteProfile"
-  // ExpertsListURL="http://localhost:5164/api/Account/Filter"
- ExpertsListURL="http://localhost:5164/api/Account/GetAll"
+   ExpertsListURL="http://localhost:5164/api/Account/Filter"
+ //ExpertsListURL="http://localhost:5164/api/Account/GetAll"
   Experiences:ExperienceViewModel[]=[]
   Educations:EducationViewModel[]=[]
   skills:skillItem[]=[]
@@ -48,27 +48,30 @@ export class AccountService {
   //   const params = { name, role, title: department, minprice, maxprice, rate };
   //   return this.http.get<any>(this.ExpertsListURL, { params });
   // }
-  // getall(name: string = '', role: string = '', title: string = '', minprice: number = 0, maxprice: number = 0, rate: number | null = null, page:number = 1, pageSize:number ): Observable<any> {
-  //   const params: any = {};
+  getall(name: string = '', role: string = '', title: string = '', minprice: number = 0, maxprice: number = 0, rate: number | null = null, page:number = 1, pageSize:number ): Observable<any> {
+    const params: any = {};
   
-  //   if (name) params.name = name;
-  //   if (role) params.role = role;
-  //   if (title) params.title = title;
-  //   if (minprice) params.minprice = minprice;
-  //   if (maxprice) params.maxprice = maxprice;
-  //   if (rate !== null) params.rate = rate;
-  //   if (pageSize) params.pageSize = pageSize;
-  //   if(page) params.page=page;
+    if (name) params.name = name;
+    if (role) params.role = role;
+    if (title) params.title = title;
+    if (minprice) params.minprice = minprice;
+    if (maxprice) params.maxprice = maxprice;
+    if (rate !== null) params.rate = rate;
+    if (pageSize) params.pageSize = pageSize;
+    if(page) params.page=page;
   
-  //   return this.http.get<any>(this.ExpertsListURL, { params });
-  // }
-  
-  getall(){
-    return this.http.get(this.ExpertsListURL)
+    return this.http.get<any>(this.ExpertsListURL, { params });
   }
+
+  
+  // getall(){
+  //   return this.http.get(this.ExpertsListURL)
+  // }
+
   getMentorById(id: string): Observable<any> {
     return this.http.get<any>(`${this.ExpertsListURL}/${id}`);
   }
+
   AddExperience(formData:any) {
     return this.http.put(this.AddExperienceURL, formData)
   }

@@ -1,47 +1,45 @@
- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
-<br>
-<br>
+
 <div class="container mt-5">
-  <h3 class="display-4 fw-bold text-center" style="
-      font-family: Edu AU VIC WA NT Hand, cursive;
-      font-optical-sizing: auto;
-      font-style: normal;">Our Mentors</h3>
+  <h3 class="display-4 fw-bold text-center" style="font-family: Edu AU VIC WA NT Hand, cursive; font-optical-sizing: auto; font-style: normal;">
+    Our Mentors
+  </h3>
+  
   <br>
+
   <!-- Filters and Cards Section -->
   <div class="row mt-4">
+
     <!-- Filters Section -->
-    <br>
-    <br>
-    <br>
     <div class="">
-      <form class="form-inline row  ">
+      <form class="form-inline row">
+
         <!-- Search Button -->
         <div class="col-12 d-flex justify-content-center">
-          <button type="button"  class="btn btn-primary-search mb-4 justify-content-center text-center">
+          <button type="button" (click)="filter()" class="btn btn-primary-search mb-4 justify-content-center text-center">
             <i class="fas fa-search"></i> Search
           </button>
         </div>
+
         <!-- HR Name Input -->
-        <!-- <h4 class="mb-3">Mentor-Name</h4> -->
         <div class="form-group mb-3 col-4">
-          <input class="form-control " placeholder="Expert Name" type="text" [(ngModel)]="name" name="name">
+          <input class="form-control" placeholder="Expert Name" type="text" [(ngModel)]="name" name="name" (keydown.enter)="filter()">
         </div>
 
         <!-- HR Role Input -->
-        <!-- <h4 class="mb-3">Mentor-Role</h4> -->
         <div class="form-group mb-3 col-4">
-          <input class="form-control " placeholder="Expert Title" type="text" [(ngModel)]="title" name="title">
+          <input class="form-control" placeholder="Expert Title" type="text" [(ngModel)]="title" name="title" (keydown.enter)="filter()">
         </div>
 
         <!-- Department Dropdown -->
-        <!-- <h4 class="mb-3">Department</h4> -->
         <div class="form-group mb-3 col-4">
-          <select class="form-select" style="border: 2px solid #1c4980;" [(ngModel)]="role" name="role">
-            <option selected>Select Role</option>
+          <select class="form-select" style="border: 2px solid #1c4980;" [(ngModel)]="role" name="role" (keydown.enter)="filter()">
+            <option value="" disabled selected hidden>Select Role</option>
+            <option></option>
             <option value="HR">HR</option>
-            <option value="Finance">Mentor</option>
+            <option value="Mentor">Mentor</option>
             <!-- Add more options as needed -->
           </select>
         </div>
@@ -51,72 +49,43 @@
           <div class="row col-6">
             <h4 class="mb-3 col-3">Rate</h4>
             <div class="rate-filter mb-3 star-rating col-5 ms-5">
-              <input type="radio" name="rate" id="rate5" value="5" [(ngModel)]="rate">
+              <input type="radio" name="rate" id="rate5" value="5" [(ngModel)]="rate" (change)="filter()">
               <label for="rate5">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
-                  viewBox="0 0 16 16">
-                  <path
-                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill" viewBox="0 0 16 16">
+                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                 </svg>
               </label>
-              <input type="radio" name="rate" id="rate4" value="4">
+
+              <input type="radio" name="rate" id="rate4" value="4" [(ngModel)]="rate" (change)="filter()">
               <label for="rate4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
-                  viewBox="0 0 16 16">
-                  <path
-                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill" viewBox="0 0 16 16">
+                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                 </svg>
               </label>
-              <input type="radio" name="rate" id="rate3" value="3">
+
+              <input type="radio" name="rate" id="rate3" value="3" [(ngModel)]="rate" (change)="filter()">
               <label for="rate3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
-                  viewBox="0 0 16 16">
-                  <path
-                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill" viewBox="0 0 16 16">
+                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                 </svg>
               </label>
-              <input type="radio" name="rate" id="rate2" value="2">
+
+              <input type="radio" name="rate" id="rate2" value="2" [(ngModel)]="rate" (change)="filter()">
               <label for="rate2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
-                  viewBox="0 0 16 16">
-                  <path
-                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill" viewBox="0 0 16 16">
+                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                 </svg>
               </label>
-              <input type="radio" name="rate" id="rate1" value="1">
+
+              <input type="radio" name="rate" id="rate1" value="1" [(ngModel)]="rate" (change)="filter()">
               <label for="rate1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill"
-                  viewBox="0 0 16 16">
-                  <path
-                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-star-fill" viewBox="0 0 16 16">
+                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                 </svg>
               </label>
             </div>
           </div>
-          <!-- Price Range -->
-          <!-- <div class="row col-6">
-            <h4 class="mb-3 col-3">Price</h4>
-            <div class="slider-container mb-3 col-8" style="position: relative; margin-right: 300px;">
-              <input id="priceMin" type="range" min="100" max="10000" [(ngModel)]="priceMin" (input)="updateRange()"
-                step="10">
-              <input id="priceMax" type="range" min="100" max="10000" [(ngModel)]="priceMax" (input)="updateRange()"
-                step="10">
-              <div class="track">
-                <div class="range-fill"
-                  [ngStyle]="{ 'left.%': getRangeMinPercent(), 'width.%': getRangeWidthPercent() }"></div>
-              </div>
-              <div class="tooltip" id="priceMinTooltip" [ngStyle]="{ 'left.%': getRangeMinPercent() }">
-                {{ priceMin }}
-              </div>
-              <div class="tooltip" id="priceMaxTooltip" [ngStyle]="{ 'left.%': getRangeMaxPercent() }">
-                {{ priceMax }}
-              </div>
-            </div>
-
-          </div> -->
         </div>
-        <br>
-
 
       </form>
     </div>
@@ -126,39 +95,49 @@
 
     <!-- Cards Section -->
     <div class="col-md-12">
-      <!-- Button Container -->
-      <!-- <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
-        <button type="button" class="btn btn-next" (click)="prevPage()">Prev</button> -->
-
-        <!-- Counter -->
-        <!-- <div class="counter">
-          <span>{{ currentPage }} / {{ totalPages }}</span>
-        </div>
-
-        <button type="button" class="btn btn-next me-3" (click)="nextPage()">Next</button>
-      </div> -->
-      
       <!-- Cards Container -->
-      <div class="row mt-4 ">
-        <div *ngFor="let mentor of mentors; let index = index" class="col-12 col-md-12 col-lg-12 mb-4 cardd">
+      <div class="row mt-4">
+        <div *ngFor="let mentor of mentors | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }" class="col-12 col-md-12 col-lg-12 mb-4 cardd">
           <app-mentor-card [mentor]="mentor"></app-mentor-card>
         </div>
+
+        <!-- Pagination Controls -->
+        <pagination-controls (pageChange)="OnpageChange($event)"></pagination-controls>
       </div>
-      <!-- <div class="row mt-4 ">
-        <div *ngFor="let mentor of mentors | paginate: { itemsPerPage: pageSize, currentPage: p , totalItems: totalItems}" class="col-12 col-md-12 col-lg-12 mb-4 cardd">
-          <app-mentor-card [mentor]="mentor"></app-mentor-card>
-        </div>
-        <pagination-controls (pageChange)="OnpageChange($event) "></pagination-controls>
-      </div> -->
     </div>
   
-
   </div>
 
-</div> 
-<!-- <ul>
-  <li *ngFor="let item of collection | paginate: { itemsPerPage: pageSize, currentPage: p , totalItems: totalItems}"> ... </li>
+</div>
 
-</ul> -->
-           
-<!-- <pagination-controls (pageChange)="OnpageChange($event) "></pagination-controls> -->
+<!-- 
+  <div class="d-flex">
+    <div class="wrapper">
+      <header>
+        <h2>Price Range</h2>
+        <p>Use slider or enter min and max price</p>
+      </header>
+      <div class="price-input">
+        <div class="field">
+          <span>Min</span>
+          <input type="number" class="input-min" value="2500">
+        </div>
+        <div class="separator">-</div>
+        <div class="field">
+          <span>Max</span>
+          <input type="number" class="input-max" value="7500">
+        </div>
+      </div>
+      <div class="slider">
+        <div class="progress"></div>
+      </div>
+      <div class="range-input">
+        <input type="range" class="range-min" min="0" max="10000" value="2500" step="100">
+        <input type="range" class="range-max" min="0" max="10000" value="7500" step="100">
+      </div>
+    </div> -->
+
+    <!--   Support Section -->
+   
+  <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
+

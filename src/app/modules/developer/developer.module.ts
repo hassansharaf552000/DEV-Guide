@@ -43,6 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QueryComponent } from './Components/query/query.component';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng5SliderModule } from 'ng5-slider';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 
 @NgModule({
@@ -94,6 +96,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     
 
     NgxPaginationModule,
+    NgxSliderModule  ,
 
 
 
