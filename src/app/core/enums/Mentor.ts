@@ -1,5 +1,5 @@
 export interface IMentor{
-id:number
+id:string
 FirstName:string
 LastName:string
 Image:string
