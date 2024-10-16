@@ -1,5 +1,5 @@
 export interface IMentor{
-id:number
+id:string
 FirstName:string
 LastName:string
 Image:string
@@ -9,6 +9,6 @@ Price:number
 YearsOfExperience:number
 About:string
 Skills: Array<any>
-SocialAccounts:Array<string>
+SocialAccounts:Array<any>
 category:string
 }

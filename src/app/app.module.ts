@@ -69,11 +69,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { authInterceptor } from './shared/interceptors/auth.interceptor';
 import { loaderInterceptor } from './shared/interceptors/loader.interceptor';
 import { SharedModule } from './shared/shared.module';
-
 
 
 @NgModule({
@@ -84,6 +83,7 @@ import { SharedModule } from './shared/shared.module';
     RouterModule,
     CommonModule,
     NgxPaginationModule,
+    FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({ // ToastrModule added
       timeOut: 3000, // duration for toast notifications

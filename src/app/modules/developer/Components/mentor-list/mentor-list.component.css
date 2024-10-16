@@ -375,3 +375,13 @@ input[type="range"]::-ms-track {
  justify-self: start;
  margin-right: 400px !important;
 }
+.small-slider {
+  width: 50%; /* It will take 50% of its parent container's width */
+  max-width: 300px; /* You can limit the maximum width */
+}
+
+@media (max-width: 600px) {
+  .small-slider {
+    width: 100%; /* Full width on smaller screens */
+  }
+}

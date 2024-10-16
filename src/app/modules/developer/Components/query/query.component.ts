@@ -3,6 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IMentor } from '../../../../core/enums/Mentor';
+import { log } from 'console';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-query',
@@ -16,17 +18,29 @@ export class QueryComponent implements OnInit {
   isModalVisible = false;
   isConfirmationVisible = false;
   modalMessage = '';
+  MentorID="";
   addqueryurl='http://localhost:5164/api/Account/AddQuery';
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router,private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private toaster:ToastrService,
+    private router: Router,private route: ActivatedRoute) {
     this.queryForm = this.fb.group({
       Question: ['', Validators.required],
-      File: [null]
+      
+      
     });
+    // this.MentorID = this.route.snapshot.paramMap.get('id');
+
+    this.MentorID = this.route.snapshot.paramMap.get('id');
+if (this.MentorID) {
+  console.log(' mentor ID provided in the route');
+  // Handle the error, for example, navigate to an error page or show a message
+}
+
+
   }
   ngOnInit(): void {
     // Get mentor ID from the route
-    this.mentor.id = +this.route.snapshot.paramMap.get('id');
+    // this.mentor.id = +this.route.snapshot.paramMap.get('id');
     // Now you can use mentorId to fetch the mentor's details from an API or a local data source
   }
   // Handle file selection
@@ -54,43 +68,93 @@ export class QueryComponent implements OnInit {
   }
 
   
-  submitQuery() {
-    if (this.queryForm.invalid) {
-      this.modalMessage = 'Please fill in the query message.';
-      this.showModal();
-      return;
-    }
+//   submitQuery() {
+//     const payload = this.queryForm.value;
+//     console.log('Payload:', payload);
+//     if (this.queryForm.invalid) {
+//       this.modalMessage = 'Please fill in the query message.';
+//       // this.showModal();
+//       return;
+//     }
   
-    const formData = new FormData();
-    formData.append('Question', this.queryForm.get('Question')?.value);
+//     const formData = new FormData();
+//     formData.append('Question', this.queryForm.get('Question')?.value);
+//     formData.append('mentorId', this.MentorID);
+//     if (this.selectedFile) {
+//       formData.append('File', this.selectedFile);
   
-    if (this.selectedFile) {
-      formData.append('File', this.selectedFile);
+//     }
+   
+// console.log('',formData);
   
-    }
-    formData.append('mentorId', this.mentor.id.toString());
+//     // Make API request
+//     this.http.post(this.addqueryurl, formData)
+//       .subscribe({
+//         next: (response) => {
+//           this.modalMessage = 'Query submitted successfully!';
+//           // this.showModal();
+//         },
+//         error: (error) => {
+//           // Log error details for debugging
+//           console.error('Error occurred while submitting the query:', error);
+//           this.modalMessage = error.error?.message || 'There was an error submitting the query.';
+//           // this.showModal();
+//         }
+//       });
+//   }
+  
 
+submitQuery() {
+  const payload = this.queryForm.value;
+  console.log('Payload:', payload);
+
+  if (this.queryForm.invalid) {
+    this.modalMessage = 'Please fill in the query message.';
+    return;
+  }
+
+  const formData = new FormData();
   
-    // Make API request
-    this.http.post(this.addqueryurl, formData)
-      .subscribe({
-        next: (response) => {
-          this.modalMessage = 'Query submitted successfully!';
-          this.showModal();
-        },
-        error: (error) => {
-          // Log error details for debugging
-          console.error('Error occurred while submitting the query:', error);
-          this.modalMessage = error.error?.message || 'There was an error submitting the query.';
-          this.showModal();
+  // Log values before appending
+  console.log('Question value:', this.queryForm.get('Question')?.value);
+  console.log('Mentor ID:', this.MentorID);
+  console.log('Selected file:', this.selectedFile);
+
+  // Append values to FormData
+  formData.append('Question', this.queryForm.get('Question')?.value);
+  formData.append('User_Instructor_Id', this.MentorID);
+  if (this.selectedFile) {
+    formData.append('File', this.selectedFile);
+  }
+
+  console.log('Final formData:', formData);
+
+  // Make API request
+  this.http.post(this.addqueryurl, formData)
+    .subscribe({
+      next: (response:any) => {
+        if(response.id){
+this.toaster.success("Query submitted successfully!")
         }
-      });
-  }
-  
+        else{
+this.toaster.warning("Try again later!!!!!")
+
+        }
+        
+ 
+      },
+      error: (error) => {
+        console.error('Error occurred while submitting the query:', error);
+        this.modalMessage = error.error?.message || 'There was an error submitting the query.';
+      }
+    });
+}
+
+
   // Show the success modal
-  showModal() {
-    this.isModalVisible = true;
-  }
+  // showModal() {
+  //   this.isModalVisible = true;
+  // }
 
   // Go to home page after modal
   goToHome() {

@@ -20,12 +20,10 @@ export class LoginComponent implements OnInit {
     private toastr: ToastrService
   ) {
     this.form = this.builder.group({
-      LoginMethod: ['', Validators.required],  // For Username or Email
-      Password: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/)]],
-      RememberMe: [false]  // Added RememberMe control
-    });
-  }
-
+      LoginMethod: ["", [Validators.required]],
+      Password: ["", [Validators.required, Validators.pattern(/^(?=.\d)(?=.[A-Z])(?=.[a-z])(?=.[^\w\d\s:])([^\s]){8,16}$/)]],
+    });   
+   }
   ngOnInit(): void {}
 
 
