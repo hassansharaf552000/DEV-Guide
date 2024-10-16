@@ -13,12 +13,12 @@ export class QuizzesDetailsComponent {
 
   // Static quiz data
   skills: ISkill[] = [
-    { id: 1, name: 'Angular', description: 'A platform for building mobile and desktop web applications.' },
-    { id: 2, name: 'JavaScript', description: 'A versatile programming language primarily used in web development.' },
-    { id: 3, name: 'TypeScript', description: 'A typed superset of JavaScript that compiles to plain JavaScript.' },
-    { id: 4, name: 'React', description: 'A platform for building mobile and desktop web applications.' },
-    { id: 5, name: 'Flutter', description: 'A versatile programming language primarily used in web development.' },
-    { id: 6, name: 'Dart', description: 'A typed superset of JavaScript that compiles to plain JavaScript.' }
+    { Id: 1, Name: 'Angular', description: 'A platform for building mobile and desktop web applications.' },
+    { Id: 2, Name: 'JavaScript', description: 'A versatile programming language primarily used in web development.' },
+    { Id: 3, Name: 'TypeScript', description: 'A typed superset of JavaScript that compiles to plain JavaScript.' },
+    { Id: 4, Name: 'React', description: 'A platform for building mobile and desktop web applications.' },
+    { Id: 5, Name: 'Flutter', description: 'A versatile programming language primarily used in web development.' },
+    { Id: 6, Name: 'Dart', description: 'A typed superset of JavaScript that compiles to plain JavaScript.' }
   ];
 
   constructor(private route: ActivatedRoute) {}
@@ -28,6 +28,6 @@ export class QuizzesDetailsComponent {
     this.skillid = +this.route.snapshot.paramMap.get('id')!;
 
     // Find the selected quiz by id
-    this.selectedQuiz = this.skills.find(skill => skill.id === this.skillid);
+    this.selectedQuiz = this.skills.find(skill => skill.Id === this.skillid);
   }
 }

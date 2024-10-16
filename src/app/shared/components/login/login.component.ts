@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';  // Import the Router for navigation
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/Auth/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -7,131 +7,71 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],  // Corrected 'styleUrl' to 'styleUrls'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginMethod: string = '';  // Holds either the username or email
-  password: string = '';
-  rememberMe: boolean = false;  // Flag for Remember Me
-  errorMessage: string = '';  // Error message for login failures
-  successMessage: string = '';  // Success message for login successes
-  passwordVisible: boolean = false;
-  form:FormGroup;
+  form: FormGroup;
+  returnUrl = '/home';
 
-   returnUrl='/home'
-
-  constructor(private authService: AuthService, private router: Router,private builder:FormBuilder,private toastr: ToastrService) {
-
-
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private builder: FormBuilder,
+    private toastr: ToastrService
+  ) {
     this.form = this.builder.group({
       LoginMethod: ["", [Validators.required]],
-      Password: ["", [Validators.required, Validators.pattern(/^(?=.\d)(?=.[A-Z])(?=.[a-z])(?=.[^\w\d\s:])([^\s]){8,16}$/)]],})
+      Password: ["", [Validators.required, Validators.pattern(/^(?=.\d)(?=.[A-Z])(?=.[a-z])(?=.[^\w\d\s:])([^\s]){8,16}$/)]],
+    });   
    }
-// Inject Router
-
-  ngOnInit(): void {
-
-  }
-
-  togglePasswordVisibility() {
-    this.passwordVisible = !this.passwordVisible;  // Toggle the visibility
-  }
+  ngOnInit(): void {}
 
 
 
+  // login() {
+  //   if (this.form.valid) {
+  //     console.log(this.form.value);
+  //     this.authService.login(this.form.value).subscribe({
+  //       next: (res: any) => {
+  //         if (res.Success === true) {
+  //           this.authService.userlogin(res.result);
+  //           this.router.navigateByUrl(this.returnUrl);
+  //           this.toastr.success('Successfully logged in!', 'Success');
+  //         } else {
+  //           this.toastr.error('Login failed. Please try again.', 'Error');
+  //         }
+  //       },
+  //       error: (err) => {
+  //         console.log(err);
+  //         this.toastr.error('Sorry, please try again later', 'Login Failed');
+  //       }
+  //     });
+  //   } else {
+  //     this.toastr.error('Please check your inputs', 'Validation Error');
+  //   }
+  // }
 
-
-//   login() {
-//     this.authService.login(this.loginMethod, this.password).subscribe({
-//       next: (response) => {
-//         if (response && response.token) {
-//           console.log('Login successful:', response);
-
-//           // Handle "Remember Me" functionality
-//           if (this.rememberMe) {
-//             localStorage.setItem('login', this.loginMethod);
-//             localStorage.setItem('password', this.password);
-//           } else {
-//             localStorage.removeItem('login');
-//             localStorage.removeItem('password');
-//           }
-
-//           this.successMessage = 'Login successful! Redirecting to the home page...';
-//           this.errorMessage = '';
-//           setTimeout(() => {
-//             this.router.navigate(['/home']);
-//           }, 1500);
-//         }
-//       },
-//       error: (errorMessage) => {
-//         console.error('Login failed:', errorMessage);
-//         this.errorMessage = errorMessage;  // Display the error message
-//         this.successMessage = '';
-//       }
-//     });
-//   }
-
-// }
-
-login() {
-  console.log(this.form.value);
-
-  this.authService.login(this.form.value).subscribe({
-    next:(res:any)=>{
-      console.log(res);
-      if(res.Success == true){
-        this.authService.userlogin(res.result);
-        this.router.navigateByUrl(this.returnUrl)
-
-      }else{
-        // alert("Sorry try again leter")
-        this.toastr.error('Login is Failed', res.message);
-      }
-
-    },
-    error:(err)=>{
-      console.log(err);
-      this.toastr.error('Sorry, please try again later', 'Login Failed');
-
+  login() {
+    if (this.form.valid) {
+      this.authService.login(this.form.value).subscribe({
+        next: (res: any) => {
+          if (res.Success === true && res.Result) {
+            console.log('JWT Token:', res.Result);  // Log the token to confirm
+            this.authService.userlogin(res.Result);  // Use the token
+            this.router.navigateByUrl(this.returnUrl);
+            this.toastr.success('Successfully logged in!', 'Success');
+          } else {
+            this.toastr.error('Login failed. Please try again.', 'Error');
+          }
+        },
+        error: (err) => {
+          console.log(err);
+          this.toastr.error('Sorry, please try again later', 'Login Failed');
+        }
+      });
+    } else {
+      this.toastr.error('Please check your inputs', 'Validation Error');
     }
-  })
-
-}
-
-
-// login() {
-//   console.log(this.form.value);
-
-//   this.authService.login(this.form.value).subscribe({
-//     next: (res: any) => {
-//       console.log(res);
-
-//       if (res.success === true) {
-//         this.authService.userlogin(res.result);
-//         if (this.rememberMe) {
-//           localStorage.setItem('login', this.loginMethod);
-//           localStorage.setItem('password', this.password);
-//         } else {
-//           localStorage.removeItem('login');
-//           localStorage.removeItem('password');
-//         }
-//         this.router.navigateByUrl(this.returnUrl);
-//         this.toastr.success('Successfully logged in!', 'Success');
-//       } else {
-//         this.toastr.error('Login failed. Please try again.', 'Error');
-//       }
-//     },
-//     error: (err) => {
-//       console.log(err);
-//       this.toastr.error('Sorry, please try again later', err);
-//     }
-//   });
-// }
-// }
-
-
-// }
-
-
+  }
 
 }

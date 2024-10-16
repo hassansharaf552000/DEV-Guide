@@ -1,3 +1,4 @@
+import { EducationService } from './../../services/Education/education.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IEducation } from '../../../core/enums/Education';
 import { Component } from '@angular/core';
@@ -14,24 +15,35 @@ export class AddEducationComponent {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<AddEducationComponent>
+    ,private educationservice:EducationService
   ) {
     // Initialize the form
     this.educationForm = this.fb.group({
-      degree: ['', Validators.required],
-      fieldOfStudy: ['', Validators.required],
-      university: ['', Validators.required],
-      faculty: [''],
-      countryOfStudy: ['', Validators.required],
-      startDate: ['', Validators.required],
-      endDate: [''],
-      tillNow: [false]
+      Degree: ['', Validators.required],
+      FieldOfStudy: ['', Validators.required],
+      University: ['', Validators.required],
+      Faculty: [''],
+      CountryOfStudy: ['', Validators.required],
+      StartDate: ['', Validators.required],
+      EndDate: [''],
+      TillNow: [false]
     });
   }
 
   onSave(): void {
     if (this.educationForm.valid) {
       const newEducation: IEducation = this.educationForm.value;
-      this.dialogRef.close(newEducation); // Return the new education data
+
+      // Call the addEducation service function to save the new education
+      this.educationservice.addEducation(newEducation).subscribe(
+        (response: IEducation) => {
+          console.log('Education added successfully:', response);
+          this.dialogRef.close(response); // Close dialog and pass the added education back
+        },
+        (error) => {
+          console.error('Error adding education:', error);
+        }
+      );
     }
   }
 
