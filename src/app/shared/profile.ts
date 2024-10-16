@@ -15,14 +15,14 @@
 //     price?: number;       // Optional number (use number for decimal)
 //   }
   export interface Profile {
-    imagePath: string;      // Path to the user's image
-    firstName: string;
-    lastName: string;
-    title: string;
-    cvPath: string;         // Path to the user's CV
-    level: string;
-    country: string;
-    phoneNumber: string;
-    yearsOfExperience: number;
+    ImagePath: string;      // Path to the user's image
+    FirstName: string;
+    LastName: string;
+    Title: string;
+    CVPath: string;         // Path to the user's CV
+    Level: string;
+    Country: string;
+    PhoneNumber: string;
+    YearsOfExperience: number;
     About:string;
 }

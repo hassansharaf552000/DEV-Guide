@@ -16,11 +16,11 @@ export class AddExperienceComponent {
   ) {
     // Initialize the form
     this.experienceForm = this.fb.group({
-      job: ['', Validators.required],
-      organization: ['', Validators.required],
-      startDate: ['', Validators.required],
-      endDate: [''],
-      tillNow: [false]
+      FieldOfStudy: ['', Validators.required],
+      Organization: ['', Validators.required],
+      StartDate: ['', Validators.required],
+      EndDate: [''],
+      TillNow: [false]
     });
   }
 

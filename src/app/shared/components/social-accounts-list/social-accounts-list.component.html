@@ -1,0 +1,37 @@
+<!-- src/app/components/social-accounts-list/social-accounts-list.component.html -->
+<!-- <div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Social Accounts</h3>
+    <button class="btn btn-primary" (click)="openAddSocialAccountModal()">
+      <i class="bi bi-plus-circle"></i> Add Social Account
+    </button>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4" *ngFor="let account of socialAccounts">
+      <app-socialaccountscard
+        [account]="account">
+      </app-socialaccountscard>
+    </div>
+  </div>
+</div> -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
+<br>
+<br>
+<h3 class="display-4 fw-bold text-center" style="
+        font-family: Edu AU VIC WA NT Hand, cursive;
+        font-optical-sizing: auto;
+        font-style: normal;
+  ">Your Social Accounts</h3>
+  <button mat-raised-button color="primary" (click)="openAddSocialAccountModal()">
+    Add Account
+  </button>
+  <br>
+
+  <!-- List of education cards -->
+  <div *ngFor="let account of socialAccounts">
+    <app-socialaccountscard [account]="account"></app-socialaccountscard>
+  </div>

@@ -2,6 +2,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { IExperience } from "../../../core/enums/Experience";
 import { Component, Inject } from "@angular/core";
+import { ExperienceService } from "../../services/Experience/experience.service";
 @Component({
   selector: 'app-edit-experience',  // Unique selector for this component
   templateUrl: './edit-experience.component.html',  // Path to the template file
@@ -14,15 +15,16 @@ export class EditExperienceComponent {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<EditExperienceComponent>,
+    private experienceservice:ExperienceService,
     @Inject(MAT_DIALOG_DATA) public experience: IExperience
   ) {
     // Initialize form with experience data
     this.experienceForm = this.fb.group({
-      job: [this.experience.job, Validators.required],
-      organization: [this.experience.organization, Validators.required],
-      startDate: [this.experience.startDate, Validators.required],
-      endDate: [this.experience.endDate],
-      tillNow: [this.experience.tillNow]
+      FieldOfStudy: [this.experience.FieldOfStudy, Validators.required],
+      Organization: [this.experience.Organization, Validators.required],
+      StartDate: [this.experience.StartDate, Validators.required],
+      EndDate: [this.experience.EndDate],
+      TillNow: [this.experience.TillNow]
     });
 
     // Conditional validation for endDate
@@ -30,8 +32,21 @@ export class EditExperienceComponent {
 
   onSave(): void {
     if (this.experienceForm.valid) {
-      // Close the dialog and pass the updated experience data back
-      this.dialogRef.close(this.experienceForm.value);
+      const updatedexperience: IExperience = {
+        ...this.experienceForm.value,
+        Id: this.experience.Id  // Ensure the Id is included for editing
+      };
+
+      // Call the service to update the education
+      this.experienceservice.editExperience(updatedexperience).subscribe(
+        (response: IExperience) => {
+          console.log('Experience updated successfully:', response);
+          this.dialogRef.close(response);  // Close dialog and pass back the updated education
+        },
+        (error) => {
+          console.error('Error updating education:', error);
+        }
+      );
     }
   }
 

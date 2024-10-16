@@ -1,8 +1,11 @@
 <div class="card">
   <div class="card-header">
-    <img [src]="selectedImage ? selectedImage : profile.imagePath" alt="Profile Image"
+    <img src="http://localhost:5164/{{selectedImage ? selectedImage : profile.ImagePath}}" alt="Profile Image"
       class="img-fluid rounded-circle profile-image">
   </div>
+
+
+
   <div class="card-body">
     <div class="text-center">
       <input type="file" (change)="onImageChange($event)" class="form-control-file mt-2" accept="image/*">
@@ -50,17 +53,6 @@
         </div>
       </div>
 
-      <!-- Price -->
-      <div class="form-group">
-        <label for="price">Price</label>
-        <input id="price" type="number" class="form-control" formControlName="price">
-        <div
-          *ngIf="InformationForm.get('price').invalid && (InformationForm.get('price').dirty || InformationForm.get('price').touched)"
-          class="text-danger">
-          <div *ngIf="InformationForm.get('price').errors?.['required']">Price is required.</div>
-          <div *ngIf="InformationForm.get('price').errors?.['min']">Price must be at least 5.</div>
-        </div>
-      </div>
 
       <!-- Level -->
       <div class="form-group">
@@ -310,13 +302,15 @@
         <textarea id="About" class="form-control" formControlName="About"></textarea>
 
         <!-- Display validation messages only when the field is invalid and has been touched or is dirty -->
-        <div *ngIf="InformationForm.get('About').invalid && (InformationForm.get('About').dirty || InformationForm.get('About').touched)" class="text-danger">
+        <div
+          *ngIf="InformationForm.get('About').invalid && (InformationForm.get('About').dirty || InformationForm.get('About').touched)"
+          class="text-danger">
 
           <!-- Required error message -->
           <div *ngIf="InformationForm.get('About').errors?.['required']">About is required.</div>
 
           <!-- Maxlength error message -->
-          <div *ngIf="InformationForm.get('About').errors?.['minlength']">About must be at least 500 characters.</div>
+          <div *ngIf="InformationForm.get('About').errors?.['minlength']">About must be at least 50 characters.</div>
 
         </div>
       </div>
@@ -325,18 +319,18 @@
 
 
 
-    <!-- CV Upload -->
-    <div class="form-group ">
-      <label for="cv">Upload CV</label><br>
-      <input id="cv" type="file" (change)="onCVChange($event)" class="form-control-file" formControlName="cv" accept=".pdf,.doc,.docx">
-      <div *ngIf="InformationForm.get('cv').invalid && (InformationForm.get('cv').dirty || InformationForm.get('cv').touched)" class="text-danger">
-        <div *ngIf="InformationForm.get('cv').errors?.['required']">CV is required.</div>
+      <!-- CV Upload -->
+      <div class="form-group">
+        <div class="mt-2">
+          <strong>Current CV File: </strong>{{ profile.CVPath }} <!-- Display the CV filename -->
+        </div>
+        <label for="cv">Upload CV</label>
+        <input id="cv" type="file" (change)="onCVChange($event)" class="form-control-file" accept=".pdf,.doc,.docx">
       </div>
-    </div>
 
 
-    <div class="mohamed">
-      <button type="submit" class="btn btn-primary" [disabled]="InformationForm.invalid">Update Profile</button>
-    </div>
-  </form>
- </div>
+      <div class="mohamed">
+        <button type="submit" class="btn btn-primary" [disabled]="InformationForm.invalid">Update Profile</button>
+      </div>
+    </form>
+  </div>

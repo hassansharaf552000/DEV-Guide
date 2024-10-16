@@ -49,6 +49,7 @@ import { ChangepasswordComponent } from '../../shared/components/changepassword/
 import { SkillsComponent } from '../../shared/components/skills/skills.component';
 import { EducationsComponent } from '../../shared/components/education-list/education-list.component';
 import { ExperienceListComponent } from '../../shared/components/experience-list/experience-list.component';
+import { SocialAccountsListComponent } from '../../shared/components/social-accounts-list/social-accounts-list.component';
 
 const routes: Routes = [
   {
@@ -94,6 +95,7 @@ const routes: Routes = [
       {path:'skills',component:SkillsComponent},
       {path:'educations',component:EducationsComponent},
       {path:'experiences',component:ExperienceListComponent},
+      {path:'socialaccounts',component:SocialAccountsListComponent},
       { path: 'reviews', component: ReviewsListComponent },
       { path: 'quizzes', component: QuizListComponent },
       { path: 'reply', component: MentorReplyComponent },
