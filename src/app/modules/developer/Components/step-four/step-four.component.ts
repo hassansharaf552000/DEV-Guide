@@ -18,10 +18,10 @@ export class StepFourComponent {
   searchQuery: string = '';
   SelectedSkilles: skillItem[] = []
   Experiences: ExperienceViewModel[] = []
-  Level = ""
-  About = ""
-  Title=""
-  YearsOfExperience = 0
+  Level: string = 'Select Level';
+  About: string = '';
+  Title: string = '';
+  YearsOfExperience: number = 0;
 
   constructor(
     private fb: FormBuilder,

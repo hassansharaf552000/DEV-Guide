@@ -1,6 +1,4 @@
 <br>
-<br>
-<br>
 <div class="container mt-5">
   <h2 class="display-4 fw-bold text-center" style="
       font-family: Edu AU VIC WA NT Hand, cursive;
@@ -14,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
 
 
-<div class="skills-container">
+<div class="d-flex flex-wrap justify-content-between gap-3 mt-4">
   <div *ngFor="let skill of skillslist" class="quiz-card">
     <app-quiz-card [skill]="skill"></app-quiz-card>
   </div>

@@ -203,6 +203,7 @@ export class Update_ProfileComponent implements OnInit {
   onImageChange(event: any) {
     const file = event.target.files[0];
     if (file) {
+      this.selectedImage = file;
       const img = new Image();
       const reader = new FileReader();
 
@@ -241,15 +242,30 @@ export class Update_ProfileComponent implements OnInit {
 
   onSubmit(): void {
     if (this.InformationForm.valid) {
-      // Prepare profile update object
-      const updatedProfile: Profile = {
-        ...this.InformationForm.value,
-        imagePath: this.selectedImage as string,
-        cvPath: this.selectedCV ? this.selectedCV.name : this.profile.CVPath,
-      };
+      // Prepare FormData for the updated profile
+      const formData = new FormData();
 
-      // Use the service to send updated profile data
-      this.profileService.UpdateProfile(updatedProfile).subscribe(
+      formData.append('FirstName', this.InformationForm.get('firstName')?.value);
+      formData.append('LastName', this.InformationForm.get('lastName')?.value);
+      formData.append('Title', this.InformationForm.get('title')?.value);
+      formData.append('Level', this.InformationForm.get('level')?.value);
+      formData.append('Country', this.InformationForm.get('country')?.value);
+      formData.append('PhoneNumber', this.InformationForm.get('phoneNumber')?.value);
+      formData.append('YearsOfExperience', this.InformationForm.get('yearsOfExperience')?.value);
+      formData.append('About', this.InformationForm.get('About')?.value);
+
+      // Append Image file if available
+      if (this.selectedImage instanceof File) {
+        formData.append('Image', this.selectedImage); // Image is a File object
+      }
+
+      // Append CV file if available
+      if (this.selectedCV instanceof File) {
+        formData.append('CV', this.selectedCV); // CV is a File object
+      }
+
+      // Use the profile service to send the form data
+      this.profileService.UpdateProfile(formData).subscribe(
         (updatedProfile: Profile) => {
           this.profile = updatedProfile;
           console.log('Profile updated successfully');
@@ -262,4 +278,6 @@ export class Update_ProfileComponent implements OnInit {
       this.InformationForm.markAllAsTouched();
     }
   }
+
+
 }
