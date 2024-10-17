@@ -21,11 +21,11 @@ export class QuizzesListComponent {
     private skillService: SkillService
   ){}
   ngOnInit(): void {
-    this.fetchExperiences();
+    this.fetchskills();
   }
 
   // Fetch experiences from the API
-  fetchExperiences(): void {
+  fetchskills(): void {
     this.skillService.getUserSkills().subscribe(
       (skills: ISkill[]) => {
         this.skillslist = skills;

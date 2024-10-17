@@ -1,33 +1,49 @@
-import { Component } from '@angular/core';
-import { ISkill } from '../../../core/enums/Skill';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ISkill } from '../../../core/enums/Skill';
+import { SkillService } from '../../services/Skill/skill.service';
 
 @Component({
   selector: 'app-quiz-details',
   templateUrl: './quizzes-details.component.html',
-  styleUrl: './quizzes-details.component.css'
+  styleUrls: ['./quizzes-details.component.css']
 })
-export class QuizzesDetailsComponent {
+export class QuizzesDetailsComponent implements OnInit {
   skillid: number | null = null;
-  selectedQuiz: any;
+  selectedQuiz: ISkill | undefined;
+  loading = true; // To handle the loading state
+  errorMessage: string | null = null; // To handle error messages
 
-  // Static quiz data
-  skills: ISkill[] = [
-    { Id: 1, Name: 'Angular', description: 'A platform for building mobile and desktop web applications.' },
-    { Id: 2, Name: 'JavaScript', description: 'A versatile programming language primarily used in web development.' },
-    { Id: 3, Name: 'TypeScript', description: 'A typed superset of JavaScript that compiles to plain JavaScript.' },
-    { Id: 4, Name: 'React', description: 'A platform for building mobile and desktop web applications.' },
-    { Id: 5, Name: 'Flutter', description: 'A versatile programming language primarily used in web development.' },
-    { Id: 6, Name: 'Dart', description: 'A typed superset of JavaScript that compiles to plain JavaScript.' }
-  ];
-
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private skillService: SkillService) {}
 
   ngOnInit() {
-    // Fetch quizId from route parameters
+    // Get the skill ID from the route parameters
     this.skillid = +this.route.snapshot.paramMap.get('id')!;
 
-    // Find the selected quiz by id
-    this.selectedQuiz = this.skills.find(skill => skill.Id === this.skillid);
+    // Fetch the quiz details from the service based on the skill ID
+    if (this.skillid) {
+      this.fetchQuizDetails(this.skillid);
+    }
+  }
+
+  // Fetch the quiz details from the SkillService
+  fetchQuizDetails(id: number) {
+    this.skillService.getUserSkills().subscribe(
+      (skills: ISkill[]) => {
+        // Find the selected quiz by ID
+        this.selectedQuiz = skills.find(skill => skill.Id === id);
+        this.loading = false;
+
+        // Handle case where quiz is not found
+        if (!this.selectedQuiz) {
+          this.errorMessage = 'Quiz not found.';
+        }
+      },
+      (error) => {
+        console.error('Error fetching skills:', error);
+        this.errorMessage = 'Error fetching quiz details. Please try again later.';
+        this.loading = false;
+      }
+    );
   }
 }

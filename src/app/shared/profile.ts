@@ -15,10 +15,12 @@
 //     price?: number;       // Optional number (use number for decimal)
 //   }
   export interface Profile {
+    Image:File
     ImagePath: string;      // Path to the user's image
     FirstName: string;
     LastName: string;
     Title: string;
+    CV:File
     CVPath: string;         // Path to the user's CV
     Level: string;
     Country: string;
