@@ -14,6 +14,7 @@ export class MentorAnswerQueryComponent {
   
   selectedFile: File | null = null;
   form: FormGroup;
+  userQueries: any[] = []; 
   constructor(private http: HttpClient , private builder: FormBuilder) {
     this.form= this.builder.group(
       {

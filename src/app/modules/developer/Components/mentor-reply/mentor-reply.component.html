@@ -1,49 +1,76 @@
-<div class="container">
+<div class="">
   <div class="">
-    <div class="card border-0">
+    <div class="card border-1 rounded-3 border-secondray">
       <div class="card-header d-lg-flex justify-content-between align-items-center">
         <div class="mb-3 mb-lg-0">
           <h3 class="mb-0">My Questions</h3>
           <p class="mb-0">Here is a list of questions/queries that you have asked</p>
         </div>
       </div>
-      <div class="card-body" *ngFor="let query of userQueries">
+      @for(query of userQueries; track $index){
+
+      <div class="card-body">
         <div class="border-bottom pt-0 pb-0">
-          <div class="row mb-4">
-            <div class="col-lg-6 col-md-8 col-7 mb-2 mb-lg-0">
+          <div class="row mb-0">
+            <div class="col-lg-8 col-md-8 col-7 mb-0 mb-lg-0">
               <div class="row">
-                <span class="me-2 position-relative mt-5 justify-content-end align-items-end mt-n5 col-lg-3 col-12">
-                  <img [src]="query.MentorImageUrl || 'default-avatar.png'" class="avatar-xl rounded-circle border border-4 border-white"
-                    style="height: 110px; size: 10px;" alt="avatar">
+                <span class="me-0 position-relative mt-4 justify-content-end align-items-end mt-n5 col-lg-3 col-12">
+                  <img src="{{query.MentorImageUrl}}" class="avatar-xl  border border-4 border-white"
+                    style="height: 180px; size: 25px; border-radius: 13px;" alt="avatar">
                 </span>
 
-                <span class="d-block col-xl-8 col-12 mt-4 mb-0">
-                  <span class="h4">{{ query.MentorName }}</span>
-                  <span >
+                <span class="d-block col-xl-8 col-12 mt-2 mb-0">
+                  <div class="d-flex ">
+                    <span class="h4 pe-3 " style="font-size: 30px;">{{ query.FirstName }} {{ query.LastName }}</span>
+                    <p class="text-muted mt-2 ">({{query.MentorTitle}})</p>
+                  </div>
+                  <span>
+                    <span class="col-3 ">
+                      <h4 class="text-muted mt-0 ms-0 pt-3">Your query</h4>
+                      <p class="" style="width: 100%;">{{ query.Question }}</p>
+                    </span>
                     <!-- {{ getBadgeText(query.QueryAnswers.length) }} -->
                   </span>
                 </span>
+
+
               </div>
             </div>
 
-            <div class="col-lg-3 col-md-12 col-12 d-lg-flex align-items-start justify-content-end">
-              <a *ngIf="query.QueryAnswers.length > 0" class="btn btn-outline-primary btn-sm" style="border-radius: 25px;">
-                Go To Answer
-              </a>
-              <a *ngIf="query.QueryAnswers.length === 0" class="btn btn-outline-primary btn-sm disabled" style="border-radius: 25px;">
-                Pending
-              </a>
+
+
+            <!-- <div class="row"> -->
+
+            <!-- </div> -->
+
+
+            <div class="col-lg-2 col-md-12 col-12 d-lg-flex align-items-start justify-content-end">
+              @if(query.QueryAnswers.length > 0){
+               <!-- <button type="button" class="btn btn-dark" [routerLink]="['/profile/answer-query', query.Instructor_Id]">
+                  <i class="fas fa-user"></i> Go To Answer
+                </button>
+                -->
+                <!-- <button type="button" class="btn btn-dark " style=" width: fit-content; height: 50px;"
+                  [routerLink]="['/answer-query',query.Instructor_Id]" routerLinkActive="active">
+                  <i class="fas fa-user"></i> Go To Answer   
+                </button> -->
+                <a class="btn btn-outline-primary btn-sm" [routerLink]="['/profile/answer-query', query.Instructor_Id]" style="border-radius: 25px;">
+              Go To Answer
+            </a>
+                }
+                @if(query.QueryAnswers.length === 0){
+
+                <a class="btn btn-outline-primary btn-sm disabled" style="border-radius: 25px;">
+                  Pending
+                </a>
+                }
+              </div>
             </div>
           </div>
-
-          <div class="row">
-            <span class="col-8 row">
-              <h4 class="text-muted mt-0 ms-0">Your query</h4>
-              <p class="col-12" style="width: 100%;">{{ query.Question }}</p>
-            </span>
-          </div>
         </div>
+
+      }
       </div>
+      
     </div>
   </div>
-</div>

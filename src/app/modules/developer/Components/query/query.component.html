@@ -1,69 +1,141 @@
 <div class="container">
-<div class="ml-auto d-flex mb-2">
-  <a href="#" class="btn btn-light mr-2"> <i class="fa-solid fa-arrow-left-long"></i></a>
-  <h3 class="ms-2">Harshad Sawant</h3>
-</div>
-
-<div class="row">
-  <div class="col-xl-7 col-12">
-    <div class="card p-5" style="border-radius: 15px;">
-      <div style="border-radius: 15px 15px 0 0; padding: 20px;">
-        <div class="d-flex align-items-center">
-          <span class="badge badge-pill badge-light" style="background-color: #ffe0e6; color: #ff3366; font-weight: bold;">
-            Query<i class="bi bi-person-raised-hand"></i>
-          </span>
-        </div>
-        <h5 class="mt-2">Ask a Query</h5>
-        <p class="text-muted"><i class="fa-solid fa-clock-rotate-left"></i> 48 Hrs</p>
-        <h6>About Service</h6>
-        <p class="text-muted">Query Query</p>
-        <h6>Skills</h6>
-        <p>Career Development | Career Growth | Leadership | Career Coaching | Career Advice | Interview Preparations | People Management | Project Management | Team Building | Team Leadership</p>
-        <div class="card">
-          <div class="card-body" style="color: #ff3366;">
-            <i class="fa-solid fa-clock-rotate-left"></i> Reverts within 48 Hrs
-          </div>
-        </div>
-      </div>
-
-      <hr>
-      <div class="d-flex align-items-center mt-1 p-1">
-        <img src="66b372a33d0f5.webp" alt="Harshad Sawant" class="rounded-circle mr-3" width="60">
-        <div class="p-3">
-          <h6>Harshad Sawant</h6>
-          <p class="text-muted">Director & Head - Global CyberSecurity Engineering at PepsiCo | IIM Ahmedabad | IT leadership | 18 years of experience</p>
-        </div>
-        <div class="ml-auto d-flex">
-          <a href="#" class="btn btn-light mr-2"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="#" class="btn btn-light"><i class="fa-solid fa-share"></i></a>
-        </div>
-      </div>
-    </div>
+  <div class="ml-auto d-flex mb-2">
+    <a href="#" class="btn btn-light mr-2"> <i class="fa-solid fa-arrow-left-long"></i></a>
+    @if(mentor){
+    <h3 class="ms-2">{{mentor.FirstName}} {{mentor.LastName}}</h3>
+    }
   </div>
 
-  <div class="col-xl-4 col-12 justify-content-center">
-    <div class="card border mt-2 mb-3" style="max-width: 25rem;">
-      <div class="card-header bg-transparent border-success" style="font-weight: bold;">Query submission</div>
-      <div class="card-body text-black">
-        <form (ngSubmit)="submitQuery()" [formGroup]="queryForm">
-        <h5 class="card-title">Ask your query*</h5>
-        <p class="card-text text-muted">You can also edit this once payment is done</p>
-        <textarea class="form-control mb-3 p-4" id="validationTextarea" placeholder="Query" formControlName="Question" required></textarea>
-
-        <h5 class="card-title mt-3">Attach file</h5>
-        <p class="card-text text-muted">Accepted file types are pdf, doc. It should not be more than 50 MB.</p>
-        <div class="upload-container border p-3 text-center">
-          <input type="file" id="file-upload" (change)="onFileSelected($event)" class="upload-input">
-          <label for="file-upload" class="upload-label">
-            <i class="fa-solid fa-cloud-arrow-up"></i>
-            <p class="upload-text">Click here to upload File</p>
-          </label>
+  <div class="row">
+    <div class="col-xl-7 col-12">
+      <div class="card p-5" style="border-radius: 15px;">
+        <div style="border-radius: 15px 15px 0 0; padding: 20px;">
+          <div class="d-flex align-items-center">
+            <span class="badge badge-pill badge-light"
+              style="background-color: #ffe0e6; color: #ff3366; font-weight: bold;">
+              Query<i class="bi bi-person-raised-hand"></i>
+            </span>
+          </div>
+          <h5 class="mt-2">Ask a Query</h5>
+          <p class="text-muted"><i class="fa-solid fa-clock-rotate-left"></i> 48 Hrs</p>
+          <h6>About Service</h6>
+          <p class="text-muted">Query Query</p>
+          <h6>Skills</h6>
+          @if(mentor){
+          <div class="mentor-skills col-12 mb-4 mt-3" style="height: 30px;">
+            <div *ngFor="let skill of mentor.Skills" class="skill-circle">
+              {{ skill }}
+            </div>
+          </div>
+          }
+          <div class="card">
+            <div class="card-body" style="color: #ff3366;">
+              <i class="fa-solid fa-clock-rotate-left"></i> Reverts within 48 Hrs
+            </div>
+          </div>
         </div>
 
-        <button class="btn btn-primary btn-block mt-2 ps-5 pe-5 mt-2" type="submit">Send</button>
+        <hr>
+        @if(mentor){
+        <div class="row align-items-center  p-1">
+          <img src="{{mentor.Image}}" alt="dina" class="col-3  mr-3" style="  border-radius:13px !important;"
+            width="100">
 
-        <!-- Confirmation Modal -->
-        <!-- @if(isConfirmationVisible){
+
+          <!-- <img  src="http://localhost:5164/{{mentor.Image}}" alt="dina" class="rounded-circle mr-3" width="60"> -->
+          <div class="p-3 col-4 ">
+            <h6>{{ mentor.FirstName }} {{mentor.LastName}}</h6>
+            <p class="text-muted">{{mentor.Title}}</p>
+          </div>
+          <div class="ml-auto d-flex links col-3 ">
+            <!-- <div class="social-media mt-0 pt-0 col-4 mb-5 mb-0 ps-5 ps-1" style="text-align: end;"> -->
+            @if(mentor.SocialAccounts.length>0){
+
+
+            @for (user of mentor.SocialAccounts; track $index; let index = $index) {
+            @if(mentor.SocialAccounts[index].SocialName==3){
+            <!-- <a href="http://localhost:5164/{{mentor.SocialAccounts[index].SocialLink}}"> -->
+            <a href="{{mentor.SocialAccounts[index].SocialLink}}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+              <span class="tooltip-social">GitHub</span>
+            </a>
+            }
+            @if(mentor.SocialAccounts[index].SocialName==1){
+
+
+
+            <a href="{{mentor.SocialAccounts[index].SocialLink}}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
+                <path
+                  d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
+                </path>
+              </svg>
+              <span class="tooltip-social">Facebook</span>
+            </a>
+            }
+            @if(mentor.SocialAccounts[index].SocialName==2){
+
+
+
+            <a href="{{mentor.SocialAccounts[index].SocialLink}}" class="me-3 ms-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 448 512">
+                <path
+                  d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z">
+                </path>
+              </svg>
+              <span class="tooltip-social">LinkedIn</span>
+            </a>
+
+            }
+            }
+            }
+
+          </div>
+          <!-- </div> -->
+        </div>}
+        @else{
+        <div class="d-flex align-items-center mt-1 p-1">
+          <img src="" alt="Harshad Sawant" class="rounded-circle mr-3" width="60">
+          <div class="p-3">
+            <h6>hhhhhhhhy</h6>
+            <p class="text-muted">jjjjj</p>
+          </div>
+          <div class="ml-auto d-flex ">
+            <a href="#" class="btn btn-light mr-2"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="btn btn-light"><i class="fa-solid fa-share"></i></a>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-12 justify-content-center">
+      <div class="card border mt-2 mb-3" style="max-width: 25rem;">
+        <div class="card-header bg-transparent border-success" style="font-weight: bold;">Query submission</div>
+        <div class="card-body text-black">
+          <form (ngSubmit)="submitQuery()" [formGroup]="queryForm">
+            <h5 class="card-title">Ask your query*</h5>
+            <p class="card-text text-muted">You can also edit this once payment is done</p>
+            <textarea class="form-control mb-3 p-4" id="validationTextarea" placeholder="Query"
+              formControlName="Question" required></textarea>
+
+            <h5 class="card-title mt-3">Attach file</h5>
+            <p class="card-text text-muted">Accepted file types are pdf, doc. It should not be more than 50 MB.</p>
+            <div class="upload-container border p-3 text-center">
+              <input type="file" id="file-upload" (change)="onFileSelected($event)" class="upload-input">
+              <label for="file-upload" class="upload-label">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <p class="upload-text">Click here to upload File</p>
+              </label>
+            </div>
+
+            <button class="btn btn-primary btn-block mt-2 ps-5 pe-5 mt-2" type="submit">Send</button>
+
+            <!-- Confirmation Modal -->
+            <!-- @if(isConfirmationVisible){
         <div class="modal-backdrop">
           <div class="modal-container">
             <div class="modal-header">
@@ -79,8 +151,8 @@
           </div>
         </div>} -->
 
-        <!-- Success Modal -->
-        <!-- @if(isModalVisible){
+            <!-- Success Modal -->
+            <!-- @if(isModalVisible){
         <div  class="modal-backdrop">
           <div class="modal-container">
             <div class="modal-header">
@@ -95,9 +167,9 @@
           </div>
         </div>
       } -->
-    </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>

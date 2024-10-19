@@ -24,10 +24,10 @@ export class MentorlayoutComponent {
   }
 
   // Listener to detect window resizing
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.checkScreenWidth();
-  }
+  // @HostListener('window:resize', ['$event'])
+  // onResize(event: any) {
+  //   this.checkScreenWidth();
+  // }
 
   // Check screen size and handle sidebar behavior
   checkScreenWidth() {

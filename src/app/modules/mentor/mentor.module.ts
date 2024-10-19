@@ -15,6 +15,7 @@ import { SidebarlayoutComponent } from './Components/sidebarlayout/sidebarlayout
 import { MentorAnswerQueryComponent } from './Components/mentor-answer-query/mentor-answer-query.component';
 import { MentorSummryComponent } from './Components/mentor-summry/mentor-summry.component';
 import { MentorRequestComponent } from './Components/mentor-request/mentor-request.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MentorRequestComponent } from './Components/mentor-request/mentor-reque
     ReactiveFormsModule,
     MentorRoutingModule,
     SharedModule,
+    RouterModule,
   ],
 })
 export class MentorModule {}

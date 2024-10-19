@@ -12,25 +12,27 @@ export class MentorReplyComponent implements OnInit {
   
 
   // Method to return the badge class based on query answers
-  getBadgeClass(queryAnswerCount: number): string {
-    return queryAnswerCount > 0 ? 'badge bg-success' : 'badge bg-danger';
-  }
+  // getBadgeClass(queryAnswerCount: number): string {
+  //   return queryAnswerCount > 0 ? 'badge bg-success' : 'badge bg-danger';
+  // }
 
-  // Method to return the badge text based on query answers
-  getBadgeText(queryAnswerCount: number): string {
-    return queryAnswerCount > 0 ? 'Answered' : 'No Answer yet';
-  }
+  // // Method to return the badge text based on query answers
+  // getBadgeText(queryAnswerCount: number): string {
+  //   return queryAnswerCount > 0 ? 'Answered' : 'No Answer yet';
+  // }
   constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getQueries();
   }
 
   // Function to call the backend API and retrieve queries
   getQueries() {
-    this.http.get<any[]>('http://localhost:5164/api/account/UserQueries').subscribe(
+    this.http.get<any>('http://localhost:5164/api/query/UserQueries').subscribe(
       (data) => {
-        this.userQueries = data;
+        console.log('data',data);
+        
+        this.userQueries = data.Result;
       },
       (error) => {
         console.error('Error fetching user queries:', error);

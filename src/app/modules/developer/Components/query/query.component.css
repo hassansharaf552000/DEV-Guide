@@ -32,9 +32,15 @@ background-color: #f9f9f9;
 
 
 
+.links{
+  text-align: start !important;
+  justify-content: end;
+/* padding-left: 250px !important; */
+}
 
-
-
+.rounded-1{
+  border-radius:10px !important;
+}
 
 
 
@@ -137,4 +143,92 @@ margin-top: 10px;
     opacity: 1;
   }
 }
+  
 
+
+.mentor-skills {
+  display: flex;
+  flex-wrap: wrap; /* Ensures that the circles will wrap if there's not enough horizontal space */
+  gap: 10px; /* Spacing between the circles */
+}
+
+.skill-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content; /* Adjust width as needed */
+  height: fit-content; /* The same height as the width to make it a circle */
+  border-radius: 25px; /* This makes the div a circle */
+  background-color: #fff; 
+  border: 1px solid rgb(196, 192, 192);
+  color: black; /* Text color inside the circle */
+  font-size: 14px; /* Adjust font size */
+  text-align: center;
+  padding: 5px 15px;
+}
+
+
+
+
+.social-media:before {
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin: 20px 0;
+  /* background:#415bcf; */
+}
+
+.social-media a {
+  position: relative;
+  margin-right: 15px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.social-media a:last-child {
+  margin-right: 0;
+}
+
+.social-media a svg {
+  width: 1.3rem;
+  /* fill: currentColor; */
+}
+
+/*-- Tooltip Social Media --*/
+.tooltip-social {
+  background: #ffffff;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  padding: 0.5rem 0.4rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -90%);
+  transition: all 0.2s ease;
+  z-index: 1;
+}
+
+.tooltip-social:after {
+  content: " ";
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  border: solid;
+  border-width: 10px 10px 0 10px;
+  border-color: transparent;
+  transform: translate(-50%, 100%);
+}
+
+.social-media a .tooltip-social:after {
+  border-top-color: #f8f5f5;
+}
+
+.social-media a:hover .tooltip-social {
+  opacity: 1;
+  transform: translate(-50%, -130%);
+}
