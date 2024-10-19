@@ -1,9 +1,11 @@
-<div class="container-fluid px-0">
-  <div class="row no-gutters">
+<div class="container-fluid ">
+  <div class="row no-gutters gap-0 justify-content-center">
 
     <!-- Sidebar (visible on larger screens and tablets) -->
-    <div class="col-lg-3 col-md-4 d-none d-md-block">
-      <app-profile-side-bar></app-profile-side-bar> <!-- Sidebar remains for larger screens and tablets -->
+    <div class="col-xl-1 col-lg-2 col-md-2 d-none d-md-block">
+    <!-- <div class="col d-none d-md-block" style="flex: 0 0 20%;"> -->
+
+      <app-profile-side-bar class="p-0 m-0"></app-profile-side-bar> <!-- Sidebar remains for larger screens and tablets -->
     </div>
 
     <!-- Mobile Navbar (visible on smaller screens, including tablets in collapse mode) -->
@@ -59,8 +61,12 @@
     </nav>
 
     <!-- Main Content -->
-    <div class="col-lg-9 col-md-8 col-12">
+  
+    <div class="col-lg-8 col-xl-9 col-md-6 ">
+      <!-- <div class="col" style="flex: 0 0 80%;"> -->
+      <div >
       <router-outlet></router-outlet>
     </div>
+  </div>
   </div>
 </div>

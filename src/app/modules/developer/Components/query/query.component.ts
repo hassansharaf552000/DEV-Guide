@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IMentor } from '../../../../core/enums/Mentor';
 import { log } from 'console';
 import { ToastrService } from 'ngx-toastr';
+import { AccountService } from '../../../../shared/services/Account/account.service';
 
 @Component({
   selector: 'app-query',
@@ -19,10 +20,10 @@ export class QueryComponent implements OnInit {
   isConfirmationVisible = false;
   modalMessage = '';
   MentorID="";
-  addqueryurl='http://localhost:5164/api/Account/AddQuery';
+  addqueryurl='http://localhost:5164/api/query/AddQuery';
 
   constructor(private fb: FormBuilder, private http: HttpClient, private toaster:ToastrService,
-    private router: Router,private route: ActivatedRoute) {
+    private router: Router,private route: ActivatedRoute,  private AccService:AccountService) {
     this.queryForm = this.fb.group({
       Question: ['', Validators.required],
       
@@ -38,71 +39,38 @@ if (this.MentorID) {
 
 
   }
-  ngOnInit(): void {
-    // Get mentor ID from the route
-    // this.mentor.id = +this.route.snapshot.paramMap.get('id');
-    // Now you can use mentorId to fetch the mentor's details from an API or a local data source
-  }
+  // showConfirmationModal() {
+  //   this.isConfirmationVisible = true;
+
+  //   // Run change detection manually
+  //   this.cdr.detectChanges();
+  // }
+
+  
+    ngOnInit() {
+      // this.MentorID = this.route.snapshot.paramMap.get('id');
+      this.getMentor(this.MentorID);
+      
+    }
+
+    getMentor(id: string) {
+      this.AccService.getMentorById(this.MentorID).subscribe((data) => {
+        this.mentor = data;
+        console.log(data);
+        
+      });
+    }
   // Handle file selection
   onFileSelected(event: any) {
+   
     const File: File = event.target.files[0];
     if (File) {
       this.selectedFile = File;
     }
+    console.log('file', File);
   }
 
-  // Show the confirmation modal
-  showConfirmationModal() {
-    this.isConfirmationVisible = true;
-  }
-
-  // Confirm sending the query
-  confirmSend() {
-    this.isConfirmationVisible = false;
-    this.submitQuery();
-  }
-
-  // Cancel the action
-  cancelSend() {
-    this.isConfirmationVisible = false;
-  }
-
-  
-//   submitQuery() {
-//     const payload = this.queryForm.value;
-//     console.log('Payload:', payload);
-//     if (this.queryForm.invalid) {
-//       this.modalMessage = 'Please fill in the query message.';
-//       // this.showModal();
-//       return;
-//     }
-  
-//     const formData = new FormData();
-//     formData.append('Question', this.queryForm.get('Question')?.value);
-//     formData.append('mentorId', this.MentorID);
-//     if (this.selectedFile) {
-//       formData.append('File', this.selectedFile);
-  
-//     }
-   
-// console.log('',formData);
-  
-//     // Make API request
-//     this.http.post(this.addqueryurl, formData)
-//       .subscribe({
-//         next: (response) => {
-//           this.modalMessage = 'Query submitted successfully!';
-//           // this.showModal();
-//         },
-//         error: (error) => {
-//           // Log error details for debugging
-//           console.error('Error occurred while submitting the query:', error);
-//           this.modalMessage = error.error?.message || 'There was an error submitting the query.';
-//           // this.showModal();
-//         }
-//       });
-//   }
-  
+ 
 
 submitQuery() {
   const payload = this.queryForm.value;
@@ -133,11 +101,14 @@ submitQuery() {
   this.http.post(this.addqueryurl, formData)
     .subscribe({
       next: (response:any) => {
-        if(response.id){
+        if(response){
+// this.toaster.warning("Try again later!!!!!")
+
 this.toaster.success("Query submitted successfully!")
         }
         else{
 this.toaster.warning("Try again later!!!!!")
+// this.toaster.success("Query submitted successfully!")
 
         }
         
@@ -157,10 +128,10 @@ this.toaster.warning("Try again later!!!!!")
   // }
 
   // Go to home page after modal
-  goToHome() {
-    this.isModalVisible = false;
-    // this.router.navigate(['/home']);
-  }
+  // goToHome() {
+  //   this.isModalVisible = false;
+  //   // this.router.navigate(['/home']);
+  // }
 }
 
 
@@ -244,3 +215,55 @@ this.toaster.warning("Try again later!!!!!")
 
 // }
 
+ // Show the confirmation modal
+  // showConfirmationModal() {
+  //   this.isConfirmationVisible = true;
+  // }
+
+  // Confirm sending the query
+  // confirmSend() {
+  //   this.isConfirmationVisible = false;
+  //   this.submitQuery();
+  // }
+
+  // Cancel the action
+  // cancelSend() {
+  //   this.isConfirmationVisible = false;
+  // }
+
+  
+//   submitQuery() {
+//     const payload = this.queryForm.value;
+//     console.log('Payload:', payload);
+//     if (this.queryForm.invalid) {
+//       this.modalMessage = 'Please fill in the query message.';
+//       // this.showModal();
+//       return;
+//     }
+  
+//     const formData = new FormData();
+//     formData.append('Question', this.queryForm.get('Question')?.value);
+//     formData.append('mentorId', this.MentorID);
+//     if (this.selectedFile) {
+//       formData.append('File', this.selectedFile);
+  
+//     }
+   
+// console.log('',formData);
+  
+//     // Make API request
+//     this.http.post(this.addqueryurl, formData)
+//       .subscribe({
+//         next: (response) => {
+//           this.modalMessage = 'Query submitted successfully!';
+//           // this.showModal();
+//         },
+//         error: (error) => {
+//           // Log error details for debugging
+//           console.error('Error occurred while submitting the query:', error);
+//           this.modalMessage = error.error?.message || 'There was an error submitting the query.';
+//           // this.showModal();
+//         }
+//       });
+//   }
+  

@@ -22,7 +22,9 @@ export class ProfileSideBarComponent {
     { path: '/developer/profile/quizzes', label: 'Quizzes', icon: 'bi bi-question' },
     { path: '/developer/profile/reply', label: 'Queries', icon: 'bi bi-chat-square-dots' },
     { path: '/profile-requests', label: 'Requests', icon: 'bi bi-envelope' },
-    { path: '/settings', label: 'Settings', icon: 'bi bi-gear' },
+    { path: '/developer/profile/answer-query', label: 'Answers of Query', icon: 'fa-regular fa-comment-dots' },
+
+    // { path: '/settings', label: 'Settings', icon: 'bi bi-gear' },
     { path: '/developer/booking', label: 'Sessions', icon: 'bi bi-calendar-check' },
     { path: '/developer/profile/reviews', label: 'Reviews', icon: 'bi bi-star' },
 
