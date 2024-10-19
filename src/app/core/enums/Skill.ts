@@ -1,5 +1,5 @@
 export interface ISkill{
-  id:number;
-  name:string
+  Id:number;
+  Name:string
   description?:String
 }

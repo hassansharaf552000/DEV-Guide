@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IEducation } from '../../../core/enums/Education';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { EducationService } from '../../services/Education/education.service';
 
 @Component({
   selector: 'app-edit-education',
@@ -14,24 +15,39 @@ export class EditEducationComponent {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<EditEducationComponent>,
+    private educationservice:EducationService,
     @Inject(MAT_DIALOG_DATA) public education: IEducation
   ) {
     // Initialize form with education data
     this.educationForm = this.fb.group({
-      degree: [education.degree, Validators.required],
-      fieldOfStudy: [education.fieldOfStudy, Validators.required],
-      university: [education.university, Validators.required],
-      faculty: [education.faculty],
-      countryOfStudy: [education.countryOfStudy, Validators.required],
-      startDate: [education.startDate, Validators.required],
-      endDate: [education.endDate],
-      tillNow: [education.tillNow],
+      Degree: [education.Degree, Validators.required],
+      FieldOfStudy: [education.FieldOfStudy, Validators.required],
+      University: [education.University, Validators.required],
+      Faculty: [education.Faculty],
+      CountryOfStudy: [education.CountryOfStudy, Validators.required],
+      StartDate: [education.StartDate, Validators.required],
+      EndDate: [education.EndDate],
+      TillNow: [education.TillNow],
     });
   }
 
   onSave(): void {
     if (this.educationForm.valid) {
-      this.dialogRef.close(this.educationForm.value);
+      const updatedEducation: IEducation = {
+        ...this.educationForm.value,
+        Id: this.education.Id  // Ensure the Id is included for editing
+      };
+
+      // Call the service to update the education
+      this.educationservice.editEducation(updatedEducation).subscribe(
+        (response: IEducation) => {
+          console.log('Education updated successfully:', response);
+          this.dialogRef.close(response);  // Close dialog and pass back the updated education
+        },
+        (error) => {
+          console.error('Error updating education:', error);
+        }
+      );
     }
   }
 

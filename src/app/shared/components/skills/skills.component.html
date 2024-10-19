@@ -21,11 +21,8 @@
   <div class="d-flex flex-wrap justify-content-start gap-3 mt-4">
     <div class="card" *ngFor="let skill of skills">
       <div class="card-body text-center">
-        <h5 class="card-title">{{ skill.name }}</h5>
-        <button class="btn btn-success btn-circle me-2" (click)="openEditSkillModal(skill)">
-          <i class="bi bi-pencil"></i>
-        </button>
-        <button class="btn btn-danger btn-circle" (click)="deleteSkill(skill.id)">
+        <h5 class="card-title">{{ skill.Name }}</h5>
+        <button class="btn btn-danger btn-circle" (click)="deleteSkill(skill.Id)">
           <i class="bi bi-trash"></i>
         </button>
       </div>
@@ -47,7 +44,7 @@
         <div class="d-flex flex-wrap mt-2">
           <span *ngFor="let suggestion of filteredSuggestions" class="suggestion-circle me-2"
             (click)="selectSuggestion(suggestion)">
-            {{ suggestion.name }}
+            {{ suggestion.Name }}
           </span>
         </div>
       </div>
@@ -68,18 +65,17 @@
         <button type="button" class="btn-close" (click)="closeEditSkillModal()"></button>
       </div>
       <div class="modal-body">
-        <input [(ngModel)]="selectedSkill!.name" (input)="filterSuggestions()" placeholder="Skill Name"
+        <input [(ngModel)]="selectedSkill!.Name" (input)="filterSuggestions()" placeholder="Skill Name"
           class="form-control">
         <div class="d-flex flex-wrap mt-2">
           <span *ngFor="let suggestion of filteredSuggestions" class="suggestion-circle me-2"
             (click)="selectSuggestion(suggestion)">
-            {{ suggestion.name }}
+            {{ suggestion.Name }}
           </span>
         </div>
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" (click)="closeEditSkillModal()">Cancel</button>
-        <button class="btn btn-primary" (click)="updateSkill()">Save Changes</button>
       </div>
     </div>
   </div>

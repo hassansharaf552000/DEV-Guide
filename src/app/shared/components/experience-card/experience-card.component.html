@@ -1,18 +1,18 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Job : {{experience.job}} </mat-card-title>
-    <mat-card-subtitle> Organization : {{ experience.organization }} </mat-card-subtitle>
+    <mat-card-title>Job : {{experience.FieldOfStudy}} </mat-card-title>
+    <mat-card-subtitle> Organization : {{ experience.Organization }} </mat-card-subtitle>
 
   </mat-card-header>
 
   <mat-card-content>
     <p>
-      Dates: {{ formatDate(experience.startDate) }} -
-      <span *ngIf="experience.tillNow; else endDate">
+      Dates: {{ formatDate(experience.StartDate) }} -
+      <span *ngIf="experience.TillNow; else endDate">
         Present
       </span>
       <ng-template #endDate>
-        {{ experience.endDate ? formatDate(experience.endDate) : 'N/A' }}
+        {{ experience.EndDate ? formatDate(experience.EndDate) : 'N/A' }}
       </ng-template>
     </p>
   </mat-card-content>

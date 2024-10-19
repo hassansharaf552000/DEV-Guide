@@ -1,0 +1,30 @@
+<form [formGroup]="socialAccountForm" (ngSubmit)="onSave()" class="social-account-form">
+
+  <!-- Social Media Platform Selection -->
+  <div class="form-group">
+    <label for="SocialName">Social Media Platform</label>
+    <select id="SocialName" formControlName="SocialName" class="form-control">
+      <option value="">-- Select Platform --</option>
+      <option *ngFor="let account of socialAccountTypes" [value]="account.value">{{ account.viewValue }}</option>
+    </select>
+    <div *ngIf="socialAccountForm.get('SocialName')?.invalid && socialAccountForm.get('SocialName')?.touched" class="error">
+      Please select a social media platform.
+    </div>
+  </div>
+
+  <!-- Social Media Link Input -->
+  <div class="form-group">
+    <label for="SocialLink">Social Media Link</label>
+    <input id="SocialLink" type="text" formControlName="SocialLink" class="form-control" placeholder="https://example.com" />
+    <div *ngIf="socialAccountForm.get('SocialLink')?.invalid && socialAccountForm.get('SocialLink')?.touched" class="error">
+      <span *ngIf="socialAccountForm.get('SocialLink')?.hasError('required')">Link is required.</span>
+      <span *ngIf="socialAccountForm.get('SocialLink')?.hasError('pattern')">Please enter a valid URL.</span>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" [disabled]="!socialAccountForm.valid" class="btn btn-primary" (click)="onSave()">
+    Add Social Account
+  </button>
+
+</form>

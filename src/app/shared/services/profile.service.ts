@@ -30,7 +30,7 @@
 //     ConfirmPassword:''
 //   }
 
-  
+
 
 //   constructor(private http:HttpClient) {}
 
@@ -38,7 +38,7 @@
 //     return this.http.get<Profile>(this.getprofile);
 //   }
 
-  
+
 
 
 
@@ -89,8 +89,10 @@ export class ProfileService {
   }
 
   // Update Profile with Authorization
-  UpdateProfile(profile: Profile): Observable<Profile> {
+  UpdateProfile(profileData: FormData): Observable<Profile> {
     const headers = this.getAuthHeaders();
-    return this.http.put<Profile>(this.updateprofile, profile, { headers });
+    return this.http.put<Profile>(this.updateprofile, profileData, {
+      headers: headers.delete('Content-Type') // Let the browser set multipart/form-data headers
+    });
   }
 }

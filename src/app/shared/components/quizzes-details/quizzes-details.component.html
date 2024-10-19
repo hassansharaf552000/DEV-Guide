@@ -9,16 +9,16 @@
       <img src="logo 3_processed.jpg" class="nav-image">
 
       <!-- Header -->
-      <div class="d-flex justify-content-between align-items-center mb-3" *ngIf="selectedQuiz">
+      <!-- <div class="d-flex justify-content-between align-items-center mb-3" *ngIf="selectedQuiz">
         <div class="d-flex align-items-center">
 
-          <h2 class="ms-2">{{selectedQuiz.name}}</h2>
+          <h2 class="ms-2">{{selectedQuiz.Name}}</h2>
         </div>
-      </div>
+      </div> -->
 
       <!-- Assessment Info -->
       <div class="card p-4 shadow-sm">
-        <h4 class="text-description">{{selectedQuiz.description}}</h4>
+        <h4 class="text-description">{{selectedQuiz.Name}}</h4>
 
         <div class="col mt-3">
           <div class="col-md-6">
@@ -28,12 +28,9 @@
             <p><strong>No. of Questions:</strong> 30 Questions</p>
           </div>
           <br>
-          <div class="row">
+          <div class="row align-content-center">
             <div class="col-md-6">
               <button class="btn btn-primary">Start With AI</button>
-            </div>
-            <div class="col-md-6">
-              <button class="btn btn-primary">Start With Your Own</button>
             </div>
           </div>
 
