@@ -1,18 +1,18 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>{{ education.degree }} in {{ education.fieldOfStudy }}</mat-card-title>
-    <mat-card-subtitle>{{ education.university }} - {{ education.countryOfStudy }}</mat-card-subtitle>
+    <mat-card-title>{{ education.Degree }} in {{ education.FieldOfStudy }}</mat-card-title>
+    <mat-card-subtitle>{{ education.University }} - {{ education.Faculty }}</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
-    <p *ngIf="education.faculty">Faculty: {{ education.faculty }}</p>
+    <p *ngIf="education.Faculty">Faculty: {{ education.Faculty }}</p>
     <p>
-      Dates: {{ formatDate(education.startDate) }} -
-      <span *ngIf="education.tillNow; else endDate">
+      Dates: {{ formatDate(education.StartDate) }} -
+      <span *ngIf="education.TillNow; else endDate">
         Present
       </span>
       <ng-template #endDate>
-        {{ education.endDate ? formatDate(education.endDate) : 'N/A' }}
+        {{ education.EndDate ? formatDate(education.EndDate) : 'N/A' }}
       </ng-template>
     </p>
   </mat-card-content>

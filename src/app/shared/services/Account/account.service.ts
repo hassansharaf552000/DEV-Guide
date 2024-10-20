@@ -22,6 +22,8 @@ export class AccountService {
   AddEducationURL = "http://localhost:5164/api/Account/AddEducation"
   GetProfileURL="http://localhost:5164/api/Account/GetOneUser"
   GetReviewsURL="http://localhost:5164/api/Account/GetReview"
+  queryUrl="http://localhost:5164/api/Account/GetOneByID"
+  
   constructor(private http: HttpClient) {
     this.formData = new BehaviorSubject<FormData>(new FormData());
   }
@@ -87,7 +89,7 @@ export class AccountService {
   // }
 
   getMentorById(id: string): Observable<any> {
-    return this.http.get<any>(`${this.ExpertsListURL}/${id}`);
+    return this.http.get<any>(`${this.queryUrl}/${id}`);
   }
 
   AddExperience(formData:any) {

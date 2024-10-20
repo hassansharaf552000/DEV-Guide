@@ -11,8 +11,7 @@
     z-index: 100;
     pointer-events:none;
 } */
-/* 
-body {
+/* body {
     overflow: hidden;
 }
 
@@ -621,6 +620,7 @@ body {
     -ms-transform: rotate(360deg);
     transform: rotate(360deg); } 
 } */
+/*
 .loader {
     position: absolute;
     top:220px;
@@ -649,4 +649,37 @@ body {
   @keyframes fillLq {
     0% , 10% { background-position: 0 120px}
     90% , 100% { background-position: 0 0}
+  }*/
+
+/* HTML: <div class="loader"></div> */
+/* Center the loader and apply a black background around it */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height to center vertically */
+  background-color: rgb(255, 255, 255); /* Semi-transparent black background */
+}
+
+.loader {
+  height: 4px;
+  width: 130px;
+  --c: no-repeat linear-gradient(#6100ee 0 0);
+  background: var(--c), var(--c), #d7b8fc;
+  background-size: 60% 100%;
+  animation: l16 3s infinite;
+}
+
+@keyframes l16 {
+  0% {
+    background-position: -150% 0, -150% 0;
   }
+  66% {
+    background-position: 250% 0, -150% 0;
+  }
+  100% {
+    background-position: 250% 0, 250% 0;
+  }
+}
+
+

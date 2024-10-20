@@ -1,8 +1,8 @@
 export interface IExperience{
-  id?:number,
-  job:string,
-  organization:string,
-  startDate:Date,
-  endDate?:Date,
-  tillNow?:boolean,
+  Id?:number,
+  FieldOfStudy:string,
+  Organization:string,
+  StartDate:Date,
+  EndDate?:Date,
+  TillNow?:boolean,
 }

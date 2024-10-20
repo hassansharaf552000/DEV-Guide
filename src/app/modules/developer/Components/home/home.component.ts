@@ -84,4 +84,6 @@ export class HomeComponent {
   // getNext() {
   //   this.i < this.clientsfeedbacks.length - 1 ? this.i++ : (this.i = 0);
   // }
+
+  
 }

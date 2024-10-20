@@ -45,6 +45,8 @@ import { QueryComponent } from './Components/query/query.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng5SliderModule } from 'ng5-slider';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { QueryAnswerComponent } from './Components/query-answer/query-answer.component';
+import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.component';
 
 
 @NgModule({
@@ -82,7 +84,9 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     ReviewsListComponent,
     ContactAdminComponent,
     ReviewsListComponent,
-    QueryComponent
+    QueryComponent,
+    QueryAnswerComponent,
+    MentorReplyComponent
   ],
   imports: [
     CommonModule,
@@ -94,7 +98,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
     CarouselModule, 
     
-
+    RouterModule,
     NgxPaginationModule,
     NgxSliderModule  ,
 

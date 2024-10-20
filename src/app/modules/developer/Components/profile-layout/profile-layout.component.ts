@@ -15,7 +15,7 @@ export class ProfileLayoutComponent {
     { path: '/developer/profile/quizzes', label: 'Quizzes', icon: 'bi bi-question' },
     { path: '/developer/profile/reply', label: 'Queries', icon: 'bi bi-chat-square-dots' },
     { path: '/profile-requests', label: 'Requests', icon: 'bi bi-envelope' },
-    { path: '/settings', label: 'Settings', icon: 'bi bi-gear' },
+    { path: '/developer/profile/answer-query', label: 'Answers of Query', icon: 'fa-regular fa-comment-dots' },
     { path: '/developer/booking', label: 'Sessions', icon: 'bi bi-calendar-check' },
     { path: '/developer/profile/reviews', label: 'Reviews', icon: 'bi bi-star' },
 
@@ -29,10 +29,10 @@ export class ProfileLayoutComponent {
   }
 
  // Listener to detect window resizing
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.checkScreenWidth();
-  }
+  // @HostListener('window:resize', ['$event'])
+  // onResize(event: any) {
+  //   this.checkScreenWidth();
+  // }
 
   // Check screen size and handle sidebar behavior
   checkScreenWidth() {
