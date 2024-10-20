@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, PLATFORM_ID } from '@angular/core';
 import { IHR } from '../../../../core/enums/HR';
+import { AccountService } from '../../../../shared/services/Account/account.service';
+import { isPlatformBrowser } from '@angular/common';
+import { Options, LabelType } from "@angular-slider/ngx-slider";
 
 @Component({
   selector: 'app-hr-list',
@@ -8,139 +11,110 @@ import { IHR } from '../../../../core/enums/HR';
 })
 export class HRListComponent {
 
-  Hr: IHR[] = []; // Initialize with an empty array4
-  ngOnInit(): void {
-    // Example data; replace with actual data retrieval logic
-    this.Hr = [
-      {
-        id:1,
-        name: 'John Doe',
-        imageurl: 'https://via.placeholder.com/150',
-        category: 'Employees',
-        title: 'Senior HR',
-        rate: 3,
-        currentprice: 99.99
-      },
-      {
-        id:2,
-        name: 'Jane Smith',
-        imageurl: 'https://via.placeholder.com/150',
-        category: 'Law',
-        title: 'Senior HR',
-        rate: 2,
-        currentprice: 149.99
-      },
-      {
-        id:3,
-        name: 'Alice Johnson',
-        imageurl: 'https://via.placeholder.com/150',
-        category: 'Accountant',
-        title: 'Senior HR ',
-        rate: 1,
-        currentprice: 199.99
-      },
-      {
-        id:4,
-        name: 'Alice Johnson',
-        imageurl: 'https://via.placeholder.com/150',
-        category: 'Accountant',
-        title: 'Senior HR ',
-        rate: 5,
-        currentprice: 199.99
-      },
-      {
-        id:5,
-        name: 'Alice Johnson',
-        imageurl: 'https://via.placeholder.com/150',
-        category: 'Accountant',
-        title: 'Senior HR ',
-        rate: 2,
-        currentprice: 199.99
-      },
-      {
-        id:6,
-        name: 'Alice Johnson',
-        imageurl: 'https://via.placeholder.com/150',
-        category: 'Accountant',
-        title: 'Senior HR ',
-        rate: 3,
-        currentprice: 199.99
+  name: string = ""; 
+  role: string = ""; 
+  title: string = "";
+  // priceMin: number = 0;
+  // priceMax: number = 0;
+  rate: number;            // Declare rate as number
+  p: number = 1;           // Current page number
+  pageSize: number = 5;    // Default page size
+  HRs: any[] = [];
+  totalItems: number;
+  
+  // minValue: number = 100;
+  // maxValue: number = 400;
+  priceMin: number =0;
+  priceMax: number =0;
+  options: Options = {
+    floor: 0,
+    ceil: 5000,
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return "<b>Min</b> E£" + value;
+        case LabelType.High:
+          return "<b>Max</b> E£" + value;
+         default:
+          return ""
+        //   return "E£" + value;
       }
-    ];
-    this.updateRange();
-    this.loadHRs();
-  }
-
-  priceMin: number = 100;
-  priceMax: number = 1000;
-  currentPage = 1;
-  totalPages = 1;
-
-  get minPercent(): number {
-    return ((this.priceMin - 100) / (1000 - 100)) * 100;
-  }
-
-  get maxPercent(): number {
-    return ((this.priceMax - 100) / (1000 - 100)) * 100;
-  }
-
-  updateRange(): void {
-    const rangeFill = document.querySelector('.range-fill') as HTMLElement | null;
-    const priceMinTooltip = document.getElementById('priceMinTooltip') as HTMLElement | null;
-    const priceMaxTooltip = document.getElementById('priceMaxTooltip') as HTMLElement | null;
-
-    const minPercent = this.minPercent;
-    const maxPercent = this.maxPercent;
-
-    if (rangeFill) {
-      rangeFill.style.left = `${minPercent}%`;
-      rangeFill.style.width = `${maxPercent - minPercent}%`;
     }
-    if (priceMinTooltip) {
-      priceMinTooltip.style.left = `calc(${minPercent}% + 2px)`;
-      priceMinTooltip.textContent = `${this.priceMin}`;
-    }
-    if (priceMaxTooltip) {
-      priceMaxTooltip.style.left = `calc(${maxPercent}% - 2px)`;
-      priceMaxTooltip.textContent = `${this.priceMax}`;
+  };
+  isBrowser: boolean = false;
+
+  constructor(private AccountServ: AccountService, private cdr: ChangeDetectorRef,@Inject(PLATFORM_ID) private platformId: Object) {
+    this.filter(); // Initial data fetch
+  }
+
+  ngOnInit(): void {
+    // Check if the code is running in the browser
+    this.isBrowser = isPlatformBrowser(this.platformId);
+
+    // Initialize ngx-slider options only if it's running in the browser
+    if (this.isBrowser) {
+      // this.options = {
+      //   floor: 0,
+      //   ceil: 100,
+      //   step: 1
+      // };
     }
   }
-
-  onMinValueChange(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    this.priceMin = Number(inputElement.value);
-    if (this.priceMin > this.priceMax) {
-      this.priceMin = this.priceMax;
+  // Fetch HRs based on filters and pagination
+  filter(): void {
+    if(this.priceMin==0&&this.priceMax>0){
+      this.priceMin=1
+    }else{
+      this.priceMin=0
     }
-    this.updateRange();
+    console.log("Selected Rate:", this.rate); // Debugging line to check selected rate value
+    this.AccountServ.getall(this.name, "HR", this.title, this.priceMin, this.priceMax, this.rate, this.p, this.pageSize)
+      .subscribe({
+        next: (res: any) => {
+          this.HRs = res.Data as any[];
+          this.totalItems = res.TotalCount;
+          this.pageSize = res.PageSize;
+          console.log("Filtered data:", res.Data);
+          if (res.Data.SocialAccounts && res.Data.SocialAccounts.length > 0) {
+
+            res.Data.SocialAccounts.forEach(account => {
+                console.log(account.SocialLink); // Make sure 'account' is not undefined
+            });
+        
+          }
+ 
+          this.cdr.detectChanges();
+        }
+      });
+      
   }
 
-  onMaxValueChange(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    this.priceMax = Number(inputElement.value);
-    if (this.priceMax < this.priceMin) {
-      this.priceMax = this.priceMin;
-    }
-    this.updateRange();
+  // Calculate total number of pages
+  totalPge(): number {
+    return Math.ceil(this.totalItems / this.pageSize);
   }
-  loadHRs(): void {
-    // Load your HRs here and calculate totalPages
-    // Example:
-    this.totalPages = Math.ceil(this.Hr.length / 9); // Assuming 9 cards per page
-    // Add logic to fetch and slice data for the current page
-  }
-  prevPage(): void {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-      this.loadHRs(); // Update HRs for the new page
+
+  
+  // Method to handle page change
+  OnpageChange(newPage: number): void {
+    if (newPage > 0 && newPage <= this.totalPge()) {
+      this.p = newPage; // Update current page number
+      this.filter();    // Fetch data for the new page
     }
   }
 
-  nextPage(): void {
-    if (this.currentPage < this.totalPages) {
-      this.currentPage++;
-      this.loadHRs(); // Update HRs for the new page
-    }
+
+
+  onPriceMinChange(newMinValue: number): void {
+    this.priceMin = newMinValue;
+    console.log('Updated Price Min:', this.priceMin);
   }
+
+  onPriceMaxChange(newMaxValue: number): void {
+    this.priceMax = newMaxValue;
+    console.log('Updated Price Max:', this.priceMax);
+  }
+  
+ r
 }
 

@@ -174,15 +174,16 @@ export class MentorListComponent implements OnInit {
   priceMax: number =0;
   options: Options = {
     floor: 0,
-    ceil: 500,
+    ceil: 5000,
     translate: (value: number, label: LabelType): string => {
       switch (label) {
         case LabelType.Low:
-          return "<b>Min price:</b> EGP" + value;
+          return "<b>Min</b> E£" + value;
         case LabelType.High:
-          return "<b>Max price:</b> EGP" + value;
-        default:
-          return "EGP" + value;
+          return "<b>Max</b> E£" + value;
+         default:
+          return ""
+        //   return "E£" + value;
       }
     }
   };
