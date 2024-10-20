@@ -17,10 +17,10 @@
 .card-client {
   background: #ffffff;
   /* width: 20rem; */
-  padding-top: 25px;
+  /* padding-top: 25px; */
   padding-bottom: 25px;
   padding-left: 20px;
-  padding-right: 20px;
+  /* padding-right: 20px; */
   /* margin-left: 30px; */
   /* border: 1px solid #415bcf; */
   border: 1px solid rgb(233, 226, 226);
@@ -70,7 +70,9 @@
   /* font-weight: 600; */
   font-size: 18px;
 }
-
+.price-client p{
+  font-weight: bold !important;
+}
 /* .name-client span {
   display: block;
   font-weight: 200;
@@ -157,5 +159,30 @@
   color: black; /* Text color inside the circle */
   font-size: 14px; /* Adjust font size */
   text-align: center;
-  padding: 5px 15px;
+  padding: 3px 7px;
 }
+
+@media (max-width:770px) {
+  .col-sm-5{
+    max-width: 38% !important;
+  }
+  /* .custom-center{
+    vertical-align: middle !important
+  } */
+ 
+}
+.social-media {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically (optional) */
+}
+
+.social-media a.social-icon {
+  margin: 0 10px; /* Space between icons */
+}
+
+.social-media svg {
+  width: 18px; /* Adjust icon size */
+  height: 18px; /* Adjust icon size */
+}
+
