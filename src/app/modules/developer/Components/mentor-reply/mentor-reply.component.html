@@ -54,7 +54,7 @@
                   [routerLink]="['/answer-query',query.Instructor_Id]" routerLinkActive="active">
                   <i class="fas fa-user"></i> Go To Answer   
                 </button> -->
-                <a class="btn btn-outline-primary btn-sm" [routerLink]="['/profile/answer-query', query.Instructor_Id]" style="border-radius: 25px;">
+                <a class="btn btn-outline-primary btn-sm" [routerLink]="['/profile/answer-query', query.Instructor_Id, query.Id,query.User_Id]" style="border-radius: 25px;">
               Go To Answer
             </a>
                 }
