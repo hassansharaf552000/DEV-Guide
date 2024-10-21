@@ -27,8 +27,8 @@ body {
     overflow-y: auto;
 }
 .answer {
-    display: flex;
-    align-items: flex-start;
+    /* display: flex;
+    align-items: flex-start; */
     align-items: center;
     padding: 5px;
     margin-bottom: 5px;
@@ -42,16 +42,17 @@ body {
 }
 
 .comment-actions {
-    display: flex;
+    /* display: flex; */
     margin-top: 5px;
 }
 
-.comment-actions button {
+.comment-actions a {
     background: none;
-    border: none;
+    /* border: none; */
     cursor: pointer;
     font-size: 14px;
     margin-right: 5px;
+    height: fit-content !important;
     color: #007bff;
 }
 
