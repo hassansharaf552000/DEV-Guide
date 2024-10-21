@@ -20,9 +20,13 @@ export class AccountService {
   skills:skillItem[]=[]
   AddExperienceURL = "http://localhost:5164/api/Account/AddExperience"
   AddEducationURL = "http://localhost:5164/api/Account/AddEducation"
+  GetProfileURL="http://localhost:5164/api/Account/GetOneUser"
+  GetReviewsURL="http://localhost:5164/api/Account/GetReview"
   queryUrl="http://localhost:5164/api/Account/GetOneByID"
+
     finduserUrl="http://localhost:5164/api/Account/GetUserByID"
   queryAnswerUrl="http://localhost:5164/api/Query/QueryAnswers"
+
   constructor(private http: HttpClient) {
     this.formData = new BehaviorSubject<FormData>(new FormData());
   }
@@ -50,9 +54,23 @@ export class AccountService {
   //   const params = { name, role, title: department, minprice, maxprice, rate };
   //   return this.http.get<any>(this.ExpertsListURL, { params });
   // }
-  getall(name: string = '', role: string = '', title: string = '', minprice: number = 0, maxprice: number = 0, rate: number | null = null, page:number = 1, pageSize:number ): Observable<any> {
-    const params: any = {};
+  // getall(name: string = '', role: string = '', title: string = '', minprice: number = 0, maxprice: number = 0, rate: number | null = null, page:number = 1, pageSize:number ): Observable<any> {
+  //   const params: any = {};
   
+  //   if (name) params.name = name;
+  //   if (role) params.role = role;
+  //   if (title) params.title = title;
+  //   if (minprice) params.minprice = minprice;
+  //   if (maxprice) params.maxprice = maxprice;
+  //   if (rate !== null) params.rate = rate;
+  //   if (pageSize) params.pageSize = pageSize;
+  //   if(page) params.page=page;
+  
+  //   return this.http.get<any>(this.ExpertsListURL, { params });
+  // }
+  getall(name: string = '', role: string = '', title: string = '', minprice: number = 0, maxprice: number = 0, rate: number | null = null, page: number = 1, pageSize: number, skills: string[] = [], mentorId: string = ''): Observable<any> {
+    const params: any = {};
+
     if (name) params.name = name;
     if (role) params.role = role;
     if (title) params.title = title;
@@ -60,10 +78,13 @@ export class AccountService {
     if (maxprice) params.maxprice = maxprice;
     if (rate !== null) params.rate = rate;
     if (pageSize) params.pageSize = pageSize;
-    if(page) params.page=page;
-  
+    if (page) params.page = page;
+    if (skills && skills.length > 0) params.skills = skills.join(',');
+    if (mentorId) params.excludeMentorId = mentorId;  // Add mentorId to params to exclude it
+
     return this.http.get<any>(this.ExpertsListURL, { params });
-  }
+}
+
 
   
   // getall(){
@@ -85,4 +106,14 @@ export class AccountService {
   AddEducation(formData:any) {
     return this.http.put(this.AddEducationURL, formData)
   }
+
+  getProfile(id: string): Observable<any> {
+    return this.http.get<any>(`${this.GetProfileURL}/${id}`);
+  }
+
+  // Fetch reviews by user ID
+  getReviews(id: string): Observable<any> {
+    return this.http.get<any>(`${this.GetReviewsURL}/${id}`);
+  }
+
 }

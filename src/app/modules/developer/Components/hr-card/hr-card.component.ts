@@ -8,11 +8,34 @@ import { Router } from '@angular/router';
   styleUrl: './hr-card.component.css'
 })
 export class HRCardComponent {
-  @Input() hr!:IHR
+  @Input() HR!: any;
+ 
+ 
+  
 
-  constructor(private router: Router) {}
+  getStars(rate: number): string[] {
+    const fullStars = Math.floor(rate);
+    const halfStar = rate % 1 >= 0.5 ? 1 : 0;
+    const emptyStars = 5 - fullStars - halfStar;
 
-  viewProfile(id: number): void {
-    this.router.navigate(['/hr', id]); // Navigate to HR profile page with the selected HR's ID
+    return [
+      ...Array(fullStars).fill('fa-star'),
+      ...Array(halfStar).fill('fa-star-half-o'),
+      ...Array(emptyStars).fill('fa-star-o')
+    ];
   }
+  // Facebook=this.HR.SocialAccounts[0]
+  // LinkedIn=this.HR.SocialAccounts[1]
+  // GitHub=this.HR.SocialAccounts[2]
+
+  constructor(  private router: Router) {
+    console.log(this.HR);
+    
+  }
+
+
+  // goToHRProfile(id: string) {
+  //   this.router.navigate(['/HRs', id]);
+  // }
+
 }

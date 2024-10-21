@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IHR } from '../../../../core/enums/HR';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { AccountService } from '../../../../shared/services/Account/account.service';
 
 @Component({
   selector: 'app-hr-profile',
@@ -10,58 +12,137 @@ import { ActivatedRoute } from '@angular/router';
 export class HrProfileComponent {
   hrProfile: IHR | undefined;
 
-  constructor(private route: ActivatedRoute) {}
+  id : string;
+
+
+  constructor(private route: ActivatedRoute ,private httpClient: HttpClient,private AccService:AccountService) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.loadHrProfile(Number(id));
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.loadMentor();
   }
 
-  loadHrProfile(id: number): void {
-    // Static data for HR profiles
-    const hrList: IHR[] = [
-      { id: 1, name: 'John Doe', imageurl: 'https://via.placeholder.com/150', category: 'Employees', title: 'Senior HR', rate: 3, currentprice: 99.99 },
-      { id: 2, name: 'Jane Smith', imageurl: 'https://via.placeholder.com/150', category: 'Law', title: 'Senior HR', rate: 2, currentprice: 149.99 },
-      {
-        id:3,
-        name: 'Alice Johnson',
-        imageurl: 'https://via.placeholder.com/150',
-        category: 'Accountant',
-        title: 'Senior HR ',
-        rate: 1,
-        currentprice: 199.99
+  loadMentor() {
+    this.AccService.getMentorById(this.id).subscribe(
+      (data: any) => {
+        this.hrProfile = data;
       },
-      {
-        id:4,
-        name: 'Alice Johnson',
-        imageurl: 'https://via.placeholder.com/150',
-        category: 'Accountant',
-        title: 'Senior HR ',
-        rate: 5,
-        currentprice: 199.99
-      },
-      {
-        id:5,
-        name: 'Alice Johnson',
-        imageurl: 'https://via.placeholder.com/150',
-        category: 'Accountant',
-        title: 'Senior HR ',
-        rate: 2,
-        currentprice: 199.99
-      },
-      {
-        id:6,
-        name: 'Alice Johnson',
-        imageurl: 'https://via.placeholder.com/150',
-        category: 'Accountant',
-        title: 'Senior HR ',
-        rate: 3,
-        currentprice: 199.99
+      (error) => {
+        console.error('Error fetching mentor', error);
       }
-      // Add more HR profiles as needed
-    ];
-
-    this.hrProfile = hrList.find(hr => hr.id === id);
+    );
   }
-}
 
+  loadMentorProfile(id:string):void{
+    // const mentorlist:IMentor[]=[
+    //   {
+    //     id: s,
+    //     FirstName: 'Alice',
+    //     LastName:'Johnson',
+    //     Image: 'https://via.placeholder.com/150',
+    //      category: 'Machine Learning',
+    //     Title: 'Machine Learning Engineer',
+    //     AverageRate: 3,
+    //     Price: 199.99,
+    //     YearsOfExperience:5,
+    //    About:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+    //    Skills: ['Front End', 'UI/UX'],
+    //    SocialAccounts:[]     },
+    //   {
+    //     id: 2,
+    //     FirstName: 'Alice',
+    //     LastName:'Johnson',
+    //     Image: 'https://via.placeholder.com/150',
+    //      category: 'Machine Learning',
+    //     Title: 'Machine Learning Engineer',
+    //     AverageRate: 3,
+    //     Price: 199.99,
+    //     YearsOfExperience:5,
+    //    About:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+    //    Skills: ['Front End', 'UI/UX'],
+    //    SocialAccounts:[]
+    //   },
+    //   {
+    //     id: 3,
+    //     FirstName: 'Alice',
+    //     LastName:'Johnson',
+    //     Image: 'https://via.placeholder.com/150',
+    //      category: 'Machine Learning',
+    //     Title: 'Machine Learning Engineer',
+    //     AverageRate: 3,
+    //     Price: 199.99,
+    //     YearsOfExperience:5,
+    //    About:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+    //    Skills: ['Front End', 'UI/UX'],
+    //    SocialAccounts:[]
+    //   },
+    //   {
+    //     id:4,
+    //     FirstName: 'Alice',
+    //     LastName:'Johnson',
+    //     Image: 'https://via.placeholder.com/150',
+    //      category: 'Machine Learning',
+    //     Title: 'Machine Learning Engineer',
+    //     AverageRate: 3,
+    //     Price: 199.99,
+    //     YearsOfExperience:5,
+    //    About:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+    //    Skills: ['Front End', 'UI/UX'],
+    //    SocialAccounts:[]
+    //   },
+    //   {
+    //     id:5,
+    //     FirstName: 'Alice',
+    //     LastName:'Johnson',
+    //     Image: 'https://via.placeholder.com/150',
+    //      category: 'Machine Learning',
+    //     Title: 'Machine Learning Engineer',
+    //     AverageRate: 3,
+    //     Price: 199.99,
+    //     YearsOfExperience:5,
+    //    About:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+    //    Skills: ['Front End', 'UI/UX'],
+    //    SocialAccounts:[]
+    //   },
+    //   {
+    //     id:6,
+    //     FirstName: 'Alice',
+    //     LastName:'Johnson',
+    //     Image: 'https://via.placeholder.com/150',
+    //      category: 'Machine Learning',
+    //     Title: 'Machine Learning Engineer',
+    //     AverageRate: 3,
+    //     Price: 199.99,
+    //     YearsOfExperience:5,
+    //    About:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+    //    Skills: ['Front End', 'UI/UX'],
+    //    SocialAccounts:[]
+    //   }
+    // ];
+    // this.mentorProfile = mentorlist.find(mentor=> mentor.id === id);
+  }
+
+
+
+//   ngOnInit(): void {
+//     this.id = this.route.snapshot.paramMap.get('id')!;
+//     this.loadMentorProfile(Number(this.id));
+//   }
+
+//   loadMentorProfile(id: number): void {
+//     this.getMentorById(id).subscribe(
+//       (mentor: IMentor) => {
+//         this.mentorProfile = mentor;
+//       },
+//       (error) => {
+//         console.error('Error fetching mentor data:', error);
+//       }
+//     );
+//   }
+
+//   // Method to fetch mentor data by ID
+//   getMentorById(id: number): Observable<IMentor> {
+//     // const apiUrl = `http://localhost:5164/api/Account/AddQuery/${id}`;
+//     return this.httpClient.get<IMentor>(apiUrl);
+//   }
+}

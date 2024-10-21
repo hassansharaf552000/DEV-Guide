@@ -16,34 +16,47 @@
 
 .card-client {
   background: #ffffff;
-  width: 20rem;
-  padding-top: 25px;
+  /* width: 20rem; */
+  /* padding-top: 25px; */
   padding-bottom: 25px;
   padding-left: 20px;
-  padding-right: 20px;
+  /* padding-right: 20px; */
   /* margin-left: 30px; */
-  border: 4px solid #415bcf;
+  /* border: 1px solid #415bcf; */
+  border: 1px solid rgb(233, 226, 226);
+  /* height: 240px; */
+  height: fit-content;
+
   box-shadow: 0 6px 10px rgba(207, 212, 222, 1);
   border-radius: 10px;
   text-align: center;
-  color: #415bcf;
+  /* color: #415bcf; */
   transition: all 0.3s ease;
 }
-
+.name-client{
+  font-size: 500 !important;
+  font-weight: bold !important;
+}  
 .card-client:hover {
   transform: translateY(-10px);
 }
 
 .user-picture {
-  overflow: hidden;
-  object-fit: cover;
-  width: 8rem;
-  height: 8rem;
-  border-radius: 999px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
+  /* overflow: hidden;
+  object-fit: cover; */
+  /* width:100%; */
+  width: 10%;
+  text-align: start;
+  /* height: rem; */
+  /* border-radius: 999px; * /
+   border-radius: 999px; */
+   border-radius: 13px;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* margin: auto; */
+  /* margin-bottom: 200px; */
+  height: 100%;
 }
 
 .user-picture svg {
@@ -54,15 +67,17 @@
 .name-client,.title-client,.category-client,.rate-client,.price-client {
   margin: 0;
   margin-top: 20px;
-  font-weight: 600;
+  /* font-weight: 600; */
   font-size: 18px;
 }
-
-.name-client span {
+.price-client p{
+  font-weight: bold !important;
+}
+/* .name-client span {
   display: block;
   font-weight: 200;
-  font-size: 16px;
-}
+  font-size: 26px;
+} */
 
 .social-media:before {
   content: " ";
@@ -70,7 +85,7 @@
   width: 100%;
   height: 2px;
   margin: 20px 0;
-  background:#415bcf;
+  /* background:#415bcf; */
 }
 
 .social-media a {
@@ -85,8 +100,8 @@
 }
 
 .social-media a svg {
-  width: 1.1rem;
-  fill: currentColor;
+  width: 1.3rem;
+  /* fill: currentColor; */
 }
 
 /*-- Tooltip Social Media --*/
@@ -126,3 +141,48 @@
   opacity: 1;
   transform: translate(-50%, -130%);
 }
+.HR-skills {
+  display: flex;
+  flex-wrap: nowrap; /* Ensures that the circles will wrap if there's not enough horizontal space */
+  gap: 10px; /* Spacing between the circles */
+}
+
+.skill-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content; /* Adjust width as needed */
+  height: fit-content; /* The same height as the width to make it a circle */
+  border-radius: 25px; /* This makes the div a circle */
+  background-color: #fff; 
+  border: 1px solid black;
+  color: black; /* Text color inside the circle */
+  font-size: 14px; /* Adjust font size */
+  text-align: center;
+  padding: 3px 7px;
+}
+
+@media (max-width:770px) {
+  .col-sm-5{
+    max-width: 38% !important;
+  }
+  /* .custom-center{
+    vertical-align: middle !important
+  } */
+ 
+}
+.social-media {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically (optional) */
+}
+
+.social-media a.social-icon {
+  margin: 0 10px; /* Space between icons */
+}
+
+.social-media svg {
+  width: 18px; /* Adjust icon size */
+  height: 18px; /* Adjust icon size */
+}
+
