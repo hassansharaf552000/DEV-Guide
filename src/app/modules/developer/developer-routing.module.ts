@@ -99,7 +99,7 @@ const routes: Routes = [
       { path: 'reviews', component: ReviewsListComponent },
       { path: 'quizzes', component: QuizListComponent },
       { path: 'reply', component: MentorReplyComponent },
-      { path: 'answer-query/:id', component: QueryAnswerComponent },
+      { path: 'answer-query/:id/:queryid/:userid', component: QueryAnswerComponent },
       { path: 'AdminUi', component: AdminUIComponent }
     ],
   },
