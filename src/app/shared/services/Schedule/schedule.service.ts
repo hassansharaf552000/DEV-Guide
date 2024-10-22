@@ -21,7 +21,7 @@ export class ScheduleService {
     return this.http.get(this.GetUserPriceURL)
   }
   
-  UpdateUserPrice(Price:any): Observable<any>  {
+  UpdateUserPrice(Price:any)  {
     return this.http.post(this.UpdateUserPriceURL,Price)
   }
 
