@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-
+import { ScheduleService } from '../../../../shared/services/Schedule/schedule.service';
+import { AuthService } from '../../../../shared/services/Auth/auth.service';
+import { Decimal } from 'decimal.js';
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
@@ -16,11 +18,29 @@ export class ScheduleComponent {
     { Day: 'Friday', Available: false, Start: '', End: '' },
   ];
 
-  SessionPrice: number = 0;
+  ScheduleData:any
+  SessionPrice: any ;
   AllDone: boolean = true; // Initially disabled button
   priceError: string = '';
   Errors: Array<string> = [];
   isOpen: boolean = false;
+
+  constructor(private Schedule:ScheduleService,Auto:AuthService) {
+    this.Schedule.GetUserPrice().subscribe({
+      next:(res:any)=>{
+        this.SessionPrice =res.price
+        console.log(res);
+        
+      },
+      error:(err)=>{
+        console.log(err);
+        
+      }
+    })
+
+    console.log("session",this.SessionPrice)
+   }
+  
 
   // Check if price is valid
   checkPrice(price: string): void {
@@ -105,4 +125,44 @@ export class ScheduleComponent {
       this.AllDone = true; // Disable the submit button
     }
   }
+  SetSchedule(){
+    this.Schedule.SetSchedule(this.ScheduleData)
+  }
+  // UpdateUserPrice(price: string) {
+  //   // Parse the price as a decimal
+  //   const priceValue = new Decimal(price);
+  
+  //   // Check if the price value is valid (non-negative and not NaN)
+  //   if (!priceValue.isNaN() && priceValue.greaterThan(0)) {
+  //     // Call the service method to update the user's price
+  //     this.Schedule.UpdateUserPrice(priceValue.toFixed(2)).subscribe(
+  //       response => {
+  //         console.log('Price updated successfully:', response);
+  //         // Handle successful update (e.g., show a success message)
+  //       },
+  //       error => {
+  //         console.error('Error updating price:', error);
+  //         // Handle error (e.g., show an error message)
+  //       }
+  //     );
+  //   } else {
+  //     console.error('Invalid price');
+  //   }
+  // }
+  UpdateUserPrice(price: number) {
+  this.Schedule.UpdateUserPrice(price).subscribe(
+          response => {
+            console.log('Price updated successfully:', response);
+            console.log("price",price);
+            
+            // Handle successful update (e.g., show a success message)
+          },
+          error => {
+            console.error('Error updating price:', error);
+            // Handle error (e.g., show an error message)
+          }
+        );
+      }
+
+
 }

@@ -49,19 +49,24 @@
           <h5>Price per hour</h5>
         </div>
         <div class="col-5">
-          <input class="form-control" #price (input)="checkPrice(price.value)" [value]="SessionPrice" type="number"
+          <input class="form-control" name="SessionPrice" [(ngModel)]="SessionPrice" type="number"
             required />
           <span class="text-danger">{{ priceError }}</span>
         </div>
         <div class="col-2">
-          <label>EGP</label>
+          <label>L.E</label>
         </div>
       </div>
 
       <!-- Submit Button -->
       <div class="text-right mt-3">
-        <button type="button" [disabled]="AllDone" class="btn btn-outline-primary px-4">Submit</button>
+        <button type="button" [disabled]="AllDone" (click)="UpdateUserPrice(100)" class="btn btn-outline-primary px-4">Submit</button>
       </div>
     </div>
   </div>
 </form>
+
+
+
+
+

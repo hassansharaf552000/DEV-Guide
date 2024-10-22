@@ -95,6 +95,11 @@
     </div>
   </div>
 </section>
+
+
+<!-- start new section  -->
+
+ <!-- end new section  -->
 <br>
 <br>
 <h3 class="display-4 fw-bold text-center" style="font-family: Edu AU VIC WA NT Hand, cursive;font-optical-sizing: auto;font-style: normal;">
@@ -112,8 +117,107 @@ Clients Feedbacks
     }
   </div>
 </div>
+<!-- 
+<section class="pb-xl-8 pb-6 mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="mb-4 fw-bold" style="font-size:30px ;">Top Mentors</h2>
+      </div>
+    </div>
+    <div class="row gy-4 justify-content-sm-center">
+      <div class="col-xxl-3 col-xl-4 col-md-6 col-sm-9 custom-col " *ngFor="let mentor of topmen">
 
+        <div class="card rounded-4 card-bordered card-lift">
+          <div class="p-3 d-flex flex-column gap-3">
+ 
+              <a [routerLink]="['/mentors',mentor.ID]" class="text-center">
+              <img src="http://localhost:5164/{{mentor.Image}}" style="width: 95%; height: 30%; border-radius: 10px;cursor: pointer;"
+               onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
+              </a>
+         
+            <div class="d-flex flex-column gap-4">
+              <div class="d-flex flex-column gap-2">
+                <div>
+                  <div class="d-flex align-items-center gap-2">
+                    <h3 class="mb-0">
+                      <a [routerLink]="['/mentors',mentor.ID]" class="text-reset">{{mentor.FirstName}} {{mentor.LastName}}</a>
+                    </h3>
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-patch-check-fill text-success" viewBox="0 0 16 16">
+                        <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"></path>
+                      </svg>
+                    </span>
+                  </div>
+                  <span class="text-gray-800">{{mentor.Title}}</span>
+                </div>
 
+                <div class="d-flex align-items-center justify-content-between fs-6">
+                  <div>
+                    <span>{{mentor.YearsOfExperience}} Yrs Exp.</span>
+                  </div>
+                  <div class="d-flex gap-1 align-items-center lh-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                      class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                    </svg>
+                    <span class="fw-bold text-dark">{{mentor.AverageRate}}</span>
+                    <span>({{mentor.NumOfReviews}} Reviews)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex flex-row justify-content-between align-items-center">
+                <div>
+                  <span>Session Price</span>
+                  <div class="d-flex flex-row gap-1 align-items-center">
+                    <h4 class="mb-1" style="font-size: 25px;">${{mentor.Price}}</h4>
+                  </div>
+                </div> 
+                <div>
+                
+                  <a [routerLink]="['/mentors',mentor.ID]" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#signupModal">View Profile</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+   <!-- Our profile cards -->
+<div class="" style="display: flex; flex-direction: row; gap: 20px; flex-wrap: wrap;" *ngFor="let mentor of topmen">
+  <div class="card card-two">
+    <header>
+      <div class="avatar">
+        <a [routerLink]="['/mentors', mentor.ID]">
+          <img src="http://localhost:5164/{{mentor.Image}}" 
+               onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
+        </a>
+      </div>
+    </header>
+
+    <h3>{{mentor.FirstName}} {{mentor.LastName}}</h3>
+    <div class="desc" style="display: flex; flex-direction: column;">
+      {{mentor.Title}}
+      <p class="category-client mt-1 mb-1 text-center">
+        {{mentor.YearsOfExperience}}<span style="font-size: small;"> yrs Exp</span>
+      </p>
+      <span class="fw-bold text-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+          <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+        </svg> 
+        {{mentor.AverageRate}}
+      </span>
+    </div>
+
+    <div class="contacts text-center">
+      <button class="btn btn-outline-primary rounded-5">View Profile</button>
+    </div>
+  </div>
+</div>
 
 
 

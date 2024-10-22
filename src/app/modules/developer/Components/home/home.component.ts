@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AccountService } from '../../../../shared/services/Account/account.service';
 
 @Component({
   selector: 'app-home',
@@ -30,7 +31,34 @@ export class HomeComponent {
       1000: { items: 3 }         // 3 items on larger screens
     }
   };
+  topmen:any[]
+  similarMentors:any[]
+  constructor(private AccService:AccountService) {
+    this.AccService.getall('', 'Mentor',"", 0, 0, null, 1,5).subscribe(mentors => {
+      this.similarMentors=mentors.Data;
+      console.log("3-mentors",mentors.Data);  // This will return 3 mentors with the required skills and title
+      this.topmen=this.similarMentors.sort((a: any, b: any) => b.AverageRate - a.AverageRate).slice(0, 3);
+    });
+   // this.getTopMentors();
 
+  }
+  
+  // Call getall and get the top 3 mentors with the highest rate
+getTopMentors(): void {
+  this.AccService.getall('', '', '', 0, 0, null, 1, 100, [], '')
+    .subscribe(response => {
+      if (response && response.data) {
+        // Sort mentors by their rate in descending order
+        const sortedMentors = response.data.sort((a: any, b: any) => b.rate - a.rate);
+
+        // Get the top 3 mentors
+        const topMentors = sortedMentors.slice(0, 3);
+this.topmen=topMentors
+        // Now you have the top 3 mentors with the highest average rate
+        console.log('Top 3 Mentors:', topMentors);
+      }
+    });
+}
 
 
   // currentSlide = 0;
