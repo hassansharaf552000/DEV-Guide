@@ -14,6 +14,7 @@ export class SidebarlayoutComponent {
     profileCompletion: 50 // Percentage of profile completion
   };
   menuItems = [
+    // { path: '/mentor/profile', label: 'Profile', icon: 'bi bi-person-circle' },
     { path: '/mentor/profile', label: 'Profile', icon: 'bi bi-person-circle' },
     { path: '/mentor/updateprofile', label: 'Edit Profile', icon: 'bi bi-pencil' },
     { path: '/mentor/mentor-payments', label: 'Payments', icon: 'bi bi-wallet2' },

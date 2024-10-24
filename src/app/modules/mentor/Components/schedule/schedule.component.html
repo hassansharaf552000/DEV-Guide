@@ -1,6 +1,7 @@
 <form>
-  <div class="master">
-    <div class="card p-5">
+  <div class="master" style="border: none;">
+    <div class="card " style="border: none;">
+    <!-- <div class="card p-5"> -->
       <!-- Header -->
       <div style="background-color: #e7f1ff; border-radius: 15px; box-shadow: 0 0 10px gray; padding: 20px;">
         <h5>Set Schedule</h5>
@@ -14,7 +15,7 @@
           <div *ngFor="let day of Working_Hours; let i = index">
             <div class="row justify-content-between mb-2">
               <div class="col-3">
-                <span class="day-txt">{{ day['Day'] }} </span>
+                <span class="day-txt">{{ getDayName(day['Day']) }}</span>
               </div>
               <div class="col-9 row">
                 <div class="col-4" *ngIf="!day['Available']">
@@ -24,17 +25,17 @@
                   <button type="button" class="btn btn-outline-primary" (click)="notavailable(i)">Cancel</button>
                 </div>
                 <div class="col-4" *ngIf="day['Available']">
-                  <input class="form-control text-center" (change)="setTime(i, true, $event)" id="start-{{i}}"
+                  <input [(ngModel)]="day.StartTime" name="day.StartTime" class="form-control text-center" (change)="setTime(i, true, $event)" id="StartTime-{{i}}"
                     type="time" required />
                 </div>
                 <div class="col-4" *ngIf="day['Available']">
-                  <input class="form-control text-center" (change)="setTime(i, false, $event)" id="end-{{i}}"
+                  <input [(ngModel)]="day.EndTime" name="day.EndTime" class="form-control text-center" (change)="setTime(i, false, $event)" id="EndTime-{{i}}"
                     type="time" required />
                 </div>
               </div>
             </div>
           </div>
-
+          
           <!-- Display errors -->
           <div *ngFor="let error of Errors">
             <p class="text-danger">{{ error }}</p>
@@ -60,7 +61,7 @@
 
       <!-- Submit Button -->
       <div class="text-right mt-3">
-        <button type="button" [disabled]="AllDone" (click)="UpdateUserPrice(100)" class="btn btn-outline-primary px-4">Submit</button>
+        <button type="button" [disabled]="AllDone" (click)=" SetSchedule()" class="btn btn-outline-primary px-4">Submit</button>
       </div>
     </div>
   </div>

@@ -21,7 +21,9 @@ export class AccountService {
   AddExperienceURL = "http://localhost:5164/api/Account/AddExperience"
   AddEducationURL = "http://localhost:5164/api/Account/AddEducation"
   GetProfileURL="http://localhost:5164/api/Account/GetOneUser"
+  GetProfileByClaimURL="http://localhost:5164/api/Account/GetOneUserByClaim"
   GetReviewsURL="http://localhost:5164/api/Account/GetReview"
+  GetReviewsByClaimURL="http://localhost:5164/api/Account/GetReviewByClaim"
   queryUrl="http://localhost:5164/api/Account/GetOneByID"
   
   constructor(private http: HttpClient) {
@@ -102,10 +104,14 @@ export class AccountService {
   getProfile(id: string): Observable<any> {
     return this.http.get<any>(`${this.GetProfileURL}/${id}`);
   }
-
+  getProfileByClaim() {
+    return this.http.get<any>(this.GetProfileByClaimURL);
+  }
   // Fetch reviews by user ID
   getReviews(id: string): Observable<any> {
     return this.http.get<any>(`${this.GetReviewsURL}/${id}`);
   }
-
+  getReviewsByClaim() {
+    return this.http.get<any>(this.GetReviewsByClaimURL);
+  }
 }

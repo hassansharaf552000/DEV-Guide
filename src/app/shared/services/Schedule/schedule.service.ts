@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 export class ScheduleService {
 
   SetScheduleURL="http://localhost:5164/api/Schedule/CheckAndHandleSchedule"
-  GetUserPriceURL="http://localhost:5164/api/Schedule/GetUserPrice"
-  UpdateUserPriceURL="http://localhost:5164/api/Schedule/UpdateUserPrice"
+  GetSchedulesWithPriceURL="http://localhost:5164/api/Schedule/GetSchedulesWithPrice"
+  //CheckAndHandleScheduleURL="http://localhost:5164/api/Schedule/CheckAndHandleSchedule"
 
 
   constructor(private http: HttpClient) { }
@@ -17,12 +17,12 @@ export class ScheduleService {
   SetSchedule(Schedule:any) {
     return this.http.post(this.SetScheduleURL,Schedule)
   }
-  GetUserPrice(){
-    return this.http.get(this.GetUserPriceURL)
+  GetSchedulesWithPrice(){
+    return this.http.get(this.GetSchedulesWithPriceURL)
   }
   
-  UpdateUserPrice(Price:any)  {
-    return this.http.post(this.UpdateUserPriceURL,Price)
-  }
+  // SetSchedule(Price:any)  {
+  //   return this.http.post(this.SetScheduleURL,Price)
+  // }
 
 }

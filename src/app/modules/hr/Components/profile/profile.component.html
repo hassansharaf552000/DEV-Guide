@@ -1,0 +1,578 @@
+<main>
+    <!--hero section-->
+    <section class="py-xl-8 py-6">
+      <div class="container">
+        <!--row-->
+        <div  class="row gy-4">
+
+          <div *ngIf="hrProfile?.Educations?.length > 0 ||hrProfile?.Experiences?.length > 0" class="col-xl-8 col-12">
+            <div class="d-flex flex-column gap-4" style="height: fit-content;">
+              <!--card-->
+              <div class="card" style="height: fit-content;">
+                <!--img-->
+                <div class="rounded-top-3"
+                  style="background-image: url(mentor-single.png ); background-position: center; background-size: cover; background-repeat: no-repeat; height: 228px">
+                </div>
+                <div class="card-body p-md-5" style="height: 300px;">
+                  <div class="d-flex flex-column gap-5 ">
+                    <!--img-->
+                    <div class="mt-n8 mb-0" style="height: 0px;">
+                      <img src="http://localhost:5164/{{hrProfile.Image}}" alt="hr 1" class="img-fluid rounded-4 mt-n8"
+       onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
+                      <!-- <img src="avatar-2.jpg" alt="hr 1" class="img-fluid rounded-4 mt-n8"> -->
+                    </div>
+                    <div class="d-flex flex-column gap-5 mb-5 custom-gap gap-sm-3">
+                      <div class="d-flex flex-column custom-gap gap-3">
+                        <div class="d-flex flex-md-row flex-sm-row flex-column custom-flex justify-content-between gap-2">
+                          <!--heading-->
+                          <div>
+                            <h1 class="mb-0" style="font-size: 40PX;">{{ hrProfile?.FirstName }} {{hrProfile?.LastName}}</h1>
+                            <!--content-->
+                            <div class="d-flex flex-lg-row  flex-column gap-2">
+                              <small class="fw-medium text-gray-800">{{ hrProfile?.Title }}</small>
+                              <small class="fw-medium text-success">{{ hrProfile?.YearsOfExperience }}yrs Exp</small>
+                            </div>
+                          </div>
+                          <!--button-->
+                          <div class="d-flex flex-row gap-3 align-items-center custom-flex-col">
+                            <a  [routerLink]="['/developer/booking/',id]"class="btn btn btn-outline-primary">
+                             
+                              <i class="fa-regular fa-handshake"></i>
+                              Book Session
+                            </a>
+                            <a   [routerLink]="['/developer/query/', id]" class="btn btn-outline-primary"><i class="fa-solid fa-circle-question"></i> Ask
+                              Questions</a>
+                          </div>
+                        </div>
+                        <div class="d-flex flex-md-row flex-column flex-sm-row custom-flex gap-md-4 gap-2">
+                          <div class="d-flex flex-row gap-2 align-items-center lh-1">
+                            <!--icon-->
+                            <span>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                                class="bi bi-star-fill text-warning align-baseline" viewBox="0 0 16 16">
+                                <path
+                                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
+                                </path>
+                              </svg>
+                            </span>
+                            <span>
+                              <!--text-->
+                              <span class="text-gray-800 fw-bold">{{ hrProfile?.AverageRate }}</span>
+                              ({{hrProfile.NumOfReviews}}&nbsp;Reviews)
+                            </span>
+                          </div>
+                          <div class="d-flex flex-row  gap-2 align-items-center lh-1">
+                            <!--icon-->
+                            <span>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                                class="bi bi-people-fill text-primary align-baseline" viewBox="0 0 16 16">
+                                <path
+                                  d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5">
+                                </path>
+                              </svg>
+                            </span>
+                            <!--text-->
+                            <span>
+                              <span class="text-gray-800 fw-bold">{{hrProfile.NumOfStudents}}+</span>
+                              Mentees
+                            </span>
+                          </div>
+                          <div class="d-flex flex-row gap-2 align-items-center lh-1">
+                            <!--icon-->
+                            <span>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                                class="bi bi-geo-alt-fill text-danger" viewBox="0 0 16 16">
+                                <path
+                                  d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6">
+                                </path>
+                              </svg>
+                            </span>
+                            <!--text-->
+                            <!-- <span>Gujarat,India</span> -->
+                            <span>{{hrProfile.Country}}</span>
+                          </div>
+                        </div>
+                      </div>
+                    
+                      <div>
+                        <span
+                          class="badge rounded-pill text-success-emphasis bg-success-subtle border border-success align-items-center">
+                          <span>
+                         
+                          </span>
+                          Session Price: $ {{ hrProfile?.Price }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--card-->
+              <div class="card">
+                <!--card body-->
+               
+                <div class="card-body p-md-5 d-flex flex-column gap-3">
+                  <!--heading-->
+                  <h3 class="mb-0">About</h3>
+                  <div class="d-flex flex-column">
+                    <!--para-->
+                    <p class="mb-1">
+                      {{ displayText }}
+                    </p>
+                    <div *ngIf="hrProfile?.About?.length > maxLength">
+                      <a class="btn-link" (click)="toggleExpand()">
+                        {{ isExpanded ? 'Show less' : 'Read more' }}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+              <!--card-->
+              <div class="card">
+                <!--card body-->
+                <div class="card-body p-md-5">
+                  <div class="d-flex flex-column gap-3">
+                    <!--heading-->
+                    <h3 class="mb-0">Skills</h3>
+  
+                    <div class="gap-2 d-flex flex-wrap">
+  
+                      <div class="hr-skills col-12 mb-0 mt-3" style="height: 30px;">
+                        <div *ngFor="let skill of hrProfile.Skills" class="skill-circle">
+                          {{ skill }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--card-->
+              @if(hrReviews.length>0){
+              <div class="card">
+                <!--card body-->
+                <div class="card-body p-md-5">
+                  <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-between gap-2">
+                    <!--heading-->
+                    <div>
+                      <h3 class="mb-0">What Developers Say</h3>
+                    </div>
+                    <div>
+                      <!--form-->
+                      <!-- <form>
+                        <div class="d-flex flex-row align-items-center gap-2">
+                          <label for="exampleInputmentees" class="form-label text-nowrap mb-0">Sort by:</label>
+                          <div class="choices" data-type="select-one" tabindex="0" role="listbox" aria-haspopup="true" aria-expanded="false"><div class="choices_inner"><select class="form-select choicesinput" data-choices="" aria-label="Default select example" id="exampleInputmentees" name="exampleInputmentees" hidden="" tabindex="-1" data-choice="active"><option value="Recommended" data-custom-properties="[object Object]">Recommended</option></select><div class="choiceslist choiceslist--single"><div class="choicesitem choicesitem--selectable" data-item="" data-id="1" data-value="Recommended" data-custom-properties="[object Object]" aria-selected="true">Recommended</div></div></div><div class="choiceslist choiceslist--dropdown" aria-expanded="false"><div class="choiceslist" role="listbox"><div id="choices--exampleInputmentees-item-choice-1" class="choicesitem choicesitem--choice choicesitem--selectable is-highlighted" role="option" data-choice="" data-id="1" data-value="1" data-select-text="" data-choice-selectable="" aria-selected="true">Most Recent</div><div id="choices--exampleInputmentees-item-choice-2" class="choicesitem choicesitem--choice is-selected choices_item--selectable" role="option" data-choice="" data-id="2" data-value="Recommended" data-select-text="" data-choice-selectable="">Recommended</div></div></div></div>
+                        </div>
+                      </form> -->
+                    </div>
+                  </div>
+                  <div class="d-flex flex-column gap-3">
+                    <div *ngFor="let review of displayedReviews" class="py-4 d-flex flex-column gap-3 border-bottom">
+                      <div class="d-flex flex-row justify-content-between align-items-md-center">
+                        <div class="d-flex flex-row gap-3 align-items-center">
+                          <div>
+                            <img src="http://localhost:5164/{{review.Reviewer.Image}}" alt="avatar" class="avatar avatar-lg rounded-circle" onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
+                          </div>
+                          <div>
+                            <h6 class="mb-1">{{ review.Reviewer.FirstName }} {{ review.Reviewer.LastName }}</h6>
+  
+                            <div class="d-flex flex-md-row flex-column flex-sm-row custom-flex custom-gap gap-md-2 gap-sm-2 align-items-md-center lh-1">
+                              <app-rate [value]="review.Rate" ></app-rate>
+                              <span>
+                                <small class="fw-medium">{{ formatDate(review.ReviewDate) }}</small>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <p class="mb-0">{{ review.Description }}</p>
+                      </div>
+                    </div>
+                  
+                    <!-- Load More Button -->
+                    <div *ngIf="hasMoreReviews">
+                      <a id="loadMoreButton" class="btn btn-outline-primary" (click)="loadMoreReviews()">
+                        Load more reviews
+                      </a>
+                    </div>
+                    <div *ngIf="canLoadLess">
+                      <a id="loadLessButton" class="btn btn-outline-secondary" (click)="loadLessReviews()">
+                        Load less reviews
+                      </a>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            }@else {
+  
+              <div class="card">
+                <div class="card-body p-md-5">
+                  <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-between gap-2">
+                    <!--heading-->
+                    <div>
+                      <h3 class="mb-0">Not Rated yet</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+            }
+            </div>
+            </div>
+            <div *ngIf="hrProfile?.Educations?.length <= 0 && hrProfile?.Experiences?.length <= 0" class="col-xl-12 col-12">
+                <div class="d-flex flex-column gap-4" style="height: fit-content;">
+                  <!--card-->
+                  <div class="card" style="height: fit-content;">
+                    <!--img-->
+                    <div class="rounded-top-3"
+                      style="background-image: url(mentor-single.png ); background-position: center; background-size: cover; background-repeat: no-repeat; height: 228px">
+                    </div>
+                    <div class="card-body p-md-5" style="height: 300px;">
+                      <div class="d-flex flex-column gap-5 ">
+                        <!--img-->
+                        <div class="mt-n8 mb-0" style="height: 0px;">
+                          <img src="http://localhost:5164/{{hrProfile.Image}}" alt="hr 1" class="img-fluid rounded-4 mt-n8"
+           onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
+                          <!-- <img src="avatar-2.jpg" alt="hr 1" class="img-fluid rounded-4 mt-n8"> -->
+                        </div>
+                        <div class="d-flex flex-column gap-5 mb-5 custom-gap gap-sm-3">
+                          <div class="d-flex flex-column custom-gap gap-3">
+                            <div class="d-flex flex-md-row flex-sm-row flex-column custom-flex justify-content-between gap-2">
+                              <!--heading-->
+                              <div>
+                                <h1 class="mb-0" style="font-size: 40PX;">{{ hrProfile?.FirstName }} {{hrProfile?.LastName}}</h1>
+                                <!--content-->
+                                <div class="d-flex flex-lg-row  flex-column gap-2">
+                                  <small class="fw-medium text-gray-800">{{ hrProfile?.Title }}</small>
+                                  <small class="fw-medium text-success">{{ hrProfile?.YearsOfExperience }}yrs Exp</small>
+                                </div>
+                              </div>
+                              <!--button-->
+                              <div class="d-flex flex-row gap-3 align-items-center custom-flex-col">
+                                <a  [routerLink]="['/developer/booking/',id]"class="btn btn btn-outline-primary">
+                                 
+                                  <i class="fa-regular fa-handshake"></i>
+                                  Book Session
+                                </a>
+                                <a   [routerLink]="['/developer/query/', id]" class="btn btn-outline-primary"><i class="fa-solid fa-circle-question"></i> Ask
+                                  Questions</a>
+                              </div>
+                            </div>
+                            <div class="d-flex flex-md-row flex-column flex-sm-row custom-flex gap-md-4 gap-2">
+                              <div class="d-flex flex-row gap-2 align-items-center lh-1">
+                                <!--icon-->
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                                    class="bi bi-star-fill text-warning align-baseline" viewBox="0 0 16 16">
+                                    <path
+                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
+                                    </path>
+                                  </svg>
+                                </span>
+                                <span>
+                                  <!--text-->
+                                  <span class="text-gray-800 fw-bold">{{ hrProfile?.AverageRate }}</span>
+                                  ({{hrProfile.NumOfReviews}}&nbsp;Reviews)
+                                </span>
+                              </div>
+                              <div class="d-flex flex-row  gap-2 align-items-center lh-1">
+                                <!--icon-->
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                                    class="bi bi-people-fill text-primary align-baseline" viewBox="0 0 16 16">
+                                    <path
+                                      d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5">
+                                    </path>
+                                  </svg>
+                                </span>
+                                <!--text-->
+                                <span>
+                                  <span class="text-gray-800 fw-bold">{{hrProfile.NumOfStudents}}+</span>
+                                  Mentees
+                                </span>
+                              </div>
+                              <div class="d-flex flex-row gap-2 align-items-center lh-1">
+                                <!--icon-->
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                                    class="bi bi-geo-alt-fill text-danger" viewBox="0 0 16 16">
+                                    <path
+                                      d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6">
+                                    </path>
+                                  </svg>
+                                </span>
+                                <!--text-->
+                                <!-- <span>Gujarat,India</span> -->
+                                <span>{{hrProfile.Country}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        
+                          <div>
+                            <span
+                              class="badge rounded-pill text-success-emphasis bg-success-subtle border border-success align-items-center">
+                              <span>
+                             
+                              </span>
+                              Session Price: $ {{ hrProfile?.Price }}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--card-->
+                  <div class="card">
+                    <!--card body-->
+                   
+                    <div class="card-body p-md-5 d-flex flex-column gap-3">
+                      <!--heading-->
+                      <h3 class="mb-0">About</h3>
+                      <div class="d-flex flex-column">
+                        <!--para-->
+                        <p class="mb-1">
+                          {{ displayText }}
+                        </p>
+                        <div *ngIf="hrProfile?.About?.length > maxLength">
+                          <a class="btn-link" (click)="toggleExpand()">
+                            {{ isExpanded ? 'Show less' : 'Read more' }}
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <!--card-->
+                  <div class="card">
+                    <!--card body-->
+                    <div class="card-body p-md-5">
+                      <div class="d-flex flex-column gap-3">
+                        <!--heading-->
+                        <h3 class="mb-0">Skills</h3>
+      
+                        <div class="gap-2 d-flex flex-wrap">
+      
+                          <div class="hr-skills col-12 mb-0 mt-3" style="height: 30px;">
+                            <div *ngFor="let skill of hrProfile.Skills" class="skill-circle">
+                              {{ skill }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--card-->
+                  @if(hrReviews?.length>0){
+                  <div class="card">
+                    <!--card body-->
+                    <div class="card-body p-md-5">
+                      <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-between gap-2">
+                        <!--heading-->
+                        <div>
+                          <h3 class="mb-0">What Developers Say</h3>
+                        </div>
+                        <div>
+                          <!--form-->
+                          <!-- <form>
+                            <div class="d-flex flex-row align-items-center gap-2">
+                              <label for="exampleInputmentees" class="form-label text-nowrap mb-0">Sort by:</label>
+                              <div class="choices" data-type="select-one" tabindex="0" role="listbox" aria-haspopup="true" aria-expanded="false"><div class="choices_inner"><select class="form-select choicesinput" data-choices="" aria-label="Default select example" id="exampleInputmentees" name="exampleInputmentees" hidden="" tabindex="-1" data-choice="active"><option value="Recommended" data-custom-properties="[object Object]">Recommended</option></select><div class="choiceslist choiceslist--single"><div class="choicesitem choicesitem--selectable" data-item="" data-id="1" data-value="Recommended" data-custom-properties="[object Object]" aria-selected="true">Recommended</div></div></div><div class="choiceslist choiceslist--dropdown" aria-expanded="false"><div class="choiceslist" role="listbox"><div id="choices--exampleInputmentees-item-choice-1" class="choicesitem choicesitem--choice choicesitem--selectable is-highlighted" role="option" data-choice="" data-id="1" data-value="1" data-select-text="" data-choice-selectable="" aria-selected="true">Most Recent</div><div id="choices--exampleInputmentees-item-choice-2" class="choicesitem choicesitem--choice is-selected choices_item--selectable" role="option" data-choice="" data-id="2" data-value="Recommended" data-select-text="" data-choice-selectable="">Recommended</div></div></div></div>
+                            </div>
+                          </form> -->
+                        </div>
+                      </div>
+                      <div class="d-flex flex-column gap-3">
+                        <div *ngFor="let review of displayedReviews" class="py-4 d-flex flex-column gap-3 border-bottom">
+                          <div class="d-flex flex-row justify-content-between align-items-md-center">
+                            <div class="d-flex flex-row gap-3 align-items-center">
+                              <div>
+                                <img src="http://localhost:5164/{{review.Reviewer.Image}}" alt="avatar" class="avatar avatar-lg rounded-circle" onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
+                              </div>
+                              <div>
+                                <h6 class="mb-1">{{ review.Reviewer.FirstName }} {{ review.Reviewer.LastName }}</h6>
+      
+                                <div class="d-flex flex-md-row flex-column flex-sm-row custom-flex custom-gap gap-md-2 gap-sm-2 align-items-md-center lh-1">
+                                  <app-rate [value]="review.Rate" ></app-rate>
+                                  <span>
+                                    <small class="fw-medium">{{ formatDate(review.ReviewDate) }}</small>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div>
+                            <p class="mb-0">{{ review.Description }}</p>
+                          </div>
+                        </div>
+                      
+                        <!-- Load More Button -->
+                        <div *ngIf="hasMoreReviews">
+                          <a id="loadMoreButton" class="btn btn-outline-primary" (click)="loadMoreReviews()">
+                            Load more reviews
+                          </a>
+                        </div>
+                        <div *ngIf="canLoadLess">
+                          <a id="loadLessButton" class="btn btn-outline-secondary" (click)="loadLessReviews()">
+                            Load less reviews
+                          </a>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                }@else {
+      
+                  <div class="card">
+                    <div class="card-body p-md-5">
+                      <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-between gap-2">
+                        <!--heading-->
+                        <div>
+                          <h3 class="mb-0">Not Rated yet</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+      
+                }
+                </div>
+                </div>
+              <div class="col-xl-4 col-12">
+               
+              <div *ngIf="hrProfile?.Educations?.length > 0" class="card mb-4">
+                <div class="profile-section">
+                  <h2 class="fw-bold">Education</h2>
+                  <div>
+                    <!-- Corrected *ngFor directive -->
+                    <div *ngFor="let education of getLimitedEducations(hrProfile?.Educations);" class="education-container">
+                      <div class="education-item">
+                        <div class="img vertical-align institute-logo" style="padding-bottom: 60px; align-items: start;">
+                          <img width="36" height="36" loading="lazy" src="http://localhost:5164/Univeristy_Default/UniveristyDefault.jpg" alt="{{education.University}}" class="ng-star-inserted">
+                        </div>
+                        <div class="education-details">
+                          <div class="title"> {{education.Faculty}}, {{education.University}} </div>
+                          <p><i class="fa-solid fa-graduation-cap"></i>{{education.Degree}}</p>
+                          <div class="education-time">
+                            <span class="calendar-icon"><i class="fa-solid fa-calendar-day"></i></span> {{getYearFromDate(education.StartDate)}} - {{getYearFromDate(education.EndDate)}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              
+                    <!-- Show More/Show Less Button -->
+                    <button *ngIf="hrProfile?.Educations?.length > maxItemsToShow" class="btn btn-link" (click)="toggleShowAll()">
+                      {{ showAll ? 'Show Less' : 'Show More' }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="hrProfile?.Experiences?.length > 0" class="card mb-4">
+                <div class="profile-section">
+                  <h2 class="fw-bold">Work Experience</h2>
+                  <div>
+                    <!-- Corrected *ngFor directive -->
+                    <div *ngFor="let experience of getLimitedExperiences(hrProfile.Experiences);" class="education-container">
+                      <div class="education-item">
+                        <div class="img vertical-align institute-logo" style="padding-bottom: 60px; align-items: start;">
+                          <img width="36" height="36" loading="lazy" src="http://localhost:5164/Univeristy_Default/UniveristyDefault.jpg" alt="{{experience.Organization}}" class="ng-star-inserted">
+                        </div>
+                        <div class="education-details">
+                          <div class="title"> {{experience.FieldOfStudy}} </div>
+                          <p><i class="bi bi-buildings-fill"></i>{{experience.Organization}}</p>
+                          <div class="education-time">
+                            <span class="calendar-icon"><i class="fa-solid fa-calendar-day"></i></span> {{getYearFromDate(experience.StartDate)}} - {{getYearFromDate(experience.EndDate)}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              
+                    <!-- Show More/Show Less Button -->
+                    <button *ngIf="hrProfile?.Experiences?.length > maxItemsToShow" class="btn btn-link" (click)="toggleShowAll()">
+                      {{ showAll ? 'Show Less' : 'Show More' }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+      </div>
+    </section>
+    <!--hr-->
+   
+<!--   
+    <section class="pb-xl-8 pb-6 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="mb-4">Similar HRs</h2>
+          </div>
+        </div>
+        <div class="row gy-4 justify-content-sm-center">
+         
+          <div class="col-xxl-3 col-xl-4 col-md-6 col-sm-9 custom-col " *ngFor="let hr of similarHRs">
+           
+            <div class="card rounded-4 card-bordered card-lift">
+              <div class="p-3 d-flex flex-column gap-3">
+               
+                
+                  <a [routerLink]="['/hrs',hr.ID]">
+                  <img src="http://localhost:5164/{{hr.Image}}" style="width: 100%; height: 100%; border-radius: 10px;cursor: pointer;"
+                   onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
+                  </a>
+               
+                <div class="d-flex flex-column gap-4">
+                  <div class="d-flex flex-column gap-2">
+                    <div>
+                      <div class="d-flex align-items-center gap-2">
+                        <h3 class="mb-0">
+                          <a [routerLink]="['/hrs',hr.ID]" class="text-reset">{{hr.FirstName}} {{hr.LastName}}</a>
+                        </h3>
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-patch-check-fill text-success" viewBox="0 0 16 16">
+                            <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"></path>
+                          </svg>
+                        </span>
+                      </div>
+                      <span class="text-gray-800">{{hr.Title}}</span>
+                    </div>
+    
+                    <div class="d-flex align-items-center justify-content-between fs-6">
+                      <div>
+                        <span>{{hr.YearsOfExperience}} Yrs Exp.</span>
+                      </div>
+                      <div class="d-flex gap-1 align-items-center lh-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                          class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+                          <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                        </svg>
+                        <span class="fw-bold text-dark">{{hr.AverageRate}}</span>
+                        <span>({{hr.NumOfReviews}} Reviews)</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row justify-content-between align-items-center">
+                    <div>
+                      <span>Session Price</span>
+                      <div class="d-flex flex-row gap-1 align-items-center">
+                        <h4 class="mb-1" style="font-size: 25px;">${{hr.Price}}</h4>
+                      </div>
+                    </div>
+                    <div>
+                      <a [routerLink]="['/developer/booking/',id]" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#signupModal">Book Sessions</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+     -->
+    <!--hr-->
+  </main>
+  

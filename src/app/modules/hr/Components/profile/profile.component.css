@@ -1,0 +1,265 @@
+.profile-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card {
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-header {
+    border-bottom: 1px solid #415bcf;
+    background-color: #415bcf;
+    color: #ffffff;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .form-control {
+    border-color: #415bcf;
+    font-size: larger;
+    font-weight: bolder;
+  }
+  
+  .session-price {
+    color: #333;
+    font-size: 1.5rem;
+  }
+  
+  .btn-custom {
+    background-color: #415bcf;; /* Black background */
+    color: #fff; /* White text color */
+    font-size: 1.25rem; /* Increase font size */
+    padding: 0.75rem 1.5rem; /* Increase width and height */
+    border-radius: 0.25rem; /* Optional: rounded corners */
+    border: none; /* Remove border if desired */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Ensure the button respects padding */
+    width: 100%;
+  }
+  
+  .btn-custom:hover {
+    background-color: #333; /* Darker shade of black on hover */
+    color: #fff; /* Maintain white text color on hover */
+  }
+  
+  .btn-success {
+    background-color: #415bcf; /* Red background */
+    color: #fff; /* White text color */
+    font-size: 1.25rem; /* Increase font size */
+    padding: 0.75rem 1.5rem; /* Increase width and height */
+    border-radius: 0.25rem; /* Optional: rounded corners */
+    border: none; /* Remove border if desired */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Ensure the button respects padding */
+    width: 100%;
+  }
+  
+  .btn-success:hover {
+    background-color:#333; /* Darker red on hover */
+    color: #fff; /* Maintain white text color on hover */
+  }
+  
+  .btn-primary {
+    background-color: #415bcf; /* Green background */
+    color: #fff; /* White text color */
+    font-size: 1.25rem; /* Increase font size */
+    padding: 0.75rem 1.5rem; /* Increase width and height */
+    border-radius: 0.25rem; /* Optional: rounded corners */
+    border: none; /* Remove border if desired */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Ensure the button respects padding */
+    width: 100%;
+    text-align: center;
+  }
+  
+  .btn-primary:hover {
+    background-color: #333; /* Darker green on hover */
+    color: #fff; /* Maintain white text color on hover */
+  }
+  
+  /* Layout Adjustments */
+  .d-grid.gap-3 {
+    gap: 1rem;
+  }
+  
+  .mt-4 {
+    margin-top: 2rem;
+  }
+  
+  .mb-4 {
+    margin-bottom: 2rem;
+  }
+  
+  .mb-2 {
+    margin-bottom: 1rem;
+  }
+  
+  .img-fluid{
+    position: relative;
+    /* top: 50px; */
+    width: 200PX;
+    bottom: 170px !important;
+  }
+  
+  
+  .hr-skills {
+    display: flex;
+    flex-wrap: wrap; /* Ensures that the circles will wrap if there's not enough horizontal space */
+    gap: 10px; /* Spacing between the circles */
+  }
+  
+  .skill-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content; /* Adjust width as needed */
+    height: fit-content; /* The same height as the width to make it a circle */
+    border-radius: 25px; /* This makes the div a circle */
+    background-color: #fff; 
+    border: 1px solid black;
+    color: black; /* Text color inside the circle */
+    font-size: 14px; /* Adjust font size */
+    text-align: center;
+    padding: 5px 15px;
+  }
+  
+  .avatar{
+  
+    width: 60px !important;
+  }
+  .text-reset{
+    font-size: 25px !important;
+    text-decoration: none !important;
+  }
+  
+  .profile-section {
+    margin: 20px;
+    padding: 20px;
+    /* background-color: #f9f9f9; */
+    border-radius: 8px;
+  }
+  
+  .profile-section h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .education-item, .experience-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+  
+  .education-item:last-child, .experience-item:last-child {
+    border-bottom: none;
+  }
+  
+  .education-item p, .experience-item p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .education-item p strong, .experience-item p strong {
+    color: #333;
+  }
+  
+  
+  
+  .education-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .education-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .institute-logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .education-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .education-details h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .education-details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .education-time {
+    font-size: 14px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .calendar-icon {
+    font-size: 16px;
+  }
+  @media (max-width:992px)  {
+    h1{
+      font-size: 32px !important;
+    }
+    .card-body{
+      padding: 48px 20px  !important;
+    }
+  }
+  @media (max-width:770px)  {
+   
+    .btn-outline-primary{
+      font-size: 14px !important;
+    }
+  }@media (max-width: 575.98px) {
+  .custom-flex{
+    display: flex !important;
+    flex-direction: row !important;
+  }
+  .custom-flex-col{
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .custom-gap{
+    gap: 10px !important;
+  }
+  h3 {
+    font-size: 32px !important;
+  }
+  h2{
+    font-size: 40px !important;
+    text-align: center !important;
+  }
+  .custom-col{
+    width: 90% !important;
+  
+  }
+  .justify-content-sm-center{
+    justify-content: center !important;
+  }
+  }
+  
+  

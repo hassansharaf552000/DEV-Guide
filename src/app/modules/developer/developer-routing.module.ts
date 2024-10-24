@@ -90,6 +90,7 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileLayoutComponent,
     children: [
+      { path: 'profile', component: MentorProfileComponent },
       { path: 'updateprofile', component: Update_ProfileComponent },
       {path:'change-password',component:ChangepasswordComponent},
       {path:'skills',component:SkillsComponent},
