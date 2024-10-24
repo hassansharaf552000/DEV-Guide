@@ -14,7 +14,7 @@ export class HrlayoutComponent {
     { path: '/hr/hr-payments', label: 'Payments', icon: 'bi bi-wallet2' },
     { path: '/hr/queryanswers', label: 'Queries Answers', icon: 'bi bi-chat-dots' },
     { path: '/hr/session-details', label: 'Sessions', icon: 'bi bi-calendar-event' },
-    { path: '/hr/contact-hr', label: 'Contact Admin', icon: 'bi bi-envelope-open' },
+    { path: '/hr/contact_admin', label: 'Contact Admin', icon: 'bi bi-envelope-open' },
     { path: '/hr/schedule', label: 'Schedule', icon: 'bi bi-calendar-check-fill' },
     { path: '/hr/reviews', label: 'Reviews', icon: 'bi bi-star-fill' }
   ];
@@ -24,14 +24,14 @@ export class HrlayoutComponent {
   }
 
   // Listener to detect window resizing
-  // @HostListener('window:resize', ['$event'])
-  // onResize(event: any) {
-  //   this.checkScreenWidth();
-  // }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenWidth();
+  }
 
   // Check screen size and handle sidebar behavior
   checkScreenWidth() {
-    // this.isMobile = window.innerWidth < 768;  // Detect if screen width is less than 768px (Bootstrap's `md` breakpoint)
+    this.isMobile = window.innerWidth < 768;  // Detect if screen width is less than 768px (Bootstrap's `md` breakpoint)
 
     if (!this.isMobile) {
       this.isSidebarOpen = true;  // Keep the sidebar open on larger screens

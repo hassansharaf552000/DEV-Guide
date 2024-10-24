@@ -1,48 +1,98 @@
 import { Component } from '@angular/core';
 import { ScheduleService } from '../../../../shared/services/Schedule/schedule.service';
 import { AuthService } from '../../../../shared/services/Auth/auth.service';
-import { Decimal } from 'decimal.js';
+
+enum Day {
+  Saturday = 1,
+  Sunday,
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday
+}
+
+interface WorkingHour {
+  Day: Day;
+  Available: boolean;
+  StartTime: string;
+  EndTime: string;
+  User_Id: string;
+}
+
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.css'],
 })
+
 export class ScheduleComponent {
-  Working_Hours: Array<any> = [
-    { Day: 'Saturday', Available: false, Start: '', End: '' },
-    { Day: 'Sunday', Available: false, Start: '', End: '' },
-    { Day: 'Monday', Available: false, Start: '', End: '' },
-    { Day: 'Tuesday', Available: false, Start: '', End: '' },
-    { Day: 'Wednesday', Available: false, Start: '', End: '' },
-    { Day: 'Thursday', Available: false, Start: '', End: '' },
-    { Day: 'Friday', Available: false, Start: '', End: '' },
+  Working_Hours: Array<WorkingHour> = [
+    { Day: Day.Saturday, Available: false, StartTime: '00:00:00', EndTime: '00:00:00', User_Id: '' },
+    { Day: Day.Sunday, Available: false, StartTime: '00:00:00', EndTime: '00:00:00', User_Id: '' },
+    { Day: Day.Monday, Available: false, StartTime: '00:00:00', EndTime: '00:00:00', User_Id: '' },
+    { Day: Day.Tuesday, Available: false, StartTime: '00:00:00', EndTime: '00:00:00', User_Id: '' },
+    { Day: Day.Wednesday, Available: false, StartTime: '00:00:00', EndTime: '00:00:00', User_Id: '' },
+    { Day: Day.Thursday, Available: false, StartTime: '00:00:00', EndTime: '00:00:00', User_Id: '' },
+    { Day: Day.Friday, Available: false, StartTime: '00:00:00', EndTime: '00:00:00', User_Id: '' },
   ];
 
-  ScheduleData:any
-  SessionPrice: any ;
-  AllDone: boolean = true; // Initially disabled button
+  ScheduleData: {
+    "Price": any,
+    "Schedules": any[]
+  };
+  SessionPrice: any;
+  AllDone: boolean = true;
   priceError: string = '';
   Errors: Array<string> = [];
   isOpen: boolean = false;
 
-  constructor(private Schedule:ScheduleService,Auto:AuthService) {
-    this.Schedule.GetUserPrice().subscribe({
-      next:(res:any)=>{
-        this.SessionPrice =res.price
-        console.log(res);
-        
-      },
-      error:(err)=>{
-        console.log(err);
-        
-      }
-    })
+  constructor(private Schedule: ScheduleService, Auto: AuthService) {
+    console.log("session", this.SessionPrice);
+  }
 
-    console.log("session",this.SessionPrice)
-   }
+  ngOnInit() {
+    this.Schedule.GetSchedulesWithPrice().subscribe({
+      next: (res: any) => {
+        this.Working_Hours.forEach(day => {
+          const schedule = res.Schedules.find(s => s.Day === day.Day);
+          if (schedule) {
+            day.Available = schedule.Available;
+            day.StartTime = this.convertTimeSpanToString(schedule.StartTime);
+            day.EndTime = this.convertTimeSpanToString(schedule.EndTime);
+          } else {
+            day.Available = false;
+            day.StartTime = '00:00:00';
+            day.EndTime = '00:00:00';
+          }
+          this.SessionPrice = res.Price;
+        });
+        console.log("workinghour", this.Working_Hours);
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+  convertTimeSpanToString(timeSpan: string): string {
+    const timeParts = timeSpan.split(':');
+  
+    // Make sure to return the full 'hh:mm:ss' format
+    if (timeParts.length === 3) {
+      return `${timeParts[0]}:${timeParts[1]}:${timeParts[2]}`; // Return "hh:mm:ss" format
+    } else {
+      // Fallback if time doesn't contain seconds
+      return `${timeParts[0]}:${timeParts[1]}:00`;
+    }
+  }
   
 
-  // Check if price is valid
+  getDayName(day: Day): string {
+    return Day[day];
+  }
+
   checkPrice(price: string): void {
     this.SessionPrice = parseInt(price, 10);
     if (this.SessionPrice <= 0) {
@@ -53,48 +103,47 @@ export class ScheduleComponent {
     this.validateForm();
   }
 
-  // Mark a day as available
   available(index: number): void {
     this.Working_Hours[index].Available = true;
     this.checkTime(index);
     this.validateForm();
   }
 
-  // Mark a day as not available
   notavailable(index: number): void {
     this.Working_Hours[index].Available = false;
-    this.Working_Hours[index].Start = '';
-    this.Working_Hours[index].End = '';
+    this.Working_Hours[index].StartTime = '00:00:00';
+    this.Working_Hours[index].EndTime = '00:00:00';
     this.Errors[index] = '';
     this.validateForm();
   }
 
-  // Set time for start or end
   setTime(index: number, isStart: boolean, event: any): void {
-    const value = event.target.value;
+    const value = event.target.value; // This gets the time in 'hh:mm' format
+  
+    // Append ":00" to represent seconds
+    const timeWithSeconds = value + ':00';
+  
     if (isStart) {
-      this.Working_Hours[index].Start = value;
+      this.Working_Hours[index].StartTime = timeWithSeconds;
     } else {
-      this.Working_Hours[index].End = value;
+      this.Working_Hours[index].EndTime = timeWithSeconds;
     }
+  
     this.checkTime(index);
     this.validateForm();
   }
+  
 
-  // Check if the time range for a day is valid
+  
   checkTime(index: number): boolean {
-    const start = this.Working_Hours[index].Start;
-    const end = this.Working_Hours[index].End;
+    const start = this.Working_Hours[index].StartTime;
+    const end = this.Working_Hours[index].EndTime;
 
     if (start === end) {
-      this.Errors[
-        index
-      ] = `Start and end time for ${this.Working_Hours[index].Day} cannot be the same.`;
+      this.Errors[index] = `Start and end time for ${this.Working_Hours[index].Day} cannot be the same.`;
       return false;
     } else if (start > end) {
-      this.Errors[
-        index
-      ] = `Start time for ${this.Working_Hours[index].Day} cannot be later than the end time.`;
+      this.Errors[index] = `Start time for ${this.Working_Hours[index].Day} cannot be later than the end time.`;
       return false;
     } else {
       this.Errors[index] = '';
@@ -102,12 +151,10 @@ export class ScheduleComponent {
     }
   }
 
-  // Validate the entire form
   validateForm(): void {
     let validDaysCount = 0;
     let allTimesValid = true;
 
-    // Check if at least two days are valid
     this.Working_Hours.forEach((element, index) => {
       if (element.Available) {
         if (this.checkTime(index)) {
@@ -118,51 +165,41 @@ export class ScheduleComponent {
       }
     });
 
-    // Final validation: At least two valid days and a valid price
     if (validDaysCount >= 1 && allTimesValid && this.SessionPrice > 0) {
-      this.AllDone = false; // Enable the submit button
+      this.AllDone = false;
     } else {
-      this.AllDone = true; // Disable the submit button
+      this.AllDone = true;
     }
   }
-  SetSchedule(){
-    this.Schedule.SetSchedule(this.ScheduleData)
-  }
-  // UpdateUserPrice(price: string) {
-  //   // Parse the price as a decimal
-  //   const priceValue = new Decimal(price);
-  
-  //   // Check if the price value is valid (non-negative and not NaN)
-  //   if (!priceValue.isNaN() && priceValue.greaterThan(0)) {
-  //     // Call the service method to update the user's price
-  //     this.Schedule.UpdateUserPrice(priceValue.toFixed(2)).subscribe(
-  //       response => {
-  //         console.log('Price updated successfully:', response);
-  //         // Handle successful update (e.g., show a success message)
-  //       },
-  //       error => {
-  //         console.error('Error updating price:', error);
-  //         // Handle error (e.g., show an error message)
-  //       }
-  //     );
-  //   } else {
-  //     console.error('Invalid price');
-  //   }
-  // }
-  UpdateUserPrice(price: number) {
-  this.Schedule.UpdateUserPrice(price).subscribe(
-          response => {
-            console.log('Price updated successfully:', response);
-            console.log("price",price);
-            
-            // Handle successful update (e.g., show a success message)
-          },
-          error => {
-            console.error('Error updating price:', error);
-            // Handle error (e.g., show an error message)
-          }
-        );
+
+  SetSchedule() {
+    if (!this.ScheduleData) {
+      this.ScheduleData = {
+        "Schedules": [],
+        "Price": 0,
+      };
+    }
+
+    this.ScheduleData.Schedules = this.Working_Hours.map((hour) => {
+      return {
+        Day: hour.Day,
+        Available: hour.Available,
+        StartTime: hour.StartTime,
+        EndTime: hour.EndTime,
+        User_Id: hour.User_Id
+      };
+    });
+    this.ScheduleData.Price = this.SessionPrice;
+
+    console.log("ScheduleData", this.ScheduleData);
+
+    this.Schedule.SetSchedule(this.ScheduleData).subscribe({
+      next: (response) => {
+        console.log('Schedule set successfully:', response);
+      },
+      error: (error) => {
+        console.error('Error setting schedule:', error);
       }
-
-
+    });
+  }
 }

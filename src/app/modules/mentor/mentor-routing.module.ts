@@ -14,11 +14,14 @@ import { SessionDetailsComponent } from './Components/session-details/session-de
 import { Update_ProfileComponent } from '../../shared/components/update_profile/update_profile.component';
 import { MentorSummryComponent } from './Components/mentor-summry/mentor-summry.component';
 import { MentorRequestComponent } from './Components/mentor-request/mentor-request.component';
+import { ProfileComponent } from './Components/profile/profile.component';
 const routes: Routes = [
   {
     path: '',
     component: MentorlayoutComponent,
     children: [
+      // { path: 'profile', component:MentorProfileComponent },
+      { path: 'profile', component: ProfileComponent },
       { path: 'updateprofile', component: Update_ProfileComponent },
       { path: 'mentor-payments', component: MentorPaymentsComponent },
       { path: 'booking', component: BookingComponent },
