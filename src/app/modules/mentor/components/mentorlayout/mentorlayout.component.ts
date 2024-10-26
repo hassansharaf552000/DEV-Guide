@@ -13,7 +13,7 @@ export class MentorlayoutComponent {
     { path: '/mentor/updateprofile', label: 'Edit Profile', icon: 'bi bi-pencil' },
     { path: '/mentor/mentor-payments', label: 'Payments', icon: 'bi bi-wallet2' },
     { path: '/mentor/queryanswers', label: 'Queries Answers', icon: 'bi bi-chat-dots' },
-    { path: '/mentor/session-details', label: 'Sessions', icon: 'bi bi-calendar-event' },
+    { path: '/mentor/booking', label: 'Sessions', icon: 'bi bi-calendar-event' },
     { path: '/mentor/contact_admin', label: 'Contact Admin', icon: 'bi bi-envelope-open' },
     { path: '/mentor/schedule', label: 'Schedule', icon: 'bi bi-calendar-check-fill' },
     { path: '/mentor/reviews', label: 'Reviews', icon: 'bi bi-star-fill' }
@@ -24,14 +24,14 @@ export class MentorlayoutComponent {
   }
 
   // Listener to detect window resizing
-  // @HostListener('window:resize', ['$event'])
-  // onResize(event: any) {
-  //   this.checkScreenWidth();
-  // }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenWidth();
+  }
 
   // Check screen size and handle sidebar behavior
   checkScreenWidth() {
-    //this.isMobile = window.innerWidth < 768;  // Detect if screen width is less than 768px (Bootstrap's `md` breakpoint)
+    this.isMobile = window.innerWidth < 768;  // Detect if screen width is less than 768px (Bootstrap's `md` breakpoint)
 
     if (!this.isMobile) {
       this.isSidebarOpen = true;  // Keep the sidebar open on larger screens

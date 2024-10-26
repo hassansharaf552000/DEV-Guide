@@ -13,13 +13,14 @@ import { HrAnswerQueryComponent } from './Components/hr-answer-query/hr-answer-q
 import { SessionDatailsComponent } from './Components/session-details/session-details.component';
 import { HrProfileComponent } from '../developer/Components/hr-profile/hr-profile.component';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
+import { ProfileComponent } from './Components/profile/profile.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HrlayoutComponent,
     children: [
-      { path: 'profile', component:HrProfileComponent },
+      { path: 'profile', component: ProfileComponent },
       { path: 'updateprofile', component: Update_ProfileComponent },
       { path: 'hr-payments', component: HrPaymentsComponent },
       { path: 'booking', component:BookingHrComponent },

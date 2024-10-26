@@ -1,47 +1,47 @@
 <div class="container-fluid px-0">
-    <div class="row no-gutters gap-0">
-  
-      <!-- Sidebar (visible on larger screens and tablets) -->
-      <div class="col-lg-3  col-xl-2  col-md-4 d-none d-md-block">
-        <app-sidebarlayout></app-sidebarlayout> <!-- Sidebar remains for larger screens and tablets -->
+  <div class="row no-gutters gap-0">
+
+    <!-- Sidebar (visible on larger screens and tablets) -->
+    <div class="col-lg-3  col-xl-2  col-md-4 d-none d-md-block">
+      <app-sidebarlayout></app-sidebarlayout> <!-- Sidebar remains for larger screens and tablets -->
+    </div>
+
+    <!-- Mobile Navbar (visible on smaller screens, including tablets in collapse mode) -->
+    <nav class="navbar navbar-expand-md navbar-light d-md-none w-100 text-center text-white"
+      style="background-color: #415bcf;">
+      <button class="navbar-toggler mr-auto" type="button" (click)="toggleSidebar()" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Brand name (centered) -->
+      <a class="navbar-brand text-white mx-auto" href="#">HR Dashboard</a>
+
+
+      <!-- Profile Image (aligned right) -->
+      <div class="navbar-profile ml-auto">
+        <img src="01.jpg" alt="Profile Image" class="profile-image rounded-circle"
+          style="width: 40px; height: 40px;">
       </div>
-  
-      <!-- Mobile Navbar (visible on smaller screens, including tablets in collapse mode) -->
-      <nav class="navbar navbar-expand-md navbar-light d-md-none w-100 text-center text-white"
-        style="background-color: #415bcf;">
-        <button class="navbar-toggler mr-auto" type="button" (click)="toggleSidebar()" aria-controls="navbarNav"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-  
-        <!-- Brand name (centered) -->
-        <a class="navbar-brand text-white mx-auto" href="#">HR Dashboard</a>
-  
-  
-        <!-- Profile Image (aligned right) -->
-        <div class="navbar-profile ml-auto">
-          <img src="01.jpg" alt="Profile Image" class="profile-image rounded-circle"
-            style="width: 40px; height: 40px;">
-        </div>
-  
-        <div class="collapse navbar-collapse" [ngClass]="{'show': isSidebarOpen}">
-          <ul class="navbar-nav ml-auto text-white">
-            <li class="nav-item text-white" *ngFor="let item of menuItems">
-              <a class="nav-link d-flex align-items-center" [routerLink]="item.path" (click)="closeSidebar()">
-                <i [class]="item.icon"></i> <!-- Icon class bound from menuItems -->
-                <span class="ml-2">{{ item.label }}</span> <!-- Text label next to the icon -->
-              </a>
-            </li>
-            <li class="nav-item">
-              <button class="btn btn-danger" (click)="logout()">Logout</button>
-            </li>
-          </ul>
-        </div>
-      </nav>
-  
-      <!-- Main Content -->
-      <div class="col-lg-9 col-md-8 col-12 ps-5">
-        <router-outlet></router-outlet>
+
+      <div class="collapse navbar-collapse" [ngClass]="{'show': isSidebarOpen}">
+        <ul class="navbar-nav ml-auto text-white">
+          <li class="nav-item text-white" *ngFor="let item of menuItems">
+            <a class="nav-link d-flex align-items-center" [routerLink]="item.path" (click)="closeSidebar()">
+              <i [class]="item.icon"></i> <!-- Icon class bound from menuItems -->
+              <span class="ml-2">{{ item.label }}</span> <!-- Text label next to the icon -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-danger" (click)="logout()">Logout</button>
+          </li>
+        </ul>
       </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="col-lg-9 col-md-9 col-12  custome-margin " >
+      <router-outlet></router-outlet>
     </div>
   </div>
+</div>

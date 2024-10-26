@@ -16,6 +16,9 @@ import { SidebarlayoutComponent } from './Components/sidebarlayout/sidebarlayout
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { SharedModule } from '../../shared/shared.module';
+import { ProfileComponent } from './Components/profile/profile.component';
+import { DeveloperModule } from '../developer/developer.module';
+
 
 
 
@@ -32,7 +35,9 @@ import { SharedModule } from '../../shared/shared.module';
     ReviewsListComponent,
     ScheduleComponent,
     SessionDatailsComponent,
-    SidebarlayoutComponent
+    SidebarlayoutComponent,
+    ProfileComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -44,6 +49,7 @@ import { SharedModule } from '../../shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    DeveloperModule
   ]
 })
 export class HrModule { }

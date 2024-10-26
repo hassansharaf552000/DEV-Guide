@@ -123,7 +123,6 @@ export class StepThreeComponent {
     { id: 'IQ', name: 'Iraq' },
     { id: 'IE', name: 'Ireland' },
     { id: 'IM', name: 'Isle of Man' },
-    { id: 'IL', name: 'Israel' },
     { id: 'IT', name: 'Italy' },
     { id: 'JM', name: 'Jamaica' },
     { id: 'JP', name: 'Japan' },

@@ -107,5 +107,6 @@ import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.com
 
 
   ],
+  exports: [RateComponent]
 })
 export class DeveloperModule {}
