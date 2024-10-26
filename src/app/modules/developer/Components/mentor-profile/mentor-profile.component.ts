@@ -1,16 +1,18 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IMentor } from '../../../../core/enums/Mentor';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AccountService } from '../../../../shared/services/Account/account.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-mentor-profile',
   templateUrl: './mentor-profile.component.html',
   styleUrl: './mentor-profile.component.css'
 })
-export class MentorProfileComponent {
+export class MentorProfileComponent implements OnInit{
+  
   id : string;
    mentorId: string | null = null;
  // mentorProfile: IMentor | undefined;
@@ -41,10 +43,32 @@ export class MentorProfileComponent {
   
   // console.log("formated",formattedDate);
   selectedSkills:any[]=this.mentorProfile.Skills
-  constructor(private route: ActivatedRoute ,private http: HttpClient,private AccService:AccountService,private cdr: ChangeDetectorRef) {
-   
+  showReviewForm = false;
+
+  handleReview(reviewData: any) {
+    // Handle the review data here (e.g., send to your API)
+    console.log('Review submitted:', reviewData);
+    // Optionally hide the form after submission
+    this.showReviewForm = false;
+  }
+  
+  reviewForm: FormGroup;
+  constructor(private route: ActivatedRoute ,private http: HttpClient,private AccService:AccountService,private fb: FormBuilder) {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.reviewForm = this.fb.group({
+      rating: ['', Validators.required],
+      comment: ['', Validators.required]
+    });
   }
 
+ 
+
+  onSubmit() {
+    if (this.reviewForm.valid) {
+      // Handle form submission (e.g., send to API)
+      console.log(this.reviewForm.value);
+    }
+  }
   // ngOnInit(): void {
   //   this.mentorId = this.route.snapshot.paramMap.get('id');
   //   // this.loadMentor();
@@ -90,8 +114,7 @@ console.log("mentorid",mentorId)
         data => {
           this.mentorProfile = data;
           console.log('Profile: ', this.mentorProfile);
-          console.log("experi",this.mentorProfile.Educations.length);
-          this.cdr.detectChanges();
+          console.log("experi",this.mentorProfile?.Experiences?.length);
           
         },
         error => {
@@ -104,7 +127,6 @@ console.log("mentorid",mentorId)
         data => {
           this.mentorReviews = data;
           console.log('Reviews: ', this.mentorReviews);
-          this.cdr.detectChanges();
         },
         error => {
           console.error('Error fetching reviews', error);
@@ -164,27 +186,25 @@ console.log("mentorid",mentorId)
   getReviews(mentorId: string) {
     this.AccService.getReviews(mentorId).subscribe((reviews: any[]) => {
       // Sort the reviews by date in descending order (most recent first)
-      this.reviews = reviews.sort((a, b) => new Date(b.ReviewDate).getTime() - new Date(a.ReviewDate).getTime())|| [];
+      this.reviews = reviews.sort((a, b) => new Date(b.ReviewDate).getTime() - new Date(a.ReviewDate).getTime());
       this.updateDisplayedReviews();
     });
   }
 
 
   updateDisplayedReviews() {
-    this.displayedReviews = this.reviews.slice(0, this.reviewsLimit);
-    this.hasMoreReviews = this.reviews.length > this.reviewsLimit;
+    this.displayedReviews = this.reviews?.slice(0, this.reviewsLimit);
+    this.hasMoreReviews = this.reviews?.length > this.reviewsLimit;
     this.canLoadLess = this.reviewsLimit > 4;  // Show "Load Less" if more than 4 reviews are displayed
   }
 
   loadMoreReviews() {
     this.reviewsLimit += 4;  // Increment the limit by 4 to load more reviews
     this.updateDisplayedReviews();
-    this.cdr.detectChanges();
   }
   loadLessReviews() {
     this.reviewsLimit = Math.max(this.reviewsLimit - 4, 4);  // Decrease the limit but not below the initial value (4)
     this.updateDisplayedReviews();
-    this.cdr.detectChanges();
   }
   // public showReadMore(aboutText: string): boolean {
   //   const maxLength = 300; // You can adjust this number to match the number of characters that fit in 2-3 lines.
@@ -194,24 +214,100 @@ console.log("mentorid",mentorId)
     this.isExpanded = !this.isExpanded;
   }
 
-  // get displayText(): string {
-  //   if (this.isExpanded || this.mentorProfile.About.length <= this.maxLength) {
-  //     return this.mentorProfile.About;
-  //   }
-  //   return this.mentorProfile.About.slice(0, this.maxLength) + '...';
-  // }
   get displayText(): string {
-    if (!this.mentorProfile || !this.mentorProfile.About) {
-      return '';  // Return empty string if mentorProfile or About is undefined
-    }
-  
-    if (this.isExpanded || this.mentorProfile.About.length <= this.maxLength) {
+    if (this.isExpanded || this.mentorProfile?.About?.length <= this.maxLength) {
       return this.mentorProfile.About;
     }
-  
-    return this.mentorProfile.About.slice(0, this.maxLength) + '...';
+    return this.mentorProfile?.About?.slice(0, this.maxLength) + '...';
   }
-  
+  loadMentorProfile(id:string):void{
+    // const mentorlist:IMentor[]=[
+    //   {
+    //     id: s,
+    //     FirstName: 'Alice',
+    //     LastName:'Johnson',
+    //     Image: 'https://via.placeholder.com/150',
+    //      category: 'Machine Learning',
+    //     Title: 'Machine Learning Engineer',
+    //     AverageRate: 3,
+    //     Price: 199.99,
+    //     YearsOfExperience:5,
+    //    About:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+    //    Skills: ['Front End', 'UI/UX'],
+    //    SocialAccounts:[]     },
+    //   {
+    //     id: 2,
+    //     FirstName: 'Alice',
+    //     LastName:'Johnson',
+    //     Image: 'https://via.placeholder.com/150',
+    //      category: 'Machine Learning',
+    //     Title: 'Machine Learning Engineer',
+    //     AverageRate: 3,
+    //     Price: 199.99,
+    //     YearsOfExperience:5,
+    //    About:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+    //    Skills: ['Front End', 'UI/UX'],
+    //    SocialAccounts:[]
+    //   },
+    //   {
+    //     id: 3,
+    //     FirstName: 'Alice',
+    //     LastName:'Johnson',
+    //     Image: 'https://via.placeholder.com/150',
+    //      category: 'Machine Learning',
+    //     Title: 'Machine Learning Engineer',
+    //     AverageRate: 3,
+    //     Price: 199.99,
+    //     YearsOfExperience:5,
+    //    About:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+    //    Skills: ['Front End', 'UI/UX'],
+    //    SocialAccounts:[]
+    //   },
+    //   {
+    //     id:4,
+    //     FirstName: 'Alice',
+    //     LastName:'Johnson',
+    //     Image: 'https://via.placeholder.com/150',
+    //      category: 'Machine Learning',
+    //     Title: 'Machine Learning Engineer',
+    //     AverageRate: 3,
+    //     Price: 199.99,
+    //     YearsOfExperience:5,
+    //    About:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+    //    Skills: ['Front End', 'UI/UX'],
+    //    SocialAccounts:[]
+    //   },
+    //   {
+    //     id:5,
+    //     FirstName: 'Alice',
+    //     LastName:'Johnson',
+    //     Image: 'https://via.placeholder.com/150',
+    //      category: 'Machine Learning',
+    //     Title: 'Machine Learning Engineer',
+    //     AverageRate: 3,
+    //     Price: 199.99,
+    //     YearsOfExperience:5,
+    //    About:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+    //    Skills: ['Front End', 'UI/UX'],
+    //    SocialAccounts:[]
+    //   },
+    //   {
+    //     id:6,
+    //     FirstName: 'Alice',
+    //     LastName:'Johnson',
+    //     Image: 'https://via.placeholder.com/150',
+    //      category: 'Machine Learning',
+    //     Title: 'Machine Learning Engineer',
+    //     AverageRate: 3,
+    //     Price: 199.99,
+    //     YearsOfExperience:5,
+    //    About:'Lo Nam ligula magna, gravida id suscipit vitae, condimentum ac mauris. Mauris nibh leo, aliquet vel turpiscing elit. Nam ligula magcing elit. Nam ligula magcing elit. Nam ligula mag eget, tempus faucibus felis..',
+    //    Skills: ['Front End', 'UI/UX'],
+    //    SocialAccounts:[]
+    //   }
+    // ];
+    // this.mentorProfile = mentorlist.find(mentor=> mentor.id === id);
+  }
 
 
 
@@ -249,163 +345,15 @@ getLimitedEducations(educations: any[]) {
   if (!educations) {
     return []; // Return an empty array if educations is undefined
   }
-  return this.showAll ? educations : educations.slice(0, this.maxItemsToShow);
+  return this.showAll ? educations : educations?.slice(0, this.maxItemsToShow);
 }
 getLimitedExperiences(experiences: any[]) {
   if (!experiences) {
     return []; // Return an empty array if educations is undefined
   }
-  return this.showAll ? experiences : experiences.slice(0, this.maxItemsToShow);
+  return this.showAll ? experiences : experiences?.slice(0, this.maxItemsToShow);
 }
 trackByFunction(index: number, education: any): string {
   return education.Degree; // or any unique identifier
 }
 }
-
-
-// import { Component, OnInit } from '@angular/core';
-// import { ActivatedRoute } from '@angular/router';
-// import { HttpClient } from '@angular/common/http';
-// import { AccountService } from '../../../../shared/services/Account/account.service';
-// import { IMentor } from '../../../../core/enums/Mentor';
-// import { ChangeDetectorRef } from '@angular/core';
-
-// @Component({
-//   selector: 'app-mentor-profile',
-//   templateUrl: './mentor-profile.component.html',
-//   styleUrls: ['./mentor-profile.component.css']
-// })
-// export class MentorProfileComponent implements OnInit {
-//   id: string;
-//   mentorId: string | null = null;
-//   mentorProfile: any = {};
-//   mentorReviews: any[] = [];
-//   displayedReviews: any[] = [];
-//   similarMentors: any[] = [];
-//   selectedSkills: any[] = [];
-//   reviewsLimit: number = 4;
-//   hasMoreReviews: boolean = false;
-//   isExpanded: boolean = false;
-//   maxLength: number = 250;
-//   showAll: boolean = false;
-//   canLoadLess: boolean = false;
-//   maxItemsToShow: number = 2;
-
-//   constructor(
-//     private route: ActivatedRoute,
-//     private http: HttpClient,
-//     private AccService: AccountService,
-//     private cdr: ChangeDetectorRef // Injecting ChangeDetectorRef
-//   ) {}
-
-//   ngOnInit(): void {
-//     this.mentorId = this.route.snapshot.paramMap.get('id');
-//     console.log('mentorId:', this.mentorId);
-
-//     if (this.mentorId) {
-//       this.loadMentorProfile(this.mentorId);
-//       this.loadMentorReviews(this.mentorId);
-//       this.loadSimilarMentors();
-//     }
-//   }
-
-//   // Fetch Mentor Profile
-//   loadMentorProfile(mentorId: string): void {
-//     this.AccService.getProfile(mentorId).subscribe(
-//       (data: any) => {
-//         this.mentorProfile = data;
-//         this.selectedSkills = this.mentorProfile.Skills || [];
-//         console.log('Profile:', this.mentorProfile);
-//         this.cdr.detectChanges(); // Apply change detection manually
-//       },
-//       error => {
-//         console.error('Error fetching profile', error);
-//       }
-//     );
-//   }
-
-//   // Fetch Mentor Reviews
-//   loadMentorReviews(mentorId: string): void {
-//     this.AccService.getReviews(mentorId).subscribe(
-//       (reviews: any[]) => {
-//         this.mentorReviews = reviews.sort((a, b) => new Date(b.ReviewDate).getTime() - new Date(a.ReviewDate).getTime());
-//         this.updateDisplayedReviews();
-//         this.cdr.detectChanges(); // Apply change detection manually
-//       },
-//       error => {
-//         console.error('Error fetching reviews', error);
-//       }
-//     );
-//   }
-
-//   // Load similar mentors based on skills and title
-//   loadSimilarMentors(): void {
-//     const title = this.mentorProfile.title || '';
-//     this.AccService.getall('', 'Mentor', title, 0, 0, null, 1, 3, this.selectedSkills, this.mentorId)
-//       .subscribe((mentors: any) => {
-//         this.similarMentors = mentors.Data;
-//         console.log('Similar Mentors:', this.similarMentors);
-//         this.cdr.detectChanges();
-//       });
-//   }
-
-//   // Update the displayed reviews based on the limit
-//   updateDisplayedReviews(): void {
-//     this.displayedReviews = this.mentorReviews.slice(0, this.reviewsLimit);
-//     this.hasMoreReviews = this.mentorReviews.length > this.reviewsLimit;
-//     this.canLoadLess = this.reviewsLimit > 4;
-//   }
-
-//   // Load more reviews
-//   loadMoreReviews(): void {
-//     this.reviewsLimit += 4;
-//     this.updateDisplayedReviews();
-//   }
-
-//   // Load fewer reviews
-//   loadLessReviews(): void {
-//     this.reviewsLimit = Math.max(this.reviewsLimit - 4, 4);
-//     this.updateDisplayedReviews();
-//   }
-
-//   // Toggle description expansion
-//   toggleExpand(): void {
-//     this.isExpanded = !this.isExpanded;
-//   }
-
-//   // Display the text based on expansion
-//   get displayText(): string {
-//     if (!this.mentorProfile || !this.mentorProfile.About) {
-//       return '';
-//     }
-//     return this.isExpanded || this.mentorProfile.About.length <= this.maxLength
-//       ? this.mentorProfile.About
-//       : this.mentorProfile.About.slice(0, this.maxLength) + '...';
-//   }
-
-//   // Format date
-//   formatDate(dateString: string): string {
-//     const date = new Date(dateString);
-//     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-//   }
-
-//   // Toggle show all items (Education/Experience)
-//   toggleShowAll(): void {
-//     this.showAll = !this.showAll;
-//   }
-
-//   // Limit the displayed educations
-//   getLimitedEducations(educations: any[]): any[] {
-//     return this.showAll ? educations : educations.slice(0, this.maxItemsToShow);
-//   }
-
-//   // Limit the displayed experiences
-//   getLimitedExperiences(experiences: any[]): any[] {
-//     return this.showAll ? experiences : experiences.slice(0, this.maxItemsToShow);
-//   }
-
-//   // Track by function for better performance in ngFor
-//   trackByFunction(index: number, item: any): string {
-//     return item.Degree; // Ensure the unique identifier is correct
-//   }
-// }

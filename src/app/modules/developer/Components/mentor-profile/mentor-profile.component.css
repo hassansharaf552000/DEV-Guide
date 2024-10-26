@@ -262,3 +262,12 @@ h2{
 }
 }
 
+.star {
+  font-size: 24px;
+  color: lightgray;
+  cursor: pointer;
+}
+
+.star.filled {
+  color: gold;
+}

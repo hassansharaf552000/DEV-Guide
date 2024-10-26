@@ -1,64 +1,93 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AccountService } from '../../../../shared/services/Account/account.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
 
-  clientsfeedbacks = [
-    { id: 1, imgURL: '01.jpg', name: 'John Doe', rate: 4, comment: 'This is a great product' },
-    { id: 2, imgURL: '10.jpg', name: 'Adham Hamdy', rate: 3, comment: 'This is a great product' },
-    { id: 3, imgURL: '05 (1).jpg', name: 'Dina John', rate: 4, comment: 'This is a great product' },
-    { id: 4, imgURL: '04.jpg', name: 'Hassan Sharaf', rate: 5, comment: 'This is a great product' },
-    { id: 5, imgURL: '06.jpg', name: 'Mirna Alfy', rate: 4, comment: 'This is a great product' },
-    // Add more items as needed
-  ];
+export class HomeComponent implements OnInit {
+getTopratedmentorURL = "http://localhost:5164/api/Account/Mentors"
+getTopratedhrURL = "http://localhost:5164/api/Account/HRs"
 
-  carouselOptions = {
-    loop: true,                  // Enables infinite looping
-    margin: 10,                  // Space between items
-    nav: true,                   // Show next/prev navigation
-    dots: true,                  // Enable dot navigation
-    autoplay: true,              // Auto-play enabled
-    autoplayTimeout: 3000,       // Auto-slide every 3 seconds
-    autoplayHoverPause: true,    // Pause autoplay on hover
-    responsive: {
-      0: { items: 1 },           // 1 item on smaller screens
-      600: { items: 2 },         // 2 items on medium screens
-      1000: { items: 3 }         // 3 items on larger screens
-    }
-  };
-  topmen:any[]
-  similarMentors:any[]
-  constructor(private AccService:AccountService) {
-    this.AccService.getall('', 'Mentor',"", 0, 0, null, 1,5).subscribe(mentors => {
-      this.similarMentors=mentors.Data;
-      console.log("3-mentors",mentors.Data);  // This will return 3 mentors with the required skills and title
-      this.topmen=this.similarMentors.sort((a: any, b: any) => b.AverageRate - a.AverageRate).slice(0, 3);
-    });
-   // this.getTopMentors();
+mentors: any[] = [];
+HRs: any[] = [];
 
-  }
-  
-  // Call getall and get the top 3 mentors with the highest rate
-getTopMentors(): void {
-  this.AccService.getall('', '', '', 0, 0, null, 1, 100, [], '')
-    .subscribe(response => {
-      if (response && response.data) {
-        // Sort mentors by their rate in descending order
-        const sortedMentors = response.data.sort((a: any, b: any) => b.rate - a.rate);
+constructor(private http: HttpClient) {}
 
-        // Get the top 3 mentors
-        const topMentors = sortedMentors.slice(0, 3);
-this.topmen=topMentors
-        // Now you have the top 3 mentors with the highest average rate
-        console.log('Top 3 Mentors:', topMentors);
-      }
-    });
+ngOnInit() {
+  this.getMentors();
+  this.getHRs();
+
 }
+
+// Function to call the backend API and retrieve queries
+getMentors() {
+  this.http.get<any>(this.getTopratedmentorURL).subscribe(
+    (data) => {
+      console.log('mentors',data[0]);
+      
+      this.mentors = data;
+      console.log('mentors',data[0]);
+    },
+    (error) => {
+      console.error('Error fetching user queries:', error);
+    }
+  );
+}
+getHRs() {
+  this.http.get<any>(this.getTopratedhrURL).subscribe(
+    (data) => {
+      console.log('HRs',data);
+      
+      this.HRs = data;
+    },
+    (error) => {
+      console.error('Error fetching user queries:', error);
+    }
+  );
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // clientsfeedbacks = [
+  //   { id: 1, imgURL: '01.jpg', name: 'John Doe', rate: 4, comment: 'This is a great product' },
+  //   { id: 2, imgURL: '10.jpg', name: 'Adham Hamdy', rate: 3, comment: 'This is a great product' },
+  //   { id: 3, imgURL: '05 (1).jpg', name: 'Dina John', rate: 4, comment: 'This is a great product' },
+  //   { id: 4, imgURL: '04.jpg', name: 'Hassan Sharaf', rate: 5, comment: 'This is a great product' },
+  //   { id: 5, imgURL: '06.jpg', name: 'Mirna Alfy', rate: 4, comment: 'This is a great product' },
+  //   // Add more items as needed
+  // ];
+
+  // carouselOptions = {
+  //   loop: true,                  // Enables infinite looping
+  //   margin: 10,                  // Space between items
+  //   nav: true,                   // Show next/prev navigation
+  //   dots: true,                  // Enable dot navigation
+  //   autoplay: true,              // Auto-play enabled
+  //   autoplayTimeout: 3000,       // Auto-slide every 3 seconds
+  //   autoplayHoverPause: true,    // Pause autoplay on hover
+  //   responsive: {
+  //     0: { items: 1 },           // 1 item on smaller screens
+  //     600: { items: 2 },         // 2 items on medium screens
+  //     1000: { items: 3 }         // 3 items on larger screens
+  //   }
+  // };
+
 
 
   // currentSlide = 0;
@@ -114,4 +143,4 @@ this.topmen=topMentors
   // }
 
   
-}
+

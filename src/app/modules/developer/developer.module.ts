@@ -86,7 +86,8 @@ import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.com
     ReviewsListComponent,
     QueryComponent,
     QueryAnswerComponent,
-    MentorReplyComponent
+    MentorReplyComponent,
+    ContactUsComponent
   ],
   imports: [
     CommonModule,
