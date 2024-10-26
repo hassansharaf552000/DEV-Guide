@@ -16,8 +16,9 @@
                 <div class="d-flex flex-column gap-5 ">
                   <!--img-->
                   <div class="mt-n8 mb-0" style="height: 0px;">
-                    <img src="http://localhost:5164/{{mentorProfile.Image}}" alt="mentor 1" class="img-fluid rounded-4 mt-n8"
-     onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
+                    <img src="http://localhost:5164/{{mentorProfile.Image}}" alt="mentor 1"
+                      class="img-fluid rounded-4 mt-n8"
+                      onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
                     <!-- <img src="avatar-2.jpg" alt="mentor 1" class="img-fluid rounded-4 mt-n8"> -->
                   </div>
                   <div class="d-flex flex-column gap-5 mb-5 custom-gap gap-sm-3">
@@ -25,7 +26,8 @@
                       <div class="d-flex flex-md-row flex-sm-row flex-column custom-flex justify-content-between gap-2">
                         <!--heading-->
                         <div>
-                          <h1 class="mb-0" style="font-size: 40PX;">{{ mentorProfile?.FirstName }} {{mentorProfile?.LastName}}</h1>
+                          <h1 class="mb-0" style="font-size: 40PX;">{{ mentorProfile?.FirstName }}
+                            {{mentorProfile?.LastName}}</h1>
                           <!--content-->
                           <div class="d-flex flex-lg-row  flex-column gap-2">
                             <small class="fw-medium text-gray-800">{{ mentorProfile?.Title }}</small>
@@ -34,12 +36,13 @@
                         </div>
                         <!--button-->
                         <div class="d-flex flex-row gap-3 align-items-center custom-flex-col">
-                          <a  [routerLink]="['/developer/booking/',id]"class="btn btn btn-outline-primary">
-                           
+                          <a [routerLink]="['/developer/booking/',id]" class="btn btn btn-outline-primary">
+
                             <i class="fa-regular fa-handshake"></i>
                             Book Session
                           </a>
-                          <a   [routerLink]="['/developer/query/', id]" class="btn btn-outline-primary"><i class="fa-solid fa-circle-question"></i> Ask
+                          <a [routerLink]="['/developer/query/', id]" class="btn btn-outline-primary"><i
+                              class="fa-solid fa-circle-question"></i> Ask
                             Questions</a>
                         </div>
                       </div>
@@ -92,7 +95,7 @@
                         </div>
                       </div>
                     </div>
-                  
+
                     <div>
                       <span
                         class="badge rounded-pill text-success-emphasis bg-success-subtle border border-success align-items-center">
@@ -111,7 +114,7 @@
             <!--card-->
             <div class="card">
               <!--card body-->
-             
+
               <div class="card-body p-md-5 d-flex flex-column gap-3">
                 <!--heading-->
                 <h3 class="mb-0">About</h3>
@@ -120,14 +123,14 @@
                   <p class="mb-1">
                     {{ displayText }}
                   </p>
-                  <div *ngIf="mentorProfile.About.length > maxLength">
+                  <div *ngIf="mentorProfile?.About?.length > maxLength">
                     <a class="btn-link" (click)="toggleExpand()">
                       {{ isExpanded ? 'Show less' : 'Read more' }}
                     </a>
                   </div>
                 </div>
               </div>
-              
+
             </div>
             <!--card-->
             <div class="card">
@@ -149,7 +152,7 @@
               </div>
             </div>
             <!--card-->
-            @if(mentorReviews.length>0){
+            @if(mentorReviews?.length>0){
             <div class="card">
               <!--card body-->
               <div class="card-body p-md-5">
@@ -173,13 +176,16 @@
                     <div class="d-flex flex-row justify-content-between align-items-md-center">
                       <div class="d-flex flex-row gap-3 align-items-center">
                         <div>
-                          <img src="http://localhost:5164/{{review.Reviewer.Image}}" alt="avatar" class="avatar avatar-lg rounded-circle" onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
+                          <img src="http://localhost:5164/{{review.Reviewer.Image}}" alt="avatar"
+                            class="avatar avatar-lg rounded-circle"
+                            onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
                         </div>
                         <div>
                           <h6 class="mb-1">{{ review.Reviewer.FirstName }} {{ review.Reviewer.LastName }}</h6>
 
-                          <div class="d-flex flex-md-row flex-column flex-sm-row custom-flex custom-gap gap-md-2 gap-sm-2 align-items-md-center lh-1">
-                            <app-rate [value]="review.Rate" ></app-rate>
+                          <div
+                            class="d-flex flex-md-row flex-column flex-sm-row custom-flex custom-gap gap-md-2 gap-sm-2 align-items-md-center lh-1">
+                            <app-rate [value]="review.Rate"></app-rate>
                             <span>
                               <small class="fw-medium">{{ formatDate(review.ReviewDate) }}</small>
                             </span>
@@ -191,7 +197,7 @@
                       <p class="mb-0">{{ review.Description }}</p>
                     </div>
                   </div>
-                
+
                   <!-- Load More Button -->
                   <div *ngIf="hasMoreReviews">
                     <a id="loadMoreButton" class="btn btn-outline-primary" (click)="loadMoreReviews()">
@@ -203,11 +209,41 @@
                       Load less reviews
                     </a>
                   </div>
+
+
+
+
+
+
+
+                  <button (click)="showReviewForm = !showReviewForm" class="btn btn-outline-primary">
+                    {{ showReviewForm ? 'Hide Review Form' : 'Add Review' }}
+                  </button>
+  
+                  <div *ngIf="showReviewForm">
+                    <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+                      <div>
+                        <label for="rating">Rating:</label>
+                        <div>
+                          <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="reviewForm.patchValue({ rating: star })">
+                            <i class="star" [ngClass]="{'filled': star <= reviewForm.get('rating')?.value}">★</i>
+                          </span>
+                        </div>
+                      </div>
+  
+                      <div>
+                        <label for="comment">Your Review:</label>
+                        <textarea  class="form-control mb-3 p-4" id="comment" formControlName="comment" rows="4" cols="50"></textarea>
+                      </div>
+  
+                      <button type="submit" [disabled]="reviewForm.invalid" class="btn btn-outline-primary">Submit</button>
+                    </form>
+                  </div>
                 </div>
-                
+
               </div>
             </div>
-          }@else {
+            }@else {
 
             <div class="card">
               <div class="card-body p-md-5">
@@ -220,7 +256,7 @@
               </div>
             </div>
 
-          }
+            }
           </div>
 
           <!-- <div class="col-xl-4 col-12"> -->
@@ -240,13 +276,13 @@
 
 
 
-          </div>
+        </div>
 
-          <!-- </div> -->
-          <!-- </div> -->
+        <!-- </div> -->
+        <!-- </div> -->
 
 
-          <!-- <div class="col-xl-4 col-4">
+        <!-- <div class="col-xl-4 col-4">
             <div class="card mb-4">
             
             
@@ -266,8 +302,8 @@
               </div>
             </div> -->
 
-            <div class="col-xl-4 col-12">
-              <!-- @if(mentorProfile.Educations.length>=1){
+        <div class="col-xl-4 col-12">
+          <!-- @if(mentorProfile.Educations.length>=1){
               <div class="card mb-4">
                 <div class="profile-section">
                   <h2 class="fw-bold">Education</h2>
@@ -292,35 +328,40 @@
                 </div>
               </div>
             } -->
-            <div *ngIf="mentorProfile.Educations.length > 0" class="card mb-4">
-              <div class="profile-section">
-                <h2 class="fw-bold">Education</h2>
-                <div>
-                  <!-- Corrected *ngFor directive -->
-                  <div *ngFor="let education of getLimitedEducations(mentorProfile.Educations);" class="education-container">
-                    <div class="education-item">
-                      <div class="img vertical-align institute-logo" style="padding-bottom: 60px; align-items: start;">
-                        <img width="36" height="36" loading="lazy" src="http://localhost:5164/Univeristy_Default/UniveristyDefault.jpg" alt="{{education.University}}" class="ng-star-inserted">
-                      </div>
-                      <div class="education-details">
-                        <div class="title"> {{education.Faculty}}, {{education.University}} </div>
-                        <p><i class="fa-solid fa-graduation-cap"></i>{{education.Degree}}</p>
-                        <div class="education-time">
-                          <span class="calendar-icon"><i class="fa-solid fa-calendar-day"></i></span> {{getYearFromDate(education.StartDate)}} - {{getYearFromDate(education.EndDate)}}
-                        </div>
+          <div *ngIf="mentorProfile?.Educations?.length > 0" class="card mb-4">
+            <div class="profile-section">
+              <h2 class="fw-bold">Education</h2>
+              <div>
+                <!-- Corrected *ngFor directive -->
+                <div *ngFor="let education of getLimitedEducations(mentorProfile.Educations);"
+                  class="education-container">
+                  <div class="education-item">
+                    <div class="img vertical-align institute-logo" style="padding-bottom: 60px; align-items: start;">
+                      <img width="36" height="36" loading="lazy"
+                        src="http://localhost:5164/Univeristy_Default/UniveristyDefault.jpg"
+                        alt="{{education.University}}" class="ng-star-inserted">
+                    </div>
+                    <div class="education-details">
+                      <div class="title"> {{education.Faculty}}, {{education.University}} </div>
+                      <p><i class="fa-solid fa-graduation-cap"></i>{{education.Degree}}</p>
+                      <div class="education-time">
+                        <span class="calendar-icon"><i class="fa-solid fa-calendar-day"></i></span>
+                        {{getYearFromDate(education.StartDate)}} - {{getYearFromDate(education.EndDate)}}
                       </div>
                     </div>
                   </div>
-            
-                  <!-- Show More/Show Less Button -->
-                  <button *ngIf="mentorProfile.Educations.length > maxItemsToShow" class="btn btn-link" (click)="toggleShowAll()">
-                    {{ showAll ? 'Show Less' : 'Show More' }}
-                  </button>
                 </div>
+
+                <!-- Show More/Show Less Button -->
+                <button *ngIf="mentorProfile?.Educations?.length > maxItemsToShow" class="btn btn-link"
+                  (click)="toggleShowAll()">
+                  {{ showAll ? 'Show Less' : 'Show More' }}
+                </button>
               </div>
             </div>
-            
-            <!-- 
+          </div>
+
+          <!-- 
             <div id="i4" class="mt_20 ng-star-inserted">
               <div class="education ng-star-inserted">
                 
@@ -335,7 +376,7 @@
                    <span  class="icon ng-star-inserted" style="--active: var(--grey-800); --color: var(--grey-800); --hover: var(--grey-800); --size: 18px; mask-image: url(&quot;https://cdn.unstop.com/assets/icons/calendar_month.svg&quot;);">
 
                    </span> -->
-                   <!-- <div> 2022 - 2024 </div></div></div></div><div class="education ng-star-inserted">
+          <!-- <div> 2022 - 2024 </div></div></div></div><div class="education ng-star-inserted">
                     <div  class="img vertical-align"><img width="36" height="36" loading="lazy" 
                       src="https://d8it4huxumps7.cloudfront.net/images/partners/partners75/5aa7961c406d2_jabalpur-engineering-college-jabalpur-logo.gif?d=110x110" alt="Jabalpur Engineering College (JEC), Jabalpur" class="ng-star-inserted">
                       
@@ -344,16 +385,16 @@
                       
                       <div class="org">
                         <span class="icon ng-star-inserted" style="--active: var(--grey-800); --color: var(--grey-800); --hover: var(--grey-800); --size: 18px; mask-image: url(&quot;https://cdn.unstop.com/assets/icons/school.svg&quot;);"></span><!----><!----><!----><!---->
-                        <!-- <div > B.E. </div></div><div _ngcontent-serverapp-c511844803="" class="org">
+          <!-- <div > B.E. </div></div><div _ngcontent-serverapp-c511844803="" class="org">
                           <span class="icon ng-star-inserted" style="--active: var(--grey-800); --color: var(--grey-800); --hover: var(--grey-800); --size: 18px; mask-image: url(&quot;https://cdn.unstop.com/assets/icons/calendar_month.svg&quot;);"></span>
                           <div > 2016 - 2020 </div></div></div></div></div>
- --> 
+ -->
 
 
 
-                          
-                          
-            <!-- <div class="card">
+
+
+          <!-- <div class="card">
        
              
               <div class="profile-section">
@@ -368,48 +409,63 @@
                 </div>
               </div>
             </div> -->
-            <div *ngIf="mentorProfile.Experiences.length > 0" class="card mb-4">
-              <div class="profile-section">
-                <h2 class="fw-bold">Work Experience</h2>
-                <div>
-                  <!-- Corrected *ngFor directive -->
-                  <div *ngFor="let experience of getLimitedExperiences(mentorProfile.Experiences);" class="education-container">
-                    <div class="education-item">
-                      <div class="img vertical-align institute-logo" style="padding-bottom: 60px; align-items: start;">
-                        <img width="36" height="36" loading="lazy" src="http://localhost:5164/Univeristy_Default/UniveristyDefault.jpg" alt="{{experience.Organization}}" class="ng-star-inserted">
-                      </div>
-                      <div class="education-details">
-                        <div class="title"> {{experience.FieldOfStudy}} </div>
-                        <p><i class="bi bi-buildings-fill"></i>{{experience.Organization}}</p>
-                        <div class="education-time">
-                          <span class="calendar-icon"><i class="fa-solid fa-calendar-day"></i></span> {{getYearFromDate(experience.StartDate)}} - {{getYearFromDate(experience.EndDate)}}
-                        </div>
+
+          <div *ngIf="mentorProfile?.Experiences?.length > 0" class="card mb-4">
+            <div class="profile-section">
+              <h2 class="fw-bold">Work Experience</h2>
+              <div>
+                <!-- Corrected *ngFor directive -->
+                <div *ngFor="let experience of getLimitedExperiences(mentorProfile.Experiences);"
+                  class="education-container">
+                  <div class="education-item">
+                    <div class="img vertical-align institute-logo" style="padding-bottom: 60px; align-items: start;">
+                      <img width="36" height="36" loading="lazy"
+                        src="http://localhost:5164/Univeristy_Default/UniveristyDefault.jpg"
+                        alt="{{experience.Organization}}" class="ng-star-inserted">
+                    </div>
+                    <div class="education-details">
+                      <div class="title"> {{experience.FieldOfStudy}} </div>
+                      <p><i class="bi bi-buildings-fill"></i>{{experience.Organization}}</p>
+                      <div class="education-time">
+                        <span class="calendar-icon"><i class="fa-solid fa-calendar-day"></i></span>
+                        {{getYearFromDate(experience.StartDate)}} - {{getYearFromDate(experience.EndDate)}}
                       </div>
                     </div>
                   </div>
-            
-                  <!-- Show More/Show Less Button -->
-                  <button *ngIf="mentorProfile.Experiences.length > maxItemsToShow" class="btn btn-link" (click)="toggleShowAll()">
-                    {{ showAll ? 'Show Less' : 'Show More' }}
-                  </button>
                 </div>
+
+
+
+
+
+                <!-- Show More/Show Less Button -->
+                <button *ngIf="mentorProfile?.Experiences?.length > maxItemsToShow" class="btn btn-link"
+                  (click)="toggleShowAll()">
+                  {{ showAll ? 'Show Less' : 'Show More' }}
+                </button>
+
+
               </div>
             </div>
-            
           </div>
+
+
+
+
         </div>
+      </div>
 
 
 
 
 
-        <!-- </div> -->
-        <!-- </div> -->
-     
+      <!-- </div> -->
+      <!-- </div> -->
+
     </div>
   </section>
   <!--mentor-->
- 
+
 
   <section class="pb-xl-8 pb-6 mt-5">
     <div class="container">
@@ -425,30 +481,34 @@
           <div class="card rounded-4 card-bordered card-lift">
             <div class="p-3 d-flex flex-column gap-3">
               <!--img-->
-              
-                <a [routerLink]="['/mentors',mentor.ID]">
-                <img src="http://localhost:5164/{{mentor.Image}}" style="width: 100%; height: 100%; border-radius: 10px;cursor: pointer;"
-                 onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
-                </a>
-             
+
+              <a [routerLink]="['/mentors',mentor.ID]">
+                <img src="http://localhost:5164/{{mentor.Image}}"
+                  style="width: 100%; height: 100%; border-radius: 10px;cursor: pointer;"
+                  onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
+              </a>
+
               <!--content-->
               <div class="d-flex flex-column gap-4">
                 <div class="d-flex flex-column gap-2">
                   <div>
                     <div class="d-flex align-items-center gap-2">
                       <h3 class="mb-0">
-                        <a [routerLink]="['/mentors',mentor.ID]" class="text-reset">{{mentor.FirstName}} {{mentor.LastName}}</a>
+                        <a [routerLink]="['/mentors',mentor.ID]" class="text-reset">{{mentor.FirstName}}
+                          {{mentor.LastName}}</a>
                       </h3>
                       <span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                           class="bi bi-patch-check-fill text-success" viewBox="0 0 16 16">
-                          <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"></path>
+                          <path
+                            d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708">
+                          </path>
                         </svg>
                       </span>
                     </div>
                     <span class="text-gray-800">{{mentor.Title}}</span>
                   </div>
-  
+
                   <div class="d-flex align-items-center justify-content-between fs-6">
                     <div>
                       <span>{{mentor.YearsOfExperience}} Yrs Exp.</span>
@@ -456,7 +516,9 @@
                     <div class="d-flex gap-1 align-items-center lh-1">
                       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
                         class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
+                        </path>
                       </svg>
                       <span class="fw-bold text-dark">{{mentor.AverageRate}}</span>
                       <span>({{mentor.NumOfReviews}} Reviews)</span>
@@ -471,7 +533,8 @@
                     </div>
                   </div>
                   <div>
-                    <a [routerLink]="['/developer/booking/',id]" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#signupModal">Book Sessions</a>
+                    <a [routerLink]="['/developer/booking/',id]" class="btn btn-outline-primary" data-bs-toggle="modal"
+                      data-bs-target="#signupModal">Book Sessions</a>
                   </div>
                 </div>
               </div>
@@ -481,7 +544,7 @@
       </div>
     </div>
   </section>
-  
+
   <!--mentor-->
 </main>
 

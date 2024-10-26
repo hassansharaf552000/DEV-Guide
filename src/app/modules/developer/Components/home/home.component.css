@@ -10,6 +10,185 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:root,[data-bs-theme=light] {
+  --gk-blue: #0d6efd;
+  --gk-indigo: #6610f2;
+  --gk-purple: #6f42c1;
+  --gk-pink: #d63384;
+  --gk-red: #dc3545;
+  --gk-orange: #fd7e14;
+  --gk-yellow: #ffc107;
+  --gk-green: #198754;
+  --gk-teal: #20c997;
+  --gk-cyan: #0dcaf0;
+  --gk-black: #000;
+  --gk-gray: #475569;
+  --gk-gray-dark: #1e293b;
+  --gk-gray-black: #000;
+  --gk-gray-100: #f1f5f9;
+  --gk-gray-200: #e2e8f0;
+  --gk-gray-300: #cbd5e1;
+  --gk-gray-400: #94a3b8;
+  --gk-gray-500: #64748b;
+  --gk-gray-600: #475569;
+  --gk-gray-700: #334155;
+  --gk-gray-800: #1e293b;
+  --gk-gray-900: #0f172a;
+  --gk-gray-1000: #0b1324;
+  --gk-gray-white: #fff;
+  --gk-primary: #754ffe;
+  --gk-secondary: #64748b;
+  --gk-success: #38a169;
+  --gk-info: #0ea5e9;
+  --gk-warning: #f59e0b;
+  --gk-danger: #dc2626;
+  --gk-light: #f1f5f9;
+  --gk-dark: #0f172a;
+  --gk-white: #fff;
+  --gk-light-primary: #ede9fe;
+  --gk-light-danger: #fad9d8;
+  --gk-light-info: #e1f6ff;
+  --gk-light-warning: #ffeeda;
+  --gk-light-secondary: #e4e3e9;
+  --gk-light-success: #d1f5ea;
+  --gk-light-dark: #d1cfd8;
+  --gk-dark-primary: #593cc1;
+  --gk-dark-warning: #c28135;
+  --gk-dark-info: #51a0c2;
+  --gk-dark-danger: #ae302e;
+  --gk-dark-success: #139a74;
+  --gk-dark-secondary: #5c596d;
+  --gk-primary-rgb: 117,79,254;
+  --gk-secondary-rgb: 100,116,139;
+  --gk-success-rgb: 56,161,105;
+  --gk-info-rgb: 14,165,233;
+  --gk-warning-rgb: 245,158,11;
+  --gk-danger-rgb: 220,38,38;
+  --gk-light-rgb: 241,245,249;
+  --gk-dark-rgb: 15,23,42;
+  --gk-light-primary-rgb: 237,233,254;
+  --gk-light-danger-rgb: 250,217,216;
+  --gk-light-info-rgb: 225,246,255;
+  --gk-light-warning-rgb: 255,238,218;
+  --gk-light-secondary-rgb: 228,227,233;
+  --gk-light-success-rgb: 209,245,234;
+  --gk-light-dark-rgb: 209,207,216;
+  --gk-dark-primary-rgb: 89,60,193;
+  --gk-dark-warning-rgb: 194,129,53;
+  --gk-dark-info-rgb: 81,160,194;
+  --gk-dark-danger-rgb: 174,48,46;
+  --gk-dark-success-rgb: 19,154,116;
+  --gk-dark-secondary-rgb: 92,89,109;
+  --gk-primary-text-emphasis: #2f2066;
+  --gk-secondary-text-emphasis: #282e38;
+  --gk-success-text-emphasis: #16402a;
+  --gk-info-text-emphasis: #06425d;
+  --gk-warning-text-emphasis: #623f04;
+  --gk-danger-text-emphasis: #580f0f;
+  --gk-light-text-emphasis: #334155;
+  --gk-dark-text-emphasis: #334155;
+  --gk-primary-bg-subtle: #e3dcff;
+  --gk-secondary-bg-subtle: #e0e3e8;
+  --gk-success-bg-subtle: #d7ece1;
+  --gk-info-bg-subtle: #cfedfb;
+  --gk-warning-bg-subtle: #fdecce;
+  --gk-danger-bg-subtle: #f8d4d4;
+  --gk-light-bg-subtle: #f8fafc;
+  --gk-dark-bg-subtle: #94a3b8;
+  --gk-primary-border-subtle: #c8b9ff;
+  --gk-secondary-border-subtle: #c1c7d1;
+  --gk-success-border-subtle: #afd9c3;
+  --gk-info-border-subtle: #9fdbf6;
+  --gk-warning-border-subtle: #fbd89d;
+  --gk-danger-border-subtle: #f1a8a8;
+  --gk-light-border-subtle: #e2e8f0;
+  --gk-dark-border-subtle: #64748b;
+  --gk-white-rgb: 255,255,255;
+  --gk-black-rgb: 0,0,0;
+  --gk-font-sans-serif: "Inter",sans-serif;
+  --gk-font-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  --gk-gradient: linear-gradient(180deg,hsla(0,0%,100%,.15),hsla(0,0%,100%,0));
+  --gk-body-font-family: "Inter",sans-serif;
+  --gk-body-font-size: 0.938rem;
+  --gk-body-font-weight: 400;
+  --gk-body-line-height: 1.6;
+  --gk-body-color: #334155;
+  --gk-body-color-rgb: 51,65,85;
+  --gk-body-bg: #f1f5f9;
+  --gk-body-bg-rgb: 241,245,249;
+  --gk-emphasis-color: #000;
+  --gk-emphasis-color-rgb: 0,0,0;
+  --gk-secondary-color: rgba(51,65,85,.75);
+  --gk-secondary-color-rgb: 51,65,85;
+  --gk-secondary-bg: #e2e8f0;
+  --gk-secondary-bg-rgb: 226,232,240;
+  --gk-tertiary-color: rgba(51,65,85,.5);
+  --gk-tertiary-color-rgb: 51,65,85;
+  --gk-tertiary-bg: #f1f5f9;
+  --gk-tertiary-bg-rgb: 241,245,249;
+  --gk-heading-color: var(--gk-gray-800);
+  --gk-link-color: #754ffe;
+  --gk-link-color-rgb: 117,79,254;
+  --gk-link-decoration: none;
+  --gk-link-hover-color: #5e3fcb;
+  --gk-link-hover-color-rgb: 94,63,203;
+  --gk-code-color: #d63384;
+  --gk-highlight-color: #334155;
+  --gk-highlight-bg: #fff3cd;
+  --gk-border-width: 1px;
+  --gk-border-style: solid;
+  --gk-border-color: var(--gk-border-color);
+  --gk-border-color-translucent: #cbd5e1;
+  --gk-border-radius: 0.375rem;
+  --gk-border-radius-sm: 0.25rem;
+  --gk-border-radius-lg: 0.5rem;
+  --gk-border-radius-xl: 0.75rem;
+  --gk-border-radius-xxl: 2rem;
+  --gk-border-radius-2xl: var(--gk-border-radius-xxl);
+  --gk-border-radius-pill: 50rem;
+  --gk-box-shadow: 0px 3px 6px rgba(17,24,39,.1);
+  --gk-box-shadow-sm: 0px 1px 3px rgba(17,24,39,.09);
+  --gk-box-shadow-lg: 0 6px 8px 0 rgba(17,24,39,.08),0 0 0 1px rgba(17,24,39,.04);
+  --gk-box-shadow-inset: inset 0 1px 2px rgba(0,0,0,.075);
+  --gk-focus-ring-width: 0.25rem;
+  --gk-focus-ring-opacity: 0.25;
+  --gk-focus-ring-color: rgba(117,79,254,.25);
+  --gk-form-valid-color: #38a169;
+  --gk-form-valid-border-color: #38a169;
+  --gk-form-invalid-color: #dc2626;
+  --gk-form-invalid-border-color: #dc2626
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Ensure each carousel item takes the full width of the carousel */
 .carousel-item {
   width: 100%;
@@ -141,7 +320,9 @@ app-developercard {
   --gk-gutter-y: 1.5rem
 }
 .offset-xxl-2 {
-  margin-left: 16.66666667%
+  /* margin-left: 16.66666667% */
+  margin-left: 17% !important
+
 }
 .col-xxl-4 {
   flex: 0 0 auto;
@@ -192,4 +373,181 @@ app-developercard {
 }
 .mb-8 {
   margin-bottom: 3.5rem!important
+}
+.position-relative {
+  position: relative!important
+}
+
+
+.position-absolute {
+  position: absolute!important
+}
+
+.top-50 {
+  top: 50%!important
+}
+.start-100 {
+  left: 100%!important
+}
+.start-10 {
+  left: 10%!important
+}
+
+.translate-middle {
+  transform: translate(-50%,-50%)!important
+}
+.mt-n8 {
+  margin-top: -3.5rem!important
+}
+
+.start-0 {
+  left: 0!important
+}
+.mt-n2 {
+  margin-top: -.5rem!important
+}
+.mt-8 {
+  margin-top: 3.5rem!important
+}
+.offset-xl-1 {
+  margin-left: 8.33333333%
+}
+.offset-lg-1 {
+  margin-left: 8.33333333%
+}
+.gap-6 {
+  gap: 2rem!important
+}
+.gap-2 {
+  gap: .5rem!important
+}
+.gap-8 {
+  gap: 3.5rem!important
+}
+.gap-5 {
+  gap: 2rem!important
+}
+.gap-xxl-3 {
+  gap: 1rem!important
+}
+.gap-0 {
+  gap: 0!important
+}
+.col-xxl-1 {
+  flex: 0 0 auto;
+  width: 8.33333333%
+}
+.icon-lg {
+  height: 3rem;
+  line-height: 3rem;
+  width: 3rem
+}
+
+.icon-shape {
+  /* margin-top: 10px !important; */
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  text-align: center;
+  vertical-align: middle
+}
+.gap-xxl-3 {
+  gap: 1rem!important
+}
+.fs-5 {
+  font-size: .875rem!important
+}
+.bottom-10 {
+  bottom: 10%!important
+}
+.shadow {
+  box-shadow:  3px 6px rgba(17,24,39,.1) !important;
+  /* box-shadow: var(--gk-box-shadow)!important */
+}
+.avatar-md {
+  height: 2.5rem;
+  width: 2.5rem
+  /* height: .2px !important;
+  width: .2 !important; */
+}
+.avatar {
+  display: inline-block;
+  height: 3rem;
+  position: relative;
+  width: 3rem
+  /* height: .1px !important;
+  width: .2px !important; */
+}
+
+.avatar-group .avatar+.avatar {
+    margin-left:  -1.2rem
+}
+
+.avatar-group .avatar:hover {
+    z-index: 2
+}
+
+.avatar-group .avatar .avatar-initials,.avatar-group img {
+    border: 3px solid white
+}
+
+.fw-semibold {
+  font-weight: 600!important
+}
+.bottom-0 {
+  bottom: 0!important
+}
+
+.row {
+  --gk-gutter-x: 1.5rem;
+  --gk-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(var(--gk-gutter-x)*-.5);
+  margin-right: calc(var(--gk-gutter-x)*-.5);
+  margin-top: calc(var(--gk-gutter-y)*-1)
+}
+
+.g-lg-0,.gy-lg-0 {
+  --gk-gutter-y: 0
+}
+
+.g-4,.gy-4 {
+  --gk-gutter-y: 1.5rem
+}
+
+.me-n7 {
+  margin-right: -3rem!important
+}
+.bottom-25 {
+  bottom: 25%!important
+}
+.ms-n8 {
+  margin-left: -3.5rem!important
+}
+
+.end-0 {
+  right: 0!important
+}
+.rounded-pill {
+  border-radius: 50rem!important
+}
+.g-0,.gx-0 {
+  --gk-gutter-x: 0
+}
+.py-2 {
+  padding-bottom: .5rem!important;
+  padding-top: .5rem!important
+}
+.px-3 {
+  padding-left: 1rem!important;
+  padding-right: 1rem!important
+}
+.text-reset{
+  font-size: 30px !important;
+  text-decoration: none;
+  text-decoration-style: none;
+}
+.mins-5{
+  margin-left: 80px !important;
 }
