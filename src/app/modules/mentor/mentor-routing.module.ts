@@ -24,7 +24,7 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'updateprofile', component: Update_ProfileComponent },
       { path: 'mentor-payments', component: MentorPaymentsComponent },
-      { path: 'booking', component: BookingComponent },
+      { path: 'Sessions', component: BookingComponent },
       { path: 'mentor-summry', component: MentorSummryComponent },
       { path: 'mentor-request', component: MentorRequestComponent },
       { path: 'schedule', component: ScheduleComponent },
