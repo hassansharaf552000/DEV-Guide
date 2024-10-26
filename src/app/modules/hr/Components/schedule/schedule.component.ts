@@ -3,13 +3,13 @@ import { ScheduleService } from '../../../../shared/services/Schedule/schedule.s
 import { AuthService } from '../../../../shared/services/Auth/auth.service';
 
 enum Day {
-  Saturday = 1,
-  Sunday,
-  Monday,
-  Tuesday,
-  Wednesday,
-  Thursday,
-  Friday
+  Sunday = 0,
+Monday = 1,
+Tuesday = 2,
+Wednesday = 3,
+Thursday = 4,
+Friday = 5,
+Saturday = 6
 }
 
 interface WorkingHour {
@@ -28,13 +28,14 @@ interface WorkingHour {
 
 export class ScheduleComponent {
   Working_Hours: Array<WorkingHour> = [
-    { Day: Day.Saturday, Available: false, StartTime: '00:00:00', EndTime: '00:00:00', User_Id: '' },
     { Day: Day.Sunday, Available: false, StartTime: '00:00:00', EndTime: '00:00:00', User_Id: '' },
     { Day: Day.Monday, Available: false, StartTime: '00:00:00', EndTime: '00:00:00', User_Id: '' },
     { Day: Day.Tuesday, Available: false, StartTime: '00:00:00', EndTime: '00:00:00', User_Id: '' },
     { Day: Day.Wednesday, Available: false, StartTime: '00:00:00', EndTime: '00:00:00', User_Id: '' },
     { Day: Day.Thursday, Available: false, StartTime: '00:00:00', EndTime: '00:00:00', User_Id: '' },
     { Day: Day.Friday, Available: false, StartTime: '00:00:00', EndTime: '00:00:00', User_Id: '' },
+    { Day: Day.Saturday, Available: false, StartTime: '00:00:00', EndTime: '00:00:00', User_Id: '' },
+
   ];
 
   ScheduleData: {
@@ -140,10 +141,10 @@ export class ScheduleComponent {
     const end = this.Working_Hours[index].EndTime;
 
     if (start === end) {
-      this.Errors[index] = `Start and end time for ${this.Working_Hours[index].Day} cannot be the same.`;
+      this.Errors[index] = `Start and end time for ${ this.getDayName(this.Working_Hours[index].Day)} cannot be the same.`;
       return false;
     } else if (start > end) {
-      this.Errors[index] = `Start time for ${this.Working_Hours[index].Day} cannot be later than the end time.`;
+      this.Errors[index] = `Start time for ${ this.getDayName(this.Working_Hours[index].Day)} cannot be later than the end time.`;
       return false;
     } else {
       this.Errors[index] = '';

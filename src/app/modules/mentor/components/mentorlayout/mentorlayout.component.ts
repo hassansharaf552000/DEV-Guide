@@ -1,4 +1,5 @@
-import { Component, HostListener } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { ChangeDetectorRef, Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'app-mentorlayout',
@@ -13,30 +14,36 @@ export class MentorlayoutComponent {
     { path: '/mentor/updateprofile', label: 'Edit Profile', icon: 'bi bi-pencil' },
     { path: '/mentor/mentor-payments', label: 'Payments', icon: 'bi bi-wallet2' },
     { path: '/mentor/queryanswers', label: 'Queries Answers', icon: 'bi bi-chat-dots' },
-    { path: '/mentor/booking', label: 'Sessions', icon: 'bi bi-calendar-event' },
+    { path: '/mentor/Sessions', label: 'Sessions', icon: 'bi bi-calendar-event' },
     { path: '/mentor/contact_admin', label: 'Contact Admin', icon: 'bi bi-envelope-open' },
     { path: '/mentor/schedule', label: 'Schedule', icon: 'bi bi-calendar-check-fill' },
     { path: '/mentor/reviews', label: 'Reviews', icon: 'bi bi-star-fill' }
   ];
+  constructor(@Inject(PLATFORM_ID) private platformId: any,private cdRef: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.checkScreenWidth();
+    this.cdRef.detectChanges();
   }
 
   // Listener to detect window resizing
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
+    if (isPlatformBrowser(this.platformId)) {
     this.checkScreenWidth();
+    }
   }
 
   // Check screen size and handle sidebar behavior
   checkScreenWidth() {
-    this.isMobile = window.innerWidth < 768;  // Detect if screen width is less than 768px (Bootstrap's `md` breakpoint)
+    if (isPlatformBrowser(this.platformId)) {
+      this.isMobile = window.innerWidth < 768;  // Detect if screen width is less than 768px (Bootstrap's `md` breakpoint)
 
-    if (!this.isMobile) {
-      this.isSidebarOpen = true;  // Keep the sidebar open on larger screens
-    } else {
-      this.isSidebarOpen = false;  // Automatically close the sidebar if on mobile
+      if (!this.isMobile) {
+        this.isSidebarOpen = true;  // Keep the sidebar open on larger screens
+      } else {
+        this.isSidebarOpen = false;  // Automatically close the sidebar if on mobile
+      }
     }
   }
 

@@ -23,7 +23,7 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'updateprofile', component: Update_ProfileComponent },
       { path: 'hr-payments', component: HrPaymentsComponent },
-      { path: 'booking', component:BookingHrComponent },
+      { path: 'Sessions', component:BookingHrComponent },
       { path: 'hr-summry', component: HrSummaryComponent },
       { path: 'hr-request', component: HrRequestComponent},
       { path: 'schedule', component: ScheduleComponent },
