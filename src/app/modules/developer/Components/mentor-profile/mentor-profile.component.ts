@@ -11,13 +11,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './mentor-profile.component.html',
   styleUrl: './mentor-profile.component.css'
 })
-export class MentorProfileComponent implements OnInit{
-  
-  id : string;
-   mentorId: string | null = null;
- // mentorProfile: IMentor | undefined;
-    GetProfileURL="http://localhost:5164/api/Account/GetOneUser"
-  GetReviewsURL="http://localhost:5164/api/Account/GetReview"
+export class MentorProfileComponent implements OnInit {
+
+  id: string;
+  mentorId: string | null = null;
+  // mentorProfile: IMentor | undefined;
+  GetProfileURL = "http://localhost:5164/api/Account/GetOneUser"
+  GetReviewsURL = "http://localhost:5164/api/Account/GetReview"
   //mentorProfile: any;
   mentorReviews: any;
   isExpanded: boolean = false;
@@ -28,21 +28,21 @@ export class MentorProfileComponent implements OnInit{
   reviews: any[] = [];
   displayedReviews: any[] = [];
   reviewsLimit: number = 4; // Display only 4 reviews initially
-  hasMoreReviews: boolean = false; 
+  hasMoreReviews: boolean = false;
   similarMentors: any[] = [];
   showAll: boolean = false;
   maxItemsToShow: number = 2;
   //  dateStr = "2024-02-02T00:00:00";
   //  date = new Date(this.dateStr);
-  
+
   // formattedDate = this.date.toLocaleDateString("en-US", {
   //   year: "numeric",
   //   month: "long",
   //   day: "numeric",
   // });
-  
+
   // console.log("formated",formattedDate);
-  selectedSkills:any[]=this.mentorProfile.Skills
+  selectedSkills: any[] = this.mentorProfile.Skills
   showReviewForm = false;
 
   handleReview(reviewData: any) {
@@ -51,9 +51,10 @@ export class MentorProfileComponent implements OnInit{
     // Optionally hide the form after submission
     this.showReviewForm = false;
   }
-  
+
   reviewForm: FormGroup;
-  constructor(private route: ActivatedRoute ,private http: HttpClient,private AccService:AccountService,private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute,
+    private http: HttpClient, private AccService: AccountService, private fb: FormBuilder) {
     this.id = this.route.snapshot.paramMap.get('id');
     this.reviewForm = this.fb.group({
       rating: ['', Validators.required],
@@ -61,7 +62,7 @@ export class MentorProfileComponent implements OnInit{
     });
   }
 
- 
+
 
   onSubmit() {
     if (this.reviewForm.valid) {
@@ -103,19 +104,19 @@ export class MentorProfileComponent implements OnInit{
   //     }
   //   );
   // }
- 
+
   ngOnInit(): void {
     // Get the mentor ID from the URL
     const mentorId = this.route.snapshot.paramMap.get('id');
-console.log("mentorid",mentorId)
+    console.log("mentorid", mentorId)
     if (mentorId) {
       // Fetch mentor profile
       this.AccService.getProfile(mentorId).subscribe(
         data => {
           this.mentorProfile = data;
           console.log('Profile: ', this.mentorProfile);
-          console.log("experi",this.mentorProfile?.Experiences?.length);
-          
+          console.log("experi", this.mentorProfile?.Experiences?.length);
+
         },
         error => {
           console.error('Error fetching profile', error);
@@ -135,21 +136,21 @@ console.log("mentorid",mentorId)
     }
 
     this.getReviews(mentorId);
-    this.AccService.getall('', 'Mentor',this.mentorProfile.title, 0, 0, null, 1, 3, this.selectedSkills,mentorId).subscribe(mentors => {
-      this.similarMentors=mentors.Data;
-      console.log("3-mentors",mentors.Data);  // This will return 3 mentors with the required skills and title
+    this.AccService.getall('', 'Mentor', this.mentorProfile.title, 0, 0, null, 1, 3, this.selectedSkills, mentorId).subscribe(mentors => {
+      this.similarMentors = mentors.Data;
+      console.log("3-mentors", mentors.Data);  // This will return 3 mentors with the required skills and title
     });
 
-//     const dateStr = "2024-02-02T00:00:00";
-// const date = new Date(dateStr);
+    //     const dateStr = "2024-02-02T00:00:00";
+    // const date = new Date(dateStr);
 
-// const formattedDate = date.toLocaleDateString("en-US", {
-//   year: "numeric",
-//   month: "long",
-//   day: "numeric",
-// });
+    // const formattedDate = date.toLocaleDateString("en-US", {
+    //   year: "numeric",
+    //   month: "long",
+    //   day: "numeric",
+    // });
 
-// console.log("formated",formattedDate);
+    // console.log("formated",formattedDate);
   }
   formatDate(dateString: string): string {
     const date = new Date(dateString);
@@ -220,7 +221,7 @@ console.log("mentorid",mentorId)
     }
     return this.mentorProfile?.About?.slice(0, this.maxLength) + '...';
   }
-  loadMentorProfile(id:string):void{
+  loadMentorProfile(id: string): void {
     // const mentorlist:IMentor[]=[
     //   {
     //     id: s,
@@ -311,49 +312,49 @@ console.log("mentorid",mentorId)
 
 
 
-//   ngOnInit(): void {
-//     this.id = this.route.snapshot.paramMap.get('id')!;
-//     this.loadMentorProfile(Number(this.id));
-//   }
+  //   ngOnInit(): void {
+  //     this.id = this.route.snapshot.paramMap.get('id')!;
+  //     this.loadMentorProfile(Number(this.id));
+  //   }
 
-//   loadMentorProfile(id: number): void {
-//     this.getMentorById(id).subscribe(
-//       (mentor: IMentor) => {
-//         this.mentorProfile = mentor;
-//       },
-//       (error) => {
-//         console.error('Error fetching mentor data:', error);
-//       }
-//     );
-//   }
+  //   loadMentorProfile(id: number): void {
+  //     this.getMentorById(id).subscribe(
+  //       (mentor: IMentor) => {
+  //         this.mentorProfile = mentor;
+  //       },
+  //       (error) => {
+  //         console.error('Error fetching mentor data:', error);
+  //       }
+  //     );
+  //   }
 
-//   // Method to fetch mentor data by ID
-//   getMentorById(id: number): Observable<IMentor> {
-//     // const apiUrl = http://localhost:5164/api/Account/AddQuery/${id};
-//     return this.httpClient.get<IMentor>(apiUrl);
-//   }
+  //   // Method to fetch mentor data by ID
+  //   getMentorById(id: number): Observable<IMentor> {
+  //     // const apiUrl = http://localhost:5164/api/Account/AddQuery/${id};
+  //     return this.httpClient.get<IMentor>(apiUrl);
+  //   }
 
-getYearFromDate(dateString: string): number {
-  const date = new Date(dateString);
-  return date.getFullYear();
-}
-toggleShowAll() {
-  this.showAll = !this.showAll;
-}
-
-getLimitedEducations(educations: any[]) {
-  if (!educations) {
-    return []; // Return an empty array if educations is undefined
+  getYearFromDate(dateString: string): number {
+    const date = new Date(dateString);
+    return date.getFullYear();
   }
-  return this.showAll ? educations : educations?.slice(0, this.maxItemsToShow);
-}
-getLimitedExperiences(experiences: any[]) {
-  if (!experiences) {
-    return []; // Return an empty array if educations is undefined
+  toggleShowAll() {
+    this.showAll = !this.showAll;
   }
-  return this.showAll ? experiences : experiences?.slice(0, this.maxItemsToShow);
-}
-trackByFunction(index: number, education: any): string {
-  return education.Degree; // or any unique identifier
-}
+
+  getLimitedEducations(educations: any[]) {
+    if (!educations) {
+      return []; // Return an empty array if educations is undefined
+    }
+    return this.showAll ? educations : educations?.slice(0, this.maxItemsToShow);
+  }
+  getLimitedExperiences(experiences: any[]) {
+    if (!experiences) {
+      return []; // Return an empty array if educations is undefined
+    }
+    return this.showAll ? experiences : experiences?.slice(0, this.maxItemsToShow);
+  }
+  trackByFunction(index: number, education: any): string {
+    return education.Degree; // or any unique identifier
+  }
 }

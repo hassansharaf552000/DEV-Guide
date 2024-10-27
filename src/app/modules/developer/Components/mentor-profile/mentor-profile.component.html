@@ -216,29 +216,7 @@
 
 
 
-                  <button (click)="showReviewForm = !showReviewForm" class="btn btn-outline-primary">
-                    {{ showReviewForm ? 'Hide Review Form' : 'Add Review' }}
-                  </button>
-  
-                  <div *ngIf="showReviewForm">
-                    <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
-                      <div>
-                        <label for="rating">Rating:</label>
-                        <div>
-                          <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="reviewForm.patchValue({ rating: star })">
-                            <i class="star" [ngClass]="{'filled': star <= reviewForm.get('rating')?.value}">★</i>
-                          </span>
-                        </div>
-                      </div>
-  
-                      <div>
-                        <label for="comment">Your Review:</label>
-                        <textarea  class="form-control mb-3 p-4" id="comment" formControlName="comment" rows="4" cols="50"></textarea>
-                      </div>
-  
-                      <button type="submit" [disabled]="reviewForm.invalid" class="btn btn-outline-primary">Submit</button>
-                    </form>
-                  </div>
+            
                 </div>
 
               </div>

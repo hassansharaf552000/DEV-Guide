@@ -1,22 +1,34 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf'
+import jsPDF from 'jspdf';
 import { SessionService } from '../../../../shared/services/Session/session.service';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+
 @Component({
-  selector: 'app-session-details',
-  templateUrl: './session-details.component.html',
-  styleUrl: './session-details.component.css'
+  selector: 'app-developer-session-details',
+  templateUrl: './developer-session-details.component.html',
+  styleUrl: './developer-session-details.component.css'
 })
-export class SessionDetailsComponent {
+export class DeveloperSessionDetailsComponent {
   id: string;
   sessiondetails: any;
   feedbackForm: FormGroup;
   MeetingLinkForm: FormGroup;
   @ViewChild('contentToConvert') contentToConvert!: ElementRef;
+  showReviewForm = false;
+  handleReview(reviewData: any) {
+    // Handle the review data here (e.g., send to your API)
+    console.log('Review submitted:', reviewData);
+    // Optionally hide the form after submission
+    this.showReviewForm = false;
+  }
+
+
+
+  reviewForm: FormGroup;
   constructor(private route: ActivatedRoute ,
     private sessionserc : SessionService , private http: HttpClient ,private formBuilder: FormBuilder,private toastr: ToastrService){
 
@@ -27,8 +39,19 @@ export class SessionDetailsComponent {
     this.feedbackForm = this.formBuilder.group({
       feedback: ['', Validators.required]
     });
+    this.reviewForm = this.formBuilder.group({
+      rating: ['', Validators.required],
+      comment: ['', Validators.required]
+    });
   }
 
+  
+  onSubmit() {
+    if (this.reviewForm.valid) {
+      // Handle form submission (e.g., send to API)
+      console.log(this.reviewForm.value);
+    }
+  }
   ngOnInit(): void {
     // Get the mentor ID from the URL
    
@@ -51,19 +74,7 @@ export class SessionDetailsComponent {
   
     }
 
-   // This will return 3 mentors with the required skills and title
-   
-
-    //     const dateStr = "2024-02-02T00:00:00";
-    // const date = new Date(dateStr);
-
-    // const formattedDate = date.toLocaleDateString("en-US", {
-    //   year: "numeric",
-    //   month: "long",
-    //   day: "numeric",
-    // });
-
-    // console.log("formated",formattedDate);
+  
   }
   onSubmitFeedback() {
    
@@ -109,41 +120,7 @@ export class SessionDetailsComponent {
                this.toastr.error('Message is failed', err.error.message);
             }
           });}
-  // onSubmitFeedback() {
-  //   if (this.feedbackForm.invalid) {
-  //     console.log("Form is invalid", this.feedbackForm.errors);
-  //     return; // Prevent submission if the form is invalid
-  //   }
-  
-  //   const feedback = this.feedbackForm.value.feedback;
-  //   console.log("Feedback to be sent:", feedback); 
-  
-  //   this.sessionserc.updateFeedback(this.id, feedback).subscribe({
-  //     next: (res: any) => {
-  //       console.log("Response:", res);
-  //       this.toastr.success('Feedback submitted successfully!', res.message);
-  //     },
-  //     error: (err) => {
-  //       console.error('Error submitting feedback:', err);
-  //       this.toastr.error('Failed to submit feedback.', err.error.message || 'Unknown error');
-  //     }
-  //   });
-  // }
-  
-  //   if (this.feedbackForm.invalid) {
-  //     return;
-  //   }
 
-  //   const feedback = this.feedbackForm.get('feedback')?.value;
-  //   this.sessionserc.updateFeedback(this.id, feedback).subscribe(
-  //     response => {
-  //       console.log('Feedback updated successfully', response);
-  //     },
-  //     error => {
-  //       console.error('Error updating feedback', error);
-  //     }
-  //   );
-  // }
   downloadPDF() {
     const content = this.contentToConvert.nativeElement;
     html2canvas(content, {

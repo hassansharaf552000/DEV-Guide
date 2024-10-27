@@ -31,7 +31,7 @@ const routes: Routes = [
       { path: 'contact_admin', component: ContactAdminComponent },
       { path: 'reviews', component: ReviewsListComponent },
       { path: 'queryanswers', component: MentorAnswerQueryComponent },
-      { path: 'session-details', component: SessionDetailsComponent },
+      { path: 'session-details/:id', component: SessionDetailsComponent },
       { path: 'home', component: MentorlayoutComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'notfound' },

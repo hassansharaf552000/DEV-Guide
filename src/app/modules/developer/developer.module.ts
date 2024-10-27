@@ -47,6 +47,7 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { QueryAnswerComponent } from './Components/query-answer/query-answer.component';
 import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.component';
+import { DeveloperSessionDetailsComponent } from './Components/developer-session-details/developer-session-details.component';
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.com
     QueryComponent,
     QueryAnswerComponent,
     MentorReplyComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    DeveloperSessionDetailsComponent
   ],
   imports: [
     CommonModule,

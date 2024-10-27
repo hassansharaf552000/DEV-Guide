@@ -50,6 +50,8 @@ import { SkillsComponent } from '../../shared/components/skills/skills.component
 import { EducationsComponent } from '../../shared/components/education-list/education-list.component';
 import { ExperienceListComponent } from '../../shared/components/experience-list/experience-list.component';
 import { SocialAccountsListComponent } from '../../shared/components/social-accounts-list/social-accounts-list.component';
+import { DeveloperSessionDetailsComponent } from './Components/developer-session-details/developer-session-details.component';
+
 
 const routes: Routes = [
   {
@@ -82,6 +84,8 @@ const routes: Routes = [
       {path:'Quiz/:id',component:QuizzesDetailsComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full' },
      { path: '**', redirectTo: 'notfound' },
+  
+
       //{ path: 'AdminUi', component: AdminUIComponent }
     ],
   },
@@ -101,7 +105,8 @@ const routes: Routes = [
       { path: 'quizzes', component: QuizListComponent },
       { path: 'reply', component: MentorReplyComponent },
       { path: 'answer-query/:id/:queryid/:userid', component: QueryAnswerComponent },
-      { path: 'AdminUi', component: AdminUIComponent }
+      { path: 'AdminUi', component: AdminUIComponent },
+      { path: 'session-details/:id', component: DeveloperSessionDetailsComponent },
     ],
   },
   { path: 'login', component: LoginComponent },
