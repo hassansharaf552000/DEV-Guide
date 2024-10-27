@@ -12,7 +12,7 @@
             <h4>Basic Information</h4>
             <p>Country of residence: {{Country || 'N/A' }}</p>
             <p>Phone number: {{ PhoneNumber || 'N/A' }}</p>
-            <button class="btn btn-link" (click)="editSection('/developer/step-two')">Edit Information</button>
+            <button class="btn btn-link" (click)="editSection('/step-two')">Edit Information</button>
           </div>
           <hr>
           <div class="info-section">
@@ -27,7 +27,7 @@
               <p>Duration of Study: {{ Education.StartDate || 'N/A' }} {{ Education.EndDate || '' }}</p>
               <p>Currently studying: {{ Education.TillNow ? 'Yes' : 'No' }}</p>
             }
-            <button class="btn btn-link" (click)="editSection('/developer/step-three')">Edit Information</button>
+            <button class="btn btn-link" (click)="editSection('/step-three')">Edit Information</button>
           </div>
           <hr>
           <div class="info-section">
@@ -36,7 +36,7 @@
             <p>Title: {{ Title || 'N/A' }}</p>
             <p>About: {{ About || 'N/A' }}</p>
             <p>Level: {{ Level || 'N/A' }}</p>
-            <p>Skills: 
+            <p>Skills:
               @for (item of accountService.skills; track $index) {
                 <span>{{item.Name}}</span>
               }
@@ -49,7 +49,7 @@
               <p>Duration of Study: {{ Exp.StartDate || 'N/A' }} {{ Exp.EndDate || '' }}</p>
               <p>Currently studying: {{ Exp.TillNow ? 'Yes' : 'No' }}</p>
             }
-            <button class="btn btn-link" (click)="editSection('/developer/step-four')">Edit Information</button>
+            <button class="btn btn-link" (click)="editSection('/step-four')">Edit Information</button>
           </div>
           <button class="btn btn-secondary mt-3 ms-3" (click)="goToPreviousStep()">Back</button>
           <button class="btn btn-primary mt-3 ms-3" (click)="submitProfile()">Submit Profile</button>

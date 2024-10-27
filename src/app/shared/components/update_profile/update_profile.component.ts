@@ -136,6 +136,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ProfileService } from '../../services/profile.service';
 import { Profile } from '../../profile';
+import { AuthService } from '../../services/Auth/auth.service';
 
 @Component({
   selector: 'app-update_profile',
@@ -152,7 +153,7 @@ export class Update_ProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private profileService: ProfileService
+    private authservice: AuthService
   ) {
     this.InformationForm = this.fb.group({
       firstName: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
@@ -188,7 +189,7 @@ export class Update_ProfileComponent implements OnInit {
   }
 
   loadProfileData() {
-    this.profileService.getProfile().subscribe(
+    this.authservice.getProfile().subscribe(
       (data: Profile) => {
         this.profile = data;
         console.log(data);
@@ -265,7 +266,7 @@ export class Update_ProfileComponent implements OnInit {
       }
 
       // Use the profile service to send the form data
-      this.profileService.UpdateProfile(formData).subscribe(
+      this.authservice.UpdateProfile(formData).subscribe(
         (updatedProfile: Profile) => {
           this.profile = updatedProfile;
           console.log('Profile updated successfully');

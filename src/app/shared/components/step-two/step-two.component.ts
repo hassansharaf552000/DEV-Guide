@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AccountService } from '../../../../shared/services/Account/account.service';
+import { AccountService } from '../../services/Account/account.service';
 
 @Component({
   selector: 'app-step-two',
@@ -278,7 +278,7 @@ export class StepTwoComponent implements OnInit {
       this.accountService.updateFormData("PhoneNumber",this.stepTwoForm.controls["phone"].value)
       this.accountService.updateFormData("Image",this.ProfileImage)
 
-      this.router.navigate(['/developer/step-three']);
+      this.router.navigate(['/step-three']);
     }
   }
   SelectFile(event:any){
@@ -287,7 +287,7 @@ export class StepTwoComponent implements OnInit {
     this.invalidProfileImage = false;
   }
   goToPreviousStep(): void {
-    this.router.navigate(['/developer/step-one']);
+    this.router.navigate(['/step-one']);
   }
 
    filteredCountries = [...this.countries]; // Copy of countries to filter

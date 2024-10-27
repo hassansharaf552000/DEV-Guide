@@ -1,8 +1,8 @@
-import { EducationViewModel } from './../../interfaces/UserEducation';
+import { EducationViewModel } from '../../../modules/developer/interfaces/UserEducation';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AccountService } from '../../../../shared/services/Account/account.service';
+import { AccountService } from '../../services/Account/account.service';
 
 @Component({
   selector: 'app-step-three',
@@ -282,7 +282,7 @@ export class StepThreeComponent {
   onNext(): void {
     if (this.educationslist.length > 0 && this.checklist() == undefined) {
       this.Account.Educations = this.educationslist;
-      this.router.navigate(['/developer/step-four']);
+      this.router.navigate(['/step-four']);
     }
     else {
       console.log("error Happaned");
@@ -291,7 +291,7 @@ export class StepThreeComponent {
   }
 
   goToPreviousStep(): void {
-    this.router.navigate(['/developer/step-two']);
+    this.router.navigate(['/step-two']);
   }
   checklist(): EducationViewModel | undefined {
     console.log(this.educationslist);

@@ -54,7 +54,7 @@
 // }
 
 
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Profile } from '../profile';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -64,35 +64,36 @@ import { AuthService } from '../services/Auth/auth.service'; // Import AuthServi
   providedIn: 'root',
 })
 export class ProfileService {
-  private updateprofile = "http://localhost:5164/api/Account/update-profile";
-  private getprofile = "http://localhost:5164/api/Account/get-profile";
+  // private updateprofile = "http://localhost:5164/api/Account/update-profile";
+  // private getprofile = "http://localhost:5164/api/Account/get-profile";
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  // constructor(private http: HttpClient, private authService: AuthService) {}
 
-  // Method to get the Authorization header with the token
-  private getAuthHeaders(): HttpHeaders {
-    const token = this.authService.getToken();
-    if (token) {
-      return new HttpHeaders({
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json' // You can adjust the content type based on your API needs
-      });
-    } else {
-      return new HttpHeaders(); // Return empty headers if no token
-    }
-  }
+  // // Method to get the Authorization header with the token
+  // private getAuthHeaders(): HttpHeaders {
+  //   //const authService = this.injector.get(AuthService); // Lazy load AuthService
+  //   const token = this.authService.getToken();
+  //   if (token) {
+  //     return new HttpHeaders({
+  //       'Authorization': `Bearer ${token}`,
+  //       'Content-Type': 'application/json' // You can adjust the content type based on your API needs
+  //     });
+  //   } else {
+  //     return new HttpHeaders(); // Return empty headers if no token
+  //   }
+  // }
 
-  // Get Profile with Authorization
-  getProfile(): Observable<Profile> {
-    const headers = this.getAuthHeaders();
-    return this.http.get<Profile>(this.getprofile, { headers });
-  }
+  // // Get Profile with Authorization
+  // getProfile(): Observable<Profile> {
+  //   const headers = this.getAuthHeaders();
+  //   return this.http.get<Profile>(this.getprofile, { headers });
+  // }
 
-  // Update Profile with Authorization
-  UpdateProfile(profileData: FormData): Observable<Profile> {
-    const headers = this.getAuthHeaders();
-    return this.http.put<Profile>(this.updateprofile, profileData, {
-      headers: headers.delete('Content-Type') // Let the browser set multipart/form-data headers
-    });
-  }
+  // // Update Profile with Authorization
+  // UpdateProfile(profileData: FormData): Observable<Profile> {
+  //   const headers = this.getAuthHeaders();
+  //   return this.http.put<Profile>(this.updateprofile, profileData, {
+  //     headers: headers.delete('Content-Type') // Let the browser set multipart/form-data headers
+  //   });
+  // }
 }

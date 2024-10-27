@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AccountService } from '../../../../shared/services/Account/account.service';
-import { SkillService } from '../../../../shared/services/Skill/skill.service';
-import { ExperienceViewModel } from '../../interfaces/UserExperance';
-import { skillItem } from '../../interfaces/Profile';
+import { AccountService } from '../../services/Account/account.service';
+import { SkillService } from '../../services/Skill/skill.service';
+import { ExperienceViewModel } from '../../../modules/developer/interfaces/UserExperance';
+import { skillItem } from '../../../modules/developer/interfaces/Profile';
 
 @Component({
   selector: 'app-step-four',
@@ -100,7 +100,7 @@ export class StepFourComponent {
       this.Account.Experiences = this.Experiences;
       this.Account.skills = this.SelectedSkilles;
       //call back
-      this.router.navigate(['/developer/step-five']);
+      this.router.navigate(['/step-five']);
 
     }
     else {
@@ -115,7 +115,7 @@ export class StepFourComponent {
   }
   // Navigate to the previous step
   goToPreviousStep(): void {
-    this.router.navigate(['/developer/step-five']);
+    this.router.navigate(['/step-five']);
   }
 
   // testbehvior():void{
