@@ -63,8 +63,6 @@ UpdateMeeting(sessionId: string,feedback: string): Observable<any> {
 }
 
 
-getall() {
- 
 
 getallSessionForMentor() {
 
