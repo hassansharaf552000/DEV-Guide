@@ -85,7 +85,7 @@ import { StepFiveComponent } from './components/step-five/step-five.component';
     ExperienceListComponent,
     SocialAccountsListComponent,
     AddsocialaccountComponent,
-    SocialaccountscardComponent
+    SocialaccountscardComponent,
   ],
 
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, NgxPaginationModule,
