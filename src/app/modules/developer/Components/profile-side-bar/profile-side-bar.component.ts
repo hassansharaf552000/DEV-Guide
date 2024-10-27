@@ -1,5 +1,6 @@
 import { Router, RouterModule } from '@angular/router';
 import { Component } from '@angular/core';
+import { AuthService } from '../../../../shared/services/Auth/auth.service';
 
 @Component({
   selector: 'app-profile-side-bar',
@@ -36,9 +37,10 @@ export class ProfileSideBarComponent {
   ];
   logoutItem = { path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' };
   homeItem = { path: '/home', label: 'Back To Home', icon: 'bi bi-house-door-fill' };
-  constructor(private router: Router) { }
+  constructor(private router: Router,private authServ:AuthService ) { }
 
-  logout() {
+  logout(){
+    this.authServ.userlogout()
     this.router.navigate([this.logoutItem.path]);
   }
   backhome() {

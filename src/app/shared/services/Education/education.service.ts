@@ -12,6 +12,8 @@ export class EducationService {
   private addeducations = 'http://localhost:5164/api/Account/AddEducation';
   private editeducations = 'http://localhost:5164/api/Account/UpdateEducation'
 
+  private add='http://localhost:5164/api/Education/add'
+
 
   constructor(private http: HttpClient) {}
 
@@ -22,7 +24,7 @@ export class EducationService {
 
   addEducation(education: IEducation): Observable<IEducation> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<IEducation>(this.addeducations, education, { headers });
+    return this.http.post<IEducation>(this.add,education);
   }
 
   // Edit an existing education record

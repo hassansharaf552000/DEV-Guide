@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './Components/about-us/about-us.component';
 import { HRListComponent } from './Components/hr-list/hr-list.component';
 import { MentorListComponent } from './Components/mentor-list/mentor-list.component';
-import { StepFiveComponent } from './Components/step-five/step-five.component';
-import { StepFourComponent } from './Components/step-four/step-four.component';
-import { StepOneComponent } from './Components/step-one/step-one.component';
-import { StepThreeComponent } from './Components/step-three/step-three.component';
-import { StepTwoComponent } from './Components/step-two/step-two.component';
+import { StepFiveComponent } from '../../shared/components/step-five/step-five.component';
+import { StepFourComponent } from '../../shared/components/step-four/step-four.component';
+import { StepOneComponent } from '../../shared/components/step-one/step-one.component';
+import { StepThreeComponent } from '../../shared/components/step-three/step-three.component';
+import { StepTwoComponent } from '../../shared/components/step-two/step-two.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { SharedModule } from '../../shared/shared.module';
 import { LoginComponent } from '../../shared/components/login/login.component';
@@ -50,39 +50,40 @@ import { SkillsComponent } from '../../shared/components/skills/skills.component
 import { EducationsComponent } from '../../shared/components/education-list/education-list.component';
 import { ExperienceListComponent } from '../../shared/components/experience-list/experience-list.component';
 import { SocialAccountsListComponent } from '../../shared/components/social-accounts-list/social-accounts-list.component';
+
+import { NotFoundComponent } from '../../shared/components/not-found/not-found.component';
+import { AuthGuard } from '../../core/guards/AuthGuard';
+
 import { BookingListComponent } from './Components/booking-list/booking-list.component';
+
 
 const routes: Routes = [
   {
     path: '',
     component: UserlayoutComponent,
+
     children: [
-      { path: 'step-one', component: StepOneComponent },
-      { path: 'payment', component: PaymentComponent },
-      { path: 'step-two', component: StepTwoComponent },
-      { path: 'step-three', component: StepThreeComponent },
-      { path: 'step-four', component: StepFourComponent },
-      { path: 'step-five', component: StepFiveComponent },
+      { path: 'payment', component: PaymentComponent,canActivate: [AuthGuard] },
       { path: 'mentors', component: MentorListComponent },
-      { path: 'mentors/:id', component: MentorProfileComponent },
+      { path: 'mentors/:id', component: MentorProfileComponent,canActivate: [AuthGuard], },
       { path: 'hrs', component: HRListComponent },
-      { path: 'hrs/:id', component: HrProfileComponent },
+      { path: 'hrs/:id', component: HrProfileComponent,canActivate: [AuthGuard], },
       { path: 'contactus', component: ContactUsComponent },
-      { path: 'skill-assessments', component: SkillAssessmentsComponent },
-      { path: 'skill-instructions', component: SkillInstructionsComponent },
-      { path: 'quiz', component: QuizComponent },
-      { path: 'finish-quiz', component: FinishQuizComponent },
+      { path: 'skill-assessments', component: SkillAssessmentsComponent,canActivate: [AuthGuard], },
+      { path: 'skill-instructions', component: SkillInstructionsComponent,canActivate: [AuthGuard], },
+      { path: 'quiz', component: QuizComponent,canActivate: [AuthGuard], },
+      { path: 'finish-quiz', component: FinishQuizComponent,canActivate: [AuthGuard], },
       { path: 'aboutus', component: AboutUsComponent },
       { path: 'home', component: HomeComponent },
       { path: 'forgetpassword', component: Forget_passwordComponent },
       { path: 'faq-and-licence', component: FaqComponent },
-      { path: 'booking', component: BookingComponent },
-      { path: 'query', component: QueryComponent },
-      { path: 'confirmation', component: BookingConfirmationComponent },
-      {path:'Quizzes',component:QuizzesListComponent},
-      {path:'Quiz/:id',component:QuizzesDetailsComponent},
+      { path: 'booking', component: BookingComponent,canActivate: [AuthGuard], },
+      { path: 'query', component: QueryComponent,canActivate: [AuthGuard], },
+      { path: 'confirmation', component: BookingConfirmationComponent,canActivate: [AuthGuard], },
+      {path:'Quizzes',component:QuizzesListComponent,canActivate: [AuthGuard],},
+      {path:'Quiz/:id',component:QuizzesDetailsComponent,canActivate: [AuthGuard],},
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-     { path: '**', redirectTo: 'notfound' },
+     //{ path: '**', component:NotFoundComponent},
       //{ path: 'AdminUi', component: AdminUIComponent }
     ],
   },
@@ -90,6 +91,7 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileLayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: 'profile', component: MentorProfileComponent },
       { path: 'updateprofile', component: Update_ProfileComponent },
@@ -99,23 +101,34 @@ const routes: Routes = [
       {path:'experiences',component:ExperienceListComponent},
       {path:'socialaccounts',component:SocialAccountsListComponent},
       { path: 'reviews', component: ReviewsListComponent },
-      { path: 'quizzes', component: QuizListComponent },
+      { path: 'quizzes', component: QuizListComponent,canActivate:[AuthGuard], },
       { path: 'reply', component: MentorReplyComponent },
+
+      { path: 'answer-query/:id', component: QueryAnswerComponent },
+      { path: 'AdminUi', component: AdminUIComponent },
+      //{ path: '**', redirectTo: 'notfound' },
+      {path:'',redirectTo: 'updateprofile', pathMatch: 'full'},
+
       { path: 'answer-query/:id/:queryid/:userid', component: QueryAnswerComponent },
       { path: 'AdminUi', component: AdminUIComponent },
       { path: 'Sessions', component:BookingListComponent },
+
 
     ],
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'booking/:id', component: BookingComponent },
-  { path: 'query/:id', component: QueryComponent },
-  { path: 'confirmation', component: BookingConfirmationComponent },
-  { path: 'communication', component: CommunicationComponent },
-
+  { path: 'booking/:id', component: BookingComponent,canActivate: [AuthGuard], },
+  { path: 'query/:id', component: QueryComponent,canActivate: [AuthGuard], },
+  { path: 'confirmation', component: BookingConfirmationComponent,canActivate: [AuthGuard], },
+  { path: 'communication', component: CommunicationComponent,canActivate: [AuthGuard], },
+  { path: 'step-one', component: StepOneComponent },
+  { path: 'step-two', component: StepTwoComponent },
+  { path: 'step-three', component: StepThreeComponent },
+  { path: 'step-four', component: StepFourComponent },
+  { path: 'step-five', component: StepFiveComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '**', redirectTo: 'notfound' },
+  //{ path: '**', redirectTo: 'notfound' },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes),SharedModule],

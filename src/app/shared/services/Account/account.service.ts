@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { AuthService } from './../Auth/auth.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of } from 'rxjs';
 import { ExperienceViewModel } from '../../../modules/developer/interfaces/UserExperance';
 import { EducationViewModel } from '../../../modules/developer/interfaces/UserEducation';
 import { Profile } from '../../profile';
@@ -25,29 +26,62 @@ export class AccountService {
   GetReviewsURL="http://localhost:5164/api/Account/GetReview"
   GetReviewsByClaimURL="http://localhost:5164/api/Account/GetReviewByClaim"
   queryUrl="http://localhost:5164/api/Account/GetOneByID"
-
-    finduserUrl="http://localhost:5164/api/Account/GetUserByID"
+   finduserUrl="http://localhost:5164/api/Account/GetUserByID"
   queryAnswerUrl="http://localhost:5164/api/Query/QueryAnswers"
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private authService:AuthService) {
     this.formData = new BehaviorSubject<FormData>(new FormData());
   }
 
+//   constructor(private http: HttpClient) {
+// >>>>>>> master
+
+//   }
+
   updateFormData(key: string, data: any) {
     let oldData: FormData = this.formData.value
-    oldData.append(key, data)
+    //oldData.append(key, data)
+    oldData.set(key,data)
     this.formData.next(oldData); // Update the BehaviorSubject
   }
-  
+
   // Retrieve the complete form data
   getFormData() {
     return this.formData.value;
   }
-  
 
-  CompleteProfile() {
-    return this.http.put(this.CompleteProfileURL, this.formData.value)
-  }
+
+  // CompleteProfile() {
+  //   const token = this.authService.getToken();  // Retrieve token from cookies
+  //   if (!token) {
+  //     console.error("No token found, user is not authenticated.");
+  //     //return;  // Exit if no token is found
+  //   }
+
+  //   const headers = new HttpHeaders({
+  //     'Authorization': `Bearer ${token}`,  // Add the token to the headers
+  //     'Content-Type': 'application/json'
+  //   });
+
+  //   return this.http.put(this.CompleteProfileURL, this.formData.value, { headers });
+  // }
+CompleteProfile() {
+    const token = this.authService.getToken();
+    if (!token) {
+        console.error("No token found, user is not authenticated.");
+        return of({ success: false });
+    }
+
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
+
+    return this.http.put(this.CompleteProfileURL, this.formData.value, { headers })
+        .pipe(
+            catchError(error => {
+                console.error("Error completing profile:", error);
+                return of({ success: false, message: "Profile completion failed" });
+            })
+        );
+}
 
   // ExpertsList(Data:any) {
   //   return this.http.get(this.ExpertsListURL,Data)
@@ -58,7 +92,7 @@ export class AccountService {
   // }
   // getall(name: string = '', role: string = '', title: string = '', minprice: number = 0, maxprice: number = 0, rate: number | null = null, page:number = 1, pageSize:number ): Observable<any> {
   //   const params: any = {};
-  
+
   //   if (name) params.name = name;
   //   if (role) params.role = role;
   //   if (title) params.title = title;
@@ -67,7 +101,7 @@ export class AccountService {
   //   if (rate !== null) params.rate = rate;
   //   if (pageSize) params.pageSize = pageSize;
   //   if(page) params.page=page;
-  
+
   //   return this.http.get<any>(this.ExpertsListURL, { params });
   // }
   getall(name: string = '', role: string = '', title: string = '', minprice: number = 0, maxprice: number = 0, rate: number | null = null, page: number = 1, pageSize: number, skills: string[] = [], mentorId: string = ''): Observable<any> {
@@ -88,7 +122,7 @@ export class AccountService {
 }
 
 
-  
+
   // getall(){
   //   return this.http.get(this.ExpertsListURL)
   // }
