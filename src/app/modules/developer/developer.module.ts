@@ -47,6 +47,9 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { QueryAnswerComponent } from './Components/query-answer/query-answer.component';
 import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { BookingListComponent } from './Components/booking-list/booking-list.component';
 
 
 @NgModule({
@@ -87,7 +90,8 @@ import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.com
     QueryComponent,
     QueryAnswerComponent,
     MentorReplyComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    BookingListComponent
   ],
   imports: [
     CommonModule,
@@ -103,8 +107,9 @@ import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.com
     NgxPaginationModule,
     NgxSliderModule  ,
 
-
-
+    MatDatepickerModule,
+    MatNativeDateModule,
+    CarouselModule,
 
   ],
   exports: [RateComponent]

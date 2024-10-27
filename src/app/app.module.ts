@@ -73,6 +73,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { authInterceptor } from './shared/interceptors/auth.interceptor';
 import { loaderInterceptor } from './shared/interceptors/loader.interceptor';
 import { SharedModule } from './shared/shared.module';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 @NgModule({
@@ -100,7 +101,7 @@ import { SharedModule } from './shared/shared.module';
   providers: [
     CookieService,
     provideClientHydration(), 
-    provideHttpClient(withFetch(), withInterceptors([authInterceptor,loaderInterceptor]))],
+    provideHttpClient(withFetch(), withInterceptors([authInterceptor,loaderInterceptor])), provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

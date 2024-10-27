@@ -12,6 +12,8 @@ export class SessionService {
 
   // GetAllSessionForOneUser="http://localhost:5164/api/Session/GetAllSessionForOneUser"
   GetAllSessionForOneUser="http://localhost:5164/api/Session/GetAllSessionForOneUser"
+  GetAllSessionForDeveloper="http://localhost:5164/api/Session/GetAllSessionForOneDeveloper"
+
 
   constructor(private http: HttpClient) { }
 
@@ -32,9 +34,11 @@ export class SessionService {
 
 //     return this.http.get(this.GetAllSessionForOneUser, { params });
 // }
-getall() {
- 
+getallSessionForMentor() {
   return this.http.get(this.GetAllSessionForOneUser);
+}
+getallSessionForDeveloper() {
+  return this.http.get(this.GetAllSessionForDeveloper);
 }
 
 }
