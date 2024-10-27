@@ -16,6 +16,8 @@ import { MentorAnswerQueryComponent } from './Components/mentor-answer-query/men
 import { MentorSummryComponent } from './Components/mentor-summry/mentor-summry.component';
 import { MentorRequestComponent } from './Components/mentor-request/mentor-request.component';
 import { RouterModule } from '@angular/router';
+import { ProfileComponent } from './Components/profile/profile.component';
+import { DeveloperModule } from '../developer/developer.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { RouterModule } from '@angular/router';
     MentorAnswerQueryComponent,
     MentorSummryComponent,
     MentorRequestComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +46,7 @@ import { RouterModule } from '@angular/router';
     MentorRoutingModule,
     SharedModule,
     RouterModule,
+    DeveloperModule
   ],
 })
 export class MentorModule {}

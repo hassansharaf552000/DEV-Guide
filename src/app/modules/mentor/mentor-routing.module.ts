@@ -14,6 +14,7 @@ import { SessionDetailsComponent } from './Components/session-details/session-de
 import { Update_ProfileComponent } from '../../shared/components/update_profile/update_profile.component';
 import { MentorSummryComponent } from './Components/mentor-summry/mentor-summry.component';
 import { MentorRequestComponent } from './Components/mentor-request/mentor-request.component';
+
 import { SkillsComponent } from '../../shared/components/skills/skills.component';
 import { EducationsComponent } from '../../shared/components/education-list/education-list.component';
 import { ExperienceListComponent } from '../../shared/components/experience-list/experience-list.component';
@@ -23,11 +24,15 @@ import { AuthGuard } from '../../core/guards/AuthGuard';
 import { ChangepasswordComponent } from '../../shared/components/changepassword/changepassword.component';
 import { QuizzesListComponent } from '../../shared/components/quizzes-list/quizzes-list.component';
 import { QuizzesDetailsComponent } from '../../shared/components/quizzes-details/quizzes-details.component';
+
+import { ProfileComponent } from './Components/profile/profile.component';
+
 const routes: Routes = [
   {
     path: '',
     component: MentorlayoutComponent,
     children: [
+
       { path: 'updateprofile', component: Update_ProfileComponent, canActivate: [AuthGuard], },
       { path: 'change-password', component: ChangepasswordComponent, canActivate: [AuthGuard], },
       { path: 'mentor-payments', component: MentorPaymentsComponent, canActivate: [AuthGuard], },
@@ -48,6 +53,21 @@ const routes: Routes = [
       {path:'Quizzes',component:QuizzesListComponent,canActivate: [AuthGuard],},
       {path:'Quiz/:id',component:QuizzesDetailsComponent,canActivate: [AuthGuard],},
       { path: 'home', component: MentorlayoutComponent,canActivate: [AuthGuard], },
+
+      // { path: 'profile', component:MentorProfileComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'updateprofile', component: Update_ProfileComponent },
+      { path: 'mentor-payments', component: MentorPaymentsComponent },
+      { path: 'Sessions', component: BookingComponent },
+      { path: 'mentor-summry', component: MentorSummryComponent },
+      { path: 'mentor-request', component: MentorRequestComponent },
+      { path: 'schedule', component: ScheduleComponent },
+      { path: 'contact_admin', component: ContactAdminComponent },
+      { path: 'reviews', component: ReviewsListComponent },
+      { path: 'queryanswers', component: MentorAnswerQueryComponent },
+      { path: 'session-details', component: SessionDetailsComponent },
+      { path: 'home', component: MentorlayoutComponent },
+
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'notfound' },
     ],

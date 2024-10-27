@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IMentor } from '../../../../core/enums/Mentor';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AccountService } from '../../../../shared/services/Account/account.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-mentor-profile',
   templateUrl: './mentor-profile.component.html',
   styleUrl: './mentor-profile.component.css'
 })
-export class MentorProfileComponent {
+export class MentorProfileComponent implements OnInit{
+  
   id : string;
    mentorId: string | null = null;
  // mentorProfile: IMentor | undefined;
@@ -41,10 +43,32 @@ export class MentorProfileComponent {
   
   // console.log("formated",formattedDate);
   selectedSkills:any[]=this.mentorProfile.Skills
-  constructor(private route: ActivatedRoute ,private http: HttpClient,private AccService:AccountService) {
-   
+  showReviewForm = false;
+
+  handleReview(reviewData: any) {
+    // Handle the review data here (e.g., send to your API)
+    console.log('Review submitted:', reviewData);
+    // Optionally hide the form after submission
+    this.showReviewForm = false;
+  }
+  
+  reviewForm: FormGroup;
+  constructor(private route: ActivatedRoute ,private http: HttpClient,private AccService:AccountService,private fb: FormBuilder) {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.reviewForm = this.fb.group({
+      rating: ['', Validators.required],
+      comment: ['', Validators.required]
+    });
   }
 
+ 
+
+  onSubmit() {
+    if (this.reviewForm.valid) {
+      // Handle form submission (e.g., send to API)
+      console.log(this.reviewForm.value);
+    }
+  }
   // ngOnInit(): void {
   //   this.mentorId = this.route.snapshot.paramMap.get('id');
   //   // this.loadMentor();
@@ -90,7 +114,7 @@ console.log("mentorid",mentorId)
         data => {
           this.mentorProfile = data;
           console.log('Profile: ', this.mentorProfile);
-          console.log("experi",this.mentorProfile.Experiences.length);
+          console.log("experi",this.mentorProfile?.Experiences?.length);
           
         },
         error => {
@@ -169,8 +193,8 @@ console.log("mentorid",mentorId)
 
 
   updateDisplayedReviews() {
-    this.displayedReviews = this.reviews.slice(0, this.reviewsLimit);
-    this.hasMoreReviews = this.reviews.length > this.reviewsLimit;
+    this.displayedReviews = this.reviews?.slice(0, this.reviewsLimit);
+    this.hasMoreReviews = this.reviews?.length > this.reviewsLimit;
     this.canLoadLess = this.reviewsLimit > 4;  // Show "Load Less" if more than 4 reviews are displayed
   }
 
@@ -191,10 +215,10 @@ console.log("mentorid",mentorId)
   }
 
   get displayText(): string {
-    if (this.isExpanded || this.mentorProfile.About.length <= this.maxLength) {
+    if (this.isExpanded || this.mentorProfile?.About?.length <= this.maxLength) {
       return this.mentorProfile.About;
     }
-    return this.mentorProfile.About.slice(0, this.maxLength) + '...';
+    return this.mentorProfile?.About?.slice(0, this.maxLength) + '...';
   }
   loadMentorProfile(id:string):void{
     // const mentorlist:IMentor[]=[
@@ -321,13 +345,13 @@ getLimitedEducations(educations: any[]) {
   if (!educations) {
     return []; // Return an empty array if educations is undefined
   }
-  return this.showAll ? educations : educations.slice(0, this.maxItemsToShow);
+  return this.showAll ? educations : educations?.slice(0, this.maxItemsToShow);
 }
 getLimitedExperiences(experiences: any[]) {
   if (!experiences) {
     return []; // Return an empty array if educations is undefined
   }
-  return this.showAll ? experiences : experiences.slice(0, this.maxItemsToShow);
+  return this.showAll ? experiences : experiences?.slice(0, this.maxItemsToShow);
 }
 trackByFunction(index: number, education: any): string {
   return education.Degree; // or any unique identifier

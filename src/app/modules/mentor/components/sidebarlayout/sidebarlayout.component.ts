@@ -38,6 +38,14 @@ export class SidebarlayoutComponent {
 
     { path: '/mentor/mentor-payments', label: 'Payments', icon: 'bi bi-wallet2' },
 
+
+    // { path: '/mentor/profile', label: 'Profile', icon: 'bi bi-person-circle' },
+    { path: '/mentor/profile', label: 'Profile', icon: 'bi bi-person-circle' },
+    { path: '/mentor/updateprofile', label: 'Edit Profile', icon: 'bi bi-pencil' },
+    { path: '/mentor/mentor-payments', label: 'Payments', icon: 'bi bi-wallet2' },
+    { path: '/mentor/queryanswers', label: 'Queries Answers', icon: 'bi bi-chat-dots' },
+    { path: '/mentor/Sessions', label: 'Sessions', icon: 'bi bi-calendar-event' },
+
     { path: '/mentor/contact_admin', label: 'Contact Admin', icon: 'bi bi-envelope-open' },
 
     //{ path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' }

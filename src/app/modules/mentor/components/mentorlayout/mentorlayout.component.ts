@@ -1,7 +1,11 @@
-import { Component, HostListener } from '@angular/core';
+
 import { AuthService } from '../../../../shared/services/Auth/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+
+
+import { isPlatformBrowser } from '@angular/common';
+import { ChangeDetectorRef, Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 
 
 @Component({
@@ -66,10 +70,16 @@ export class MentorlayoutComponent {
 
     { path: '/mentor/mentor-payments', label: 'Payments', icon: 'bi bi-wallet2' },
 
+
+
+    { path: '/mentor/queryanswers', label: 'Queries Answers', icon: 'bi bi-chat-dots' },
+    { path: '/mentor/Sessions', label: 'Sessions', icon: 'bi bi-calendar-event' },
+
     { path: '/mentor/contact_admin', label: 'Contact Admin', icon: 'bi bi-envelope-open' },
 
     //{ path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' }
   ];
+
   logoutItem = { path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' };
 
   isuserExist:boolean = false
@@ -77,7 +87,7 @@ export class MentorlayoutComponent {
   userImageUrl: string | null = null;
   private subscriptions: Subscription = new Subscription();
 
-  constructor(private router: Router,private authServ:AuthService){
+  constructor(private router: Router,private authServ:AuthService,@Inject(PLATFORM_ID) private platformId: any,private cdRef: ChangeDetectorRef){
     this.authServ.userlogin(this.authServ.getToken()??"")
     this.authServ.isloggedUserSubject.subscribe(value=>{
     this.isuserExist = value
@@ -105,7 +115,16 @@ export class MentorlayoutComponent {
               }
           })
       );
-  }
+      this.cdRef.detectChanges();
+    }
+
+  // constructor(@Inject(PLATFORM_ID) private platformId: any,private cdRef: ChangeDetectorRef) {}
+
+  // ngOnInit() {
+  //   this.checkScreenWidth();
+
+
+  // }
 
   checkUserLogin(): void {
     const token = this.authServ.getToken() // Assuming the token is stored in localStorage
@@ -119,19 +138,23 @@ export class MentorlayoutComponent {
 
 
   // Listener to detect window resizing
-  // @HostListener('window:resize', ['$event'])
-  // onResize(event: any) {
-  //   this.checkScreenWidth();
-  // }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    if (isPlatformBrowser(this.platformId)) {
+    this.checkScreenWidth();
+    }
+  }
 
   // Check screen size and handle sidebar behavior
   checkScreenWidth() {
-    //this.isMobile = window.innerWidth < 768;  // Detect if screen width is less than 768px (Bootstrap's `md` breakpoint)
+    if (isPlatformBrowser(this.platformId)) {
+      this.isMobile = window.innerWidth < 768;  // Detect if screen width is less than 768px (Bootstrap's `md` breakpoint)
 
-    if (!this.isMobile) {
-      this.isSidebarOpen = true;  // Keep the sidebar open on larger screens
-    } else {
-      this.isSidebarOpen = false;  // Automatically close the sidebar if on mobile
+      if (!this.isMobile) {
+        this.isSidebarOpen = true;  // Keep the sidebar open on larger screens
+      } else {
+        this.isSidebarOpen = false;  // Automatically close the sidebar if on mobile
+      }
     }
   }
 

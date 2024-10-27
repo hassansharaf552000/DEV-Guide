@@ -13,6 +13,7 @@ import { HrAnswerQueryComponent } from './Components/hr-answer-query/hr-answer-q
 import { SessionDatailsComponent } from './Components/session-details/session-details.component';
 import { HrProfileComponent } from '../developer/Components/hr-profile/hr-profile.component';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
+
 import { ChangepasswordComponent } from '../../shared/components/changepassword/changepassword.component';
 import { AuthGuard } from '../../core/guards/AuthGuard';
 import { SkillsComponent } from '../../shared/components/skills/skills.component';
@@ -23,12 +24,17 @@ import { QuizListComponent } from '../developer/Components/quiz-list/quiz-list.c
 import { ContactAdminComponent } from '../mentor/Components/contact-admin/contact-admin.component';
 import { QuizzesListComponent } from '../../shared/components/quizzes-list/quizzes-list.component';
 import { QuizzesDetailsComponent } from '../../shared/components/quizzes-details/quizzes-details.component';
+import { ProfileComponent } from './Components/profile/profile.component';
+
+
+
 
 const routes: Routes = [
   {
     path: '',
     component: HrlayoutComponent,
     children: [
+
       { path: 'profile', component:HrProfileComponent,canActivate: [AuthGuard] },
       { path: 'updateprofile', component: Update_ProfileComponent , canActivate: [AuthGuard]  },
       { path: 'change-password', component: ChangepasswordComponent, canActivate: [AuthGuard], },
@@ -49,6 +55,20 @@ const routes: Routes = [
       {path:'Quizzes',component:QuizzesListComponent,canActivate: [AuthGuard],},
       {path:'Quiz/:id',component:QuizzesDetailsComponent,canActivate: [AuthGuard],},
       { path: 'home', component: HrlayoutComponent,canActivate: [AuthGuard] },
+
+      { path: 'profile', component: ProfileComponent },
+      { path: 'updateprofile', component: Update_ProfileComponent },
+      { path: 'hr-payments', component: HrPaymentsComponent },
+      { path: 'Sessions', component:BookingHrComponent },
+      { path: 'hr-summry', component: HrSummaryComponent },
+      { path: 'hr-request', component: HrRequestComponent},
+      { path: 'schedule', component: ScheduleComponent },
+      { path: 'contact-hr', component: ContactHrComponent },
+      { path: 'reviews', component: ReviewsListComponent },
+      { path: 'queryanswers', component: HrAnswerQueryComponent },
+      { path: 'session-details', component: SessionDatailsComponent },
+      { path: 'home', component: HrlayoutComponent },
+
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'notfound' },
     ],

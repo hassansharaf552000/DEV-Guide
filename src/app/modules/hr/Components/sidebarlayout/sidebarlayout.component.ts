@@ -37,9 +37,17 @@ export class SidebarlayoutComponent {
 
     { path: '/hr/hr-payments', label: 'Payments', icon: 'bi bi-wallet2' },
 
+
     { path: '/hr/contact_admin', label: 'Contact Admin', icon: 'bi bi-envelope-open' },
 
     //{ path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' }
+
+    { path: '/hr/queryanswers', label: 'Queries Answers', icon: 'bi bi-chat-dots' },
+    { path: '/hr/Sessions', label: 'Sessions', icon: 'bi bi-calendar-event' },
+    { path: '/hr/contact-hr', label: 'Contact Admin', icon: 'bi bi-envelope-open' },
+    { path: '/hr/schedule', label: 'Schedule', icon: 'bi bi-calendar-check-fill' },
+    { path: '/hr/reviews', label: 'Reviews', icon: 'bi bi-star-fill' }
+
   ];
   logoutItem = { path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' };
   isSidebarOpen = false;  // Sidebar is closed by default

@@ -22,12 +22,21 @@ export class AccountService {
   AddExperienceURL = "http://localhost:5164/api/Account/AddExperience"
   AddEducationURL = "http://localhost:5164/api/Account/AddEducation"
   GetProfileURL="http://localhost:5164/api/Account/GetOneUser"
+  GetProfileByClaimURL="http://localhost:5164/api/Account/GetOneUserByClaim"
   GetReviewsURL="http://localhost:5164/api/Account/GetReview"
+  GetReviewsByClaimURL="http://localhost:5164/api/Account/GetReviewByClaim"
   queryUrl="http://localhost:5164/api/Account/GetOneByID"
+   finduserUrl="http://localhost:5164/api/Account/GetUserByID"
+  queryAnswerUrl="http://localhost:5164/api/Query/QueryAnswers"
 
   constructor(private http: HttpClient,private authService:AuthService) {
     this.formData = new BehaviorSubject<FormData>(new FormData());
   }
+
+//   constructor(private http: HttpClient) {
+// >>>>>>> master
+
+//   }
 
   updateFormData(key: string, data: any) {
     let oldData: FormData = this.formData.value
@@ -121,7 +130,12 @@ CompleteProfile() {
   getMentorById(id: string): Observable<any> {
     return this.http.get<any>(`${this.queryUrl}/${id}`);
   }
-
+  getUserById(userid: string): Observable<any> {
+    return this.http.get<any>(`${this.finduserUrl}/${userid}`);
+  }
+  getAnswerByQueryId(id: string): Observable<any> {
+    return this.http.get<any>(`${this.queryAnswerUrl}/${id}`);
+  }
   AddExperience(formData:any) {
     return this.http.put(this.AddExperienceURL, formData)
   }
@@ -132,10 +146,16 @@ CompleteProfile() {
   getProfile(id: string): Observable<any> {
     return this.http.get<any>(`${this.GetProfileURL}/${id}`);
   }
-
+  getProfileByClaim() {
+    return this.http.get<any>(this.GetProfileByClaimURL);
+  }
   // Fetch reviews by user ID
   getReviews(id: string): Observable<any> {
     return this.http.get<any>(`${this.GetReviewsURL}/${id}`);
+  }
+
+  getReviewsByClaim() {
+    return this.http.get<any>(this.GetReviewsByClaimURL);
   }
 
 }

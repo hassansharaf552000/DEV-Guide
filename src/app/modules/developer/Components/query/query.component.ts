@@ -56,7 +56,7 @@ if (this.MentorID) {
     getMentor(id: string) {
       this.AccService.getMentorById(this.MentorID).subscribe((data) => {
         this.mentor = data;
-        console.log(data);
+        console.log("mentor",data);
         
       });
     }

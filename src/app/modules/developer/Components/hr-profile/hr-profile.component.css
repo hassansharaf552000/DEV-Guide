@@ -1,4 +1,3 @@
-/* General Styles */
 .profile-img {
   width: 150px;
   height: 150px;
@@ -111,7 +110,7 @@
 }
 
 
-.mentor-skills {
+.hr-skills {
   display: flex;
   flex-wrap: wrap; /* Ensures that the circles will wrap if there's not enough horizontal space */
   gap: 10px; /* Spacing between the circles */
@@ -172,3 +171,94 @@
 .education-item p strong, .experience-item p strong {
   color: #333;
 }
+
+
+
+.education-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.education-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.institute-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.education-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.education-details h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.education-details p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.education-time {
+  font-size: 14px;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.calendar-icon {
+  font-size: 16px;
+}
+@media (max-width:992px)  {
+  h1{
+    font-size: 32px !important;
+  }
+  .card-body{
+    padding: 48px 20px  !important;
+  }
+}
+@media (max-width:770px)  {
+ 
+  .btn-outline-primary{
+    font-size: 14px !important;
+  }
+}@media (max-width: 575.98px) {
+.custom-flex{
+  display: flex !important;
+  flex-direction: row !important;
+}
+.custom-flex-col{
+  display: flex !important;
+  flex-direction: column !important;
+}
+.custom-gap{
+  gap: 10px !important;
+}
+h3 {
+  font-size: 32px !important;
+}
+h2{
+  font-size: 40px !important;
+  text-align: center !important;
+}
+.custom-col{
+  width: 90% !important;
+
+}
+.justify-content-sm-center{
+  justify-content: center !important;
+}
+}
+
