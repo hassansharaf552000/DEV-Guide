@@ -28,15 +28,15 @@ export class ProfileLayoutComponent {
     this.checkScreenWidth();
   }
 
- // Listener to detect window resizing
-  // @HostListener('window:resize', ['$event'])
-  // onResize(event: any) {
-  //   this.checkScreenWidth();
-  // }
+ //Listener to detect window resizing
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenWidth();
+  }
 
   // Check screen size and handle sidebar behavior
   checkScreenWidth() {
-    // this.isMobile = window.innerWidth < 768;  // Detect if screen width is less than 768px (Bootstrap's `md` breakpoint)
+     this.isMobile = window.innerWidth < 768;  // Detect if screen width is less than 768px (Bootstrap's `md` breakpoint)
 
     if (!this.isMobile) {
       this.isSidebarOpen = true;  // Keep the sidebar open on larger screens
