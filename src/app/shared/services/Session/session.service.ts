@@ -12,7 +12,13 @@ export class SessionService {
 
   // GetAllSessionForOneUser="http://localhost:5164/api/Session/GetAllSessionForOneUser"
   GetAllSessionForOneUser="http://localhost:5164/api/Session/GetAllSessionForOneUser"
+
+  GetSessionDetailsURL="http://localhost:5164/api/Session/GetSessionById"
+  UpdateFeedbackURL="http://localhost:5164/api/Session/UpdateFeedback"
+  UpdateMeetingLinkURL="http://localhost:5164/api/Session/UpdateMeetingLink"
+
   GetAllSessionForDeveloper="http://localhost:5164/api/Session/GetAllSessionForOneDeveloper"
+
 
 
   constructor(private http: HttpClient) { }
@@ -34,7 +40,34 @@ export class SessionService {
 
 //     return this.http.get(this.GetAllSessionForOneUser, { params });
 // }
+
+getSessionById(id: string): Observable<any> {
+  return this.http.get<any>(`${this.GetSessionDetailsURL}/${id}`);
+}
+// updateFeedback(sessionId: string, feedback: string): Observable<any> {
+//   return this.http.put<any>(`${this.UpdateFeedbackURL}/${sessionId}`, {feedback});
+// }
+updateFeedback(sessionId: string, feedback: string): Observable<any> {
+  const body = { Feedback: feedback }; // Wrap the feedback in an object
+
+  return this.http.put<any>(`${this.UpdateFeedbackURL}/${sessionId}`, body, {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }) // Ensure the content type is JSON
+  });
+}
+UpdateMeeting(sessionId: string,feedback: string): Observable<any> {
+  const body = { Feedback: feedback }; // Wrap the feedback in an object
+
+  return this.http.put<any>(`${this.UpdateMeetingLinkURL}/${sessionId}`, body, {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }) // Ensure the content type is JSON
+  });
+}
+
+
+getall() {
+ 
+
 getallSessionForMentor() {
+
   return this.http.get(this.GetAllSessionForOneUser);
 }
 getallSessionForDeveloper() {

@@ -50,6 +50,8 @@ import { SkillsComponent } from '../../shared/components/skills/skills.component
 import { EducationsComponent } from '../../shared/components/education-list/education-list.component';
 import { ExperienceListComponent } from '../../shared/components/experience-list/experience-list.component';
 import { SocialAccountsListComponent } from '../../shared/components/social-accounts-list/social-accounts-list.component';
+import { DeveloperSessionDetailsComponent } from './Components/developer-session-details/developer-session-details.component';
+
 
 import { NotFoundComponent } from '../../shared/components/not-found/not-found.component';
 import { AuthGuard } from '../../core/guards/AuthGuard';
@@ -83,7 +85,13 @@ const routes: Routes = [
       {path:'Quizzes',component:QuizzesListComponent,canActivate: [AuthGuard],},
       {path:'Quiz/:id',component:QuizzesDetailsComponent,canActivate: [AuthGuard],},
       { path: '', redirectTo: 'home', pathMatch: 'full' },
+
+     { path: '**', redirectTo: 'notfound' },
+  
+
+
      //{ path: '**', component:NotFoundComponent},
+
       //{ path: 'AdminUi', component: AdminUIComponent }
     ],
   },
@@ -111,7 +119,11 @@ const routes: Routes = [
 
       { path: 'answer-query/:id/:queryid/:userid', component: QueryAnswerComponent },
       { path: 'AdminUi', component: AdminUIComponent },
+
+      { path: 'session-details/:id', component: DeveloperSessionDetailsComponent },
+
       { path: 'Sessions', component:BookingListComponent },
+
 
 
     ],
