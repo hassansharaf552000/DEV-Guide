@@ -76,7 +76,7 @@ export class BookingComponent {
   //   );
   // }
   loadSessions() {
-    this.SessionServ.getall().subscribe(
+    this.SessionServ.getallSessionForMentor().subscribe(
       (data) => { 
         this.sessions=data
         this.sessions.forEach(element => {

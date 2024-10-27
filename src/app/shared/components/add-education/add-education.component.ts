@@ -30,22 +30,54 @@ export class AddEducationComponent {
     });
   }
 
+  // onSave(): void {
+  //   if (this.educationForm.valid) {
+  //     const newEducation: IEducation = {
+  //       ...this.educationForm.value,
+  //       StartDate: new Date(this.educationForm.value.StartDate).toISOString(),
+  //       EndDate: this.educationForm.value.EndDate ? new Date(this.educationForm.value.EndDate).toISOString() : null
+  //     };
+
+  //     // Call the addEducation service function to save the new education
+  //     this.educationservice.addEducation(newEducation).subscribe(
+  //       (response: IEducation) => {
+  //         console.log('Education added successfully:', response);
+  //         this.dialogRef.close(response); // Close dialog and pass the added education back
+  //       },
+  //       (error) => {
+  //         console.error('Error adding education:', error);
+  //       }
+  //     );
+  //   }
+  // }
+
   onSave(): void {
+    // Check if form is valid before submission
     if (this.educationForm.valid) {
-      const newEducation: IEducation = this.educationForm.value;
+      // Convert form values to match backend expectations, particularly with dates
+      const newEducation: IEducation = {
+        ...this.educationForm.value,
+        StartDate: new Date(this.educationForm.value.StartDate).toISOString(), // Convert StartDate to ISO string
+        EndDate: this.educationForm.value.TillNow ? null : new Date(this.educationForm.value.EndDate).toISOString() // Convert EndDate if TillNow is false
+      };
 
       // Call the addEducation service function to save the new education
       this.educationservice.addEducation(newEducation).subscribe(
         (response: IEducation) => {
           console.log('Education added successfully:', response);
-          this.dialogRef.close(response); // Close dialog and pass the added education back
+          this.dialogRef.close(response); // Close dialog and pass the added education back to the parent component
         },
         (error) => {
-          console.error('Error adding education:', error);
+          console.error('Error adding education:', error); // Log error details for debugging
         }
       );
+    } else {
+      // Optionally, mark all controls as touched to trigger validation messages
+      this.educationForm.markAllAsTouched();
+      console.warn('Form is invalid:', this.educationForm.errors);
     }
   }
+
 
   onCancel(): void {
     this.dialogRef.close(); // Close the dialog without saving

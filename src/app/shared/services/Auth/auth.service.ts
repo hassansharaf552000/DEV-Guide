@@ -75,9 +75,11 @@
 
 import { ChangePassword } from '../../change-password';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, Injector } from "@angular/core";
 import { CookieService } from 'ngx-cookie-service';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, switchMap, throwError } from 'rxjs';
+import { Profile } from '../../profile';
+import { ProfileService } from '../profile.service';
 
 
 
@@ -89,11 +91,44 @@ export class AuthService {
   private apiUrl = 'http://localhost:5164/api/Account/change-password'; // Your API base URL
   private loginapi = 'http://localhost:5164/api/Account/Login';
   private RegisterURL = 'http://localhost:5164/api/Account/Register';
-  isloggedUserSubject: BehaviorSubject<boolean>
+  private updateprofile = "http://localhost:5164/api/Account/update-profile";
+  private getprofile = "http://localhost:5164/api/Account/get-profile";
+  isloggedUserSubject: BehaviorSubject<boolean>;
+  userProfileSubject: BehaviorSubject<Profile | null>; // Profile BehaviorSubject
+  //private userProfile$: Observable<Profile | null>;
   private tokenKey = 'authToken'; // Name of the cookie
 
-  constructor(private http: HttpClient,private CookieServ:CookieService) {
-    this.isloggedUserSubject = new BehaviorSubject<boolean>(this.getToken()==null?false:true)
+  constructor(private http: HttpClient,private CookieServ:CookieService,private profileservice:ProfileService,private injector: Injector) {
+   this.isloggedUserSubject = new BehaviorSubject<boolean>(this.checkToken());
+    this.userProfileSubject = new BehaviorSubject<Profile | null>(null);
+  }
+
+   // Method to get the Authorization header with the token
+  private getAuthHeaders(): HttpHeaders {
+    //const authService = this.injector.get(AuthService); // Lazy load AuthService
+    const token = this.getToken();
+    if (token) {
+      return new HttpHeaders({
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json' // You can adjust the content type based on your API needs
+      });
+    } else {
+      return new HttpHeaders(); // Return empty headers if no token
+    }
+  }
+
+  // Get Profile with Authorization
+  getProfile(): Observable<Profile> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<Profile>(this.getprofile, { headers });
+  }
+
+  // Update Profile with Authorization
+  UpdateProfile(profileData: FormData): Observable<Profile> {
+    const headers = this.getAuthHeaders();
+    return this.http.put<Profile>(this.updateprofile, profileData, {
+      headers: headers.delete('Content-Type') // Let the browser set multipart/form-data headers
+    });
   }
 
   // Change password method
@@ -110,6 +145,18 @@ export class AuthService {
     return this.http.post(this.RegisterURL, user);
   }
 
+  private loadUserProfile(): void {
+    this.getProfile().pipe(
+      catchError((error) => {
+        console.error('Error loading profile:', error);
+        return of(null); // Return a null profile on error
+      })
+    ).subscribe(profile => {
+      this.userProfileSubject.next(profile);
+    });
+  }
+
+
 
 
 
@@ -117,15 +164,24 @@ export class AuthService {
 
 
   userlogin(token: string) {
-    if(token=="")
-    this.isloggedUserSubject.next(false)
+    if(token==""){
+      this.isloggedUserSubject.next(false)
+    }
+    else{
+      this.setToken(token);
+      this.isloggedUserSubject.next(true);
 
-    this.setToken(token)
-    this.isloggedUserSubject.next(true)
+      // Load user profile after successful login
+      this.loadUserProfile();
+    }
+
+
+
   }
   userlogout() {
     this.removeToken()
-    this.isloggedUserSubject.next(false)
+    this.isloggedUserSubject.next(false);
+    //this.userProfileSubject.next(null); // Clear the profile on logout
   }
   // Set token in cookies
   setToken(token: string): void {
@@ -141,5 +197,28 @@ export class AuthService {
   removeToken(): void {
     this.CookieServ.delete(this.tokenKey)
   }
+
+isLoggedIn(): boolean {
+  const token = this.getToken();
+  if (!token) return false;
+
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    const isExpired = payload.exp < Date.now() / 1000;
+    return !isExpired;
+  } catch (error) {
+    console.error('Token decoding failed:', error);
+    return false;
+  }
+}
+
+
+private checkToken(): boolean {
+  return this.CookieServ.check(this.tokenKey)
+}
+
+
+
+
 
 }

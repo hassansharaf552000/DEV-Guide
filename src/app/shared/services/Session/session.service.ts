@@ -12,9 +12,13 @@ export class SessionService {
 
   // GetAllSessionForOneUser="http://localhost:5164/api/Session/GetAllSessionForOneUser"
   GetAllSessionForOneUser="http://localhost:5164/api/Session/GetAllSessionForOneUser"
+
   GetSessionDetailsURL="http://localhost:5164/api/Session/GetSessionById"
   UpdateFeedbackURL="http://localhost:5164/api/Session/UpdateFeedback"
   UpdateMeetingLinkURL="http://localhost:5164/api/Session/UpdateMeetingLink"
+
+  GetAllSessionForDeveloper="http://localhost:5164/api/Session/GetAllSessionForOneDeveloper"
+
 
 
   constructor(private http: HttpClient) { }
@@ -36,6 +40,7 @@ export class SessionService {
 
 //     return this.http.get(this.GetAllSessionForOneUser, { params });
 // }
+
 getSessionById(id: string): Observable<any> {
   return this.http.get<any>(`${this.GetSessionDetailsURL}/${id}`);
 }
@@ -60,7 +65,13 @@ UpdateMeeting(sessionId: string,feedback: string): Observable<any> {
 
 getall() {
  
+
+getallSessionForMentor() {
+
   return this.http.get(this.GetAllSessionForOneUser);
+}
+getallSessionForDeveloper() {
+  return this.http.get(this.GetAllSessionForDeveloper);
 }
 
 }

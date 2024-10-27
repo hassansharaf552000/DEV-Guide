@@ -16,8 +16,12 @@ export class ExperienceCardComponent {
   ngOnInit(): void {}
 
   // Method to format date (e.g., Jan 2023)
-  formatDate(date: Date): string {
-    return new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short' }).format(new Date(date));
+  formatDate(date: string | Date): string {
+    // Convert the date to a Date object if it’s in string format
+    const parsedDate = typeof date === 'string' ? new Date(date) : date;
+
+    // Format the date (e.g., Jan 2023)
+    return new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short' }).format(parsedDate);
   }
   // Open the dialog and pass the education data
   openEditDialog(): void {

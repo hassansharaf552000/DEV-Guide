@@ -1,5 +1,6 @@
 import { Router, RouterModule } from '@angular/router';
 import { Component } from '@angular/core';
+import { AuthService } from '../../../../shared/services/Auth/auth.service';
 
 @Component({
   selector: 'app-profile-side-bar',
@@ -23,22 +24,23 @@ export class ProfileSideBarComponent {
 
     { path: '/developer/profile/quizzes', label: 'Quizzes', icon: 'bi bi-question' },
     { path: '/developer/profile/reply', label: 'Queries', icon: 'bi bi-chat-square-dots' },
-    { path: '/profile-requests', label: 'Requests', icon: 'bi bi-envelope' },
+    // { path: '/profile-requests', label: 'Requests', icon: 'bi bi-envelope' },
 
-    { path: '/developer/profile/answer-query', label: 'Answers of Query', icon: 'fa-regular fa-comment-dots' },
+    // { path: '/developer/profile/answer-query', label: 'Answers of Query', icon: 'fa-regular fa-comment-dots' },
 
     // { path: '/settings', label: 'Settings', icon: 'bi bi-gear' },
 
-    { path: '/developer/booking', label: 'Sessions', icon: 'bi bi-calendar-check' },
-    { path: '/developer/profile/reviews', label: 'Reviews', icon: 'bi bi-star' },
+    { path: '/developer/profile/Sessions', label: 'Sessions', icon: 'bi bi-calendar-check' },
+    // { path: '/developer/profile/reviews', label: 'Reviews', icon: 'bi bi-star' },
 
     //{ path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' }
   ];
   logoutItem = { path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' };
   homeItem = { path: '/home', label: 'Back To Home', icon: 'bi bi-house-door-fill' };
-  constructor(private router: Router) { }
+  constructor(private router: Router,private authServ:AuthService ) { }
 
-  logout() {
+  logout(){
+    this.authServ.userlogout()
     this.router.navigate([this.logoutItem.path]);
   }
   backhome() {

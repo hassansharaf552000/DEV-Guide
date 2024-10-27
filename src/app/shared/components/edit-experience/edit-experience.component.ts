@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { IExperience } from "../../../core/enums/Experience";
 import { Component, Inject } from "@angular/core";
 import { ExperienceService } from "../../services/Experience/experience.service";
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-edit-experience',  // Unique selector for this component
   templateUrl: './edit-experience.component.html',  // Path to the template file
@@ -16,6 +17,7 @@ export class EditExperienceComponent {
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<EditExperienceComponent>,
     private experienceservice:ExperienceService,
+    private router:Router,
     @Inject(MAT_DIALOG_DATA) public experience: IExperience
   ) {
     // Initialize form with experience data
@@ -41,7 +43,9 @@ export class EditExperienceComponent {
       this.experienceservice.editExperience(updatedexperience).subscribe(
         (response: IExperience) => {
           console.log('Experience updated successfully:', response);
-          this.dialogRef.close(response);  // Close dialog and pass back the updated education
+          this.dialogRef.close(response);
+          this.router.navigateByUrl("/experiences");
+           // Close dialog and pass back the updated education
         },
         (error) => {
           console.error('Error updating education:', error);

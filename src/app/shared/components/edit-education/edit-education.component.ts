@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IEducation } from '../../../core/enums/Education';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EducationService } from '../../services/Education/education.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-education',
@@ -16,6 +17,7 @@ export class EditEducationComponent {
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<EditEducationComponent>,
     private educationservice:EducationService,
+    private router:Router,
     @Inject(MAT_DIALOG_DATA) public education: IEducation
   ) {
     // Initialize form with education data
@@ -42,7 +44,8 @@ export class EditEducationComponent {
       this.educationservice.editEducation(updatedEducation).subscribe(
         (response: IEducation) => {
           console.log('Education updated successfully:', response);
-          this.dialogRef.close(response);  // Close dialog and pass back the updated education
+          this.dialogRef.close(response);
+          this.router.navigateByUrl("/educations");// Close dialog and pass back the updated education
         },
         (error) => {
           console.error('Error updating education:', error);
