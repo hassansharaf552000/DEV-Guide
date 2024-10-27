@@ -92,7 +92,7 @@ import { BookingListComponent } from './Components/booking-list/booking-list.com
     MentorReplyComponent,
     ContactUsComponent,
 
-    DeveloperSessionDetailsComponent
+    DeveloperSessionDetailsComponent,
 
     BookingListComponent
 
