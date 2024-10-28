@@ -9,7 +9,9 @@ import { IExperience } from '../../../core/enums/Experience';
 export class ExperienceService {
 
   private allexperiences = 'http://localhost:5164/api/Account/GetAllExperiences';
-  private updateexperience = 'http://localhost:5164/api/Account/UpdateExperience'
+  private updateexperience = 'http://localhost:5164/api/Account/UpdateExperience';
+
+  private addexperience = 'http://localhost:5164/api/Experience/add';
 
   constructor(private http: HttpClient) {}
 
@@ -21,5 +23,10 @@ export class ExperienceService {
   editExperience(experience: IExperience): Observable<IExperience> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put<IExperience>(`${this.updateexperience}`, experience, { headers });
+  }
+
+  addExperience(experience: IExperience): Observable<IExperience>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<IExperience>(this.addexperience,experience);
   }
 }

@@ -1,6 +1,5 @@
-<nav class="navbar navbar-expand-lg" >
+<!-- <nav class="navbar navbar-expand-lg" >
   <div class="container-fluid">
-    <!-- <a class="navbar-brand">Dev-Guide</a> -->
      <img src="logo 3_processed.jpg" class="nav-image">
     <div class="d-flex order-lg-2 ms-auto align-items-center">
       <button class="navbar-toggler me-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,9 +45,6 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/developer/home">Home</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/developer/userlayout">Developer</a>
-        </li> -->
         <li class="nav-item">
           <a class="nav-link" routerLink="/developer/mentors">Mentor</a>
         </li>
@@ -74,4 +70,60 @@
       </ul>
     </div>
   </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <img src="logo 3_processed.jpg" class="nav-image">
+    <div class="d-flex order-lg-2 ms-auto align-items-center">
+      <button class="navbar-toggler me-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Show Profile Dropdown if User is Logged In -->
+      <div *ngIf="isuserExist" class="dropdown navbar-dropdown-image1 drop-img ms-1 ms-lg-0">
+        <a class="p-0 ps-3" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+          <img class="rounded-circle" src="http://localhost:5164/{{userImageUrl}}" alt="avatar" style="width:25%;">
+        </a>
+        <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3 p-3 navbar-dropdown-image" aria-labelledby="profileDropdown">
+          <li class="px-2 mb-1">
+            <div class="d-flex align-items-center">
+              <div class="pe-3">
+                <img class="rounded-circle shadow" src="http://localhost:5164/{{userImageUrl}}" style="width:40%;height: 40%;" alt="avatar">
+              </div>
+              <div>
+                <a class="h6 text-decoration-none">{{ userName || 'User' }}</a>
+                <p class="small m-0 text-muted">gmail.com</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item text-muted" routerLink="/developer/profile"><i class="bi bi-person fa-fw me-2"></i>Profile</a></li>
+          <li><a class="dropdown-item bg-danger-soft-hover text-muted" (click)="logout()"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+        </ul>
+      </div>
+
+      <!-- Show Login/Register Links if User is Not Logged In -->
+      <div *ngIf="!isuserExist" class="collapse navbar-collapse order-lg-1">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/register">Register</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="collapse navbar-collapse order-lg-1" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" routerLink="/developer/home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/developer/mentors">Mentor</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/developer/hrs">HR</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/developer/Quizzes">Quizzes</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/developer/aboutus">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/developer/contactus">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
 </nav>
+

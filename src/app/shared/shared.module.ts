@@ -42,12 +42,22 @@ import { ExperienceListComponent } from './components/experience-list/experience
 import { SocialAccountsListComponent } from './components/social-accounts-list/social-accounts-list.component';
 import { AddsocialaccountComponent } from './components/addsocialaccount/addsocialaccount.component';
 import { SocialaccountscardComponent } from './components/socialaccountscard/socialaccountscard.component';
+import { StepOneComponent } from './components/step-one/step-one.component';
+import { StepTwoComponent } from './components/step-two/step-two.component';
+import { StepThreeComponent } from './components/step-three/step-three.component';
+import { StepFourComponent } from './components/step-four/step-four.component';
+import { StepFiveComponent } from './components/step-five/step-five.component';
 
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
+    StepOneComponent,
+    StepTwoComponent,
+    StepThreeComponent,
+    StepFourComponent,
+    StepFiveComponent,
     FooterComponent,
     NotFoundComponent,
     SpinnerComponent,
@@ -75,7 +85,7 @@ import { SocialaccountscardComponent } from './components/socialaccountscard/soc
     ExperienceListComponent,
     SocialAccountsListComponent,
     AddsocialaccountComponent,
-    SocialaccountscardComponent
+    SocialaccountscardComponent,
   ],
 
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, NgxPaginationModule,

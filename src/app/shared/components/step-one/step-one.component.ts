@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AccountService } from '../../../../shared/services/Account/account.service';
+import { AccountService } from '../../services/Account/account.service';
 
 @Component({
   selector: 'app-step-one',

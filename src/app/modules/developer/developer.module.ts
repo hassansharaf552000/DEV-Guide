@@ -12,11 +12,11 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { HRListComponent } from './Components/hr-list/hr-list.component';
 import { MentorCardComponent } from './Components/mentor-card/mentor-card.component';
 import { MentorListComponent } from './Components/mentor-list/mentor-list.component';
-import { StepFiveComponent } from './Components/step-five/step-five.component';
-import { StepFourComponent } from './Components/step-four/step-four.component';
-import { StepOneComponent } from './Components/step-one/step-one.component';
-import { StepThreeComponent } from './Components/step-three/step-three.component';
-import { StepTwoComponent } from './Components/step-two/step-two.component';
+import { StepFiveComponent } from '../../shared/components/step-five/step-five.component';
+import { StepFourComponent } from '../../shared/components/step-four/step-four.component';
+import { StepOneComponent } from '../../shared/components/step-one/step-one.component';
+import { StepThreeComponent } from '../../shared/components/step-three/step-three.component';
+import { StepTwoComponent } from '../../shared/components/step-two/step-two.component';
 import { PaymentComponent } from './Components/payment/payment.component';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
@@ -47,6 +47,10 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { QueryAnswerComponent } from './Components/query-answer/query-answer.component';
 import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.component';
+
+
+import { DeveloperSessionDetailsComponent } from './Components/developer-session-details/developer-session-details.component';
+
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BookingListComponent } from './Components/booking-list/booking-list.component';
@@ -55,14 +59,10 @@ import { MatInputModule } from '@angular/material/input';
 import { CustomCalendarComponent } from './Components/custom-calendar/custom-calendar.component';
 
 
+
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
-    StepOneComponent,
-    StepTwoComponent,
-    StepThreeComponent,
-    StepFourComponent,
-    StepFiveComponent,
     RateComponent,
     HRCardComponent,
     HRListComponent,
@@ -97,6 +97,8 @@ import { CustomCalendarComponent } from './Components/custom-calendar/custom-cal
     ContactUsComponent,
     BookingListComponent,
     CustomCalendarComponent
+    DeveloperSessionDetailsComponent,
+
   ],
   imports: [
     CommonModule,
@@ -106,8 +108,8 @@ import { CustomCalendarComponent } from './Components/custom-calendar/custom-cal
     NgSelectModule,
     SharedModule,
 
-    CarouselModule, 
-    
+    CarouselModule,
+
     RouterModule,
     NgxPaginationModule,
     NgxSliderModule  ,

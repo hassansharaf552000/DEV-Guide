@@ -1,11 +1,11 @@
 export interface IEducation{
-  Id?:number,
+  Id?:number|null,
   Degree:string,
   FieldOfStudy:string,
   University:string,
-  Faculty?:string,
+  Faculty?:string|null,
   CountryOfStudy:string,
-  StartDate:Date,
-  EndDate?:Date,
-  TillNow?:boolean,
+  StartDate: string; // Using ISO date string format
+  EndDate?: string | null; // Allow null for nullable fields
+  TillNow?:boolean | null,
 }

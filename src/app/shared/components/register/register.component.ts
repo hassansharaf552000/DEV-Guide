@@ -72,25 +72,72 @@ setRole(Role: string) {
 // }
 // }
 
+// send() {
+//   this.authService.register(this.form.value).subscribe({
+//     next: (res: any) => {
+//       console.log(res);
+
+
+//       if(res.Success == true){
+//         this.authService.userlogin(res.Result)
+//         this.router.navigateByUrl(this.returnUrl)
+//       }
+
+
+
+//     },
+
+//     error: (err) => {
+//       console.log(err);
+//        this.toastr.error('Register is failed', err.error.message);
+//     }
+//   });
+// }
+
 send() {
-  this.authService.register(this.form.value).subscribe({
-    next: (res: any) => {
-      console.log(res);
+  if (this.form.valid) {
+    this.authService.register(this.form.value).subscribe({
+      next: (res: any) => {
+        console.log(res);
 
+        if (res.Success && res.Result) {
+          console.log('Registration successful, token:', res.Result.Token);
+          // Save the token using the authService
+          this.authService.userlogin(res.Result.Token);  // Save the token like in login
 
-      if(res.Success == true){
-        this.authService.userlogin(res.Result)
-        this.router.navigateByUrl(this.returnUrl)
+          const userRole = res.Result.Roles[0];  // Adjust based on your actual response structure
+
+          // Navigate based on user role
+          switch (userRole) {
+            case 'Developer':
+              this.router.navigateByUrl('/step-one');
+              break;
+            case 'HR':
+              this.router.navigateByUrl('/step-one');
+              break;
+            case 'Mentor':
+              this.router.navigateByUrl('/step-one');
+              break;
+            default:
+              this.router.navigateByUrl('/home'); // Default route if no role matches
+              break;
+          }
+
+          this.toastr.success('Successfully registered!', 'Success');
+        } else {
+          this.toastr.error(res.Message || 'Registration failed. Please try again.', 'Error');
+        }
+      },
+      error: (err) => {
+        console.log(err);
+        this.toastr.error('Registration failed, please try again later', 'Error');
       }
+    });
+  } else {
+    console.log('Form is invalid:', this.form.errors);
+    this.toastr.error('Please check your inputs', 'Validation Error');
+  }
+}
 
-
-
-    },
-
-    error: (err) => {
-      console.log(err);
-       this.toastr.error('Register is failed', err.error.message);
-    }
-  });
-}}
+}
 

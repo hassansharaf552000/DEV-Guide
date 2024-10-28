@@ -1,16 +1,10 @@
 <nav class="sidebar">
     <div class="profile-section">
-      <img [src]="profile.imageUrl" alt="Profile Image" class="profile-image" />
-      <h3>{{ profile.name }}</h3>
-      <p>{{ profile.email }}</p>
-      <div class="progress-bar-wrapper">
-        <div class="progress-bar">
-          <div class="progress" [style.width.%]="profile.profileCompletion"></div>
-        </div>
-        <span class="progress-percentage">{{ profile.profileCompletion }}%</span>
-      </div>
+      <img src="http://localhost:5164/{{userImageUrl}}" alt="Profile Image" class="profile-image" />
+      <h3>Welcome {{ userName || 'User' }}</h3>
+      <h3>HR Specialist</h3>
     </div>
-  
+
     <ul>
       <li *ngFor="let item of menuItems">
         <a [routerLink]="item.path" routerLinkActive="active">
@@ -25,4 +19,3 @@
       </div>
     </ul>
   </nav>
-  

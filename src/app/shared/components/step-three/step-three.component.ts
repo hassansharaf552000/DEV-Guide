@@ -1,18 +1,20 @@
+import { EducationViewModel } from '../../../modules/developer/interfaces/UserEducation';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AccountService } from '../../../../shared/services/Account/account.service';
+import { AccountService } from '../../services/Account/account.service';
 
 @Component({
-  selector: 'app-step-two',
-  templateUrl: './step-two.component.html',
-  styleUrls: ['./step-two.component.css'],
+  selector: 'app-step-three',
+  templateUrl: './step-three.component.html',
+  styleUrl: './step-three.component.css',
 })
-export class StepTwoComponent implements OnInit {
-  stepTwoForm!: FormGroup;
-  invalidProfileImage = true;
-  ProfileImage:File|null = null
-  // Static array of countries
+export class StepThreeComponent {
+  // stepThreeForm!: FormGroup;
+  // formArray: FormGroup;
+  invalid = true;
+  educationslist: EducationViewModel[];
+
   countries = [
     { id: 'AF', name: 'Afghanistan' },
     { id: 'AL', name: 'Albania' },
@@ -121,7 +123,6 @@ export class StepTwoComponent implements OnInit {
     { id: 'IQ', name: 'Iraq' },
     { id: 'IE', name: 'Ireland' },
     { id: 'IM', name: 'Isle of Man' },
-    { id: 'IL', name: 'Israel' },
     { id: 'IT', name: 'Italy' },
     { id: 'JM', name: 'Jamaica' },
     { id: 'JP', name: 'Japan' },
@@ -262,140 +263,38 @@ export class StepTwoComponent implements OnInit {
     { id: 'ZW', name: 'Zimbabwe' },
   ];
 
-
-  constructor(private fb: FormBuilder, private router: Router, private accountService: AccountService) {}
-
-  ngOnInit(): void {
-    this.stepTwoForm = this.fb.group({
-      country: ['', Validators.required],
-      phone: ['',[ Validators.required,Validators.minLength(11),Validators.maxLength(12)]],
-    });
+  constructor(private fb: FormBuilder, private router: Router, private Account: AccountService) {
+    this.educationslist = [
+      { StartDate: new Date(), EndDate: null, CountryOfStudy: "", University: "", Faculty: "", Degree: "", FieldOfStudy: "", TillNow: null }
+    ]
   }
 
-  onNext(): void {
-    if (this.stepTwoForm.valid && !this.invalidProfileImage) {
-      this.accountService.updateFormData("Country",this.stepTwoForm.controls["country"].value)
-      this.accountService.updateFormData("PhoneNumber",this.stepTwoForm.controls["phone"].value)
-      this.accountService.updateFormData("Image",this.ProfileImage)
 
-      this.router.navigate(['/developer/step-three']);
+  addEducation(): void {
+    this.educationslist.push(
+      { StartDate: new Date(), EndDate: null, CountryOfStudy: "", University: "", Faculty: "", Degree: "", FieldOfStudy: "", TillNow: null }
+    )
+  }
+  removeEducation(index: number) {
+    this.educationslist.splice(index, 1)
+  }
+  onNext(): void {
+    if (this.educationslist.length > 0 && this.checklist() == undefined) {
+      this.Account.Educations = this.educationslist;
+      this.router.navigate(['/step-four']);
+    }
+    else {
+      console.log("error Happaned");
+
     }
   }
-  SelectFile(event:any){
-    const file = event.target.files[0];
-    this.ProfileImage = file;
-    this.invalidProfileImage = false;
-  }
+
   goToPreviousStep(): void {
-    this.router.navigate(['/developer/step-one']);
+    this.router.navigate(['/step-two']);
   }
-
-   filteredCountries = [...this.countries]; // Copy of countries to filter
-  searchTerm: string = ''; // To hold the search input
-
-  // Method to filter countries based on user input
-  filterCountries() {
-    this.filteredCountries = this.countries.filter(country =>
-      country.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+  checklist(): EducationViewModel | undefined {
+    console.log(this.educationslist);
+    let res = this.educationslist.find(i => i.CountryOfStudy == "" || i.Degree == "" || i.Faculty == "" || i.FieldOfStudy == "" || i.University == "")
+    return res;
   }
 }
-
-// import { Component, OnInit } from '@angular/core';
-// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { Router } from '@angular/router';
-// import { AccountService } from '../../../../shared/services/Account/account.service';
-
-// @Component({
-//   selector: 'app-step-two',
-//   templateUrl: './step-two.component.html',
-//   styleUrls: ['./step-two.component.css'],
-// })
-// export class StepTwoComponent implements OnInit {
-//   stepTwoForm!: FormGroup;
-
-//   constructor(private fb: FormBuilder, private router: Router, private Account: AccountService) {}
-
-//   ngOnInit(): void {
-//     this.stepTwoForm = this.fb.group({
-//       firstName: ['', Validators.required],
-//       lastName: ['', Validators.required],
-//       country: ['', Validators.required],
-//       phone: ['', Validators.required],
-//       profileImage: [null, Validators.required], // Add profileImage to form group
-//     });
-//   }
-
-//   onNext(): void {
-//     if (this.stepTwoForm.valid) {
-//       const formData = new FormData(); // Create FormData object to handle file upload
-
-//       // Append form fields to FormData
-//       Object.keys(this.stepTwoForm.controls).forEach((key) => {
-//         const controlValue = this.stepTwoForm.get(key)?.value;
-
-//         // Check if the current control is for 'profileImage' and handle it properly
-//         if (key === 'profileImage' && controlValue instanceof FileList) {
-//           if (controlValue.length > 0) {
-//             formData.append(key, controlValue[0]); // Append the first file in the FileList
-//           }
-//         } else {
-//           formData.append(key, controlValue);
-//         }
-
-//         this.Account.updateFormData(key, controlValue);
-//       });
-
-//       // Pass formData to Account service or other logic to handle file upload
-//       this.router.navigate(['/developer/step-three']);
-//     }
-//   }
-
-//   goToPreviousStep(): void {
-//     this.router.navigate(['/developer/step-one']);
-//   }
-// }
-
-
-// // import { Component, OnInit } from '@angular/core';
-// // import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// // import { Router } from '@angular/router';
-// // import { AccountService } from '../../../../shared/services/Account/account.service';
-
-// // @Component({
-// //   selector: 'app-step-two',
-// //   templateUrl: './step-two.component.html',
-// //   styleUrl: './step-two.component.css',
-// // })
-// // export class StepTwoComponent implements OnInit {
-// //   stepTwoForm!: FormGroup;
-
-// //   constructor(private fb: FormBuilder, private router: Router,private Account:AccountService) {}
-
-// //   ngOnInit(): void {
-// //     this.stepTwoForm = this.fb.group({
-// //       firstName: ['', Validators.required],
-// //       lastName: ['', Validators.required],
-// //       country: ['', Validators.required],
-// //       phone: ['', Validators.required],
-// //     });
-// //   }
-// //   onNext(): void {
-// //     if (this.stepTwoForm.valid) {
-// //       for (const element in this.stepTwoForm.controls) {
-// //         Object.keys(this.stepTwoForm.controls).forEach((key) => {
-// //           this.Account.updateFormData(key, this.stepTwoForm.get(key)?.value);
-// //         });
-// //         // this.Account.updateFormData(element,this.stepTwoForm.controls[element] )
-// //         console.log(element);
-// //         console.log(this.stepTwoForm.controls[element]);
-
-// //       }
-// //       this.router.navigate(['/developer/step-three']);
-// //     }
-// //   }
-
-// //   goToPreviousStep(): void {
-// //     this.router.navigate(['/developer/step-one']);
-// //   }
-// // }
