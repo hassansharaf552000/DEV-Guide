@@ -96,7 +96,7 @@ import { CustomCalendarComponent } from './Components/custom-calendar/custom-cal
     MentorReplyComponent,
     ContactUsComponent,
     BookingListComponent,
-    CustomCalendarComponent
+    CustomCalendarComponent,
     DeveloperSessionDetailsComponent,
 
   ],
