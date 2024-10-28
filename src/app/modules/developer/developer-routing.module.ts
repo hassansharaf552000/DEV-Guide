@@ -57,6 +57,7 @@ import { NotFoundComponent } from '../../shared/components/not-found/not-found.c
 import { AuthGuard } from '../../core/guards/AuthGuard';
 
 import { BookingListComponent } from './Components/booking-list/booking-list.component';
+import { CustomCalendarComponent } from './Components/custom-calendar/custom-calendar.component';
 
 
 const routes: Routes = [
@@ -79,6 +80,12 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'forgetpassword', component: Forget_passwordComponent },
       { path: 'faq-and-licence', component: FaqComponent },
+//       { path: 'booking', component: BookingComponent },
+//       { path: 'query', component: QueryComponent },
+//       { path: 'confirmation', component: BookingConfirmationComponent },
+//       {path:'Quizzes',component:QuizzesListComponent},
+//       {path:'Quiz/:id',component:QuizzesDetailsComponent},
+       { path: 'calender', component: CustomCalendarComponent },
       { path: 'booking', component: BookingComponent,canActivate: [AuthGuard], },
       { path: 'query', component: QueryComponent,canActivate: [AuthGuard], },
       { path: 'confirmation', component: BookingConfirmationComponent,canActivate: [AuthGuard], },
