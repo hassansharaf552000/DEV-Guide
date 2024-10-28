@@ -1,6 +1,6 @@
 import { HRCardComponent } from './Components/hr-card/hr-card.component';
 import { RateComponent } from './Components/rate/rate.component';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DeveloperRoutingModule } from './developer-routing.module';
 import { UserlayoutComponent } from './Components/userlayout/userlayout.component';
@@ -50,9 +50,13 @@ import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.com
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BookingListComponent } from './Components/booking-list/booking-list.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { CustomCalendarComponent } from './Components/custom-calendar/custom-calendar.component';
 
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     StepOneComponent,
     StepTwoComponent,
@@ -91,7 +95,8 @@ import { BookingListComponent } from './Components/booking-list/booking-list.com
     QueryAnswerComponent,
     MentorReplyComponent,
     ContactUsComponent,
-    BookingListComponent
+    BookingListComponent,
+    CustomCalendarComponent
   ],
   imports: [
     CommonModule,
@@ -110,6 +115,10 @@ import { BookingListComponent } from './Components/booking-list/booking-list.com
     MatDatepickerModule,
     MatNativeDateModule,
     CarouselModule,
+    MatFormFieldModule,
+    MatInputModule,
+   
+
 
   ],
   exports: [RateComponent]

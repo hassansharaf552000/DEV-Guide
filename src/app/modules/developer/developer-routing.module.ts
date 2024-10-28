@@ -51,6 +51,7 @@ import { EducationsComponent } from '../../shared/components/education-list/educ
 import { ExperienceListComponent } from '../../shared/components/experience-list/experience-list.component';
 import { SocialAccountsListComponent } from '../../shared/components/social-accounts-list/social-accounts-list.component';
 import { BookingListComponent } from './Components/booking-list/booking-list.component';
+import { CustomCalendarComponent } from './Components/custom-calendar/custom-calendar.component';
 
 const routes: Routes = [
   {
@@ -81,6 +82,7 @@ const routes: Routes = [
       { path: 'confirmation', component: BookingConfirmationComponent },
       {path:'Quizzes',component:QuizzesListComponent},
       {path:'Quiz/:id',component:QuizzesDetailsComponent},
+      { path: 'calender', component: CustomCalendarComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
      { path: '**', redirectTo: 'notfound' },
       //{ path: 'AdminUi', component: AdminUIComponent }

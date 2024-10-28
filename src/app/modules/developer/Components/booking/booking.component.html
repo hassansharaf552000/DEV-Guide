@@ -1,7 +1,7 @@
 <div class="container mt-4 ">
     <div class="ml-auto d-flex mb-2">
         <a href="#" class="btn btn-light mr-2"> <i class="fa-solid fa-arrow-left-long"></i></a>
-        <h3 class="ms-2">Harshad Sawant</h3>
+        <h3 class="ms-2">{{mentorProfile.FirstName}} {{mentorProfile.LastName}}</h3>
     </div>
     <div class="row">
         <div class="col-xl-7 col-12">
@@ -15,28 +15,33 @@
                             style="background-color: #ffe0e6; color: #ff3366; font-weight: bold;">1:1 Call</span>
                     </div>
                     <h5 class="mt-3">Quick Call</h5>
-                    <p class="text-muted"><i class="far fa-clock"></i> 30 Min</p>
+                    <p class="text-muted"><i class="far fa-clock"></i> 60 Min</p>
                     <h6>About Service</h6>
-                    <p>30 mins quick call to achieve your goals faster with a personalized roadmap.</p>
+                    <p>60 mins quick call to achieve your goals faster with a personalized roadmap.</p>
                     <h6>Skills</h6>
-                    <p>
-                        Career Development | Career Growth | Leadership | Career Coaching | Career Advice | Interview
-                        Preparations | People Management | Project Management | Team Building | Team Leadership
-                    </p>
+                    <div class="gap-2 d-flex flex-wrap">
+
+                    
+
+                    <div *ngFor="let skill of mentorProfile?.Skills" class="skill-circle">
+                        {{ skill }}
+                      </div>
+                    </div>
                 </div>
 
                 <!-- Footer with Profile -->
                 <div class="d-flex align-items-center mt-3 p-3">
-                    <img src="66b372a33d0f5.webp" alt="Harshad Sawant" class="rounded-circle mr-3" width="60">
+                    <img src="http://localhost:5164/{{mentorProfile.Image}}" alt="Harshad Sawant" class="rounded-circle mr-3" width="60">
                     <div class="p-3">
-                        <h6>Harshad Sawant</h6>
-                        <p class="text-muted">Director & Head - Global CyberSecurity Engineering at PepsiCo | IIM
-                            Ahmedabad | IT leadership | 18 years of experience</p>
+                        <h6>{{mentorProfile.FirstName}} {{mentorProfile.LastName}}</h6>
+                        <p class="text-muted">{{mentorProfile.About}}</p>
                     </div>
+                    @if(mentorProfile?.SocialAccounts?.length>0){
                     <div class="ml-auto d-flex">
                         <a href="#" class="btn btn-light mr-2"><i class="fa-brands fa-linkedin-in"></i></a>
                         <a href="#" class="btn btn-light"><i class="fa-solid fa-share"></i></a>
                     </div>
+                }
                 </div>
             </div>
 
@@ -49,114 +54,76 @@
             <div class="row">
 
                 <div class="col-xl-4 col-12">
-
-                    <section class="mounth" id="january">
-                        <!-- <main>
-                            <h1>JANUARY 2025</h1>
-                            <nav role='padigation'>
-                                <span></span>
-                                <span></span>
-                            </nav>
-                        </main> -->
-
-                        <article>
-                            <!-- <div class="days">
-                                <b>SU</b>
-                                <b>MO</b>
-                                <b>TU</b>
-                                <b>WE</b>
-                                <b>TH</b>
-                                <b>FR</b>
-                                <b>SA</b>
-                            </div>
-                            <div class="dates">
-                                <span class="disable">30</span>
-                                <span class="disable">31</span>
-
-                                <span>1 <a href=""></a></span>
-                                <span>2 <a href=""></a></span>
-                                <span>3 </span>
-                                <span>4</span>
-                                <span>5</span>
-                                <span>6</span>
-                                <span>7</span>
-                                <span>8</span>
-                                <span>9</span>
-                                <span>10</span>
-                                <span>11</span>
-                                <span>12</span>
-                                <span>13</span>
-                                <span>14</span>
-                                <span>15</span>
-                                <span>16</span>
-                                <span>17</span>
-                                <span>18</span>
-                                <span>19</span>
-                                <span>20</span>
-                                <span>21</span>
-                                <span>22</span>
-                                <span>23</span>
-                                <span>24</span>
-                                <span>25</span>
-                                <span>26</span>
-                                <span>27</span>
-                                <span>28</span>
-                                <span>29</span>
-                                <span>30</span>
-                                <span>31</span>
-
-                                <span class="disable">1</span>
-                                <span class="disable">2</span>
-                                <span class="disable">3</span>
-                                <span class="disable">4</span>
-                                <span class="disable">5</span>
-                                <span class="disable">6</span>
-                                <span class="disable">7</span>
-                                <span class="disable">8</span>
-                                <span class="disable">9</span>
-                            </div>
- -->
-
-                            <div class="wrapper">
-                                <!-- <div class="container-calendar"> -->
-                                    <div id="left">
-                                        <!-- <h1>Dynamic Calendar</h1> -->
-                                        <div id="event-section" >
-                                            <h3>Select Date</h3>
-                                            <input type="date" id="eventDate" class="d-flex">
-                                            <!-- <input type="text"
-                                                id="eventTitle"
-                                                placeholder="Event Title"> -->
-                                            <!-- <input type="text"
-                                                id="eventDescription"
-                                                placeholder="Event Description"> -->
-                                            <button id="addEvent" class="btn btn-primary btn-block" click="addEvent()">
-                                                Add
-                                            </button>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="card border-success mb-2    col-12">
-                                    <div class="card-header bg-transparent border-success ">Now select time</div>
-                                    <div class="card-body text-success">
-
-                                    </div>
-                                    <div class="time-row row row-cols-3">
-
-                                        @for (item of list; track $index) {
-                                        <div class="time-option col-3">from: {{item.from}} to:{{item.to}}</div>
-
-                                        }
-
-                                    </div>
-                                </div>
-                                <button class="btn btn-primary btn-block mt-0" [routerLink]="'/developer/payment'">Continue</button>
-                        </article>
-                    </section>
-                </div>
+                    <div class="custom-margins">
+                        <div class="calendar ">
+                         <div>
+                         <p style="padding: 20px; width: 100; font-weight: 500;"> Select date and time </p>
+                       </div>
+                         <!-- <br style="color: gray;"> -->
+                         <div class="header" style="border-top: 1px solid #ccc; padding-top: 20px;" >
+                           <button class="button-calender" 
+                                   (click)="prevMonth()" 
+                                   [disabled]="selectedYear === today.getFullYear() && selectedMonth <= today.getMonth()">
+                             &#10094;
+                           </button>
+                           <span>{{ getMonthName(selectedMonth) }} {{ selectedYear }}</span>
+                           <button class="button-calender" (click)="nextMonth()">&#10095;</button>
+                         </div>
+                         
+                         <div class="days-of-week">
+                           <div *ngFor="let day of daysOfWeek" class="day-name">{{ day }}</div>
+                         </div>
+                       
+                         <div class="days">
+                           <div
+                             *ngFor="let day of monthDays"
+                             [class.disabled]="day.date === null || !isAvailable(day.date)"
+                             (click)="day.date && onDaySelect(day.date)"
+                             class="day"
+                             [ngClass]="{
+                               'selected': selectedDate && day.date?.toDateString() === selectedDate.toDateString(),
+                               'today': day.date?.toDateString() === today.toDateString()
+                             }"
+                           >
+                             {{ day.date ? day.date.getDate() : '' }}
+                           </div>
+                         </div>
+                     
+                        <div *ngIf="selectedTimes?.length > 0" class="available-times row justify-content-between">
+                         <p class="custom-p col-6">Now select time</p>
+                         <div class="pagination-controls col-4">
+                           <button class="button-times" style=" padding-right: 10px;"  (click)="prevPage()" [disabled]="!hasPrevPage()">&#10094;</button>
+                           <button class="button-times" style="padding-left: 10px; padding-right: 10px;" (click)="nextPage()" [disabled]="!hasNextPage()">&#10095;</button>
+                         </div>
+                         <div class="time-buttons-grid">
+                           <button
+                             *ngFor="let time of paginatedTimeButtons"
+                             class="time-button "
+                             [ngClass]="{'active': selectedTime === time.StartTime}"
+                             (click)="onTimeSelect(time.StartTime, time.EndTime)"
+                           >
+                             {{ formatTimeToAmPm(time.StartTime) }} - {{ formatTimeToAmPm(time.EndTime) }}
+                           </button>
+                         </div>
+                       
+                         <!-- Pagination controls -->
+                        
+                       </div>
+                       
+                         <div *ngIf="message" class="no-availability">
+                           <div class="alert alert-info animate-alert">
+                             {{ message }}
+                           </div>
+                         </div>
+                         <div class="mt-2 button-sub">
+                           <button [disabled]="!confirmButtonEnabled" class="confirm-button">Continue</button>
+                         </div>
+                       </div>
+                     
+                       </div>
+                     
+               <!-- <app-custom-calendar [schedules]="schedules"></app-custom-calendar> -->
+                    </div>                      
 
             </div>
 

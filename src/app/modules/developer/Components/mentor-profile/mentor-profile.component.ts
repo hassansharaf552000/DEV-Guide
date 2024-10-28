@@ -216,7 +216,7 @@ console.log("mentorid",mentorId)
 
   get displayText(): string {
     if (this.isExpanded || this.mentorProfile?.About?.length <= this.maxLength) {
-      return this.mentorProfile.About;
+      return this.mentorProfile?.About;
     }
     return this.mentorProfile?.About?.slice(0, this.maxLength) + '...';
   }
