@@ -1,12 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { from } from 'rxjs';
-import { Time } from '../../../../shared/types/time';
-import { MatCalendar } from '@angular/material/datepicker';
-import { ActivatedRoute } from '@angular/router';
-import { AccountService } from '../../../../shared/services/Account/account.service';
-import { ScheduleService } from '../../../../shared/services/Schedule/schedule.service';
-import { IMentor } from '../../../../core/enums/Mentor';
-
+import { Component, Input, input } from '@angular/core';
 
 interface Schedule {
   Date: string;
@@ -14,148 +6,22 @@ interface Schedule {
   StartTime: string;
   EndTime: string;
 }
+
 @Component({
-  selector: 'app-booking',
-  templateUrl: './booking.component.html',
-  styleUrl: './booking.component.css',
+  selector: 'app-custom-calendar',
+  templateUrl: './custom-calendar.component.html',
+  styleUrls: ['./custom-calendar.component.css']
 })
-export class BookingComponent implements OnInit {
-
-  @Input() mentorProfile!: IMentor
-  list: Array<Time>;
-  GetProfileURL = "http://localhost:5164/api/Account/GetOneUser"
-  MentorID = ""
-  schedules:Array<any>;
-  constructor(private route: ActivatedRoute, private AccService: AccountService, private ScheduleService: ScheduleService) {
-    this.list = [];
-    this.MentorID = this.route.snapshot.paramMap.get('id');
-    if (this.MentorID) {
-      console.log(' mentor ID provided in the route');
-
-    }
-    this.selectedMonth = this.today.getMonth();
-    this.selectedYear = this.today.getFullYear();
-    this.selectedDate = new Date(); // Set default selected date to today
-
-    // Reset this.today to just the date part
-    this.today = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate());
-   this.onDaySelect(this.today)
-   this.ScheduleService.getUnbookedschedules(this.MentorID).subscribe((data) => {
-    this.schedules = data.schedules;
-    console.log("schedules",this.schedules);
-    
-  });
-  }
-  ngOnInit() {
-    // this.MentorID = this.route.snapshot.paramMap.get('id');
-    const mentorId = this.route.snapshot.paramMap.get('id');
-    console.log("mentorid", mentorId)
-    if (mentorId) {
-      // Fetch mentor profile
-      this.AccService.getProfile(mentorId).subscribe(
-        data => {
-          this.mentorProfile = data;
-          console.log('Profile: ', this.mentorProfile);
-
-        },
-        error => {
-          console.error('Error fetching profile', error);
-        }
-      );
-      this.ScheduleService.getUnbookedschedules(this.MentorID).subscribe((data) => {
-        this.schedules = data.schedules;
-        console.log("schedules",this.schedules);
-        
-      });
-
-    }
-    this.processAvailableSchedules();
-    this.generateCalendar();
-  }
-
-
-  // schedules = [
-  //   {
-  //     "Date": "2024-10-27T00:00:00+03:00",
-  //     "Day": 0, // Sunday
-  //     "StartTime": "07:00:00",
-  //     "EndTime": "08:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "02:00:00",
-  //     "EndTime": "03:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "04:00:00",
-  //     "EndTime": "05:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "05:00:00",
-  //     "EndTime": "06:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "15:00:00",
-  //     "EndTime": "16:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "07:00:00",
-  //     "EndTime": "08:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "08:00:00",
-  //     "EndTime": "09:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "09:00:00",
-  //     "EndTime": "10:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "10:00:00",
-  //     "EndTime": "11:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-11-03T00:00:00+02:00",
-  //     "Day": 0, // Sunday
-  //     "StartTime": "15:00:00",
-  //     "EndTime": "16:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-11-03T00:00:00+02:00",
-  //     "Day": 0, // Sunday
-  //     "StartTime": "16:00:00",
-  //     "EndTime": "17:00:00"
-  //   },
-  //   // Add more entries as needed
-  // ];
+export class CustomCalendarComponent {
+   @Input() schedules: Schedule[]; 
   today: Date = new Date();
-
-  availableDates: Set<string> = new Set();
-  selectedTimes: any[] = [];
-  // @Input() schedules: Schedule[]; 
-  // today: Date = new Date();
   selectedMonth: number;
   selectedYear: number;
   monthDays: { date: Date | null; dayOfWeek: number }[] = [];
   daysOfWeek: string[] = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
-  // availableDates: Set<string> = new Set();
-  // selectedTimes: Schedule[] = [];
+  availableDates: Set<string> = new Set();
+  selectedTimes: Schedule[] = [];
   selectedTime: string | null = null;
 
   message: string = '';
@@ -249,9 +115,20 @@ export class BookingComponent implements OnInit {
   // ];
   confirmButtonEnabled: boolean = false; 
 
+  constructor() {
+    this.selectedMonth = this.today.getMonth();
+    this.selectedYear = this.today.getFullYear();
+    this.selectedDate = new Date(); // Set default selected date to today
 
+    // Reset this.today to just the date part
+    this.today = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate());
+   this.onDaySelect(this.today)
+  }
 
- 
+  ngOnInit() {
+    this.processAvailableSchedules();
+    this.generateCalendar();
+  }
   isFutureDate(date: Date): boolean {
     // Get today's date without time
     const today = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate());
@@ -394,6 +271,4 @@ export class BookingComponent implements OnInit {
   getMonthName(month: number): string {
     return new Date(0, month).toLocaleString('default', { month: 'long' });
   }
-
-
 }

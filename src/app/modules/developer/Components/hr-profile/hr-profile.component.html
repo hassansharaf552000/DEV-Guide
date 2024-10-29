@@ -34,7 +34,7 @@
                         </div>
                         <!--button-->
                         <div class="d-flex flex-row gap-3 align-items-center custom-flex-col">
-                          <a  [routerLink]="['/developer/booking/',id]"class="btn btn btn-outline-primary">
+                          <a [routerLink]="['/developer/booking/',hrId]" class="btn btn btn-outline-primary">
                            
                             <i class="fa-regular fa-handshake"></i>
                             Book Session
@@ -573,7 +573,7 @@
       </div>
       <div class="row gy-4 justify-content-sm-center">
         <!-- Loop through the similarHRs array -->
-        <div class="col-xxl-3 col-xl-4 col-md-6 col-sm-9 custom-col " *ngFor="let hr of similarHrs">
+        <div class="col-xxl-3 col-xl-4 col-md-6 col-sm-9 custom-col " *ngFor="let hr of similarHRs">
           <!--card-->
           <div class="card rounded-4 card-bordered card-lift">
             <div class="p-3 d-flex flex-column gap-3">
