@@ -7,32 +7,57 @@
 <h5 class="display-4 fw-bold text-center" style="
 font-family: 'Edu AU VIC WA NT Hand', cursive;
 font-optical-sizing: auto;
-font-style: normal;">Reviews From Developers</h5>
-
+font-style: normal;">Reviews From Mentors</h5>
 <br>
 <div class="container">
-  <div class="row">
-    <!-- Left side card with rating info -->
-    <div class="col-12 col-md-4 mb-4">
-      <div class="left-card">
-        <div class="rating">
-          <h2>5.0</h2>
-          <div class="stars">
-            <span>⭐⭐⭐⭐⭐</span>
+  <!-- <div class="row"> -->
+    <!-- <div class="col-4">
+      <app-profile-side-bar></app-profile-side-bar>
+    </div> -->
+    <!-- <div class="col-"> -->
+      <div class="row">
+        <div class="col-4">
+          <div class="left-card">
+            <div class="rating">
+              <h2>{{user.AverageRate}}</h2>
+              <div class="stars">
+                <!-- <span>⭐️⭐️⭐️⭐️⭐️</span> -->
+                <span><app-rate [value]="user.AverageRate"></app-rate></span>
+
+              </div>
+              <p>Average Rating</p>
+              <p>({{user.NumOfReviews }})</p>
+            </div>
           </div>
-          <p>Average Rating</p>
-          <p>(24 Reviews)</p>
+        </div>
+        <div class="col-7">
+          <div class="reviews">
+            @for(review of reviews; track $index){
+            <div>
+              <div class="card review-card">
+                <div class="card-body">
+                  <div class="review-header d-flex align-items-center">
+                    <div class="profile-picture me-3">
+                      <img [src]="review.Reviewer.Image" alt="User Profile" class="rounded-circle"  style=""/>
+                    </div>
+                    <div class="review-info">
+                      <h5 class="reviewer-name mb-1">{{ review.Reviewer.FirstName }} {{ review.Reviewer.LastName }}</h5>
+                      <p class="review-date text-muted mb-0">{{ review.ReviewDate | date: 'MMMM d, y' }}</p>
+                    </div>
+                    <div class="review-rating ms-auto d-flex align-items-center">
+                      <span class="rating-value me-1">{{ review.Rate }}</span>
+                      <i class="bi bi-star-fill text-warning"></i>
+                    </div>
+                  </div>
+                  <hr>
+                  <h6 class="review-text mt-3">{{ review.Description }}</h6>
+                </div>
+              </div>
+              <!-- <app-reviews-card [review]="Review" class="review-card"></app-reviews-card> -->
+            </div>}
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Review section -->
-    <div class="col-12 col-md-7 offset-md-1">
-      <div class="reviews">
-        <div *ngFor="let Review of Reviews">
-          <app-reviews-card [review]="Review" class="review-card"></app-reviews-card>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+

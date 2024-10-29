@@ -54,7 +54,7 @@ const routes: Routes = [
       { path: 'quizzes', component: QuizListComponent, canActivate: [AuthGuard], },
       {path:'Quizzes',component:QuizzesListComponent,canActivate: [AuthGuard],},
       {path:'Quiz/:id',component:QuizzesDetailsComponent,canActivate: [AuthGuard],},
-      { path: 'home', component: HrlayoutComponent,canActivate: [AuthGuard] },
+      { path: 'home', component: ProfileComponent,canActivate: [AuthGuard] },
 
       { path: 'profile', component: ProfileComponent },
       { path: 'updateprofile', component: Update_ProfileComponent },

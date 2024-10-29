@@ -29,6 +29,9 @@ export class SessionDetailsComponent {
     });
   }
 
+
+
+  
   ngOnInit(): void {
     // Get the mentor ID from the URL
    
@@ -50,6 +53,29 @@ export class SessionDetailsComponent {
 
   
     }
+  }
+    onSubmitFeedbackForCancel() {
+   
+      const feedback = this.feedbackForm.value.feedback; // Ensure you are accessing the correct property
+  
+      console.log("Feedback to be sent:", feedback); 
+        this.sessionserc.UpdateFeedbackForCanceled(this.id,feedback).subscribe({
+  
+          next: (res: any) => {
+            console.log("res",res);
+      
+      
+            this.toastr.success('Message is succeed', res?.message);
+      
+      
+          },
+      
+          error: (err) => {
+            console.log(err);
+             this.toastr.error('Message is failed', err?.error?.message);
+          }
+        });}
+  
 
    // This will return 3 mentors with the required skills and title
    
@@ -64,7 +90,7 @@ export class SessionDetailsComponent {
     // });
 
     // console.log("formated",formattedDate);
-  }
+  
   onSubmitFeedback() {
    
     const feedback = this.feedbackForm.value.feedback; // Ensure you are accessing the correct property
@@ -87,7 +113,7 @@ export class SessionDetailsComponent {
         }
       });}
 
-
+ 
       onSubmitMeetingLink() {
    
         const feedback = this.MeetingLinkForm.value.feedback; // Ensure you are accessing the correct property

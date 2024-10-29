@@ -56,7 +56,7 @@ button {
   margin: 20px auto;
   padding: 20px;
   max-width: 1200px;
-  border: 4px solid  #415bcf;
+  border: 1px solid black;
 }
 
 .card-header {
