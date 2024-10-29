@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '../../../../shared/services/Account/account.service';
 import { ScheduleService } from '../../../../shared/services/Schedule/schedule.service';
 import { IMentor } from '../../../../core/enums/Mentor';
+import { PaypalService } from '../../../../shared/services/paypal/paypal.service';
 
 
 interface Schedule {
@@ -26,7 +27,10 @@ export class BookingComponent implements OnInit {
   GetProfileURL = "http://localhost:5164/api/Account/GetOneUser"
   MentorID = ""
   schedules:Array<any>;
-  constructor(private route: ActivatedRoute, private AccService: AccountService, private ScheduleService: ScheduleService) {
+  SessionData:any;
+  NewSession:any;
+  dataaa:any;
+  constructor(private route: ActivatedRoute,private PaymentServ:PaypalService, private AccService: AccountService, private ScheduleService: ScheduleService) {
     this.list = [];
     this.MentorID = this.route.snapshot.paramMap.get('id');
     if (this.MentorID) {
@@ -47,6 +51,7 @@ export class BookingComponent implements OnInit {
   });
   }
   ngOnInit() {
+    this.MentorID = this.route.snapshot.paramMap.get('id');
     // this.MentorID = this.route.snapshot.paramMap.get('id');
     const mentorId = this.route.snapshot.paramMap.get('id');
     console.log("mentorid", mentorId)
@@ -69,8 +74,17 @@ export class BookingComponent implements OnInit {
       });
 
     }
+ 
     this.processAvailableSchedules();
     this.generateCalendar();
+    this.SessionData={
+      "MentorId":this.MentorID,
+      "Topic":".Net",
+      "Description":"I need to solve some problems in my project",
+      "DateTime": "",
+      "Duration":1
+  
+    }
   }
 
 
@@ -165,18 +179,42 @@ export class BookingComponent implements OnInit {
   timeButtonsPerPage = 6; // Number of time buttons to show per page
   currentTimePage = 0;    // Current time page index
 
-  onTimeSelect(startTime: string, endTime: string) {
-    if (!this.selectedDate) return;
+  // onTimeSelect(startTime: string, endTime: string) {
+  //   if (!this.selectedDate) return;
 
-    const datePart = this.selectedDate.toISOString().split('T')[0]; // Get date in 'yyyy-mm-dd'
+  //   const datePart = this.selectedDate.toISOString().split('T')[0]; // Get date in 'yyyy-mm-dd'
 
-    // Concatenate date with start time and format as 'yyyy-mm-dd hh:mm:ss'
-    this.selectedDateTime = `${datePart} ${startTime}`;
-    this.selectedTime = startTime;
-    console.log("Selected DateTime:", this.selectedDateTime); // Log to verify
-    this.confirmButtonEnabled = true;
-  }
-
+  //   // Concatenate date with start time and format as 'yyyy-mm-dd hh:mm:ss'
+  //   this.selectedDateTime = `${datePart} ${startTime}`;
+  //   this.selectedTime = startTime;
+  //   console.log("Selected DateTime:", this.selectedDateTime); // Log to verify
+  //   this.confirmButtonEnabled = true;
+  // }
+  // convertToISO(dateString: string): string | null {
+  //   // Check if dateString is provided
+  //   if (!dateString) {
+  //     console.error("Error: Invalid date input.");
+  //     return null;
+  //   }
+  
+  //   // Replace space with "T" and add "Z" for UTC format
+  //   const date = new Date(dateString.replace(" ", "T") + "Z");
+  
+  //   // Validate if the date is valid
+  //   if (isNaN(date.getTime())) {
+  //     console.error("Error: Invalid date format.");
+  //     return null;
+  //   }
+  
+  //   return date.toISOString();
+  // }
+  
+  
+  // Example usage
+  // const inputDate = "2024-11-02 08:00:00";
+  // const isoDate = convertToISO(inputDate);
+  // console.log(isoDate);  // Output: 2024-11-02T08:00:00.000Z
+  
 
   // schedules = [
   //   {
@@ -247,6 +285,74 @@ export class BookingComponent implements OnInit {
   //   },
   //   // Add more entries as needed
   // ];
+  //selectedDateTime: string | null = null;
+
+  onTimeSelect(startTime: string, endTime: string) {
+    if (!this.selectedDate) {
+        console.error("selectedDate is not defined.");
+        return;
+    }
+
+    const timeMatch = startTime.match(/^(\d{2}):(\d{2})(?::\d{2})?$/);
+    if (!timeMatch) {
+        console.error("Invalid startTime format:", startTime);
+        return;
+    }
+
+    const [hours, minutes] = [parseInt(timeMatch[1], 10), parseInt(timeMatch[2], 10)];
+
+    // Clone selectedDate to avoid modifying the original date object
+    const selectedDateTime = new Date(this.selectedDate);
+    selectedDateTime.setHours(hours, minutes, 0, 0); // Set hours, minutes, seconds, and milliseconds
+
+    // Store the full date and time in local time without converting to UTC
+    this.selectedDateTime = selectedDateTime.toLocaleString(); // Local date and time format
+    this.confirmButtonEnabled = true;
+
+    console.log("Selected DateTime:", this.selectedDateTime);
+}
+
+
+
+// lastone that i send to gpt 
+// convertToISO(dateTimeString: string): string {
+//   if (!dateTimeString) {
+//       console.error('Invalid dateTimeString:', dateTimeString);
+//       return null; // Or handle it appropriately
+//   }
+  
+//   const date = new Date(dateTimeString);
+//   if (isNaN(date.getTime())) {
+//       console.error('Invalid Date object created from dateTimeString:', date);
+//       return null; // Handle invalid date conversion
+//   }
+  
+//   return date.toISOString();
+// }
+convertToISO(dateTimeString: string): string {
+  if (!dateTimeString) {
+      console.error('Invalid dateTimeString:', dateTimeString);
+      return null;
+  }
+
+  const date = new Date(dateTimeString);
+  if (isNaN(date.getTime())) {
+      console.error('Invalid Date object created from dateTimeString:', date);
+      return null;
+  }
+
+  // Manually construct the ISO string in local time
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is 0-indexed
+  const day = date.getDate().toString().padStart(2, '0');
+  const hours = date.getHours().toString().padStart(2, '0');
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  const seconds = date.getSeconds().toString().padStart(2, '0');
+
+  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+}
+
+  
   confirmButtonEnabled: boolean = false; 
 
 
@@ -394,6 +500,54 @@ export class BookingComponent implements OnInit {
   getMonthName(month: number): string {
     return new Date(0, month).toLocaleString('default', { month: 'long' });
   }
+ 
+  // BookSession() {
+  //   this.ScheduleService.BookingSession(this.SessionData).subscribe(
+  //     data => {
+  //       this.NewSession = data.Session;
+  //       console.log('session: ', this.NewSession);
+  
+  //       // Set DateTime only if convertToISO returns a valid value
+  //       const isoDateTime =this.selectedDateTime;
+  //       if (isoDateTime) {
+  //         this.SessionData.DateTime = isoDateTime;
+  //       } else {
+  //         console.error("Failed to set DateTime due to invalid date format");
+  //       }
+  //     },
+  //     error => {
+  //       console.error('Error fetching reviews', error);
+  //     }
+  //   ); 
+  // }
+  BookSession() {
+    // Convert selected date and time to ISO
+    const isoDateTime = this.convertToISO(this.selectedDateTime);
+    console.log('ISO DateTime:', isoDateTime);
+
+    // Construct SessionData
+    this.SessionData = {
+        MentorId: this.MentorID,
+        Topic: ".Net",
+        Description: "I need to solve some problems in my project",
+        DateTime: isoDateTime,
+        Duration: 1
+    };
+
+    // Log SessionData before sending
+    console.log('Session Data before sending:', this.SessionData);
+
+    this.ScheduleService.BookingSession(this.SessionData).subscribe(
+        data => {
+            this.NewSession = data.Session;
+            console.log('session: ', this.NewSession);
+        },
+        error => {
+            console.error('Error booking session', error);
+        }
+    );
+}
 
 
+  
 }
