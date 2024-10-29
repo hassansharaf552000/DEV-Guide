@@ -47,6 +47,7 @@ import { StepTwoComponent } from './components/step-two/step-two.component';
 import { StepThreeComponent } from './components/step-three/step-three.component';
 import { StepFourComponent } from './components/step-four/step-four.component';
 import { StepFiveComponent } from './components/step-five/step-five.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 
 
@@ -86,6 +87,7 @@ import { StepFiveComponent } from './components/step-five/step-five.component';
     SocialAccountsListComponent,
     AddsocialaccountComponent,
     SocialaccountscardComponent,
+    PaymentComponent,
   ],
 
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, NgxPaginationModule,

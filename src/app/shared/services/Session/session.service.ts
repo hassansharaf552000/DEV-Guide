@@ -19,11 +19,22 @@ export class SessionService {
 
   GetAllSessionForDeveloper="http://localhost:5164/api/Session/GetAllSessionForOneDeveloper"
 
-
+  AddReviewURR= "http://localhost:5164/api/Review//AddReview"
 
   constructor(private http: HttpClient) { }
 
+  // addreview(review:any ,id: number): Observable<any> {
+  //   return this.http.post<any>(`${this.AddReviewURR}/${id}`, review);
+  // }
 
+
+  addreview( reviewData: any,sessionId: number) {
+    const url = `http://localhost:5164/api/Review/AddReview/${sessionId}`;
+    return this.http.post(url, reviewData);
+  }
+
+
+ 
   GetAllSession(Status:any):any{
     return this.http.get(this.GetAllSessionForOneUser,Status)
   }
@@ -40,6 +51,11 @@ export class SessionService {
 
 //     return this.http.get(this.GetAllSessionForOneUser, { params });
 // }
+// addreview(review: any ,sessionId:any): Observable<any> {
+  
+//   return this.http.post<any>(this.AddReviewURR, review , sessionId);
+// }
+
 
 getSessionById(id: string): Observable<any> {
   return this.http.get<any>(`${this.GetSessionDetailsURL}/${id}`);

@@ -57,6 +57,8 @@ import { NotFoundComponent } from '../../shared/components/not-found/not-found.c
 import { AuthGuard } from '../../core/guards/AuthGuard';
 
 import { BookingListComponent } from './Components/booking-list/booking-list.component';
+import { HrPaymentsComponent } from '../hr/Components/hr-payments/hr-payments.component';
+import { MentorPaymentsComponent } from '../mentor/Components/mentor-payments/mentor-payments.component';
 
 
 const routes: Routes = [
@@ -140,6 +142,13 @@ const routes: Routes = [
   { path: 'step-four', component: StepFourComponent },
   { path: 'step-five', component: StepFiveComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'paypal', component: PaymentComponent },
+  
+
+  { path: 'confirm', component: BookingConfirmationComponent },
+
+  
+
   //{ path: '**', redirectTo: 'notfound' },
 ];
 @NgModule({

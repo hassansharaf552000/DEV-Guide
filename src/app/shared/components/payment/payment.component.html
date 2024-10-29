@@ -1,0 +1,9 @@
+<div>
+    <h2>Create PayPal Payment</h2>
+    <form (ngSubmit)="createPayment()">
+      <label for="amount">Amount:</label>
+      <input type="number" [(ngModel)]="amount" name="amount" required />
+      <button type="submit">Pay with PayPal</button>
+    </form>
+  </div>
+  
