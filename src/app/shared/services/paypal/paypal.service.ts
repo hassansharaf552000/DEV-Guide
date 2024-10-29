@@ -11,7 +11,10 @@ export class PaypalService {
 
   constructor(private http: HttpClient) {}
 
+  // createPayPalPayment(paymentData: any): Observable<any> {
+  //   return this.http.post(`${this.baseUrl}/create-paypal-payment`, paymentData);
+  // }
   createPayPalPayment(paymentData: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/create-paypal-payment`, paymentData);
+    return this.http.post(this.baseUrl, paymentData);
   }
 }

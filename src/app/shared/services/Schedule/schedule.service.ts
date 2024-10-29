@@ -11,6 +11,8 @@ export class ScheduleService {
   GetSchedulesWithPriceURL="http://localhost:5164/api/Schedule/GetSchedulesWithPrice"
   //CheckAndHandleScheduleURL="http://localhost:5164/api/Schedule/CheckAndHandleSchedule"
   UnbookedschedulesURL="http://localhost:5164/api/Schedule/unbooked-schedules"
+  
+  BookSession="http://localhost:5164/api/Schedule/BookSession"
 
 
 
@@ -32,6 +34,9 @@ export class ScheduleService {
   // }
   getUnbookedschedules(id: string): Observable<any> {
     return this.http.get<any>(`${this.UnbookedschedulesURL}/${id}`);
+  }
+  BookingSession(Data:any): Observable<any> {
+    return this.http.post<any>(this.BookSession,Data);
   }
 
 }
