@@ -221,7 +221,7 @@ export class MentorListComponent implements OnInit {
           this.totalItems = res.TotalCount;
           this.pageSize = res.PageSize;
           console.log("Filtered data:", res.Data);
-          if (res.Data.SocialAccounts && res.Data.SocialAccounts.length > 0) {
+          if (res.Data.SocialAccounts && res?.Data?.SocialAccounts?.length > 0) {
 
             res.Data.SocialAccounts.forEach(account => {
                 console.log(account.SocialLink); // Make sure 'account' is not undefined

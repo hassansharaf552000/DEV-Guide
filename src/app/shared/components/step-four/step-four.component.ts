@@ -87,7 +87,7 @@ export class StepFourComponent {
 
   // Validate and navigate to the next step
   onNext(): void {
-    if (this.Experiences.length > 0 && this.SelectedSkilles.length > 0 && this.checklist() == undefined) {
+    if (this.Experiences?.length > 0 && this.SelectedSkilles?.length > 0 && this.checklist() == undefined) {
       this.Account.updateFormData("About", this.About);
       this.Account.updateFormData("Level", this.Level);
       this.Account.updateFormData("Title", this.Title);

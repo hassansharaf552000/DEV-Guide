@@ -57,7 +57,7 @@
                     (click)="addSkillFromSuggestion(skill)">
                     {{skill.Name}}
                   </span>
-                  <div *ngIf="SelectedSkilles.length<1" class="text-danger">
+                  <div *ngIf="SelectedSkilles?.length<1" class="text-danger">
                     Please select at least one skill.
                   </div>
                 </div>

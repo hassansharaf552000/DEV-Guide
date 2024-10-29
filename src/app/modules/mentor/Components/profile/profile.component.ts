@@ -44,7 +44,7 @@ console.log("mentorid",mentorId)
        data => {
          this.mentorProfile = data;
          console.log('Profile: ', this.mentorProfile);
-         console.log("experi",this.mentorProfile.Experiences.length);
+         console.log("experi",this.mentorProfile?.Experiences?.length);
          
        },
        error => {
@@ -92,7 +92,7 @@ console.log("mentorid",mentorId)
 
  updateDisplayedReviews() {
    this.displayedReviews = this.reviews.slice(0, this.reviewsLimit);
-   this.hasMoreReviews = this.reviews.length > this.reviewsLimit;
+   this.hasMoreReviews = this.reviews?.length > this.reviewsLimit;
    this.canLoadLess = this.reviewsLimit > 4;  // Show "Load Less" if more than 4 reviews are displayed
  }
 
@@ -120,7 +120,7 @@ console.log("mentorid",mentorId)
     return '';  // Return empty string if mentorProfile or About is undefined
   }
 
-  if (this.isExpanded || this.mentorProfile.About.length <= this.maxLength) {
+  if (this.isExpanded || this.mentorProfile?.About?.length <= this.maxLength) {
     return this.mentorProfile.About;
   }
 

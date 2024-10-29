@@ -53,7 +53,7 @@ const routes: Routes = [
       { path: 'session-details', component: SessionDetailsComponent,canActivate: [AuthGuard], },
       {path:'Quizzes',component:QuizzesListComponent,canActivate: [AuthGuard],},
       {path:'Quiz/:id',component:QuizzesDetailsComponent,canActivate: [AuthGuard],},
-      { path: 'home', component: MentorlayoutComponent,canActivate: [AuthGuard], },
+      { path: 'home', component: ProfileComponent,canActivate: [AuthGuard], },
 
       // { path: 'profile', component:MentorProfileComponent },
       { path: 'profile', component: ProfileComponent },

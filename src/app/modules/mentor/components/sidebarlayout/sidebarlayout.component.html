@@ -17,5 +17,13 @@
         <span>{{ logoutItem.label }}</span> <!-- Logout Text -->
       </button>
     </div>
+    <div class="logout-section mt-3">
+      <button class="btn btn-danger d-flex justify-content-center align-items-center wide-button " (click)="backhome()" style="background-color: black; width: 200px; border: none;">
+        <i [class]="homeItem.icon" style="color: white; ;"></i> <!-- Bind logout icon -->
+        {{ homeItem.label }} <!-- Bind logout label -->
+      </button> <!-- Logout Icon -->
+         
+       
+    </div>
   </ul>
 </nav>

@@ -25,10 +25,10 @@ export class SidebarlayoutComponent {
     { path: '/hr/quizzes', label: 'Completed Quizzes', icon: 'bi bi-question' },
 
     { path: '/hr/Quizzes', label: ' Quizzes List', icon: 'bi bi-question' },
-    { path: '/hr/hr-request', label: 'Queries', icon: 'bi bi-chat-square-dots' },
+    // { path: '/hr/hr-request', label: 'Queries', icon: 'bi bi-chat-square-dots' },
     { path: '/hr/schedule', label: 'Schedule', icon: 'bi bi-envelope' },
 
-    { path: '/hr/queryanswers', label: 'Answers of Query', icon: 'fa-regular fa-comment-dots' },
+    // { path: '/hr/queryanswers', label: 'Answers of Query', icon: 'fa-regular fa-comment-dots' },
 
     // { path: '/settings', label: 'Settings', icon: 'bi bi-gear' },
 
@@ -42,7 +42,7 @@ export class SidebarlayoutComponent {
 
     //{ path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' }
 
-    { path: '/hr/queryanswers', label: 'Queries Answers', icon: 'bi bi-chat-dots' },
+    // { path: '/hr/queryanswers', label: 'Queries Answers', icon: 'bi bi-chat-dots' },
     { path: '/hr/Sessions', label: 'Sessions', icon: 'bi bi-calendar-event' },
     { path: '/hr/contact-hr', label: 'Contact Admin', icon: 'bi bi-envelope-open' },
     { path: '/hr/schedule', label: 'Schedule', icon: 'bi bi-calendar-check-fill' },
@@ -50,6 +50,7 @@ export class SidebarlayoutComponent {
 
   ];
   logoutItem = { path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' };
+  homeItem = { path: '/home', label: 'Back To Home', icon: 'bi bi-house-door-fill' };
   isSidebarOpen = false;  // Sidebar is closed by default
   isuserExist:boolean = false
   userName: string | null = null;
@@ -105,7 +106,9 @@ export class SidebarlayoutComponent {
 
     }
   }
-
+  backhome(){
+    this.router.navigate([this.homeItem.path]);
+  }
   // Logout function
   logout() {
     this.authServ.userlogout()

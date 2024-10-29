@@ -19,7 +19,7 @@
         <!-- <div class="hidden">{{HR.ID}}</div> -->
       </div>
       <div class="social-media mt-0 pt-0 col-3 mb-0 ps-5 ps-sm-2 text-sm-center custom-center ps-1" style="padding-right: 40px; padding-bottom: 20px;">
-        @if(HR.SocialAccounts.length>0){
+        @if(HR.SocialAccounts?.length>0){
 
 
         @for (user of HR.SocialAccounts; track user.id; let index = $index) {
