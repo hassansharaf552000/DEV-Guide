@@ -26,6 +26,7 @@ import { QuizzesListComponent } from '../../shared/components/quizzes-list/quizz
 import { QuizzesDetailsComponent } from '../../shared/components/quizzes-details/quizzes-details.component';
 
 import { ProfileComponent } from './Components/profile/profile.component';
+import { PaymentComponent } from '../../shared/components/payment/payment.component';
 
 const routes: Routes = [
   {
@@ -67,6 +68,8 @@ const routes: Routes = [
       { path: 'queryanswers', component: MentorAnswerQueryComponent },
       { path: 'session-details/:id', component: SessionDetailsComponent },
       { path: 'home', component: MentorlayoutComponent },
+      { path: 'paypa', component: PaymentComponent },
+
 
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'notfound' },

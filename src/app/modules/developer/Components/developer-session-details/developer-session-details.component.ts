@@ -33,6 +33,7 @@ export class DeveloperSessionDetailsComponent {
     private sessionserc : SessionService , private http: HttpClient ,private formBuilder: FormBuilder,private toastr: ToastrService){
 
     this.id = this.route.snapshot.paramMap.get('id');
+   
     this.MeetingLinkForm = this.formBuilder.group({
       feedback: ['', Validators.required]
     });
@@ -43,15 +44,24 @@ export class DeveloperSessionDetailsComponent {
       rating: ['', Validators.required],
       comment: ['', Validators.required]
     });
+
+    this.reviewForm = this.formBuilder.group({
+      rating: ['', Validators.required],
+      comment: ['', Validators.required]
+    });
   }
 
   
-  onSubmit() {
-    if (this.reviewForm.valid) {
-      // Handle form submission (e.g., send to API)
-      console.log(this.reviewForm.value);
-    }
-  }
+ 
+  // onSubmit() {
+  //   if (this.reviewForm.valid) {
+  //     // Handle form submission (e.g., send to API)
+  //     console.log(this.reviewForm.value);
+  //   }
+  // }
+
+
+  
   ngOnInit(): void {
     // Get the mentor ID from the URL
    
@@ -75,6 +85,29 @@ export class DeveloperSessionDetailsComponent {
     }
 
   
+  }
+
+
+  onSubmit() {
+    if (this.reviewForm.valid) {
+      const reviewData = {
+        Rate: this.reviewForm.value.rating,
+        // ReviewDate: new Date(),
+        Description: this.reviewForm.value.comment
+      };
+
+      this.sessionserc.addreview(reviewData,+this.id).subscribe({
+        next: (response) => {
+          this.toastr.success('Review added successfully', (response as any).message);
+          this.showReviewForm = false;
+          this.reviewForm.reset();
+        },
+        error: (error) => {
+          this.toastr.error('Failed to add review', error?.error?.Message);
+          console.error(error);
+        }
+      });
+    }
   }
   onSubmitFeedback() {
    
