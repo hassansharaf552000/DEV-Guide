@@ -102,7 +102,7 @@ export class QuizComponent implements OnInit {
 
   ngOnInit(): void {}
   nextQuestion(): void {
-    if (this.currentQuestionIndex < this.questions.length - 1) {
+    if (this.currentQuestionIndex < this.questions?.length - 1) {
       this.currentQuestionIndex++;
     }
   }

@@ -90,7 +90,7 @@ export class AdminUIComponent {
     this.currentModel = model;
   }
   getTotalPages(users: User[], itemsPerPage: number): number {
-    return Math.ceil(users.length / itemsPerPage);
+    return Math.ceil(users?.length / itemsPerPage);
   }
   
   get totalPagesForHr(): number {

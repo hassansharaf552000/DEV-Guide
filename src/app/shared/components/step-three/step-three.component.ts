@@ -279,7 +279,7 @@ export class StepThreeComponent {
     this.educationslist.splice(index, 1)
   }
   onNext(): void {
-    if (this.educationslist.length > 0 && this.checklist() == undefined) {
+    if (this.educationslist?.length > 0 && this.checklist() == undefined) {
       this.Account.Educations = this.educationslist;
       this.router.navigate(['/step-four']);
     }

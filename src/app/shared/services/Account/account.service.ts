@@ -115,7 +115,7 @@ CompleteProfile() {
     if (rate !== null) params.rate = rate;
     if (pageSize) params.pageSize = pageSize;
     if (page) params.page = page;
-    if (skills && skills.length > 0) params.skills = skills.join(',');
+    if (skills && skills?.length > 0) params.skills = skills.join(',');
     if (mentorId) params.excludeMentorId = mentorId;  // Add mentorId to params to exclude it
 
     return this.http.get<any>(this.ExpertsListURL, { params });

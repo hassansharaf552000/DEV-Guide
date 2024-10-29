@@ -212,7 +212,7 @@
             </div>
 
           } -->
-          <div *ngIf="hrReviews.length > 0; else noReviews">
+          <div *ngIf="hrReviews?.length > 0; else noReviews">
             <div class="card">
               <!-- card body -->
               <div class="card-body p-md-5">
@@ -502,7 +502,7 @@
             </div>
             <div class="col-xl-4 col-12">
              
-            <div *ngIf="hrProfile.Educations.length > 0" class="card mb-4">
+            <div *ngIf="hrProfile?.Educations?.length > 0" class="card mb-4">
               <div class="profile-section">
                 <h2 class="fw-bold">Education</h2>
                 <div>
@@ -523,13 +523,13 @@
                   </div>
             
                   <!-- Show More/Show Less Button -->
-                  <button *ngIf="hrProfile.Educations.length > maxItemsToShow" class="btn btn-link" (click)="toggleShowAll()">
+                  <button *ngIf="hrProfile?.Educations?.length > maxItemsToShow" class="btn btn-link" (click)="toggleShowAll()">
                     {{ showAll ? 'Show Less' : 'Show More' }}
                   </button>
                 </div>
               </div>
             </div>
-            <div *ngIf="hrProfile.Experiences.length > 0" class="card mb-4">
+            <div *ngIf="hrProfile?.Experiences?.length > 0" class="card mb-4">
               <div class="profile-section">
                 <h2 class="fw-bold">Work Experience</h2>
                 <div>
@@ -550,7 +550,7 @@
                   </div>
             
                   <!-- Show More/Show Less Button -->
-                  <button *ngIf="hrProfile.Experiences.length > maxItemsToShow" class="btn btn-link" (click)="toggleShowAll()">
+                  <button *ngIf="hrProfile?.Experiences?.length > maxItemsToShow" class="btn btn-link" (click)="toggleShowAll()">
                     {{ showAll ? 'Show Less' : 'Show More' }}
                   </button>
                 </div>

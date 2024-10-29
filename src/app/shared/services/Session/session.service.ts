@@ -15,6 +15,8 @@ export class SessionService {
 
   GetSessionDetailsURL="http://localhost:5164/api/Session/GetSessionById"
   UpdateFeedbackURL="http://localhost:5164/api/Session/UpdateFeedback"
+  UpdateFeedbackForCanceledURL="http://localhost:5164/api/Session/UpdateFeedbackForCanceled"
+
   UpdateMeetingLinkURL="http://localhost:5164/api/Session/UpdateMeetingLink"
 
   GetAllSessionForDeveloper="http://localhost:5164/api/Session/GetAllSessionForOneDeveloper"
@@ -27,7 +29,14 @@ export class SessionService {
   //   return this.http.post<any>(`${this.AddReviewURR}/${id}`, review);
   // }
 
-
+  UpdateFeedbackForCanceled(sessionId: string, feedback: string): Observable<any> {
+    const body = { Feedback: feedback }; // Wrap the feedback in an object
+  
+    return this.http.put<any>(`${this.UpdateFeedbackForCanceledURL}/${sessionId}`, body, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }) // Ensure the content type is JSON
+    });
+  }
+  
   addreview( reviewData: any,sessionId: number) {
     const url = `http://localhost:5164/api/Review/AddReview/${sessionId}`;
     return this.http.post(url, reviewData);
@@ -70,6 +79,10 @@ updateFeedback(sessionId: string, feedback: string): Observable<any> {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }) // Ensure the content type is JSON
   });
 }
+
+
+
+
 UpdateMeeting(sessionId: string,feedback: string): Observable<any> {
   const body = { Feedback: feedback }; // Wrap the feedback in an object
 

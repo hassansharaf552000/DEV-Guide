@@ -82,7 +82,7 @@ export class ScheduleComponent {
     const timeParts = timeSpan.split(':');
   
     // Make sure to return the full 'hh:mm:ss' format
-    if (timeParts.length === 3) {
+    if (timeParts?.length === 3) {
       return `${timeParts[0]}:${timeParts[1]}:${timeParts[2]}`; // Return "hh:mm:ss" format
     } else {
       // Fallback if time doesn't contain seconds
