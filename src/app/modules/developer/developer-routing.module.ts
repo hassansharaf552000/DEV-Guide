@@ -71,7 +71,7 @@ const routes: Routes = [
     component: UserlayoutComponent,
 
     children: [
-      { path: 'payment', component: PaymentComponent,canActivate: [AuthGuard] },
+      { path: 'paypal/:id', component: PaymentComponent,canActivate: [AuthGuard] },
       { path: 'mentors', component: MentorListComponent },
       { path: 'mentors/:id', component: MentorProfileComponent,canActivate: [AuthGuard], },
       { path: 'hrs', component: HRListComponent },
@@ -152,7 +152,7 @@ const routes: Routes = [
   { path: 'step-four', component: StepFourComponent },
   { path: 'step-five', component: StepFiveComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'paypal', component: PaymentComponent },
+  { path: 'paypal/:id', component: PaymentComponent },
   
 
   { path: 'confirm', component: BookingConfirmationComponent },

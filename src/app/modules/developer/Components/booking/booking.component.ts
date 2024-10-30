@@ -24,6 +24,7 @@ export class BookingComponent implements OnInit {
 
   @Input() mentorProfile!: IMentor
   list: Array<Time>;
+  sesssionid:number;
   GetProfileURL = "http://localhost:5164/api/Account/GetOneUser"
   MentorID = ""
   schedules:Array<any>;
@@ -540,7 +541,10 @@ convertToISO(dateTimeString: string): string {
     this.ScheduleService.BookingSession(this.SessionData).subscribe(
         data => {
             this.NewSession = data.Session;
+            this.sesssionid=data.Session.Id;
             console.log('session: ', this.NewSession);
+            console.log('id: ', this.sesssionid);
+
         },
         error => {
             console.error('Error booking session', error);
