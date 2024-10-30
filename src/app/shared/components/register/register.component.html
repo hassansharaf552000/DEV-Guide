@@ -9,9 +9,9 @@
         <div class="card login-card shadow-sm">
           <div class="card-body">
             <img src="logo 3_processed.jpg" class="card-image">
-            <h3 class="text-center mb-4 your-element-class"
+            <h1 class="text-center mb-4 your-element-class"
              >Sign up
-            </h3>
+            </h1>
 
 
 
@@ -20,8 +20,8 @@
               <div class="signup-form">
                 <!-- <h2 class="text-center">Sign up</h2> -->
                 <form [formGroup]="form" (ngSubmit)="send()">
-                  <div class="form-group" style="margin-bottom: 20px !important;">
-                    <h2 class=" m-0 p-0">Your Role</h2>
+                  <div class="form-group form-custom" style="margin-bottom: 20px !important; margin-left: 10px;margin-right: 10px;width:fit-content; line-height: fit-content; ">
+                    <h1 class="text-center m-0 p-0" style="font-size: 18px;">Your Role</h1>
                     <button type="button" (click)="setRole('Developer')">Developer</button>
                     <button type="button" (click)="setRole('HR')"> HR</button>
                     <button type="button" (click)="setRole('Mentor')">Mentor</button>
@@ -147,12 +147,12 @@
                   </div>
 
 
-                  <form class="form-group">
+                  <!-- <form class="form-group">
                     <h2 class=" m-0 p-0">Your Role</h2>
                     <button type="button" (click)="setRole('Developer')">Developer</button>
                     <button type="button" (click)="setRole('HR')"> HR</button>
                     <button type="button" (click)="setRole('Mentor')">Mentor</button>
-                  </form>
+                  </form> -->
 
                   <button type="submit" [disabled]="form.invalid"
                     class="form-group mt-4 ps-4 btn btn-primary btn-block ms-4 text-center justify-content-center">Sign
