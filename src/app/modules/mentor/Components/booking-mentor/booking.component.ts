@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { SessionService } from '../../../../shared/services/Session/session.service';
 import { BookingStatus } from '../../../../shared/types/SessionListViewModel';
+import { ScheduleService } from '../../../../shared/services/Schedule/schedule.service';
 
 @Component({
   selector: 'app-booking',

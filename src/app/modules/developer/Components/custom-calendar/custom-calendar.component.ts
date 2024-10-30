@@ -154,9 +154,10 @@ export class CustomCalendarComponent {
       return (
         scheduleDate.toDateString() === selectedDateObject.toDateString() &&
         schedule.Day === selectedDay
+       
+        
       );
     });
-
     return filteredSchedules;
   }
 

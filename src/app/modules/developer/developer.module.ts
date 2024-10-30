@@ -57,6 +57,8 @@ import { BookingListComponent } from './Components/booking-list/booking-list.com
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CustomCalendarComponent } from './Components/custom-calendar/custom-calendar.component';
+import { DeveloperProfileComponent } from './Components/developer-profile/developer-profile.component';
+import { DeveloperlistComponent } from './Components/developerlist/developerlist.component';
 
 
 
@@ -98,6 +100,8 @@ import { CustomCalendarComponent } from './Components/custom-calendar/custom-cal
     BookingListComponent,
     CustomCalendarComponent,
     DeveloperSessionDetailsComponent,
+    DeveloperProfileComponent,
+    DeveloperlistComponent,
 
   ],
   imports: [

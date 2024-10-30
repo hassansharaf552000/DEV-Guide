@@ -30,6 +30,42 @@ export class BookingComponent implements OnInit {
   SessionData:any;
   NewSession:any;
   dataaa:any;
+  Description:any;
+  Topic:any;  
+pay:boolean=true;
+continue:boolean=false;
+  today: Date = new Date();
+
+  availableDates: Set<string> = new Set();
+  selectedTimes: any[] = [];
+  // @Input() schedules: Schedule[]; 
+  // today: Date = new Date();
+  selectedMonth: number;
+  selectedYear: number;
+  monthDays: { date: Date | null; dayOfWeek: number }[] = [];
+  daysOfWeek: string[] = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+
+  // availableDates: Set<string> = new Set();
+  // selectedTimes: Schedule[] = [];
+  selectedTime: string | null = null;
+
+  message: string = '';
+  selectedDate: Date | null = null;
+  selectedDateTime: string | null = null; // Variable to store the selected date and time
+
+  timeButtonsPerPage = 6; // Number of time buttons to show per page
+  currentTimePage = 0;   
+  // title: string = '';
+  titleError: string | null = null; 
+  @Input() title: string = '';
+  // titleError: string = '';
+  selectTime(time: string): void {
+    this.selectedTime = time;
+  }
+
+  isSelected(time: string): boolean {
+    return this.selectedTime === time;
+  }
   constructor(private route: ActivatedRoute,private PaymentServ:PaypalService, private AccService: AccountService, private ScheduleService: ScheduleService) {
     this.list = [];
     this.MentorID = this.route.snapshot.paramMap.get('id');
@@ -39,16 +75,19 @@ export class BookingComponent implements OnInit {
     }
     this.selectedMonth = this.today.getMonth();
     this.selectedYear = this.today.getFullYear();
+    // this.selectedDate = new Date(); // Set default selected date to today
     this.selectedDate = new Date(); // Set default selected date to today
-
+    
     // Reset this.today to just the date part
     this.today = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate());
-   this.onDaySelect(this.today)
+  //  this.onDaySelect(this.today)
    this.ScheduleService.getUnbookedschedules(this.MentorID).subscribe((data) => {
     this.schedules = data.schedules;
+    this.onDaySelect(this.today)
     console.log("schedules",this.schedules);
     
   });
+  this.initButtonSelection();
   }
   ngOnInit() {
     this.MentorID = this.route.snapshot.paramMap.get('id');
@@ -87,206 +126,62 @@ export class BookingComponent implements OnInit {
     }
   }
 
-
-  // schedules = [
-  //   {
-  //     "Date": "2024-10-27T00:00:00+03:00",
-  //     "Day": 0, // Sunday
-  //     "StartTime": "07:00:00",
-  //     "EndTime": "08:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "02:00:00",
-  //     "EndTime": "03:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "04:00:00",
-  //     "EndTime": "05:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "05:00:00",
-  //     "EndTime": "06:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "15:00:00",
-  //     "EndTime": "16:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "07:00:00",
-  //     "EndTime": "08:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "08:00:00",
-  //     "EndTime": "09:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "09:00:00",
-  //     "EndTime": "10:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "10:00:00",
-  //     "EndTime": "11:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-11-03T00:00:00+02:00",
-  //     "Day": 0, // Sunday
-  //     "StartTime": "15:00:00",
-  //     "EndTime": "16:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-11-03T00:00:00+02:00",
-  //     "Day": 0, // Sunday
-  //     "StartTime": "16:00:00",
-  //     "EndTime": "17:00:00"
-  //   },
-  //   // Add more entries as needed
-  // ];
-  today: Date = new Date();
-
-  availableDates: Set<string> = new Set();
-  selectedTimes: any[] = [];
-  // @Input() schedules: Schedule[]; 
-  // today: Date = new Date();
-  selectedMonth: number;
-  selectedYear: number;
-  monthDays: { date: Date | null; dayOfWeek: number }[] = [];
-  daysOfWeek: string[] = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
-
-  // availableDates: Set<string> = new Set();
-  // selectedTimes: Schedule[] = [];
-  selectedTime: string | null = null;
-
-  message: string = '';
-  selectedDate: Date | null = null;
-  selectedDateTime: string | null = null; // Variable to store the selected date and time
-
-  timeButtonsPerPage = 6; // Number of time buttons to show per page
-  currentTimePage = 0;    // Current time page index
-
-  // onTimeSelect(startTime: string, endTime: string) {
-  //   if (!this.selectedDate) return;
-
-  //   const datePart = this.selectedDate.toISOString().split('T')[0]; // Get date in 'yyyy-mm-dd'
-
-  //   // Concatenate date with start time and format as 'yyyy-mm-dd hh:mm:ss'
-  //   this.selectedDateTime = `${datePart} ${startTime}`;
-  //   this.selectedTime = startTime;
-  //   console.log("Selected DateTime:", this.selectedDateTime); // Log to verify
-  //   this.confirmButtonEnabled = true;
-  // }
-  // convertToISO(dateString: string): string | null {
-  //   // Check if dateString is provided
-  //   if (!dateString) {
-  //     console.error("Error: Invalid date input.");
-  //     return null;
-  //   }
+  displaypayment(){
+    this.pay=false;
+    this.continue=true;
+    setTimeout(()=>{
+      this.pay=true;
+      this.continue=false;
+    },1000);
   
-  //   // Replace space with "T" and add "Z" for UTC format
-  //   const date = new Date(dateString.replace(" ", "T") + "Z");
-  
-  //   // Validate if the date is valid
-  //   if (isNaN(date.getTime())) {
-  //     console.error("Error: Invalid date format.");
-  //     return null;
-  //   }
-  
-  //   return date.toISOString();
-  // }
-  
-  
-  // Example usage
-  // const inputDate = "2024-11-02 08:00:00";
-  // const isoDate = convertToISO(inputDate);
-  // console.log(isoDate);  // Output: 2024-11-02T08:00:00.000Z
-  
+  }
+  validateForm() {
+    this.confirmButtonEnabled = !!this.Topic && !!this.Description && !!this.selectedDateTime;
+    if (typeof document !== 'undefined') {
+      // Place the code that uses `document` here
+      this.initButtonSelection(); // e.g., calling initButtonSelection function only on the client
+    }
+    
+    // document.addEventListener('DOMContentLoaded', () => {
+    //   this.initButtonSelection();
+    // });
+}
+// validateTitle():boolean {
+//   if (this.title.length < 4 || this.title.length > 30) {
+//     this.titleError = 'This is an invalid title. It must be between 4 and 30 characters.';
+//     return false
+//   } else {
+//     this.titleError = null; // Clear the error if valid
+//     return true
+//   }
+// }
+validateTitle() {
+  if (this.title.length > 0 && (this.title.length < 4 || this.title.length > 30)) {
+    this.titleError = 'Title must be between 4 and 30 characters.';
+  } else {
+    this.titleError = ''; // Clear error if title length is valid
+  }
+}
 
-  // schedules = [
-  //   {
-  //     "Date": "2024-10-27T00:00:00+03:00",
-  //     "Day": 0, // Sunday
-  //     "StartTime": "07:00:00",
-  //     "EndTime": "08:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "02:00:00",
-  //     "EndTime": "03:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "04:00:00",
-  //     "EndTime": "05:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "05:00:00",
-  //     "EndTime": "06:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "15:00:00",
-  //     "EndTime": "16:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "07:00:00",
-  //     "EndTime": "08:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "08:00:00",
-  //     "EndTime": "09:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "09:00:00",
-  //     "EndTime": "10:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-10-28T00:00:00+03:00",
-  //     "Day": 1, // Monday
-  //     "StartTime": "10:00:00",
-  //     "EndTime": "11:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-11-03T00:00:00+02:00",
-  //     "Day": 0, // Sunday
-  //     "StartTime": "15:00:00",
-  //     "EndTime": "16:00:00"
-  //   },
-  //   {
-  //     "Date": "2024-11-03T00:00:00+02:00",
-  //     "Day": 0, // Sunday
-  //     "StartTime": "16:00:00",
-  //     "EndTime": "17:00:00"
-  //   },
-  //   // Add more entries as needed
-  // ];
-  //selectedDateTime: string | null = null;
+onTitleInputChange() {
+  this.titleError = ''; // Clear error message as soon as user starts typing
+}
 
+// onTitleChange() {
+//   if (this.titleError) {
+//     // Clear error message when the user starts typing
+    
+//   }
+//   if(this.validateTitle()){
+//     this.titleError = '';
+//   }else{
+//    if(this.validateTitle()) {
+//     this.titleError = '';
+//    }
+//   }
+   // Call validation on change
+ 
+// }
   onTimeSelect(startTime: string, endTime: string) {
     if (!this.selectedDate) {
         console.error("selectedDate is not defined.");
@@ -307,28 +202,15 @@ export class BookingComponent implements OnInit {
 
     // Store the full date and time in local time without converting to UTC
     this.selectedDateTime = selectedDateTime.toLocaleString(); // Local date and time format
-    this.confirmButtonEnabled = true;
-
+    // this.confirmButtonEnabled = true;
+    this.validateForm()
+ this.selectTime(startTime)
+//  this.displaypayment()
+ 
+//  this.validateTitle()
     console.log("Selected DateTime:", this.selectedDateTime);
 }
 
-
-
-// lastone that i send to gpt 
-// convertToISO(dateTimeString: string): string {
-//   if (!dateTimeString) {
-//       console.error('Invalid dateTimeString:', dateTimeString);
-//       return null; // Or handle it appropriately
-//   }
-  
-//   const date = new Date(dateTimeString);
-//   if (isNaN(date.getTime())) {
-//       console.error('Invalid Date object created from dateTimeString:', date);
-//       return null; // Handle invalid date conversion
-//   }
-  
-//   return date.toISOString();
-// }
 convertToISO(dateTimeString: string): string {
   if (!dateTimeString) {
       console.error('Invalid dateTimeString:', dateTimeString);
@@ -351,18 +233,13 @@ convertToISO(dateTimeString: string): string {
 
   return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
 }
-
-  
   confirmButtonEnabled: boolean = false; 
 
-
-
- 
   isFutureDate(date: Date): boolean {
     // Get today's date without time
     const today = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate());
     const selectedDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    return selectedDate > today;
+    return selectedDate >= today;
   }
 
   formatDateWithoutTimeZone(date: Date): string {
@@ -385,6 +262,7 @@ convertToISO(dateTimeString: string): string {
         schedule.Day === selectedDay
       );
     });
+    console.log("selectedDay",selectedDay);
 
     return filteredSchedules;
   }
@@ -429,7 +307,7 @@ convertToISO(dateTimeString: string): string {
     
     this.currentTimePage = 0; // Reset to first page on new day selection
     
-    if (this.selectedTimes?.length === 0 && date > this.today) {
+    if (this.selectedTimes?.length === 0 && date >= this.today) {
       this.message = 'No available time for the selected day';
     } else {
       this.message = '';
@@ -501,25 +379,6 @@ convertToISO(dateTimeString: string): string {
     return new Date(0, month).toLocaleString('default', { month: 'long' });
   }
  
-  // BookSession() {
-  //   this.ScheduleService.BookingSession(this.SessionData).subscribe(
-  //     data => {
-  //       this.NewSession = data.Session;
-  //       console.log('session: ', this.NewSession);
-  
-  //       // Set DateTime only if convertToISO returns a valid value
-  //       const isoDateTime =this.selectedDateTime;
-  //       if (isoDateTime) {
-  //         this.SessionData.DateTime = isoDateTime;
-  //       } else {
-  //         console.error("Failed to set DateTime due to invalid date format");
-  //       }
-  //     },
-  //     error => {
-  //       console.error('Error fetching reviews', error);
-  //     }
-  //   ); 
-  // }
   BookSession() {
     // Convert selected date and time to ISO
     const isoDateTime = this.convertToISO(this.selectedDateTime);
@@ -528,8 +387,8 @@ convertToISO(dateTimeString: string): string {
     // Construct SessionData
     this.SessionData = {
         MentorId: this.MentorID,
-        Topic: ".Net",
-        Description: "I need to solve some problems in my project",
+        Topic: this.Topic,
+        Description:this.Description,
         DateTime: isoDateTime,
         Duration: 1
     };
@@ -546,7 +405,47 @@ convertToISO(dateTimeString: string): string {
             console.error('Error booking session', error);
         }
     );
+    this.displaypayment();
 }
+// Get all elements with the "time-button" class
+
+// Add a click event listener to each button
+initButtonSelection() {
+  // Track the currently selected time button
+  let selectedTime: HTMLButtonElement | null = null;
+
+  // Select all time buttons with class "time-button"
+  const timeButtons = document.querySelectorAll<HTMLButtonElement>('.time-button');
+
+  // Loop through each button and add click event listener
+  timeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      // If there was a previously selected button, remove 'active' class
+      if (selectedTime) selectedTime.classList.remove('active');
+
+      // Add 'active' class to the clicked button and set it as the selected button
+      button.classList.add('active');
+      selectedTime = button; // Update the selected button
+    });
+  });
+
+  // Optional: Watch for form submissions and prevent form reset if necessary
+  const form = document.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      // Do something with the selected time, if needed
+      console.log("Selected time:", selectedTime?.textContent);
+    });
+  }
+}
+
+// Initialize after DOM is fully loaded
+
+
+
+// Call the function to initialize button selection functionality
+
 
 
   
