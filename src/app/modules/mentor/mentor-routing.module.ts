@@ -68,7 +68,7 @@ const routes: Routes = [
       { path: 'queryanswers', component: MentorAnswerQueryComponent },
       { path: 'session-details/:id', component: SessionDetailsComponent },
       { path: 'home', component: MentorlayoutComponent },
-      { path: 'paypa', component: PaymentComponent },
+      { path: 'paypa', component: PaymentComponent },//////////////////////////////
 
 
       { path: '', redirectTo: 'home', pathMatch: 'full' },
