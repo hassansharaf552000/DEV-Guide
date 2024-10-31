@@ -51,7 +51,7 @@ export class SidebarlayoutComponent {
     //{ path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' }
   ];
   logoutItem = { path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' };
-  homeItem = { path: '/home', label: 'Back To Home', icon: 'bi bi-house-door-fill' };
+  // homeItem = { path: '/home', label: 'Back To Home', icon: 'bi bi-house-door-fill' };
 
   isSidebarOpen = false;  // Sidebar is closed by default
 
@@ -103,9 +103,9 @@ export class SidebarlayoutComponent {
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
-  backhome(){
-    this.router.navigate([this.homeItem.path]);
-  }
+  // backhome(){
+  //   this.router.navigate([this.homeItem.path]);
+  // }
   // Function to close sidebar
   closeSidebar() {
     this.isSidebarOpen = false;

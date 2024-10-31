@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ScheduleService } from '../../../../shared/services/Schedule/schedule.service';
 import { AuthService } from '../../../../shared/services/Auth/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 enum Day {
   Sunday = 0,
@@ -48,7 +49,7 @@ export class ScheduleComponent {
   Errors: Array<string> = [];
   isOpen: boolean = false;
 
-  constructor(private Schedule: ScheduleService, Auto: AuthService) {
+  constructor(private Schedule: ScheduleService, Auto: AuthService,private toast:ToastrService) {
     console.log("session", this.SessionPrice);
   }
 
@@ -196,10 +197,13 @@ export class ScheduleComponent {
 
     this.Schedule.SetSchedule(this.ScheduleData).subscribe({
       next: (response) => {
-        console.log('Schedule set successfully:', response);
+        // console.log('Schedule Set Successfully:', response);
+        this.toast.success("Schedule Added Successfully")
       },
       error: (error) => {
-        console.error('Error setting schedule:', error);
+        // console.error('Error setting schedule:', error);
+        this.toast.warning("Try again later!!!!!")
+
       }
     });
   }

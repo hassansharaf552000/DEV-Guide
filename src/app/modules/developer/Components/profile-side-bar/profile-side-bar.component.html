@@ -86,8 +86,10 @@
 </nav> -->
 
 <nav class="navbar navbar-expand-md shadow mb-4  mb-lg-0 sidenav ps-3">
-  <a class="d-xl-none d-lg-none d-md-none text-inherit fw-bold" href="#">Menu</a>
+  
 
+  <a class="d-xl-none d-lg-none d-md-none text-inherit fw-bold" href="#">Menu</a>
+  
   <button
     class="navbar-toggler d-md-none icon-shape icon-sm rounded bg-primary text-light"
     type="button"
@@ -99,11 +101,23 @@
   >
     <span class="fe fe-menu"></span>
   </button>
-
+ 
   <div class="collapse navbar-collapse" id="sidenav" style="box-shadow: 50px !important;">
     <div class="navbar-nav flex-column">
       <!-- Dynamic Section for Menu Items -->
-      <span class="navbar-header fw-bold">Account Settings</span>
+      <!-- <span class="navbar-header " style="font-weight: 500;">Account Settings</span> -->
+      <div class="profile-section">
+        <img src="http://localhost:5164/{{userImageUrl}}" alt="Profile Image" class="profile-image mb-2" />
+        <!-- <h3>Welcome {{ userName || 'User' }}</h3> -->
+        <!-- <h3>Development Mentor</h3> -->
+      </div>
+      <!-- <span class="navbar-header " style="font-weight: 500;">Account Settings</span> -->
+
+      <div class="profile-section">
+        <img src="http://localhost:5164/{{userImageUrl}}" alt="Profile Image" class="profile-image" />
+        <h6>Welcome {{ userName || 'User' }}</h6>
+        <!-- <h3>Development Mentor</h3> -->
+      </div>
       <ul class="list-unstyled ms-n2 mb-4">
         <!-- Loop through menuItems array -->
         <li class="nav-item" *ngFor="let item of menuItems">
@@ -114,9 +128,10 @@
         </li>
       </ul>
 
+<div class="text-center mb-2">
       <!-- Static Section for Logout -->
-      <span class="navbar-header fw-bold">Other Actions</span>
-
+      <span class="navbar-header " style="font-weight: 500; ">Other Actions</span>
+    </div>
 
 
       <ul class="list-unstyled ms-n2 mb-0">

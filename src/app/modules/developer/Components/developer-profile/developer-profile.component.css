@@ -20,6 +20,7 @@
   
   .card-body {
     padding: 20px;
+    height: auto;
   }
   
   .form-control {
@@ -260,6 +261,12 @@
   .justify-content-sm-center{
     justify-content: center !important;
   }
+  }
+  .col-xl-7{
+    width: 65%;
+  }
+  .col-xl-5{
+    width: 35%;
   }
   
   

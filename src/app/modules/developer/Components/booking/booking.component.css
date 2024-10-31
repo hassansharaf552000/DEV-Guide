@@ -4,7 +4,7 @@
 
 .badge-pill {
     font-size: 0.875rem;
-    padding: 0.5rem 1rem;
+    padding: 5px 8px;
 }
 
 .btn-light {
@@ -505,18 +505,126 @@
   background-color: #183f6e;
   
 }
+.ng-star-inserted{
+  height: 221px;
+  width: 340px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgb(231, 227, 227);
+}
+/* body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f6f7fb;
+} */
+
+/* Container for the message */
+.message-container {
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin-top: 3px;
+}
+
+/* Emoji styling */
+.emoji {
+  font-size: 60px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+
+}
+
+/* Main heading */
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2b2f5f;
+  margin: 0;
+}
+
+/* Subtext */
+.subtext {
+  font-size: 16px;
+  color: #6e7284;
+  margin-top: 10px;
+}
+.custom-header {
+  background-color: #003366; /* Dark blue color */
+  height: 60px; /* Adjust height as needed */
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
 
 
+/* First animated circle */
+.custom-header::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.2); /* Light pattern overlay */
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: movePattern1 10s infinite alternate linear;
+}
 
+/* Second animated circle */
+.custom-header::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: movePattern2 12s infinite alternate linear;
+}
 
+/* Third animated circle */
+.third-circle {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: movePattern3 8s infinite alternate linear;
+}
 
+/* Animation for the first circle */
+@keyframes movePattern1 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100px); }
+}
 
+/* Animation for the second circle */
+@keyframes movePattern2 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100px); }
+}
 
-
-
-
-
-
-
-
+/* Animation for the third circle */
+@keyframes movePattern3 {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50px); }
+}
 
