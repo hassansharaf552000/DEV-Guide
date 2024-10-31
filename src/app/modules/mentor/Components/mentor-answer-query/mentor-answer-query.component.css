@@ -1,17 +1,13 @@
-.position-relative{
-
-    bottom: 35px;
-}
-.btn-primary{
-
-  border-radius: 3%;
-    background-color:  1c4980;;
-    
+.avatar-xl {
+  height: 150px;
+  width: 100%;
+  border-radius: 13px;
 }
 
-/* .sidenav{
+.btn-outline-primary {
+  border-radius: 25px;
+}
 
-  border-radius: 3%;
-  padding-left: 10px ;
-  
-} */
+.btn-primary {
+  background-color: #1c4980;
+}
