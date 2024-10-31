@@ -20,6 +20,8 @@ export class ProfileSideBarComponent {
     { path: '/developer/profile/skills', label: 'Skills', icon: 'bi-person-check' },
     { path: '/developer/profile/educations', label: 'Education', icon: 'bi-book' },
     { path: '/developer/profile/experiences', label: 'Experience', icon: 'bi-briefcase' },
+    { path: '/developer/profile/reviews', label: 'Feedbacks', icon: 'fa-regular fa-comment' },
+
     { path: '/developer/profile/socialaccounts', label: 'Social Accounts', icon: 'bi-share' },
 
     { path: '/developer/profile/quizzes', label: 'Quizzes', icon: 'bi bi-question' },

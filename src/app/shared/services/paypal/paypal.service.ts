@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -14,7 +14,26 @@ export class PaypalService {
   // createPayPalPayment(paymentData: any): Observable<any> {
   //   return this.http.post(`${this.baseUrl}/create-paypal-payment`, paymentData);
   // }
-  createPayPalPayment(paymentData: any): Observable<any> {
-    return this.http.post(this.baseUrl, paymentData);
+  // createPayPalPayment(paymentData: any): Observable<any> {
+  //   return this.http.post(this.baseUrl, paymentData);
+  // }
+
+
+
+  createPayPalPayment(payment: any): Observable<any> {
+    return this.http.post(this.baseUrl, payment, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    });
+  }
+
+  createPayment(amount: number, sessionId: string): Observable<any> {
+    const paymentData = {
+      Amount: amount,
+      Session_Id: sessionId,
+      // Instructor_Id:InstructorId
+      // Include any other necessary fields based on your CreatePaymentViewModel
+    };
+
+    return this.http.post<any>(this.baseUrl, paymentData);
   }
 }

@@ -25,6 +25,7 @@ import { ContactAdminComponent } from '../mentor/Components/contact-admin/contac
 import { QuizzesListComponent } from '../../shared/components/quizzes-list/quizzes-list.component';
 import { QuizzesDetailsComponent } from '../../shared/components/quizzes-details/quizzes-details.component';
 import { ProfileComponent } from './Components/profile/profile.component';
+import { ContactUsComponent } from '../developer/Components/contact-us/contact-us.component';
 
 
 
@@ -47,10 +48,10 @@ const routes: Routes = [
       { path: 'hr-summry', component: HrSummaryComponent,canActivate: [AuthGuard] },
       { path: 'hr-request', component: HrRequestComponent,canActivate: [AuthGuard]},
       { path: 'schedule', component: ScheduleComponent,canActivate: [AuthGuard] },
-      { path: 'contact_admin', component: ContactAdminComponent,canActivate: [AuthGuard], },
+      { path: 'contact_admin', component: ContactUsComponent,canActivate: [AuthGuard], },
       { path: 'reviews', component: ReviewsListComponent,canActivate: [AuthGuard] },
       { path: 'queryanswers', component: HrAnswerQueryComponent,canActivate: [AuthGuard] },
-      { path: 'session-details', component: SessionDatailsComponent,canActivate: [AuthGuard] },
+      { path: 'session-details/:id', component: SessionDatailsComponent,canActivate: [AuthGuard] },
       { path: 'quizzes', component: QuizListComponent, canActivate: [AuthGuard], },
       {path:'Quizzes',component:QuizzesListComponent,canActivate: [AuthGuard],},
       {path:'Quiz/:id',component:QuizzesDetailsComponent,canActivate: [AuthGuard],},
@@ -63,7 +64,7 @@ const routes: Routes = [
       { path: 'hr-summry', component: HrSummaryComponent },
       { path: 'hr-request', component: HrRequestComponent},
       { path: 'schedule', component: ScheduleComponent },
-      { path: 'contact-hr', component: ContactHrComponent },
+      { path: 'contact-hr', component: ContactUsComponent },
       { path: 'reviews', component: ReviewsListComponent },
       { path: 'queryanswers', component: HrAnswerQueryComponent },
       { path: 'session-details', component: SessionDatailsComponent },

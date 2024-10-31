@@ -11,14 +11,27 @@ import { ReviewService } from '../../../../shared/services/review/review.service
 
 export class ReviewsListComponent implements OnInit {
   reviews: any[] = [];
+  sessions: any[] = [];
   user: any;
   errorMessage: string | null = null;
 
   constructor(private reviewService: ReviewService) {}
 
   ngOnInit(): void {
+    this.reviewService.getAllSessionsForUser().subscribe({
+      next: (data) => {
+        this.sessions = data;
+        console.log("session",data);
+        
+      },
+      error: (err) => {
+        console.error('Error retrieving sessions:', err);
+      }
+    });
+  
     this.fetchReviews();
     this.getuser();
+    
   }
 
   fetchReviews(): void {

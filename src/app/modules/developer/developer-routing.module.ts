@@ -152,10 +152,10 @@ const routes: Routes = [
   { path: 'step-four', component: StepFourComponent },
   { path: 'step-five', component: StepFiveComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'paypal/:id', component: PaymentComponent },
+  { path: 'cancel', component: PaymentComponent },
   
 
-  { path: 'confirm', component: BookingConfirmationComponent },
+  { path: 'confirm/:id', component: BookingConfirmationComponent },
 
   
 

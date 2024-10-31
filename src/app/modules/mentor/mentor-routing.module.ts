@@ -27,6 +27,7 @@ import { QuizzesDetailsComponent } from '../../shared/components/quizzes-details
 
 import { ProfileComponent } from './Components/profile/profile.component';
 import { PaymentComponent } from '../../shared/components/payment/payment.component';
+import { ContactUsComponent } from '../developer/Components/contact-us/contact-us.component';
 
 const routes: Routes = [
   {
@@ -47,7 +48,7 @@ const routes: Routes = [
       { path: 'quizzes', component: QuizListComponent, canActivate: [AuthGuard], },
       { path: 'mentor-request', component: MentorRequestComponent,canActivate: [AuthGuard], },
       { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuard], },
-      { path: 'contact_admin', component: ContactAdminComponent,canActivate: [AuthGuard], },
+      { path: 'contact_admin', component: ContactUsComponent,canActivate: [AuthGuard], },
       { path: 'reviews', component: ReviewsListComponent,canActivate: [AuthGuard], },
       { path: 'queryanswers', component: MentorAnswerQueryComponent,canActivate: [AuthGuard], },
       { path: 'session-details', component: SessionDetailsComponent,canActivate: [AuthGuard], },
@@ -63,7 +64,7 @@ const routes: Routes = [
       { path: 'mentor-summry', component: MentorSummryComponent },
       { path: 'mentor-request', component: MentorRequestComponent },
       { path: 'schedule', component: ScheduleComponent },
-      { path: 'contact_admin', component: ContactAdminComponent },
+      { path: 'contact_admin', component: ContactUsComponent },
       { path: 'reviews', component: ReviewsListComponent },
       { path: 'queryanswers', component: MentorAnswerQueryComponent },
       { path: 'session-details/:id', component: SessionDetailsComponent },

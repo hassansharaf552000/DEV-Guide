@@ -10,6 +10,8 @@ export class ReviewService {
   ReviewListUrl = "http://localhost:5164/api/Account/GetReviewByClaim"; 
    
  getuserUrl = "http://localhost:5164/api/Account/GetOneUserByClaim"; 
+ getuserFeedback = "http://localhost:5164/api/Session/GetAllSessionsForUser"; 
+ 
  
     constructor(private http: HttpClient) {}
   
@@ -19,4 +21,8 @@ export class ReviewService {
     getuser(): Observable<any> {
       return this.http.get(this.getuserUrl);
     
-  }}
+  }
+  getAllSessionsForUser(): Observable<any> { // Returning 'any' type here
+    return this.http.get<any>(this.getuserFeedback);
+  }
+}

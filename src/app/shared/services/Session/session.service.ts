@@ -22,7 +22,8 @@ export class SessionService {
   GetAllSessionForDeveloper="http://localhost:5164/api/Session/GetAllSessionForOneDeveloper"
 
   AddReviewURR= "http://localhost:5164/api/Review//AddReview"
-
+  CancelSessionUrl="http://localhost:5164/api/Session/CancelSession"
+ 
   constructor(private http: HttpClient) { }
 
   // addreview(review:any ,id: number): Observable<any> {
@@ -101,4 +102,8 @@ getallSessionForDeveloper() {
   return this.http.get(this.GetAllSessionForDeveloper);
 }
 
+  cancelSession(id: string): Observable<any> {
+    const url = `${this.CancelSessionUrl}/${id}`;
+    return this.http.delete(url, { headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`) });
+  }
 }
