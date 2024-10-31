@@ -129,7 +129,9 @@ const routes: Routes = [
       //{ path: '**', redirectTo: 'notfound' },
       {path:'',redirectTo: 'updateprofile', pathMatch: 'full'},
 
+      // { path: 'answer-query/:id/:queryid/:userid', component: QueryAnswerComponent },
       { path: 'answer-query/:id/:queryid/:userid', component: QueryAnswerComponent },
+
       { path: 'AdminUi', component: AdminUIComponent },
 
       { path: 'session-details/:id', component: DeveloperSessionDetailsComponent },
@@ -153,6 +155,9 @@ const routes: Routes = [
   { path: 'step-five', component: StepFiveComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'cancel', component: PaymentComponent },
+  // { path: 'hr-payment', component: HrPaymentsComponent },
+
+
   
 
   { path: 'confirm/:id', component: BookingConfirmationComponent },

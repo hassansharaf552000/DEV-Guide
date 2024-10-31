@@ -289,4 +289,15 @@ this.toaster.warning("Try again later!!!!!")
   //    this.QueryArray.push(obj)
   //   }
 
+  downloadFile(filePath: string) {
+    const fullUrl = `http://localhost:5164${filePath}`; // Combine base URL with the file path
+  
+    const link = document.createElement('a');
+    link.href = fullUrl;
+    link.setAttribute('download', filePath.split('/').pop() || 'file'); // Extract the file name from the path
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+  
   }
