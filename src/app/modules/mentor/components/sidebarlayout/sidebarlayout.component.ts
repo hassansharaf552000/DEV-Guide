@@ -26,7 +26,7 @@ export class SidebarlayoutComponent {
     { path: '/mentor/quizzes', label: 'Completed Quizzes', icon: 'bi bi-question' },
 
     { path: '/mentor/Quizzes', label: ' Quizzes List', icon: 'bi bi-question' },
-    { path: '/mentor/mentor-request', label: 'Queries', icon: 'bi bi-chat-square-dots' },
+    // { path: '/mentor/mentor-request', label: 'Queries', icon: 'bi bi-chat-square-dots' },
     { path: '/mentor/schedule', label: 'Schedule', icon: 'bi bi-envelope' },
 
     { path: '/mentor/queryanswers', label: 'Answers of Query', icon: 'fa-regular fa-comment-dots' },
@@ -43,7 +43,7 @@ export class SidebarlayoutComponent {
     { path: '/mentor/profile', label: 'Profile', icon: 'bi bi-person-circle' },
     { path: '/mentor/updateprofile', label: 'Edit Profile', icon: 'bi bi-pencil' },
     { path: '/mentor/mentor-payments', label: 'Payments', icon: 'bi bi-wallet2' },
-    { path: '/mentor/queryanswers', label: 'Queries Answers', icon: 'bi bi-chat-dots' },
+    { path: '/mentor/queryanswers', label: 'Queries', icon: 'bi bi-chat-dots' },
     { path: '/mentor/Sessions', label: 'Sessions', icon: 'bi bi-calendar-event' },
 
     { path: '/mentor/contact_admin', label: 'Contact Admin', icon: 'bi bi-envelope-open' },
