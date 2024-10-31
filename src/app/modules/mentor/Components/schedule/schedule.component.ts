@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { ScheduleService } from '../../../../shared/services/Schedule/schedule.service';
 import { AuthService } from '../../../../shared/services/Auth/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 enum Day {
   Sunday = 0,
@@ -48,7 +49,8 @@ export class ScheduleComponent {
   Errors: Array<string> = [];
   isOpen: boolean = false;
 
-  constructor(private Schedule: ScheduleService, Auto: AuthService,private cdr: ChangeDetectorRef) {
+  constructor(private Schedule: ScheduleService, Auto: AuthService,private cdr: ChangeDetectorRef,
+    private toastr: ToastrService) {
     console.log("session", this.SessionPrice);
   }
 
@@ -70,9 +72,11 @@ export class ScheduleComponent {
         });
         console.log("workinghour", this.Working_Hours);
         console.log(res);
+        
       },
       error: (err) => {
         console.log(err);
+       
       }
     });
     this.cdr.detectChanges();
@@ -198,9 +202,11 @@ export class ScheduleComponent {
     this.Schedule.SetSchedule(this.ScheduleData).subscribe({
       next: (response) => {
         console.log('Schedule set successfully:', response);
+        this.toastr.success('Suheule is added successfully');
       },
       error: (error) => {
         console.error('Error setting schedule:', error);
+        this.toastr.error('Message is failed', error?.error?.message);
       }
     });
   }

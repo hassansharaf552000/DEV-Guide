@@ -7,6 +7,8 @@ import { AccountService } from '../../../../shared/services/Account/account.serv
 import { ScheduleService } from '../../../../shared/services/Schedule/schedule.service';
 import { IMentor } from '../../../../core/enums/Mentor';
 import { PaypalService } from '../../../../shared/services/paypal/paypal.service';
+import { SessionService } from '../../../../shared/services/Session/session.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 interface Schedule {
@@ -24,20 +26,29 @@ export class BookingComponent implements OnInit {
 
   @Input() mentorProfile!: IMentor
   list: Array<Time>;
+  sesssionid!:string;
   GetProfileURL = "http://localhost:5164/api/Account/GetOneUser"
   MentorID = ""
+  
   schedules:Array<any>;
   SessionData:any;
   NewSession:any;
   dataaa:any;
   Description:any;
   Topic:any;  
-pay:boolean=true;
-continue:boolean=false;
+  canceled:boolean=false;
+pay:boolean=false;
+continue:boolean=true;
   today: Date = new Date();
-
+  amount: number = 0;
+  sessionId: string = '';
+  // payment: any = {
+  //   Amount: 0,
+  //   Session_Id: '', // Initialize Session_Id
+  // };
   availableDates: Set<string> = new Set();
   selectedTimes: any[] = [];
+  href:string;
   // @Input() schedules: Schedule[]; 
   // today: Date = new Date();
   selectedMonth: number;
@@ -66,7 +77,10 @@ continue:boolean=false;
   isSelected(time: string): boolean {
     return this.selectedTime === time;
   }
-  constructor(private route: ActivatedRoute,private PaymentServ:PaypalService, private AccService: AccountService, private ScheduleService: ScheduleService) {
+  constructor(private route: ActivatedRoute,private paymentService:PaypalService,
+     private AccService: AccountService, private ScheduleService: ScheduleService
+    ,private SeessionService: SessionService
+  ,private toaster:ToastrService) {
     this.list = [];
     this.MentorID = this.route.snapshot.paramMap.get('id');
     if (this.MentorID) {
@@ -90,6 +104,7 @@ continue:boolean=false;
   this.initButtonSelection();
   }
   ngOnInit() {
+   
     this.MentorID = this.route.snapshot.paramMap.get('id');
     // this.MentorID = this.route.snapshot.paramMap.get('id');
     const mentorId = this.route.snapshot.paramMap.get('id');
@@ -100,7 +115,11 @@ continue:boolean=false;
         data => {
           this.mentorProfile = data;
           console.log('Profile: ', this.mentorProfile);
+          this.amount = this.mentorProfile.Price;
 
+          console.log("paymentamount", this.amount);
+          
+         
         },
         error => {
           console.error('Error fetching profile', error);
@@ -113,7 +132,7 @@ continue:boolean=false;
       });
 
     }
- 
+   
     this.processAvailableSchedules();
     this.generateCalendar();
     this.SessionData={
@@ -129,10 +148,23 @@ continue:boolean=false;
   displaypayment(){
     this.pay=false;
     this.continue=true;
+    this.canceled=false;
     setTimeout(()=>{
       this.pay=true;
       this.continue=false;
+      this.canceled=true;
     },1000);
+  
+  }
+  displaycontinue(){
+    this.pay=true;
+    this.continue=false;
+    this.canceled=true;
+    setTimeout(()=>{
+      this.pay=false;
+      this.continue=true;
+      this.canceled=false;
+    },100);
   
   }
   validateForm() {
@@ -399,7 +431,12 @@ convertToISO(dateTimeString: string): string {
     this.ScheduleService.BookingSession(this.SessionData).subscribe(
         data => {
             this.NewSession = data.Session;
+            this.sesssionid=data.Session.Id;
             console.log('session: ', this.NewSession);
+            console.log('id: ', this.sesssionid);
+            this.sessionId = this.sesssionid;
+            console.log("paymentsessionid",  this.sessionId );
+
         },
         error => {
             console.error('Error booking session', error);
@@ -446,7 +483,84 @@ initButtonSelection() {
 
 // Call the function to initialize button selection functionality
 
+// onSubmitpayment() {
+//   this.paymentService.createPayPalPayment(this.payment).subscribe(
+//     (response) => {
+//       // Handle success response
+//       console.log('Payment created successfully:', response);
+//       // Redirect to PayPal or show a success message
+//       window.location.href = response.result; // Redirecting to PayPal approval URL
+//     },
+//     (error) => {
+//       // Handle error response
+//       console.error('Error creating payment:', error);
+//     }
+//   );
+// }
 
 
+onSubmitpayment() {
+  
+  console.log("paymentdata",this.amount,this.sessionId);
+  this.paymentService.createPayment(this.amount,  this.sessionId).subscribe({
+    
+    
+    // next: (response) => {
+    //   if (response && response.result) {
+    //     // Redirect the user to the PayPal approval URL
+    //     window.location.href = response.result;
+    //   } else {
+    //     // Handle error case
+    //     alert('Payment creation failed.');
+    //   }
+    next: (response) => {
+      console.log('API Response:', response); // Log the entire response
+      if (response && response.result) {
+          // Redirect the user to the PayPal approval URL
+          // window.location.href = response.result;
+          // console.log("href",response.result);
+          // this.href = response.result;
+          window.location.href = response.result;
+      } else {
+          // Handle error case
+          alert('Payment creation failed. No result in response.');
+      
+      }
+    },
+    error: (error) => {
+      console.error('Payment error:', error);
+      alert('An error occurred while creating the payment.');
+    }
+  });
+}
+
+
+
+cancelSession(id: string) {
+  // id =this.sesssionid;
+  id =this.sesssionid;
+
+  this.SeessionService.cancelSession(id).subscribe(
+    (response) => {
+      this.toaster.success("Canceled your session successfully!")
+      // alert(response.message); // Success message
+    },
+    (error) => {
+      if (error.status === 401) {
+        this.toaster.warning("User is not authenticated");
+        // alert('User is not authenticated.');
+      } else if (error.status === 404) {
+        this.toaster.warning('Session not found.');
+        // alert('Session not found.');
+      } else if (error.status === 400) {
+        alert(error.error.message); // Specific error message
+      } else {
+        this.toaster.warning('An unexpected error occurred.');
+        // alert('An unexpected error occurred.');
+      }
+    }
+  );
+}
   
 }
+

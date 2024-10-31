@@ -1,7 +1,7 @@
 <div class="container mt-4 ">
     <div class="ml-auto d-flex mb-2">
         <a href="#" class="btn btn-light mr-2"> <i class="fa-solid fa-arrow-left-long"></i></a>
-        <h3 class="ms-2">{{mentorProfile.FirstName}} {{mentorProfile.LastName}}</h3>
+        <h3 class="ms-2">{{mentorProfile?.FirstName}} {{mentorProfile?.LastName}}</h3>
     </div>
   
     <div class="row">
@@ -40,10 +40,10 @@
 
                 <!-- Footer with Profile -->
                 <div class="d-flex align-items-center mt-3 p-3">
-                    <img src="http://localhost:5164/{{mentorProfile.Image}}" alt="Harshad Sawant" class="rounded-circle mr-3" width="60">
+                    <img src="http://localhost:5164/{{mentorProfile?.Image}}" alt="Harshad Sawant" class="rounded-circle mr-3" width="60">
                     <div class="p-3">
-                        <h6>{{mentorProfile.FirstName}} {{mentorProfile.LastName}}</h6>
-                        <p class="text-muted">{{mentorProfile.About}}</p>
+                        <h6>{{mentorProfile?.FirstName}} {{mentorProfile?.LastName}}</h6>
+                        <p class="text-muted">{{mentorProfile?.About}}</p>
                     </div>
                     @if(mentorProfile?.SocialAccounts?.length>0){
                     <div class="ml-auto d-flex">
@@ -112,7 +112,7 @@
                              (click)="onTimeSelect(time.StartTime, time.EndTime)"
                            
                            >
-                             {{ formatTimeToAmPm(time.StartTime) }} - {{ formatTimeToAmPm(time.EndTime) }}
+                             {{ formatTimeToAmPm(time.StartTime) }} - {{ formatTimeToAmPm(time?.EndTime) }}
                            </button>
                          </div>
                        
@@ -147,6 +147,9 @@
                             <textarea class="form-control" placeholder="Describe more of what you need from this session" required  [(ngModel)]="Description" name="Description" ></textarea>
                            </div>
                          <div class="mt-2 button-sub">
+
+                           
+
                            <button [disabled]="!confirmButtonEnabled" (click)="BookSession()" class="confirm-button">Continue</button>
                          </div> -->
                          <div class="Title">
@@ -165,8 +168,8 @@
                             <button [disabled]="!confirmButtonEnabled"  (click)="BookSession()" class="confirm-button">Continue</button>
                         </div>
                         <div class="mt-2 button-sub row justify-content-between" *ngIf="pay==true">
-                          <button  (click)="displaypayment()"  class="confirm-button2 col-6">Back</button>
-                          <button  (click)="displaypayment()"  class="confirm-button1 col-5">Pay {{mentorProfile.Price}} LE</button>
+                          <button  (click)="displaycontinue()" (click)="cancelSession(sesssionid)" class="confirm-button2 col-6">Back</button>
+                          <button  (click)="displaycontinue()" (click)="onSubmitpayment()"   class="confirm-button1 col-5">Pay {{mentorProfile?.Price}} LE</button>
                           
                            
                         
@@ -174,6 +177,7 @@
 
                         
                         </div>
+
                      
                        </div>
                     </div>                      
