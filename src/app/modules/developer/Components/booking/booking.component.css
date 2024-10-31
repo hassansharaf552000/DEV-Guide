@@ -25,7 +25,7 @@
   width: 300px;
   border: 1px solid #ccc;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 .header {
@@ -175,7 +175,7 @@
   flex-direction: column;
   align-items: center;
   height: auto;
-  width: 400px;
+  width: 300px;
 }
 
 .header {
@@ -188,7 +188,7 @@
 .days-of-week {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 30px;
+  gap: 20px;
   font-weight: 400;
   color: #898989;
   font-size: 13px;
@@ -203,8 +203,8 @@
 }
 
 .day {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -285,7 +285,7 @@
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font-size: 15px;
+  font-size: 13px;
 
   padding-left: 5px;
   padding-right: 5px;
@@ -352,13 +352,26 @@
 .time-buttons-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* 2 columns */
+ grid-template-rows: repeat(3,1fr);
   gap: 8px;
   padding-right: 9px;
   padding-left: 9px;
   height: 170px;
-  /* Adjust spacing as needed */
+
 }
+/* .time-buttons-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-right: 9px;
+  padding-left: 9px;
+  height: 170px;
+}
+
+.time-buttons-grid > * {
+  flex: 1 1 calc(50% - 8px);
+  box-sizing: border-box;
+} */
 
 .pagination-controls {
   text-align: right;
@@ -431,13 +444,14 @@
   height: fit-content; /* The same height as the width to make it a circle */
   border-radius: 25px; /* This makes the div a circle */
   background-color: #fff; 
-  border: 1px solid black;
-  color: black; /* Text color inside the circle */
+  border: 1px solid rgb(114, 114, 114);
+  color: rgb(114, 114, 114); /* Text color inside the circle */
   font-size: 14px; /* Adjust font size */
   text-align: center;
   padding: 3px 7px;
   flex-wrap: wrap;
   flex-direction: row;
+  font-weight: 400;
 }
 .Title{
   text-align: left;
@@ -531,6 +545,9 @@
   width: 100%;
   max-width: 600px;
   margin-top: 3px;
+  margin-bottom: 0px;
+  padding-bottom: 10px;
+  padding-top: 24px;
 }
 
 /* Emoji styling */
@@ -543,21 +560,24 @@
 
 /* Main heading */
 .heading {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
   color: #2b2f5f;
   margin: 0;
+  padding-top: 15px;
+  line-height:50px;
 }
 
 /* Subtext */
 .subtext {
   font-size: 16px;
   color: #6e7284;
-  margin-top: 10px;
+  margin-top: 0px;
+  margin-bottom: 3px;
 }
 .custom-header {
-  background-color: #003366; /* Dark blue color */
-  height: 60px; /* Adjust height as needed */
+  background-color: #083e74; /* Dark blue color */
+  height: 100px; /* Adjust height as needed */
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   display: flex;
@@ -565,6 +585,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -627,4 +648,86 @@
   0% { transform: translateY(0); }
   100% { transform: translateY(-50px); }
 }
+h2{
+  font-size: 20px;
+  font-weight: 500;
+line-height: 26px;
+color:rgb(56, 56, 56);
+font-style: normal;
+}
+.font-cus{
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+.custom-about{
+  color: rgb(114, 114, 114);
+  font-weight: 400;
+  font-size: 16px;
+  /* margin-bottom: 40px; */
 
+}
+
+.social-media:before {
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin: 20px 0;
+  /* background:#415bcf; */
+}
+
+.social-media a {
+  position: relative;
+  margin-right: 15px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.social-media a:last-child {
+  margin-right: 0;
+}
+
+.social-media a svg {
+  width: 1.3rem;
+  /* fill: currentColor; */
+}
+
+/*-- Tooltip Social Media --*/
+.tooltip-social {
+  background: #ffffff;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  padding: 0.5rem 0.4rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -90%);
+  transition: all 0.2s ease;
+  z-index: 1;
+}
+
+.tooltip-social:after {
+  content: " ";
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  border: solid;
+  border-width: 10px 10px 0 10px;
+  border-color: transparent;
+  transform: translate(-50%, 100%);
+}
+
+.social-media a .tooltip-social:after {
+  border-top-color: #f8f5f5;
+}
+
+.social-media a:hover .tooltip-social {
+  opacity: 1;
+  transform: translate(-50%, -130%);
+}

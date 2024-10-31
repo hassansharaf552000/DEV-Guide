@@ -28,7 +28,8 @@ export class AccountService {
   queryUrl="http://localhost:5164/api/Account/GetOneByID"
    finduserUrl="http://localhost:5164/api/Account/GetUserByID"
   queryAnswerUrl="http://localhost:5164/api/Query/QueryAnswers"
-
+  
+  IsMentorURL = "http://localhost:5164/api/Account/IsUserMentor"
   constructor(private http: HttpClient,private authService:AuthService) {
     this.formData = new BehaviorSubject<FormData>(new FormData());
   }
@@ -157,5 +158,10 @@ CompleteProfile() {
   getReviewsByClaim() {
     return this.http.get<any>(this.GetReviewsByClaimURL);
   }
+
+  IsUserMentor(id: string): Observable<any> {
+    return this.http.get<any>(`${this.IsMentorURL}/${id}`);
+  }
+
 
 }

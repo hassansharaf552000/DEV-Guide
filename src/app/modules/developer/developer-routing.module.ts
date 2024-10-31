@@ -76,7 +76,7 @@ const routes: Routes = [
       { path: 'paypal/:id', component: PaymentComponent,canActivate: [AuthGuard] },
       { path: 'mentors', component: MentorListComponent },
       { path: 'mentors/:id', component: MentorProfileComponent,canActivate: [AuthGuard], },
-      { path: 'developers/:id', component: DeveloperlistComponent},
+      
       { path: 'hrs', component: HRListComponent },
       { path: 'hrs/:id', component: HrProfileComponent,canActivate: [AuthGuard], },
       { path: 'contactus', component: ContactUsComponent },

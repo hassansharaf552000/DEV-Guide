@@ -29,7 +29,7 @@
           <li class="nav-item text-white" *ngFor="let item of menuItems">
             <a class="nav-link d-flex align-items-center" [routerLink]="item.path" (click)="closeSidebar()">
               <i [class]="item.icon"></i> <!-- Icon class bound from menuItems -->
-              <span class="ml-2">{{ item.label }}</span> <!-- Text label next to the icon -->
+              <span class="ml-2"> {{ item.label }}</span> <!-- Text label next to the icon -->
             </a>
           </li>
           <li class="nav-item">
@@ -40,7 +40,7 @@
     </nav>
 
     <!-- Main Content -->
-    <div class="col-lg-9 col-md-8 col-12 ps-5">
+    <div class="col-lg-9 col-md-9 col-12  custome-margin " >
       <router-outlet></router-outlet>
     </div>
   </div>

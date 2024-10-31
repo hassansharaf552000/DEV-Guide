@@ -142,16 +142,28 @@
   }
   
   .profile-section {
-    margin: 20px;
-    padding: 20px;
-    /* background-color: #f9f9f9; */
-    border-radius: 8px;
+    margin: 10px;
+  padding: 20px;
+  /* background-color: #f9f9f9; */
+  border-radius: 8px;
   }
   
-  .profile-section h2 {
-    font-size: 24px;
+  .profile-section h5 {
+    font-size: 22px;
     color: #333;
     margin-bottom: 15px;
+    font-weight: 500;
+  }
+  h5{
+    font-weight: 500;
+  
+  font-size:22px;
+  
+  line-height:30px;
+  
+  columns: rgb(30, 41, 59);
+  
+  font-style:normal;
   }
   
   .education-item, .experience-item {
@@ -262,11 +274,12 @@
     justify-content: center !important;
   }
   }
+
+@media (min-width:1115px) {
   .col-xl-7{
     width: 65%;
   }
   .col-xl-5{
     width: 35%;
-  }
-  
+  }}
   

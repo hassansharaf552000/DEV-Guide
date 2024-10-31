@@ -26,6 +26,8 @@ import { QuizzesListComponent } from '../../shared/components/quizzes-list/quizz
 import { QuizzesDetailsComponent } from '../../shared/components/quizzes-details/quizzes-details.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { ContactUsComponent } from '../developer/Components/contact-us/contact-us.component';
+import { DeveloperModule } from '../developer/developer.module';
+import { DeveloperlistComponent } from '../developer/Components/developerlist/developerlist.component';
 
 
 
@@ -55,7 +57,9 @@ const routes: Routes = [
       { path: 'quizzes', component: QuizListComponent, canActivate: [AuthGuard], },
       {path:'Quizzes',component:QuizzesListComponent,canActivate: [AuthGuard],},
       {path:'Quiz/:id',component:QuizzesDetailsComponent,canActivate: [AuthGuard],},
+      { path: 'developers/:id', component: DeveloperlistComponent,canActivate: [AuthGuard]},
       { path: 'home', component: ProfileComponent,canActivate: [AuthGuard] },
+
 
       { path: 'profile', component: ProfileComponent },
       { path: 'updateprofile', component: Update_ProfileComponent },
