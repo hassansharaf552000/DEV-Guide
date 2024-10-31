@@ -147,8 +147,8 @@
                             <button [disabled]="!confirmButtonEnabled"  (click)="BookSession()" class="confirm-button">Continue</button>
                         </div>
                         <div class="mt-2 button-sub row justify-content-between" *ngIf="pay==true">
-                          <button  (click)="displaypayment()"  class="confirm-button2 col-6">Back</button>
-                          <button  (click)="displaypayment()"  class="confirm-button1 col-5">Pay {{mentorProfile.Price}} LE</button>
+                          <button  (click)="displaycontinue()" (click)="cancelSession(sesssionid)" class="confirm-button2 col-6">Back</button>
+                          <button  (click)="displaycontinue()" (click)="onSubmitpayment()"   class="confirm-button1 col-5">Pay {{mentorProfile?.Price}} LE</button>
                           
                            
                         

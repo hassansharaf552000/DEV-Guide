@@ -1,340 +1,106 @@
-/* Basic Container and Layout Styling */
-.container {
-  max-width: 90%;
-  border: 20px;
-  padding: 20px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-/* Typography */
-h2, h3, h4 {
-  margin-bottom: 20px;
-}
-
-p {
-  margin-bottom: 15px;
-}
-
-/* Form Group Styling */
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-check-label img {
-  margin-right: 8px;
-}
-
-/* Order Summary Box Styling */
-.bg-light {
-  background-color: #f8f9fa !important;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-h4 {
-  font-size: 1.25rem;
-  font-weight: 500;
-}
-
-h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-h3 {
-  font-size: 1.75rem;
-}
-
-small {
-  font-size: 0.875rem;
-}
-
-/* Button Styling */
-.btn-block {
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+  /* background-color: #f5f5f5; */
+  color: #333;
   width: 100%;
 }
 
-.btn-primary {
-  background-color: #6868f0;
-  border-color: #6868f0;
+.payment-failure-container {
+  border: .1px solid #9f9f9f;
+  text-align: center;
+  max-width: 500px;
+  width: 90%; /* Allows for responsiveness */
+  padding: 30px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.btn-primary:hover {
-  background-color: #5050d4;
-  border-color: #5050d4;
-}
-
-.btn-success {
-  background-color: #4caf50;
-  border-color: #4caf50;
-}
-
-.btn-success:hover {
-  background-color: #45a047;
-  border-color: #45a047;
-}
-
-/* Input and Select Styling */
-input.form-control, select.form-control {
-  height: calc(1.5em + 0.75rem + 2px);
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  border-radius: 4px;
-  box-shadow: none;
-}
-
-input.form-control::placeholder {
-  color: #6c757d;
-  opacity: 1;
-}
-
-select.form-control {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-select.form-control:focus {
-  box-shadow: none;
-}
-
-/* Radio Button Styling */
-.form-check-input {
-  margin-top: 5px;
-}
-
-.form-check-label {
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-}
-
-.d-flex {
-  display: flex;
-  align-items: center;
-}
-
-.me-4 {
-  margin-right: 1.5rem;
-}
-
-/* Row and Column Layout */
-.row {
-  display: flex;
-  justify-content: space-between;
-}
-
-.col-md-8 {
-  flex: 0 0 auto;
-  width: 65%;
-}
-
-.col-md-4 {
-  flex: 0 0 auto;
-  width: 30%;
-}
-
-/* Additional Styling */
-.mt-5 {
-  margin-top: 3rem !important;
-}
-
-.mt-4 {
-  margin-top: 2rem !important;
-}
-
-.mt-3 {
-  margin-top: 1rem !important;
-}
-
-.mt-2 {
-  margin-top: 0.5rem !important;
-}
-
-.font-weight-bold {
-  font-weight: 700;
-}
-
-.d-flex.justify-content-between {
-  display: flex;
-  justify-content: space-between;
-}
-
-/* Align items center to ensure radio buttons and images are aligned */
-.d-flex.align-items-center {
-  display: flex;
-  align-items: center;
-}
-
-/* Add spacing between the radio button and images */
-.form-check-input.me-2 {
-  margin-right: 0.5rem;
-}
-
-/* Add spacing between images within the same label */
-label img.me-2 {
-  margin-right: 0.5rem;
-}
-
-/* Ensure the label itself aligns its contents (radio button and images) */
-.form-check-label.d-flex.align-items-center {
-  display: flex;
-  align-items: center;
-}
-
-/* Custom card styling */
-.custom-card {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  border-radius: 10px; /* Rounded corners */
-  overflow: hidden; /* Ensures the border-radius is applied */
-  background-color: #ffffff; /* White background */
-  border: none; /* Remove default border */
-  justify-content: space-around;
-}
-
-/* Custom card header */
-.custom-card-header {
-  background-color: #007bff; /* Bootstrap primary color */
-  color: white; /* White text */
-  padding: 15px; /* Padding inside header */
-  font-weight: bold; /* Bold text */
-  border-bottom: none; /* Remove default border */
-}
-
-/* Custom card body */
-.custom-card-body {
-  padding: 25px; /* Add padding inside the card body */
-  background-color: #f8f9fa; /* Light gray background */
-}
-
-/* Form labels styling */
-.custom-card-body label {
-  font-weight: bold; /* Make labels bold */
-  margin-bottom: 5px;
-}
-
-/* Input field styling */
-.custom-card-body .form-control {
-  border-radius: 5px; /* Slightly rounded input fields */
-  border: 1px solid #ced4da; /* Light gray border */
-}
-
-/* Styling for the radio buttons and images */
-.form-check-input {
-  accent-color: #007bff; /* Change radio button color to primary */
-}
-
-.form-check-label img {
-  margin-right: 10px; /* Add spacing between radio and image */
-}
-
-/* Add spacing between form sections */
-.custom-card-body .form-group {
+.icon-container {
   margin-bottom: 20px;
 }
 
-/* Custom summary card styling */
-.custom-summary-card {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  border-radius: 10px; /* Rounded corners */
-  background-color: #ffffff; /* White background */
-  border: none; /* Remove default border */
-  align-items: right;
+.error-icon {
+  width: 80px;
+  height: 80px;
+  fill: red;
 }
 
-/* Card title and text */
-.custom-summary-card .card-title {
-  font-weight: bold; /* Bold title */
-  margin-bottom: 15px; /* Spacing below title */
-}
-
-.custom-summary-card .card-text {
-  color: #6c757d; /* Bootstrap's muted text color */
-  margin-bottom: 20px; /* Spacing below text */
-}
-
-/* Plan and total details */
-.custom-summary-card .bg-light {
-  background-color: #f8f9fa !important; /* Light gray background */
-  padding: 15px;
-  border-radius: 5px;
-}
-
-.custom-summary-card .bg-light h2 {
-  color: #007bff; /* Primary color for the price */
-  font-weight: bold; /* Bold text */
-}
-
-/* Buttons */
-.custom-summary-card .btn-primary {
-  width: 100%; /* Full width button */
-  background-color: #007bff; /* Bootstrap's primary color */
-  border-color: #007bff;
-}
-
-.custom-summary-card .btn-success {
-  width: 100%; /* Full width button */
-  background-color: #28a745; /* Bootstrap's success color */
-  border-color: #28a745;
-}
-
-/* Spacing adjustments */
-.custom-summary-card .d-flex {
-  margin-bottom: 10px; /* Space between rows */
-}
-
-/* Custom card styling */
-.session-card {
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: none;
-  background-color: #ffffff;
-}
-
-/* Profile image styling */
-.session-card img {
-  border: 2px solid #dddddd;
-  padding: 2px;
-}
-
-/* Text styling */
-.session-card p {
-  font-size: 16px;
+h1 {
+  font-size: 24px;
+  color: #d9534f;
   margin-bottom: 10px;
-  color: #333333;
 }
 
-/* Icons */
-.session-card i {
-  color: #007bff; /* Bootstrap's primary color */
-  margin-right: 8px;
+p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
 }
 
-/* Additional adjustments for responsive designs */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #d9534f;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #c9302c;
+}
+
+/* Media queries for smaller screens */
 @media (max-width: 768px) {
-  .custom-card-body .payment-form {
-    width: 100%;
+  h1 {
+    font-size: 20px;
   }
 
-  .custom-summary-card, .custom-card {
-    margin: 0;
+  p {
+    font-size: 14px;
   }
 
-  .row {
-    flex-direction: column;
-  }
-
-  .col-md-6 {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .card-container {
-    margin-right: 0;
+  .error-icon {
+    width: 60px;
+    height: 60px;
   }
 }
 
-@media (min-width: 768px) and (max-width: 992px) {
-  .custom-card-body .payment-form {
-    width: 90%;
+@media (max-width: 480px) {
+  h1 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .error-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 14px;
   }
 }
