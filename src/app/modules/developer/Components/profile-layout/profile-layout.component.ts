@@ -10,7 +10,7 @@ export class ProfileLayoutComponent {
   isSidebarOpen = false;  // Sidebar is closed by default for mobile
   isMobile = false;       // Flag to check if it's mobile or tablet view
   menuItems = [
-    { path: '/profile', label: 'Profile', icon: 'bi bi-person' },
+    { path: '/developer/profile/Developer', label: 'Profile', icon: 'bi bi-person' },
     { path: '/developer/profile/updateprofile', label: 'Edit Profile', icon: 'bi bi-pencil-square' },
     { path: '/developer/profile/quizzes', label: 'Quizzes', icon: 'bi bi-question' },
     { path: '/developer/profile/reply', label: 'Queries', icon: 'bi bi-chat-square-dots' },

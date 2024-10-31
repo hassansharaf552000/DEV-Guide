@@ -62,6 +62,8 @@ import { HrPaymentsComponent } from '../hr/Components/hr-payments/hr-payments.co
 import { MentorPaymentsComponent } from '../mentor/Components/mentor-payments/mentor-payments.component';
 
 import { CustomCalendarComponent } from './Components/custom-calendar/custom-calendar.component';
+import { DeveloperProfileComponent } from './Components/developer-profile/developer-profile.component';
+import { DeveloperlistComponent } from './Components/developerlist/developerlist.component';
 
 
 
@@ -74,6 +76,7 @@ const routes: Routes = [
       { path: 'payment', component: PaymentComponent,canActivate: [AuthGuard] },
       { path: 'mentors', component: MentorListComponent },
       { path: 'mentors/:id', component: MentorProfileComponent,canActivate: [AuthGuard], },
+      { path: 'developers/:id', component: DeveloperlistComponent},
       { path: 'hrs', component: HRListComponent },
       { path: 'hrs/:id', component: HrProfileComponent,canActivate: [AuthGuard], },
       { path: 'contactus', component: ContactUsComponent },
@@ -113,6 +116,7 @@ const routes: Routes = [
     component: ProfileLayoutComponent,
     canActivate: [AuthGuard],
     children: [
+      { path: 'Developer', component: DeveloperProfileComponent },
       { path: 'profile', component: MentorProfileComponent },
       { path: 'updateprofile', component: Update_ProfileComponent },
       {path:'change-password',component:ChangepasswordComponent},
