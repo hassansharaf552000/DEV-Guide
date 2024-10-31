@@ -80,7 +80,7 @@
                               <span class="text-dark text-muted">{{sessiondetails.Duration}} Hour</span>
                               <br>
                               Price:
-                              <span class="text-dark text-muted">{{sessiondetails.Price}} EGP</span>
+                              <span class="text-dark text-muted">$ {{sessiondetails.Price}}</span>
                               <br>
                            </p>
                         </div>
@@ -100,7 +100,7 @@
                               <br>
                               {{sessiondetails.UserTitle}}
                            </p>
-                           <a [routerLink]="['/hrs',sessiondetails.UserId]">View Profile</a>
+                           <a [routerLink]="['/hr/developers',sessiondetails.UserId]">View Profile</a>
                         </div>
                      </div>
 

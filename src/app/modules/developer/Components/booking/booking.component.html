@@ -1,144 +1,200 @@
-<div class="container mt-4 ">
-    <div class="ml-auto d-flex mb-2">
-        <a href="#" class="btn btn-light mr-2"> <i class="fa-solid fa-arrow-left-long"></i></a>
-        <h3 class="ms-2">{{mentorProfile?.FirstName}} {{mentorProfile?.LastName}}</h3>
-    </div>
-  
-    <div class="row">
-     
-        <div class="col-xl-7 col-12">
-          <div class="custom-header ">
-            <!-- Add any additional content inside the header if needed -->
-            <div class="circle third-circle"></div>
+<div class="container mt-4 " style="margin-left:auto; margin-right:auto;">
+  <div *ngIf="IsMentor==false" class="ml-auto d-flex mb-2" >
+    <a [routerLink]="['/hrs',MentorID]" class="btn btn-light mr-2 mt-1"  > <i class="fa-solid fa-arrow-left-long"></i></a>
+    <h3 class="mb-2" style="font-size: 25px;font-weight: 500;  margin-left: 10px; margin-bottom: 0px;">{{mentorProfile?.FirstName}} {{mentorProfile?.LastName}}</h3>
+  </div>
+  <div *ngIf="IsMentor==true" class="ml-auto d-flex mb-2" >
+    <a [routerLink]="['/mentors',MentorID]" class="btn btn-light mr-2 mt-1"  > <i class="fa-solid fa-arrow-left-long"></i></a>
+    <h3 class="mb-2" style="font-size: 25px;font-weight: 500;  margin-left: 10px; margin-bottom: 0px;">{{mentorProfile?.FirstName}} {{mentorProfile?.LastName}}</h3>
+  </div>
+  <div class="row w-100">
+
+    <div class="col-xl-9 col-12">
+      <div class="custom-header ">
+        <!-- Add any additional content inside the header if needed -->
+        <div class="circle third-circle"></div>
+      </div>
+      <!-- Main Card -->
+      <div class="card "
+        style="border-radius: 20px; padding: 16px;padding-top: 0; border-top-left-radius: 0;border-top-right-radius: 0;">
+
+
+        <!-- Header with Background -->
+        <div *ngIf="IsMentor==true" style=" border-radius: 15px 15px 0 0; padding: 20px;">
+          <div class="d-flex align-items-center">
+            <span class="badge badge-pill badge-light"
+              style="background-color: #fce6ee; color: rgb(102, 9, 41); font-weight: 500; font-size: 12px;"><img
+                height="19" width="16" loading="lazy" src="http://localhost:5164/Univeristy_Default/call.png"> 1:1
+              Call</span>
           </div>
-            <!-- Main Card -->
-            <div class="card " style="border-radius: 15px; padding: 16px;padding-top: 0; border-top-left-radius: 0;border-top-right-radius: 0;">
-            
-              
-                <!-- Header with Background -->
-                <div style=" border-radius: 15px 15px 0 0; padding: 20px;">
-                    <div class="d-flex align-items-center">
-                        <span class="badge badge-pill badge-light"
-                            style="background-color: #fce6ee; color: rgb(102, 9, 41); font-weight: 500; font-size: 12px;"><img height="19" width="16" loading="lazy"
-                            src="http://localhost:5164/Univeristy_Default/call.png"
-                              > 1:1 Call</span>
-                    </div>
-                    <h5 class="mt-1">Quick Call</h5>
-                    <p class="text-muted"><i class="far fa-clock"></i> 60 Min</p>
-                    <h6>About Service</h6>
-                    <p>60 mins quick call to achieve your goals faster with a personalized roadmap.</p>
-                    <h6>Skills</h6>
-                    <div class="gap-2 d-flex flex-wrap">
+          <h2 class="" style="margin-top: 15px;">Quick Call</h2>
+          <p class="text-muted mb-4"><i class="far fa-clock"></i> 60 Min</p>
+          <h6 class="font-cus">About Service</h6>
+          <p class="custom-about mb-4">60 mins quick call to achieve your goals faster with a personalized roadmap.</p>
+          <h6 class="font-cus ">Skills</h6>
+          <div class="gap-2 d-flex flex-wrap">
 
-                    
 
-                    <div *ngFor="let skill of mentorProfile?.Skills" class="skill-circle">
-                        {{ skill }}
-                      </div>
-                    </div>
-                </div>
 
-                <!-- Footer with Profile -->
-                <div class="d-flex align-items-center mt-3 p-3">
-                    <img src="http://localhost:5164/{{mentorProfile?.Image}}" alt="Harshad Sawant" class="rounded-circle mr-3" width="60">
-                    <div class="p-3">
-                        <h6>{{mentorProfile?.FirstName}} {{mentorProfile?.LastName}}</h6>
-                        <p class="text-muted">{{mentorProfile?.About}}</p>
-                    </div>
-                    @if(mentorProfile?.SocialAccounts?.length>0){
+            <div *ngFor="let skill of mentorProfile?.Skills" class="skill-circle">
+              {{ skill }}
+            </div>
+          </div>
+        </div>
+        <div *ngIf="IsMentor==false" style=" border-radius: 15px 15px 0 0; padding: 20px;">
+          <div class="d-flex align-items-center">
+            <span class="badge badge-pill badge-light"
+              style="background-color: #fce6ee; color: rgb(102, 9, 41); font-weight: 500; font-size: 12px;"><img
+                height="19" width="16" loading="lazy" src="http://localhost:5164/Univeristy_Default/call.png"> 1:1
+              Call</span>
+          </div>
+          <h2 class="" style="margin-top: 15px;">Mock Interview</h2>
+          <p class="text-muted mb-4"><i class="far fa-clock"></i> 60 Min</p>
+          <h6 class="font-cus">About Service</h6>
+          <p class="custom-about mb-4">Mock interview for developers who are preparing for real interviews or want to
+            develop themselves, Provide feedback after the interview to help them develop themselves </p>
+          <h6 class="font-cus">Skills</h6>
+          <div class="gap-2 d-flex flex-wrap">
+
+
+
+            <div *ngFor="let skill of mentorProfile?.Skills" class="skill-circle">
+              {{ skill }}
+            </div>
+          </div>
+        </div>
+        <hr>
+        <!-- Footer with Profile -->
+        <div class=" align-items-center ">
+          <div class="d-flex">
+          <img src="http://localhost:5164/{{mentorProfile?.Image}}" alt="Harshad Sawant" class="rounded-circle mr-3 " style="margin-top: 15px;"
+            width="80" height="80">
+          <div class="p-3">
+            <h6 style="font-size: 18px; font-weight: 500; line-height: 20px;">{{mentorProfile?.FirstName}} {{mentorProfile?.LastName}}</h6>
+            <p class="text-muted">{{mentorProfile?.About}}</p>
+          </div>
+        </div>
+          <!-- @if(mentorProfile?.SocialAccounts?.length>0){
                     <div class="ml-auto d-flex">
                         <a href="#" class="btn btn-light mr-2"><i class="fa-brands fa-linkedin-in"></i></a>
                         <a href="#" class="btn btn-light"><i class="fa-solid fa-share"></i></a>
                     </div>
-                }
-                </div>
-            </div>
+                } -->
+          @if(mentorProfile?.SocialAccounts?.length>0){
+<div class="d-flex gap-2 " style="margin-right: 20px; justify-content: right;">
 
+          @for (user of mentorProfile?.SocialAccounts; track user.id; let index = $index) {
+          @if(mentorProfile?.SocialAccounts[index]?.SocialName==3){
+          <!-- <a mentorProfileef="http://localhost:5164/{{mentorProfile.SocialAccounts[index].SocialLink}}"> -->
+          <a href="{{mentorProfile?.SocialAccounts[index]?.SocialLink}}" class="btn btn-light mr-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+            <span class="tooltip-social">GitHub</span>
+          </a>
+          }
+          @if(mentorProfile?.SocialAccounts[index]?.SocialName==1){
+          <!-- <a mentorProfileef="http://localhost:5164/{{mentorProfile.SocialAccounts[index].SocialLink}}"> -->
+          <a href="{{mentorProfile?.SocialAccounts[index]?.SocialLink}}" class="btn btn-light mr-2">
+            <i class="fa-brands fa-facebook-f"></i>
+            <span class="tooltip-social">Facebook</span>
+          </a>
+          }
+          @if(mentorProfile?.SocialAccounts[index]?.SocialName==2){
 
+          <!-- <a mentorProfileef="http://localhost:5164/{{mentorProfile.SocialAccounts[index].SocialLink}}"> -->
+          <a href="{{mentorProfile?.SocialAccounts[index]?.SocialLink}}" class="btn btn-light mr-2"><i
+              class="fa-brands fa-linkedin-in"></i>
+            <span class="tooltip-social">LinkedIn</span>
+          </a>
+          }
+          }
+        </div>
+          }
 
         </div>
+      </div>
 
-        <div class="col-xl-4 col-6 justify-content-center">
 
-            <div class="row">
 
-                <div class="col-xl-4 col-12">
-                    <div class="custom-margins">
-                        <div class="calendar ">
-                         <div>
-                         <p style="padding: 20px; width: 100; font-weight: 500;"> Select date and time </p>
-                       </div>
-                         <!-- <br style="color: gray;"> -->
-                         <div class="header" style="border-top: 1px solid #ccc; padding-top: 20px;" >
-                           <button class="button-calender" 
-                                   (click)="prevMonth()" 
-                                   [disabled]="selectedYear === today.getFullYear() && selectedMonth <= today.getMonth()">
-                             &#10094;
-                           </button>
-                           <span>{{ getMonthName(selectedMonth) }} {{ selectedYear }}</span>
-                           <button class="button-calender" (click)="nextMonth()">&#10095;</button>
-                         </div>
-                         
-                         <div class="days-of-week">
-                           <div *ngFor="let day of daysOfWeek" class="day-name">{{ day }}</div>
-                         </div>
-                       
-                         <div class="days">
-                           <div
-                             *ngFor="let day of monthDays"
-                             [class.disabled]="day.date === null || !isAvailable(day.date)"
-                             (click)="day.date && onDaySelect(day.date)"
-                             class="day"
-                             [ngClass]="{
+    </div>
+
+    <div class="col-xl-3 col-6 justify-content-center" style="margin-bottom: 20px;">
+
+      <div class="row">
+
+        <div class="col-xl-4 col-12">
+          <div class="custom-margins">
+            <div class="calendar ">
+              <div>
+                <p style="padding: 20px; width: 100; font-weight: 500;"> Select date and time </p>
+              </div>
+              <!-- <br style="color: gray;"> -->
+              <div class="header" style="border-top: 1px solid #ccc; padding-top: 20px;">
+                <button class="button-calender" (click)="prevMonth()"
+                  [disabled]="selectedYear === today.getFullYear() && selectedMonth <= today.getMonth()">
+                  &#10094;
+                </button>
+                <span>{{ getMonthName(selectedMonth) }} {{ selectedYear }}</span>
+                <button class="button-calender" (click)="nextMonth()">&#10095;</button>
+              </div>
+
+              <div class="days-of-week">
+                <div *ngFor="let day of daysOfWeek" class="day-name">{{ day }}</div>
+              </div>
+
+              <div class="days">
+                <div *ngFor="let day of monthDays" [class.disabled]="day.date === null || !isAvailable(day.date)"
+                  (click)="day.date && onDaySelect(day.date)" class="day" [ngClass]="{
                                'selected': selectedDate && day.date?.toDateString() === selectedDate.toDateString(),
                                'today': day.date?.toDateString() === today.toDateString()
-                             }"
-                           >
-                             {{ day.date ? day.date.getDate() : '' }}
-                           </div>
-                         </div>
-                     
-                        <div *ngIf="selectedTimes?.length > 0" class="available-times row justify-content-between">
-                         <p class="custom-p col-6">Now select time</p>
-                         <div class="pagination-controls col-4">
-                           <button class="button-times" style=" padding-right: 10px;"  (click)="prevPage()" [disabled]="!hasPrevPage()">&#10094;</button>
-                           <button class="button-times" style="padding-left: 10px; padding-right: 10px;" (click)="nextPage()" [disabled]="!hasNextPage()">&#10095;</button>
-                         </div>
-                         <div class="time-buttons-grid">
-                           <button
-                             *ngFor="let time of paginatedTimeButtons"
-                             class="time-button "
-                             [ngClass]="{'active': selectedTime === time.StartTime}"
-                             (click)="onTimeSelect(time.StartTime, time.EndTime)"
-                           
-                           >
-                             {{ formatTimeToAmPm(time.StartTime) }} - {{ formatTimeToAmPm(time?.EndTime) }}
-                           </button>
-                         </div>
-                       
-                         <!-- Pagination controls -->
-                        
-                       </div>
-                       <!-- <div class="custom-length">
+                             }">
+                  {{ day.date ? day.date.getDate() : '' }}
+                </div>
+              </div>
+
+              <div *ngIf="selectedTimes?.length > 0" class="available-times row justify-content-between">
+                <p class="custom-p col-6">Now select time</p>
+                <div class="pagination-controls col-4">
+                  <button class="button-times" style=" padding-right: 10px;" (click)="prevPage()"
+                    [disabled]="!hasPrevPage()">&#10094;</button>
+                  <button class="button-times" style="padding-left: 10px; padding-right: 10px;" (click)="nextPage()"
+                    [disabled]="!hasNextPage()">&#10095;</button>
+                </div>
+
+                <div class="time-buttons-grid w-100">
+                  <button *ngFor="let time of paginatedTimeButtons" class="time-button "
+                    [ngClass]="{'active': selectedTime === time.StartTime}"
+                    (click)="onTimeSelect(time.StartTime, time.EndTime)">
+                    {{ formatTimeToAmPm(time.StartTime) }} - {{ formatTimeToAmPm(time?.EndTime) }}
+                  </button>
+                </div>
+
+
+                <!-- Pagination controls -->
+
+              </div>
+              <!-- <div class="custom-length">
                          <div *ngIf="message" class="no-availability " style="padding-bottom: 149px;">
                            <div class="alert alert-info animate-alert">
                              {{ message }}
                            </div>
                          </div>
                         </div> -->
-                        <div *ngIf="message" class="no-availability " >
-                        <!-- <img  loading="lazy"
+              <div *ngIf="message" class="no-availability ">
+                <!-- <img  loading="lazy"
                         src="http://localhost:5164/Univeristy_Default/defultnot.webp.jpg"
                          class="ng-star-inserted " > -->
-                         <div class="message-container">
-                          <div class="emoji"> 😞</div>
-                          <h1 class="heading">No Available Time</h1>
-                          <p class="subtext">Sorry, There are no available times match this day. Try choose another day.</p>
-                      </div>
-                        </div>
-                       
-                       
-                        <!-- <div class="Title" >
+                <div class="message-container">
+                  <div class="emoji"> 😞</div>
+                  <h1 class="heading">No Available Time</h1>
+                  <p class="subtext">Sorry, There are no available times match this day. Try choose another day.</p>
+                </div>
+              </div>
+
+
+              <!-- <div class="Title" >
                          <p class="custom-p " >Title</p>
                          <input type="text" class="form-control" placeholder="Session About..." required  [(ngModel)]="Topic" name="Topic" >
                         </div>
@@ -152,44 +208,46 @@
 
                            <button [disabled]="!confirmButtonEnabled" (click)="BookSession()" class="confirm-button">Continue</button>
                          </div> -->
-                         <div class="Title">
-                            <p class="custom-p">Title</p>
-                            <input type="text" class="form-control" placeholder="Session About..." required [(ngModel)]="Topic" name="Topic"  (ngModelChange)="onTitleInputChange()"  
-                            />
-                            <div *ngIf="titleError" style="color: red;">
-                              {{ titleError }}
-                            </div>
-                        </div>
-                        <div class="Title">
-                            <p class="custom-p">Description</p>
-                            <textarea class="form-control" placeholder="Describe more of what you need from this session" required [(ngModel)]="Description" name="Description" (ngModelChange)="validateForm()"></textarea>
-                        </div>
-                        <div class="mt-2 button-sub" *ngIf="continue==true">
-                            <button [disabled]="!confirmButtonEnabled"  (click)="BookSession()" class="confirm-button">Continue</button>
-                        </div>
-                        <div class="mt-2 button-sub row justify-content-between" *ngIf="pay==true">
-                          <button  (click)="displaycontinue()" (click)="cancelSession(sesssionid)" class="confirm-button2 col-6">Back</button>
-                          <button  (click)="displaycontinue()" (click)="onSubmitpayment()"   class="confirm-button1 col-5">Pay {{mentorProfile?.Price}} LE</button>
-                          
-                           
-                        
-                      </div>
+              <div class="Title">
+                <p class="custom-p">Title</p>
+                <input type="text" class="form-control" placeholder="Session About..." required [(ngModel)]="Topic"
+                  name="Topic" (ngModelChange)="onTitleInputChange()" />
+                <div *ngIf="titleError" style="color: red;">
+                  {{ titleError }}
+                </div>
+              </div>
+              <div class="Title">
+                <p class="custom-p">Description</p>
+                <textarea class="form-control" placeholder="Describe more of what you need from this session" required
+                  [(ngModel)]="Description" name="Description" (ngModelChange)="validateForm()"></textarea>
+              </div>
+              <div class="mt-2 button-sub" *ngIf="continue==true">
+                <button [disabled]="!confirmButtonEnabled" (click)="BookSession()"
+                  class="confirm-button">Continue</button>
+              </div>
+              <div class="mt-2 button-sub row justify-content-between" *ngIf="pay==true">
+                <button (click)="displaycontinue()" (click)="cancelSession(sesssionid)"
+                  class="confirm-button2 col-6">Back</button>
+                <button (click)="displaycontinue()" (click)="onSubmitpayment()" class="confirm-button1 col-5">Pay $
+                  {{mentorProfile?.Price}} </button>
 
-                        
-                        </div>
 
-                     
-                       </div>
-                    </div>                      
+
+              </div>
+
 
             </div>
 
 
-
+          </div>
         </div>
+
+      </div>
+
+
 
     </div>
 
+  </div>
+
 </div>
-
-

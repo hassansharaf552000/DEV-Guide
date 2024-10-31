@@ -93,8 +93,9 @@
     
   }
   .custome-margin{
-    margin-left: 243px !important;
-    padding-right: 20px !important;
+    margin-left: 229px !important;
+    padding-right: 0px !important;
+    margin-right: 0px;
   }
 }
 @media (min-width: 865px) and (max-width: 900px) {
@@ -103,7 +104,7 @@
     
   }
   .custome-margin{
-    margin-left: 220px !important;
+    margin-left: 210px !important;
   /* padding: 15px !important; */
   padding-left: 40px !important;
   }
@@ -115,9 +116,42 @@
     
   }
   .custome-margin{
-    margin-left: 220px !important;
-  padding-right: 30px !important; 
+    margin-left: 210px !important;
+  padding-right: 10px !important; 
   padding-left: 40px !important;
   }
 
 }
+@media (max-width: 768px)  {
+  .custome-margin{
+    width: 100% !important; /* Adjust as needed */
+    
+  }
+  /* .custome-margin{
+    margin-left: 220px !important;
+  padding-right: 30px !important; 
+  padding-left: 40px !important;
+  } */
+
+}
+
+
+/* 
+@media (min-width: 997px) and (max-width: 1193px) {
+  .col-lg-8{
+    width: 75%;
+  }
+} */
+/* @media (min-width:980px) and (max-width: 997px) {
+  .col-lg-8{
+    width: 75%;
+  }
+}
+@media  (max-width: 764px) {
+  .col-lg-8{
+    width: 90% !important;
+  }
+  .col-md-8{
+    width: 90% !important;
+  }
+} */

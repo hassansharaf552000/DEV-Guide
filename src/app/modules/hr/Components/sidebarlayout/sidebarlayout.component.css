@@ -1,89 +1,89 @@
 .sidebar {
-    width: 250px;
-    background-color: #415bcf;
-    color: #ffffff;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding-top: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-    overflow-y: auto; /* Enable scrolling if content overflows */
-  }
+  width: 250px;
+  background-color: #415bcf;
+  color: #ffffff;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow-y: auto; /* Enable scrolling if content overflows */
+}
 
-  .profile-section {
-    text-align: center;
-    margin-bottom: 20px;
-  }
+.profile-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-  .profile-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
 
-  .profile-section h3 {
-    margin: 10px 0 5px;
-    font-size: 18px;
-    color: #ffffff;
-  }
+.profile-section h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  color: #ffffff;
+}
 
-  .profile-section p {
-    font-size: 14px;
-    color: #fcfdfd;
-    margin-bottom: 15px;
-  }
+.profile-section p {
+  font-size: 14px;
+  color: #fcfdfd;
+  margin-bottom: 15px;
+}
 
-  .progress-bar-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.progress-bar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .progress-bar {
-    background-color: #fdfdfd;
-    border-radius: 4px;
-    height: 10px;
-    width: 60%;
-    margin-right: 10px;
-  }
+.progress-bar {
+  background-color: #fdfdfd;
+  border-radius: 4px;
+  height: 10px;
+  width: 60%;
+  margin-right: 10px;
+}
 
-  .progress {
-    background-color: #1abc9c;
-    height: 100%;
-    transition: width 0.3s ease;
-  }
+.progress {
+  background-color: #1abc9c;
+  height: 100%;
+  transition: width 0.3s ease;
+}
 
-  .progress-percentage {
-    font-size: 14px;
-    color: #ffffff;
-  }
+.progress-percentage {
+  font-size: 14px;
+  color: #ffffff;
+}
 
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-  }
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
 
-  .sidebar ul li {
-    padding: 10px 20px;
-    margin-bottom: 10px;
-  }
+.sidebar ul li {
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
 
-  .sidebar ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-  }
+.sidebar ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
 
-  .sidebar ul li a i {
-    margin-right: 10
-  }
+.sidebar ul li a i {
+  margin-right: 5px;
+}
 
-  .logout-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    /* width: 100px; */
-  }
+.logout-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  /* width: 100px; */
+}
