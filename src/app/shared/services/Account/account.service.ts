@@ -30,6 +30,8 @@ export class AccountService {
   queryAnswerUrl="http://localhost:5164/api/Query/QueryAnswers"
   
   IsMentorURL = "http://localhost:5164/api/Account/IsUserMentor"
+  private DownloadFileUrl = 'http://localhost:5164/api/Query/download';
+ 
   constructor(private http: HttpClient,private authService:AuthService) {
     this.formData = new BehaviorSubject<FormData>(new FormData());
   }
@@ -164,4 +166,12 @@ CompleteProfile() {
   }
 
 
+
+ 
+
+  downloadFile(fileName: string) {
+    return this.http.get(`${this.DownloadFileUrl}/${fileName}`, {
+      responseType: 'blob', // Indicates the response should be a binary file
+    });
+  }
 }
