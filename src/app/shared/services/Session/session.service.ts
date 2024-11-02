@@ -23,7 +23,7 @@ export class SessionService {
 
   AddReviewURR= "http://localhost:5164/api/Review//AddReview"
   CancelSessionUrl="http://localhost:5164/api/Session/CancelSession"
- 
+  getSessionsUrl="http://localhost:5164/api/Session/GetSessions"
   constructor(private http: HttpClient) { }
 
   // addreview(review:any ,id: number): Observable<any> {
@@ -105,5 +105,8 @@ getallSessionForDeveloper() {
   cancelSession(id: string): Observable<any> {
     const url = `${this.CancelSessionUrl}/${id}`;
     return this.http.delete(url, { headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`) });
+  }
+  getSessions(): Observable<any[]> {  // Use any[] to allow any object structure
+    return this.http.get<any[]>(this.getSessionsUrl);
   }
 }

@@ -12,7 +12,7 @@ export class SkillService {
   private adduserskills = 'http://localhost:5164/api/Account/AddSkill'
   private deleteuserskills = 'http://localhost:5164/api/Account/DeleteSkill'
 
-
+  adminaddSkillUrl="http://localhost:5164/api/Account/AddSkill"
 
   constructor(private http: HttpClient) {}
 
@@ -45,6 +45,12 @@ export class SkillService {
 
 getAll(){
   return this.http.get("http://localhost:5164/api/Skill/GetAll")
+}
+
+adminaddSkill(skill: any): Observable<any> {
+  return this.http.post(this.adminaddSkillUrl, skill, {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  });
 }
 }
 
