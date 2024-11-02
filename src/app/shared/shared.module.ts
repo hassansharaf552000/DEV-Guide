@@ -8,7 +8,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { provideClientHydration } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Forget_passwordComponent } from './components/forget_password/forget_password.component';
+import { ForgotPasswordComponent } from './components/forget_password/forget_password.component';
 import { RouterModule } from '@angular/router';
 import { FaqComponent } from './components/faq/faq.component';
 import { CommunicationComponent } from './components/communication/communication.component';
@@ -42,6 +42,9 @@ import { ExperienceListComponent } from './components/experience-list/experience
 import { SocialAccountsListComponent } from './components/social-accounts-list/social-accounts-list.component';
 import { AddsocialaccountComponent } from './components/addsocialaccount/addsocialaccount.component';
 import { SocialaccountscardComponent } from './components/socialaccountscard/socialaccountscard.component';
+
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+
 import { StepOneComponent } from './components/step-one/step-one.component';
 import { StepTwoComponent } from './components/step-two/step-two.component';
 import { StepThreeComponent } from './components/step-three/step-three.component';
@@ -52,6 +55,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { QuizDetailsComponent } from './components/quiz-details/quiz-details.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { TakenQuizzesCardComponent } from './components/taken-quizzes-card/taken-quizzes-card.component';
+
 
 
 
@@ -71,7 +75,7 @@ import { TakenQuizzesCardComponent } from './components/taken-quizzes-card/taken
     SpinnerComponent,
     LoginComponent,
     RegisterComponent,
-    Forget_passwordComponent,
+    ForgotPasswordComponent,
     FaqComponent,
     CommunicationComponent,
     AdminUIComponent,
@@ -94,8 +98,12 @@ import { TakenQuizzesCardComponent } from './components/taken-quizzes-card/taken
     SocialAccountsListComponent,
     AddsocialaccountComponent,
     SocialaccountscardComponent,
+
+    ResetPasswordComponent
+
     PaymentComponent,
     TakenQuizzesCardComponent,
+
   ],
 
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, NgxPaginationModule,
