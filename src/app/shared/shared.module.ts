@@ -99,7 +99,7 @@ import { TakenQuizzesCardComponent } from './components/taken-quizzes-card/taken
     AddsocialaccountComponent,
     SocialaccountscardComponent,
 
-    ResetPasswordComponent
+    ResetPasswordComponent,
 
     PaymentComponent,
     TakenQuizzesCardComponent,
