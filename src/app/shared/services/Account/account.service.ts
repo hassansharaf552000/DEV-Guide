@@ -184,7 +184,7 @@ CompleteProfile() {
   IsInList() {
     return this.http.get<any>(this.IsInListURL);
 
-
+  }
  
 
   downloadFile(fileName: string) {
