@@ -9,6 +9,11 @@ import { MessagesComponent } from './messages/messages.component';
 
 
 import { usersDataComponent } from './users-data/users-data.component';
+import { ReviewsComponent } from './reviews/reviews.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { AddskillsComponent } from './addskills/addskills.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -22,11 +27,16 @@ import { usersDataComponent } from './users-data/users-data.component';
     MessagesComponent,
     SessionsComponent,
     usersDataComponent,
-    AdminsidebarComponent
+    AdminsidebarComponent,
+    ReviewsComponent,
+    ContactsComponent,
+    AddskillsComponent
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,   
+    ReactiveFormsModule, // Add ReactiveFormsModule here
+   
   ]
 })
 export class AdminModule { }

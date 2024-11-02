@@ -2,9 +2,13 @@
 
 .signup-form {
   max-width: 600px;
-  margin: 50px auto;
-  padding: 15px;
+  /* margin: 50px auto;
+  padding: 15px; */
   /* background-color: #cdcbb1; */
+  align-items: center;
+
+  justify-items: center;
+  justify-content: center;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(60, 6, 6, 0.1);
 
@@ -23,20 +27,37 @@ h2 {
   padding-top: 5px;
 }
 
-button {
+.button_r {
   background: #fff;
   border: 1px solid transparent;
   border-radius: 10px;
   width: 100px;
+  height: 30px;
+  margin-left: 10px;
+  margin-top: 15px;
+  color: black;
+  border: 1px solid #0b143c;
+}
+.button_s{
+  background: #0b143c;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  width: 300px;
   height: 50px;
   margin-left: 10px;
   margin-top: 15px;
-  color: #7D7769;
-  border: 1px solid #415bcf;
+  /* color: #7D7769; */
+  border: 1px solid #0b143c;
 }
-
-button:hover {
-  background: #cfccc4;
+/* .button_s:hover{
+  background: white;
+  
+  color: #0b143c;
+} */
+.button_r:hover {
+  background: #0b143c;
+  color: white;
   border-radius: 10px;
 }
 
@@ -196,4 +217,10 @@ button:focus {
   line-height: 36px;
   color: rgb(31, 31, 31);
   font-style: normal;
+}
+/* Center the Sign Up button container */
+.sign-up-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Adjust space as needed */
 }

@@ -28,7 +28,7 @@ export class AccountService {
   queryUrl="http://localhost:5164/api/Account/GetOneByID"
    finduserUrl="http://localhost:5164/api/Account/GetUserByID"
   queryAnswerUrl="http://localhost:5164/api/Query/QueryAnswers"
-  
+  getUsersUrl="http://localhost:5164/api/Account/GetUsers"
   IsMentorURL = "http://localhost:5164/api/Account/IsUserMentor"
   private DownloadFileUrl = 'http://localhost:5164/api/Query/download';
  
@@ -173,5 +173,8 @@ CompleteProfile() {
     return this.http.get(`${this.DownloadFileUrl}/${fileName}`, {
       responseType: 'blob', // Indicates the response should be a binary file
     });
+  }
+  getUsers(): Observable<any> {
+    return this.http.get(this.getUsersUrl);
   }
 }

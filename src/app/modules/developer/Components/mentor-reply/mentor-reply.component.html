@@ -40,12 +40,12 @@
             </div>
             <div class="col-lg-4 col-md-12 col-12 d-flex align-items-center justify-content-end">
               @if(query?.QueryAnswers?.length > 0){
-                <a class="btn btn-outline-primary btn-sm shadow-sm" [routerLink]="['/profile/answer-query', query.Instructor_Id, query.Id,query.User_Id]" style="border-radius: 25px;">
-                  <i class="fas fa-arrow-right"></i> Go To Answer
+                <a class="btn btn-outline-primary btn-sm shadow-sm me-4" [routerLink]="['/profile/answer-query', query.Instructor_Id, query.Id,query.User_Id]" style="border-radius: 25px;">
+                  <i class="fas fa-arrow-right "></i> Go To Answer
                 </a>
               }
               @if(query?.QueryAnswers?.length === 0){
-                <a class="btn btn-outline-secondary btn-sm disabled shadow-sm" style="border-radius: 25px;">
+                <a class="btn btn-outline-secondary btn-sm disabled shadow-sm me-4" style="border-radius: 25px;">
                   <i class="fas fa-hourglass-half" style=""></i> Pending
                 </a>
               }
