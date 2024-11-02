@@ -12,6 +12,7 @@ export class StepTwoComponent implements OnInit {
   stepTwoForm!: FormGroup;
   invalidProfileImage = true;
   ProfileImage:File|null = null
+  touched=false;
   // Static array of countries
   countries = [
     { id: 'AF', name: 'Afghanistan' },
@@ -270,6 +271,9 @@ export class StepTwoComponent implements OnInit {
       country: ['', Validators.required],
       phone: ['',[ Validators.required,Validators.minLength(11),Validators.maxLength(12)]],
     });
+    // this.ProfileImage = this.SelectFile( this.accountService.getFormData().get('Image')) ;
+    this.stepTwoForm.controls['country'].setValue(this.accountService.getFormData().get('Country'));
+    this.stepTwoForm.controls['phone'].setValue(this.accountService.getFormData().get('PhoneNumber'));
   }
 
   onNext(): void {

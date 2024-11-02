@@ -18,10 +18,17 @@ export class StepFourComponent {
   searchQuery: string = '';
   SelectedSkilles: skillItem[] = []
   Experiences: ExperienceViewModel[] = []
-  Level: string = 'Select Level';
-  About: string = '';
-  Title: string = '';
-  YearsOfExperience: number = 0;
+  Level:any
+  About: any
+  Title: any
+  YearsOfExperience:any
+abouttouch=false;
+titletouch=false;
+Skilltouch=false;
+organizationtouch=false;
+fieldtouch=false;
+leveltouch=false;
+ // Or provide a default level if needed
 
   constructor(
     private fb: FormBuilder,
@@ -33,12 +40,22 @@ export class StepFourComponent {
     this.Experiences = [
       { StartDate: new Date(), EndDate: null, Organization: "", FieldOfStudy: "", TillNow: null }
     ]
+    this.Experiences=this.Account.Experiences;
     // Fetch skills from the service
     this.SkillService.getAll().subscribe((res: any) => {
       console.log(res)
       this.Skills = res;
       this.filteredSkills = [...this.Skills]; // Initialize with all skills
     });
+    this.SelectedSkilles=this.Account.skills;
+    this.Title =this.Account.getFormData().get('Title');
+   // this.Title.valueOf()=.controls['country'].setValue(this.accountService.getFormData().get('Country'));
+    // this.About = formData.get('About')
+    this.About =this.Account.getFormData().get('About');
+    this.Level =this.Account.getFormData().get('Level');
+this.YearsOfExperience=this.Account.getFormData().get('YearsOfExperience');
+    // this.Level = formData.get('Level')
+    // this.YearsOfExperience = formData.get('YearsOfExperience')
   }
 
   addExperience(): void {
@@ -80,22 +97,29 @@ export class StepFourComponent {
       this.filteredSkills = [...this.Skills]; // Show all skills if no input
     } else {
       this.filteredSkills = this.Skills.filter((skill: any) =>
-        skill.name.toLowerCase().includes(searchTerm)
+        skill.Name.toLowerCase().includes(searchTerm)
       );
     }
   }
 
   // Validate and navigate to the next step
   onNext(): void {
-    if (this.Experiences?.length > 0 && this.SelectedSkilles?.length > 0 && this.checklist() == undefined) {
+    if (this.Experiences?.length >= 0 && this.SelectedSkilles?.length > 0 && this.checklist() == undefined) {
       this.Account.updateFormData("About", this.About);
       this.Account.updateFormData("Level", this.Level);
       this.Account.updateFormData("Title", this.Title);
       this.Account.updateFormData("YearsOfExperience", this.YearsOfExperience);
-      this.SelectedSkilles.forEach(sk=>{
+      // this.SelectedSkilles.forEach(sk=>{
 
-        this.Account.updateFormData("Skills", sk.Id);
-      })
+      //   this.Account.updateFormData("Skills", sk.Id);
+      // })
+      this.Account.clearFormDataKey("Skills");
+
+    // Append each skill ID as a separate entry
+    this.SelectedSkilles.forEach((skill) => {
+      this.Account.appendFormData("Skills", skill.Id);
+    });
+
 
       this.Account.Experiences = this.Experiences;
       this.Account.skills = this.SelectedSkilles;
@@ -115,7 +139,7 @@ export class StepFourComponent {
   }
   // Navigate to the previous step
   goToPreviousStep(): void {
-    this.router.navigate(['/step-five']);
+    this.router.navigate(['/step-three']);
   }
 
   // testbehvior():void{

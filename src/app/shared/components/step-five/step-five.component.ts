@@ -18,6 +18,7 @@ export class StepFiveComponent {
   PhoneNumber: any
   Image: any
   CV: any
+  numbers=1;
   constructor(private router: Router, public accountService: AccountService, private toastr: ToastrService) {
     // Subscribe to the BehaviorSubject to get the form data from previous steps
     const formData = this.accountService.getFormData();
@@ -150,17 +151,23 @@ export class StepFiveComponent {
             error: (err) => {
               console.error('Error occurred while saving data:', err);
               this.toastr.error('Failed to save profile data. Please try again later.', 'Error');
+        console.log("skills",this.accountService.skills);
+
             }
           });
         } else {
           // Handle invalid response
           console.error("Invalid response structure:", res);
           this.toastr.error('Invalid response from server. Please try again.', 'Error');
+        console.log("skills",this.accountService.skills);
+
         }
       },
       error: (err) => {
         console.error('Error occurred while completing the profile:', err);
         this.toastr.error('Sorry, please try again later.', 'Error');
+        console.log("skills",this.accountService.skills);
+        
       }
     });
   }

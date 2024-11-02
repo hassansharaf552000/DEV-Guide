@@ -67,6 +67,9 @@
                   <span class="text-muted">Booked by</span>
                   <h6 class="mb-0 mt-1">{{ booking.User_FirstName }} {{ booking.User_LastName }}</h6>
                 </div>
+                <div class="mt-4 " style="text-align: right;">
+                  <a (click)="UpdateSessionStatus(booking.Id)" class="btn btn-danger mb-0  ">Cancel</a>
+                </div>
               </div>
             </div>
           </div>
@@ -182,6 +185,7 @@
                   <span class="text-muted">Booked by</span>
                   <h6 class="mb-0 mt-1">{{ booking.User_FirstName }} {{ booking.User_LastName }}</h6>
                 </div>
+                
               </div>
             </div>
           </div>

@@ -1,5 +1,10 @@
 <main>
   <!--hero section-->
+  <div *ngIf="
+  !isMentorInList" style="border: 1px solid #ff4107; background-color: #ffd5cd; padding: 15px; border-radius: 10px; margin-bottom: 10px;">
+    Your profile currently does not appear in the list of mentors. You must complete at least five quizzes in different skills for your profile to be displayed in the mentor list.
+  </div>
+  
   <section class="py-xl-8 py-6">
     <div class="container">
       <!--row-->
