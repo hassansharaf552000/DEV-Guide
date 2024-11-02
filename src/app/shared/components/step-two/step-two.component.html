@@ -1,18 +1,19 @@
-<div class="container mt-3">
+<div class="container-fluid ">
   <div class="row justify-content-center">
     <div class="col-md-12">
       <div class="card custom-card">
         <div class="card-body">
           <h3 class="card-title">Let's level up your profile!</h3>
           <p class="card-text">
-            Filling out this form helps us match you with job opportunities that best align with your skills.
+            Filling out this form helps us match you with suitable Mentors and HRs that best align with your skills.
           </p>
           <form [formGroup]="stepTwoForm" (ngSubmit)="onNext()">
             <!-- Profile image input -->
             <div class="form-group">
               <label for="profileImage">Profile Image</label>
-              <input type="file" class="form-control" id="profileImage" (change)="SelectFile($event)" accept="image/*">
-              <div *ngIf="invalidProfileImage" class="text-danger">
+              <input type="file"  class="form-control" id="profileImage" (change)="SelectFile($event)" accept="image/*"
+              (blur)="touched = true">
+              <div *ngIf="touched &&invalidProfileImage" class="text-danger">
                 Profile image is required
               </div>
             </div>
@@ -31,7 +32,7 @@
 
             <!-- Phone Number -->
             <div class="form-group">
-              <label for="phone">Phone number</label>
+              <label for="phone">Phone Number</label>
               <input id="phone" type="text" class="form-control" formControlName="phone" placeholder="Phone number">
               <div *ngIf="stepTwoForm.get('phone')?.invalid && stepTwoForm.get('phone')?.touched && stepTwoForm.get('phone')?.hasError('required') " class="text-danger">
                 Phone number is required
@@ -45,11 +46,14 @@
             </div>
 
             <!-- Navigation buttons -->
-            <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
-            <button type="submit" class="btn btn-primary mt-3 ms-3" [disabled]="stepTwoForm.invalid || invalidProfileImage">Next</button>
+            <!-- <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
+            <button type="submit" class="btn btn-primary mt-3 ms-3" [disabled]="stepTwoForm.invalid || invalidProfileImage">Next</button> -->
           </form>
         </div>
       </div>
+     <button type="button" class="btn btn-secondary mt-3 ms-3  col-2"
+      (click)="goToPreviousStep()">Back</button>
+    <button type="button" class="btn btn-primary mt-3 ms-3 col-2" [disabled]="stepTwoForm.invalid || invalidProfileImage" (click)="onNext()">Next</button>
     </div>
   </div>
 </div>

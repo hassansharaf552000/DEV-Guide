@@ -389,7 +389,7 @@
 }
 .confirm-button {
   padding: 10px 20px;
-  background-color: #0073eb;
+  background-color: #1b66b6;
   color: #f9fcfe;
   border: none;
   border-radius: 5px;
@@ -416,7 +416,7 @@
   padding-right: 10px;
 }
 .button-sub{
-  padding: 10px;
+  padding: 10px 2px;
   
   align-items: center;
   text-align: center;
@@ -486,8 +486,8 @@
   background-color: #deedfc;
 } */
 .confirm-button1 {
-  padding: 10px 20px;
-  background-color: #0073eb;
+  padding: 10px 10px;
+  background-color: #1b66b6;
   color: #f9fcfe;
   border: none;
   border-radius: 5px;
@@ -503,20 +503,21 @@
   
 }
 .confirm-button2 {
-  padding: 10px 20px;
-  background-color: #e21313;
+  padding: 10px 10px;
+  background-color: #e62525;
  color : #f9fcfe;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   height:50px;
-  padding-left: 10px;
-  padding-right: 10px;
+  /* padding-left: 10px; */
+  /* padding-right: 10px; */
   /* width: 100%; */
   
 }
 .confirm-button2:hover {
-  background-color: #183f6e;
+  background-color: #f5f1f2;
+  color: #f85858;
   
 }
 .ng-star-inserted{
@@ -577,7 +578,7 @@
 }
 .custom-header {
   background-color: #083e74; /* Dark blue color */
-  height: 100px; /* Adjust height as needed */
+  height: 80px; /* Adjust height as needed */
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   display: flex;
@@ -730,4 +731,325 @@ font-style: normal;
 .social-media a:hover .tooltip-social {
   opacity: 1;
   transform: translate(-50%, -130%);
+}
+@media (min-width:881px) and(max-width:992){
+  /* .col-lg-3{
+    width:30% !important
+      } .col-md-3{
+        width:30%  !important
+    
+      } */
+  /* .container{
+    margin-left: 10px !important;
+  }
+   */
+}
+@media (max-width:1115px) {
+  .custom-header {
+    height: 60px; /* Adjust height as needed */
+   
+  }
+  
+}
+
+@media (min-width:881px) and (max-width:989px) {
+  .col-lg-3{
+width:25% !important
+  } .col-md-3{
+    width:25%  !important
+
+  }
+  .container{
+    margin-left: 10px !important;
+  }
+  .custom-header {
+    height: 60px; /* Adjust height as needed */
+   
+  }
+  
+  
+}
+@media (min-width:767px) and (max-width:880px) {
+  .col-lg-3{
+width:100% !important;
+  } .col-md-3{
+    width:100%  !important;
+
+  }
+  .col-lg-8{
+    width:100%;
+  }
+  .custom-header {
+    height: 60px; /* Adjust height as needed */
+   
+  }
+  
+  
+}
+@media (max-width:880px) and (min-width:768px) {
+  .calendar{
+    margin-top: 30px;
+    width: 670px;
+  }
+
+  .header ,.cc {
+   font-size: 18px;
+  }
+  
+  .days-of-week {
+    gap: 70px;
+    font-size: 15px;
+  }
+  
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    /* gap: 2px; */
+  
+  }
+  
+  .day {
+    width: 50px;
+    height: 50px;
+  margin-left: 25px;
+  margin-right: 18px;
+  }
+  
+  .day.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .day:hover:before {
+    content: '';
+    position: absolute;
+    top: -0.5px;
+    left: -0.5px;
+    right: -0.5px;
+    bottom: -0.5px;
+    border-radius: 25%;
+    border: 2px solid rgb(245, 245, 247);
+    z-index: -1;
+    background-color: rgb(245, 245, 247);
+  }
+  
+
+  
+  .button-calender:disabled {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid rgb(209, 206, 206);
+  }
+  
+  
+  .selected:hover:before {
+    border: 1px solid #67abf0;
+    background-color: #deedfc;
+  }
+  
+  .available-times {
+    margin-top: 20px;
+   
+  
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: row;
+    gap: 5px;
+    
+    /* border-bottom:  1px solid #ccc; */
+    /* padding-bottom: 15px; */
+  }
+  
+  .time-button {
+    /* padding: 8px 10px; */
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+  
+  }
+  .custom-p{
+    font-size: 18px;
+  }
+  .custom-header {
+    height: 60px; /* Adjust height as needed */
+   
+  }
+  
+}
+
+@media (min-width:767px) and (max-width:880px) {
+  .col-lg-3{
+width:100% !important;
+  } .col-md-3{
+    width:100%  !important;
+
+  }
+  .col-lg-8{
+    width:100%;
+  }
+  .custom-header {
+    height: 60px; /* Adjust height as needed */
+   
+  }
+  
+  
+}
+@media (max-width:767px)and (min-width:540px){
+  .calendar{
+    margin-top: 30px;
+    width: 490px;
+  }
+
+  .header ,.cc {
+   font-size: 18px;
+  }
+  
+  .days-of-week {
+    gap: 50px;
+    font-size: 15px;
+  }
+  
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    /* gap: 2px; */
+  
+  }
+  
+  .day {
+    width: 50px;
+    height: 50px;
+  margin-left: 13px;
+  margin-right: 8px;
+  }
+  
+  .button-calender:disabled {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid rgb(209, 206, 206);
+  }
+  
+  
+  .selected:hover:before {
+    border: 1px solid #67abf0;
+    background-color: #deedfc;
+  }
+  
+  .available-times {
+    margin-top: 20px;
+   
+  
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: row;
+    gap: 5px;
+    
+    /* border-bottom:  1px solid #ccc; */
+    /* padding-bottom: 15px; */
+  }
+  
+  .time-button {
+    /* padding: 8px 10px; */
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+  
+  }
+  .custom-p{
+    font-size: 18px;
+  }
+  .custom-header {
+    height: 60px; /* Adjust height as needed */
+   
+  }
+  
+}
+@media (max-width:540px){
+  .calendar{
+    margin-top: 30px;
+    width: 450px;
+  }
+
+  .header ,.cc {
+   font-size: 18px;
+  }
+  
+  .days-of-week {
+    gap: 40px;
+    font-size: 15px;
+  }
+  
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    /* gap: 2px; */
+  
+  }
+  
+  .day {
+    width: 50px;
+    height: 50px;
+  margin-left: 9px;
+  margin-right: 6px;
+  }
+  
+  .button-calender:disabled {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid rgb(209, 206, 206);
+  }
+  
+  
+  .selected:hover:before {
+    border: 1px solid #67abf0;
+    background-color: #deedfc;
+  }
+  
+  .available-times {
+    margin-top: 20px;
+   
+  
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: row;
+    gap: 5px;
+    
+    /* border-bottom:  1px solid #ccc; */
+    /* padding-bottom: 15px; */
+  }
+  
+  .time-button {
+    /* padding: 8px 10px; */
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+  
+  }
+  .custom-p{
+    font-size: 16px;
+  }
+  .custom-header {
+    height: 60px; /* Adjust height as needed */
+   
+  }
+  
+
+}
+.button-sub .col-6{
+  width: 48%;
 }

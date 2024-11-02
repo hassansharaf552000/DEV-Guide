@@ -1,5 +1,13 @@
-.container {
-  margin-top: 2rem;
+.container-fluid {
+  background-image: url(./../../../../../public/guide.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 180px;
+  padding-top: 80px;
+padding-bottom: 40px;
+
 }
 
 .custom-card {
@@ -11,9 +19,9 @@
 }
 
 .card-title {
-  color: #007bff;
+  color: #0b62be;
   font-size: 1.75rem;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .form-group {
@@ -22,12 +30,12 @@
 
 .custom-ng-select .ng-select-container {
   border-radius: 10px;
-  border: 1px solid #007bff;
+  border: 1px solid #0b62be;
   transition: border-color 0.3s ease;
 }
 
 .custom-ng-select .ng-select-container:hover {
-  border-color: #0056b3;
+  border-color: #0a4e97;
 }
 
 .text-danger {
@@ -35,7 +43,7 @@
 }
 
 .btn-link {
-  color: #007bff;
+  color: #0b62be;
   text-decoration: none;
 }
 
@@ -78,7 +86,7 @@
 
 .skill-tag {
   display: inline-block;
-  background-color: #007bff;
+  background-color: #0b62be;
   color: white;
   padding: 5px 10px;
   margin: 5px;
@@ -95,7 +103,7 @@
   width: 100%;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #b6afaf;
   border-radius: 5px;
   margin-bottom: 20px;
 }
@@ -106,7 +114,7 @@
 
 .skill-suggestion {
   display: inline-block;
-  background-color: #f0f0f0;
+  background-color: #e4dddd;
   color: #333;
   padding: 5px 10px;
   margin: 5px;
@@ -117,4 +125,20 @@
 
 .skill-suggestion:hover {
   background-color: #d0d0d0;
+}
+.btn-primary{
+  background-color: #0b62be;
+}
+.btn-primary:hover{
+  background-color: #0a4e97;
+}
+.btn-danger{
+  background-color: #e91429;
+  /* width: 10px; */
+  border-radius: 25%;
+ margin-right: 20px;
+}
+.btn-danger:hover{
+  background-color: #bb1626;
+  
 }

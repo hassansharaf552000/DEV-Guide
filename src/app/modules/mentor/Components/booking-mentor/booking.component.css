@@ -566,5 +566,13 @@ select:disabled {
   width: 100%;
   border-radius: 30px;
 }
-
+.btn-danger{
+  color: white !important;
+  background-color: rgb(231, 48, 48) !important;
+}
+.btn-danger:hover {
+  color: rgb(231, 48, 48) !important;
+  background-color: white !important;
+ 
+}
 

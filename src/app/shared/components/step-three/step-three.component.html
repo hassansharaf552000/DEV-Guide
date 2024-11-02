@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<div class="container-fluid mt-3">
   <div class="row justify-content-center">
     <div class="col-md-12">
       <div class="card custom-card">
@@ -7,13 +7,16 @@
           <form >
             <div>
               <div *ngFor="let education of educationslist; let i = index" class="mb-3">
+                <div style="text-align: right;">
                 <button type="button" (click)="removeEducation(i)" class="btn btn-danger">X</button>
+              </div>
                 <!-- University -->
                 <div class="form-group">
                   <label for="university-{{i}}">University / School</label>
                   <input name="university-{{i}}" type="text" class="form-control"
-                    [(ngModel)]="educationslist[i].University" placeholder="University / School ex.Assuit University">
-                  <div *ngIf="educationslist[i].University==''" class="text-danger">
+                    [(ngModel)]="educationslist[i].University" placeholder="University / School ex.Assuit University"
+                    (blur)="universityTouched = true">
+                  <div *ngIf="universityTouched && educationslist[i].University==''" class="text-danger">
                     University is required
                   </div>
                 </div>
@@ -22,8 +25,9 @@
                 <div class="form-group">
                   <label for="faculty-{{i}}">Faculty</label>
                   <input name="faculty-{{i}}" type="text" class="form-control" [(ngModel)]="educationslist[i].Faculty"
-                    placeholder="Computer Science">
-                  <div *ngIf="educationslist[i].University==''" class="text-danger">
+                    placeholder="Computer Science"
+                    (blur)="facultyTouched = true">
+                  <div *ngIf="facultyTouched &&educationslist[i].Faculty==''" class="text-danger">
                     Faculty is required
                   </div>
                 </div>
@@ -32,8 +36,9 @@
                 <div class="form-group">
                   <label for="fieldOfStudy-{{i}}">Field of study</label>
                   <input name="fieldOfStudy-{{i}}" type="text" class="form-control"
-                    [(ngModel)]="educationslist[i].FieldOfStudy" placeholder="CS">
-                  <div *ngIf="educationslist[i].FieldOfStudy==''" class="text-danger">
+                    [(ngModel)]="educationslist[i].FieldOfStudy" placeholder="CS"
+                    (blur)="Fieldofstudytouched = true">
+                  <div *ngIf="Fieldofstudytouched &&educationslist[i].FieldOfStudy==''" class="text-danger">
                     Field of study is required
                   </div>
                 </div>
@@ -41,11 +46,12 @@
                 <!-- Country -->
                 <div class="form-group">
                   <label for="country-{{i}}">Country of Study</label>
-                  <select name="country-{{i}}" class="form-control" [(ngModel)]="educationslist[i].CountryOfStudy">
+                  <select name="country-{{i}}" class="form-control" [(ngModel)]="educationslist[i].CountryOfStudy"
+                  (blur)="countryofstudytouched = true">
                     <option value="">Select your country</option>
                     <option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</option>
                   </select>
-                  <div *ngIf="educationslist[i].CountryOfStudy==''" class="text-danger">
+                  <div *ngIf="countryofstudytouched &&educationslist[i].CountryOfStudy==''" class="text-danger">
                     Country of residence is required
                   </div>
                 </div>
@@ -53,7 +59,8 @@
                 <!-- Degree -->
                 <div class="form-group">
                   <label for="degree-{{i}}">Degree</label>
-                  <select name="degree-{{i}}" class="form-control" [(ngModel)]="educationslist[i].Degree">
+                  <select name="degree-{{i}}" class="form-control" [(ngModel)]="educationslist[i].Degree"
+                  (blur)="degreetouched = true">
                     <option value="">Select your degree</option>
                     <option value="High School Diploma">High School Diploma</option>
                     <option value="Associate Degree">Associate Degree</option>
@@ -63,7 +70,7 @@
                     <option value="Professional Degree">Professional Degree (e.g., JD, MD)</option>
                     <option value="Postdoctoral Studies">Postdoctoral Studies</option>
                   </select>
-                  <div *ngIf="educationslist[i].Degree==''" class="text-danger">
+                  <div *ngIf="degreetouched &&educationslist[i].Degree==''" class="text-danger">
                     Degree is required
                   </div>
                 </div>

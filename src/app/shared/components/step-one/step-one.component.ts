@@ -11,11 +11,14 @@ export class StepOneComponent {
   CVFile: File | null = null;
   isValidationVisible: boolean = false; // Flag for validation message visibility
 
-  constructor(private router: Router, private Account: AccountService) {}
+  constructor(private router: Router, private Account: AccountService) {
+  
+    this.CVFile = this.Account.getFormData().get('CV' ) as File;
+  }
 
   // Called when user selects a file
   SelectFile(event: any) {
-    const file = event.target.files[0];
+    const file = event.target.files[0] ;
     this.CVFile = file;
 
     if (file) {

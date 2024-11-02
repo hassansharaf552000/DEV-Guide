@@ -1,7 +1,17 @@
-.container {
+/* .container {
   margin-top: 2rem;
-}
+} */
+.container-fluid {
+  background-image: url(./../../../../../public/guide.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 180px;
+  padding-top: 80px;
+padding-bottom: 40px;
 
+}
 .custom-card {
 
   border-radius: 15px;
@@ -11,9 +21,9 @@
 }
 
 .card-title {
-  color: #007bff;
+  color: #0b62be;
   font-size: 1.75rem;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .form-group {
@@ -25,7 +35,7 @@
 }
 
 .btn-link {
-  color: #007bff;
+  color: #0b62be;
   text-decoration: none;
 }
 
@@ -47,4 +57,20 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+.btn-primary{
+  background-color: #0b62be;
+}
+.btn-primary:hover{
+  background-color: #0a4e97;
+}
+.btn-danger{
+  background-color: #e91429;
+  /* width: 10px; */
+  border-radius: 25%;
+ margin-right: 20px;
+}
+.btn-danger:hover{
+  background-color: #bb1626;
+  
 }

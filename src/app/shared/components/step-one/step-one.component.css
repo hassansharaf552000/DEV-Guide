@@ -4,7 +4,7 @@ html, body {
 }
 
 .container-fluid {
-  background-image: url(/public/guide.jpg);
+  background-image: url(./../../../../../public/guide.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -20,10 +20,11 @@ html, body {
 }
 
 .card-title {
-  color: #007bff;
+  color: #0b62be;
   font-size: 1.75rem;
-  font-weight: bold;
+  font-weight: 500;
 }
+
 
 .card-text {
   margin-bottom: 1.5rem;
@@ -51,4 +52,10 @@ html, body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+.btn-primary{
+  background-color: #0b62be;
+}
+.btn-primary:hover{
+  background-color: #0a4e97;
 }

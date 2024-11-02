@@ -14,7 +14,11 @@ export class StepThreeComponent {
   // formArray: FormGroup;
   invalid = true;
   educationslist: EducationViewModel[];
-
+  universityTouched=false;
+  facultyTouched=false;
+  Fieldofstudytouched=false;
+  countryofstudytouched=false;
+  degreetouched=false;
   countries = [
     { id: 'AF', name: 'Afghanistan' },
     { id: 'AL', name: 'Albania' },
@@ -267,6 +271,16 @@ export class StepThreeComponent {
     this.educationslist = [
       { StartDate: new Date(), EndDate: null, CountryOfStudy: "", University: "", Faculty: "", Degree: "", FieldOfStudy: "", TillNow: null }
     ]
+    // forkJoin(
+    //   this.Account.Educations.map(newEducation =>
+    //     this.Account.AddEducation(newEducation)
+    //   )
+    // ).subscribe((results: EducationViewModel[]) => {
+    //   this.educationslist = results;
+    // });
+    this.educationslist=this.Account.Educations;
+    // this..controls['country'].setValue(this.accountService.getFormData().get('Country'));
+    // this.stepTwoForm.controls['phone'].setValue(this.accountService.getFormData().get('PhoneNumber'));
   }
 
 
@@ -279,7 +293,7 @@ export class StepThreeComponent {
     this.educationslist.splice(index, 1)
   }
   onNext(): void {
-    if (this.educationslist?.length > 0 && this.checklist() == undefined) {
+    if (this.educationslist?.length >= 0 && this.checklist() == undefined) {
       this.Account.Educations = this.educationslist;
       this.router.navigate(['/step-four']);
     }
