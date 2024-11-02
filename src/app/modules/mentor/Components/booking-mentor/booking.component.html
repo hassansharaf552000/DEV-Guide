@@ -60,12 +60,15 @@
   
                 <div class="col-sm-6 col-md-4">
                   <span class="text-muted">Session Price</span>
-                  <h6 class="mb-0 mt-1">{{ booking.Total }} LE</h6>
+                  <h6 class="mb-0 mt-1">$ {{ booking.Total }}</h6>
                 </div>
   
                 <div class="col-md-4">
                   <span class="text-muted">Booked by</span>
                   <h6 class="mb-0 mt-1">{{ booking.User_FirstName }} {{ booking.User_LastName }}</h6>
+                </div>
+                <div class="mt-4 " style="text-align: right;">
+                  <a (click)="UpdateSessionStatus(booking.Id)" class="btn btn-danger mb-0  ">Cancel</a>
                 </div>
               </div>
             </div>
@@ -118,7 +121,7 @@
   
                 <div class="col-sm-6 col-md-4">
                   <span class="text-muted">Session Price</span>
-                  <h6 class="mb-0 mt-1">{{ booking.Total }} LE</h6>
+                  <h6 class="mb-0 mt-1">$ {{ booking.Total }}</h6>
                 </div>
   
                 <div class="col-md-4">
@@ -175,13 +178,14 @@
   
                 <div class="col-sm-6 col-md-4">
                   <span class="text-muted">Session Price</span>
-                  <h6 class="mb-0 mt-1">{{ booking.Total }} LE</h6>
+                  <h6 class="mb-0 mt-1">$ {{ booking.Total }}</h6>
                 </div>
   
                 <div class="col-md-4">
                   <span class="text-muted">Booked by</span>
                   <h6 class="mb-0 mt-1">{{ booking.User_FirstName }} {{ booking.User_LastName }}</h6>
                 </div>
+                
               </div>
             </div>
           </div>

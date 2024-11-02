@@ -76,7 +76,7 @@ const routes: Routes = [
       { path: 'paypal/:id', component: PaymentComponent,canActivate: [AuthGuard] },
       { path: 'mentors', component: MentorListComponent },
       { path: 'mentors/:id', component: MentorProfileComponent,canActivate: [AuthGuard], },
-      { path: 'developers/:id', component: DeveloperlistComponent},
+      
       { path: 'hrs', component: HRListComponent },
       { path: 'hrs/:id', component: HrProfileComponent,canActivate: [AuthGuard], },
       { path: 'contactus', component: ContactUsComponent },
@@ -129,21 +129,15 @@ const routes: Routes = [
       { path: 'reviews', component: ReviewsListComponent },
       { path: 'quizzes', component: QuizListComponent,canActivate:[AuthGuard], },
       { path: 'reply', component: MentorReplyComponent },
-
       { path: 'answer-query/:id', component: QueryAnswerComponent },
       { path: 'AdminUi', component: AdminUIComponent },
       //{ path: '**', redirectTo: 'notfound' },
       {path:'',redirectTo: 'updateprofile', pathMatch: 'full'},
-
+      // { path: 'answer-query/:id/:queryid/:userid', component: QueryAnswerComponent },
       { path: 'answer-query/:id/:queryid/:userid', component: QueryAnswerComponent },
       { path: 'AdminUi', component: AdminUIComponent },
-
       { path: 'session-details/:id', component: DeveloperSessionDetailsComponent },
-
       { path: 'Sessions', component:BookingListComponent },
-
-
-
     ],
   },
   { path: 'login', component: LoginComponent },
@@ -159,13 +153,9 @@ const routes: Routes = [
   { path: 'step-five', component: StepFiveComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'cancel', component: PaymentComponent,canActivate: [AuthGuard] },
-
-
-
   { path: 'confirm/:id', component: BookingConfirmationComponent,canActivate: [AuthGuard] },
-
-
-
+  { path: 'cancel', component: PaymentComponent },
+  // { path: 'hr-payment', component: HrPaymentsComponent },
   //{ path: '**', redirectTo: 'notfound' },
 ];
 @NgModule({

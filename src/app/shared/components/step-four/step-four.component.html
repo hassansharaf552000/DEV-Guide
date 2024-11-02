@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container-fluid mt-5">
   <div class="row justify-content-center">
     <div class="col-md-12">
       <div class="card custom-card">
@@ -14,29 +14,56 @@
             </div>
             <div class="form-group">
               <label for="level">Level</label>
-              <!-- <input type="text" name="level" class="form-control" [(ngModel)]="Level"> -->
-              <select id="level" class="form-control" formControlName="level" name="level"  [(ngModel)]="Level">
+              <select
+                id="level"
+                class="form-control"
+                [(ngModel)]="Level"
+                name="level"
+                (blur)="leveltouch = true"
+                required
+              >
+                <option value="" disabled>Select Level</option>
+                <option value="Junior">Junior</option>
+                <option value="Middle">Middle</option>
+                <option value="Senior">Senior</option>
+                <option value="TeamLeader">Team Leader</option>
+              </select>
+            
+              <div *ngIf="leveltouch && !Level" class="text-danger">
+                Level is required.
+              </div>
+            </div>
+            
+            <!-- <div class="form-group">
+              <label for="level">Level</label>
+              <select id="level" class="form-control" formControlName="level" name="level" [(ngModel)]="Level" (blur)="leveltouch = true">
                 <option value="" disabled selected>Select Level</option>
                 <option value="Junior">Junior</option>
                 <option value="Middle">Middle</option>
                 <option value="Senior">Senior</option>
-                <option value="TeamLeader">TeamLeader</option>
+                <option value="TeamLeader">Team Leader</option>
               </select>
-              <div *ngIf="Level==''" class="text-danger">
+              
+              <div *ngIf="leveltouch&&Level==''" class="text-danger">
                 Level is required.
               </div>
-            </div>
+            </div> -->
             <div class="form-group">
               <label for="about">Give me Overiew about You</label>
-              <textarea name="about" class="form-control" [(ngModel)]="About"></textarea>
-              <div *ngIf="About==''" class="text-danger">
+              <textarea name="about" class="form-control" [(ngModel)]="About"
+              (blur)="abouttouch = true"></textarea>
+              <div *ngIf="abouttouch &&About==''" class="text-danger">
                 About is required.
+              </div>
+              <div *ngIf="abouttouch &&About?.length<50" class="text-danger">
+                About Should be at least 20 Words.
               </div>
             </div>
             <div class="form-group">
               <label for="title">Job Title</label>
-              <input type="text" name="title" class="form-control" [(ngModel)]="Title">
-              <div *ngIf="Title==''" class="text-danger">
+              <input type="text" name="title" class="form-control" [(ngModel)]="Title"
+              (blur)="titletouch = true">
+              <div *ngIf="titletouch&&Title==''" class="text-danger">
                 Title is required.
               </div>
 
@@ -49,7 +76,8 @@
                 </div>
 
                 <input name="search" type="search" #searchInput (input)="onSearchInputChange(searchInput.value)"
-                  [value]="searchQuery" class="form-control form-control-sm" placeholder="Search skills..." />
+                  [value]="searchQuery" class="form-control form-control-sm" placeholder="Search skills..."
+                  (blur)="Skilltouch = true" />
 
                 <h6>Suggested Skills</h6>
                 <div class="suggested-skills">
@@ -57,7 +85,7 @@
                     (click)="addSkillFromSuggestion(skill)">
                     {{skill.Name}}
                   </span>
-                  <div *ngIf="SelectedSkilles?.length<1" class="text-danger">
+                  <div *ngIf="Skilltouch&&SelectedSkilles?.length<1" class="text-danger">
                     Please select at least one skill.
                   </div>
                 </div>
@@ -69,12 +97,15 @@
                     <h3 class="card-title">Experience</h3>
                     <div>
                       <div *ngFor="let exp of Experiences; let i = index" class="mb-3">
+                        <div style="text-align: right;">
                         <button type="button" (click)="removeExperience(i)" class="btn btn-danger">X</button>
+                      </div>
                         <div class="form-group">
                           <label for="organization-{{i}}">Organization </label>
                           <input name="organization-{{i}}" type="text" class="form-control"
-                            [(ngModel)]="Experiences[i].Organization" placeholder="Organization">
-                          <div *ngIf="Experiences[i].Organization==''" class="text-danger">
+                            [(ngModel)]="Experiences[i].Organization" placeholder="Organization"
+                            (blur)="organizationtouch = true">
+                          <div *ngIf="organizationtouch&&Experiences[i].Organization==''" class="text-danger">
                             Organization is required
                           </div>
                         </div>
@@ -82,8 +113,9 @@
                         <div class="form-group">
                           <label for="field-{{i}}">Field</label>
                           <input name="field-{{i}}" type="text" class="form-control"
-                            [(ngModel)]="Experiences[i].FieldOfStudy" placeholder="CS">
-                          <div *ngIf="Experiences[i].Organization==''" class="text-danger">
+                            [(ngModel)]="Experiences[i].FieldOfStudy" placeholder="CS"
+                            (blur)="fieldtouch = true">
+                          <div *ngIf="fieldtouch&&Experiences[i].Organization==''" class="text-danger">
                             Field is required
                           </div>
                         </div>
@@ -127,10 +159,13 @@
 
 
           <!-- <button (click)="testbehvior()">testtttt</button> -->
-          <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
-          <button type="submit" class="btn btn-primary mt-3 ms-3" (click)="onNext()" [disabled]="">Next</button>
+          <!-- <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
+          <button type="submit" class="btn btn-primary mt-3 ms-3" (click)="onNext()" [disabled]="">Next</button> -->
         </div>
       </div>
+      <button type="button" class="btn btn-secondary mt-3 ms-3  col-2"
+      (click)="goToPreviousStep()">Back</button>
+    <button type="button" class="btn btn-primary mt-3 ms-3 col-2" [disabled]="checklist()!=undefined" (click)="onNext()">Next</button>
     </div>
   </div>
 </div>

@@ -8,6 +8,9 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 
 import { MessagesComponent } from './messages/messages.component';
 import { usersDataComponent } from './users-data/users-data.component';
+import { ReviewsComponent } from './reviews/reviews.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { AddskillsComponent } from './addskills/addskills.component';
 
 const routes: Routes = [
   {path:'',component:DashboardComponent,
@@ -15,7 +18,12 @@ const routes: Routes = [
       {path: 'sessions' , component : SessionsComponent},
       {path: 'usersData' , component: usersDataComponent},
       {path: 'analytics', component: AnalyticsComponent},
-      {path: 'messages' , component: MessagesComponent}
+      {path: 'messages' , component: MessagesComponent},
+      {path: 'reviews' , component: ReviewsComponent},
+      {path: 'contacts' , component: ContactsComponent},
+      {path: 'addskills' , component: AddskillsComponent},
+
+
     ]
   }
 ];

@@ -15,6 +15,7 @@ export class SidebarlayoutComponent {
     profileCompletion: 50 // Percentage of profile completion
   };
   menuItems = [
+    { path: '/hr/home', label: 'Profile', icon: 'bi bi-person' },
     { path: '/hr/updateprofile', label: 'Edit Profile', icon: 'bi bi-pencil-square' },
     { path: '/hr/change-password', label: 'Change Password', icon: 'bi-key' },
     { path: '/hr/skills', label: 'Skills', icon: 'bi-person-check' },

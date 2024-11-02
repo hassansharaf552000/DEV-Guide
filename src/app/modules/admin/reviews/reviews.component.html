@@ -1,0 +1,30 @@
+<!-- src/app/admin/review-table/review-table.component.html -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
+<div class="review-table-container">
+    <h2 class="display-4 fw-bold text-center" style="font-family: Edu AU VIC WA NT Hand, cursive;font-optical-sizing: auto;font-style: normal;">Reviews</h2>
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>Developer Name</th>
+          <th>Mentor Name</th>
+          <th>Rating</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="tdclass" *ngFor="let review of reviews">
+          <td>{{ review.DeveloperFirstName }} {{ review.DeveloperLastName }}</td>
+          <td>{{ review.MentorFirstName }} {{ review.MentorLastName }}</td>
+          <td>
+            <!-- Display stars for rating -->
+            <span *ngFor="let star of [].constructor(review.Rating)">&#9733;</span>
+            <span *ngFor="let empty of [].constructor(5 - review.Rating)">&#9734;</span>
+          </td>
+          <td>{{ review.Description }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

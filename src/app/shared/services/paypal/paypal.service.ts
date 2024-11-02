@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class PaypalService {
 
   baseUrl = "http://localhost:5164/api/Payment/create-paypal-payment"// Update with your API base URL
+  TotalPaymentUrl= "http://localhost:5164/api/Payment/payments/totals"
 
   constructor(private http: HttpClient) {}
 
@@ -35,5 +36,10 @@ export class PaypalService {
     };
 
     return this.http.post<any>(this.baseUrl, paymentData);
+  }
+
+
+  getPaymentTotals(): Observable<any> {
+    return this.http.get<any>(this.TotalPaymentUrl);
   }
 }
