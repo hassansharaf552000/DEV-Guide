@@ -1,4 +1,4 @@
-<section class="pt-5 pb-5 ">
+<section class="pt-0 pb-5 ">
     <!-- <div class="container"> -->
     <!-- User info -->
 
@@ -15,7 +15,7 @@
 
     <!-- Content -->
 
-    <div class=" mt-0 mt-md-4 ">
+    <div class=" mt-0 mt-md-0 ">
         <!--  -->
 
 
@@ -34,7 +34,8 @@
                             class="avatar-xl rounded-circle border border-4 border-white"
                             style="height: 70px; size: 6px;" alt="avatar"> -->
 
-                        <img src="http://localhost:5164/{{mentor.Image}}" class="avatar-xl rounded-circle border border-4 border-white"
+                        <img src="http://localhost:5164/{{mentor.Image}}"
+                            class="avatar-xl rounded-circle border border-4 border-white"
                             style="height: 70px; size: 6px;" alt="avatar">
                         <div class="comment-content">
 
@@ -69,13 +70,12 @@
                                 <!-- @for(query of userQueries; track $index; let index = $index){ -->
 
                                 @if(user){
-                                <div id="ps-0 ">
-
-                                    <div class="answer pe-5 ps-2 pt-2 mb-3 ">
-                                        <div class="comment-content">
-
-
-                                            <div class=" mb-0 mb-lg-0 mt-3 pb-1 gap-0 ps-3 text-muted">
+                                    <div id="ps-0">
+                                        <div class="answer  ps-2 pt-2 text-muted">
+                                            <div class="comment-content">
+    
+                                                <div class=" mb-0 mb-lg-0  pb-3 mt-2 pb-1 gap-0 ps-3"
+                                                style="font-size: 13px !important; height: 5px;">
 
                                                 <span class=" ">Answered On :
 
@@ -85,30 +85,46 @@
                                                     userQueries.DateTime | date: 'hh:mm a' }}</span>
                                             </div>
 
+
+
+
                                             <div class="comment-actions">
 
-                                                <div class="mt-3 me-5 d-flex justify-content-between">
-                                                    <p><strong class="ms-2"><img src="http://localhost:5164/{{userQueries.UserImageUrl}}"
+                                                <div class="mt-3 me-0 row justify-content-between">
+                                                    <div class="col-8">
+                                                        <p class="ms-2"><strong class="" style="height: 1px;">
+                                                            <!-- <img src="http://localhost:5164/{{userQueries.UserImageUrl}}"
                                                                 class="avatar-xl rounded-circle border border-4 border-white"
-                                                                style="height: 70px; size: 6px;" alt="avatar"> </strong>
-                                                        {{ userQueries.Question }}
+                                                                style="height: 70px; size: 6px;" alt="avatar">  -->
+                                                            <img src="http://localhost:5164/{{userQueries.UserImageUrl}}"
+                                                                class="avatar-xl rounded-circle border border-4 border-white"
+                                                                style="height: 70px; size: 6px;" alt="avatar">
+                                                                {{user.FirstName}} {{user.LastName}}
+                                                        </strong>
+                                                        
                                                     </p>
+                                                </div>  
                                                     @if(userQueries.File ){
-                                                        <a 
+                                                    <!-- <a 
                                                          
                                                         class="btn btn-outline-primary btn-sm ms-0" 
                                                         style="border-radius: 25px;" 
                                                         (click)="downloadFile(userQueries.File)">
                                                         Download File
-                                                     </a>
-                                                        
-                                                        <a class="btn btn-outline-primary btn-sm ms-0 align-items-end justify-content-end"
-                                                            style="border-radius: 25px;"
-                                                            href="http://localhost:5164/{{userQueries.File}}"
-                                                            download="true">Download
-                                                            File</a>
-                                                        }
+                                                     </a> -->
+                                                     <button (click)="downloadFile(userQueries.File)" class="btn btn-outline-primary btn-sm ms-0 col-4 me-5 " 
+                                                     style="width: fit-content; height: fit-content; border-radius: 20px;" > Download
+                                                           File</button>  
+                                                     <!-- <a class="btn btn-outline-primary btn-sm ms-0 col-4 "
+                                                     style="border-radius: 25px; width: 10%;"
+                                                        href="http://localhost:5164/{{userQueries.File}}"
+                                                        download="true">Download
+                                                        File</a> -->
+                                                    }
                                                 </div>
+                                                <p class="mt-0 text-dark pe-2 ps-3">
+                                                    {{ userQueries.Question }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -121,42 +137,53 @@
                                 @for(answer of userQueries.QueryAnswers ; track $index; let index = $index){
 
                                 <!-- @if(mentor.FirstName == query.FirstName){ -->
+
+
                                 @if(answer.IsDeveloper){
                                 <div id="ps-0">
-                                    <div class="answer pe-5 ps-2 pt-2 text-muted">
+                                    <div class="answer  ps-2 pt-2 text-muted">
                                         <div class="comment-content">
-                                            <div class=" mb-0 mb-lg-0 mt-3 pb-1 gap-0 ps-3">
-                                                <span class=" ">Answered On : </span>
-                                                <!-- <span class="mb-0 ">{{query.DateTime}}</span> -->
-                                                <span class="mb-0  ">({{ answer.DateTime | date: 'dd MMM yyyy'}}) at {{
-                                                    answer.DateTime | date: 'hh:mm a' }}</span>
 
-                                            </div>
+                                            <div class=" mb-0 mb-lg-0  pb-3 mt-2 pb-1 gap-0 ps-3"
+                                            style="font-size: 13px !important; height: 5px;">
+                                            <span class=" ">Answered On : </span>
 
+                                            <span class="mb-0  ">({{ answer.DateTime | date: 'dd MMM yyyy'}}) at {{
+                                                answer.DateTime | date: 'hh:mm a' }}</span>
+                                        </div>
+                                           
+                                        <div class="comment-actions ">
 
-                                            <div class="comment-actions">
-
-                                                <div class="mt-3 me-5 ms-2 d-flex justify-content-between">
-                                                    <p class="ms-2"><strong class=""><img src="http://localhost:5164/{{user.Image}}"
+                                            <div class="mt-3 me-0 row justify-content-between">
+                                                <div class="col-8 ">
+                                                    <p class="ms-2"><strong class="" style="height: 1px;"> <!-- <img src="http://localhost:5164/{{user.Image}}"
+                                                    class="avatar-xl rounded-circle border border-4 border-white"
+                                                    style="height: 70px; size: 6px;" alt="avatar"> -->
+                                                            <img src="http://localhost:5164/{{user.Image}}"
                                                                 class="avatar-xl rounded-circle border border-4 border-white"
-                                                                style="height: 70px; size: 6px;" alt="avatar"></strong>
-                                                        {{answer.Answer}}</p>
+                                                                style="height: 70px; size: 6px;" alt="avatar">
+                                                            
+                                                            {{user.FirstName}} {{user.LastName}}
+                                                        </strong>
+                                                    </p>
+                                                </div>    
                                                     @if(answer.FilePath ){
-                                                       
-                                                        <a 
+
+                                                    <!-- <a 
                                                          
                                                         class="btn btn-outline-primary btn-sm ms-0" 
                                                         style="border-radius: 25px;" 
                                                         (click)="downloadFile(answer.FilePath)">
                                                         Download File
-                                                     </a>
-                                                    <a class="btn btn-outline-primary btn-sm ms-0 align-items-end justify-content-end"
-                                                        style="border-radius: 25px;"
-                                                        href="http://localhost:5164/{{answer.FilePath}}"
-                                                        download="true">Download
-                                                        File</a>
+                                                     </a> -->
+                                                     <button (click)="downloadFile(answer.FilePath)" class="btn btn-outline-primary btn-sm ms-0 col-4 me-5" 
+                                                     style="width: fit-content; height: fit-content; border-radius: 20px;" > Download
+                                                           File</button> 
                                                     }
                                                 </div>
+                                                <p class="mt-0 text-dark pe-2 ps-3">
+                                                    {{answer.Answer}}
+                                                </p>
                                             </div>
 
 
@@ -166,13 +193,16 @@
 
                                 </div>
                                 }
+                                
+                                
                                 @if(!answer.IsDeveloper){
                                 <div id="ps-0 ">
-                                    <div class="answer pe-5 ps-2 pt-2 text-muted">
+                                    <div class="answer  ps-2 pt-2 text-muted">
                                         <div class="comment-content">
-                                            <div class=" mb-0 mb-lg-0 mt-3 pb-1 gap-0 ps-3">
+                                            <div class=" mb-0 mb-lg-0  pb-3 mt-2 pb-1 gap-0 ps-3"
+                                                style="font-size: 13px !important; height: 5px;">
                                                 <span class=" ">Answered On : </span>
-                                                <!-- <span class="mb-0 ">{{query.DateTime}}</span> -->
+
                                                 <span class="mb-0  ">({{ answer.DateTime | date: 'dd MMM yyyy'}}) at {{
                                                     answer.DateTime | date: 'hh:mm a' }}</span>
 
@@ -181,28 +211,60 @@
 
                                             <div class="comment-actions ">
 
-                                                <div class="mt-3 me-5 ms-2 d-flex">
-                                                    <p class="ms-2"><strong class=""><img src="http://localhost:5164/{{mentor.Image}}"
-                                                                class="avatar-xl rounded-circle border border-4 border-white"
-                                                                style="height: 70px; size: 6px;" alt="avatar"></strong>
-                                                        {{answer.Answer}}</p>
+                                                <div class="mt-3 me-0 row justify-content-between">
+                                                    <div class="col-8">
+                                                        <p class="ms-2"><strong class="" style="height: 1px;"> <!-- <img src="http://localhost:5164/{{mentor.Image}}"
+                                                        class="avatar-xl rounded-circle border border-4 border-white"
+                                                        style="height: 70px; size: 6px;" alt="avatar"> -->
+                                                                <img src="http://localhost:5164/{{mentor.Image}}"
+                                                                    class="avatar-xl rounded-circle border border-4 border-white"
+                                                                    style="height: 70px; size: 6px;" alt="avatar">
+                                                                <!-- <p style="height: 1px;"> -->
+                                                                <!-- Dina John -->
+                                                                {{mentor.FirstName}} {{mentor.LastName}}
+                                                                <!-- </p> -->
+                                                            </strong>
+                                                            <!-- <p>
+                                                            <span class=" pb-0 mt-0 pt-0 gap-0 ps-5 ms-4 d-block " style="font-size: 13px; height: 5px;">({{ answer.DateTime | date: 'dd MMM yyyy'}}) at {{
+                                                                    answer.DateTime | date: 'hh:mm a' }}</span>
+                                                                    </p> -->
+                                                            <!-- <div class=" mb-0 mb-lg-0 mt-3 pb-1 gap-0 ps-3"> -->
+                                                            <!-- <span class=" ">Answered On : </span> -->
+
+
+
+                                                            <!-- </div> -->
+
+                                                        </p>
+
+                                                        <!-- <p class="mt-3">
+                                                        {{answer.Answer}}
+                                                    </p> -->
+                                                    </div>
+                                                    <!-- <div class="col-4"> -->
                                                     @if(answer.FilePath){
 
-                                                        <a 
+                                                    <!-- <a 
                                                          
                                                         class="btn btn-outline-primary btn-sm ms-0" 
                                                         style="border-radius: 25px;" 
                                                         (click)="downloadFile(answer.FilePath)">
                                                         Download File
-                                                     </a>
-                                                     
-                                                        <a class="btn btn-outline-primary btn-sm ms-0  "
-                                                        style="border-radius: 25px;"
+                                                     </a> -->
+                                                     <button (click)="downloadFile(answer.FilePath)" class="btn btn-outline-primary btn-sm ms-0 col-4 me-5" 
+                                                     style="width: fit-content; height: fit-content; border-radius: 20px;" > Download
+                                                           File</button> 
+                                                    <!-- <a class="btn btn-outline-primary btn-sm ms-0 col-4 "
+                                                        style="border-radius: 25px; width: 10%;"
                                                         href="http://localhost:5164/{{answer.FilePath}}"
                                                         download="true">Download
-                                                        File</a>
+                                                        File</a> -->
                                                     }
+                                                    <!-- </div> -->
                                                 </div>
+                                                <p class="mt-0 text-dark pe-2 ps-3">
+                                                    {{answer.Answer}}
+                                                </p>
                                             </div>
 
 
@@ -253,8 +315,12 @@
                                             <p class="upload-text">Click here to upload File</p>
                                         </label>
                                     </div>
-                                    <button class="btn btn-primary btn-block mt-2 ps-5 pe-5 mt-2"
-                                        type="submit">Send</button>
+                                    <!-- <button class="btn btn-primary btn-block mt-2 ps-5 pe-5 mt-2" (click)="getAnswer(queyid)"
+                                        type="submit">Send</button> -->
+                                        <button class="btn btn-primary btn-block mt-2 ps-5 pe-5 mt-2" 
+                                                type="submit" 
+                                                (click)="onSendButtonClick()">Send</button>
+
                                     <!-- <a class="mb-3 p-2 px-5 mt-3 btn btn-outline-primary btn-sm ms-0"
                                         type="submit">Send</a> -->
                                 </form>

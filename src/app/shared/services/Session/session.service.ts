@@ -24,8 +24,7 @@ export class SessionService {
   AddReviewURR= "http://localhost:5164/api/Review//AddReview"
   CancelSessionUrl="http://localhost:5164/api/Session/CancelSession"
   UpdateSessionStatusUrl="http://localhost:5164/api/Session/UpdateSessionStatus"
-
- 
+  getSessionsUrl="http://localhost:5164/api/Session/GetSessions"
   constructor(private http: HttpClient) { }
 
   // addreview(review:any ,id: number): Observable<any> {
@@ -110,5 +109,8 @@ getallSessionForDeveloper() {
   }
   UpdateSessionStatus(id: any) {
     return this.http.put(this.UpdateSessionStatusUrl,id);
+  }
+  getSessions(): Observable<any[]> {  // Use any[] to allow any object structure
+    return this.http.get<any[]>(this.getSessionsUrl);
   }
 }

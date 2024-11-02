@@ -48,15 +48,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tr *ngFor="let user of users">
+                    <td>{{ user.Id }}</td>
+                    <td>{{ user.FirstName }} {{ user.LastName }}</td>
+                    <td>{{ user.Email }}</td>
+                    <td>{{ user.PhoneNumber }}</td>
+                    <td>{{ user.Image }}</td>
+                    <td>{{ user.Roles }}</td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td>2</td>
                     <td></td>
                     <td></td>
@@ -71,7 +71,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
     </div>

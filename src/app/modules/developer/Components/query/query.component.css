@@ -232,3 +232,99 @@ margin-top: 10px;
   opacity: 1;
   transform: translate(-50%, -130%);
 }
+
+
+
+.custom-header {
+  background-color: #083e74; /* Dark blue color */
+  height: 100px; /* Adjust height as needed */
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* First animated circle */
+.custom-header::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.2); /* Light pattern overlay */
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: movePattern1 10s infinite alternate linear;
+}
+
+/* Second animated circle */
+.custom-header::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: movePattern2 12s infinite alternate linear;
+}
+
+/* Third animated circle */
+.third-circle {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: movePattern3 8s infinite alternate linear;
+}
+
+/* Animation for the first circle */
+@keyframes movePattern1 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100px); }
+}
+
+/* Animation for the second circle */
+@keyframes movePattern2 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100px); }
+}
+
+/* Animation for the third circle */
+@keyframes movePattern3 {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50px); }
+}
+h2{
+  font-size: 20px;
+  font-weight: 500;
+line-height: 26px;
+color:rgb(56, 56, 56);
+font-style: normal;
+}
+.font-cus{
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+.custom-about{
+  color: rgb(114, 114, 114);
+  font-weight: 400;
+  font-size: 16px;
+  /* margin-bottom: 40px; */
+
+}

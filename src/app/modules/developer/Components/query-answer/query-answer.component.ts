@@ -12,6 +12,8 @@ import { IMentor } from '../../../../core/enums/Mentor';
   styleUrl: './query-answer.component.css'
 })
 export class QueryAnswerComponent implements OnInit{
+
+  
   // querymessage:any;
   // QueryArray:Array<any>=[];
   modalMessage = '';
@@ -25,7 +27,12 @@ export class QueryAnswerComponent implements OnInit{
   userid="";
   id : string;
   userQueries: any; 
+  FileName: any;
+  fullPath:any;
   // selectedFile: File | null = null;
+  extractFileName(fullPath: string): string {
+    return fullPath.split('/').pop() || '';
+  }
   constructor(private fb: FormBuilder,private http: HttpClient ,private AccService:AccountService ,
      private router: Router,private route: ActivatedRoute, private toaster:ToastrService) {
 
@@ -52,10 +59,13 @@ if (this.Instructor_Id) {
       this.Instructor_Id = this.route.snapshot.paramMap.get('id');
       // this.queryId = Number(this.route.snapshot.paramMap.get('queryid'));
       this.queyid = this.route.snapshot.paramMap.get('queryid');
+      console.log("queyid",this.queyid);
+      
       this.userid = this.route.snapshot.paramMap.get('userid');
       this.getMentor(this.Instructor_Id);
       this.getUser(this.userid)
       this.getAnswer(this.queyid);
+      // this.getAnswerWithDelay(this.queyid, 1000);
       // this.getQueries();
       
     }
@@ -113,11 +123,24 @@ if (this.Instructor_Id) {
 //       }
 //   );
 // }
+onSendButtonClick() {
+  // Call getAnswerWithDelay when the button is clicked
+  this.getAnswerWithDelay(this.queyid, 2000);
+}
 
-
+getAnswerWithDelay(id: string, delay: number) {
+  setTimeout(() => {
+    this.getAnswer(id);
+  }, delay);
+}
 getAnswer(id: string) {
   this.AccService.getAnswerByQueryId(this.queyid).subscribe((data: any) => {
     this.userQueries = data.Result;  // Assume data.Result is an array of answers
+    this.fullPath =this.userQueries.File;
+    console.log('FileName',this.fullPath );
+
+   
+
     console.log('userQueries', this.userQueries);
     
     // Sort userQueries by DateTime in descending order
@@ -283,21 +306,26 @@ this.toaster.warning("Try again later!!!!!")
   //   }
   // }
 
-  
+  // downloadFileName(fullPath: string) {
+  //   const fileName = this.extractFileName(fullPath);
+  //   console.log('File name:', fileName);
 
   // GetQuery(obj: any) {
   //    this.QueryArray.push(obj)
   //   }
 
-  downloadFile(filePath: string) {
-    const fullUrl = `http://localhost:5164${filePath}`; // Combine base URL with the file path
   
-    const link = document.createElement('a');
-    link.href = fullUrl;
-    link.setAttribute('download', filePath.split('/').pop() || 'file'); // Extract the file name from the path
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  downloadFile(fullPath: string) {
+    const fileName = this.extractFileName(fullPath);
+    console.log('File name:', fileName);
+    this.AccService.downloadFile(fileName).subscribe((blob) => {
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = fileName;
+      link.click();
+      window.URL.revokeObjectURL(url); // Clean up
+    });
   }
   
   }

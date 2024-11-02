@@ -1,76 +1,58 @@
-<div class="">
-  <div class="">
-    <div class="card border-1 rounded-3 border-secondray">
-      <div class="card-header d-lg-flex justify-content-between align-items-center">
-        <div class="mb-3 mb-lg-0">
-          <h3 class="mb-0">My Questions</h3>
-          <p class="mb-0">Here is a list of questions/queries that you have asked</p>
-        </div>
+<div class="container-fluid">
+  <div class="card border-0 shadow-sm rounded-3">
+    <div class="card-header bg text-white rounded-top d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center">
+      <div>
+        <h3 class="mb-1">My Questions</h3>
+        <p class="mb-0">Here is a list of questions/queries that you have asked</p>
       </div>
-      @for(query of userQueries; track $index){
+    </div>
 
-      <div class="card-body">
-        <div class="border-bottom pt-0 pb-0">
-          <div class="row mb-0">
-            <div class="col-lg-8 col-md-8 col-7 mb-0 mb-lg-0">
-              <div class="row">
-                <span class="me-0 position-relative mt-4 justify-content-end align-items-end mt-n5 col-lg-3 col-12">
-                  <img src="http://localhost:5164/{{query.MentorImageUrl}}" class="avatar-xl  border border-4 border-white"
-                    style="height: 180px; size: 25px; border-radius: 13px;" alt="avatar">
-                </span>
-
-                <span class="d-block col-xl-8 col-12 mt-2 mb-0">
-                  <div class="d-flex ">
-                    <span class="h4 pe-3 " style="font-size: 30px;">{{ query.FirstName }} {{ query.LastName }}</span>
-                    <p class="text-muted mt-2 ">({{query.MentorTitle}})</p>
-                  </div>
-                  <span>
-                    <span class="col-3 ">
-                      <h4 class="text-muted mt-0 ms-0 pt-3">Your query</h4>
-                      <p class="" style="width: 100%;">{{ query.Question }}</p>
-                    </span>
-                    <!-- {{ getBadgeText(query.QueryAnswers.length) }} -->
-                  </span>
-                </span>
-
-
+    <!-- Loop through user queries -->
+    @for(query of userQueries; track $index){
+      <div class="card-body my-3 rounded shadow p-3">
+        <div class="pb-3">
+          <div class="row align-items-center">
+            <div class="col-lg-8 col-md-8 col-12 d-flex flex-column flex-lg-row mb-3">
+              <div class="position-relative mt-4 mt-lg-0 me-3 text-center">
+                <!-- <img src="http://localhost:5164/{{query.MentorImageUrl}}" 
+                     class="avatar-xl border border-3 border-white shadow-sm img-fluid" 
+                     style="height: auto; width: 100%; max-width: 180px; border-radius: 13px;" alt="mentor avatar"> -->
+             
+                     <img src="http://localhost:5164/{{query.MentorImageUrl}}" 
+                     class="avatar-xl border border-3 border-white shadow-sm img-fluid" 
+                     style="height: auto; width: 100%; max-width: 180px; border-radius: 13px;" alt="mentor avatar">
+                    </div>
+              <div>
+                <div class="d-flex flex-wrap align-items-center">
+                  <span class="h4 pe-2 fw-bold" style="font-size: 28px;">{{ query.FirstName }} {{ query.LastName }}</span>
+                  <!-- <p class="text-muted mb-0 ms-2">({{query.MentorTitle}})</p>  -->
+                  <!-- <p class="mentor-title mb-0 ms-2">{{ query.MentorTitle }}</p> -->
+                  <p class="mentor-title mb-0 ms-2" style="font-size: 15px;">{{ query.MentorTitle }}</p>
+            
+                  <!-- <p class="text-muted mb-0 ms-0">Web Developer</p> -->
+                
+                </div>
+                <div>
+                  <h4 class="mt-2" style="font-size: 20px; line-height: 1.2;">Your query</h4>
+                  <p class="text-muted mt-1" style="font-size: 16px;">{{ query.Question }}</p>
+                </div>
               </div>
             </div>
-
-
-
-            <!-- <div class="row"> -->
-
-            <!-- </div> -->
-
-
-            <div class="col-lg-2 col-md-12 col-12 d-lg-flex align-items-start justify-content-end">
+            <div class="col-lg-4 col-md-12 col-12 d-flex align-items-center justify-content-end">
               @if(query?.QueryAnswers?.length > 0){
-               <!-- <button type="button" class="btn btn-dark" [routerLink]="['/profile/answer-query', query.Instructor_Id]">
-                  <i class="fas fa-user"></i> Go To Answer
-                </button>
-                -->
-                <!-- <button type="button" class="btn btn-dark " style=" width: fit-content; height: 50px;"
-                  [routerLink]="['/answer-query',query.Instructor_Id]" routerLinkActive="active">
-                  <i class="fas fa-user"></i> Go To Answer   
-                </button> -->
-                <a class="btn btn-outline-primary btn-sm" [routerLink]="['/profile/answer-query', query.Instructor_Id, query.Id,query.User_Id]" style="border-radius: 25px;">
-              Go To Answer
-            </a>
-                }
-                @if(query?.QueryAnswers?.length === 0){
-
-                <a class="btn btn-outline-primary btn-sm disabled" style="border-radius: 25px;">
-                  Pending
+                <a class="btn btn-outline-primary btn-sm shadow-sm me-4" [routerLink]="['/profile/answer-query', query.Instructor_Id, query.Id,query.User_Id]" style="border-radius: 25px;">
+                  <i class="fas fa-arrow-right "></i> Go To Answer
                 </a>
-                }
-              </div>
+              }
+              @if(query?.QueryAnswers?.length === 0){
+                <a class="btn btn-outline-secondary btn-sm disabled shadow-sm me-4" style="border-radius: 25px;">
+                  <i class="fas fa-hourglass-half" style=""></i> Pending
+                </a>
+              }
             </div>
           </div>
         </div>
-
-      }
       </div>
-      
-    </div>
+    }
   </div>
+</div>
