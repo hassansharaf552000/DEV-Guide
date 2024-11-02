@@ -12,7 +12,7 @@ import { usersDataComponent } from './users-data/users-data.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { AddskillsComponent } from './addskills/addskills.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -35,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     AdminRoutingModule,   
-    ReactiveFormsModule, // Add ReactiveFormsModule here
+    ReactiveFormsModule,
+    FormsModule // Add ReactiveFormsModule here
    
   ]
 })
