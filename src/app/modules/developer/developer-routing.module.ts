@@ -12,7 +12,7 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
 import { SharedModule } from '../../shared/shared.module';
 import { LoginComponent } from '../../shared/components/login/login.component';
 import { RegisterComponent } from '../../shared/components/register/register.component';
-import { Forget_passwordComponent } from '../../shared/components/forget_password/forget_password.component';
+
 import { PaymentComponent } from './Components/payment/payment.component';
 import { FaqComponent } from '../../shared/components/faq/faq.component';
 import { HomeComponent } from './Components/home/home.component';
@@ -50,6 +50,8 @@ import { SkillsComponent } from '../../shared/components/skills/skills.component
 import { EducationsComponent } from '../../shared/components/education-list/education-list.component';
 import { ExperienceListComponent } from '../../shared/components/experience-list/experience-list.component';
 import { SocialAccountsListComponent } from '../../shared/components/social-accounts-list/social-accounts-list.component';
+import { ForgotPasswordComponent } from '../../shared/components/forget_password/forget_password.component';
+import { ResetPasswordComponent } from '../../shared/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -73,7 +75,8 @@ const routes: Routes = [
       { path: 'finish-quiz', component: FinishQuizComponent },
       { path: 'aboutus', component: AboutUsComponent },
       { path: 'home', component: HomeComponent },
-      { path: 'forgetpassword', component: Forget_passwordComponent },
+      { path: 'forgetpassword', component: ForgotPasswordComponent },
+      { path: 'resetpassword', component: ResetPasswordComponent },
       { path: 'faq-and-licence', component: FaqComponent },
       { path: 'booking', component: BookingComponent },
       { path: 'query', component: QueryComponent },

@@ -8,7 +8,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { provideClientHydration } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Forget_passwordComponent } from './components/forget_password/forget_password.component';
+import { ForgotPasswordComponent } from './components/forget_password/forget_password.component';
 import { RouterModule } from '@angular/router';
 import { FaqComponent } from './components/faq/faq.component';
 import { CommunicationComponent } from './components/communication/communication.component';
@@ -42,6 +42,7 @@ import { ExperienceListComponent } from './components/experience-list/experience
 import { SocialAccountsListComponent } from './components/social-accounts-list/social-accounts-list.component';
 import { AddsocialaccountComponent } from './components/addsocialaccount/addsocialaccount.component';
 import { SocialaccountscardComponent } from './components/socialaccountscard/socialaccountscard.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 
@@ -53,7 +54,7 @@ import { SocialaccountscardComponent } from './components/socialaccountscard/soc
     SpinnerComponent,
     LoginComponent,
     RegisterComponent,
-    Forget_passwordComponent,
+    ForgotPasswordComponent,
     FaqComponent,
     CommunicationComponent,
     AdminUIComponent,
@@ -75,7 +76,8 @@ import { SocialaccountscardComponent } from './components/socialaccountscard/soc
     ExperienceListComponent,
     SocialAccountsListComponent,
     AddsocialaccountComponent,
-    SocialaccountscardComponent
+    SocialaccountscardComponent,
+    ResetPasswordComponent
   ],
 
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, NgxPaginationModule,
