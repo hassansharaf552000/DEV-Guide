@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ISkill } from '../../../core/enums/Skill';
+import { IQuiz } from '../../../core/enums/Quiz';
 
 @Component({
   selector: 'app-quiz-card',
@@ -7,7 +8,7 @@ import { ISkill } from '../../../core/enums/Skill';
   styleUrl: './quiz-card.component.css'
 })
 export class QuizCardComponent {
-@Input ()skill!:ISkill
+@Input ()Quiz!:IQuiz
 
   // Function to get the quiz details
 

@@ -29,7 +29,7 @@
 }
 
 .custom-header {
-  background-color: #1C4980;
+  background-color:  #415bcf;
   color: #ffffff;
 }
 
@@ -39,12 +39,12 @@
   margin: 0 auto;
 }
 
-.supmit-button {
-  background-color: #1C4980;
+.submit-button {
+  background-color:  #415bcf;
   color: #ffffff;
 }
 
 .button {
   color: #ffffff;
-  background-color: #1C4980;
+  background-color:  #415bcf;
 }

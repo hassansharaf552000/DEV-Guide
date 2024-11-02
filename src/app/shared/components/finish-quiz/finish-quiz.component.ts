@@ -1,4 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { IQuiz } from '../../../core/enums/Quiz';
 
 @Component({
   selector: 'app-finish-quiz',
@@ -8,8 +10,24 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 export class FinishQuizComponent {
   selectedRating: number = 0;
   feedbackText: string = '';
+  message: string = '';
+  score: number = 0;
+  quiz:IQuiz
 
-  constructor(private cdr: ChangeDetectorRef) {}
+
+  constructor(private router: Router,private cdr: ChangeDetectorRef) {
+    // Retrieve state data from router
+    const navigation = this.router.getCurrentNavigation();
+    const state = navigation?.extras.state as { message: string; score: number };
+    if (state) {
+      this.message = state.message;
+      this.score = state.score;
+    }
+  }
+
+  ngOnInit(): void {}
+
+
 
   // Method to handle rating selection
   rateExperience(rating: number): void {

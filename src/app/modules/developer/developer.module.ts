@@ -26,13 +26,13 @@ import { BookingComponent } from './Components/booking/booking.component';
 import { BookingConfirmationComponent } from './Components/booking-confirmation/booking-confirmation.component';
 import { SkillAssessmentsComponent } from './Components/skill-assessments/skill-assessments.component';
 import { SkillInstructionsComponent } from './Components/skill-instructions/skill-instructions.component';
-import { QuizComponent } from './Components/quiz/quiz.component';
-import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.component';
+import { QuizComponent } from '../../shared/components/quiz/quiz.component';
+import { FinishQuizComponent } from '../../shared/components/finish-quiz/finish-quiz.component';
 import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
 import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
 import { ProfileLayoutComponent } from './Components/profile-layout/profile-layout.component';
-import { QuizListComponent } from './Components/quiz-list/quiz-list.component';
-import { QuizDetailsComponent } from './Components/quiz-details/quiz-details.component';
+import { QuizListComponent } from '../../shared/components/quiz-list/quiz-list.component';
+import { QuizDetailsComponent } from '../../shared/components/quiz-details/quiz-details.component';
 import { ProfileSideBarComponent } from './Components/profile-side-bar/profile-side-bar.component';
 import { ReviewsCardComponent } from './Components/reviews-card/reviews-card.component';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
@@ -81,13 +81,10 @@ import { DeveloperlistComponent } from './Components/developerlist/developerlist
     BookingConfirmationComponent,
     SkillAssessmentsComponent,
     SkillInstructionsComponent,
-    QuizComponent,
     FinishQuizComponent,
     HrProfileComponent,
     MentorProfileComponent,
     ProfileLayoutComponent,
-    QuizListComponent,
-    QuizDetailsComponent,
     ProfileSideBarComponent,
     ReviewsCardComponent,
     ReviewsListComponent,
@@ -123,7 +120,7 @@ import { DeveloperlistComponent } from './Components/developerlist/developerlist
     CarouselModule,
     MatFormFieldModule,
     MatInputModule,
-   
+
 
 
   ],

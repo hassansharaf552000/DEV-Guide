@@ -21,12 +21,12 @@ import { QueryComponent } from './Components/query/query.component';
 import { BookingConfirmationComponent } from './Components/booking-confirmation/booking-confirmation.component';
 import { SkillAssessmentsComponent } from './Components/skill-assessments/skill-assessments.component';
 import { SkillInstructionsComponent } from './Components/skill-instructions/skill-instructions.component';
-import { QuizComponent } from './Components/quiz/quiz.component';
-import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.component';
+import { QuizComponent } from '../../shared/components/quiz/quiz.component';
+import { FinishQuizComponent } from '../../shared/components/finish-quiz/finish-quiz.component';
 import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
 import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
 import { UserlayoutComponent } from './Components/userlayout/userlayout.component';
-import { QuizDetailsComponent } from './Components/quiz-details/quiz-details.component';
+import { QuizDetailsComponent } from '../../shared/components/quiz-details/quiz-details.component';
 import { ProfileSideBarComponent } from './Components/profile-side-bar/profile-side-bar.component';
 import path from 'path';
 import { scheduled } from 'rxjs';
@@ -35,7 +35,7 @@ import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.com
 import { QueryAnswerComponent } from './Components/query-answer/query-answer.component';
 import { ProfileLayoutComponent } from './Components/profile-layout/profile-layout.component';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
-import { QuizListComponent } from './Components/quiz-list/quiz-list.component';
+import { QuizListComponent } from '../../shared/components/quiz-list/quiz-list.component';
 import { MentorAnswerQueryComponent } from '../mentor/Components/mentor-answer-query/mentor-answer-query.component';
 import { CommunicationComponent } from '../../shared/components/communication/communication.component';
 import { AdminUIComponent } from '../../shared/components/admin-ui/admin-ui.component';
@@ -82,8 +82,7 @@ const routes: Routes = [
       { path: 'contactus', component: ContactUsComponent },
       { path: 'skill-assessments', component: SkillAssessmentsComponent,canActivate: [AuthGuard], },
       { path: 'skill-instructions', component: SkillInstructionsComponent,canActivate: [AuthGuard], },
-      { path: 'quiz', component: QuizComponent,canActivate: [AuthGuard], },
-      { path: 'finish-quiz', component: FinishQuizComponent,canActivate: [AuthGuard], },
+
       { path: 'aboutus', component: AboutUsComponent },
       { path: 'home', component: HomeComponent },
       { path: 'forgetpassword', component: Forget_passwordComponent },
@@ -97,12 +96,15 @@ const routes: Routes = [
       { path: 'booking', component: BookingComponent,canActivate: [AuthGuard], },
       { path: 'query', component: QueryComponent,canActivate: [AuthGuard], },
       { path: 'confirmation', component: BookingConfirmationComponent,canActivate: [AuthGuard], },
+      { path: 'quiz/:id', component: QuizComponent,canActivate: [AuthGuard], },
+      { path: 'finish-quiz/:id', component: FinishQuizComponent,canActivate: [AuthGuard], },
       {path:'Quizzes',component:QuizzesListComponent,canActivate: [AuthGuard],},
       {path:'Quiz/:id',component:QuizzesDetailsComponent,canActivate: [AuthGuard],},
+
       { path: '', redirectTo: 'home', pathMatch: 'full' },
 
      { path: '**', redirectTo: 'notfound' },
-  
+
 
 
      //{ path: '**', component:NotFoundComponent},
@@ -156,12 +158,13 @@ const routes: Routes = [
   { path: 'step-four', component: StepFourComponent },
   { path: 'step-five', component: StepFiveComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'cancel', component: PaymentComponent },
-  
+  { path: 'cancel', component: PaymentComponent,canActivate: [AuthGuard] },
 
-  { path: 'confirm/:id', component: BookingConfirmationComponent },
 
-  
+
+  { path: 'confirm/:id', component: BookingConfirmationComponent,canActivate: [AuthGuard] },
+
+
 
   //{ path: '**', redirectTo: 'notfound' },
 ];

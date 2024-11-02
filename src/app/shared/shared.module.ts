@@ -48,12 +48,19 @@ import { StepThreeComponent } from './components/step-three/step-three.component
 import { StepFourComponent } from './components/step-four/step-four.component';
 import { StepFiveComponent } from './components/step-five/step-five.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { QuizComponent } from './components/quiz/quiz.component';
+import { QuizDetailsComponent } from './components/quiz-details/quiz-details.component';
+import { QuizListComponent } from './components/quiz-list/quiz-list.component';
+import { TakenQuizzesCardComponent } from './components/taken-quizzes-card/taken-quizzes-card.component';
 
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
+    QuizComponent,
+    QuizDetailsComponent,
+    QuizListComponent,
     StepOneComponent,
     StepTwoComponent,
     StepThreeComponent,
@@ -88,6 +95,7 @@ import { PaymentComponent } from './components/payment/payment.component';
     AddsocialaccountComponent,
     SocialaccountscardComponent,
     PaymentComponent,
+    TakenQuizzesCardComponent,
   ],
 
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, NgxPaginationModule,
@@ -101,7 +109,7 @@ import { PaymentComponent } from './components/payment/payment.component';
     MatCheckboxModule,
     MatCardModule,       // Material Card module
     MatIconModule,       // Material Icon module
-    MatButtonModule
+    MatButtonModule,
   ],
 
   exports: [NavbarComponent, FooterComponent, SpinnerComponent],
