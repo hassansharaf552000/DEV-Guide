@@ -1,14 +1,8 @@
 <nav class="sidebar">
   <div class="profile-section">
-    <img [src]="profile.imageUrl" alt="Profile Image" class="profile-image" />
-    <h3>{{ profile.name }}</h3>
-    <p>{{ profile.email }}</p>
-    <div class="progress-bar-wrapper">
-      <div class="progress-bar">
-        <div class="progress" [style.width.%]="profile.profileCompletion"></div>
-      </div>
-      <span class="progress-percentage">{{ profile.profileCompletion }}%</span>
-    </div>
+    <img src="http://localhost:5164/{{userImageUrl}}" alt="Profile Image" class="profile-image" />
+    <h3>Welcome {{ userName || 'User' }}</h3>
+    <h3>Development Mentor</h3>
   </div>
 
   <ul>
@@ -22,6 +16,14 @@
         <i [class]="logoutItem.icon" class="mr-2"></i> <!-- Logout Icon -->
         <span>{{ logoutItem.label }}</span> <!-- Logout Text -->
       </button>
+    </div>
+    <div class="logout-section mt-3">
+      <!-- <button class="btn btn-danger d-flex justify-content-center align-items-center wide-button " (click)="backhome()" style="background-color: black; width: 200px; border: none;">
+        <i [class]="homeItem.icon" style="color: white; ;"></i> 
+        {{ homeItem.label }} 
+      </button> 
+          -->
+       
     </div>
   </ul>
 </nav>

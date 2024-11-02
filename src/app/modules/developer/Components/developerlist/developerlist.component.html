@@ -1,0 +1,334 @@
+<main>
+    <!--hero section-->
+    <section class="py-xl-8 py-6">
+      <div class="container">
+        <!--row-->
+        <div class="row gy-4 justify-content-between">
+  
+          <div *ngIf="developerProfile?.Educations?.length > 0 ||developerProfile?.Experiences?.length > 0"
+            class="col-xl-7 col-12">
+            <div class="d-flex flex-column gap-4" style="height: fit-content;">
+              <!--card-->
+              <div class="card" style="height: fit-content;">
+                <!--img-->
+                <div class="rounded-top-3"
+                  style="background-image: url(mentor-single.png ); background-position: center; background-size: cover; background-repeat: no-repeat; height: 228px">
+                </div>
+                <div class="card-body  " style="height:auto;">
+                  <div class="d-flex flex-column gap-5 ">
+                    <!--img-->
+                    <div class="mt-n8 mb-0" style="height: 0px;">
+                      <img src="http://localhost:5164/{{developerProfile.Image}}" alt="developer 1"
+                        class="img-fluid rounded-4 mt-n8"
+                        onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
+                      <!-- <img src="avatar-2.jpg" alt="developer 1" class="img-fluid rounded-4 mt-n8"> -->
+                    </div>
+                    <div class="d-flex flex-column gap-5  custom-gap gap-sm-3">
+                      <div class="d-flex flex-column custom-gap gap-3">
+                        <div class="d-flex  flex-column  justify-content-between gap-2">
+                          <!--heading-->
+                          <div>
+                            <h1 class="mb-0" style="font-size: 40PX;">{{ developerProfile?.FirstName }}
+                              {{developerProfile?.LastName}}</h1>
+                            <!--content-->
+                            <div class="d-flex justify-content-between  gap-2">
+                              <p class="fw-medium text-gray-800">{{ developerProfile?.Title }}</p>
+                              <div class="d-flex flex-lg-row   gap-5">
+                                <small class="fw-medium text-success mt-2">{{ developerProfile?.YearsOfExperience }}yrs
+                                  Exp</small>
+                                <div class="d-flex flex-row gap-2 align-items-center lh-1">
+                                  <!--icon-->
+                                  <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                                      class="bi bi-geo-alt-fill text-danger" viewBox="0 0 16 16">
+                                      <path
+                                        d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6">
+                                      </path>
+                                    </svg>
+                                  </span>
+                                  <!--text-->
+                                  <!-- <span>Gujarat,India</span> -->
+                                  <span style="margin-right: 20px;">{{developerProfile.Country}}</span>
+                                </div>
+                              </div>
+                            </div>
+  
+                          </div>
+  
+                          <h5 class="mb-0 mt-3">About</h5>
+                          <div class="d-flex flex-column">
+                            <!--para-->
+                            <p class="mb-1">
+                              {{ displayText }}
+                            </p>
+                            <div *ngIf="developerProfile?.About?.length > maxLength">
+                              <a class="btn-link" (click)="toggleExpand()">
+                                {{ isExpanded ? 'Show less' : 'Read more' }}
+                              </a>
+                            </div>
+                          </div>
+  
+                          <div class="d-flex flex-column gap-3">
+  
+                            <h5 class="mb-0 mt-3">Skills</h5>
+  
+                            <div class="gap-2 d-flex flex-wrap">
+  
+                              <div class="developer-skills col-12 mb-0 mt-3" >
+                                <div *ngFor="let skill of developerProfile.Skills" class="skill-circle">
+                                  {{ skill }}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+  
+                      </div>
+  
+                      <div>
+  
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              
+            </div>
+          </div>
+          <div *ngIf="developerProfile?.Educations?.length <= 0 && developerProfile?.Experiences?.length <= 0"
+            class="col-xl-12 col-12">
+            <div class="d-flex flex-column gap-4" style="height: fit-content;">
+              <!--card-->
+              <div class="card" style="height: fit-content;">
+                <!--img-->
+                <div class="rounded-top-3"
+                  style="background-image: url(mentor-single.png ); background-position: center; background-size: cover; background-repeat: no-repeat; height: 228px">
+                </div>
+                <div class="card-body  " style="height:auto;">
+                  <div class="d-flex flex-column gap-5 ">
+                    <!--img-->
+                    <div class="mt-n8 mb-0" style="height: 0px;">
+                      <img src="http://localhost:5164/{{developerProfile.Image}}" alt="developer 1"
+                        class="img-fluid rounded-4 mt-n8"
+                        onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
+                      <!-- <img src="avatar-2.jpg" alt="developer 1" class="img-fluid rounded-4 mt-n8"> -->
+                    </div>
+                    <div class="d-flex flex-column gap-5  custom-gap gap-sm-3">
+                      <div class="d-flex flex-column custom-gap gap-3">
+                        <div class="d-flex  flex-column  justify-content-between gap-2">
+                          <!--heading-->
+                          <div>
+                            <h1 class="mb-0" style="font-size: 40PX;">{{ developerProfile?.FirstName }}
+                              {{developerProfile?.LastName}}</h1>
+                            <!--content-->
+                            <div class="d-flex justify-content-between  gap-2">
+                              <p class="fw-medium text-gray-800">({{ developerProfile?.Title }})</p>
+                              <div class="d-flex flex-lg-row   gap-5">
+                                <small class="fw-medium text-success mt-2">{{ developerProfile?.YearsOfExperience }}yrs
+                                  Exp</small>
+                                <div class="d-flex flex-row gap-2 align-items-center lh-1">
+                                  <!--icon-->
+                                  <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                                      class="bi bi-geo-alt-fill text-danger" viewBox="0 0 16 16">
+                                      <path
+                                        d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6">
+                                      </path>
+                                    </svg>
+                                  </span>
+                                  <!--text-->
+                                  <!-- <span>Gujarat,India</span> -->
+                                  <span>{{developerProfile.Country}}</span>
+                                </div>
+                              </div>
+                            </div>
+  
+                          </div>
+  
+                          <h5 class="mb-0 mt-3">About</h5>
+                          <div class="d-flex flex-column">
+                            <!--para-->
+                            <p class="mb-1">
+                              {{ displayText }}
+                            </p>
+                            <div *ngIf="developerProfile?.About?.length > maxLength">
+                              <a class="btn-link" (click)="toggleExpand()">
+                                {{ isExpanded ? 'Show less' : 'Read more' }}
+                              </a>
+                            </div>
+                          </div>
+  
+                          <div class="d-flex flex-column gap-3">
+  
+                            <h5 class="mb-0 mt-3">Skills</h5>
+  
+                            <div class="gap-2 d-flex flex-wrap">
+  
+                              <div class="developer-skills col-12 mb-0 mt-3" style="height: 30px;">
+                                <div *ngFor="let skill of developerProfile.Skills" class="skill-circle">
+                                  {{ skill }}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+  
+                      </div>
+  
+                      <div>
+  
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+            </div>
+          </div>
+          <div class="col-xl-5 col-12">
+  
+            <div *ngIf="developerProfile?.Educations?.length > 0" class="card mb-4">
+              <div class="profile-section">
+                <h5 class=" ">Education</h5>
+                <div>
+                  <!-- Corrected *ngFor directive -->
+                  <div *ngFor="let education of getLimitedEducations(developerProfile?.Educations);"
+                    class="education-container">
+                    <div class="education-item">
+                      <div class="img vertical-align institute-logo" style="padding-bottom: 60px; align-items: start;">
+                        <img width="36" height="36" loading="lazy"
+                          src="http://localhost:5164/Univeristy_Default/defaults.jfif"
+                          alt="{{education.University}}" class="ng-star-inserted">
+                      </div>
+                      <div class="education-details">
+                        <div class="title"> {{education.Faculty}}, {{education.University}} </div>
+                        <p><i class="fa-solid fa-graduation-cap"></i>{{education.Degree}}</p>
+                        <div class="education-time">
+                          <span class="calendar-icon"><i class="fa-solid fa-calendar-day"></i></span>
+                          {{getYearFromDate(education.StartDate)}} - {{getYearFromDate(education.EndDate)}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <!-- Show More/Show Less Button -->
+                  <button *ngIf="developerProfile?.Educations?.length > maxItemsToShow" class="btn btn-link"
+                    (click)="toggleShowAll()">
+                    {{ showAll ? 'Show Less' : 'Show More' }}
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="developerProfile?.Experiences?.length > 0" class="card mb-4">
+              <div class="profile-section">
+                <h5 class=" ">Work Experience</h5>
+                <div>
+                  <!-- Corrected *ngFor directive -->
+                  <div *ngFor="let experience of getLimitedExperiences(developerProfile.Experiences);"
+                    class="education-container">
+                    <div class="education-item">
+                      <div class="img vertical-align institute-logo" style="padding-bottom: 60px; align-items: start;">
+                        <img width="36" height="36" loading="lazy"
+                       src="http://localhost:5164/Univeristy_Default/defaultforcompany.jfif"
+                          alt="{{experience.Organization}}" class="ng-star-inserted">
+                      </div>
+                      <div class="education-details">
+                        <div class="title"> {{experience.FieldOfStudy}} </div>
+                        <p><i class="bi bi-buildings-fill"></i>{{experience.Organization}}</p>
+                        <div class="education-time">
+                          <span class="calendar-icon"><i class="fa-solid fa-calendar-day"></i></span>
+                          {{getYearFromDate(experience.StartDate)}} - {{getYearFromDate(experience.EndDate)}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <!-- Show More/Show Less Button -->
+                  <button *ngIf="developerProfile?.Experiences?.length > maxItemsToShow" class="btn btn-link"
+                    (click)="toggleShowAll()">
+                    {{ showAll ? 'Show Less' : 'Show More' }}
+                  </button>
+                </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--developer-->
+  
+    <!--   
+      <section class="pb-xl-8 pb-6 mt-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h5 class="mb-4">Similar developers</h5>
+            </div>
+          </div>
+          <div class="row gy-4 justify-content-sm-center">
+           
+            <div class="col-xxl-3 col-xl-4 col-md-6 col-sm-9 custom-col " *ngFor="let developer of similardevelopers">
+             
+              <div class="card rounded-4 card-bordered card-lift">
+                <div class="p-3 d-flex flex-column gap-3">
+                 
+                  
+                    <a [routerLink]="['/developers',developer.ID]">
+                    <img src="http://localhost:5164/{{developer.Image}}" style="width: 100%; height: 100%; border-radius: 10px;cursor: pointer;"
+                     onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
+                    </a>
+                 
+                  <div class="d-flex flex-column gap-4">
+                    <div class="d-flex flex-column gap-2">
+                      <div>
+                        <div class="d-flex align-items-center gap-2">
+                          <h5 class="mb-0">
+                            <a [routerLink]="['/developers',developer.ID]" class="text-reset">{{developer.FirstName}} {{developer.LastName}}</a>
+                          </h5>
+                          <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                              class="bi bi-patch-check-fill text-success" viewBox="0 0 16 16">
+                              <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"></path>
+                            </svg>
+                          </span>
+                        </div>
+                        <span class="text-gray-800">{{developer.Title}}</span>
+                      </div>
+      
+                      <div class="d-flex align-items-center justify-content-between fs-6">
+                        <div>
+                          <span>{{developer.YearsOfExperience}} Yrs Exp.</span>
+                        </div>
+                        <div class="d-flex gap-1 align-items-center lh-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                            class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                          </svg>
+                          <span class="  text-dark">{{developer.AverageRate}}</span>
+                          <span>({{developer.NumOfReviews}} Reviews)</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between align-items-center">
+                      <div>
+                        <span>Session Price</span>
+                        <div class="d-flex flex-row gap-1 align-items-center">
+                          <h4 class="mb-1" style="font-size: 25px;">${{developer.Price}}</h4>
+                        </div>
+                      </div>
+                      <div>
+                        <a [routerLink]="['/developer/booking/',id]" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#signupModal">Book Sessions</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+       -->
+    <!--developer-->
+  </main>

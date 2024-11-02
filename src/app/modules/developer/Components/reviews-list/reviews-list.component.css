@@ -1,11 +1,12 @@
 .left-card {
-  border: 2px solid #415bcf; /* Border color */
+  border: 1px solid black;
+   /* Border color */
   background-color: #ffffff; /* White background */
   color: #000000; /* Black text */
   padding: 20px;
   text-align: center;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 2px 4px rgba(0, 0, 0, 0.1);
   margin-right: 20px; /* Optional: adds a subtle shadow */
 }
 
@@ -37,8 +38,8 @@
 
 /* Add hover effect for better interaction */
 .review-card:hover {
-  transform: translateY(-5px); /* Slight lift effect */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  /* transform: translateY(-7px);  */
+  /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); Stronger shadow on hover */
 }
 
 /* User info within the review card */
@@ -54,14 +55,14 @@
   width: 40px;
   height: 40px;
   margin-right: 10px;
-  border: 2px solid #415bcf; /* Border around the profile image */
+  border: 2px solid black; /* Border around the profile image */
 }
 
 /* User name and date */
 .review-card .user-info h4 {
   margin: 0;
   font-size: 1.1rem;
-  color: #415bcf; /* User name color */
+  color: black; /* User name color */
 }
 
 .review-card .user-info p {
@@ -98,10 +99,44 @@
 }
 
 .reviews::-webkit-scrollbar-thumb {
-  background-color: #415bcf; /* Color for scrollbar thumb */
+  background-color: black; /* Color for scrollbar thumb */
   border-radius: 4px;
 }
 
 .reviews::-webkit-scrollbar-track {
   background-color: #f1f1f1; /* Color for scrollbar track */
+}
+.review-card {
+  border: 1px solid black; /* Border color */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow */
+  margin-bottom: 20px;
+}
+
+.profile-picture img {
+  width: 50px;
+  height: 50px;
+  /* border: 2px solid black;  */
+  /* Border around the profile image */
+}
+
+.reviewer-name {
+  font-size: 1.2rem;
+  color: black; /* Reviewer name color */
+}
+
+.review-date {
+  font-size: 0.875rem;
+  color: #6c757d; /* Date color */
+}
+
+.review-rating .rating-value {
+  font-size: 1.25rem;
+  color: black; /* Rating value color */
+}
+
+.review-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #000000; /* Review text color */
 }

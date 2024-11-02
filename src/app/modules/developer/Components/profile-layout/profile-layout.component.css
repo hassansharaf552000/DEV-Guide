@@ -143,3 +143,46 @@
 .home-btn:hover {
   background-color: rgb(0, 0, 0); /* Darken the background on hover */
 }
+.custom-margins{
+  margin-left: 90px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+@media (min-width: 996px) and (max-width: 1195px) {
+  .custom-margins{
+    margin-left: 70px !important;
+   
+  }
+
+}
+@media (min-width: 768px) and (max-width: 995px) {
+  .custom-margins{
+    margin-left: 100px !important;
+  }
+}
+@media (max-width: 767px) {
+  .custom-margins{
+    /* margin-left: auto !important; */
+    margin-left: 0px !important;
+
+  }
+}
+
+@media (min-width: 997px) and (max-width: 1193px) {
+  .col-lg-8{
+    width: 75%;
+  }
+}
+@media (min-width:980px) and (max-width: 997px) {
+  .col-lg-8{
+    width: 75%;
+  }
+}
+@media  (max-width: 764px) {
+  .col-lg-8{
+    width: 90% !important;
+  }
+  .col-md-8{
+    width: 90% !important;
+  }
+}

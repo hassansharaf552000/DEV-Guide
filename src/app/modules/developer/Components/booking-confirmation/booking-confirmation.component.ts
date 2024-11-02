@@ -1,6 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import jsPDF from 'jspdf';  // Correct import for jsPDF
 import html2canvas from 'html2canvas';
+import { ActivatedRoute } from '@angular/router';
+import { SessionService } from '../../../../shared/services/Session/session.service';
 
 @Component({
   selector: 'app-booking-confirmation',
@@ -9,8 +11,42 @@ import html2canvas from 'html2canvas';
 })
 export class BookingConfirmationComponent {
   @ViewChild('contentToConvert') contentToConvert!: ElementRef;
+  SsessionID="";
+  sessiondetails: any;
+  constructor(private route: ActivatedRoute,private sessionserc : SessionService) {
 
-  constructor() {}
+
+
+    this.SsessionID = this.route.snapshot.paramMap.get('id');
+    if (this.SsessionID) {
+      console.log(' mentor ID provided in the route',this.SsessionID);
+      // Handle the error, for example, navigate to an error page or show a message
+    }
+  }
+  ngOnInit(): void {
+    // Get the mentor ID from the URL
+   
+    this.SsessionID = this.route.snapshot.paramMap.get('id');
+    console.log("sessionid", this.SsessionID )
+    if (this.SsessionID ) {
+      // Fetch mentor profile
+      this.sessionserc.getSessionById(this.SsessionID ).subscribe(
+        data => {
+          this.sessiondetails = data;
+          console.log('session: ', this.sessiondetails);
+          
+
+        },
+        error => {
+          console.error('Error fetching session', error);
+        }
+      );
+
+  
+    }
+
+  
+  }
 
   downloadAsPDF() {
     const content = this.contentToConvert.nativeElement;

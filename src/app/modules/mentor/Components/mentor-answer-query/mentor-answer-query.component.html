@@ -1,51 +1,47 @@
-<div class="">
-  <div class="">
-    <div class="card border-1 rounded-3 border-secondray">
-      <div class="card-header d-lg-flex justify-content-between align-items-center">
-        <div class="mb-3 mb-lg-0">
-          <h3 class="mb-0">My Queries </h3>
-          <p class="mb-0">Here is a list of questions/queries that developers have asked you</p>
-        </div>
+<div class="container-fluid">
+  <div class="card shadow border-0 rounded-4">
+    <div class="card-header bg text-white d-lg-flex justify-content-between align-items-center rounded-top-4">
+      <div class="header-content">
+        <h3 class="mb-0" style="color: black; font-size: bold;">My Queries From Developer</h3>
+        <p class="mb-0">Here is a list of questions/queries that developers have asked you</p>
       </div>
-      @for(query of userQueries; track $index){
-      <div class="card-body">
-        <div class="border-bottom pt-0 pb-0">
-          <div class="row mb-0">
-            <!-- <div class="col-lg-8 col-md-8 col-7 mb-0 mb-lg-0"> -->
-            <div class="col-9  mb-0 mb-lg-0">
+    </div>
 
-              <div class="row">
-                <span class="me-0 position-relative mt-4 justify-content-end align-items-end mt-n5 col-lg-3 col-12">
-                  <img src="{{query.UserImageUrl}}" class="avatar-xl  border border-4 border-white"
-                    style="height: 150px; size: 5px; width: 100%; border-radius: 13px;" alt="avatar">
-                </span>
-                <span class="d-block  col-lg-9 col-12 mt-0 mb-0">
-                  <div class="d-flex ">
-                    <span class="h4 pe-3 " style="font-size: 30px;">{{ query.FirstName }} {{ query.LastName }}</span>
-                  </div>
-                  <span class="col-10 pt-3  ">
-                    <div class="d-flex align-text-center">
-                      <h4 class="text-muted mt-0 ms-0 pt-0 ms-2  align-text-center" style="font-size: 26px !important; "> Query :
-                      </h4>
-                      <p class="ms-0 pt-2 align-text-center" style="font-size: 23px !important;">{{ query.Question }}</p>
-                    </div>
-                  </span>
-                </span>
+    <!-- Loop through user queries -->
+    <ng-container *ngFor="let query of userQueries; let i = index;">
+      <div class="card-body my-3 rounded shadow p-3">
+        <div class="pb-3">
+          <div class="row align-items-center">
+            <!-- <div class="card-body query-card">
+           <div class="row align-items-center"> -->
+            <!-- User Image -->
+            <div class="col-lg-2 col-12">
+              <!-- <img [src]="'http://localhost:5164/' + query.UserImageUrl"
+              class="avatar-xl" alt="avatar"> -->
+              <img src="avatar-2.jpg" class="avatar-xl" alt="avatar">
+            </div>
+
+            <!-- User Info and Query -->
+            <div class="col-lg-6 col-12">
+              <div class="user-info">
+                <span class="user-name">{{ query.FirstName }} {{ query.LastName }}</span>
+                <div class="query-text">
+                  <strong>Query: </strong>
+                  <span>{{ query.Question }}</span>
+                </div>
               </div>
             </div>
-            <!-- <div class="col-lg-2 col-md-12 col-12 d-lg-flex align-items-start justify-content-end"> -->
-            <div class="col-3 d-lg-flex align-items-start justify-content-end">
 
-              <a class="btn btn-outline-primary btn-sm"
-                [routerLink]="['/profile/answer-query', query.Instructor_Id, query.Id,query.User_Id]"
-                style="border-radius: 25px;">
+            <!-- Answer Button -->
+            <div class="col-lg-3 text-end">
+              <a class="btn custom-btn"
+                [routerLink]="['/profile/answer-query', query.Instructor_Id, query.Id, query.User_Id]">
                 Answer this query
               </a>
             </div>
           </div>
         </div>
-      </div>
-      }
-    </div>
+        </div>
+    </ng-container>
   </div>
 </div>

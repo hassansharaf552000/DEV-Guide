@@ -13,9 +13,39 @@ export class SessionService {
   // GetAllSessionForOneUser="http://localhost:5164/api/Session/GetAllSessionForOneUser"
   GetAllSessionForOneUser="http://localhost:5164/api/Session/GetAllSessionForOneUser"
 
+  GetSessionDetailsURL="http://localhost:5164/api/Session/GetSessionById"
+  UpdateFeedbackURL="http://localhost:5164/api/Session/UpdateFeedback"
+  UpdateFeedbackForCanceledURL="http://localhost:5164/api/Session/UpdateFeedbackForCanceled"
+
+  UpdateMeetingLinkURL="http://localhost:5164/api/Session/UpdateMeetingLink"
+
+  GetAllSessionForDeveloper="http://localhost:5164/api/Session/GetAllSessionForOneDeveloper"
+
+  AddReviewURR= "http://localhost:5164/api/Review//AddReview"
+  CancelSessionUrl="http://localhost:5164/api/Session/CancelSession"
+  UpdateSessionStatusUrl="http://localhost:5164/api/Session/UpdateSessionStatus"
+  getSessionsUrl="http://localhost:5164/api/Session/GetSessions"
   constructor(private http: HttpClient) { }
 
+  // addreview(review:any ,id: number): Observable<any> {
+  //   return this.http.post<any>(`${this.AddReviewURR}/${id}`, review);
+  // }
 
+  UpdateFeedbackForCanceled(sessionId: string, feedback: string): Observable<any> {
+    const body = { Feedback: feedback }; // Wrap the feedback in an object
+  
+    return this.http.put<any>(`${this.UpdateFeedbackForCanceledURL}/${sessionId}`, body, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }) // Ensure the content type is JSON
+    });
+  }
+  
+  addreview( reviewData: any,sessionId: number) {
+    const url = `http://localhost:5164/api/Review/AddReview/${sessionId}`;
+    return this.http.post(url, reviewData);
+  }
+
+
+ 
   GetAllSession(Status:any):any{
     return this.http.get(this.GetAllSessionForOneUser,Status)
   }
@@ -32,9 +62,55 @@ export class SessionService {
 
 //     return this.http.get(this.GetAllSessionForOneUser, { params });
 // }
-getall() {
- 
-  return this.http.get(this.GetAllSessionForOneUser);
+// addreview(review: any ,sessionId:any): Observable<any> {
+  
+//   return this.http.post<any>(this.AddReviewURR, review , sessionId);
+// }
+
+
+getSessionById(id: string): Observable<any> {
+  return this.http.get<any>(`${this.GetSessionDetailsURL}/${id}`);
+}
+// updateFeedback(sessionId: string, feedback: string): Observable<any> {
+//   return this.http.put<any>(`${this.UpdateFeedbackURL}/${sessionId}`, {feedback});
+// }
+updateFeedback(sessionId: string, feedback: string): Observable<any> {
+  const body = { Feedback: feedback }; // Wrap the feedback in an object
+
+  return this.http.put<any>(`${this.UpdateFeedbackURL}/${sessionId}`, body, {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }) // Ensure the content type is JSON
+  });
 }
 
+
+
+
+UpdateMeeting(sessionId: string,feedback: string): Observable<any> {
+  const body = { Feedback: feedback }; // Wrap the feedback in an object
+
+  return this.http.put<any>(`${this.UpdateMeetingLinkURL}/${sessionId}`, body, {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }) // Ensure the content type is JSON
+  });
+}
+
+
+
+getallSessionForMentor() {
+
+  return this.http.get(this.GetAllSessionForOneUser);
+}
+getallSessionForDeveloper() {
+  return this.http.get(this.GetAllSessionForDeveloper);
+}
+
+  cancelSession(id: string): Observable<any> {
+    const url = `${this.CancelSessionUrl}/${id}`;
+    return this.http.delete(url, { headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`) });
+  }
+  UpdateSessionStatus(id: any) {
+    return this.http.put(this.UpdateSessionStatusUrl,id);
+  }
+  getSessions(): Observable<any[]> {  // Use any[] to allow any object structure
+    return this.http.get<any[]>(this.getSessionsUrl);
+  }
 }

@@ -31,25 +31,48 @@ export class AddsocialaccountComponent {
   }
 
   // Handle form submission
+  // onSave(): void {
+  //   if (this.socialAccountForm.valid) {
+  //     const newaccount: ISocialAccount = this.socialAccountForm.value;
+
+  //     // Log the payload before sending the request
+  //     console.log('Payload being sent to backend:', newaccount);
+
+  //     this.socialAccountService.addaccount(newaccount).subscribe(
+  //       (response: ISocialAccount) => {
+  //         console.log('Account added successfully:', response);
+  //         this.dialogRef.close(response);  // Close dialog on success
+  //       },
+  //       (error) => {
+  //         console.error('Error adding Account:', error);
+  //         console.error('Backend Validation Errors:', error.error?.errors); // Log backend errors
+  //       }
+  //     );
+  //   }
+  // }
+
   onSave(): void {
     if (this.socialAccountForm.valid) {
-      const newaccount: ISocialAccount = this.socialAccountForm.value;
+      const newAccount: ISocialAccount = {
+        ...this.socialAccountForm.value,
+        SocialName: Number(this.socialAccountForm.value.SocialName) // Ensure SocialName is sent as a number
+      };
 
-      // Log the payload before sending the request
-      console.log('Payload being sent to backend:', newaccount);
-
-      this.socialAccountService.addaccount(newaccount).subscribe(
+      this.socialAccountService.addaccount(newAccount).subscribe(
         (response: ISocialAccount) => {
           console.log('Account added successfully:', response);
-          this.dialogRef.close(response);  // Close dialog on success
+          this.dialogRef.close(response);
         },
         (error) => {
           console.error('Error adding Account:', error);
-          console.error('Backend Validation Errors:', error.error?.errors); // Log backend errors
+          console.error('Backend Validation Errors:', error.error.errors); // Log validation errors for debugging
         }
       );
+    } else {
+      console.warn('Form is invalid:', this.socialAccountForm.errors);
     }
   }
+
 
 
   // Close modal without saving

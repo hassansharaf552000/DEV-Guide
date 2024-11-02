@@ -1,6 +1,6 @@
 import { HRCardComponent } from './Components/hr-card/hr-card.component';
 import { RateComponent } from './Components/rate/rate.component';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DeveloperRoutingModule } from './developer-routing.module';
 import { UserlayoutComponent } from './Components/userlayout/userlayout.component';
@@ -12,11 +12,11 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { HRListComponent } from './Components/hr-list/hr-list.component';
 import { MentorCardComponent } from './Components/mentor-card/mentor-card.component';
 import { MentorListComponent } from './Components/mentor-list/mentor-list.component';
-import { StepFiveComponent } from './Components/step-five/step-five.component';
-import { StepFourComponent } from './Components/step-four/step-four.component';
-import { StepOneComponent } from './Components/step-one/step-one.component';
-import { StepThreeComponent } from './Components/step-three/step-three.component';
-import { StepTwoComponent } from './Components/step-two/step-two.component';
+import { StepFiveComponent } from '../../shared/components/step-five/step-five.component';
+import { StepFourComponent } from '../../shared/components/step-four/step-four.component';
+import { StepOneComponent } from '../../shared/components/step-one/step-one.component';
+import { StepThreeComponent } from '../../shared/components/step-three/step-three.component';
+import { StepTwoComponent } from '../../shared/components/step-two/step-two.component';
 import { PaymentComponent } from './Components/payment/payment.component';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
@@ -26,13 +26,13 @@ import { BookingComponent } from './Components/booking/booking.component';
 import { BookingConfirmationComponent } from './Components/booking-confirmation/booking-confirmation.component';
 import { SkillAssessmentsComponent } from './Components/skill-assessments/skill-assessments.component';
 import { SkillInstructionsComponent } from './Components/skill-instructions/skill-instructions.component';
-import { QuizComponent } from './Components/quiz/quiz.component';
-import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.component';
+import { QuizComponent } from '../../shared/components/quiz/quiz.component';
+import { FinishQuizComponent } from '../../shared/components/finish-quiz/finish-quiz.component';
 import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
 import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
 import { ProfileLayoutComponent } from './Components/profile-layout/profile-layout.component';
-import { QuizListComponent } from './Components/quiz-list/quiz-list.component';
-import { QuizDetailsComponent } from './Components/quiz-details/quiz-details.component';
+import { QuizListComponent } from '../../shared/components/quiz-list/quiz-list.component';
+import { QuizDetailsComponent } from '../../shared/components/quiz-details/quiz-details.component';
 import { ProfileSideBarComponent } from './Components/profile-side-bar/profile-side-bar.component';
 import { ReviewsCardComponent } from './Components/reviews-card/reviews-card.component';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
@@ -49,13 +49,22 @@ import { QueryAnswerComponent } from './Components/query-answer/query-answer.com
 import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.component';
 
 
+import { DeveloperSessionDetailsComponent } from './Components/developer-session-details/developer-session-details.component';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { BookingListComponent } from './Components/booking-list/booking-list.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { CustomCalendarComponent } from './Components/custom-calendar/custom-calendar.component';
+import { DeveloperProfileComponent } from './Components/developer-profile/developer-profile.component';
+import { DeveloperlistComponent } from './Components/developerlist/developerlist.component';
+
+
+
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
-    StepOneComponent,
-    StepTwoComponent,
-    StepThreeComponent,
-    StepFourComponent,
-    StepFiveComponent,
     RateComponent,
     HRCardComponent,
     HRListComponent,
@@ -72,13 +81,10 @@ import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.com
     BookingConfirmationComponent,
     SkillAssessmentsComponent,
     SkillInstructionsComponent,
-    QuizComponent,
     FinishQuizComponent,
     HrProfileComponent,
     MentorProfileComponent,
     ProfileLayoutComponent,
-    QuizListComponent,
-    QuizDetailsComponent,
     ProfileSideBarComponent,
     ReviewsCardComponent,
     ReviewsListComponent,
@@ -87,7 +93,13 @@ import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.com
     QueryComponent,
     QueryAnswerComponent,
     MentorReplyComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    BookingListComponent,
+    CustomCalendarComponent,
+    DeveloperSessionDetailsComponent,
+    DeveloperProfileComponent,
+    DeveloperlistComponent,
+
   ],
   imports: [
     CommonModule,
@@ -97,12 +109,17 @@ import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.com
     NgSelectModule,
     SharedModule,
 
-    CarouselModule, 
-    
+    CarouselModule,
+
     RouterModule,
     NgxPaginationModule,
     NgxSliderModule  ,
 
+    MatDatepickerModule,
+    MatNativeDateModule,
+    CarouselModule,
+    MatFormFieldModule,
+    MatInputModule,
 
 
 

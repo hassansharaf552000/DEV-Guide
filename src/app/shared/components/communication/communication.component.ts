@@ -243,7 +243,7 @@ onSearchInputChange(input: string) {
         Chat_id: 2,
         Time: this.getCurrentTime(),   // Only time for display
         Message: messageText,
-        Code: 'U-' + (this.MyMessages.length + 1),
+        Code: 'U-' + (this.MyMessages?.length + 1),
         Timestamp: now                // Full date-time for sorting
       };
   

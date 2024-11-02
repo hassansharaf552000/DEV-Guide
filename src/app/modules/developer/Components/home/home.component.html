@@ -295,7 +295,7 @@ Clients Feedbacks
             <input type="search" class="form-control" id="mentorInputSearch" placeholder="Search by company, skills or role">
           </form> -->
           <div class="d-grid d-md-flex">
-            <a href="mentor-list.html" class="btn btn-primary">Explore all mentors</a>
+            <a [routerLink]="['/developer/mentors']" class="btn btn-primary">Explore all mentors</a>
           </div>
         </div>
       </div>
@@ -311,7 +311,7 @@ Clients Feedbacks
           <div class="p-3 d-flex flex-column gap-3">
             <!--img-->
             <a >
-              <img src="{{mentor.Image}}" alt="mentor 1" class="img-fluid w-100 rounded-4">
+              <img src="http://localhost:5164/{{mentor.Image}}" alt="mentor 1" class="img-fluid w-100 rounded-4">
             </a>
             <!--content-->
             <div class="d-flex flex-column gap-4">
@@ -393,7 +393,7 @@ Clients Feedbacks
           <input type="search" class="form-control" id="mentorInputSearch" placeholder="Search by company, skills or role">
         </form> -->
         <div class="d-grid d-md-flex">
-          <a href="mentor-list.html" class="btn btn-primary">Explore all HR</a>
+          <a [routerLink]="['/developer/hrs']"  class="btn btn-primary">Explore all HR</a>
         </div>
       </div>
     </div>
@@ -404,7 +404,7 @@ Clients Feedbacks
           <div class="p-3 d-flex flex-column gap-3">
             <!--img-->
             <a >
-              <img src="{{hr.Image}}" alt="mentor 1" class="img-fluid w-100 rounded-4">
+              <img src="http://localhost:5164/{{hr.Image}}" alt="mentor 1" class="img-fluid w-100 rounded-4">
             </a>
             <!--content-->
             <div class="d-flex flex-column gap-4">
@@ -552,7 +552,7 @@ Clients Feedbacks
               </div>
             </div>
             <div>
-              <a href="#!" class="btn btn-primary">Become a mentor</a>
+              <a href="#!" class="btn btn-primary">Become a Mentor or HR</a>
             </div>
           </div>
         </div>
@@ -576,4 +576,3 @@ Clients Feedbacks
   <img src="iti logo_processed.png" class="image-size ms-3">
   <img src="minstrylogo.png" class="image-size ms-3">
 </div>
-

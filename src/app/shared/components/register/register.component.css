@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
 .signup-form {
   max-width: 600px;
-  margin: 50px auto;
-  padding: 15px;
+  /* margin: 50px auto;
+  padding: 15px; */
   /* background-color: #cdcbb1; */
+  align-items: center;
+
+  justify-items: center;
+  justify-content: center;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(60, 6, 6, 0.1);
-  
+
   /* border:3px solid black; */
 }
 
@@ -14,41 +20,61 @@
 }
 
 
-h2{
+h2 {
   text-align: center;
   font-size: 0.9em;
-  color:black;
+  color: black;
   padding-top: 5px;
 }
 
-button{
+.button_r {
   background: #fff;
   border: 1px solid transparent;
-  border-radius:10px ;
-  width: 120px;
-  height: 50px;
-  margin-left: 20px;
-  margin-top:15px;
-  color: #7D7769;
-  border:1px solid #415bcf;
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+  margin-left: 10px;
+  margin-top: 15px;
+  color: black;
+  border: 1px solid #0b143c;
 }
-button:hover{
-  background:#cfccc4 ;
+.button_s{
+  background: #0b143c;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  width: 300px;
+  height: 50px;
+  margin-left: 10px;
+  margin-top: 15px;
+  /* color: #7D7769; */
+  border: 1px solid #0b143c;
+}
+/* .button_s:hover{
+  background: white;
+  
+  color: #0b143c;
+} */
+.button_r:hover {
+  background: #0b143c;
+  color: white;
   border-radius: 10px;
 }
-button:focus{
-  border:2px solid black;
-  box-shadow: 0 0 3px  rgba(105, 94, 90, 0.6);
+
+button:focus {
+  border: 2px solid black;
+  box-shadow: 0 0 3px rgba(105, 94, 90, 0.6);
   outline: none;
   font-size: 1.1em;
 }
-   
+
 
 
 
 /* Full-page background image */
 .login-page {
-  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/skill\ 2.jpg); /* Replace with your background image path */
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/skill\ 2.jpg);
+  /* Replace with your background image path */
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -56,49 +82,72 @@ button:focus{
 
 /* Adjusting card style */
 .login-card {
-  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
-  border-radius: 10px; /* Rounded corners */
-  border: 2px solid #ffffff; /* Blue border (or change color as needed) */
-  padding: 20px; /* Ensure padding is not zero for content spacing */
+  background-color: rgba(255, 255, 255, 0.9);
+  /* Slightly transparent background */
+  border-radius: 10px;
+  /* Rounded corners */
+  border: 2px solid #ffffff;
+  /* Blue border (or change color as needed) */
+  padding: 15px;
+  /* Ensure padding is not zero for content spacing */
 }
 
 /* Center the form elements */
 .form-group {
-  width: 85%; /* Set width for form groups */
-  margin: 20px auto; /* Center form groups */
+  width: 85%;
+  /* Set width for form groups */
+  margin: 20px auto;
+  /* Center form groups */
 }
 
 /* Adjust input fields */
 .form-control {
-  width: 100%; /* Full width of the container */
-  padding: 10px; /* Padding inside the input fields */
-  border-radius: 5px; /* Rounded corners */
+  width: 100%;
+  /* Full width of the container */
+  padding: 10px;
+  /* Padding inside the input fields */
+  border-radius: 5px;
+  /* Rounded corners */
 }
 
 /* Center the button */
 .btn-custom {
-  background-color: #415bcf; /* Primary background color */
-  color: white; /* Text color */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 10px 20px; /* Padding for a better size */
-  font-size: 20px; /* Font size */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
-  cursor: pointer; /* Pointer on hover */
-  width: 45%; /* Adjust width to your preference */
-  margin: 0 auto; /* Center the button */
+  background-color: #415bcf;
+  /* Primary background color */
+  color: white;
+  /* Text color */
+  border: none;
+  /* Remove border */
+  border-radius: 5px;
+  /* Rounded corners */
+  padding: 10px 20px;
+  /* Padding for a better size */
+  font-size: 20px;
+  /* Font size */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  /* Smooth transitions */
+  cursor: pointer;
+  /* Pointer on hover */
+  width: 45%;
+  /* Adjust width to your preference */
+  margin: 0 auto;
+  /* Center the button */
 }
 
 /* Button hover effect */
 .btn-custom:hover {
-  background-color: #354ccf; /* Darker shade on hover */
-  transform: translateY(-2px); /* Slight lift effect on hover */
+  background-color: #354ccf;
+  /* Darker shade on hover */
+  transform: translateY(-2px);
+  /* Slight lift effect on hover */
 }
 
 /* Button active state */
 .btn-custom:active {
-  background-color: #3040a2; /* Even darker shade when active */
-  transform: translateY(1px); /* Slight push down effect on click */
+  background-color: #3040a2;
+  /* Even darker shade when active */
+  transform: translateY(1px);
+  /* Slight push down effect on click */
 }
 
 /* For mobile responsiveness */
@@ -108,7 +157,8 @@ button:focus{
   }
 
   .form-group {
-    width: 100%; /* Full width on smaller screens */
+    width: 100%;
+    /* Full width on smaller screens */
   }
 
   /* .btn-block{
@@ -120,27 +170,57 @@ button:focus{
   /* .btn-custom {
     width: 100%; 
   } */
+  .form-custom {
+    width: fit-content !important;
+    line-height: fit-content !important;
+  }
+
+
 }
 
 /* Disabled button style */
 .btn-custom:disabled {
-  background-color: #6c757d; /* Greyed out background */
-  color: white; /* Text color */
-  cursor: not-allowed; /* Not-allowed cursor */
-}
-.form-check-input {
-  margin-right: 10px; /* Optional: space between checkbox and label */
-}
-.card-image {
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically (if needed) */
-  width: 45%;
-  margin: 0 auto; /* Center the container itself within its parent */
+  background-color: #6c757d;
+  /* Greyed out background */
+  color: white;
+  /* Text color */
+  cursor: not-allowed;
+  /* Not-allowed cursor */
 }
 
-.btn-block{
+.form-check-input {
+  margin-right: 10px;
+  /* Optional: space between checkbox and label */
+}
+
+.card-image {
+  display: flex;
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically (if needed) */
+  width: 45%;
+  margin: 0 auto;
+  /* Center the container itself within its parent */
+}
+
+.btn-block {
   width: 200px !important;
   margin-left: 153px !important;
- 
+
+}
+
+.your-element-class {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 36px;
+  color: rgb(31, 31, 31);
+  font-style: normal;
+}
+/* Center the Sign Up button container */
+.sign-up-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Adjust space as needed */
 }

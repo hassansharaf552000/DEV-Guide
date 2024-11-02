@@ -1,0 +1,72 @@
+<div class="container-fluid mt-2">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card custom-card">
+        <div class="card-body">
+          <h3 class="card-title">Profile Summary</h3>
+          <!-- <p class="text-danger">
+            Please fill in all required fields on your profile before proceeding. Identify any missing details flagged
+            with exclamation marks in each section.
+          </p> -->
+          <div class="info-section">
+            <h4>Basic Information</h4>
+            <p>Country of residence: {{Country || 'N/A' }}</p>
+            <p>Phone number: {{ PhoneNumber || 'N/A' }}</p>
+            <button class="btn btn-link" (click)="editSection('/step-two')">Edit Information</button>
+          </div>
+          <hr>
+          <div class="info-section">
+            @if(accountService?.Experiences?.length==1){
+            <h4>Education</h4>
+            }
+            @for (Education of accountService.Educations; track $index) {
+            @if(accountService?.Experiences?.length>1){
+
+              <h4>Education  {{numbers+$index}}</h4>
+            }
+              <p>University / School: {{ Education.University || 'N/A' }}</p>
+              <p>Faculty: {{ Education.Faculty || 'N/A' }}</p>
+              <p>Country: {{ Education.CountryOfStudy || 'N/A' }}</p>
+              <p>Field of study: {{ Education.FieldOfStudy || 'N/A' }}</p>
+              <p>Degree: {{ Education.Degree || 'N/A' }}</p>
+              <p>Duration of Study: {{ Education.StartDate || 'N/A' }} {{ Education.EndDate || '' }}</p>
+              <p>Currently studying: {{ Education.TillNow ? 'Yes' : 'No' }}</p>
+              <hr>
+            }
+            <button class="btn btn-link" (click)="editSection('/step-three')">Edit Information</button>
+          </div>
+          <hr>
+          <div class="info-section">
+            <h4>Technical Skills</h4>
+            <p>Years of full-time work experience: {{ YearsOfExperience || 'N/A' }}</p>
+            <p>Title: {{ Title || 'N/A' }}</p>
+            <p>About: {{ About || 'N/A' }}</p>
+            <p>Level: {{ Level || 'N/A' }}</p>
+            <p>Skills:
+              @for (item of accountService.skills; track $index) {
+                <span>{{item.Name}}</span>
+              }
+            </p>
+            @if(accountService?.Experiences?.length==1){
+            <h4>Experience</h4>
+            }
+            @for (Exp of accountService.Experiences; track $index) {
+              @if(accountService?.Experiences?.length>1){
+              <h4>Experience {{numbers+$index}}</h4>
+              }
+              <p>Organization: {{ Exp.Organization || 'N/A' }}</p>
+              <p>Field of study: {{ Exp.FieldOfStudy || 'N/A' }}</p>
+              <p>Duration of Study: {{ Exp.StartDate || 'N/A' }} {{ Exp.EndDate || '' }}</p>
+              <p>Currently studying: {{ Exp.TillNow ? 'Yes' : 'No' }}</p>
+              <hr>
+            }
+            <button class="btn btn-link" (click)="editSection('/step-four')">Edit Information</button>
+          </div>
+         
+        </div>
+      </div>
+      <button class="btn btn-secondary mt-3 ms-3 col-3" (click)="goToPreviousStep()">Back</button>
+      <button class="btn btn-primary mt-3 ms-3 col-3" (click)="submitProfile()">Submit Profile</button>
+    </div>
+  </div>
+</div>

@@ -3,9 +3,13 @@
     <div class="col-lg-6">
       <h2>About us</h2>
       <h1>Our Talanted HR</h1>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo possimus nulla unde, tenetur illo ullam vel
-        a harum dolor consequuntur beatae laboriosam assumenda rerum sapient.</p>
-      <button type="button" class="btn btn-primary">See More <a href=""></a></button>
+      <p>Our talented HR team is dedicated to fostering a supportive, inclusive, 
+        and engaging work environment where every individual has 
+        the opportunity to thrive. With a wealth of expertise across recruitment,
+         talent management, and employee development.</p>
+  <!-- <button type="button" class="btn btn-primary"> -->
+    <a  [routerLink]="['/developer/hrs']" class="btn btn-primary mt-4" style="padding:1.3% 6%; font-size: 22px;">See More</a>
+    <!-- </button> -->
     </div>
     <div class="col-lg-6">
       <img src="header-image.webp" alt="Team Image" class="team-image">
@@ -100,8 +104,8 @@
 
         <!-- Button -->
         <div class="text-center d-inline-block bg-dark rounded px-5 py-3 mt-4 mt-lg-5">
-          <span class="text-white">Work with us?</span> <a class="ms-2" href="contact-v2.html">Contact us now<span
-              class="bi-chevron-right small ms-1"></span></a>
+          <a class="ms-2" [routerLink]="['/developer/contactus']" style="color: white; text-decoration: none;">Contact us now<span
+              class="bi-chevron-right small ms-1" style="color: white; text-decoration: none;"></span></a>
         </div>
       </div>
     </div> <!-- Row END -->
@@ -114,9 +118,13 @@
           <div class="col-lg-6">
 
             <h1>Our Talanted Mentors</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo possimus nulla unde, tenetur illo ullam vel
-              a harum dolor consequuntur beatae laboriosam assumenda rerum sapient.</p>
-            <button type="button" class="btn btn-primary">See More <a href=""></a></button>
+            <p>Our talented mentors are dedicated professionals 
+              who bring a wealth of knowledge, experience, 
+              and passion to guide others on their personal and professional journeys. 
+              They’re committed to sharing their expertise, offering insights.</p>
+            <!-- <button type="button" class="btn btn-primary"> -->
+               <a  [routerLink]="['/developer/mentors']" class="btn btn-primary mt-4"  style="padding:1.3% 6%; font-size: 22px;">See More</a>
+              <!-- </button> -->
           </div>
           <div class="col-lg-6">
             <img src="e40ca7ab-a09c-4429-9367-b880fb3817f5.jpg" alt="Team Image" class="team-image">
@@ -225,8 +233,10 @@ About END -->
     <!-- Title -->
     <div class="inner-container-small text-center mb-4 mb-sm-6">
       <h2>Admins</h2>
-      <p class="mb-0">We are a close-knit squad of exceptionally talented individuals who are passionate about to create
-        special community to help you.</p>
+          <p class="mb-0">
+            We are a close-knit squad of exceptionally 
+            talented individuals who are passionate about to create
+            special community to help you.</p>
     </div>
 
     <!-- Team list START -->

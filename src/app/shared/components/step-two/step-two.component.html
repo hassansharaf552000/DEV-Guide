@@ -1,0 +1,192 @@
+<div class="container-fluid ">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <div class="card custom-card">
+        <div class="card-body">
+          <h3 class="card-title">Let's level up your profile!</h3>
+          <p class="card-text">
+            Filling out this form helps us match you with suitable Mentors and HRs that best align with your skills.
+          </p>
+          <form [formGroup]="stepTwoForm" (ngSubmit)="onNext()">
+            <!-- Profile image input -->
+            <div class="form-group">
+              <label for="profileImage">Profile Image</label>
+              <input type="file"  class="form-control" id="profileImage" (change)="SelectFile($event)" accept="image/*"
+              (blur)="touched = true">
+              <div *ngIf="touched &&invalidProfileImage" class="text-danger">
+                Profile image is required
+              </div>
+            </div>
+
+            <!-- Country of residence dropdown -->
+            <div class="form-group">
+              <label for="country">Country of Residence</label>
+              <select id="country" class="form-control" formControlName="country">
+                <option value="">Select your country</option>
+                <option *ngFor="let country of countries" [value]="country.name">{{ country.name }}</option>
+              </select>
+              <div *ngIf="stepTwoForm.get('country')?.invalid && stepTwoForm.get('country')?.touched" class="text-danger">
+                Country of residence is required
+              </div>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input id="phone" type="text" class="form-control" formControlName="phone" placeholder="Phone number">
+              <div *ngIf="stepTwoForm.get('phone')?.invalid && stepTwoForm.get('phone')?.touched && stepTwoForm.get('phone')?.hasError('required') " class="text-danger">
+                Phone number is required
+              </div>
+              <div *ngIf="stepTwoForm.get('phone')?.invalid && stepTwoForm.get('phone')?.touched && stepTwoForm.get('phone')?.hasError('minlength')" class="text-danger">
+                Phone number must be atleast 11 Digit
+              </div>
+              <div *ngIf="stepTwoForm.get('phone')?.invalid && stepTwoForm.get('phone')?.touched && stepTwoForm.get('phone')?.hasError('maxlength')" class="text-danger">
+                Phone number must be Max 12 Digit
+              </div>
+            </div>
+
+            <!-- Navigation buttons -->
+            <!-- <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
+            <button type="submit" class="btn btn-primary mt-3 ms-3" [disabled]="stepTwoForm.invalid || invalidProfileImage">Next</button> -->
+          </form>
+        </div>
+      </div>
+     <button type="button" class="btn btn-secondary mt-3 ms-3  col-2"
+      (click)="goToPreviousStep()">Back</button>
+    <button type="button" class="btn btn-primary mt-3 ms-3 col-2" [disabled]="stepTwoForm.invalid || invalidProfileImage" (click)="onNext()">Next</button>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <div class="card custom-card">
+        <div class="card-body">
+          <h3 class="card-title">Let's level up your profile!</h3>
+          <p class="card-text">
+            Filling out this form helps us match you with job opportunities that best align with your skills.
+          </p>
+          <form [formGroup]="stepTwoForm" (ngSubmit)="onNext()">
+
+            <div class="form-group">
+              <label for="profileImage">Profile Image</label>
+              <input type="file" class="form-control" id="profileImage" formControlName="profileImage" accept="image/*">
+              <div *ngIf="stepTwoForm.get('profileImage')?.invalid && stepTwoForm.get('profileImage')?.touched" class="text-danger">
+                Profile image is required
+              </div>
+
+            </div>
+            <div class="form-group">
+              <label for="firstName">First name</label>
+              <input id="firstName" type="text" class="form-control" formControlName="firstName"
+                placeholder="First name">
+              @if (stepTwoForm.get('firstName')?.invalid && stepTwoForm.get('firstName')?.touched) {
+              <div class="text-danger">
+                First Name is required
+              </div>
+              }
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last name</label>
+              <input id="lastName" type="text" class="form-control" formControlName="lastName" placeholder="Last name">
+              @if (stepTwoForm.get('lastName')?.invalid && stepTwoForm.get('lastName')?.touched) {
+              <div class="text-danger">
+                Last Name is required
+              </div>
+              }
+            </div>
+            <div class="form-group">
+              <label for="country">Country of residence</label>
+              <select id="country" class="form-control" formControlName="country">
+                <option value="">Select your country</option>
+                <option value="country1">Country 1</option>
+                <option value="country2">Country 2</option>
+
+              </select>
+              @if (stepTwoForm.get('country')?.invalid && stepTwoForm.get('country')?.touched) {
+              <div class="text-danger">
+                Country of residence is required
+              </div>
+              }
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone number</label>
+              <input id="phone" type="text" class="form-control" formControlName="phone" placeholder="Phone number">
+              @if (stepTwoForm.get('phone')?.invalid && stepTwoForm.get('phone')?.touched) {
+              <div class="text-danger">
+                Phone number is required
+              </div>
+              }
+            </div>
+
+            <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
+            <button type="submit" class="btn btn-primary mt-3 ms-3"  [disabled]="stepTwoForm.invalid" >Next</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+
+<!-- <div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <div class="card custom-card">
+        <div class="card-body">
+          <h3 class="card-title">Let's level up your profile!</h3>
+          <p class="card-text">
+            Filling out this form helps us match you with job opportunities that best align with your skills.
+          </p>
+          <form [formGroup]="stepTwoForm" (ngSubmit)="onNext()">
+            <div class="form-group">
+              <label for="firstName">First name</label>
+              <input id="firstName" type="text" class="form-control" formControlName="firstName"
+                placeholder="First name">
+              @if (stepTwoForm.get('firstName')?.invalid && stepTwoForm.get('firstName')?.touched) {
+              <div class="text-danger">
+                First Name is required
+              </div>
+              }
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last name</label>
+              <input id="lastName" type="text" class="form-control" formControlName="lastName" placeholder="Last name">
+              @if (stepTwoForm.get('lastName')?.invalid && stepTwoForm.get('lastName')?.touched) {
+              <div class="text-danger">
+                Last Name is required
+              </div>
+              }
+            </div>
+            <div class="form-group">
+              <label for="country">Country of residence</label>
+              <select id="country" class="form-control" formControlName="country">
+                <option value="">Select your country</option>
+                <option value="country1">Country 1</option>
+                <option value="country2">Country 2</option>
+
+              </select>
+              @if (stepTwoForm.get('country')?.invalid && stepTwoForm.get('country')?.touched) {
+              <div class="text-danger">
+                Country of residence is required
+              </div>
+              }
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone number</label>
+              <input id="phone" type="text" class="form-control" formControlName="phone" placeholder="Phone number">
+              @if (stepTwoForm.get('phone')?.invalid && stepTwoForm.get('phone')?.touched) {
+              <div class="text-danger">
+                Phone number is required
+              </div>
+              }
+            </div>
+            <button type="button" class="btn btn-secondary mt-3" (click)="goToPreviousStep()">Back</button>
+            <button type="button" class="btn btn-primary mt-3 ms-3" (click)=" onNext()">Next</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -1,0 +1,76 @@
+/* .container {
+  margin-top: 2rem;
+} */
+.container-fluid {
+  background-image: url(./../../../../../public/guide.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 180px;
+  padding-top: 80px;
+padding-bottom: 40px;
+
+}
+.custom-card {
+
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+}
+
+.card-title {
+  color: #0b62be;
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.btn-link {
+  color: #0b62be;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+.d-flex .form-control {
+  margin-right: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.btn-primary{
+  background-color: #0b62be;
+}
+.btn-primary:hover{
+  background-color: #0a4e97;
+}
+.btn-danger{
+  background-color: #e91429;
+  /* width: 10px; */
+  border-radius: 25%;
+ margin-right: 20px;
+}
+.btn-danger:hover{
+  background-color: #bb1626;
+  
+}

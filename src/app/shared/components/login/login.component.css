@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
 /* Full-page background image */
 .login-page {
   background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/skill\ 2.jpg); /* Replace with your background image path */
@@ -84,4 +86,13 @@
   width: 45%;
   margin: 0 auto; /* Center the container itself within its parent */
 }
+.your-element-class {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 36px;
+  color: rgb(31, 31, 31);
+  font-style: normal;
+}
+
 

@@ -1,0 +1,51 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
+
+
+<div class="container mt-4">
+  <h3 class="display-4 fw-bold text-center" style="
+        font-family: Edu AU VIC WA NT Hand, cursive;
+        font-optical-sizing: auto;
+        font-style: normal;
+  ">Taken Quizzes</h3>
+  <br>
+  <br>
+  <div class="row">
+    <div *ngFor="let quiz of takenQuizzes" class="col-md-4 mb-4">
+      <div class="card quiz-card shadow-sm p-3 bg-white rounded text-center">
+        <div class="card-body">
+          <h5 class="card-title">{{ quiz.QuizName }}</h5>
+          <p class="quiz-score">Score: {{ quiz.Score }}%</p>
+          <p class="quiz-passed">Passed: {{ quiz.Passed ? 'Yes' : 'No' }}</p>
+          <br>
+          <button class="btn btn-outline-warning btn-score" (click)="openScoreModal(quiz)">
+            View Score
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Score Modal -->
+  <div class="modal fade" id="scoreModal" tabindex="-1" aria-labelledby="scoreModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header modal-header-custom">
+          <h5 class="modal-title" id="scoreModalLabel">Quiz Score</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: white;"></button>
+        </div>
+        <div class="modal-body text-center modal-body-custom">
+          <p class="h3">Your Score: <strong>{{ selectedQuiz?.Score }}%</strong></p>
+          <p>Passing Score: <strong>70%</strong></p>
+          <p>Status: <strong [ngClass]="{'text-success': selectedQuiz?.Passed, 'text-danger': !selectedQuiz?.Passed}">
+              {{ selectedQuiz?.Passed ? 'Passed' : 'Failed' }}
+            </strong></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,17 +1,68 @@
-.position-relative{
+  /* Additional styles for visual enhancements */
+  .container {
+    max-width: 900px;
+  }
 
-    bottom: 35px;
-}
-.btn-primary{
+  .card {
+    border-radius: 15px;
+  }
 
-  border-radius: 3%;
-    background-color:  1c4980;;
+  .card-header {
+    background-color: #1c4980;
+    color: #fff;
+    padding: 15px;
+  }
+
+  .btn-outline-primary {
+    background-image: linear-gradient(to right, #1c4980, #3b5998);
+    color: #fff;
+    border: none;
+    transition: background 0.3s ease;
+  }
+  .btn-outline-primary:hover {
+    background-image: linear-gradient(to right, #3b5998, #1c4980);
+    color: #fff;
+  }
+
+  .btn-outline-secondary {
+    background-color: #ddd;
+    color: #666;
+    border: none;
+  }
+
+  .avatar-xl {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .avatar-xl {
+      max-width: 100px;
+      border-radius: 10px;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+    }
+
+    .btn-outline-primary {
+      font-size: 0.875rem;
+      padding: 0.375rem 0.75rem;
+      width: 100%;
+      margin-top: 10px;
+    }
     
-}
-
-/* .sidenav{
-
-  border-radius: 3%;
-  padding-left: 10px ;
-  
-} */
+    .card-header h3, .card-header p {
+      text-align: center;
+    }
+  }
+  .mentor-title {
+    background-color: #e0f2ff; 
+    /* Light blue background */
+    color: #007bff; /* Blue text for emphasis */
+    font-size: 1rem;
+    /* font-weight: 600; */
+    padding: 3px 8px;
+    border-radius: 12px; /* Rounded corners */
+    display: inline-block;
+    box-shadow: 0 1px 3px rgba(0, 123, 255, 0.2); /* Subtle shadow */
+  }

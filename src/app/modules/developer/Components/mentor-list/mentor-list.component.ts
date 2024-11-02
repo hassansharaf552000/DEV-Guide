@@ -178,9 +178,9 @@ export class MentorListComponent implements OnInit {
     translate: (value: number, label: LabelType): string => {
       switch (label) {
         case LabelType.Low:
-          return "<b>Min</b> E£" + value;
+          return "$ <b>Min</b>" + value;
         case LabelType.High:
-          return "<b>Max</b> E£" + value;
+          return "$ <b>Max</b>" + value;
          default:
           return ""
         //   return "E£" + value;
@@ -221,7 +221,7 @@ export class MentorListComponent implements OnInit {
           this.totalItems = res.TotalCount;
           this.pageSize = res.PageSize;
           console.log("Filtered data:", res.Data);
-          if (res.Data.SocialAccounts && res.Data.SocialAccounts.length > 0) {
+          if (res.Data.SocialAccounts && res?.Data?.SocialAccounts?.length > 0) {
 
             res.Data.SocialAccounts.forEach(account => {
                 console.log(account.SocialLink); // Make sure 'account' is not undefined

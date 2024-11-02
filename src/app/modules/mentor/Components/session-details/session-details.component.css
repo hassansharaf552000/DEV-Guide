@@ -10,3 +10,11 @@ color: rgb(70, 70, 250);
     font-size: 16px;
     font-weight: 600;
 }
+.bg-light-danger{
+    background-color: rgb(243, 166, 149);
+    color: rgb(230, 65, 65);
+}
+.bg-light-sucess{
+    background-color: rgb(163, 233, 130);
+    color: rgb(22, 94, 12);
+}

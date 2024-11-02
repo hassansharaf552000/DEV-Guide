@@ -25,11 +25,11 @@
                   <button type="button" class="btn btn-outline-primary" (click)="notavailable(i)">Cancel</button>
                 </div>
                 <div class="col-4" *ngIf="day['Available']">
-                  <input [(ngModel)]="day.StartTime" name="day.StartTime" class="form-control text-center" (change)="setTime(i, true, $event)" id="StartTime-{{i}}"
+                  <input [(ngModel)]="day.StartTime" name="StartTime-{{i}}" class="form-control text-center" (change)="setTime(i, true, $event)" id="StartTime-{{i}}"
                     type="time" required />
                 </div>
                 <div class="col-4" *ngIf="day['Available']">
-                  <input [(ngModel)]="day.EndTime" name="day.EndTime" class="form-control text-center" (change)="setTime(i, false, $event)" id="EndTime-{{i}}"
+                  <input [(ngModel)]="day.EndTime" name="EndTime-{{i}}" class="form-control text-center" (change)="setTime(i, false, $event)" id="EndTime-{{i}}"
                     type="time" required />
                 </div>
               </div>
@@ -55,7 +55,7 @@
           <span class="text-danger">{{ priceError }}</span>
         </div>
         <div class="col-2">
-          <label>L.E</label>
+          <label>$</label>
         </div>
       </div>
 

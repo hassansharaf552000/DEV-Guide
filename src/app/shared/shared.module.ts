@@ -42,13 +42,34 @@ import { ExperienceListComponent } from './components/experience-list/experience
 import { SocialAccountsListComponent } from './components/social-accounts-list/social-accounts-list.component';
 import { AddsocialaccountComponent } from './components/addsocialaccount/addsocialaccount.component';
 import { SocialaccountscardComponent } from './components/socialaccountscard/socialaccountscard.component';
+
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+
+import { StepOneComponent } from './components/step-one/step-one.component';
+import { StepTwoComponent } from './components/step-two/step-two.component';
+import { StepThreeComponent } from './components/step-three/step-three.component';
+import { StepFourComponent } from './components/step-four/step-four.component';
+import { StepFiveComponent } from './components/step-five/step-five.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { QuizComponent } from './components/quiz/quiz.component';
+import { QuizDetailsComponent } from './components/quiz-details/quiz-details.component';
+import { QuizListComponent } from './components/quiz-list/quiz-list.component';
+import { TakenQuizzesCardComponent } from './components/taken-quizzes-card/taken-quizzes-card.component';
+
 
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
+    QuizComponent,
+    QuizDetailsComponent,
+    QuizListComponent,
+    StepOneComponent,
+    StepTwoComponent,
+    StepThreeComponent,
+    StepFourComponent,
+    StepFiveComponent,
     FooterComponent,
     NotFoundComponent,
     SpinnerComponent,
@@ -77,7 +98,12 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     SocialAccountsListComponent,
     AddsocialaccountComponent,
     SocialaccountscardComponent,
+
     ResetPasswordComponent
+
+    PaymentComponent,
+    TakenQuizzesCardComponent,
+
   ],
 
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, NgxPaginationModule,
@@ -91,7 +117,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     MatCheckboxModule,
     MatCardModule,       // Material Card module
     MatIconModule,       // Material Icon module
-    MatButtonModule
+    MatButtonModule,
   ],
 
   exports: [NavbarComponent, FooterComponent, SpinnerComponent],

@@ -73,6 +73,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { authInterceptor } from './shared/interceptors/auth.interceptor';
 import { loaderInterceptor } from './shared/interceptors/loader.interceptor';
 import { SharedModule } from './shared/shared.module';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 
 @NgModule({
@@ -95,12 +101,18 @@ import { SharedModule } from './shared/shared.module';
     CarouselModule,
     ReactiveFormsModule,
     SharedModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
 
   ],
   providers: [
     CookieService,
+    MatDatepickerModule,
     provideClientHydration(), 
-    provideHttpClient(withFetch(), withInterceptors([authInterceptor,loaderInterceptor]))],
+    provideHttpClient(withFetch(), withInterceptors([authInterceptor,loaderInterceptor])), provideAnimationsAsync()],
   bootstrap: [AppComponent],
+  
 })
 export class AppModule {}

@@ -1,122 +1,193 @@
-    <div class="container">
-       <!-- row -->
-       <div class="row mb-8">
-          <div class="col-md-12">
-             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-4 pb-3">
-                <div>
-                  
-                   <h4 style="font-weight: 600;">Session Details</h4>
-                  
-                </div>
-                <!-- button -->
-                <div>
-                   <a href="#" class="btn btn-outline-primary">Back to all Sessions</a>
-                </div>
-             </div>
-          </div>
-       </div>
-       <!-- row -->
-       <div class="row">
-          <div class="col-xl-12 col-12 mb-5"  id="session-details-content" #contentToConvert>
-             <!-- card -->
-             <div class="card h-100 card-lg shadow "  style="border-radius: 18px; border-color: white;padding: 20px;">
-                <div class="card-body p-6">
-                   <div class="d-md-flex justify-content-between pb-4">
-                      <div class="d-flex align-items-center mb-2 mb-md-0">
-                         <h4 class="mb-0" style="font-weight: 600;">Session ID: 001</h4>
-                         <span class="badge bg-light-warning text-dark-warning ms-2">Pending</span>
-                      </div>
-                 
-                      <div class="d-md-flex">
-                         <div class="mb-2 mb-md-0">
+<div class="container">
+   <!-- row -->
+   <div class="row mb-8">
+      <div class="col-md-12">
+         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-4 pb-3">
+            <div>
+
+               <h4 style="font-weight: 600;">Session Details</h4>
+
+            </div>
+            <!-- button -->
+            <div>
+               <a [routerLink]="['/mentor/booking']" class="btn btn-outline-primary">Back to all Sessions</a>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- row -->
+   <div class="row">
+      <div class="col-xl-12 col-12 mb-5" id="session-details-content" #contentToConvert>
+         <!-- card -->
+         <div class="card h-100 card-lg shadow " style="border-radius: 18px; border-color: white;padding: 20px;">
+            <div class="card-body p-6">
+               <div class="d-md-flex justify-content-between pb-4">
+                  <div class="d-flex align-items-center mb-2 mb-md-0">
+                     <h4 class="mb-0" style="font-weight: 600;">Session ID: {{sessiondetails.Id}}</h4>
+                     @if(sessiondetails.Status==2){
+                     <span class="badge bg-light-warning text-dark-warning ms-2">Pending <span>To Be completed the session you must add a feedback</span></span>
+                     }
+                     @if(sessiondetails.Status==1){
+                     <span class="badge bg-light-sucess text-dark-warning ms-2">Completed</span>
+                     }
+                     @if(sessiondetails.Status==3){
+                     <span class="badge bg-light-danger text-dark-danger ms-2">Canceled</span>
+                     }
+                  </div>
+
+                  <div class="d-md-flex">
+                     <!-- <div class="mb-2 mb-md-0">
                             <select class="form-select">
                                <option selected="">Status</option>
                                <option value="Success">Success</option>
                                <option value="Pending">Pending</option>
                                <option value="Cancel">Cancel</option>
                             </select>
-                         </div>
-                        
-                         <div class="ms-md-3">
-                            <a href="#" class="btn btn-primary me-2 mb-2 btn-click">Save</a>
-                            <button class="btn btn-outline-primary mb-2" (click)="downloadPDF()">Download</button>
-                         </div>
-                      </div>
-                   </div>
-                   <div class="mt-8">
-                      <div class="row font-head">
-                        <div class="col-lg-4 col-md-4 col-12">
-                            <div class="mb-6">
-                               <h6>Session Details</h6>
-                               <p class="mb-1 lh-lg text-muted">
-                                   ID:
-                                  <span class="text-dark text-muted">001</span>
-                                  <br>
-                                   Type:
-                                  <span class="text-dark text-muted">Technical Session</span>
-                                  <br>
-                                   Topic:
-                                  <span class="text-dark text-muted">FullStack.Net</span>
-                                  <br>
-                                   Sub-Topic:
-                                  <span class="text-dark text-muted">MVC</span>
-                                  <br>
-                                   Date:
-                                  <span class="text-dark text-muted">October 22, 2024</span>
-                                  <br>
-                                   Time:
-                                  <span class="text-dark text-muted">10:00 AM</span>
-                                  <br>
-                                   Duration:
-                                  <span class="text-dark text-muted">1 Hour</span>
-                                  <br>
-                                   Price:
-                                  <span class="text-dark text-muted">500 EGP</span>
-                                  <br>
-                               </p>
-                            </div>
-                         </div>
-                         
-                         <div class="col-lg-4 col-md-4 col-12">
-                            <div class="mb-6">
-                               <h6>Developer Info</h6>
-                               <p class="mb-1 lh-lg text-muted">
-                               
-                                <img src="04.jpg" class="rounded-circle" style="width: 70px;" >
-                                
-                                <br>
-                                  John Alex
-                                  <br>
-                                  anderalex example.com
-                                  <br>
-                                  Full Stack .Net Developer
-                               </p>
-                               <a href="#">View Profile</a>
-                            </div>
-                         </div>
-                        
-                      </div>
-                   </div>
-                </div>
-                <div class="row">
-                   <div class="col-12">
-                   </div>
-                </div>
-                <div class="card-body p-6">
-                   <div class="row">
-                      <div class="col-md-6 mb-4 mb-lg-0">
-                        <h5>Meeting Link</h5>
-                         <textarea class="form-control mb-3" rows="3" placeholder="Enter Session Link"></textarea>
-                         <a href="#" class="btn btn-primary btn-click">Send Link</a>
-                      </div>
+                         </div> -->
+
+                     <div class="ms-md-3">
+                        <!-- <a href="#" class="btn btn-primary me-2 mb-2 btn-click">Save</a> -->
+                        <button class="btn btn-outline-primary mb-2" (click)="downloadPDF()">Download</button>
+                     </div>
+                  </div>
+               </div>
+               <div class="mt-8">
+                  <div class="row font-head">
+                     <div class="col-lg-4 col-md-4 col-12">
+                        <div class="mb-6">
+                           <h6>Session Details</h6>
+                           <p class="mb-1 lh-lg text-muted">
+                              ID:
+                              <span class="text-dark text-muted">{{sessiondetails?.Id}}</span>
+                              <br>
+                              Type:
+                              <span class="text-dark text-muted">Technical Session</span>
+                              <br>
+                              Topic:
+                              <span class="text-dark text-muted">{{sessiondetails.Topic}}</span>
+                              <!-- <br> -->
+                              <!-- Sub-Topic:
+                                  <span class="text-dark text-muted">MVC</span> -->
+                              <br>
+                              Date:
+                              <span class="text-dark text-muted">{{sessiondetails.DateTime | date: 'MMMM d, y' }}</span>
+                              <br>
+                              Time:
+                              <span class="text-dark text-muted">{{sessiondetails.DateTime | date: 'h:mm a' }}</span>
+                              <br>
+                              Duration:
+                              <span class="text-dark text-muted">{{sessiondetails.Duration}} Hour</span>
+                              <br>
+                              Price:
+                              <span class="text-dark text-muted">$ {{sessiondetails.Price}}</span>
+                              <br>
+                           </p>
+                        </div>
+                     </div>
+
+                     <div class="col-lg-4 col-md-4 col-12">
+                        <div class="mb-6">
+                           <h6>Developer Info</h6>
+                           <p class="mb-1 lh-lg text-muted">
+
+                              <img src="{{sessiondetails.UserImage}}" class="rounded-circle" style="width: 70px;">
+
+                              <br>
+                              {{sessiondetails.UserFirstName}} {{sessiondetails.UserLastName}}
+                              <br>
+                              {{sessiondetails.UserEmail}}
+                              <br>
+                              {{sessiondetails.UserTitle}}
+                           </p>
+                           <a [routerLink]="['/mentor/developers',sessiondetails.UserId]">View Profile</a>
+                        </div>
+                     </div>
+
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-12">
+               </div>
+            </div>
+            <div class="card-body p-6">
+
+               <div class="row">
+                  @if(sessiondetails.Status==2){
+                  <div class="col-md-6 mb-4 mb-lg-0">
+                     <form [formGroup]="MeetingLinkForm" (ngSubmit)="onSubmitMeetingLink()">
+                      <h5>Meeting Link</h5>
+                      <textarea class="form-control mb-3" formControlName="feedback" rows="3"
+                        placeholder="Enter Session Link"></textarea>
+                      <button type="submit" [disabled]="MeetingLinkForm.invalid" class="btn btn-primary btn-click">Send
+                        Link</button>
+                     </form>
+                  </div>
+               }
+
+               @if(sessiondetails.Status==1 || sessiondetails.Status==3){
+
+                  <div class="col-md-6 mb-4 mb-lg-0">
+                  <h5>Meeting Link</h5>
+                  <p class="form-control mb-3" formControlName="feedback" rows="3"
+                    placeholder="Enter Session Link">{{sessiondetails.MeetingLink}} </p>
+                  </div>
+
+               }
+               
+                  <!-- <form>
                       <div class="col-md-6">
                          <h5>Feedback</h5>
                          <textarea class="form-control mb-3 " rows="3" placeholder="Write Feedback to Interviewee"></textarea>
                          <a href="#" class="btn btn-primary btn-click">Save Notes</a>
                       </div>
-                   </div>
-                </div>
-             </div>
-          </div>
-       </div>
-    </div>
+                     </form> -->
+                     @if(sessiondetails.Status==1){
+                  <div class="col-md-6 ">
+                   
+                        <h5>Feedback</h5>
+                        <p class="form-control mb-3" rows="3"> {{sessiondetails.Feedback}}</p>
+                       
+                       
+                 
+                  </div>
+               }
+               @if(sessiondetails.Status==2 ){
+                  <div class="col-md-6 ">
+                     <form [formGroup]="feedbackForm" (ngSubmit)="onSubmitFeedback()">
+                        <h5>Feedback</h5>
+                        <textarea class="form-control mb-3" rows="3" formControlName="feedback"
+                           placeholder="Write Feedback to Interviewee"></textarea>
+                        <div
+                           *ngIf="feedbackForm.controls['feedback'].invalid && feedbackForm.controls['feedback'].touched"
+                           class="text-danger">
+                           Feedback is required.
+                        </div>
+                        <button type="submit" class="btn btn-primary" [disabled]="feedbackForm.invalid">Finish
+                           Session</button>
+                     </form>
+                  </div>
+               }
+
+               @if(sessiondetails.Status==3 ){
+                  <div class="col-md-6 ">
+                     <form [formGroup]="feedbackForm" (ngSubmit)="onSubmitFeedbackForCancel()">
+                        <h5>Feedback</h5>
+                        <textarea class="form-control mb-3" rows="3" formControlName="feedback"
+                           placeholder="Write Feedback to Interviewee"></textarea>
+                        <div
+                           *ngIf="feedbackForm.controls['feedback'].invalid && feedbackForm.controls['feedback'].touched"
+                           class="text-danger">
+                           Feedback is required.
+                        </div>
+                        <button type="submit" class="btn btn-primary" [disabled]="feedbackForm.invalid">Add Review</button>
+                     </form>
+                  </div>
+               }
+               </div>
+
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

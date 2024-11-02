@@ -46,7 +46,7 @@
           <div class="card-body">
             <h5 class="card-title">Membership Plan</h5>
             <p>Book a <strong>Free 1:1 Trial</strong> to plan your hrship with {{ hr.name }}</p>
-            <h3 class="text-primary">${{ hr.price }} <small>/ Month</small></h3>
+            <h3 class="text-primary">$ {{ hr.price }} <small>/ Month</small></h3>
             <ul class="list-group mt-3">
               <li class="list-group-item"><i class="fa fa-video"></i> 1 session/week (1:1 Sessions)</li>
               <li class="list-group-item"><i class="fa fa-comments"></i> Within 12 hours (Chat Support)</li>
@@ -73,7 +73,7 @@
                 <p class="text-muted"><small>{{ similarHR.experience }} Exp.</small></p>
                 <p class="text-muted"><i class="fa fa-star"></i> {{ similarHR.rating }} ({{ similarHR.reviews }}
                   Reviews)</p>
-                <p><strong>${{ similarHR.price }}</strong> / Month</p>
+                <p><strong>$ {{ similarHR.price }}</strong> / Month</p>
                 <button class="btn btn-outline-primary btn-block">Book Sessions</button>
               </div>
             </div>

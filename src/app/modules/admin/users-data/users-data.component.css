@@ -1,0 +1,47 @@
+
+
+
+.content {
+    /* margin-left: 50px; */
+    /* padding: 20px; */
+
+}
+
+
+
+.search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input-group {
+  width: 300px; /* عرض حقل User Name */
+  margin-right: 10px;
+}
+
+.dropdown {
+  width: 200px; /* عرض زر Role */
+  margin-right: 10px;
+}
+
+.form-control {
+  border-radius: 5px;
+}
+
+.input-group-text {
+  background-color: #fff;
+  border-radius: 0 5px 5px 0;
+}
+
+.search-button {
+  width: 100px;
+  border-radius: 5px;
+  position: absolute;
+  right: 0; /* محاذاة الزر لليمين */
+}
+
+
+.table-container {
+  margin-top: 20px;
+}

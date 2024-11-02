@@ -1,0 +1,82 @@
+<app-adminsidebar></app-adminsidebar>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
+
+
+<div class="content">
+    <div class="container">
+      <h3 class="display-4 fw-bold text-center" style="font-family: Edu AU VIC WA NT Hand, cursive;font-optical-sizing: auto;font-style: normal;">
+        User Data
+        </h3>
+        <br>
+    <div class="container mt-4">
+      <div class="search-container">
+          <div class="input-group">
+              <input type="text" class="form-control" placeholder="User Name">
+              <span class="input-group-text"><i class="bi bi-search"></i></span>
+          </div>
+
+          <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="roleDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  Role
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="roleDropdown">
+                  <li><a class="dropdown-item" href="#">Developer</a></li>
+                  <li><a class="dropdown-item" href="#">Mentor</a></li>
+                  <li><a class="dropdown-item" href="#">HR</a></li>
+              </ul>
+          </div>
+
+          <!-- زر البحث محاذاة لليمين باستخدام position absolute -->
+          <button class="btn btn-primary search-button">Search</button>
+      </div>
+      <br>
+      <br>
+          <!-- جدول البيانات -->
+          <div class="table-container">
+        <table class="table table-bordered">
+            <thead class="table-secondary">
+                <tr>
+                    <th>id</th>
+                    <th>User name</th>
+                    <th>Email</th>
+                    <th> Phone number</th>
+                    <th> Image</th>
+                    <th>Role </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{ user.Id }}</td>
+                    <td>{{ user.FirstName }} {{ user.LastName }}</td>
+                    <td>{{ user.Email }}</td>
+                    <td>{{ user.PhoneNumber }}</td>
+                    <td>{{ user.Image }}</td>
+                    <td>{{ user.Roles }}</td>
+                </tr>
+                <!-- <tr>
+                    <td>2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+</div>
+  </div>
+        </div>
+
+

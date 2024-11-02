@@ -30,6 +30,7 @@ GetReviewsByClaimURL="http://localhost:5164/api/Account/GetReviewByClaim"
  showAll: boolean = false;
  maxItemsToShow: number = 2;
  selectedSkills:any[]=this.hrProfile.Skills
+ IsInList: any[];
  constructor(private route: ActivatedRoute ,private http: HttpClient,private AccService:AccountService) {
   
  }
@@ -45,8 +46,11 @@ console.log("hrid",hrId)
        data => {
          this.hrProfile = data;
          console.log('Profile: ', this.hrProfile);
-         console.log("experi",this.hrProfile.Experiences.length);
-         
+         console.log("experi",this.hrProfile?.Experiences?.length);
+         if (this.hrProfile?.ID) {
+          this.isinlist(this.hrProfile.ID);
+        }
+
        },
        error => {
          console.error('Error fetching profile', error);
@@ -93,7 +97,7 @@ console.log("hrid",hrId)
 
  updateDisplayedReviews() {
    this.displayedReviews = this.reviews.slice(0, this.reviewsLimit);
-   this.hasMoreReviews = this.reviews.length > this.reviewsLimit;
+   this.hasMoreReviews = this.reviews?.length > this.reviewsLimit;
    this.canLoadLess = this.reviewsLimit > 4;  // Show "Load Less" if more than 4 reviews are displayed
  }
 
@@ -121,7 +125,7 @@ console.log("hrid",hrId)
     return '';  // Return empty string if hrProfile or About is undefined
   }
 
-  if (this.isExpanded || this.hrProfile.About.length <= this.maxLength) {
+  if (this.isExpanded || this.hrProfile?.About?.length <= this.maxLength) {
     return this.hrProfile.About;
   }
 
@@ -150,6 +154,23 @@ getLimitedExperiences(experiences: any[]) {
 }
 trackByFunction(index: number, education: any): string {
  return education.Degree; // or any unique identifier
+}
+
+public isMentorInList: boolean = false;
+
+isinlist(id: string) {
+  this.AccService.IsInList().subscribe(
+    data => {
+      this.IsInList = data;
+      console.log('listids: ', this.IsInList);
+      console.log("mentorId", id);
+      this.isMentorInList = this.IsInList.includes(id);
+      console.log("iftrue???", this.isMentorInList); // Set flag here
+    },
+    error => {
+      console.error('Error fetching profile', error);
+    }
+  );
 }
 
 }

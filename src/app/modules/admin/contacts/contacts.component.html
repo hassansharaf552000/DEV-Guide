@@ -1,0 +1,70 @@
+<!-- <div class="contact-table-container">
+    <h2>Complains</h2>
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Username</th>
+          <th>Phone Number</th>
+          <th>Complaint Subject</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="tdclass" *ngFor="let info of contactInfo">
+            <td>{{ info.Email }}</td>
+            <td>{{ info.Username }}</td>
+            <td>{{ info.PhoneNumber }}</td>
+            <td>{{ info.ObjectOfComplain }}</td>
+            
+          <td class="message-cell">{{ info.Message }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
+
+<div class="container mt-4">
+  <div class="table-container">
+    <h2 class="display-4 fw-bold text-center mb-5" style="font-family: Edu AU VIC WA NT Hand, cursive;font-optical-sizing: auto;font-style: normal;">Supports and Complains</h2>
+    <table class="table table-bordered">
+        <thead class="table-secondary">
+            <tr>
+                <th>Email</th>
+                <th>Username</th>
+                <th>PhoneNumber</th>
+                <th>Subject</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let info of contactInfo">
+                <td>{{ info.Email }}</td>
+            <td>{{ info.Username }}</td>
+            <td>{{ info.PhoneNumber }}</td>
+            <td>{{ info.ObjectOfComplain }}</td>
+            <!-- <td>{{ info.Message }}</td> -->
+          <td class="message-cell">{{ info.Message }}</td>
+            <!-- <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+
+            </tr> -->
+        </tbody>
+    </table>
+</div>
+</div>

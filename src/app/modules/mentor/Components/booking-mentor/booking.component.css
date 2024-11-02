@@ -121,7 +121,7 @@
   --fc-bg-opacity: 1;
 --fc-bg-opacity: 1;
   background-color: #198754 !important;
-};
+}
 .card {
   --bs-card-spacer-y: 1.25rem;
   --bs-card-spacer-x: 1.25rem;
@@ -566,3 +566,13 @@ select:disabled {
   width: 100%;
   border-radius: 30px;
 }
+.btn-danger{
+  color: white !important;
+  background-color: rgb(231, 48, 48) !important;
+}
+.btn-danger:hover {
+  color: rgb(231, 48, 48) !important;
+  background-color: white !important;
+ 
+}
+

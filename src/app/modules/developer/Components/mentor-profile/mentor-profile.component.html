@@ -4,7 +4,7 @@
     <div class="container">
       <!--row-->
       <div class="row gy-4">
-        <div class="col-xl-8 col-12">
+        <div *ngIf="mentorProfile?.Educations?.length > 0 ||mentorProfile?.Experiences?.length > 0" class="col-xl-8 col-12">
           <div class="d-flex flex-column gap-4" style="height: fit-content;">
             <!--card-->
             <div class="card" style="height: fit-content;">
@@ -12,7 +12,7 @@
               <div class="rounded-top-3"
                 style="background-image: url(mentor-single.png ); background-position: center; background-size: cover; background-repeat: no-repeat; height: 228px">
               </div>
-              <div class="card-body p-md-5" style="height: 300px;">
+              <div class="card-body "  >
                 <div class="d-flex flex-column gap-5 ">
                   <!--img-->
                   <div class="mt-n8 mb-0" style="height: 0px;">
@@ -115,9 +115,9 @@
             <div class="card">
               <!--card body-->
 
-              <div class="card-body p-md-5 d-flex flex-column gap-3">
+              <div class="card-body    d-flex flex-column gap-3">
                 <!--heading-->
-                <h3 class="mb-0">About</h3>
+                <h5 class="mb-0">About</h5>
                 <div class="d-flex flex-column">
                   <!--para-->
                   <p class="mb-1">
@@ -135,14 +135,14 @@
             <!--card-->
             <div class="card">
               <!--card body-->
-              <div class="card-body p-md-5">
+              <div class="card-body   ">
                 <div class="d-flex flex-column gap-3">
                   <!--heading-->
-                  <h3 class="mb-0">Skills</h3>
+                  <h5 class="mb-0">Skills</h5>
 
                   <div class="gap-2 d-flex flex-wrap">
 
-                    <div class="mentor-skills col-12 mb-0 mt-3" style="height: 30px;">
+                    <div class="mentor-skills col-12 mb-0 mt-3" >
                       <div *ngFor="let skill of mentorProfile.Skills" class="skill-circle">
                         {{ skill }}
                       </div>
@@ -155,11 +155,11 @@
             @if(mentorReviews?.length>0){
             <div class="card">
               <!--card body-->
-              <div class="card-body p-md-5">
+              <div class="card-body   ">
                 <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-between gap-2">
                   <!--heading-->
                   <div>
-                    <h3 class="mb-0">What Developers Say</h3>
+                    <h5 class="mb-0">What Developers Say</h5>
                   </div>
                   <div>
                     <!--form-->
@@ -216,29 +216,7 @@
 
 
 
-                  <button (click)="showReviewForm = !showReviewForm" class="btn btn-outline-primary">
-                    {{ showReviewForm ? 'Hide Review Form' : 'Add Review' }}
-                  </button>
-  
-                  <div *ngIf="showReviewForm">
-                    <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
-                      <div>
-                        <label for="rating">Rating:</label>
-                        <div>
-                          <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="reviewForm.patchValue({ rating: star })">
-                            <i class="star" [ngClass]="{'filled': star <= reviewForm.get('rating')?.value}">★</i>
-                          </span>
-                        </div>
-                      </div>
-  
-                      <div>
-                        <label for="comment">Your Review:</label>
-                        <textarea  class="form-control mb-3 p-4" id="comment" formControlName="comment" rows="4" cols="50"></textarea>
-                      </div>
-  
-                      <button type="submit" [disabled]="reviewForm.invalid" class="btn btn-outline-primary">Submit</button>
-                    </form>
-                  </div>
+            
                 </div>
 
               </div>
@@ -246,11 +224,262 @@
             }@else {
 
             <div class="card">
-              <div class="card-body p-md-5">
+              <div class="card-body   ">
                 <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-between gap-2">
                   <!--heading-->
                   <div>
-                    <h3 class="mb-0">Not Rated yet</h3>
+                    <h5 class="mb-0">Not Rated yet</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            }
+          </div>
+
+          <!-- <div class="col-xl-4 col-12"> -->
+          <!--card-->
+          <!-- <div class="card"> -->
+          <!--card body-->
+          <!-- <div class="card-body px-md-5 pt-2"> -->
+          <!--nav tab-->
+
+          <!-- <div class="tab-content" id="tabContent"> -->
+
+
+
+
+
+
+
+
+
+        </div>
+        <div *ngIf="mentorProfile?.Educations?.length <= 0 && mentorProfile?.Experiences?.length <= 0" class="col-xl-12 col-12">
+          <div class="d-flex flex-column gap-4" style="height: fit-content;">
+            <!--card-->
+            <div class="card" style="height: fit-content;">
+              <!--img-->
+              <div class="rounded-top-3"
+                style="background-image: url(mentor-single.png ); background-position: center; background-size: cover; background-repeat: no-repeat; height: 228px">
+              </div>
+              <div class="card-body "  >
+                <div class="d-flex flex-column gap-5 ">
+                  <!--img-->
+                  <div class="mt-n8 mb-0" style="height: 0px;">
+                    <img src="http://localhost:5164/{{mentorProfile.Image}}" alt="mentor 1"
+                      class="img-fluid rounded-4 mt-n8"
+                      onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
+                    <!-- <img src="avatar-2.jpg" alt="mentor 1" class="img-fluid rounded-4 mt-n8"> -->
+                  </div>
+                  <div class="d-flex flex-column gap-5 mb-5 custom-gap gap-sm-3">
+                    <div class="d-flex flex-column custom-gap gap-3">
+                      <div class="d-flex flex-md-row flex-sm-row flex-column custom-flex justify-content-between gap-2">
+                        <!--heading-->
+                        <div>
+                          <h1 class="mb-0" style="font-size: 40PX;">{{ mentorProfile?.FirstName }}
+                            {{mentorProfile?.LastName}}</h1>
+                          <!--content-->
+                          <div class="d-flex flex-lg-row  flex-column gap-2">
+                            <small class="fw-medium text-gray-800">{{ mentorProfile?.Title }}</small>
+                            <small class="fw-medium text-success">{{ mentorProfile?.YearsOfExperience }}yrs Exp</small>
+                          </div>
+                        </div>
+                        <!--button-->
+                        <div class="d-flex flex-row gap-3 align-items-center custom-flex-col">
+                          <a [routerLink]="['/developer/booking/',id]" class="btn btn btn-outline-primary">
+
+                            <i class="fa-regular fa-handshake"></i>
+                            Book Session
+                          </a>
+                          <a [routerLink]="['/developer/query/', id]" class="btn btn-outline-primary"><i
+                              class="fa-solid fa-circle-question"></i> Ask
+                            Questions</a>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-md-row flex-column flex-sm-row custom-flex gap-md-4 gap-2">
+                        <div class="d-flex flex-row gap-2 align-items-center lh-1">
+                          <!--icon-->
+                          <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                              class="bi bi-star-fill text-warning align-baseline" viewBox="0 0 16 16">
+                              <path
+                                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
+                              </path>
+                            </svg>
+                          </span>
+                          <span>
+                            <!--text-->
+                            <span class="text-gray-800 fw-bold">{{ mentorProfile?.AverageRate }}</span>
+                            ({{mentorProfile.NumOfReviews}}&nbsp;Reviews)
+                          </span>
+                        </div>
+                        <div class="d-flex flex-row  gap-2 align-items-center lh-1">
+                          <!--icon-->
+                          <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                              class="bi bi-people-fill text-primary align-baseline" viewBox="0 0 16 16">
+                              <path
+                                d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5">
+                              </path>
+                            </svg>
+                          </span>
+                          <!--text-->
+                          <span>
+                            <span class="text-gray-800 fw-bold">{{mentorProfile.NumOfStudents}}+</span>
+                            Mentees
+                          </span>
+                        </div>
+                        <div class="d-flex flex-row gap-2 align-items-center lh-1">
+                          <!--icon-->
+                          <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                              class="bi bi-geo-alt-fill text-danger" viewBox="0 0 16 16">
+                              <path
+                                d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6">
+                              </path>
+                            </svg>
+                          </span>
+                          <!--text-->
+                          <!-- <span>Gujarat,India</span> -->
+                          <span>{{mentorProfile.Country}}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <span
+                        class="badge rounded-pill text-success-emphasis bg-success-subtle border border-success align-items-center">
+                        <span>
+                          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-reply-fill me-1 align-text-top" viewBox="0 0 16 16">
+                            <path d="M5.921 11.9 1.353 8.62a.72.72 0 0 1 0-1.238L5.921 4.1A.716.716 0 0 1 7 4.719V6c1.5 0 6 0 7 8-2.5-4.5-7-4-7-4v1.281c0 .56-.606.898-1.079.62z"></path>
+                          </svg> -->
+                        </span>
+                        Session Price: $ {{ mentorProfile?.Price }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--card-->
+            <div class="card">
+              <!--card body-->
+
+              <div class="card-body    d-flex flex-column gap-3">
+                <!--heading-->
+                <h5 class="mb-0">About</h5>
+                <div class="d-flex flex-column">
+                  <!--para-->
+                  <p class="mb-1">
+                    {{ displayText }}
+                  </p>
+                  <div *ngIf="mentorProfile?.About?.length > maxLength">
+                    <a class="btn-link" (click)="toggleExpand()">
+                      {{ isExpanded ? 'Show less' : 'Read more' }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!--card-->
+            <div class="card">
+              <!--card body-->
+              <div class="card-body   ">
+                <div class="d-flex flex-column gap-3">
+                  <!--heading-->
+                  <h5 class="mb-0">Skills</h5>
+
+                  <div class="gap-2 d-flex flex-wrap">
+
+                    <div class="mentor-skills col-12 mb-0 mt-3" >
+                      <div *ngFor="let skill of mentorProfile.Skills" class="skill-circle">
+                        {{ skill }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--card-->
+            @if(mentorReviews?.length>0){
+            <div class="card">
+              <!--card body-->
+              <div class="card-body   ">
+                <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-between gap-2">
+                  <!--heading-->
+                  <div>
+                    <h5 class="mb-0">What Developers Say</h5>
+                  </div>
+                  <div>
+                    <!--form-->
+                    <!-- <form>
+                      <div class="d-flex flex-row align-items-center gap-2">
+                        <label for="exampleInputmentees" class="form-label text-nowrap mb-0">Sort by:</label>
+                        <div class="choices" data-type="select-one" tabindex="0" role="listbox" aria-haspopup="true" aria-expanded="false"><div class="choices_inner"><select class="form-select choicesinput" data-choices="" aria-label="Default select example" id="exampleInputmentees" name="exampleInputmentees" hidden="" tabindex="-1" data-choice="active"><option value="Recommended" data-custom-properties="[object Object]">Recommended</option></select><div class="choiceslist choiceslist--single"><div class="choicesitem choicesitem--selectable" data-item="" data-id="1" data-value="Recommended" data-custom-properties="[object Object]" aria-selected="true">Recommended</div></div></div><div class="choiceslist choiceslist--dropdown" aria-expanded="false"><div class="choiceslist" role="listbox"><div id="choices--exampleInputmentees-item-choice-1" class="choicesitem choicesitem--choice choicesitem--selectable is-highlighted" role="option" data-choice="" data-id="1" data-value="1" data-select-text="" data-choice-selectable="" aria-selected="true">Most Recent</div><div id="choices--exampleInputmentees-item-choice-2" class="choicesitem choicesitem--choice is-selected choices_item--selectable" role="option" data-choice="" data-id="2" data-value="Recommended" data-select-text="" data-choice-selectable="">Recommended</div></div></div></div>
+                      </div>
+                    </form> -->
+                  </div>
+                </div>
+                <div class="d-flex flex-column gap-3">
+                  <div *ngFor="let review of displayedReviews" class="py-4 d-flex flex-column gap-3 border-bottom">
+                    <div class="d-flex flex-row justify-content-between align-items-md-center">
+                      <div class="d-flex flex-row gap-3 align-items-center">
+                        <div>
+                          <img src="http://localhost:5164/{{review.Reviewer.Image}}" alt="avatar"
+                            class="avatar avatar-lg rounded-circle"
+                            onerror="this.onerror=null; this.src='http://localhost:5164/profile_images/Default1.png';">
+                        </div>
+                        <div>
+                          <h6 class="mb-1">{{ review.Reviewer.FirstName }} {{ review.Reviewer.LastName }}</h6>
+
+                          <div
+                            class="d-flex flex-md-row flex-column flex-sm-row custom-flex custom-gap gap-md-2 gap-sm-2 align-items-md-center lh-1">
+                            <app-rate [value]="review.Rate"></app-rate>
+                            <span>
+                              <small class="fw-medium">{{ formatDate(review.ReviewDate) }}</small>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="mb-0">{{ review.Description }}</p>
+                    </div>
+                  </div>
+
+                  <!-- Load More Button -->
+                  <div *ngIf="hasMoreReviews">
+                    <a id="loadMoreButton" class="btn btn-outline-primary" (click)="loadMoreReviews()">
+                      Load more reviews
+                    </a>
+                  </div>
+                  <div *ngIf="canLoadLess">
+                    <a id="loadLessButton" class="btn btn-outline-secondary" (click)="loadLessReviews()">
+                      Load less reviews
+                    </a>
+                  </div>
+
+
+
+
+
+
+
+            
+                </div>
+
+              </div>
+            </div>
+            }@else {
+
+            <div class="card">
+              <div class="card-body   ">
+                <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-between gap-2">
+                  <!--heading-->
+                  <div>
+                    <h5 class="mb-0">Not Rated yet</h5>
                   </div>
                 </div>
               </div>
@@ -278,6 +507,7 @@
 
         </div>
 
+
         <!-- </div> -->
         <!-- </div> -->
 
@@ -287,7 +517,7 @@
             
             
               <div class="profile-section">
-                <h2 class="fw-bold">Education</h2>
+                <h5 class="   ">Education</h5>
                 <div class="">
                   <p><strong>Degree:</strong> {{mentorProfile.Educations.Degree}}</p>
                   <p><strong>Field of Study:</strong> fieldOfStudy</p>
@@ -306,7 +536,7 @@
           <!-- @if(mentorProfile.Educations.length>=1){
               <div class="card mb-4">
                 <div class="profile-section">
-                  <h2 class="fw-bold">Education</h2>
+                  <h5 class="   ">Education</h5>
                   <div class="">
                     @for (education of mentorProfile.Educations; track education.Degree; let index = $index) {
                     <div class="education-container">
@@ -330,7 +560,7 @@
             } -->
           <div *ngIf="mentorProfile?.Educations?.length > 0" class="card mb-4">
             <div class="profile-section">
-              <h2 class="fw-bold">Education</h2>
+              <h5 class="   ">Education</h5>
               <div>
                 <!-- Corrected *ngFor directive -->
                 <div *ngFor="let education of getLimitedEducations(mentorProfile.Educations);"
@@ -338,7 +568,7 @@
                   <div class="education-item">
                     <div class="img vertical-align institute-logo" style="padding-bottom: 60px; align-items: start;">
                       <img width="36" height="36" loading="lazy"
-                        src="http://localhost:5164/Univeristy_Default/UniveristyDefault.jpg"
+                     src="http://localhost:5164/Univeristy_Default/defaults.jfif"
                         alt="{{education.University}}" class="ng-star-inserted">
                     </div>
                     <div class="education-details">
@@ -398,7 +628,7 @@
        
              
               <div class="profile-section">
-                <h2>Work Experience</h2>
+                <h5>Work Experience</h5>
                 <div class="experience-item">
                   <p><strong>Field of Study:</strong> fieldOfStudy</p>
                   <p><strong>Organization:</strong> organization</p>
@@ -412,7 +642,7 @@
 
           <div *ngIf="mentorProfile?.Experiences?.length > 0" class="card mb-4">
             <div class="profile-section">
-              <h2 class="fw-bold">Work Experience</h2>
+              <h5 class="   ">Work Experience</h5>
               <div>
                 <!-- Corrected *ngFor directive -->
                 <div *ngFor="let experience of getLimitedExperiences(mentorProfile.Experiences);"
@@ -420,7 +650,7 @@
                   <div class="education-item">
                     <div class="img vertical-align institute-logo" style="padding-bottom: 60px; align-items: start;">
                       <img width="36" height="36" loading="lazy"
-                        src="http://localhost:5164/Univeristy_Default/UniveristyDefault.jpg"
+                     src="http://localhost:5164/Univeristy_Default/defaults.jfif"
                         alt="{{experience.Organization}}" class="ng-star-inserted">
                     </div>
                     <div class="education-details">
@@ -467,11 +697,11 @@
   <!--mentor-->
 
 
-  <section class="pb-xl-8 pb-6 mt-5">
+  <section *ngIf="similarMentors?.length>0" class="pb-xl-8 pb-6 mt-5">
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h2 class="mb-4">Similar Mentors</h2>
+          <h5 class="mb-4">Similar Mentors</h5>
         </div>
       </div>
       <div class="row gy-4 justify-content-sm-center">
@@ -493,10 +723,10 @@
                 <div class="d-flex flex-column gap-2">
                   <div>
                     <div class="d-flex align-items-center gap-2">
-                      <h3 class="mb-0">
+                      <h5 class="mb-0">
                         <a [routerLink]="['/mentors',mentor.ID]" class="text-reset">{{mentor.FirstName}}
                           {{mentor.LastName}}</a>
-                      </h3>
+                      </h5>
                       <span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                           class="bi bi-patch-check-fill text-success" viewBox="0 0 16 16">
@@ -553,7 +783,7 @@
 
 
 <!-- <div class="profile-section">
-  <h2>Education</h2>
+  <h5>Education</h5>
   <div class="education-item" *ngFor="let education of educationList">
     <p><strong>Degree:</strong> {{education.degree}}</p>
     <p><strong>Field of Study:</strong> {{education.fieldOfStudy}}</p>
@@ -565,7 +795,7 @@
     <p *ngIf="!education.tillNow"><strong>End Date:</strong> {{education.endDate | date:'longDate'}}</p>
   </div>
 
-  <h2>Experience</h2>
+  <h5>Experience</h5>
   <div class="experience-item" *ngFor="let experience of experienceList">
     <p><strong>Field of Study:</strong> {{experience.fieldOfStudy}}</p>
     <p><strong>Organization:</strong> {{experience.organization}}</p>

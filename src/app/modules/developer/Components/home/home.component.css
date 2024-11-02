@@ -552,7 +552,7 @@ app-developercard {
 .mins-5{
   margin-left: 80px !important;
 }
-=======
+
 .btn-custom {
   background-color: #415bcf;; /* Black background */
   color: #fff; /* White text color */
@@ -989,20 +989,19 @@ body{
   --bs-btn-disabled-border-color: #00376E !important;
   --bs-gradient: none;
 }
-.cards-container {
+/* .cards-container {
   display: flex !important;
   flex-wrap: wrap !important;
-  justify-content: center !important; /* Aligns cards horizontally */
-  gap: 2rem !important; /* Adds space between cards */
+  justify-content: center !important; 
+  gap: 2rem !important; 
   width: 793px !important;
   max-width: 100% !important;
   margin: 2rem auto;
 }
 
 .card {
-  flex: 0 0 300px; /* Ensures all cards have a fixed width */
+  flex: 0 0 300px; 
   background: #fff;
   margin: 3rem;
   box-shadow: 0 10px 7px -5px rgba(0, 0, 0, .4);
-}
-
+} */

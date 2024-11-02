@@ -10,14 +10,14 @@ export class ProfileLayoutComponent {
   isSidebarOpen = false;  // Sidebar is closed by default for mobile
   isMobile = false;       // Flag to check if it's mobile or tablet view
   menuItems = [
-    { path: '/profile', label: 'Profile', icon: 'bi bi-person' },
+    { path: '/developer/profile/Developer', label: 'Profile', icon: 'bi bi-person' },
     { path: '/developer/profile/updateprofile', label: 'Edit Profile', icon: 'bi bi-pencil-square' },
     { path: '/developer/profile/quizzes', label: 'Quizzes', icon: 'bi bi-question' },
     { path: '/developer/profile/reply', label: 'Queries', icon: 'bi bi-chat-square-dots' },
-    { path: '/profile-requests', label: 'Requests', icon: 'bi bi-envelope' },
-    { path: '/developer/profile/answer-query', label: 'Answers of Query', icon: 'fa-regular fa-comment-dots' },
-    { path: '/developer/booking', label: 'Sessions', icon: 'bi bi-calendar-check' },
-    { path: '/developer/profile/reviews', label: 'Reviews', icon: 'bi bi-star' },
+    // { path: '/profile-requests', label: 'Requests', icon: 'bi bi-envelope' },
+    // { path: '/developer/profile/answer-query', label: 'Answers of Query', icon: 'fa-regular fa-comment-dots' },
+    { path: '/developer/profile/Sessions', label: 'Sessions', icon: 'bi bi-calendar-check' },
+    // { path: '/developer/profile/reviews', label: 'Reviews', icon: 'bi bi-star' },
 
     //{ path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' }
   ];
@@ -28,15 +28,15 @@ export class ProfileLayoutComponent {
     this.checkScreenWidth();
   }
 
- // Listener to detect window resizing
-  // @HostListener('window:resize', ['$event'])
-  // onResize(event: any) {
-  //   this.checkScreenWidth();
-  // }
+ //Listener to detect window resizing
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenWidth();
+  }
 
   // Check screen size and handle sidebar behavior
   checkScreenWidth() {
-    // this.isMobile = window.innerWidth < 768;  // Detect if screen width is less than 768px (Bootstrap's `md` breakpoint)
+     this.isMobile = window.innerWidth < 768;  // Detect if screen width is less than 768px (Bootstrap's `md` breakpoint)
 
     if (!this.isMobile) {
       this.isSidebarOpen = true;  // Keep the sidebar open on larger screens

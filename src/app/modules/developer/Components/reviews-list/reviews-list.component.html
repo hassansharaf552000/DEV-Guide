@@ -1,13 +1,15 @@
 <br>
 <br>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet"> -->
 
-<h5 class="display-4 fw-bold text-center" style="
+<!-- <h5 class="display-4 fw-bold text-center" style="
 font-family: 'Edu AU VIC WA NT Hand', cursive;
 font-optical-sizing: auto;
-font-style: normal;">Reviews From Mentors</h5>
+font-style: normal;">Feedbacks From Mentors And HRs </h5> -->
+
+<h5 class="display-4 fw-bold text-center" >Feedbacks From Mentors And HRs </h5>
 <br>
 <div class="container">
   <!-- <div class="row"> -->
@@ -16,23 +18,45 @@ font-style: normal;">Reviews From Mentors</h5>
     </div> -->
     <!-- <div class="col-"> -->
       <div class="row">
-        <div class="col-4">
+        <!-- <div class="col-4">
           <div class="left-card">
             <div class="rating">
-              <h2>5.0</h2>
+              <h2>Your Feedback</h2>
               <div class="stars">
-                <span>⭐️⭐️⭐️⭐️⭐️</span>
+               
+                <span><app-rate [value]="user.AverageRate"></app-rate></span>
+
               </div>
               <p>Average Rating</p>
-              <p>(24 Reviews)</p>
+              <p>({{user.NumOfReviews }})</p>
             </div>
           </div>
-        </div>
-        <div class="col-7">
+        </div> -->
+        <div class="col-12">
           <div class="reviews">
-            <div *ngFor="let Review of Reviews">
-              <app-reviews-card [review]="Review" class="review-card"></app-reviews-card>
-            </div>
+            @for(session of sessions; track $index){
+            <div>
+              <div class="card review-card">
+                <div class="card-body">
+                  <div class="review-header d-flex align-items-center">
+                    <div class="profile-picture me-3">
+                      <img [src]="session.MentorImage" alt="User Profile" class="rounded-circle"  style=""/>
+                    </div>
+                    <div class="review-info">
+                      <h5 class="reviewer-name mb-1">{{ session.MentorFirstName }} {{session.MentorLastName }}</h5>
+                      <p class="review-date text-muted mb-0">{{ session.DateTime | date: 'MMMM d, y' }}</p>
+                    </div>
+                    <div class="review-rating ms-auto d-flex align-items-center">
+                      <!-- <span class="rating-value me-1">{{ review.Rate }}</span> -->
+                      <i class="fa-regular fa-comments" style="color: rgb(255, 157, 0);"></i>
+                    </div>
+                  </div>
+                  <hr>
+                  <h6 class="review-text mt-3">{{ session.Feedback }}</h6>
+                </div>
+              </div>
+              <!-- <app-reviews-card [review]="Review" class="review-card"></app-reviews-card> -->
+            </div>}
           </div>
         </div>
       </div>
