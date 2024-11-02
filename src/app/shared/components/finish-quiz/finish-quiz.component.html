@@ -1,0 +1,39 @@
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="card shadow p-4 mb-4 bg-white rounded custom-card">
+        <h4>{{ message }}</h4>
+        <p>Your Score: <strong>{{ score }}%</strong></p>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <div class="card shadow p-4 mb-4 bg-white rounded custom-card">
+        <h4>Assessment Feedback</h4>
+
+        <p>How would you rate your experience?</p>
+        <div class="rating-icons d-flex justify-content-between mb-4">
+          <span *ngFor="let rate of [1, 2, 3, 4, 5]"
+                [class.selected]="selectedRating === rate"
+                (click)="rateExperience(rate)">
+            <i [class]="'fa ' + (rate <= selectedRating ? 'fa-smile' : 'fa-meh')"></i>
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback">Describe your experience:</label>
+          <textarea id="feedback" class="form-control" rows="4" placeholder="Provide feedback to help us improve!"
+            [(ngModel)]="feedbackText"
+            (ngModelChange)="onFeedbackTextChange($event)">
+          </textarea>
+        </div>
+
+        <button class="btn btn-primary mt-3" (click)="submitFeedback()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

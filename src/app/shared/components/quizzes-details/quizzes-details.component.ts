@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ISkill } from '../../../core/enums/Skill';
 import { SkillService } from '../../services/Skill/skill.service';
+import { IQuiz } from '../../../core/enums/Quiz';
+import { QuizService } from '../../services/Quiz/quiz.service';
 
 @Component({
   selector: 'app-quiz-details',
@@ -9,30 +11,30 @@ import { SkillService } from '../../services/Skill/skill.service';
   styleUrls: ['./quizzes-details.component.css']
 })
 export class QuizzesDetailsComponent implements OnInit {
-  skillid: number | null = null;
-  selectedQuiz: ISkill | undefined;
-  loading = true; // To handle the loading state
+  Quizid: number | null = null;
+  selectedQuiz: IQuiz | undefined;
+  //loading = true; // To handle the loading state
   errorMessage: string | null = null; // To handle error messages
 
-  constructor(private route: ActivatedRoute, private skillService: SkillService) {}
+  constructor(private route: ActivatedRoute, private quizService: QuizService) {}
 
   ngOnInit() {
     // Get the skill ID from the route parameters
-    this.skillid = +this.route.snapshot.paramMap.get('id')!;
+    this.Quizid = +this.route.snapshot.paramMap.get('id')!;
 
     // Fetch the quiz details from the service based on the skill ID
-    if (this.skillid) {
-      this.fetchQuizDetails(this.skillid);
+    if (this.Quizid) {
+      this.fetchQuizDetails(this.Quizid);
     }
   }
 
   // Fetch the quiz details from the SkillService
   fetchQuizDetails(id: number) {
-    this.skillService.getUserSkills().subscribe(
-      (skills: ISkill[]) => {
+    this.quizService.getUserQuizzes().subscribe(
+      (Quizzes: IQuiz[]) => {
         // Find the selected quiz by ID
-        this.selectedQuiz = skills.find(skill => skill.Id === id);
-        this.loading = false;
+        this.selectedQuiz = Quizzes.find(Quiz => Quiz.QuizId === id);
+        //this.loading = false;
 
         // Handle case where quiz is not found
         if (!this.selectedQuiz) {
@@ -40,9 +42,9 @@ export class QuizzesDetailsComponent implements OnInit {
         }
       },
       (error) => {
-        console.error('Error fetching skills:', error);
+        console.error('Error fetching Quizzes:', error);
         this.errorMessage = 'Error fetching quiz details. Please try again later.';
-        this.loading = false;
+        //this.loading = false;
       }
     );
   }
