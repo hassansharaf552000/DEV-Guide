@@ -43,7 +43,7 @@ import { SocialAccountsListComponent } from './components/social-accounts-list/s
 import { AddsocialaccountComponent } from './components/addsocialaccount/addsocialaccount.component';
 import { SocialaccountscardComponent } from './components/socialaccountscard/socialaccountscard.component';
 
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 import { StepOneComponent } from './components/step-one/step-one.component';
 import { StepTwoComponent } from './components/step-two/step-two.component';

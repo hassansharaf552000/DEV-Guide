@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ToastrService } from 'ngx-toastr';
-import { ResetPasswordService } from '../reset-password.service';
+import { ResetPasswordService } from '../../reset-password.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
@@ -15,14 +16,15 @@ export class ResetPasswordComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private restpassword: ResetPasswordService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
     this.resetPasswordForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       code: ['', Validators.required],
-      newPassword: ['', Validators.required]
+      newPassword: ['', [Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/)]]
     });
   }
 
@@ -32,6 +34,7 @@ export class ResetPasswordComponent implements OnInit {
       this.restpassword.resetPassword(resetData).subscribe({
         next: (response) => {
           this.toastr.success('Password has been reset successfully.', 'Success');
+          this.router.navigateByUrl('/login');
           this.resetPasswordForm.reset();
         },
         error: (err) => {

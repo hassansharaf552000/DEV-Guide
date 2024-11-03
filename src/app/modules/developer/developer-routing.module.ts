@@ -52,7 +52,7 @@ import { ExperienceListComponent } from '../../shared/components/experience-list
 import { SocialAccountsListComponent } from '../../shared/components/social-accounts-list/social-accounts-list.component';
 
 import { ForgotPasswordComponent } from '../../shared/components/forget_password/forget_password.component';
-import { ResetPasswordComponent } from '../../shared/reset-password/reset-password.component';
+import { ResetPasswordComponent } from '../../shared/components/reset-password/reset-password.component';
 
 import { DeveloperSessionDetailsComponent } from './Components/developer-session-details/developer-session-details.component';
 
@@ -81,7 +81,7 @@ const routes: Routes = [
       { path: 'paypal/:id', component: PaymentComponent,canActivate: [AuthGuard] },
       { path: 'mentors', component: MentorListComponent },
       { path: 'mentors/:id', component: MentorProfileComponent,canActivate: [AuthGuard], },
-      
+
       { path: 'hrs', component: HRListComponent },
       { path: 'hrs/:id', component: HrProfileComponent,canActivate: [AuthGuard], },
       { path: 'contactus', component: ContactUsComponent },
@@ -90,8 +90,7 @@ const routes: Routes = [
 
       { path: 'aboutus', component: AboutUsComponent },
       { path: 'home', component: HomeComponent },
-      { path: 'forgetpassword', component: ForgotPasswordComponent },
-      { path: 'resetpassword', component: ResetPasswordComponent },
+
       { path: 'faq-and-licence', component: FaqComponent },
 //       { path: 'booking', component: BookingComponent },
 //       { path: 'query', component: QueryComponent },
@@ -161,6 +160,8 @@ const routes: Routes = [
   { path: 'cancel', component: PaymentComponent,canActivate: [AuthGuard] },
   { path: 'confirm/:id', component: BookingConfirmationComponent,canActivate: [AuthGuard] },
   { path: 'cancel', component: PaymentComponent },
+  { path: 'forgetpassword', component: ForgotPasswordComponent },
+  { path: 'resetpassword', component: ResetPasswordComponent },
   // { path: 'hr-payment', component: HrPaymentsComponent },
   //{ path: '**', redirectTo: 'notfound' },
 ];

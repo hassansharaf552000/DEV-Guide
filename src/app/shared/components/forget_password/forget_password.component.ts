@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ToastrService } from 'ngx-toastr';
 import { ForgetPasswordService } from '../../forget-password.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forget_password',
@@ -15,7 +16,8 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private forgetPasswordService: ForgetPasswordService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -30,6 +32,7 @@ export class ForgotPasswordComponent implements OnInit {
       this.forgetPasswordService.getResetPasswordCode(email).subscribe({
         next: () => {
           this.toastr.success('Password reset code has been sent to your email.', 'Success');
+          this.router.navigateByUrl('/resetpassword');
           this.forgotPasswordForm.reset();
         },
         error: (err) => {
