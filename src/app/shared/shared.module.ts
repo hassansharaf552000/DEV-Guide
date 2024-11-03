@@ -55,6 +55,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { QuizDetailsComponent } from './components/quiz-details/quiz-details.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { TakenQuizzesCardComponent } from './components/taken-quizzes-card/taken-quizzes-card.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 
 
@@ -103,6 +104,7 @@ import { TakenQuizzesCardComponent } from './components/taken-quizzes-card/taken
 
     PaymentComponent,
     TakenQuizzesCardComponent,
+    ErrorPageComponent,
 
   ],
 
