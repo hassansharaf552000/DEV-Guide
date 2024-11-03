@@ -9,7 +9,7 @@
 // import { CookieService } from 'ngx-cookie-service';
 // import { RouterModule } from '@angular/router';
 // import { NgxPaginationModule } from 'ngx-pagination';
-// import { CarouselModule } from 'ngx-owl-carousel-o'; 
+// import { CarouselModule } from 'ngx-owl-carousel-o';
 // import { CommonModule } from '@angular/common';
 
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,10 +31,10 @@
 //     RouterModule,
 //     CommonModule,
 //     NgxPaginationModule,
-//     BrowserAnimationsModule, 
-//     ToastrModule.forRoot({ 
-//       timeOut: 3000, 
-//       positionClass: 'toast-top-right', 
+//     BrowserAnimationsModule,
+//     ToastrModule.forRoot({
+//       timeOut: 3000,
+//       positionClass: 'toast-top-right',
 //       preventDuplicates: true,
 //       progressBar: true,
 //     }),
@@ -46,7 +46,7 @@
 //   ],
 //   providers: [
 //     CookieService,
-//     provideClientHydration(), 
+//     provideClientHydration(),
 //     provideHttpClient(withFetch(), withInterceptors([authInterceptor,loaderInterceptor]))],
 //   bootstrap: [AppComponent],
 // })
@@ -78,12 +78,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { ErrorPageComponent } from './error-page/error-page.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, ErrorPageComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -111,9 +110,9 @@ import { ErrorPageComponent } from './error-page/error-page.component';
   providers: [
     CookieService,
     MatDatepickerModule,
-    provideClientHydration(), 
+    provideClientHydration(),
     provideHttpClient(withFetch(), withInterceptors([authInterceptor,loaderInterceptor])), provideAnimationsAsync()],
   bootstrap: [AppComponent],
-  
+
 })
 export class AppModule {}
