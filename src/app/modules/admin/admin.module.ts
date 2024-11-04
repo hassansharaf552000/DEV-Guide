@@ -5,7 +5,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {  SessionsComponent } from './sessions/sessions.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
-import { MessagesComponent } from './messages/messages.component';
+import { QuizzesSolvedComponent } from './quizzes-solved/quizzes-solved.component';
 
 
 import { usersDataComponent } from './users-data/users-data.component';
@@ -15,6 +15,8 @@ import { AddskillsComponent } from './addskills/addskills.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { QuizzesCreatedComponent } from './quizzes-created/quizzes-created.component';
+
 
 
 
@@ -25,21 +27,24 @@ import { NgxPaginationModule } from 'ngx-pagination';
   declarations: [
     DashboardComponent,
     AnalyticsComponent,
-    MessagesComponent,
+    QuizzesSolvedComponent,
+
     SessionsComponent,
     usersDataComponent,
     AdminsidebarComponent,
     ReviewsComponent,
     ContactsComponent,
-    AddskillsComponent
+    AddskillsComponent,
+    QuizzesCreatedComponent
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule,   
+    AdminRoutingModule,
     ReactiveFormsModule,
     FormsModule ,
     NgxPaginationModule,// Add ReactiveFormsModule here
    
+
   ]
 })
 export class AdminModule { }

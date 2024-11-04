@@ -1,10 +1,13 @@
 <div class="sidebar">
-  <a class="navbar-brand" routerLink="/">
-      <img class="light-mode-item navbar-brand-item" src="rodri.jpg" alt="logo" height="150" width="250">
-  </a>
-  <ul class="nav flex-column">
+  <div class="text-center mt-3">
+    <a class="navbar-brand" routerLink="/">
+      <img class="light-mode-item navbar-brand-item" src="logo 3_processed (1).jpg" alt="logo" height="50" width="150">
+      <h5 class="mt-3 text-white">Admin Dashboard</h5>
+    </a>
+  </div>
 
-      <li class="nav-item">
+
+<!--       <li class="nav-item">
           <a class="nav-link" routerLink="/admin/usersData" routerLinkActive="active">Users</a>
       </li>
       <li class="nav-item">
@@ -30,9 +33,71 @@
           <i [class]="logoutItem.icon" style="color: white;"></i> <!-- Bind logout icon -->
           {{ logoutItem.label }} <!-- Bind logout label -->
         </a>
+      </li> -->
+      <!-- <li class="nav-item-button">
+          <button class="nav-link fw-bold text-bg-danger ">log out</button>
+      </li> -->
+
+  <ul class="nav flex-column mt-4">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin/analytics" routerLinkActive="active">
+        <i class="bi bi-house-door"></i> Home
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin/usersData" routerLinkActive="active">
+        <i class="bi bi-people"></i> Users
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin/sessions" routerLinkActive="active">
+        <i class="bi bi-clock-history"></i> Sessions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin/quizzescreated" routerLinkActive="active">
+        <i class="bi bi-question-circle"></i> Quizzes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin/quizzessolved" routerLinkActive="active">
+        <i class="bi bi-check-circle"></i> Quizzes Solved
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin/reviews" routerLinkActive="active">
+        <i class="bi bi-star"></i> Reviews
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin/contacts" routerLinkActive="active">
+        <i class="bi bi-envelope"></i> Complaints
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin/addskills" routerLinkActive="active">
+        <i class="bi bi-plus-circle"></i> Add Quiz
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin/addskills" routerLinkActive="active">
+        <i class="bi bi-list-task"></i> Add Quiz Questions and Options
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin/addskills" routerLinkActive="active">
+        <i class="bi bi-gear"></i> Add Skills
+      </a>
+    </li>
+     <li class="nav-item text-center"> <!-- Add 'text-center' to center text -->
+        <a class="nav-link logout-btn" (click)="logout()"> <!-- Add custom class 'logout-btn' -->
+          <i [class]="logoutItem.icon" style="color: white;"></i> <!-- Bind logout icon -->
+          {{ logoutItem.label }} <!-- Bind logout label -->
+        </a>
       </li>
       <!-- <li class="nav-item-button">
           <button class="nav-link fw-bold text-bg-danger ">log out</button>
       </li> -->
+
   </ul>
 </div>

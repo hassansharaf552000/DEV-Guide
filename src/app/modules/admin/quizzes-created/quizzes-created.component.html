@@ -1,0 +1,39 @@
+<app-adminsidebar></app-adminsidebar>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
+<br>
+<br>
+<div class="quiz-list">
+  <h3 class="display-4 fw-bold text-center"
+    style="font-family: Edu AU VIC WA NT Hand, cursive;font-optical-sizing: auto;font-style: normal;">
+    Quizzes Created
+  </h3>
+  <br>
+  <br>
+  <!-- Search Box -->
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by Skill Name" class="search-input" />
+    <button (click)="onSearch()" class="search-button">Search</button>
+  </div>
+  <br>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th>Quiz Name</th>
+        <th>Number of Questions</th>
+        <th>Duration (min)</th>
+        <th>Skill Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let quiz of quizzes">
+        <td>{{ quiz.QuizName }}</td>
+        <td>{{ quiz.NumberOfQuestions }}</td>
+        <td>{{ quiz.Duration }}</td>
+        <td>{{ quiz.SkillName }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
