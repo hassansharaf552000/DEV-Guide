@@ -25,8 +25,14 @@
       <!-- <li class="nav-item">
           <a class="nav-link" routerLink="/admin/Role" routerLinkActive="active">Change Role</a>
       </li> -->
-      <li class="nav-item-button">
-          <button class="nav-link fw-bold text-bg-danger ">log out</button>
+      <li class="nav-item text-center"> <!-- Add 'text-center' to center text -->
+        <a class="nav-link logout-btn" (click)="logout()"> <!-- Add custom class 'logout-btn' -->
+          <i [class]="logoutItem.icon" style="color: white;"></i> <!-- Bind logout icon -->
+          {{ logoutItem.label }} <!-- Bind logout label -->
+        </a>
       </li>
+      <!-- <li class="nav-item-button">
+          <button class="nav-link fw-bold text-bg-danger ">log out</button>
+      </li> -->
   </ul>
 </div>

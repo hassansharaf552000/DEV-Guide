@@ -44,6 +44,30 @@
   cursor: pointer; /* تغيير شكل المؤشر عند تمرير الفأرة فوق الزر */
   transition: background-color 0.3s; /* تأثير انتقال سلس عند تغيير اللون */
 }
+.logout-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  /* width: 100px; */
+}
+
+/* Custom style for the logout button */
+.logout-btn {
+  color: white; /* White text */
+  background-color: rgb(218, 17, 17); /* Red background */
+  padding: 10px; /* Add padding for better spacing */
+  border-radius: 5px; /* Add rounded corners */
+  display: inline-block; /* Keep the button inline */
+  width: 100%; /* Ensure the button spans the full width */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline from the link */
+}
+
+.logout-btn:hover {
+  background-color: rgb(194, 18, 18); /* Darken the background on hover */
+}
+.logout-btn, .home-btn {
+  margin-bottom: 10px;
+}
 
 
 

@@ -14,6 +14,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { AddskillsComponent } from './addskills/addskills.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -36,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     AdminRoutingModule,   
     ReactiveFormsModule,
-    FormsModule // Add ReactiveFormsModule here
+    FormsModule ,
+    NgxPaginationModule,// Add ReactiveFormsModule here
    
   ]
 })
