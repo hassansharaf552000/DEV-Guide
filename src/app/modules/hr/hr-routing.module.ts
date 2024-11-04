@@ -59,21 +59,7 @@ const routes: Routes = [
       {path:'Quiz/:id',component:QuizzesDetailsComponent,canActivate: [AuthGuard],},
       { path: 'developers/:id', component: DeveloperlistComponent,canActivate: [AuthGuard]},
       { path: 'home', component: ProfileComponent,canActivate: [AuthGuard] },
-
-
-      { path: 'profile', component: ProfileComponent },
-      { path: 'updateprofile', component: Update_ProfileComponent },
-      { path: 'hr-payments', component: HrPaymentsComponent },
       { path: 'Sessions', component:BookingHrComponent },
-      { path: 'hr-summry', component: HrSummaryComponent },
-      { path: 'hr-request', component: HrRequestComponent},
-      { path: 'schedule', component: ScheduleComponent },
-      { path: 'contact-hr', component: ContactUsComponent },
-      { path: 'reviews', component: ReviewsListComponent },
-      { path: 'queryanswers', component: HrAnswerQueryComponent },
-      { path: 'session-details', component: SessionDatailsComponent },
-      { path: 'home', component: HrlayoutComponent },
-
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'notfound' },
     ],

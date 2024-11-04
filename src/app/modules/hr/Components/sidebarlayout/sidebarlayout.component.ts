@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../../../shared/services/Auth/auth.service';
 @Component({
-  selector: 'app-sidebarlayout',
+  selector: 'app-hrsidebarlayout',
   templateUrl: './sidebarlayout.component.html',
   styleUrl: './sidebarlayout.component.css'
 })

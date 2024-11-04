@@ -140,7 +140,7 @@ export class LoginComponent implements OnInit {
                         case 'Mentor':
                             this.router.navigateByUrl('/mentor');
                             break;
-                            case 'Admin':
+                        case 'Admin':
                             this.router.navigateByUrl('/admin');
                             break;
                         default:
