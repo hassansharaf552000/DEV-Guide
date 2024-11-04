@@ -46,3 +46,66 @@
   .tdclass{
     font-weight: 400
 }
+
+.star-rating {
+  padding-right: 55px;
+  /* padding-top: 30px; */
+  direction: rtl;
+  display: inline-flex;
+  margin-left: 0px !important;
+}
+@media (max-width: 1200px) {
+  .star-rating {
+  /* padding-left:1%; */
+  padding-right: 10px;
+  
+  padding-bottom: 5px;
+    direction: rtl;
+    display: inline-flex;
+  }
+  
+}
+@media (max-width: 770px) {
+  .star-rating {
+  padding-left: 1%;
+  /* padding-right: 0px; */
+  /* padding-top: 30px; */
+  padding-bottom: 40px;
+    direction: rtl;
+    display: inline-flex;
+  }
+}
+
+.star-rating input[type="radio"] {
+  display: none;
+}
+
+.star-rating label {
+  color: white;
+  font-size: 2em;
+  padding: 0 0.1em;
+  cursor: pointer;
+  /* border: 2px solid rgb(144, 141, 141);  */
+  
+  /* Border for unselected stars */
+      transition: background-color 0.2s, border-color 0.2s, fill 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+}
+
+
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input[type="radio"]:checked ~ label {
+  color: #ffc107;
+}
+
+.star-rating label:hover svg,
+.star-rating label:hover ~ label svg,
+.star-rating input[type="radio"]:checked ~ label svg {
+  fill: #ffc107;
+}
+.star-rating label svg,.star-rating label ~ label svg,.star-rating input[type="radio"] ~ label svg{
+  fill: gray;
+}

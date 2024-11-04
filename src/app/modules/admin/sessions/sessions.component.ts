@@ -97,7 +97,8 @@ developerName: string = '';
 instructorName: string = '';
 dateFrom: string | null = null;
 dateTo: string | null = null;
-
+currentPage: number = 1;
+itemsPerPage: number = 20;
 constructor(private sessionService: SessionService) {}
 
 ngOnInit(): void {

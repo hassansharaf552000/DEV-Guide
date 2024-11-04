@@ -40,7 +40,8 @@ export class usersDataComponent implements OnInit {
   filteredUsers: any[] = []; // To store the filtered results
   searchName: string = '';
   selectedRole: string = '';
-
+  currentPage: number = 1;
+  itemsPerPage: number = 20;
   constructor(private userService: AccountService) {}
 
   ngOnInit(): void {

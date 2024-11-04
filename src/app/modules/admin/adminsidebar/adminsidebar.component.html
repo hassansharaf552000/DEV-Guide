@@ -6,6 +6,38 @@
     </a>
   </div>
 
+
+<!--       <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/usersData" routerLinkActive="active">Users</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/sessions" routerLinkActive="active">Sessions</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/Quizes" routerLinkActive="active">Quizes</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/reviews" routerLinkActive="active">Reviews</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/contacts" routerLinkActive="active">List of contacts</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/addskills" routerLinkActive="active">Add skills </a>
+      </li>
+      <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/Role" routerLinkActive="active">Change Role</a>
+      </li> -->
+      <li class="nav-item text-center"> <!-- Add 'text-center' to center text -->
+        <a class="nav-link logout-btn" (click)="logout()"> <!-- Add custom class 'logout-btn' -->
+          <i [class]="logoutItem.icon" style="color: white;"></i> <!-- Bind logout icon -->
+          {{ logoutItem.label }} <!-- Bind logout label -->
+        </a>
+      </li> -->
+      <!-- <li class="nav-item-button">
+          <button class="nav-link fw-bold text-bg-danger ">log out</button>
+      </li> -->
+
   <ul class="nav flex-column mt-4">
     <li class="nav-item">
       <a class="nav-link" routerLink="/admin/analytics" routerLinkActive="active">
@@ -57,10 +89,15 @@
         <i class="bi bi-gear"></i> Add Skills
       </a>
     </li>
-    <li class="nav-item-button">
-      <button class="btn-logout text-bg-danger">
-        <i class="bi bi-box-arrow-right"></i> Log Out
-      </button>
-    </li>
+     <li class="nav-item text-center"> <!-- Add 'text-center' to center text -->
+        <a class="nav-link logout-btn" (click)="logout()"> <!-- Add custom class 'logout-btn' -->
+          <i [class]="logoutItem.icon" style="color: white;"></i> <!-- Bind logout icon -->
+          {{ logoutItem.label }} <!-- Bind logout label -->
+        </a>
+      </li>
+      <!-- <li class="nav-item-button">
+          <button class="nav-link fw-bold text-bg-danger ">log out</button>
+      </li> -->
+
   </ul>
 </div>
