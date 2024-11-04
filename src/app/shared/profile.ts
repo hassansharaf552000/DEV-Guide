@@ -27,4 +27,12 @@
     PhoneNumber: string;
     YearsOfExperience: number;
     About:string;
+    Status:UserStatus
+
+}
+export enum UserStatus
+{
+    Pending,
+    Approved,
+    Rejected
 }
