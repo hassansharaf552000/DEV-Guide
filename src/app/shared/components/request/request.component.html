@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Change Role</h1>
+
+  <div class="instructions-section">
+    <div class="role-buttons">
+      <button (click)="selectRole('developer')" [class.active]="selectedRole === 'developer'">Developer</button>
+      <button (click)="selectRole('hr')" [class.active]="selectedRole === 'hr'">HR</button>
+      <button (click)="selectRole('mentor')" [class.active]="selectedRole === 'mentor'">Mentor</button>
+    </div>
+
+    <h2 style="color: rgb(24, 34, 169);"> <b>{{ selectedRole | titlecase }}</b> </h2>
+    <ul>
+      <li *ngFor="let instruction of instructions" class="instruction-item">{{ instruction }}</li>
+    </ul>
+
+    <div class="action-buttons">
+      <button class="save-button">Save Changes</button>
+      <button class="cancel-button">Cancel</button>
+    </div>
+  </div>
+</div>
