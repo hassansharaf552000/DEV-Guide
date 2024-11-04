@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { ErrorPageComponent } from './shared/components/error-page/error-page.component';
+import { RequestComponent } from './shared/components/request/request.component'; // تأكد من المسار الصحيح
 
 const routes: Routes = [
   {

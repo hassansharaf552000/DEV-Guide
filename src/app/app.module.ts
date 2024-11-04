@@ -81,6 +81,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -91,28 +92,28 @@ import { MatNativeDateModule } from '@angular/material/core';
     NgxPaginationModule,
     FormsModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot({ // ToastrModule added
-      timeOut: 3000, // duration for toast notifications
-      positionClass: 'toast-top-right', // position for toast notifications
-      preventDuplicates: true, // prevent duplicate notifications
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
       progressBar: true,
     }),
-
     CarouselModule,
     ReactiveFormsModule,
-    SharedModule,
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-
+    SharedModule, // تأكد من إضافة SharedModule هنا
   ],
   providers: [
     CookieService,
     MatDatepickerModule,
     provideClientHydration(),
-    provideHttpClient(withFetch(), withInterceptors([authInterceptor,loaderInterceptor])), provideAnimationsAsync()],
+    provideHttpClient(withFetch(), withInterceptors([authInterceptor, loaderInterceptor])),
+    provideAnimationsAsync(),
+  ],
   bootstrap: [AppComponent],
-
 })
 export class AppModule {}
+
