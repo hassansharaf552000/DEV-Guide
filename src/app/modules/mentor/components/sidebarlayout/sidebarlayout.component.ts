@@ -35,7 +35,7 @@ export class SidebarlayoutComponent {
     // { path: '/mentor/Sessions', label: 'Sessions', icon: 'bi bi-calendar-event' },
     { path: '/mentor/contact_admin', label: 'Contact Admin', icon: 'bi bi-envelope-open' },
   ];
-  logoutItem = { path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' };
+  logoutItem = { path: '/login/home', label: 'Logout', icon: 'bi bi-box-arrow-right' };
 
   isSidebarOpen = false;  // Sidebar is closed by default
 

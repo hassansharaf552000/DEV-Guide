@@ -34,6 +34,9 @@ export class ProfileComponent implements OnInit {
   showAll: boolean = false;
   maxItemsToShow: number = 2;
   userRole: string | string[] | null = null;
+  // extractFileName(fullPath: string): string {
+  //   return fullPath.split('/').pop() || '';
+  // }
   //  dateStr = "2024-02-02T00:00:00";
   //  date = new Date(this.dateStr);
 
@@ -438,5 +441,17 @@ export class ProfileComponent implements OnInit {
   }
   trackByFunction(index: number, education: any): string {
     return education.Degree; // or any unique identifier
+  }
+  downloadFile(fullPath: string) {
+    // const fileName = this.extractFileName(fullPath);
+    console.log('File name:', fullPath);
+    this.AccService.downloadFile(fullPath).subscribe((blob) => {
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = fullPath;
+      link.click();
+      window.URL.revokeObjectURL(url); // Clean up
+    });
   }
 }

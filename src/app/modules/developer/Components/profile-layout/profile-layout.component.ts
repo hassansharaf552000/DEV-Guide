@@ -21,7 +21,7 @@ export class ProfileLayoutComponent {
 
     //{ path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' }
   ];
-  logoutItem = { path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' };
+  logoutItem = { path: '/login/home', label: 'Logout', icon: 'bi bi-box-arrow-right' };
   homeItem = { path: '/home', label: 'Back To Home', icon: 'bi bi-house-door-fill' };
 
   ngOnInit() {

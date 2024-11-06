@@ -41,7 +41,7 @@ export class ProfileSideBarComponent {
 
     //{ path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' }
   ];
-  logoutItem = { path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' };
+  logoutItem = { path: '/login/home', label: 'Logout', icon: 'bi bi-box-arrow-right' };
   homeItem = { path: '/home', label: 'Back To Home', icon: 'bi bi-house-door-fill' };
 
   isSidebarOpen = false;  // Sidebar is closed by default

@@ -248,6 +248,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ISkill } from '../../../core/enums/Skill';
 import { SkillService } from '../../services/Skill/skill.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-skills',
@@ -263,7 +264,7 @@ export class SkillsComponent implements OnInit {
   newSkillName: string = ''; // To hold new skill name for the Add modal
   filteredSuggestions: ISkill[] = []; // Filtered skills based on input
 
-  constructor(private skillService: SkillService) {} // Inject the service
+  constructor(private skillService: SkillService, private toaster:ToastrService) {} // Inject the service
 
   ngOnInit() {
     // Fetch skills of the logged-in user
@@ -335,10 +336,14 @@ export class SkillsComponent implements OnInit {
           // Push the response skill to the local skills array
           this.skills.push(response);
           this.closeAddSkillModal(); // Close modal after adding skill
-          this.loadSuggestedSkills()
+          this.loadSuggestedSkills();
+          
         },
         error:(error) => {
           console.error('Error adding skill', error);
+this.toaster.success("skill added successfully!")
+
+          // this.toaster.warning("Try again later!!!!!")
         }
     });
     }
