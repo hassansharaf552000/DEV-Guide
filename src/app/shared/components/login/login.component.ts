@@ -141,7 +141,7 @@ export class LoginComponent implements OnInit {
                             this.router.navigateByUrl('/mentor');
                             break;
                         case 'Admin':
-                            this.router.navigateByUrl('/admin');
+                            this.router.navigateByUrl('/admin/analytics');
                             break;
                         default:
                             this.router.navigateByUrl('/home'); // Default route if no role matches
