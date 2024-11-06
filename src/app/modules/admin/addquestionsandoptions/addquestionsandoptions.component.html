@@ -1,0 +1,121 @@
+<!-- <div class="card card-body m-3">
+
+  <label for="quizDropdown">Select a Quiz:</label>
+  <select class="form-control" id="quizDropdown" [(ngModel)]="selectedQuizId" name="selectedQuiz" (change)="onQuizSelected()">
+    <option *ngFor="let quiz of quizzes" [value]="quiz.QuizId">
+      {{ quiz.QuizName }}
+    </option>
+  </select>
+
+  <div *ngIf="selectedQuiz">
+    <h3>Selected Quiz Details</h3>
+    <p><strong>Name:</strong> {{ selectedQuiz.QuizName }}</p>
+    <p><strong>Duration:</strong> {{ selectedQuiz.Duration }} mins</p>
+    <p><strong>Number of Questions:</strong> {{ selectedQuiz.NumberOfQuestions }}</p>
+    <p><strong>Skill:</strong> {{ selectedQuiz.SkillName }}</p>
+
+    <button class="btn btn-success" (click)="Save()">Save Quiz</button>
+  </div>
+
+</div> -->
+
+<div class="card card-body m-3 p-4 shadow-lg border-0" style="background-color: #f8f9fa; border-radius: 12px;">
+
+  <!-- Dropdown Label -->
+  <label for="quizDropdown" class="font-weight-bold text-primary mb-2">Select a Quiz:</label>
+
+  <!-- Quiz Dropdown -->
+  <select class="form-control form-control-lg mb-4 border-primary"
+          id="quizDropdown"
+          [(ngModel)]="selectedQuizId"
+          name="selectedQuiz"
+          (change)="onQuizSelected()"
+          style="border-radius: 8px;">
+    <option *ngFor="let quiz of quizzes" [value]="quiz.QuizId">
+      {{ quiz.QuizName }}
+    </option>
+  </select>
+
+  <!-- Selected Quiz Details -->
+  <div *ngIf="selectedQuiz">
+    <h3 class="text-black font-weight-bold mb-3">Selected Quiz Details</h3>
+
+    <p><strong class="text-primary">Name:</strong> {{ selectedQuiz.QuizName }}</p>
+    <p><strong class="text-primary">Duration:</strong> {{ selectedQuiz.Duration }} mins</p>
+    <p><strong class="text-primary">Number of Questions:</strong> {{ selectedQuiz.NumberOfQuestions }}</p>
+    <p><strong class="text-primary">Skill:</strong> {{ selectedQuiz.SkillName }}</p>
+
+    <!-- Save Button -->
+    <button class="btn btn-success mt-3 font-weight-bold shadow-sm px-4 py-2"
+            style="border-radius: 8px;"
+            (click)="Save()">
+      Save Quiz
+    </button>
+  </div>
+
+</div>
+
+
+
+<div class="container mt-5" *ngIf="selectedQuizId!=null">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="question-container">
+        <h5>Question {{currentQustionId+1}}.</h5>
+        <!-- <p class="mb-2">{{Questions[currentQustionId].Text}}</p> -->
+        <input type="text" class="form-control" (keyup)="changeQustionHead($event)"
+          value="{{Questions[currentQustionId].Text}}">
+        <p><strong>Marks :</strong> 1.00</p>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="d-flex justify-content-between align-items-center">
+        <h5>Options</h5>
+        <button class="btn btn-lg btn-primary" (click)="AddOption()">+</button>
+      </div>
+      <div class="option-container">
+        <div class="custom-control custom-radio row justify-content-between align-items-center"
+          *ngFor="let option of Questions[currentQustionId].Options">
+          <input type="radio" id="quizOptions{{option.OptionId}}" [checked]="option.IsCorrect"
+            (change)="selectQustionOption($event,option.OptionId)"
+            name="quizOptions{{Questions[currentQustionId].QuestionId}}" class="custom-control-input col-1 form-check">
+          <label class="custom-control-label col-9" for="quizOptions{{option.OptionId}}">
+            <input class="form-control" type="text" name="quizOptions{{option.OptionId}}" value="{{option.OptionText}}"
+              (keyup)="changeQustionOption($event,option.OptionId)">
+          </label>
+          <!-- <button class="btn btn-danger col-1" (click)="removeOption(option.OptionId)">X</button> -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container mt-5" *ngIf="selectedQuizId!=null">
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      <!-- Previous Button -->
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+
+      <!-- Page Numbers -->
+      <li *ngFor="let question of Questions" class="page-item"
+        [ngClass]="{'active':currentQustionId == question.QuestionId}"><a (click)="changeCurrent(question.QuestionId)"
+          class="page-link">{{question.QuestionId+1}}</a></li>
+
+
+      <!-- Next Button -->
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

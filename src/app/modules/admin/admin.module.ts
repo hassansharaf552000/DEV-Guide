@@ -16,6 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { QuizzesCreatedComponent } from './quizzes-created/quizzes-created.component';
+import { AddquizComponent } from './addquiz/addquiz.component';
+import { AddquestionsandoptionsComponent } from './addquestionsandoptions/addquestionsandoptions.component';
 
 
 
@@ -35,7 +37,9 @@ import { QuizzesCreatedComponent } from './quizzes-created/quizzes-created.compo
     ReviewsComponent,
     ContactsComponent,
     AddskillsComponent,
-    QuizzesCreatedComponent
+    QuizzesCreatedComponent,
+    AddquizComponent,
+    AddquestionsandoptionsComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +47,7 @@ import { QuizzesCreatedComponent } from './quizzes-created/quizzes-created.compo
     ReactiveFormsModule,
     FormsModule ,
     NgxPaginationModule,// Add ReactiveFormsModule here
-   
+
 
   ]
 })
