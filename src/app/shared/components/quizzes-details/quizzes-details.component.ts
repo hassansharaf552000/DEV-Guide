@@ -4,6 +4,7 @@ import { ISkill } from '../../../core/enums/Skill';
 import { SkillService } from '../../services/Skill/skill.service';
 import { IQuiz } from '../../../core/enums/Quiz';
 import { QuizService } from '../../services/Quiz/quiz.service';
+import { AuthService } from '../../services/Auth/auth.service';
 
 @Component({
   selector: 'app-quiz-details',
@@ -16,7 +17,12 @@ export class QuizzesDetailsComponent implements OnInit {
   //loading = true; // To handle the loading state
   errorMessage: string | null = null; // To handle error messages
 
-  constructor(private route: ActivatedRoute, private quizService: QuizService) {}
+  role = "";
+  constructor(private route: ActivatedRoute, private quizService: QuizService,private auth: AuthService) {
+
+    this.role = `/${this.auth.getStoredRole().toLocaleLowerCase()}/quiz/`
+
+  }
 
   ngOnInit() {
     // Get the skill ID from the route parameters

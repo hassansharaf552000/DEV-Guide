@@ -16,9 +16,9 @@
            <div class="row align-items-center"> -->
             <!-- User Image -->
             <div class="col-lg-2 col-12">
-              <!-- <img [src]="'http://localhost:5164/' + query.UserImageUrl"
-              class="avatar-xl" alt="avatar"> -->
-              <img src="avatar-2.jpg" class="avatar-xl" alt="avatar">
+              <img [src]="'http://localhost:5164/' + query.UserImageUrl"
+              class="avatar-xl" alt="avatar">
+              <!-- <img src="avatar-2.jpg" class="avatar-xl" alt="avatar"> -->
             </div>
 
             <!-- User Info and Query -->
@@ -35,7 +35,7 @@
             <!-- Answer Button -->
             <div class="col-lg-3 text-end">
               <a class="btn custom-btn"
-                [routerLink]="['/profile/answer-query', query.Instructor_Id, query.Id, query.User_Id]">
+                [routerLink]="['/mentor/answer-query', query.Instructor_Id, query.Id, query.User_Id]">
                 Answer this query
               </a>
             </div>

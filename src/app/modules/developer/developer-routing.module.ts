@@ -64,6 +64,7 @@ import { CustomCalendarComponent } from './Components/custom-calendar/custom-cal
 import { DeveloperProfileComponent } from './Components/developer-profile/developer-profile.component';
 import { RequestComponent } from '../../shared/components/request/request.component';
 import { ErrorPageComponent } from '../../shared/components/error-page/error-page.component';
+import { DeveloperGuard } from '../../core/guards/AuthGuard';
 
 
 
@@ -117,8 +118,9 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileLayoutComponent,
-
+    canActivate: [DeveloperGuard],
     children: [
+      { path: '', redirectTo: 'updateprofile', pathMatch: 'full' },
       { path: 'Developer', component: DeveloperProfileComponent },
       { path: 'profile', component: MentorProfileComponent },
       { path: 'updateprofile', component: Update_ProfileComponent },
@@ -132,34 +134,32 @@ const routes: Routes = [
       { path: 'reply', component: MentorReplyComponent },
       { path: 'answer-query/:id', component: QueryAnswerComponent },
       { path: 'AdminUi', component: AdminUIComponent },
-      //{ path: '**', redirectTo: 'notfound' },
-      { path: '', redirectTo: 'updateprofile', pathMatch: 'full' },
-      // { path: 'answer-query/:id/:queryid/:userid', component: QueryAnswerComponent },
       { path: 'answer-query/:id/:queryid/:userid', component: QueryAnswerComponent },
-      { path: 'AdminUi', component: AdminUIComponent },
       { path: 'session-details/:id', component: DeveloperSessionDetailsComponent },
       { path: 'Sessions', component: BookingListComponent },
     ],
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'booking/:id', component: BookingComponent, },
-  { path: 'query/:id', component: QueryComponent, },
   { path: 'confirmation', component: BookingConfirmationComponent, },
   { path: 'communication', component: CommunicationComponent, },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'cancel', component: PaymentComponent, },
+  { path: 'forgetpassword', component: ForgotPasswordComponent },
+  { path: 'resetpassword', component: ResetPasswordComponent },
+  { path: 'errorpage', component: ErrorPageComponent },
+  { path: 'request', component: RequestComponent }, // إضافة المسار الجديد
+  //any role
   { path: 'step-one', component: StepOneComponent },
   { path: 'step-two', component: StepTwoComponent },
   { path: 'step-three', component: StepThreeComponent },
   { path: 'step-four', component: StepFourComponent },
   { path: 'step-five', component: StepFiveComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'cancel', component: PaymentComponent, },
+
+  //developer
+  { path: 'query/:id', component: QueryComponent, },
   { path: 'confirm/:id', component: BookingConfirmationComponent, },
-  { path: 'cancel', component: PaymentComponent },
-  { path: 'forgetpassword', component: ForgotPasswordComponent },
-  { path: 'request', component: RequestComponent }, // إضافة المسار الجديد
-  { path: 'resetpassword', component: ResetPasswordComponent },
-  { path: 'errorpage', component: ErrorPageComponent }
+  { path: 'booking/:id', component: BookingComponent, },
   // { path: 'hr-payment', component: HrPaymentsComponent },
   //{ path: '**', redirectTo: 'notfound' },
 ];
