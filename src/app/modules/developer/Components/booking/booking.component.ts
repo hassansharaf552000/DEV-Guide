@@ -49,7 +49,7 @@ export class BookingComponent implements OnInit {
   availableDates: Set<string> = new Set();
   selectedTimes: any[] = [];
   href: string;
-  // @Input() schedules: Schedule[]; 
+  // @Input() schedules: Schedule[];
   // today: Date = new Date();
   selectedMonth: number;
   selectedYear: number;
@@ -433,21 +433,21 @@ export class BookingComponent implements OnInit {
     // Log SessionData before sending
     console.log('Session Data before sending:', this.SessionData);
 
-    this.ScheduleService.BookingSession(this.SessionData).subscribe(
-      data => {
-        this.NewSession = data.Session;
-        this.sesssionid = data.Session.Id;
+    this.ScheduleService.BookingSession(this.SessionData).subscribe({
+      next:(data:any) => {
+        // this.NewSession = data.Session;
+        this.sesssionid = data.SessionID;
         console.log('session: ', this.NewSession);
         console.log('id: ', this.sesssionid);
         this.sessionId = this.sesssionid;
         console.log("paymentsessionid", this.sessionId);
+        this.displaypayment();
 
       },
-      error => {
-        console.error('Error booking session', error);
+      error: (error:any) => {
+        console.log('Error booking session', error);
       }
-    );
-    this.displaypayment();
+    });
   }
   // Get all elements with the "time-button" class
 

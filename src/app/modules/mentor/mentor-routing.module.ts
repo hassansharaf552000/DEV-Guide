@@ -30,6 +30,11 @@ import { ContactUsComponent } from '../developer/Components/contact-us/contact-u
 import { DeveloperModule } from '../developer/developer.module';
 import { DeveloperlistComponent } from '../developer/Components/developerlist/developerlist.component';
 import { ErrorPageComponent } from '../../shared/components/error-page/error-page.component';
+import { StepOneComponent } from '../../shared/components/step-one/step-one.component';
+import { StepTwoComponent } from '../../shared/components/step-two/step-two.component';
+import { QuizComponent } from '../../shared/components/quiz/quiz.component';
+import { FinishQuizComponent } from '../../shared/components/finish-quiz/finish-quiz.component';
+import { QueryAnswerComponent } from '../developer/Components/query-answer/query-answer.component';
 
 const routes: Routes = [
   {
@@ -54,11 +59,14 @@ const routes: Routes = [
       { path: 'reviews', component: ReviewsListComponent },
       { path: 'queryanswers', component: MentorAnswerQueryComponent },
       { path: 'session-details', component: SessionDetailsComponent },
-      {path:'Quizzes',component:QuizzesListComponent},
-      {path:'Quiz/:id',component:QuizzesDetailsComponent},
-      { path: 'developers/:id', component: DeveloperlistComponent},
+      { path: 'Quizzes', component: QuizzesListComponent },
+      { path: 'Quiz/:id', component: QuizzesDetailsComponent },
+      { path: 'quiz/:id', component: QuizComponent },
+      { path: 'finish-quiz/:id', component: FinishQuizComponent, },
+      { path: 'developers/:id', component: DeveloperlistComponent },
       { path: 'home', component: ProfileComponent },
 
+      { path: 'answer-query/:id/:queryid/:userid', component: QueryAnswerComponent },
       // { path: 'profile', component:MentorProfileComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'updateprofile', component: Update_ProfileComponent },
@@ -80,8 +88,10 @@ const routes: Routes = [
     ],
   },
 
+
+
   { path: '**', redirectTo: 'notfound' },
-  {path:'errorpage',component:ErrorPageComponent}
+  { path: 'errorpage', component: ErrorPageComponent }
 ];
 
 @NgModule({

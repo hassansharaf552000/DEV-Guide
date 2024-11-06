@@ -11,84 +11,84 @@ import { IMentor } from '../../../../core/enums/Mentor';
   templateUrl: './query-answer.component.html',
   styleUrl: './query-answer.component.css'
 })
-export class QueryAnswerComponent implements OnInit{
+export class QueryAnswerComponent implements OnInit {
 
-  
+
   // querymessage:any;
   // QueryArray:Array<any>=[];
   modalMessage = '';
-  @Input() mentor!:IMentor
-  user:any;
+  @Input() mentor!: IMentor
+  user: any;
   queryForm: FormGroup;
   selectedFile: File | null = null;
-  addqueryurl='http://localhost:5164/api/Query/AddAnswerQuery';
-  Instructor_Id="";
-  queyid ="";
-  userid="";
-  id : string;
-  userQueries: any; 
+  addqueryurl = 'http://localhost:5164/api/Query/AddAnswerQuery';
+  Instructor_Id = "";
+  queyid = "";
+  userid = "";
+  id: string;
+  userQueries: any;
   FileName: any;
-  fullPath:any;
+  fullPath: any;
   // selectedFile: File | null = null;
   extractFileName(fullPath: string): string {
     return fullPath.split('/').pop() || '';
   }
-  constructor(private fb: FormBuilder,private http: HttpClient ,private AccService:AccountService ,
-     private router: Router,private route: ActivatedRoute, private toaster:ToastrService) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private AccService: AccountService,
+    private router: Router, private route: ActivatedRoute, private toaster: ToastrService) {
 
 
     this.queryForm = this.fb.group({
       Question: ['', Validators.required],
-      
-      
+
+
     });
     // this.MentorID = this.route.snapshot.paramMap.get('id');
 
     this.Instructor_Id = this.route.snapshot.paramMap.get('id');
-if (this.Instructor_Id) {
-  console.log(' mentor ID provided in the route');
-  // Handle the error, for example, navigate to an error page or show a message
-}
-
-     }
-
-
-
-     ngOnInit() {
-      // this.MentorID = this.route.snapshot.paramMap.get('id');
-      this.Instructor_Id = this.route.snapshot.paramMap.get('id');
-      // this.queryId = Number(this.route.snapshot.paramMap.get('queryid'));
-      this.queyid = this.route.snapshot.paramMap.get('queryid');
-      console.log("queyid",this.queyid);
-      
-      this.userid = this.route.snapshot.paramMap.get('userid');
-      this.getMentor(this.Instructor_Id);
-      this.getUser(this.userid)
-      this.getAnswer(this.queyid);
-      // this.getAnswerWithDelay(this.queyid, 1000);
-      // this.getQueries();
-      
+    if (this.Instructor_Id) {
+      console.log(' mentor ID provided in the route');
+      // Handle the error, for example, navigate to an error page or show a message
     }
-    // getQueries() {
-    //   this.http.get<any>('http://localhost:5164/api/query/UserQueries').subscribe(
-    //     (data) => {
-    //       console.log('data',data);
-          
-    //       this.userQueries = data.Result;
-    //     },
-    //     (error) => {
-    //       console.error('Error fetching user queries:', error);
-    //     }
-    //   );
-    // }
 
-    
+  }
+
+
+
+  ngOnInit() {
+    // this.MentorID = this.route.snapshot.paramMap.get('id');
+    this.Instructor_Id = this.route.snapshot.paramMap.get('id');
+    // this.queryId = Number(this.route.snapshot.paramMap.get('queryid'));
+    this.queyid = this.route.snapshot.paramMap.get('queryid');
+    console.log("queyid", this.queyid);
+
+    this.userid = this.route.snapshot.paramMap.get('userid');
+    this.getMentor(this.Instructor_Id);
+    this.getUser(this.userid)
+    this.getAnswer(this.queyid);
+    // this.getAnswerWithDelay(this.queyid, 1000);
+    // this.getQueries();
+
+  }
+  // getQueries() {
+  //   this.http.get<any>('http://localhost:5164/api/query/UserQueries').subscribe(
+  //     (data) => {
+  //       console.log('data',data);
+
+  //       this.userQueries = data.Result;
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching user queries:', error);
+  //     }
+  //   );
+  // }
+
+
   //   getQueries() {
   //     this.http.get<any>('http://localhost:5164/api/query/UserQueries').subscribe(
   //         (data) => {
   //             console.log('data', data);
   //             this.userQueries = data.Result;
-  
+
   //             // Sort userQueries by DateTime
   //             this.userQueries.sort((b, a) => {
   //                 return new Date(b.DateTime).getTime() - new Date(a.DateTime).getTime();
@@ -103,96 +103,98 @@ if (this.Instructor_Id) {
   //     this.AccService.getMentorById(this.Instructor_Id).subscribe((data: any) => {
   //       this.mentor = data;
   //       console.log(data);
-        
+
   //     });
   //   }
 
-//     getAnswer(id: string) {
-//       this.AccService.getAnswerByQueryId(this.queyid).subscribe((data: any) => {
-        
-//           // console.log('userQueries', userQueries);
-//           this.userQueries = data.Result;
-//           console.log('userQueries',this.userQueries);
-//           // Sort userQueries by DateTime
-//           this.userQueries.sort((b, a) => {
-//               return new Date(b.DateTime).getTime() - new Date(a.DateTime).getTime();
-//           });
-//       },
-//       (error) => {
-//           console.error('Error fetching user queries:', error);
-//       }
-//   );
-// }
-onSendButtonClick() {
-  // Call getAnswerWithDelay when the button is clicked
-  this.getAnswerWithDelay(this.queyid, 2000);
-}
+  //     getAnswer(id: string) {
+  //       this.AccService.getAnswerByQueryId(this.queyid).subscribe((data: any) => {
 
-getAnswerWithDelay(id: string, delay: number) {
-  setTimeout(() => {
-    this.getAnswer(id);
-  }, delay);
-}
-getAnswer(id: string) {
-  this.AccService.getAnswerByQueryId(this.queyid).subscribe((data: any) => {
-    this.userQueries = data.Result;  // Assume data.Result is an array of answers
-    this.fullPath =this.userQueries.File;
-    console.log('FileName',this.fullPath );
+  //           // console.log('userQueries', userQueries);
+  //           this.userQueries = data.Result;
+  //           console.log('userQueries',this.userQueries);
+  //           // Sort userQueries by DateTime
+  //           this.userQueries.sort((b, a) => {
+  //               return new Date(b.DateTime).getTime() - new Date(a.DateTime).getTime();
+  //           });
+  //       },
+  //       (error) => {
+  //           console.error('Error fetching user queries:', error);
+  //       }
+  //   );
+  // }
+  onSendButtonClick() {
+    // Call getAnswerWithDelay when the button is clicked
+    this.getAnswerWithDelay(this.queyid, 2000);
+  }
 
-   
-
-    console.log('userQueries', this.userQueries);
-    
-    // Sort userQueries by DateTime in descending order
-    // this.userQueries.sort((a, b) => {
-    //   return new Date(b.DateTime).getTime() - new Date(a.DateTime).getTime();
-    // });
-  },
-  (error) => {
-    console.error('Error fetching user queries:', error);
-  });
-}
-// getAnswer(id: string) {
-//   this.AccService.getAnswerByQueryId(this.queyid).subscribe((data: any) => {
-//     this.userQueries = data.Result;  // Assume data.Result is an array of answers
-
-//     // Log to verify the DateTime format
-//     console.log('Before sorting:', this.userQueries.map(q => q.DateTime));
-
-//     // Sort userQueries by DateTime in ascending order (oldest first)
-//     this.userQueries.sort((a, b) => {
-//       const dateA = new Date(a.DateTime);
-//       const dateB = new Date(b.DateTime);
-//       console.log(`Comparing: ${dateA} with ${dateB}`); // Log comparison
-//       return  dateB.getTime() - dateA.getTime() ; // Ascending order
-//     });
-
-//     // Log after sorting to verify the order
-//     console.log('After sorting:', this.userQueries.map(q => q.DateTime));
-//   },
-//   (error) => {
-//     console.error('Error fetching user queries:', error);
-//   });
-// }
+  getAnswerWithDelay(id: string, delay: number) {
+    setTimeout(() => {
+      this.getAnswer(id);
+    }, delay);
+  }
+  getAnswer(id: string) {
+    this.AccService.getAnswerByQueryId(this.queyid).subscribe({
+      next: (data: any) => {
+        this.userQueries = data.Result;  // Assume data.Result is an array of answers
+        this.fullPath = this.userQueries.File;
+        console.log('FileName', this.fullPath);
 
 
 
+        console.log('userQueries', this.userQueries);
 
-getMentor(id: string) {
-  this.AccService.getMentorById(this.Instructor_Id).subscribe((data: any) => {
-    this.mentor = data;
-    console.log("mentorinformation",data);
-    
-  });
-}
+        // Sort userQueries by DateTime in descending order
+        // this.userQueries.sort((a, b) => {
+        //   return new Date(b.DateTime).getTime() - new Date(a.DateTime).getTime();
+        // });
+      },
+      error: (error) => {
+        console.error('Error fetching user queries:', error);
+      }
+    });
+  }
+  // getAnswer(id: string) {
+  //   this.AccService.getAnswerByQueryId(this.queyid).subscribe((data: any) => {
+  //     this.userQueries = data.Result;  // Assume data.Result is an array of answers
 
-getUser(id: string) {
-  this.AccService.getUserById(this.userid).subscribe((data: any) => {
-    this.user = data;
-    console.log("User",data);
-    
-  });
-}
+  //     // Log to verify the DateTime format
+  //     console.log('Before sorting:', this.userQueries.map(q => q.DateTime));
+
+  //     // Sort userQueries by DateTime in ascending order (oldest first)
+  //     this.userQueries.sort((a, b) => {
+  //       const dateA = new Date(a.DateTime);
+  //       const dateB = new Date(b.DateTime);
+  //       console.log(`Comparing: ${dateA} with ${dateB}`); // Log comparison
+  //       return  dateB.getTime() - dateA.getTime() ; // Ascending order
+  //     });
+
+  //     // Log after sorting to verify the order
+  //     console.log('After sorting:', this.userQueries.map(q => q.DateTime));
+  //   },
+  //   (error) => {
+  //     console.error('Error fetching user queries:', error);
+  //   });
+  // }
+
+
+
+
+  getMentor(id: string) {
+    this.AccService.getMentorById(this.Instructor_Id).subscribe((data: any) => {
+      this.mentor = data;
+      console.log("mentorinformation", data);
+
+    });
+  }
+
+  getUser(id: string) {
+    this.AccService.getUserById(this.userid).subscribe((data: any) => {
+      this.user = data;
+      console.log("User", data);
+
+    });
+  }
   // Handle file selection
   onFileSelected(event: any) {
     const File: File = event.target.files[0];
@@ -201,65 +203,65 @@ getUser(id: string) {
     }
   }
 
- 
 
-submitQuery() {
-  const payload = this.queryForm.value;
-  console.log('Payload:', payload);
 
-  if (this.queryForm.invalid) {
-    this.modalMessage = 'Please fill in the query message.';
-    return;
-  }
-  const now = new Date();
-  function getCurrentTimeISO(): string {
-    
-    return now.toISOString();  // Returns the current time in ISO 8601 format
-  }
-  const formData = new FormData();
-  const currentTime = new Date().toISOString();
+  submitQuery() {
+    const payload = this.queryForm.value;
+    console.log('Payload:', payload);
 
-  // Log values before appending
-  console.log('Question value:', this.queryForm.get('Question')?.value);
-  // console.log('Mentor ID:', this.Instructor_Id);
-  console.log('Selected file:', this.selectedFile);
-  console.log('Query_Id',this.queyid);
-  formData.append('DateTime',currentTime)
-  console.log('DateTime',currentTime)
-  formData.append('Query_Id',this.queyid);
-  // Append values to FormData
-  formData.append('Answer', this.queryForm.get('Question')?.value);
-  // formData.append('User_Instructor_Id', this.Instructor_Id);
-  if (this.selectedFile) {
-    formData.append('File', this.selectedFile);
-    
-  }
+    if (this.queryForm.invalid) {
+      this.modalMessage = 'Please fill in the query message.';
+      return;
+    }
+    const now = new Date();
+    function getCurrentTimeISO(): string {
 
-  // console.log('Final formData:', formData);
+      return now.toISOString();  // Returns the current time in ISO 8601 format
+    }
+    const formData = new FormData();
+    const currentTime = new Date().toISOString();
 
-  // Make API request
-  this.http.post(this.addqueryurl, formData)
-    .subscribe({
-      next: (response:any) => {
-        if(response){
-// this.toaster.warning("Try again later!!!!!")
+    // Log values before appending
+    console.log('Question value:', this.queryForm.get('Question')?.value);
+    // console.log('Mentor ID:', this.Instructor_Id);
+    console.log('Selected file:', this.selectedFile);
+    console.log('Query_Id', this.queyid);
+    formData.append('DateTime', currentTime)
+    console.log('DateTime', currentTime)
+    formData.append('Query_Id', this.queyid);
+    // Append values to FormData
+    formData.append('Answer', this.queryForm.get('Question')?.value);
+    // formData.append('User_Instructor_Id', this.Instructor_Id);
+    if (this.selectedFile) {
+      formData.append('File', this.selectedFile);
 
-this.toaster.success("Query submitted successfully!")
+    }
+
+    // console.log('Final formData:', formData);
+
+    // Make API request
+    this.http.post(this.addqueryurl, formData)
+      .subscribe({
+        next: (response: any) => {
+          if (response) {
+            // this.toaster.warning("Try again later!!!!!")
+
+            this.toaster.success("Query submitted successfully!")
+          }
+          else {
+            this.toaster.warning("Try again later!!!!!")
+            // this.toaster.success("Query submitted successfully!")
+
+          }
+
+
+        },
+        error: (error) => {
+          console.error('Error occurred while submitting the query:', error);
+          this.modalMessage = error.error?.message || 'There was an error submitting the query.';
         }
-        else{
-this.toaster.warning("Try again later!!!!!")
-// this.toaster.success("Query submitted successfully!")
-
-        }
-        
- 
-      },
-      error: (error) => {
-        console.error('Error occurred while submitting the query:', error);
-        this.modalMessage = error.error?.message || 'There was an error submitting the query.';
-      }
-    });
-}
+      });
+  }
 
 
 
@@ -274,16 +276,16 @@ this.toaster.warning("Try again later!!!!!")
 
 
   // downloadFile() {
-    // this.http.get('path/to/your/file.pdf', { responseType: 'blob' }).subscribe((blob) => {
-    //   const url = window.URL.createObjectURL(blob);
-    //   const a = document.createElement('a');
-    //   a.href = url;
-    //   a.download = 'my-file.pdf';
-    //   document.body.appendChild(a);
-    //   a.click();
-    //   document.body.removeChild(a);
-    //   window.URL.revokeObjectURL(url);
-    // });
+  // this.http.get('path/to/your/file.pdf', { responseType: 'blob' }).subscribe((blob) => {
+  //   const url = window.URL.createObjectURL(blob);
+  //   const a = document.createElement('a');
+  //   a.href = url;
+  //   a.download = 'my-file.pdf';
+  //   document.body.appendChild(a);
+  //   a.click();
+  //   document.body.removeChild(a);
+  //   window.URL.revokeObjectURL(url);
+  // });
   // }
 
   // onFileSelected(event: any): void {
@@ -314,7 +316,7 @@ this.toaster.warning("Try again later!!!!!")
   //    this.QueryArray.push(obj)
   //   }
 
-  
+
   downloadFile(fullPath: string) {
     const fileName = this.extractFileName(fullPath);
     console.log('File name:', fileName);
@@ -327,5 +329,5 @@ this.toaster.warning("Try again later!!!!!")
       window.URL.revokeObjectURL(url); // Clean up
     });
   }
-  
-  }
+
+}

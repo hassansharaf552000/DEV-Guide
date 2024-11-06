@@ -20,10 +20,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/developer/developer.module').then(
         (m) => m.DeveloperModule
-      ),
-    canActivate: [DeveloperGuard],
-
-
+      )
   },
   {
     path: 'guest',
@@ -52,7 +49,7 @@ const routes: Routes = [
       import('./modules/developer/developer.module').then(
         (m) => m.DeveloperModule
       ),
-    //canActivate:[RoleRedirectGuard],
+
 
 
 

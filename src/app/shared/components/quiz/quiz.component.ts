@@ -8,6 +8,7 @@ import { AnswerViewModel } from '../../../core/enums/AnswerViewModel';
 import { IQuizResult } from '../../../core/enums/QuizResult';
 import { QuestionDto } from '../../../core/enums/QuestionDto';
 import { QuizSubmissionViewModel } from '../../../core/enums/QuizSubmissionViewModel';
+import { AuthService } from '../../services/Auth/auth.service';
 
 interface Question {
   text: string;
@@ -31,8 +32,12 @@ export class QuizComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private quizService: QuizService,
-    private router: Router
-  ) { }
+    private router: Router,private auth: AuthService
+  ) {
+
+    this.role = `/${this.auth.getStoredRole().toLocaleLowerCase()}/finish-quiz/`
+  }
+  role = "";
 
   ngOnInit(): void {
     const quizId = Number(this.route.snapshot.paramMap.get('id'));
@@ -199,7 +204,7 @@ export class QuizComponent implements OnInit, OnDestroy {
             ? 'Congratulations, you passed!'
             : 'Unfortunately, you did not pass.';
 
-          this.router.navigate(['developer/finish-quiz', this.quiz.QuizId], {
+          this.router.navigate([this.role, this.quiz.QuizId], {
             state: { message: resultMessage, score: Math.round(result.Score) },
           });
         },

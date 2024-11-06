@@ -16,13 +16,13 @@
                     <div class="row justify-content-between text-start mb-4">
                         <div class="col-lg-5">
                             <ul class="list-group list-group-borderless">
-                                <li class="list-group-item d-sm-flex justify-content-start align-items-center">
+                                <!-- <li class="list-group-item d-sm-flex justify-content-start align-items-center">
                                     <img class="rounded-circle shadow"
                                         src="http://localhost:5164/{{sessiondetails?.MentorImage}}"
                                         style="width: 50px; height: 50px;" alt="avatar">
                                     <span class="h6 fw-normal mb-0 ps-3 ">{{sessiondetails?.UserFirstName}}
                                         {{sessiondetails?.UserLastName}}</span>
-                                </li>
+                                </li> -->
                                 <li class="list-group-item d-sm-flex justify-content-between align-items-center">
                                     <span class="mb-0 muted"><i class="bi bi-vr fa-fw me-2 muted"></i>Booking ID:</span>
                                     <span class="h6 fw-normal mb-0">{{sessiondetails?.Id}}</span>
@@ -38,8 +38,8 @@
                                         {{sessiondetails?.MentorLastName}}</span>
                                 </li>
                                 <li class="list-group-item d-sm-flex justify-content-between align-items-center">
-                                    <span class="mb-0 muted"><i class="fas fa-laptop-code me-2"></i>Session In:</span>
-                                    <span class="h6 fw-normal mb-0">{{sessiondetails?.Topic}}</span>
+                                    <div class="mb-0 muted"><i class="fas fa-laptop-code me-2"></i>Session In: </div>
+                                    <div class="h6 fw-normal mb-0"> {{sessiondetails?.Topic}}</div>
                                 </li>
                             </ul>
                         </div>
@@ -81,7 +81,7 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-share me-2"></i>Share
                             </a>
-                            
+
                             <ul class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded"
                                 aria-labelledby="dropdownShare">
                                 <li><a class="dropdown-item" href="#"><i
@@ -99,6 +99,9 @@
                         <button href="#" class="btn btn-primary mb-0" (click)="downloadAsPDF()">
                             <i class="bi bi-file-pdf me-2"></i>Download PDF
                         </button>
+                         <a routerLink='/home'   class="btn btn-primary mb-0 ms-4 " >
+                          <i class="bi bi-home me-2"></i>Go to home
+                      </a>
                     </div>
                 </div>
             </div>
