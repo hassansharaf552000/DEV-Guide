@@ -17,7 +17,7 @@ export class AdminsidebarComponent {
     // userName: string | null = null;
   userImageUrl: string | null = null;
   private subscriptions: Subscription = new Subscription();
-  logoutItem = { path: '/login', label: 'Logout', icon: 'bi bi-box-arrow-right' };
+  logoutItem = { path: '/login/home', label: 'Logout', icon: 'bi bi-box-arrow-right' };
   constructor(private router: Router,private authServ:AuthService ) {
 
     this.authServ.userlogin(this.authServ.getToken()??"",this.authServ.getStoredRole())
