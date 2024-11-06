@@ -13,6 +13,8 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { AddskillsComponent } from './addskills/addskills.component';
 import { AuthGuard } from '../../core/guards/AuthGuard';
 import { QuizzesCreatedComponent } from './quizzes-created/quizzes-created.component';
+import { AddquizComponent } from './addquiz/addquiz.component';
+import { AddquestionsandoptionsComponent } from './addquestionsandoptions/addquestionsandoptions.component';
 
 const routes: Routes = [
   {path:'',component:DashboardComponent,
@@ -25,7 +27,9 @@ const routes: Routes = [
       {path: 'reviews' , component: ReviewsComponent},
       {path: 'contacts' , component: ContactsComponent},
       {path: 'addskills' , component: AddskillsComponent},
-      {path:'quizzescreated',component:QuizzesCreatedComponent}
+      {path:'quizzescreated',component:QuizzesCreatedComponent},
+      {path:'addquiz',component:AddquizComponent},
+      {path:'addquestions',component:AddquestionsandoptionsComponent}
 
 
     ]

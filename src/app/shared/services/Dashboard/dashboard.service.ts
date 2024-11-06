@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
 import { IQuiz } from '../../../core/enums/Quiz';
+import { QuestionDto } from '../../../core/enums/QuestionDto';
+import { QuizDetailsViewModel } from '../../../core/enums/QuizDetailsViewModel';
+import { CreateQuiz } from '../../../core/enums/CreateQuiz';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +20,16 @@ export class DashboardService {
 
   private quizzessolved = 'http://localhost:5164/api/Quize/AllQuizzesSolved'
 
+   private addquestionsandoptionsurl='http://localhost:5164/api/Quize/add-question'
+   private getQuizByIdUrl = 'http://localhost:5164/api/Quize';
+
   constructor(private http: HttpClient) { }
 
-  getAllQuizzes(): Observable<any[]> {
-    return this.http.get<any[]>(this.quizzesUrl);
+  getAllQuizzes(): Observable<QuizDetailsViewModel[]> {
+    return this.http.get<QuizDetailsViewModel[]>(this.quizzesUrl);
   }
+
+
 
   getAllQuizzesSolved(): Observable<any[]> {
     return this.http.get<any[]>(this.quizzessolved);
@@ -60,6 +68,24 @@ export class DashboardService {
     return this.http.get<{ TotalQuizzesSolved: number }>(this.TotalQuizzesTakenUrl).pipe(
       map(response => response.TotalQuizzesSolved),
       catchError(() => of(0))
+    );
+  }
+
+  addQuestionsToQuiz(
+    QuizId: number,
+    Questions: QuestionDto[]
+  ): Observable<QuestionDto[]> {
+    return this.http.post<QuestionDto[]>(`${this.addquestionsandoptionsurl}/${QuizId}`, Questions);
+  }
+
+  getQuizByID(id: number): Observable<QuizDetailsViewModel> {
+    const url = `${this.getQuizByIdUrl}/${id}`;
+    return this.http.get<QuizDetailsViewModel>(url).pipe(
+      tap((quiz) => console.log('API response for quiz details:', quiz)),
+      catchError((error) => {
+        console.error('Error fetching quiz by ID:', error);
+        return throwError(() => error);
+      })
     );
   }
 }

@@ -14,6 +14,8 @@ export class SkillService {
 
   adminaddSkillUrl="http://localhost:5164/api/Account/AddSkill"
 
+  private getskillsall='http://localhost:5164/api/Skill/GetAll';
+
   constructor(private http: HttpClient) {}
 
   // Fetch all skills of the logged-in user
@@ -45,6 +47,10 @@ export class SkillService {
 
 getAll(){
   return this.http.get("http://localhost:5164/api/Skill/GetAll")
+}
+
+getallskills2(): Observable<ISkill[]>{
+  return this.http.get<ISkill[]>(this.getskillsall);
 }
 
 adminaddSkill(skill: any): Observable<any> {

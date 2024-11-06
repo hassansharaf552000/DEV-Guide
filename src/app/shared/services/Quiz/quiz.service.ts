@@ -1,10 +1,12 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IQuiz } from '../../../core/enums/Quiz';
 import { Observable, tap, catchError, throwError } from 'rxjs';
 import { AnswerViewModel } from '../../../core/enums/AnswerViewModel';
 import { IQuizResult } from '../../../core/enums/QuizResult';
 import { QuizSubmissionViewModel } from '../../../core/enums/QuizSubmissionViewModel';
+import { CreateQuiz } from '../../../core/enums/CreateQuiz';
+import { QuestionDto } from '../../../core/enums/QuestionDto';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,9 @@ export class QuizService {
   private getQuizByIdUrl = 'http://localhost:5164/api/Quize';
   private submitQuizUrl = 'http://localhost:5164/api/Quize/submit';
   private gettakenquizzes = 'http://localhost:5164/api/Quize/quizzes/taken'
+  private createquizurl = 'http://localhost:5164/api/Quize/CreateQuiz'
+
+
 
   constructor(private http: HttpClient) { }
 
@@ -65,18 +70,32 @@ export class QuizService {
 
     // Construct the payload according to the QuizSubmissionViewModel
     const submissionPayload: QuizSubmissionViewModel = {
-        UserAnswers: userAnswers // Use camelCase to match the TypeScript interface
+      UserAnswers: userAnswers // Use camelCase to match the TypeScript interface
     };
 
     return this.http.post<IQuizResult>(url, submissionPayload, {
-        headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' }
     }).pipe(
-        tap((result) => console.log('Quiz submission result:', result)),
-        catchError((error) => {
-            console.error('Error submitting quiz:', error);
-            return throwError(() => error);
-        })
+      tap((result) => console.log('Quiz submission result:', result)),
+      catchError((error) => {
+        console.error('Error submitting quiz:', error);
+        return throwError(() => error);
+      })
     );
-}
+  }
+
+
+  createQuiz(model: CreateQuiz): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(`${this.createquizurl}`, model, { headers });
+  }
+
+
+ 
+
+
+
+
+
 
 }
