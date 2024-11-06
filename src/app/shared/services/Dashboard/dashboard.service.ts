@@ -32,6 +32,7 @@ export class DashboardService {
 
 
   getAllQuizzesSolved(): Observable<any[]> {
+    console.log('getAllQuizzesSolved called');
     return this.http.get<any[]>(this.quizzessolved);
   }
 

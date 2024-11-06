@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '../../../../shared/services/Account/account.service';
+import { BadgeService } from '../../../../shared/services/Badge/badge.service';
 
 @Component({
   selector: 'app-developer-profile',
@@ -29,9 +30,20 @@ GetReviewsByClaimURL="http://localhost:5164/api/Account/GetReviewByClaim"
  similarDevelopers: any[] = [];
  showAll: boolean = false;
  maxItemsToShow: number = 2;
+ Badges:any[];
  selectedSkills:any[]=this.developerProfile.Skills
- constructor(private route: ActivatedRoute ,private http: HttpClient,private AccService:AccountService) {
-  
+ constructor(private route: ActivatedRoute ,private http: HttpClient,private AccService:AccountService, private Badge:BadgeService) {
+  this.Badge.GetMyBadge().subscribe(
+    data => {
+      this.Badges = data;
+      console.log('badges: ', this.Badges);
+      
+      
+    },
+    error => {
+      console.error('Error fetching profile', error);
+    }
+  );
  }
 
 
@@ -151,4 +163,8 @@ getLimitedExperiences(experiences: any[]) {
 trackByFunction(index: number, education: any): string {
  return education.Degree; // or any unique identifier
 }
+getStars(level: number): Array<number> {
+  return Array(level).fill(0); // Creates an array with 'level' number of items
+}
+
 }

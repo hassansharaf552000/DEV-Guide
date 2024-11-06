@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AccountService } from '../../../../shared/services/Account/account.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BadgeService } from '../../../../shared/services/Badge/badge.service';
 
 @Component({
   selector: 'app-mentor-profile',
@@ -32,6 +33,7 @@ export class MentorProfileComponent implements OnInit {
   similarMentors: any[] = [];
   showAll: boolean = false;
   maxItemsToShow: number = 2;
+  Badges:any[];
   //  dateStr = "2024-02-02T00:00:00";
   //  date = new Date(this.dateStr);
 
@@ -54,12 +56,23 @@ export class MentorProfileComponent implements OnInit {
 
   reviewForm: FormGroup;
   constructor(private route: ActivatedRoute,
-    private http: HttpClient, private AccService: AccountService, private fb: FormBuilder) {
+    private http: HttpClient, private AccService: AccountService, private fb: FormBuilder, private Badge:BadgeService) {
     this.id = this.route.snapshot.paramMap.get('id');
     this.reviewForm = this.fb.group({
       rating: ['', Validators.required],
       comment: ['', Validators.required]
     });
+    this.Badge.GetUserBadge(this.id).subscribe(
+      data => {
+        this.Badges = data;
+        console.log('badges: ', this.Badges);
+        
+        
+      },
+      error => {
+        console.error('Error fetching profile', error);
+      }
+    );
   }
 
 
@@ -356,5 +369,8 @@ export class MentorProfileComponent implements OnInit {
   }
   trackByFunction(index: number, education: any): string {
     return education.Degree; // or any unique identifier
+  }
+  getStars(level: number): Array<number> {
+    return Array(level).fill(0); // Creates an array with 'level' number of items
   }
 }
