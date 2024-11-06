@@ -1,7 +1,7 @@
 <div class="sidebar">
   <div class="text-center mt-3">
     <a class="navbar-brand" routerLink="/">
-      <img class="light-mode-item navbar-brand-item" src="logo 3_processed (1).jpg" alt="logo" height="50" width="150">
+      <img class="light-mode-item navbar-brand-item" src="trylogo-removebg-preview.png" alt="logo" height="50" width="150">
       <h5 class="mt-3 text-white">Admin Dashboard</h5>
     </a>
   </div>
@@ -25,13 +25,13 @@
       <li class="nav-item">
           <a class="nav-link" routerLink="/admin/addskills" routerLinkActive="active">Add skills </a>
       </li>
-      <!-- <li class="nav-item">
+      <li class="nav-item">
           <a class="nav-link" routerLink="/admin/Role" routerLinkActive="active">Change Role</a>
-      </li> -->
-      <li class="nav-item text-center"> <!-- Add 'text-center' to center text -->
-        <a class="nav-link logout-btn" (click)="logout()"> <!-- Add custom class 'logout-btn' -->
-          <i [class]="logoutItem.icon" style="color: white;"></i> <!-- Bind logout icon -->
-          {{ logoutItem.label }} <!-- Bind logout label -->
+      </li>
+      <li class="nav-item text-center"> 
+        <a class="nav-link logout-btn" (click)="logout()"> 
+          <i [class]="logoutItem.icon" style="color: white;"></i>
+          {{ logoutItem.label }}
         </a>
       </li> -->
       <!-- <li class="nav-item-button">
@@ -89,12 +89,15 @@
         <i class="bi bi-gear"></i> Add Skills
       </a>
     </li>
-     <li class="nav-item text-center"> <!-- Add 'text-center' to center text -->
-        <a class="nav-link logout-btn" (click)="logout()"> <!-- Add custom class 'logout-btn' -->
-          <i [class]="logoutItem.icon" style="color: white;"></i> <!-- Bind logout icon -->
-          {{ logoutItem.label }} <!-- Bind logout label -->
-        </a>
+    <li class="nav-item text-center d-flex justify-content-center">
+        <div style="width: 70%;">
+          <a class="nav-link logout-btn d-flex align-items-center justify-content-center" (click)="logout()">
+            <i [class]="logoutItem.icon" style="color: white;"></i>
+            {{ logoutItem.label }}
+          </a>
+        </div>
       </li>
+      
       <!-- <li class="nav-item-button">
           <button class="nav-link fw-bold text-bg-danger ">log out</button>
       </li> -->
