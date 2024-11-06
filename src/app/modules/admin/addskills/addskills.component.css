@@ -1,4 +1,5 @@
 /* Full-page background image */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 .login-page {
     background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(240, 240, 240, 0.8)), url('/path/to/your/image.jpg'); /* Add a background image */
     background-size: cover;
@@ -41,7 +42,29 @@
     border: 1px solid #ccc;
     border-radius: 8px; /* Rounded corners */
     padding: 10px;
+
     transition: border-color 0.3s; /* Smooth transition */
+
+  }
+  
+  .alert {
+    margin-top: 15px;
+    color: green;
+  }
+  .error {
+    color: red;
+    font-size: 0.9em;
+  }
+
+
+/* Full-page background image */
+.login-page {
+  /* background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/OIP\.png); */
+   /* Replace with your background image path */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+
 }
 
 .form-control:focus {

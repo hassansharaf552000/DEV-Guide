@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { ISkill } from '../../../core/enums/Skill';
 import { SkillService } from '../../services/Skill/skill.service';
+import { IQuiz } from '../../../core/enums/Quiz';
+import { QuizService } from '../../services/Quiz/quiz.service';
 
 @Component({
   selector: 'app-quizzes-list',
@@ -8,27 +10,21 @@ import { SkillService } from '../../services/Skill/skill.service';
   styleUrl: './quizzes-list.component.css'
 })
 export class QuizzesListComponent {
-  // skills: ISkill[] = [
-  //   { Id: 1, Name: 'Angular', description: 'A platform for building mobile and desktop web applications.' },
-  //   { Id: 2, Name: 'JavaScript', description: 'A versatile programming language primarily used in web development.' },
-  //   { Id: 3, Name: 'TypeScript', description: 'A typed superset of JavaScript that compiles to plain JavaScript.' },
-  //   { Id: 4, Name: 'React', description: 'A platform for building mobile and desktop web applications.' },
-  //   { Id: 5, Name: 'Flutter', description: 'A versatile programming language primarily used in web development.' },
-  //   { Id: 6, Name: 'Dart', description: 'A typed superset of JavaScript that compiles to plain JavaScript.' }
-  // ];
-  skillslist: ISkill[] = [];
+  QuizzesList: IQuiz[] = [];
   constructor(
-    private skillService: SkillService
+    private quizService: QuizService
+    ,private cdr: ChangeDetectorRef
   ){}
   ngOnInit(): void {
-    this.fetchskills();
+    this.FetchQuizzes();
   }
 
   // Fetch experiences from the API
-  fetchskills(): void {
-    this.skillService.getUserSkills().subscribe(
-      (skills: ISkill[]) => {
-        this.skillslist = skills;
+  FetchQuizzes(): void {
+    this.quizService.getUserQuizzes().subscribe(
+      (quizzes: IQuiz[]) => {
+        this.QuizzesList = quizzes;
+        this.cdr.detectChanges()
       },
       (error) => {
         console.error('Error fetching Skills', error);

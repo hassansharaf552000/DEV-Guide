@@ -44,7 +44,93 @@
   cursor: pointer; /* تغيير شكل المؤشر عند تمرير الفأرة فوق الزر */
   transition: background-color 0.3s; /* تأثير انتقال سلس عند تغيير اللون */
 }
+.logout-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  /* width: 100px; */
+}
+
+/* Custom style for the logout button */
+.logout-btn {
+  color: white; /* White text */
+  background-color: rgb(218, 17, 17); /* Red background */
+  padding: 10px; /* Add padding for better spacing */
+  border-radius: 5px; /* Add rounded corners */
+  display: inline-block; /* Keep the button inline */
+  width: 100%; /* Ensure the button spans the full width */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline from the link */
+}
+
+.logout-btn:hover {
+  background-color: rgb(194, 18, 18); /* Darken the background on hover */
+}
+.logout-btn, .home-btn {
+  margin-bottom: 10px;
+}
 
 
+.sidebar {
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  background-color: #070e3f;
+  padding-top: 20px;
+}
+
+.navbar-brand h5 {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.nav {
+  margin-top: 20px;
+}
+
+.nav-link {
+  color: #ffffff;
+  font-size: 0.95rem;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #223df6;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.nav-link i {
+  font-size: 1.1rem;
+}
+
+.nav-item-button {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-logout {
+  width: 90%;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #d9534f;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-logout:hover {
+  background-color: #c9302c;
+}
 
 

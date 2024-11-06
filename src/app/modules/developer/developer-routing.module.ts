@@ -12,7 +12,7 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
 import { SharedModule } from '../../shared/shared.module';
 import { LoginComponent } from '../../shared/components/login/login.component';
 import { RegisterComponent } from '../../shared/components/register/register.component';
-import { Forget_passwordComponent } from '../../shared/components/forget_password/forget_password.component';
+
 import { PaymentComponent } from './Components/payment/payment.component';
 import { FaqComponent } from '../../shared/components/faq/faq.component';
 import { HomeComponent } from './Components/home/home.component';
@@ -21,12 +21,12 @@ import { QueryComponent } from './Components/query/query.component';
 import { BookingConfirmationComponent } from './Components/booking-confirmation/booking-confirmation.component';
 import { SkillAssessmentsComponent } from './Components/skill-assessments/skill-assessments.component';
 import { SkillInstructionsComponent } from './Components/skill-instructions/skill-instructions.component';
-import { QuizComponent } from './Components/quiz/quiz.component';
-import { FinishQuizComponent } from './Components/finish-quiz/finish-quiz.component';
+import { QuizComponent } from '../../shared/components/quiz/quiz.component';
+import { FinishQuizComponent } from '../../shared/components/finish-quiz/finish-quiz.component';
 import { HrProfileComponent } from './Components/hr-profile/hr-profile.component';
 import { MentorProfileComponent } from './Components/mentor-profile/mentor-profile.component';
 import { UserlayoutComponent } from './Components/userlayout/userlayout.component';
-import { QuizDetailsComponent } from './Components/quiz-details/quiz-details.component';
+import { QuizDetailsComponent } from '../../shared/components/quiz-details/quiz-details.component';
 import { ProfileSideBarComponent } from './Components/profile-side-bar/profile-side-bar.component';
 import path from 'path';
 import { scheduled } from 'rxjs';
@@ -35,7 +35,7 @@ import { MentorReplyComponent } from './Components/mentor-reply/mentor-reply.com
 import { QueryAnswerComponent } from './Components/query-answer/query-answer.component';
 import { ProfileLayoutComponent } from './Components/profile-layout/profile-layout.component';
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
-import { QuizListComponent } from './Components/quiz-list/quiz-list.component';
+import { QuizListComponent } from '../../shared/components/quiz-list/quiz-list.component';
 import { MentorAnswerQueryComponent } from '../mentor/Components/mentor-answer-query/mentor-answer-query.component';
 import { CommunicationComponent } from '../../shared/components/communication/communication.component';
 import { AdminUIComponent } from '../../shared/components/admin-ui/admin-ui.component';
@@ -50,6 +50,11 @@ import { SkillsComponent } from '../../shared/components/skills/skills.component
 import { EducationsComponent } from '../../shared/components/education-list/education-list.component';
 import { ExperienceListComponent } from '../../shared/components/experience-list/experience-list.component';
 import { SocialAccountsListComponent } from '../../shared/components/social-accounts-list/social-accounts-list.component';
+
+import { ForgotPasswordComponent } from '../../shared/components/forget_password/forget_password.component';
+
+import { ResetPasswordComponent } from '../../shared/components/reset-password/reset-password.component';
+
 import { DeveloperSessionDetailsComponent } from './Components/developer-session-details/developer-session-details.component';
 
 
@@ -64,6 +69,8 @@ import { MentorPaymentsComponent } from '../mentor/Components/mentor-payments/me
 import { CustomCalendarComponent } from './Components/custom-calendar/custom-calendar.component';
 import { DeveloperProfileComponent } from './Components/developer-profile/developer-profile.component';
 import { DeveloperlistComponent } from './Components/developerlist/developerlist.component';
+import { RequestComponent } from '../../shared/components/request/request.component';
+
 
 
 
@@ -76,17 +83,16 @@ const routes: Routes = [
       { path: 'paypal/:id', component: PaymentComponent,canActivate: [AuthGuard] },
       { path: 'mentors', component: MentorListComponent },
       { path: 'mentors/:id', component: MentorProfileComponent,canActivate: [AuthGuard], },
-      
+
       { path: 'hrs', component: HRListComponent },
       { path: 'hrs/:id', component: HrProfileComponent,canActivate: [AuthGuard], },
       { path: 'contactus', component: ContactUsComponent },
       { path: 'skill-assessments', component: SkillAssessmentsComponent,canActivate: [AuthGuard], },
       { path: 'skill-instructions', component: SkillInstructionsComponent,canActivate: [AuthGuard], },
-      { path: 'quiz', component: QuizComponent,canActivate: [AuthGuard], },
-      { path: 'finish-quiz', component: FinishQuizComponent,canActivate: [AuthGuard], },
+
       { path: 'aboutus', component: AboutUsComponent },
       { path: 'home', component: HomeComponent },
-      { path: 'forgetpassword', component: Forget_passwordComponent },
+
       { path: 'faq-and-licence', component: FaqComponent },
 //       { path: 'booking', component: BookingComponent },
 //       { path: 'query', component: QueryComponent },
@@ -97,12 +103,15 @@ const routes: Routes = [
       { path: 'booking', component: BookingComponent,canActivate: [AuthGuard], },
       { path: 'query', component: QueryComponent,canActivate: [AuthGuard], },
       { path: 'confirmation', component: BookingConfirmationComponent,canActivate: [AuthGuard], },
+      { path: 'quiz/:id', component: QuizComponent,canActivate: [AuthGuard], },
+      { path: 'finish-quiz/:id', component: FinishQuizComponent,canActivate: [AuthGuard], },
       {path:'Quizzes',component:QuizzesListComponent,canActivate: [AuthGuard],},
       {path:'Quiz/:id',component:QuizzesDetailsComponent,canActivate: [AuthGuard],},
+
       { path: '', redirectTo: 'home', pathMatch: 'full' },
 
      { path: '**', redirectTo: 'notfound' },
-  
+
 
 
      //{ path: '**', component:NotFoundComponent},
@@ -127,23 +136,15 @@ const routes: Routes = [
       { path: 'reviews', component: ReviewsListComponent },
       { path: 'quizzes', component: QuizListComponent,canActivate:[AuthGuard], },
       { path: 'reply', component: MentorReplyComponent },
-
       { path: 'answer-query/:id', component: QueryAnswerComponent },
       { path: 'AdminUi', component: AdminUIComponent },
       //{ path: '**', redirectTo: 'notfound' },
       {path:'',redirectTo: 'updateprofile', pathMatch: 'full'},
-
       // { path: 'answer-query/:id/:queryid/:userid', component: QueryAnswerComponent },
       { path: 'answer-query/:id/:queryid/:userid', component: QueryAnswerComponent },
-
       { path: 'AdminUi', component: AdminUIComponent },
-
       { path: 'session-details/:id', component: DeveloperSessionDetailsComponent },
-
       { path: 'Sessions', component:BookingListComponent },
-
-
-
     ],
   },
   { path: 'login', component: LoginComponent },
@@ -158,16 +159,13 @@ const routes: Routes = [
   { path: 'step-four', component: StepFourComponent },
   { path: 'step-five', component: StepFiveComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'cancel', component: PaymentComponent,canActivate: [AuthGuard] },
+  { path: 'confirm/:id', component: BookingConfirmationComponent,canActivate: [AuthGuard] },
   { path: 'cancel', component: PaymentComponent },
+  { path: 'forgetpassword', component: ForgotPasswordComponent },
+  { path: 'request', component: RequestComponent}, // إضافة المسار الجديد
+  { path: 'resetpassword', component: ResetPasswordComponent },
   // { path: 'hr-payment', component: HrPaymentsComponent },
-
-
-  
-
-  { path: 'confirm/:id', component: BookingConfirmationComponent },
-
-  
-
   //{ path: '**', redirectTo: 'notfound' },
 ];
 @NgModule({

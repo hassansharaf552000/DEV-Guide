@@ -1,9 +1,40 @@
-body {
-    overflow-x: hidden;
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
 }
 
+.dashboard-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 180px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
 
-.content {
-    margin-left: 250px;
-    padding: 20px;
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.card-body {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-top: 0.5rem;
+  animation: fadeInUp 0.6s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }

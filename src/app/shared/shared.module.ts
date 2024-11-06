@@ -8,7 +8,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { provideClientHydration } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Forget_passwordComponent } from './components/forget_password/forget_password.component';
+import { ForgotPasswordComponent } from './components/forget_password/forget_password.component';
 import { RouterModule } from '@angular/router';
 import { FaqComponent } from './components/faq/faq.component';
 import { CommunicationComponent } from './components/communication/communication.component';
@@ -42,18 +42,30 @@ import { ExperienceListComponent } from './components/experience-list/experience
 import { SocialAccountsListComponent } from './components/social-accounts-list/social-accounts-list.component';
 import { AddsocialaccountComponent } from './components/addsocialaccount/addsocialaccount.component';
 import { SocialaccountscardComponent } from './components/socialaccountscard/socialaccountscard.component';
+
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+
 import { StepOneComponent } from './components/step-one/step-one.component';
 import { StepTwoComponent } from './components/step-two/step-two.component';
 import { StepThreeComponent } from './components/step-three/step-three.component';
 import { StepFourComponent } from './components/step-four/step-four.component';
 import { StepFiveComponent } from './components/step-five/step-five.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { QuizComponent } from './components/quiz/quiz.component';
+import { QuizDetailsComponent } from './components/quiz-details/quiz-details.component';
+import { QuizListComponent } from './components/quiz-list/quiz-list.component';
+import { TakenQuizzesCardComponent } from './components/taken-quizzes-card/taken-quizzes-card.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { RequestComponent } from './components/request/request.component';
 
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
+    QuizComponent,
+    QuizDetailsComponent,
+    QuizListComponent,
     StepOneComponent,
     StepTwoComponent,
     StepThreeComponent,
@@ -64,7 +76,7 @@ import { PaymentComponent } from './components/payment/payment.component';
     SpinnerComponent,
     LoginComponent,
     RegisterComponent,
-    Forget_passwordComponent,
+    ForgotPasswordComponent,
     FaqComponent,
     CommunicationComponent,
     AdminUIComponent,
@@ -87,7 +99,15 @@ import { PaymentComponent } from './components/payment/payment.component';
     SocialAccountsListComponent,
     AddsocialaccountComponent,
     SocialaccountscardComponent,
+
+    ResetPasswordComponent,
+
     PaymentComponent,
+    TakenQuizzesCardComponent,
+    ErrorPageComponent,
+
+    RequestComponent,
+    SpinnerComponent,
   ],
 
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, NgxPaginationModule,
@@ -101,7 +121,7 @@ import { PaymentComponent } from './components/payment/payment.component';
     MatCheckboxModule,
     MatCardModule,       // Material Card module
     MatIconModule,       // Material Icon module
-    MatButtonModule
+    MatButtonModule,
   ],
 
   exports: [NavbarComponent, FooterComponent, SpinnerComponent],

@@ -1,5 +1,13 @@
-.container {
-  margin-top: 2rem;
+.container-fluid {
+  background-image: url(./../../../../../public/guide.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 180px;
+  padding-top: 80px;
+padding-bottom: 40px;
+
 }
 
 .custom-card {
@@ -11,9 +19,9 @@
 }
 
 .card-title {
-  color: #007bff;
+  color:  #0b62be;
   font-size: 1.75rem;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .info-section {
@@ -47,4 +55,14 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+.btn-primary{
+  background-color: #0b62be;
+}
+.btn-primary:hover{
+  background-color: #0a4e97;
+}
+h4{
+  font-size: 20px;
+  font-weight: 500;
 }

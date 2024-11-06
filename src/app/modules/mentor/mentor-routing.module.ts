@@ -19,7 +19,7 @@ import { SkillsComponent } from '../../shared/components/skills/skills.component
 import { EducationsComponent } from '../../shared/components/education-list/education-list.component';
 import { ExperienceListComponent } from '../../shared/components/experience-list/experience-list.component';
 import { SocialAccountsListComponent } from '../../shared/components/social-accounts-list/social-accounts-list.component';
-import { QuizListComponent } from '../developer/Components/quiz-list/quiz-list.component';
+import { QuizListComponent } from '../../shared/components/quiz-list/quiz-list.component';
 import { AuthGuard } from '../../core/guards/AuthGuard';
 import { ChangepasswordComponent } from '../../shared/components/changepassword/changepassword.component';
 import { QuizzesListComponent } from '../../shared/components/quizzes-list/quizzes-list.component';

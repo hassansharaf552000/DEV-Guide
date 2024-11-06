@@ -18,19 +18,20 @@
 
       <!-- Assessment Info -->
       <div class="card p-4 shadow-sm">
-        <h4 class="text-description">{{selectedQuiz.Name}}</h4>
+        <h4 class="text-description">{{selectedQuiz.QuizName}}</h4>
 
         <div class="col mt-3">
           <div class="col-md-6">
-            <p><strong>Assessment Duration:</strong> 45 Minutes</p>
+            <p><strong>Assessment Duration:</strong> {{selectedQuiz.Duration}} Minutes</p>
           </div>
           <div class="col-md-6">
-            <p><strong>No. of Questions:</strong> 30 Questions</p>
+            <p><strong>No. of Questions:</strong> {{selectedQuiz.NumberOfQuestions}} Questions</p>
           </div>
           <br>
           <div class="row align-content-center">
             <div class="col-md-6">
-              <button class="btn btn-primary">Start With AI</button>
+              <button class="btn btn-primary" [routerLink]="['/developer/quiz', selectedQuiz.QuizId]">Start Quiz</button>
+
             </div>
           </div>
 
@@ -49,8 +50,8 @@
 
         <h6 class="mt-4">Timelines & Questions:</h6>
         <ul>
-          <li>Assessment Duration: 00:45:00 (hh:mm:ss)</li>
-          <li>Total Questions to be answered: 30 Questions</li>
+          <li>Assessment Duration: 00:{{selectedQuiz.Duration}}:00 (hh:mm:ss)</li>
+          <li>Total Questions to be answered: {{selectedQuiz.NumberOfQuestions}} Questions</li>
           <li>You can attempt the assessment anytime between the provided assessment .</li>
           <li>Ensure that you attempt the assessment in one sitting as the timer won’t stop once you start.</li>
         </ul>

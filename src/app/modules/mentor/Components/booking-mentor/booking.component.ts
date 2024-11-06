@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { SessionService } from '../../../../shared/services/Session/session.service';
 import { BookingStatus } from '../../../../shared/types/SessionListViewModel';
 import { ScheduleService } from '../../../../shared/services/Schedule/schedule.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-booking',
@@ -17,7 +18,7 @@ export class BookingComponent {
   canceledBookings:any[]=[];
 
   constructor(private SessionServ: SessionService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,private toast:ToastrService
   ) {
     this.loadSessions()
     // this.SessionServ.GetAllSession(BookingStatus.Completed).subscribe({
@@ -135,5 +136,20 @@ export class BookingComponent {
   private getMonthAbbreviation(monthIndex: number): string {
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     return monthNames[monthIndex];
+  }  
+  UpdateSessionStatus(id:any){
+    this.SessionServ.UpdateSessionStatus(id).subscribe({
+      next: (response) => {
+        console.log('sessioncanceled', response);
+        this.toast.success("Session Cancelled")
+        // this.cancelsession=true;
+      },
+      error: (error) => {
+        console.error('Error setting schedule:', error);
+        this.toast.error("Try again later!!!!!")
+        // this.cancelsession=false;
+
+      }
+    });
   }
 }

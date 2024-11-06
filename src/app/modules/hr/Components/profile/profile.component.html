@@ -1,4 +1,9 @@
 <main>
+  <div *ngIf="
+  !isMentorInList" style="border: 1px solid  #ff4107; background-color: #ffd5cd; padding: 15px; border-radius: 10px; margin-bottom: 10px;">
+    Your profile currently does not appear in the list of HRs. You must complete at least five quizzes in different skills for your profile to be displayed in the HR list.
+  </div>
+
     <!--hero section-->
     <section class="py-xl-8 py-6">
       <div class="container">
@@ -121,7 +126,7 @@
                           <span>
                          
                           </span>
-                          Session Price: $ {{ hrProfile?.Price }}
+                          Interview Price: $ {{ hrProfile?.Price }}
                         </span>
                       </div>
                     </div>
@@ -338,7 +343,7 @@
                               <span>
                              
                               </span>
-                              Session Price: $ {{ hrProfile?.Price }}
+                              Interview Price: $ {{ hrProfile?.Price }}
                             </span>
                           </div>
                         </div>

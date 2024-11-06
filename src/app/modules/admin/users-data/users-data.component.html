@@ -5,7 +5,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
 
 
+
 <div class="content pt-5">
+
     <div class="container">
       <h3 class="display-4 fw-bold text-center" style="font-family: Edu AU VIC WA NT Hand, cursive;font-optical-sizing: auto;font-style: normal;">
         User Data
@@ -29,21 +31,21 @@
               </ul>
           </div>
 
-          <!-- زر البحث محاذاة لليمين باستخدام position absolute -->
+
           <button class="btn btn-primary search-button">Search</button>
       </div>
       <br>
       <br>
-          <!-- جدول البيانات -->
+
           <div class="table-container">
         <table class="table table-bordered">
             <thead class="table-secondary">
                 <tr>
                     <th>id</th>
-                    <th>User name</th>
+                    <th>Name</th>
                     <th>Email</th>
-                    <th> Phone number</th>
-                    <th> Image</th>
+                    <th>Phone number</th>
+                    <th>Level</th>
                     <th>Role </th>
                 </tr>
             </thead>
@@ -53,30 +55,77 @@
                     <td>{{ user.FirstName }} {{ user.LastName }}</td>
                     <td>{{ user.Email }}</td>
                     <td>{{ user.PhoneNumber }}</td>
-                    <td>{{ user.Image }}</td>
+                    <td>{{ user.Level }}</td>
                     <td>{{ user.Roles }}</td>
                 </tr>
-                <!-- <tr>
-                    <td>2</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr> -->
+
             </tbody>
         </table>
     </div>
 </div>
   </div>
+        </div> -->
+<br>
+<br>
+<div class="content">
+  <div class="container">
+    <h3 class="display-4 fw-bold text-center"
+      style="font-family: Edu AU VIC WA NT Hand, cursive;font-optical-sizing: auto;font-style: normal;">
+      User Data
+    </h3>
+    <br>
+    <div class="container mt-4">
+      <div class="search-container">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="User Name" [(ngModel)]="searchName"
+            (keydown.enter)="onEnterKey()">
+
+          <button class="input-group-text" (click)="onSearchClick()"><i class="bi bi-search"></i></button>
         </div>
 
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="roleDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            {{ selectedRole || 'Role' }}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="roleDropdown">
+            <li><a class="dropdown-item" (click)="onRoleSelect('Developer')">Developer</a></li>
+            <li><a class="dropdown-item" (click)="onRoleSelect('Mentor')">Mentor</a></li>
+            <li><a class="dropdown-item" (click)="onRoleSelect('HR')">HR</a></li>
+          </ul>
+        </div>
 
+        <button class="btn btn-primary search-button" (click)="onSearchClick()">Search</button>
+      </div>
+
+      <!-- User Table -->
+      <div class="table-container">
+        <table class="table table-bordered">
+          <thead class="table-secondary">
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone number</th>
+              <th>Level</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of filteredUsers | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+              <td>{{ user.Id }}</td>
+              <td>{{ user.FirstName }} {{ user.LastName }}</td>
+              <td>{{ user.Email }}</td>
+              <td>{{ user.PhoneNumber }}</td>
+              <td>{{ user.Level }}</td>
+              <td>{{ user.Roles }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="mt-3">
+          <pagination-controls class="text-center " (pageChange)="currentPage = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

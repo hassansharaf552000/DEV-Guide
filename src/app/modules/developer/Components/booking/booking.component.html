@@ -9,7 +9,7 @@
   </div>
   <div class="row w-100">
 
-    <div class="col-xl-9 col-12">
+    <div class="col-xl-9 col-lg-8 col-md-8 col-12">
       <div class="custom-header ">
         <!-- Add any additional content inside the header if needed -->
         <div class="circle third-circle"></div>
@@ -120,15 +120,15 @@
 
     </div>
 
-    <div class="col-xl-3 col-6 justify-content-center" style="margin-bottom: 20px;">
+    <div class="col-xl-3 col-lg-3 col-md-3 col-12 justify-content-center" style="margin-bottom: 20px;">
 
       <div class="row">
 
-        <div class="col-xl-4 col-12">
+        <div class="col-xl-4 col-lg-3 col-md-3 col-12">
           <div class="custom-margins">
             <div class="calendar ">
               <div>
-                <p style="padding: 20px; width: 100; font-weight: 500;"> Select date and time </p>
+                <p class="cc" style="padding: 20px; width: 100; font-weight: 500;"> Select date and time </p>
               </div>
               <!-- <br style="color: gray;"> -->
               <div class="header" style="border-top: 1px solid #ccc; padding-top: 20px;">
@@ -228,7 +228,7 @@
               <div class="mt-2 button-sub row justify-content-between" *ngIf="pay==true">
                 <button (click)="displaycontinue()" (click)="cancelSession(sesssionid)"
                   class="confirm-button2 col-6">Back</button>
-                <button (click)="displaycontinue()" (click)="onSubmitpayment()" class="confirm-button1 col-5">Pay $
+                <button (click)="displaycontinue()" (click)="onSubmitpayment()" class="confirm-button1 col-6">Pay $
                   {{mentorProfile?.Price}} </button>
 
 

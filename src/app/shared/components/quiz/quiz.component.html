@@ -1,0 +1,57 @@
+<div class="container custom-container">
+  <div class="timer text-center">
+    <h5>Time Remaining: {{ formattedTime }}</h5>
+  </div>
+  <div class="card">
+    <div class="card-header custom-header">
+      <h5 class="text-center">Quiz: {{ quiz.QuizName }}</h5>
+      <h6 class="text-center">Duration: {{ quiz.Duration }} Minutes</h6>
+    </div>
+    <div class="card-body">
+      <h6>Question {{ currentQuestionIndex + 1 }} / {{ quiz?.Questions.length }}</h6>
+      <p>{{ quiz?.Questions[currentQuestionIndex].Text }}</p>
+      <div class="form-group">
+        <div
+          class="form-check"
+          *ngFor="let option of quiz?.Questions[currentQuestionIndex].Options; let i = index"
+        >
+          <input
+            class="form-check-input"
+            type="radio"
+            name="option"
+            [id]="'option' + i"
+            [value]="option.OptionId"
+            (change)="selectOption(currentQuestionIndex, option.OptionId)"
+            [checked]="quiz?.Questions[currentQuestionIndex].SelectedOption === option.OptionId"
+          />
+          <label class="form-check-label" [for]="'option' + i">
+            {{ option.OptionText }}
+          </label>
+        </div>
+      </div>
+      <div class="text-right mt-3">
+        <button
+          class="btn button"
+          (click)="previousQuestion()"
+          [disabled]="currentQuestionIndex === 0"
+        >
+          Previous
+        </button>
+        <button
+          class="btn button ms-3"
+          (click)="nextQuestion()"
+          [disabled]="currentQuestionIndex === (quiz?.Questions?.length ?? 0) - 1"
+        >
+          Next
+        </button>
+        <button
+          class="btn submit-button ms-3"
+          (click)="submitQuiz()"
+          [disabled]="!allQuestionsAnswered()"
+        >
+          Submit Quiz
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

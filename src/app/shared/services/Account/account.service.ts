@@ -30,8 +30,9 @@ export class AccountService {
   queryAnswerUrl="http://localhost:5164/api/Query/QueryAnswers"
   getUsersUrl="http://localhost:5164/api/Account/GetUsers"
   IsMentorURL = "http://localhost:5164/api/Account/IsUserMentor"
+  IsInListURL = "http://localhost:5164/api/Account/getallemntor"
   private DownloadFileUrl = 'http://localhost:5164/api/Query/download';
- 
+
   constructor(private http: HttpClient,private authService:AuthService) {
     this.formData = new BehaviorSubject<FormData>(new FormData());
   }
@@ -47,6 +48,21 @@ export class AccountService {
     oldData.set(key,data)
     this.formData.next(oldData); // Update the BehaviorSubject
   }
+
+
+  // New method to append multiple values to the same key
+appendFormData(key: string, data: any) {
+  let oldData: FormData = this.formData.value;
+  oldData.append(key, data);
+  this.formData.next(oldData); // Update the BehaviorSubject
+}
+
+// New method to clear all existing entries for a specific key
+clearFormDataKey(key: string) {
+  let oldData: FormData = this.formData.value;
+  oldData.delete(key);
+  this.formData.next(oldData); // Update the BehaviorSubject
+}
 
   // Retrieve the complete form data
   getFormData() {
@@ -165,8 +181,10 @@ CompleteProfile() {
     return this.http.get<any>(`${this.IsMentorURL}/${id}`);
   }
 
+  IsInList() {
+    return this.http.get<any>(this.IsInListURL);
 
-
+  }
  
 
   downloadFile(fileName: string) {
@@ -176,5 +194,6 @@ CompleteProfile() {
   }
   getUsers(): Observable<any> {
     return this.http.get(this.getUsersUrl);
+
   }
 }
