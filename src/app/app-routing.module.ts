@@ -3,12 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { ErrorPageComponent } from './shared/components/error-page/error-page.component';
 import { RequestComponent } from './shared/components/request/request.component'; // تأكد من المسار الصحيح
+import { AdminGuard, DeveloperGuard, HRGuard, MentorGuard } from './core/guards/AuthGuard';
+
 
 const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
+    canActivate: [AdminGuard],
+
+
   },
   {
     path: 'developer',
@@ -16,21 +21,30 @@ const routes: Routes = [
       import('./modules/developer/developer.module').then(
         (m) => m.DeveloperModule
       ),
+    canActivate: [DeveloperGuard],
+
+
   },
   {
     path: 'guest',
     loadChildren: () =>
-      import('./modules/guest/guest.module').then((m) => m.GuestModule),
+      import('./modules/guest/guest.module').then((m) => m.GuestModule)
   },
   {
     path: 'hr',
     loadChildren: () =>
       import('./modules/hr/hr.module').then((m) => m.HrModule),
+    canActivate: [HRGuard],
+
+
   },
   {
     path: 'mentor',
     loadChildren: () =>
       import('./modules/mentor/mentor.module').then((m) => m.MentorModule),
+    canActivate: [MentorGuard],
+
+
   },
   {
     path: '',
@@ -38,6 +52,10 @@ const routes: Routes = [
       import('./modules/developer/developer.module').then(
         (m) => m.DeveloperModule
       ),
+    //canActivate:[RoleRedirectGuard],
+
+
+
   },
   // توجيه مسار الخطأ 500 إلى ErrorPageComponent
   { path: 'server-error', component: ErrorPageComponent },
@@ -50,4 +68,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -15,7 +15,7 @@ export class NavbarComponent {
   private subscriptions: Subscription = new Subscription();
   private tokenKey = 'authToken';
   constructor(private router: Router,private authServ:AuthService) {
-      this.authServ.userlogin(this.authServ.getToken()??"")
+      this.authServ.userlogin(this.authServ.getToken()??"",this.authServ.getStoredRole()??"")
       this.authServ.isloggedUserSubject.subscribe(value=>{
       this.isuserExist = value
       })

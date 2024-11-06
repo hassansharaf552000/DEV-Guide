@@ -20,7 +20,6 @@ import { EducationsComponent } from '../../shared/components/education-list/educ
 import { ExperienceListComponent } from '../../shared/components/experience-list/experience-list.component';
 import { SocialAccountsListComponent } from '../../shared/components/social-accounts-list/social-accounts-list.component';
 import { QuizListComponent } from '../../shared/components/quiz-list/quiz-list.component';
-import { AuthGuard } from '../../core/guards/AuthGuard';
 import { ChangepasswordComponent } from '../../shared/components/changepassword/changepassword.component';
 import { QuizzesListComponent } from '../../shared/components/quizzes-list/quizzes-list.component';
 import { QuizzesDetailsComponent } from '../../shared/components/quizzes-details/quizzes-details.component';
@@ -30,6 +29,7 @@ import { PaymentComponent } from '../../shared/components/payment/payment.compon
 import { ContactUsComponent } from '../developer/Components/contact-us/contact-us.component';
 import { DeveloperModule } from '../developer/developer.module';
 import { DeveloperlistComponent } from '../developer/Components/developerlist/developerlist.component';
+import { ErrorPageComponent } from '../../shared/components/error-page/error-page.component';
 
 const routes: Routes = [
   {
@@ -37,27 +37,27 @@ const routes: Routes = [
     component: MentorlayoutComponent,
     children: [
 
-      { path: 'updateprofile', component: Update_ProfileComponent, canActivate: [AuthGuard], },
-      { path: 'change-password', component: ChangepasswordComponent, canActivate: [AuthGuard], },
-      { path: 'mentor-payments', component: MentorPaymentsComponent, canActivate: [AuthGuard], },
-      { path: 'booking', component: BookingComponent, canActivate: [AuthGuard], },
-      { path: 'mentor-summry', component: MentorSummryComponent, canActivate: [AuthGuard], },
-      { path: 'skills', component: SkillsComponent, canActivate: [AuthGuard], },
-      { path: 'educations', component: EducationsComponent,canActivate: [AuthGuard], },
-      { path: 'experiences', component: ExperienceListComponent,canActivate: [AuthGuard], },
-      { path: 'socialaccounts', component: SocialAccountsListComponent,canActivate: [AuthGuard], },
-      { path: 'reviews', component: ReviewsListComponent,canActivate: [AuthGuard], },
-      { path: 'quizzes', component: QuizListComponent, canActivate: [AuthGuard], },
-      { path: 'mentor-request', component: MentorRequestComponent,canActivate: [AuthGuard], },
-      { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuard], },
-      { path: 'contact_admin', component: ContactUsComponent,canActivate: [AuthGuard], },
-      { path: 'reviews', component: ReviewsListComponent,canActivate: [AuthGuard], },
-      { path: 'queryanswers', component: MentorAnswerQueryComponent,canActivate: [AuthGuard], },
-      { path: 'session-details', component: SessionDetailsComponent,canActivate: [AuthGuard], },
-      {path:'Quizzes',component:QuizzesListComponent,canActivate: [AuthGuard],},
-      {path:'Quiz/:id',component:QuizzesDetailsComponent,canActivate: [AuthGuard],},
-      { path: 'developers/:id', component: DeveloperlistComponent,canActivate: [AuthGuard]},
-      { path: 'home', component: ProfileComponent,canActivate: [AuthGuard], },
+      { path: 'updateprofile', component: Update_ProfileComponent },
+      { path: 'change-password', component: ChangepasswordComponent },
+      { path: 'mentor-payments', component: MentorPaymentsComponent },
+      { path: 'booking', component: BookingComponent },
+      { path: 'mentor-summry', component: MentorSummryComponent },
+      { path: 'skills', component: SkillsComponent },
+      { path: 'educations', component: EducationsComponent },
+      { path: 'experiences', component: ExperienceListComponent },
+      { path: 'socialaccounts', component: SocialAccountsListComponent },
+      { path: 'reviews', component: ReviewsListComponent },
+      { path: 'quizzes', component: QuizListComponent },
+      { path: 'mentor-request', component: MentorRequestComponent },
+      { path: 'schedule', component: ScheduleComponent },
+      { path: 'contact_admin', component: ContactUsComponent },
+      { path: 'reviews', component: ReviewsListComponent },
+      { path: 'queryanswers', component: MentorAnswerQueryComponent },
+      { path: 'session-details', component: SessionDetailsComponent },
+      {path:'Quizzes',component:QuizzesListComponent},
+      {path:'Quiz/:id',component:QuizzesDetailsComponent},
+      { path: 'developers/:id', component: DeveloperlistComponent},
+      { path: 'home', component: ProfileComponent },
 
       // { path: 'profile', component:MentorProfileComponent },
       { path: 'profile', component: ProfileComponent },
@@ -81,6 +81,7 @@ const routes: Routes = [
   },
 
   { path: '**', redirectTo: 'notfound' },
+  {path:'errorpage',component:ErrorPageComponent}
 ];
 
 @NgModule({

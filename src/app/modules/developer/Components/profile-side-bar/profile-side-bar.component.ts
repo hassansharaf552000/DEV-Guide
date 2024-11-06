@@ -26,7 +26,7 @@ export class ProfileSideBarComponent {
     { path: '/developer/profile/reviews', label: 'Feedbacks', icon: 'fa-regular fa-comment' },
 
     { path: '/developer/profile/socialaccounts', label: 'Social Accounts', icon: 'bi-share' },
-    
+
 
     { path: '/developer/profile/quizzes', label: 'Quizzes', icon: 'bi bi-question' },
     { path: '/developer/profile/reply', label: 'Queries', icon: 'bi bi-chat-square-dots' },
@@ -52,7 +52,7 @@ export class ProfileSideBarComponent {
   private subscriptions: Subscription = new Subscription();
 
   constructor(private router: Router,private authServ:AuthService ) {
-    this.authServ.userlogin(this.authServ.getToken()??"")
+    this.authServ.userlogin(this.authServ.getToken()??"",this.authServ.getStoredRole()??"")
     this.authServ.isloggedUserSubject.subscribe(value=>{
     this.isuserExist = value
     })
@@ -65,7 +65,7 @@ export class ProfileSideBarComponent {
   backhome() {
     this.router.navigate([this.homeItem.path]);
   }
- 
+
 
   ngOnInit() {
     //this.checkScreenWidth();
@@ -103,13 +103,13 @@ export class ProfileSideBarComponent {
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
- 
+
   // Function to close sidebar
   closeSidebar() {
     this.isSidebarOpen = false;
   }
 
-  
+
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();

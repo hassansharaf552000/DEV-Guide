@@ -1,38 +1,72 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { inject, Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../../shared/services/Auth/auth.service';
-import { map, Observable, take } from 'rxjs';
 
-
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
-
-  canActivate(): boolean {
-    if (this.authService.isLoggedIn()) {
-      return true;
-    } else {
-      // Redirect to login page if not logged in
-      this.router.navigate(['/login']);
-      return false;
-    }
+export const AdminGuard: CanActivateFn = (route, state) => {
+  console.log(state.url);
+  const serv = inject(AuthService)
+  const router = inject(Router)
+  let role = serv.getStoredRole()
+  let token = serv.getToken()
+  console.log(role, token);
+  if (token != null && role != null && role == "Admin") {
+    return true;
   }
+  else {
+    alert('Sorry You Can NOT See This Page')
+    router.navigate(['/login', state.url])
+    return false;
+  }
+};
+export const DeveloperGuard: CanActivateFn = (route, state) => {
+  console.log(state.url);
+  const serv = inject(AuthService)
+  const router = inject(Router)
+  let role = serv.getStoredRole()
+  let token = serv.getToken()
+  console.log(role, token);
+  if (token != null && role != null && role == "Developer") {
+    return true;
+  }
+  else {
+    alert('Sorry You Can NOT See This Page')
+    router.navigate(['/login', state.url])
+    return false;
+  }
+};
 
-  // canActivate(): Observable<boolean> {
-  //   return this.authService.isloggedUserSubject.pipe(
-  //     take(1),
-  //     map(isLoggedIn => {
-  //       if (isLoggedIn) {
-  //         return true;
-  //       } else {
-  //         this.router.navigate(['/login']);
-  //         return false;
-  //       }
-  //     })
-  //   );
-  // }
+export const MentorGuard: CanActivateFn = (route, state) => {
+  console.log(state.url);
+  const serv = inject(AuthService)
+  const router = inject(Router)
+  let role = serv.getStoredRole()
+  let token = serv.getToken()
+  console.log(role, token);
+  if (token != null && role != null && role == "Mentor") {
+    return true;
+  }
+  else {
+    alert('Sorry You Can NOT See This Page')
+    router.navigate(['/login', state.url])
+    return false;
+  }
+};
+
+export const HRGuard: CanActivateFn = (route, state) => {
+  console.log(state.url);
+  const serv = inject(AuthService)
+  const router = inject(Router)
+  let role = serv.getStoredRole()
+  let token = serv.getToken()
+  console.log(role, token);
+  if (token != null && role != null && role == "HR") {
+    return true;
+  }
+  else {
+    alert('Sorry You Can NOT See This Page')
+    router.navigate(['/login', state.url])
+    return false;
+  }
+};
 
 
-}

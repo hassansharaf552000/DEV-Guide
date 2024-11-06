@@ -11,14 +11,13 @@ import { usersDataComponent } from './users-data/users-data.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { AddskillsComponent } from './addskills/addskills.component';
-import { AuthGuard } from '../../core/guards/AuthGuard';
 import { QuizzesCreatedComponent } from './quizzes-created/quizzes-created.component';
 import { AddquizComponent } from './addquiz/addquiz.component';
 import { AddquestionsandoptionsComponent } from './addquestionsandoptions/addquestionsandoptions.component';
+import { ErrorPageComponent } from '../../shared/components/error-page/error-page.component';
 
 const routes: Routes = [
   {path:'',component:DashboardComponent,
-    canActivate:[AuthGuard],
     children:[
       {path: 'sessions' , component : SessionsComponent},
       {path: 'usersData' , component: usersDataComponent},
@@ -33,7 +32,8 @@ const routes: Routes = [
 
 
     ]
-  }
+  },
+  {path:'errorpage',component:ErrorPageComponent}
 ];
 
 @NgModule({

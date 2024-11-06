@@ -53,7 +53,7 @@ export class HrlayoutComponent {
   private subscriptions: Subscription = new Subscription();
 
   constructor(private router:Router,private authServ:AuthService){
-    this.authServ.userlogin(this.authServ.getToken()??"")
+    this.authServ.userlogin(this.authServ.getToken()??"",this.authServ.getStoredRole()??"")
     this.authServ.isloggedUserSubject.subscribe(value=>{
     this.isuserExist = value
     })
