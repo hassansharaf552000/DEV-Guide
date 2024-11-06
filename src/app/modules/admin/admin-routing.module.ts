@@ -13,6 +13,9 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { AddskillsComponent } from './addskills/addskills.component';
 import { AuthGuard } from '../../core/guards/AuthGuard';
 import { QuizzesCreatedComponent } from './quizzes-created/quizzes-created.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileSideBarComponent } from '../developer/Components/profile-side-bar/profile-side-bar.component';
+import { profile } from 'console';
 
 const routes: Routes = [
   {path:'',component:DashboardComponent,
@@ -25,7 +28,12 @@ const routes: Routes = [
       {path: 'reviews' , component: ReviewsComponent},
       {path: 'contacts' , component: ContactsComponent},
       {path: 'addskills' , component: AddskillsComponent},
-      {path:'quizzescreated',component:QuizzesCreatedComponent}
+      {path:'quizzescreated',component:QuizzesCreatedComponent},
+      {path:'profile/:id',component:ProfileComponent},
+
+      
+
+
 
 
     ]

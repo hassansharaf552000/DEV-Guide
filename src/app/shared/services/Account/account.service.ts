@@ -32,7 +32,10 @@ export class AccountService {
   IsMentorURL = "http://localhost:5164/api/Account/IsUserMentor"
   IsInListURL = "http://localhost:5164/api/Account/getallemntor"
   private DownloadFileUrl = 'http://localhost:5164/api/Query/download';
-
+  changeUserRoleUrl="http://localhost:5164/api/Account/change-role"
+  changeUserRoleApprovedUrl="http://localhost:5164/api/Account/return-role"
+  updateUserStatusUrl="http://localhost:5164/api/Account/approved"
+  getUserRoleUrl="http://localhost:5164/api/Account/GetUserRole"
   constructor(private http: HttpClient,private authService:AuthService) {
     this.formData = new BehaviorSubject<FormData>(new FormData());
   }
@@ -196,4 +199,40 @@ CompleteProfile() {
     return this.http.get(this.getUsersUrl);
 
   }
+  changeUserRole(newRole: string): Observable<any> {
+    return this.http.post<any>(this.changeUserRoleUrl, { NewRole: newRole });
+  }
+
+  changeUserRoleApproved(userId: string): Observable<string> {
+    return this.http.post<string>(this.changeUserRoleApprovedUrl, { UserId: userId });
+  }
+  // updateUserStatus(userId: string): Observable<any> {
+  //   return this.http.put<any>(this.updateUserStatusUrl, userId);
+  // }
+
+  // updateUserStatus(userId: string): Observable<any> {
+  //   // Send the userId as JSON in the body
+  //   const headers = new HttpHeaders().set('Content-Type', 'application/json');
+  //   return this.http.put<any>(this.updateUserStatusUrl, JSON.stringify(userId), { headers });
+  // }
+  updateUserStatus(userId: string): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    console.log('UserID:', userId);  // Debugging: Check if the userId is correct
+    return this.http.put<any>(this.updateUserStatusUrl, JSON.stringify(userId), { headers });
+  }
+  
+  
+  getUserRole(userId: string): Observable<any> {
+    return this.http.get(this.getUserRoleUrl, {
+      params: { userId },
+    });
+  }
 }
+  // changeUserRole(request: any): Observable<any> {
+  //   return this.http.post(this.changeUserRoleUrl, request, {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json'
+  //     })
+  //   });
+  // }
+//}

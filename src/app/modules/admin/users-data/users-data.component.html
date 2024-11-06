@@ -6,65 +6,71 @@
 
 
 
-<div class="content pt-5">
+<!-- <div class="content pt-5">
 
-    <div class="container">
-      <h3 class="display-4 fw-bold text-center" style="font-family: Edu AU VIC WA NT Hand, cursive;font-optical-sizing: auto;font-style: normal;">
-        User Data
-        </h3>
-        <br>
+  <div class="container">
+    <h3 class="display-4 fw-bold text-center"
+      style="font-family: Edu AU VIC WA NT Hand, cursive;font-optical-sizing: auto;font-style: normal;">
+      User Data
+    </h3>
+    <br>
     <div class="container mt-4">
       <div class="search-container">
-          <div class="input-group">
-              <input type="text" class="form-control" placeholder="User Name">
-              <span class="input-group-text"><i class="bi bi-search"></i></span>
-          </div>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="User Name">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+        </div>
 
-          <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="roleDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                  Role
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="roleDropdown">
-                  <li><a class="dropdown-item" href="#">Developer</a></li>
-                  <li><a class="dropdown-item" href="#">Mentor</a></li>
-                  <li><a class="dropdown-item" href="#">HR</a></li>
-              </ul>
-          </div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="roleDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Role
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="roleDropdown">
+            <li><a class="dropdown-item" href="#">Developer</a></li>
+            <li><a class="dropdown-item" href="#">Mentor</a></li>
+            <li><a class="dropdown-item" href="#">HR</a></li>
+          </ul>
+        </div>
 
 
-          <button class="btn btn-primary search-button">Search</button>
+        <button class="btn btn-primary search-button">Search</button>
       </div>
       <br>
       <br>
 
-          <div class="table-container">
+      <div class="table-container">
         <table class="table table-bordered">
-            <thead class="table-secondary">
-                <tr>
-                    <th>id</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone number</th>
-                    <th>Level</th>
-                    <th>Role </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let user of users">
-                    <td>{{ user.Id }}</td>
-                    <td>{{ user.FirstName }} {{ user.LastName }}</td>
-                    <td>{{ user.Email }}</td>
-                    <td>{{ user.PhoneNumber }}</td>
-                    <td>{{ user.Level }}</td>
-                    <td>{{ user.Roles }}</td>
-                </tr>
+          <thead class="table-secondary">
+            <tr>
+              <th>id</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone number</th>
+              <th>Level</th>
+              <th>Role </th>
+              <th>view profile </th>
 
-            </tbody>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.Id }}</td>
+              <td>{{ user.FirstName }} {{ user.LastName }}</td>
+              <td>{{ user.Email }}</td>
+              <td>{{ user.PhoneNumber }}</td>
+              <td>{{ user.Level }}</td>
+              <td>{{ user.Roles }}</td>
+              <td> <a [routerLink]="['/admin/profile',user.Id]"> View Profile</a></td>
+
+            </tr>
+
+          </tbody>
         </table>
+      </div>
     </div>
-</div>
   </div>
-        </div> -->
+</div>  -->
 <br>
 <br>
 <div class="content">
@@ -109,6 +115,8 @@
               <th>Phone number</th>
               <th>Level</th>
               <th>Role</th>
+              <th>view profile </th>
+
             </tr>
           </thead>
           <tbody>
@@ -119,6 +127,8 @@
               <td>{{ user.PhoneNumber }}</td>
               <td>{{ user.Level }}</td>
               <td>{{ user.Roles }}</td>
+              <td> <a [routerLink]="['/admin/profile',user.Id]"> View Profile</a></td>
+
             </tr>
           </tbody>
         </table>

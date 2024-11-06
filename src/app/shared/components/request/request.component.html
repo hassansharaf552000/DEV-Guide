@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <h1>Change Role</h1>
 
   <div class="instructions-section">
@@ -18,4 +18,162 @@
       <button class="cancel-button">Cancel</button>
     </div>
   </div>
-</div>
+</div> -->
+<section class="pt-3">
+  <div class="container">
+    <div class="row">
+      <div>
+        <div class="vstack gap-4">
+          <div class="card border">
+            <!-- Card header -->
+            <div class="card-header border-bottom">
+              <h4 class="card-header-title">Change Role</h4>
+            </div>
+
+            <!-- Form START -->
+            <form class="card-body" (ngSubmit)="onSubmit()">
+              <!-- Radio -->
+              <div class="mb-4">
+                <label class="form-label">
+                  You are now a developer, you can join us as a Mentor or HR
+                  <span class="text-danger">*</span>
+                </label>
+                <div class="d-flex gap-2 gap-sm-4 flex-wrap">
+                  <div class="form-check radio-bg-light">
+                    <input class="form-check-input" type="radio" name="role" [(ngModel)]="role" value="Mentor"
+                      id="flexRadioDefault1" checked="" />
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Mentor
+                    </label>
+                  </div>
+                  <div class="form-check radio-bg-light">
+                    <input class="form-check-input" type="radio" name="role" [(ngModel)]="role" value="HR"
+                      id="flexRadioDefault2" />
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      HR
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Conditional display based on role selection -->
+              <div *ngIf="role === 'Mentor'">
+                <!-- Display Mentoring related switches -->
+               		<!-- Switch -->
+							<div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
+								<label class="form-check-label ps-0 pe-4" for="checkPrivacy1">"Guide, teach, and inspire. As a Mentor, you’ll make an impact that lasts."</label>
+								<!-- <input class="form-check-input flex-shrink-0" type="checkbox" id="checkPrivacy1" checked=""> -->
+							</div>
+
+							<!-- Switch -->
+							<div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
+								<label class="form-check-label ps-0 pe-4" for="checkPrivacy2">"Mentors are the backbone of growth. Share your skills and help others succeed."</label>
+								<!-- <input class="form-check-input flex-shrink-0" type="checkbox" id="checkPrivacy2" checked=""> -->
+							</div>
+
+							<!-- Switch -->
+							<div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
+								<label class="form-check-label ps-0 pe-4" for="checkPrivacy3">"Your experience can change lives—step into the Mentor role and support others."</label>
+								<!-- <input class="form-check-input flex-shrink-0" type="checkbox" id="checkPrivacy3" checked=""> -->
+							</div>
+
+								<!-- Switch -->
+							<div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
+								<label class="form-check-label ps-0 pe-4" for="checkPrivacy7">"Become a Mentor to inspire and guide others on their journey to success."</label>
+								<!-- <input class="form-check-input flex-shrink-0" type="checkbox" id="checkPrivacy7" checked=""> -->
+							</div>
+
+							<!-- Switch -->
+							<div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
+								<label class="form-check-label ps-0 pe-4" for="checkPrivacy4">"Share your knowledge and help others grow by taking on the Mentor role."</label>
+								<!-- <input class="form-check-input flex-shrink-0" type="checkbox" id="checkPrivacy4"> -->
+							</div>
+
+							<!-- Switch -->
+							<div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
+								<label class="form-check-label ps-0 pe-4" for="checkPrivacy6">"As a Mentor, you’ll provide valuable insights, answer queries, and make a difference."</label>
+								<!-- <input class="form-check-input flex-shrink-0" type="checkbox" id="checkPrivacy6"> -->
+							</div>
+
+							<!-- Switch -->
+							<div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
+								<label class="form-check-label ps-0 pe-4" for="checkPrivacy5">"Mentorship is about connection—help others navigate their challenges with your experience."</label>
+								<!-- <input class="form-check-input flex-shrink-0" type="checkbox" id="checkPrivacy5" checked=""> -->
+							</div>
+                <!-- Add more switches or relevant elements here for Mentor -->
+              </div>
+
+              <div *ngIf="role === 'HR'">
+                <!-- Display HR related switches -->
+                <!-- Switch -->
+                <div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
+                  <label class="form-check-label ps-0 pe-4" for="checkPrivacy1">"Support career growth by providing
+                    constructive feedback in mock interview sessions."</label>
+                  <!-- <input class="form-check-input flex-shrink-0" type="checkbox" id="checkPrivacy1" checked=""> -->
+                </div>
+
+                <!-- Switch -->
+                <div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
+                  <label class="form-check-label ps-0 pe-4" for="checkPrivacy2">"As an HR professional, guide applicants
+                    through interview prep to help them succeed."</label>
+                  <!-- <input class="form-check-input flex-shrink-0" type="checkbox" id="checkPrivacy2" checked=""> -->
+                </div>
+
+                <!-- Switch -->
+                <div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
+                  <label class="form-check-label ps-0 pe-4" for="checkPrivacy3">"Play a vital role in shaping future
+                    talent by offering simulated interview experiences."</label>
+                  <!-- <input class="form-check-input flex-shrink-0" type="checkbox" id="checkPrivacy3" checked=""> -->
+                </div>
+
+                <!-- Switch -->
+                <div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
+                  <label class="form-check-label ps-0 pe-4" for="checkPrivacy7">"Conduct mock interviews to help
+                    applicants gain valuable practice and reduce interview anxiety."</label>
+                  <!-- <input class="form-check-input flex-shrink-0" type="checkbox" id="checkPrivacy7" checked=""> -->
+                </div>
+
+                <!-- Switch -->
+                <div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
+                  <label class="form-check-label ps-0 pe-4" for="checkPrivacy4">"Use your HR expertise to help
+                    candidates refine their responses and build confidence."</label>
+                  <!-- <input class="form-check-input flex-shrink-0" type="checkbox" id="checkPrivacy4"> -->
+                </div>
+
+                <!-- Switch -->
+                <div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
+                  <label class="form-check-label ps-0 pe-4" for="checkPrivacy6">"Provide a safe, supportive environment
+                    for candidates to practice and improve their skills."</label>
+                  <!-- <input class="form-check-input flex-shrink-0" type="checkbox" id="checkPrivacy6"> -->
+                </div>
+
+                <!-- Switch -->
+                <div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
+                  <label class="form-check-label ps-0 pe-4" for="checkPrivacy5">"As HR, you’ll help candidates polish
+                    their interview techniques and prepare for the real thing."</label>
+                  <!-- <input class="form-check-input flex-shrink-0" type="checkbox" id="checkPrivacy5" checked=""> -->
+                </div>
+
+                <!-- Button -->
+                <!-- <div class="d-sm-flex justify-content-end">
+                  <button type="button" class="btn btn-sm btn-primary me-2 mb-0">Save changes</button>
+                  <a href="#" class="btn btn-sm btn-outline-secondary mb-0">Cancel</a>
+                </div> -->
+                <!-- Add more switches or relevant elements here for HR -->
+              </div>
+
+              <!-- Button to submit form -->
+              <div class="d-sm-flex justify-content-end">
+                <button type="submit" class="btn btn-sm btn-primary me-2 mb-0">
+                  Save changes
+                </button>
+                <a href="#" class="btn btn-sm btn-outline-secondary mb-0">Cancel</a>
+              </div>
+            </form>
+            <!-- Form END -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

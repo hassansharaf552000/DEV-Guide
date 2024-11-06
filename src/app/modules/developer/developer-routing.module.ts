@@ -145,6 +145,8 @@ const routes: Routes = [
       { path: 'AdminUi', component: AdminUIComponent },
       { path: 'session-details/:id', component: DeveloperSessionDetailsComponent },
       { path: 'Sessions', component:BookingListComponent },
+      { path: 'request', component:RequestComponent },
+
     ],
   },
   { path: 'login', component: LoginComponent },

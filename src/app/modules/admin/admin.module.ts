@@ -16,6 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { QuizzesCreatedComponent } from './quizzes-created/quizzes-created.component';
+import { ProfileComponent } from './profile/profile.component';
+import { DeveloperModule } from "../developer/developer.module";
 
 
 
@@ -35,16 +37,16 @@ import { QuizzesCreatedComponent } from './quizzes-created/quizzes-created.compo
     ReviewsComponent,
     ContactsComponent,
     AddskillsComponent,
-    QuizzesCreatedComponent
+    QuizzesCreatedComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
-    FormsModule ,
-    NgxPaginationModule,// Add ReactiveFormsModule here
-   
-
-  ]
+    FormsModule,
+    NgxPaginationModule,
+    DeveloperModule
+]
 })
 export class AdminModule { }
