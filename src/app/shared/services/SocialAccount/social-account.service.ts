@@ -21,4 +21,9 @@ export class SocialAccountService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<ISocialAccount>(this.addsocialaccount, account, { headers });
   }
+
+  // Check if a social account already exists
+  checkSocialAccountExists(SocialName: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.allaccounts}/exists/${SocialName}`);
+  }
 }

@@ -16,7 +16,7 @@ export const AdminGuard: CanActivateFn = (route, state) => {
   }
   else {
     router.navigate(['/login', state.url])
-    toaster.error('Sorry You Can NOT See This Page')
+    alert('Sorry You Can NOT See This Page')
  
     return false;
   }
@@ -35,7 +35,7 @@ export const DeveloperGuard: CanActivateFn = (route, state) => {
   else {
 
     router.navigate(['/login', state.url])
-    toaster.error('Sorry You Can NOT See This Page')
+    alert('Sorry You Can NOT See This Page')
     return false;
   }
 };
@@ -55,7 +55,8 @@ export const MentorGuard: CanActivateFn = (route, state) => {
   else {
  
     router.navigate(['/login', state.url])
-    toaster.error('Sorry You Can NOT See This Page')
+    alert('Sorry You Can NOT See This Page')
+    
     return false;
   }
 };
@@ -74,7 +75,7 @@ export const HRGuard: CanActivateFn = (route, state) => {
   else {
   
     router.navigate(['/login', state.url])
-    toaster.error('Sorry You Can NOT See This Page')
+    alert('Sorry You Can NOT See This Page')
     return false;
     
   }

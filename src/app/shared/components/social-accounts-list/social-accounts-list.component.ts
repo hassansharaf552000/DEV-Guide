@@ -32,7 +32,8 @@ export class SocialAccountsListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: ISocialAccount) => {
       if (result) {
-        this.socialAccounts.push(result);  // Add the new account to the list
+        //this.socialAccounts.push(result); 
+        console.log(result) // Add the new account to the list
       }
     });
   }
