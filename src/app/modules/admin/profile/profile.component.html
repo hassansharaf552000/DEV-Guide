@@ -398,7 +398,7 @@
                       </div>
   
                       <div>
-                        <span
+                        <div
                           class="badge rounded-pill text-success-emphasis bg-success-subtle border border-success align-items-center">
                           <span>
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-reply-fill me-1 align-text-top" viewBox="0 0 16 16">
@@ -406,7 +406,11 @@
                             </svg> -->
                           </span>
                           Session Price: $ {{ mentorProfile?.Price }}
-                        </span>
+                        </div>
+                      <br/>
+                        <button (click)="downloadFile(mentorProfile?.cv)" class="btn btn-outline-primary btn-sm ms-0 col-4 me-5 mt-3 " 
+                        style="width: 115px; height: fit-content; border-radius: 5px;" > Download
+                              CV</button>
                       </div>
                     </div>
                   </div>
