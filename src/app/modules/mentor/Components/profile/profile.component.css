@@ -361,3 +361,60 @@ font-style:normal;
 .star {
   margin: 0 2px;
 }
+.bg-light-warning{
+  background-color: rgb(253, 237, 185);
+  color: rgb(146, 92, 26);
+}
+
+.bg-light-approval{
+color: rgb(255, 255, 255);
+/* background-color: rgb(88, 156, 78); */
+background-color: #4CAF50;
+}
+.bg-btn-approval{
+color: rgb(19, 180, 127);
+/* background-color: rgb(66, 179, 51); */
+background-color:#F5F5F5;
+height: fit-content;
+width: fit-content;
+margin-left: 10px;
+}
+.bg-btn-approval:hover{
+color: rgb(247, 252, 250);
+background-color: rgb(26, 97, 17);
+height: fit-content;
+width: fit-content;
+margin-left: 10px;
+}
+.bg-btn-rejection{
+color: red;
+border: 1px solid red;
+background-color: whitesmoke;
+height: fit-content;
+width: fit-content;
+/* margin-left: 10px; */
+/* margin-left: 700px; */
+}
+.bg-btn-rejection:hover{
+background-color: red;
+border: 1px solid red;
+color: whitesmoke;
+height: fit-content;
+width: fit-content;
+
+}
+.bg-btn-warning{
+color: rgb(253, 237, 185);
+background-color:  rgb(194, 117, 23);
+height: fit-content;
+width: fit-content;
+margin-left: 10px;
+}
+
+.bg-btn-warning:hover{
+background-color:  rgb(163, 98, 18);
+color: rgb(253, 237, 185);
+height: fit-content;
+width: fit-content;
+margin-left: 10px;
+}

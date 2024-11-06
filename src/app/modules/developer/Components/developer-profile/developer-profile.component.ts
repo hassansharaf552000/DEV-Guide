@@ -31,6 +31,9 @@ GetReviewsByClaimURL="http://localhost:5164/api/Account/GetReviewByClaim"
  showAll: boolean = false;
  maxItemsToShow: number = 2;
  Badges:any[];
+ showMessage = true; // Controls the visibility of the message
+ showMessageapproval=true;
+ Messagerejection=true;
  selectedSkills:any[]=this.developerProfile.Skills
  constructor(private route: ActivatedRoute ,private http: HttpClient,private AccService:AccountService, private Badge:BadgeService) {
   this.Badge.GetMyBadge().subscribe(
@@ -82,6 +85,12 @@ console.log("developerid",developerId)
      this.similarDevelopers=developers.Data;
      console.log("3-developers",developers.Data);  // This will return 3 developers with the required skills and title
    });
+   const messageHidden = localStorage.getItem('messageHiddenfordeveloper');
+   this.showMessage = messageHidden !== 'true';
+   const messageHiddenaprroval = localStorage.getItem('messageHiddenapprovaldeveloper');
+   this.showMessageapproval = messageHiddenaprroval !== 'true';
+   const hideMessagerejection = localStorage.getItem('hideMessagerejectiondeveloper');
+   this.Messagerejection = hideMessagerejection !== 'true';
 
  }
  formatDate(dateString: string): string {
@@ -165,6 +174,22 @@ trackByFunction(index: number, education: any): string {
 }
 getStars(level: number): Array<number> {
   return Array(level).fill(0); // Creates an array with 'level' number of items
+}
+
+hideMessage(): void {
+  // Hide the message and set a flag in localStorage
+  this.showMessage = false;
+  localStorage.setItem('messageHiddenfordeveloper', 'true');
+}
+hideMessageaprroval(): void {
+  // Hide the message and set a flag in localStorage
+  this.showMessageapproval = false;
+  localStorage.setItem('messageHiddenapprovaldeveloper', 'true');
+}
+hideMessagerejection(): void {
+  // Hide the message and set a flag in localStorage
+  this.Messagerejection = false;
+  localStorage.setItem('hideMessagerejectiondeveloper', 'true');
 }
 
 }
