@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '../../../../shared/services/Account/account.service';
+import { BadgeService } from '../../../../shared/services/Badge/badge.service';
 
 @Component({
   selector: 'app-profile',
@@ -31,8 +32,19 @@ GetReviewsByClaimURL="http://localhost:5164/api/Account/GetReviewByClaim"
  maxItemsToShow: number = 2;
  selectedSkills:any[]=this.hrProfile.Skills
  IsInList: any[];
- constructor(private route: ActivatedRoute ,private http: HttpClient,private AccService:AccountService) {
-  
+ Badges:any[];
+ constructor(private route: ActivatedRoute ,private http: HttpClient,private AccService:AccountService, private Badge:BadgeService) {
+  this.Badge.GetMyBadge().subscribe(
+    data => {
+      this.Badges = data;
+      console.log('badges: ', this.Badges);
+      
+      
+    },
+    error => {
+      console.error('Error fetching profile', error);
+    }
+  );
  }
 
 
@@ -171,6 +183,9 @@ isinlist(id: string) {
       console.error('Error fetching profile', error);
     }
   );
+}
+getStars(level: number): Array<number> {
+  return Array(level).fill(0); // Creates an array with 'level' number of items
 }
 
 }

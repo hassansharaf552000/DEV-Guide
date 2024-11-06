@@ -15,13 +15,22 @@
   <br>
   <br>
 
-  <!-- Search Box -->
-  <div class="search-bar">
+ 
+  <!-- <div class="search-bar">
     <input type="text" [(ngModel)]="searchTerm" placeholder="Search by Quiz Name" class="search-input" />
     <button (click)="onSearch()" class="search-button">Search</button>
+  </div> -->
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="applyFilters()"
+           placeholder="Search by Quiz Name" class="search-input" />
+    <input type="text" [(ngModel)]="userSearchTerm" (ngModelChange)="applyFilters()"
+           placeholder="Search by User Name" class="search-input" />
+   
   </div>
   <br>
   <br>
+  <input type="checkbox" [(ngModel)]="showPassedOnly" (change)="onCheckboxChange()" style="margin-bottom: 20px;"/>
+  <label class="ms-1" >Show Passed Only</label>
   <table>
     <thead>
       <tr>
@@ -32,13 +41,57 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let quiz of quizzesSolved">
+      <tr *ngFor="let quiz of filteredQuizzes | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
         <td>{{ quiz.QuizName }}</td>
         <td>{{ quiz.UserName }}</td>
         <td>{{ quiz.Score }}</td>
         <td>{{ quiz.Passed }}</td>
       </tr>
     </tbody>
+    
   </table>
+  <div class="mt-3">
+    <pagination-controls class="text-center " (pageChange)="currentPage = $event"></pagination-controls>
+  </div>
 </div>
 
+<!-- <div class="quiz-list">
+  <h3 class="display-4 fw-bold text-center"
+      style="font-family: Edu AU VIC WA NT Hand, cursive; font-optical-sizing: auto; font-style: normal;">
+    Quizzes Solved
+  </h3>
+  <br><br>
+
+ 
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="applyFilters()"
+           placeholder="Search by Quiz Name" class="search-input" />
+    <input type="text" [(ngModel)]="userSearchTerm" (ngModelChange)="applyFilters()"
+           placeholder="Search by User Name" class="search-input" />
+    <input type="checkbox" [(ngModel)]="showPassedOnly" (change)="onCheckboxChange()" />
+    <label>Show Passed Only</label>
+  </div>
+  <br><br>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Quiz Name</th>
+        <th>User Name</th>
+        <th>Scored</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let quiz of filteredQuizzes | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+        <td>{{ quiz.quizName }}</td>
+        <td>{{ quiz.userName }}</td>
+        <td>{{ quiz.score }}</td>
+        <td>{{ quiz.result === 1 ? 'Passed' : 'Failed' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="mt-3">
+    <pagination-controls class="text-center " (pageChange)="currentPage = $event"></pagination-controls>
+  </div>
+</div> -->
