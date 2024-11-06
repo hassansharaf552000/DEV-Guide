@@ -22,7 +22,7 @@ export class AddsocialaccountComponent {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<AddsocialaccountComponent>,
-    private socialAccountService:SocialAccountService
+    private socialAccountService: SocialAccountService
   ) {
     this.socialAccountForm = this.fb.group({
       SocialName: ['', Validators.required],  // Social media platform selection is required
@@ -57,17 +57,18 @@ export class AddsocialaccountComponent {
         ...this.socialAccountForm.value,
         SocialName: Number(this.socialAccountForm.value.SocialName) // Ensure SocialName is sent as a number
       };
+console.log("newAccount",newAccount);
 
-      this.socialAccountService.addaccount(newAccount).subscribe(
-        (response: ISocialAccount) => {
+      this.socialAccountService.addaccount(newAccount).subscribe({
+        next: (response: ISocialAccount) => {
           console.log('Account added successfully:', response);
           this.dialogRef.close(response);
         },
-        (error) => {
+        error: (error) => {
           console.error('Error adding Account:', error);
           console.error('Backend Validation Errors:', error.error.errors); // Log validation errors for debugging
         }
-      );
+      });
     } else {
       console.warn('Form is invalid:', this.socialAccountForm.errors);
     }
