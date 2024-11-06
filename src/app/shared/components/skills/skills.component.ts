@@ -274,15 +274,15 @@ export class SkillsComponent implements OnInit {
   }
 
   loadUserSkills() {
-    this.skillService.getUserSkills().subscribe(
-      (skills: ISkill[]) => {
+    this.skillService.getUserSkills().subscribe({
+    next:(skills: ISkill[]) => {
         this.skills = skills;
         console.log('Loaded skills:', this.skills);
       },
-      (error) => {
+     error: (error) => {
         console.error('Error fetching user skills:', error);  // Log any errors
       }
-    );
+  });
   }
 
 
@@ -330,16 +330,17 @@ export class SkillsComponent implements OnInit {
       };
 
       // Use the service to add the skill
-      this.skillService.addSkill(newSkill).subscribe(
-        (response: ISkill) => {
+      this.skillService.addSkill(newSkill).subscribe({
+        next:(response: ISkill) => {
           // Push the response skill to the local skills array
           this.skills.push(response);
           this.closeAddSkillModal(); // Close modal after adding skill
+          this.loadSuggestedSkills()
         },
-        (error) => {
+        error:(error) => {
           console.error('Error adding skill', error);
         }
-      );
+    });
     }
   }
 
@@ -363,14 +364,16 @@ export class SkillsComponent implements OnInit {
     }
 
     this.skillService.deleteSkill(skillId).subscribe(
-      () => {
+      {next:() => {
         this.skills = this.skills.filter(skill => skill.Id !== skillId);
         console.log('Skill deleted successfully');
+        this.loadSuggestedSkills()
+
       },
-      (error) => {
+      error:(error) => {
         console.error('Error deleting skill', error);
       }
-    );
+  });
   }
 
   // Select suggested skill

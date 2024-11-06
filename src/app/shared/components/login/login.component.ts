@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthService } from '../../services/Auth/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -18,13 +18,17 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private builder: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private active:ActivatedRoute
   ) {
     this.form = this.builder.group({
       LoginMethod: ["", [Validators.required]],
       Password: ["", [Validators.required]],
       Rememberme:[false]
     });
+    this.active.params.subscribe(val=>{
+        this.returnUrl = val['url'] ?? "/home"
+    })
    }
   ngOnInit(): void {}
 
@@ -133,7 +137,7 @@ export class LoginComponent implements OnInit {
                     // Navigate based on user role
                     switch (userRole) {
                         case 'Developer':
-                            this.router.navigate(['/home']);
+                            this.router.navigate([this.returnUrl]);
                             break;
                         case 'HR':
                             this.router.navigate(['/hr']);
@@ -145,7 +149,7 @@ export class LoginComponent implements OnInit {
                             this.router.navigate(['/admin/analytics']);
                             break;
                         default:
-                            this.router.navigate(['/home']); // Default route if no role matches
+                            this.router.navigate([this.returnUrl]); // Default route if no role matches
                             break;
                     }
                     this.toastr.success('Successfully logged in!', 'Success');

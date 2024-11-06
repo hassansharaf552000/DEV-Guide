@@ -98,6 +98,8 @@ import { errorInterceptor} from './shared/interceptors/error.interceptor';
       positionClass: 'toast-top-right',
       preventDuplicates: true,
       progressBar: true,
+      newestOnTop: true,
+      tapToDismiss: true,
     }),
     CarouselModule,
     ReactiveFormsModule,

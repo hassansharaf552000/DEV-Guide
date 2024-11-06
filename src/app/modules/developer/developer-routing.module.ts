@@ -143,7 +143,7 @@ const routes: Routes = [
 
     ],
   },
-  { path: 'login', component: LoginComponent },
+  { path: 'login/:url', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'booking/:id', component: BookingComponent, },
   { path: 'query/:id', component: QueryComponent, },
