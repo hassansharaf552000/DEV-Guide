@@ -52,6 +52,7 @@ import { ExperienceListComponent } from '../../shared/components/experience-list
 import { SocialAccountsListComponent } from '../../shared/components/social-accounts-list/social-accounts-list.component';
 
 import { ForgotPasswordComponent } from '../../shared/components/forget_password/forget_password.component';
+
 import { ResetPasswordComponent } from '../../shared/components/reset-password/reset-password.component';
 
 import { DeveloperSessionDetailsComponent } from './Components/developer-session-details/developer-session-details.component';
@@ -68,6 +69,7 @@ import { MentorPaymentsComponent } from '../mentor/Components/mentor-payments/me
 import { CustomCalendarComponent } from './Components/custom-calendar/custom-calendar.component';
 import { DeveloperProfileComponent } from './Components/developer-profile/developer-profile.component';
 import { DeveloperlistComponent } from './Components/developerlist/developerlist.component';
+import { RequestComponent } from '../../shared/components/request/request.component';
 
 
 
@@ -161,6 +163,7 @@ const routes: Routes = [
   { path: 'confirm/:id', component: BookingConfirmationComponent,canActivate: [AuthGuard] },
   { path: 'cancel', component: PaymentComponent },
   { path: 'forgetpassword', component: ForgotPasswordComponent },
+  { path: 'request', component: RequestComponent}, // إضافة المسار الجديد
   { path: 'resetpassword', component: ResetPasswordComponent },
   // { path: 'hr-payment', component: HrPaymentsComponent },
   //{ path: '**', redirectTo: 'notfound' },

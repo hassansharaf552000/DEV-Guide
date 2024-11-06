@@ -56,7 +56,7 @@ import { QuizDetailsComponent } from './components/quiz-details/quiz-details.com
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { TakenQuizzesCardComponent } from './components/taken-quizzes-card/taken-quizzes-card.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
-
+import { RequestComponent } from './components/request/request.component';
 
 
 
@@ -106,6 +106,8 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
     TakenQuizzesCardComponent,
     ErrorPageComponent,
 
+    RequestComponent,
+    SpinnerComponent,
   ],
 
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, NgxPaginationModule,
