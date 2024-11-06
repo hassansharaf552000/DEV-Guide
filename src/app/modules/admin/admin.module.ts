@@ -6,18 +6,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {  SessionsComponent } from './sessions/sessions.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { QuizzesSolvedComponent } from './quizzes-solved/quizzes-solved.component';
-
-
 import { usersDataComponent } from './users-data/users-data.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { AddskillsComponent } from './addskills/addskills.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { QuizzesCreatedComponent } from './quizzes-created/quizzes-created.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DeveloperModule } from "../developer/developer.module";
+import { AddquizComponent } from './addquiz/addquiz.component';
+import { AddquestionsandoptionsComponent } from './addquestionsandoptions/addquestionsandoptions.component';
 
 
 
@@ -38,7 +37,9 @@ import { DeveloperModule } from "../developer/developer.module";
     ContactsComponent,
     AddskillsComponent,
     QuizzesCreatedComponent,
-    ProfileComponent
+    ProfileComponent,
+    AddquizComponent,
+    AddquestionsandoptionsComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +47,11 @@ import { DeveloperModule } from "../developer/developer.module";
     ReactiveFormsModule,
     FormsModule,
     NgxPaginationModule,
-    DeveloperModule
-]
+    DeveloperModule,
+    FormsModule ,
+    NgxPaginationModule,// Add ReactiveFormsModule here
+
+
+  ]
 })
 export class AdminModule { }

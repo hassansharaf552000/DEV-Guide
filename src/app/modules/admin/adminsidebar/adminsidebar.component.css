@@ -4,7 +4,8 @@
   left: 0;
   top: 0;
   width: 250px;
-   background-color:#070e3f;
+  background-color: #070e3f;
+  overflow: scroll;
 
 }
 
@@ -12,38 +13,53 @@
   color: white;
 }
 
-.nav  a:hover {
-  background-color: #223df6; /* #495057;*/
+.nav a:hover {
+  background-color: #0c186b;
+  /* #495057;*/
   text-decoration: none;
 }
+
 .navbar-brand a:hover {
   background-color: transparent !important;
   text-decoration: none;
 
 }
+
 .nav-item-button {
 
   margin-top: 50px;
-  display: flex; /* استخدام flexbox */
-  justify-content: center; /* مركز المحتوى أفقياً */
-  align-items: center; /* مركز المحتوى عمودياً */
-  height: 100%; /* تأكد من أن العنصر يأخذ الارتفاع الكامل */
+  display: flex;
+  /* استخدام flexbox */
+  justify-content: center;
+  /* مركز المحتوى أفقياً */
+  align-items: center;
+  /* مركز المحتوى عمودياً */
+  height: 100%;
+  /* تأكد من أن العنصر يأخذ الارتفاع الكامل */
 }
 
 
 .nav-link {
-  margin: 0; /* إزالة أي هوامش غير مرغوب فيها */
+  margin: 0;
+  /* إزالة أي هوامش غير مرغوب فيها */
 }
 
 .text-bg-danger {
 
-  color: white; /* لون النص الأبيض */
-  border: none; /* إزالة الحدود إذا كانت موجودة */
-  padding: 10px 20px; /* ضبط الهوامش الداخلية حسب الحاجة */
-  border-radius: 5px; /* إضافة زوايا دائرية للزر */
-  cursor: pointer; /* تغيير شكل المؤشر عند تمرير الفأرة فوق الزر */
-  transition: background-color 0.3s; /* تأثير انتقال سلس عند تغيير اللون */
+  color: white;
+  /* لون النص الأبيض */
+  border: none;
+  /* إزالة الحدود إذا كانت موجودة */
+  padding: 10px 20px;
+  /* ضبط الهوامش الداخلية حسب الحاجة */
+  border-radius: 5px;
+  /* إضافة زوايا دائرية للزر */
+  cursor: pointer;
+  /* تغيير شكل المؤشر عند تمرير الفأرة فوق الزر */
+  transition: background-color 0.3s;
+  /* تأثير انتقال سلس عند تغيير اللون */
 }
+
 .logout-button {
   padding: 10px 20px;
   font-size: 16px;
@@ -51,23 +67,7 @@
 }
 
 /* Custom style for the logout button */
-.logout-btn {
-  color: white; /* White text */
-  background-color: rgb(218, 17, 17); /* Red background */
-  padding: 10px; /* Add padding for better spacing */
-  border-radius: 5px; /* Add rounded corners */
-  display: inline-block; /* Keep the button inline */
-  width: 100%; /* Ensure the button spans the full width */
-  text-align: center; /* Center the text */
-  text-decoration: none; /* Remove underline from the link */
-}
 
-.logout-btn:hover {
-  background-color: rgb(194, 18, 18); /* Darken the background on hover */
-}
-.logout-btn, .home-btn {
-  margin-bottom: 10px;
-}
 
 
 .sidebar {
@@ -130,7 +130,58 @@
 }
 
 .btn-logout:hover {
-  background-color: #c9302c;
+  background-color: #c9302c !important;
 }
 
+.logout-btn {
+  background-color: white;
+  /* White text */
+  color: rgb(32, 13, 112) !important;
+  /* Red background */
+  padding: 10px;
+  /* Add padding for better spacing */
+  border-radius: 5px;
+  /* Add rounded corners */
+  display: inline-block;
+  /* Keep the button inline */
+  width: 100%;
+  /* Ensure the button spans the full width */
+  text-align: center;
+  /* Center the text */
+  text-decoration: none;
+  /* Remove underline from the link */
+  font-weight: 500 !important;
+}
 
+.logout-btn i {
+  /* background-color: white; */
+  background-color: inherit !important;
+  /* White text */
+  color: rgb(32, 13, 112) !important;
+  font-weight: 500 !important;
+  /* Red background */
+
+}
+
+.logout-btn:hover {
+  color: white !important;
+  /* White text */
+  background-color: rgb(32, 13, 112) !important;
+  /* Red background */
+  /* Darken the background on hover */
+}
+
+.logout-btn {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.logout-btn:hover i {
+  color: rgb(250, 248, 248) !important;
+  /* White text */
+  /* background-color: rgb(32, 13, 112) !important; */
+  background-color: inherit !important;
+  /* Red background */
+  font-weight: 500 !important;
+
+}

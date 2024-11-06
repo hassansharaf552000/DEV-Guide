@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '../../../../shared/services/Account/account.service';
+import { BadgeService } from '../../../../shared/services/Badge/badge.service';
 
 @Component({
   selector: 'app-developerlist',
@@ -30,6 +31,7 @@ export class DeveloperlistComponent {
   similardevelopers: any[] = [];
   showAll: boolean = false;
   maxItemsToShow: number = 2;
+  Badges:any[];
   //  dateStr = "2024-02-02T00:00:00";
   //  date = new Date(this.dateStr);
   
@@ -51,8 +53,19 @@ export class DeveloperlistComponent {
   }
   
   reviewForm: FormGroup;
-  constructor(private route: ActivatedRoute ,private http: HttpClient,private AccService:AccountService,private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute ,private http: HttpClient,private AccService:AccountService,private fb: FormBuilder, private Badge:BadgeService) {
     this.id = this.route.snapshot.paramMap.get('id');
+    this.Badge.GetUserBadge(this.id).subscribe(
+      data => {
+        this.Badges = data;
+        console.log('badges: ', this.Badges);
+        
+        
+      },
+      error => {
+        console.error('Error fetching profile', error);
+      }
+    );
   }
 
  
@@ -168,5 +181,8 @@ getLimitedExperiences(experiences: any[]) {
 }
 trackByFunction(index: number, education: any): string {
   return education.Degree; // or any unique identifier
+}
+getStars(level: number): Array<number> {
+  return Array(level).fill(0); // Creates an array with 'level' number of items
 }
 }

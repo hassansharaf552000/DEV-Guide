@@ -15,7 +15,6 @@ import { HrProfileComponent } from '../developer/Components/hr-profile/hr-profil
 import { ReviewsListComponent } from './Components/reviews-list/reviews-list.component';
 
 import { ChangepasswordComponent } from '../../shared/components/changepassword/changepassword.component';
-import { AuthGuard } from '../../core/guards/AuthGuard';
 import { SkillsComponent } from '../../shared/components/skills/skills.component';
 import { EducationsComponent } from '../../shared/components/education-list/education-list.component';
 import { ExperienceListComponent } from '../../shared/components/experience-list/experience-list.component';
@@ -28,6 +27,7 @@ import { ProfileComponent } from './Components/profile/profile.component';
 import { ContactUsComponent } from '../developer/Components/contact-us/contact-us.component';
 import { DeveloperModule } from '../developer/developer.module';
 import { DeveloperlistComponent } from '../developer/Components/developerlist/developerlist.component';
+import { ErrorPageComponent } from '../../shared/components/error-page/error-page.component';
 
 
 
@@ -38,33 +38,34 @@ const routes: Routes = [
     component: HrlayoutComponent,
     children: [
 
-      { path: 'profile', component:HrProfileComponent,canActivate: [AuthGuard] },
-      { path: 'updateprofile', component: Update_ProfileComponent , canActivate: [AuthGuard]  },
-      { path: 'change-password', component: ChangepasswordComponent, canActivate: [AuthGuard], },
-      { path: 'skills', component: SkillsComponent, canActivate: [AuthGuard], },
-      { path: 'educations', component: EducationsComponent,canActivate: [AuthGuard], },
-      { path: 'experiences', component: ExperienceListComponent,canActivate: [AuthGuard], },
-      { path: 'socialaccounts', component: SocialAccountsListComponent,canActivate: [AuthGuard], },
-      { path: 'hr-payments', component: HrPaymentsComponent,canActivate: [AuthGuard], },
-      { path: 'booking', component:BookingHrComponent,canActivate: [AuthGuard] },
-      { path: 'hr-summry', component: HrSummaryComponent,canActivate: [AuthGuard] },
-      { path: 'hr-request', component: HrRequestComponent,canActivate: [AuthGuard]},
-      { path: 'schedule', component: ScheduleComponent,canActivate: [AuthGuard] },
-      { path: 'contact_admin', component: ContactUsComponent,canActivate: [AuthGuard], },
-      { path: 'reviews', component: ReviewsListComponent,canActivate: [AuthGuard] },
-      { path: 'queryanswers', component: HrAnswerQueryComponent,canActivate: [AuthGuard] },
-      { path: 'session-details/:id', component: SessionDatailsComponent,canActivate: [AuthGuard] },
-      { path: 'quizzes', component: QuizListComponent, canActivate: [AuthGuard], },
-      {path:'Quizzes',component:QuizzesListComponent,canActivate: [AuthGuard],},
-      {path:'Quiz/:id',component:QuizzesDetailsComponent,canActivate: [AuthGuard],},
-      { path: 'developers/:id', component: DeveloperlistComponent,canActivate: [AuthGuard]},
-      { path: 'home', component: ProfileComponent,canActivate: [AuthGuard] },
-      { path: 'Sessions', component:BookingHrComponent },
+      { path: 'profile', component: HrProfileComponent, },
+      { path: 'updateprofile', component: Update_ProfileComponent, },
+      { path: 'change-password', component: ChangepasswordComponent, },
+      { path: 'skills', component: SkillsComponent, },
+      { path: 'educations', component: EducationsComponent, },
+      { path: 'experiences', component: ExperienceListComponent, },
+      { path: 'socialaccounts', component: SocialAccountsListComponent, },
+      { path: 'hr-payments', component: HrPaymentsComponent, },
+      { path: 'booking', component: BookingHrComponent, },
+      { path: 'hr-summry', component: HrSummaryComponent, },
+      { path: 'hr-request', component: HrRequestComponent, },
+      { path: 'schedule', component: ScheduleComponent, },
+      { path: 'contact_admin', component: ContactUsComponent, },
+      { path: 'reviews', component: ReviewsListComponent, },
+      { path: 'queryanswers', component: HrAnswerQueryComponent, },
+      { path: 'session-details/:id', component: SessionDatailsComponent, },
+      { path: 'quizzes', component: QuizListComponent, },
+      { path: 'Quizzes', component: QuizzesListComponent, },
+      { path: 'Quiz/:id', component: QuizzesDetailsComponent, },
+      { path: 'developers/:id', component: DeveloperlistComponent, },
+      { path: 'home', component: ProfileComponent, },
+      { path: 'Sessions', component: BookingHrComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'notfound' },
     ],
   },
   { path: '**', redirectTo: 'notfound' },
+  { path: 'errorpage', component: ErrorPageComponent }
 ];
 
 @NgModule({
@@ -72,4 +73,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class HrRoutingModule {}
+export class HrRoutingModule { }

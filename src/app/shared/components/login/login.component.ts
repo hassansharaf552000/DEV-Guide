@@ -125,26 +125,27 @@ export class LoginComponent implements OnInit {
             next: (res: any) => { // Update response type
                 if (res.Success && res.Result) {
                     console.log('JWT Token:', res.Result);
-                    this.authService.userlogin(res.Result.Token);
+
                     console.log(res); // Log the entire response
 
-                    const userRole = res.Result.Roles[0] // Adjust this based on your actual response structure
+                    const userRole = res.Result.Roles[0]
+                    this.authService.userlogin(res.Result.Token,userRole);// Adjust this based on your actual response structure
                     // Navigate based on user role
                     switch (userRole) {
                         case 'Developer':
-                            this.router.navigateByUrl('/home');
+                            this.router.navigate(['/home']);
                             break;
                         case 'HR':
-                            this.router.navigateByUrl('/hr');
+                            this.router.navigate(['/hr']);
                             break;
                         case 'Mentor':
-                            this.router.navigateByUrl('/mentor');
+                            this.router.navigate(['/mentor']);
                             break;
                         case 'Admin':
-                            this.router.navigateByUrl('/admin');
+                            this.router.navigate(['/admin/analytics']);
                             break;
                         default:
-                            this.router.navigateByUrl('/home'); // Default route if no role matches
+                            this.router.navigate(['/home']); // Default route if no role matches
                             break;
                     }
                     this.toastr.success('Successfully logged in!', 'Success');

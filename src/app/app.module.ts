@@ -78,6 +78,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { errorInterceptor} from './shared/interceptors/error.interceptor';
 
 
 
@@ -110,7 +111,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     CookieService,
     MatDatepickerModule,
     provideClientHydration(),
-    provideHttpClient(withFetch(), withInterceptors([authInterceptor, loaderInterceptor])),
+    provideHttpClient(withFetch(), withInterceptors([authInterceptor, loaderInterceptor,errorInterceptor])),
     provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent],

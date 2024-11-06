@@ -1,0 +1,55 @@
+.pagination .page-item.active .page-link {
+  background-color: #1a1a3b; /* Dark color for active page */
+  color: #fff;
+  border-color: #1a1a3b;
+}
+
+.pagination .page-link {
+  color: #0d6efd; /* Bootstrap's default primary color for links */
+  border: none;
+  margin: 0 2px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.pagination .page-item.disabled .page-link {
+  background-color: #f8f9fa; /* Light color for disabled buttons */
+  color: #6c757d; /* Disabled text color */
+}
+.question-container {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.option-container .custom-control-input:checked ~ .custom-control-label {
+  background-color: #f8f9fa;
+  color: #0d6efd;
+  font-weight: bold;
+}
+
+.option-container .custom-control-label {
+  display: block;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.option-container .custom-control-input:checked ~ .custom-control-label {
+  border-color: #0d6efd;
+  background-color: #e7f1ff;
+}
+
+.option-container .custom-control-label:hover {
+  background-color: #e7f1ff;
+}
+.custom-radio{
+  padding-bottom: 20px;
+}

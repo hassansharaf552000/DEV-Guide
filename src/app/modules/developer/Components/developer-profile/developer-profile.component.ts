@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '../../../../shared/services/Account/account.service';
+import { BadgeService } from '../../../../shared/services/Badge/badge.service';
 
 @Component({
   selector: 'app-developer-profile',
@@ -29,9 +30,23 @@ GetReviewsByClaimURL="http://localhost:5164/api/Account/GetReviewByClaim"
  similarDevelopers: any[] = [];
  showAll: boolean = false;
  maxItemsToShow: number = 2;
+ Badges:any[];
+ showMessage = true; // Controls the visibility of the message
+ showMessageapproval=true;
+ Messagerejection=true;
  selectedSkills:any[]=this.developerProfile.Skills
- constructor(private route: ActivatedRoute ,private http: HttpClient,private AccService:AccountService) {
-  
+ constructor(private route: ActivatedRoute ,private http: HttpClient,private AccService:AccountService, private Badge:BadgeService) {
+  this.Badge.GetMyBadge().subscribe(
+    data => {
+      this.Badges = data;
+      console.log('badges: ', this.Badges);
+      
+      
+    },
+    error => {
+      console.error('Error fetching profile', error);
+    }
+  );
  }
 
 
@@ -70,6 +85,12 @@ console.log("developerid",developerId)
      this.similarDevelopers=developers.Data;
      console.log("3-developers",developers.Data);  // This will return 3 developers with the required skills and title
    });
+   const messageHidden = localStorage.getItem('messageHiddenfordeveloper');
+   this.showMessage = messageHidden !== 'true';
+   const messageHiddenaprroval = localStorage.getItem('messageHiddenapprovaldeveloper');
+   this.showMessageapproval = messageHiddenaprroval !== 'true';
+   const hideMessagerejection = localStorage.getItem('hideMessagerejectiondeveloper');
+   this.Messagerejection = hideMessagerejection !== 'true';
 
  }
  formatDate(dateString: string): string {
@@ -151,4 +172,24 @@ getLimitedExperiences(experiences: any[]) {
 trackByFunction(index: number, education: any): string {
  return education.Degree; // or any unique identifier
 }
+getStars(level: number): Array<number> {
+  return Array(level).fill(0); // Creates an array with 'level' number of items
+}
+
+hideMessage(): void {
+  // Hide the message and set a flag in localStorage
+  this.showMessage = false;
+  localStorage.setItem('messageHiddenfordeveloper', 'true');
+}
+hideMessageaprroval(): void {
+  // Hide the message and set a flag in localStorage
+  this.showMessageapproval = false;
+  localStorage.setItem('messageHiddenapprovaldeveloper', 'true');
+}
+hideMessagerejection(): void {
+  // Hide the message and set a flag in localStorage
+  this.Messagerejection = false;
+  localStorage.setItem('hideMessagerejectiondeveloper', 'true');
+}
+
 }
