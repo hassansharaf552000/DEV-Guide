@@ -14,7 +14,8 @@ import { QuestionDto } from '../../../core/enums/QuestionDto';
 export class QuizService {
   private qetquizzes = "http://localhost:5164/api/Quize/user/quizzes";
   private getQuizByIdUrl = 'http://localhost:5164/api/Quize';
-  private submitQuizUrl = 'http://localhost:5164/api/Quize/submit';
+  //private submitQuizUrl = 'http://localhost:5164/api/Quize/submit';
+  private submitQuizUrl = 'http://localhost:5164/api/Quize/submit2';
   private gettakenquizzes = 'http://localhost:5164/api/Quize/quizzes/taken'
   private createquizurl = 'http://localhost:5164/api/Quize/CreateQuiz'
 
@@ -91,7 +92,7 @@ export class QuizService {
   }
 
 
- 
+
 
 
 

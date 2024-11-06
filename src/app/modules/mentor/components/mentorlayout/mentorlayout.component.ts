@@ -89,7 +89,7 @@ export class MentorlayoutComponent {
   private subscriptions: Subscription = new Subscription();
 
   constructor(private router: Router,private authServ:AuthService,@Inject(PLATFORM_ID) private platformId: any,private cdRef: ChangeDetectorRef){
-    this.authServ.userlogin(this.authServ.getToken()??"")
+    this.authServ.userlogin(this.authServ.getToken()??"",this.authServ.getStoredRole())
     this.authServ.isloggedUserSubject.subscribe(value=>{
     this.isuserExist = value
     })

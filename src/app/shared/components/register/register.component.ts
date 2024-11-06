@@ -103,9 +103,11 @@ send() {
         if (res.Success && res.Result) {
           console.log('Registration successful, token:', res.Result.Token);
           // Save the token using the authService
-          this.authService.userlogin(res.Result.Token);  // Save the token like in login
+            // Save the token like in login
 
-          const userRole = res.Result.Roles[0];  // Adjust based on your actual response structure
+          const userRole = res.Result.Roles[0];
+
+          this.authService.userlogin(res.Result.Token,userRole);// Adjust based on your actual response structure
 
           // Navigate based on user role
           switch (userRole) {

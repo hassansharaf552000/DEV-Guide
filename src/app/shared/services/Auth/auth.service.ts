@@ -97,13 +97,14 @@ export class AuthService {
   userProfileSubject: BehaviorSubject<Profile | null>; // Profile BehaviorSubject
   //private userProfile$: Observable<Profile | null>;
   private tokenKey = 'authToken'; // Name of the cookie
+  private roleKey = 'userRole';   // Key for storing user role
 
-  constructor(private http: HttpClient,private CookieServ:CookieService,private profileservice:ProfileService,private injector: Injector) {
-   this.isloggedUserSubject = new BehaviorSubject<boolean>(this.checkToken());
+  constructor(private http: HttpClient, private CookieServ: CookieService, private profileservice: ProfileService, private injector: Injector) {
+    this.isloggedUserSubject = new BehaviorSubject<boolean>(this.checkToken());
     this.userProfileSubject = new BehaviorSubject<Profile | null>(null);
   }
 
-   // Method to get the Authorization header with the token
+  // Method to get the Authorization header with the token
   private getAuthHeaders(): HttpHeaders {
     //const authService = this.injector.get(AuthService); // Lazy load AuthService
     const token = this.getToken();
@@ -133,7 +134,7 @@ export class AuthService {
 
   // Change password method
   ChangePasswordgit(changePassword: ChangePassword): Observable<ChangePassword> {
-        return this.http.put<ChangePassword>(`${this.apiUrl}`, changePassword);
+    return this.http.put<ChangePassword>(`${this.apiUrl}`, changePassword);
   }
 
   login(obj: any) {
@@ -163,21 +164,36 @@ export class AuthService {
 
 
 
-  userlogin(token: string) {
-    if(token==""){
-      this.isloggedUserSubject.next(false)
+  // userlogin(token: string) {
+  //   if (token == "") {
+  //     this.isloggedUserSubject.next(false)
+  //   }
+  //   else {
+  //     this.setToken(token);
+  //     this.isloggedUserSubject.next(true);
+
+  //     // Load user profile after successful login
+  //     this.loadUserProfile();
+  //   }
+  // }
+
+  setRole(role: string): void {
+    this.CookieServ.set('userRole', role);
+}
+  userlogin(token: string, role: string) {
+    if (token === "") {
+        this.isloggedUserSubject.next(false);
+    } else {
+        // Store both token and role
+        this.setToken(token);
+        this.setRole(role); // New method to save the role
+
+        this.isloggedUserSubject.next(true);
+
+        // Load user profile after successful login
+        this.loadUserProfile();
     }
-    else{
-      this.setToken(token);
-      this.isloggedUserSubject.next(true);
-
-      // Load user profile after successful login
-      this.loadUserProfile();
-    }
-
-
-
-  }
+}
   userlogout() {
     this.removeToken()
     this.isloggedUserSubject.next(false);
@@ -185,8 +201,10 @@ export class AuthService {
   }
   // Set token in cookies
   setToken(token: string): void {
-    this.CookieServ.set(this.tokenKey , token)
+    this.CookieServ.set(this.tokenKey, token)
+
   }
+
 
   // Get token from cookies
   getToken(): string | null {
@@ -196,26 +214,82 @@ export class AuthService {
   // Remove token by setting its expiry date to the past
   removeToken(): void {
     this.CookieServ.delete(this.tokenKey)
-  }
-
-isLoggedIn(): boolean {
-  const token = this.getToken();
-  if (!token) return false;
-
-  try {
-    const payload = JSON.parse(atob(token.split('.')[1]));
-    const isExpired = payload.exp < Date.now() / 1000;
-    return !isExpired;
-  } catch (error) {
-    console.error('Token decoding failed:', error);
-    return false;
+    this.CookieServ.delete(this.roleKey);
+    this.isloggedUserSubject.next(false);
   }
-}
+
+  isLoggedIn(): boolean {
+    const token = this.getToken();
+    if (!token) return false;
+
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const isExpired = payload.exp < Date.now() / 1000;
+      return !isExpired;
+    } catch (error) {
+      console.error('Token decoding failed:', error);
+      return false;
+    }
+  }
 
 
-private checkToken(): boolean {
-  return this.CookieServ.check(this.tokenKey)
-}
+  private checkToken(): boolean {
+    return this.CookieServ.check(this.tokenKey)
+  }
+
+
+
+  getRoleFromToken(token: string): string | null {
+    token = this.getToken();
+    if (token) {
+      try {
+        // Extract the payload from the token (middle part)
+        const payloadBase64 = token.split('.')[1];
+        const payloadJson = atob(payloadBase64); // Decode Base64
+        const payload = JSON.parse(payloadJson);
+
+        // Assuming the role is stored in the payload as `role`
+        const role = payload?.Roles[0];
+        if (role) {
+          this.CookieServ.set(this.roleKey, role); // Store role in cookies
+          return role;
+        }
+      } catch (error) {
+        console.error('Failed to decode token:', error);
+      }
+    }
+    return null;
+  }
+
+  isValidToken(): boolean {
+    const token = this.CookieServ.get(this.tokenKey);
+    return !!token && !this.isTokenExpired(token); // Add further validation as needed
+  }
+
+  private isTokenExpired(token: string): boolean {
+    try {
+      const payloadBase64 = token.split('.')[1];
+      const decodedPayload = JSON.parse(atob(payloadBase64));
+      return decodedPayload.exp < Date.now() / 1000;
+    } catch {
+      return true;
+    }
+  }
+
+
+  // Get the stored role directly from cookies
+  getStoredRole(): string | null {
+    return this.CookieServ.get(this.roleKey);
+  }
+
+  saveAuthData(token: string): void {
+    this.CookieServ.set(this.tokenKey, token);
+
+    const role = this.getRoleFromToken(token);
+    if (role) {
+      this.CookieServ.set(this.roleKey, role);  // Store role for easy access
+    }
+  }
 
 
 

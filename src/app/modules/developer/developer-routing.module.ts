@@ -57,19 +57,13 @@ import { ResetPasswordComponent } from '../../shared/components/reset-password/r
 
 import { DeveloperSessionDetailsComponent } from './Components/developer-session-details/developer-session-details.component';
 
-
-import { NotFoundComponent } from '../../shared/components/not-found/not-found.component';
-import { AuthGuard } from '../../core/guards/AuthGuard';
-
 import { BookingListComponent } from './Components/booking-list/booking-list.component';
 
-import { HrPaymentsComponent } from '../hr/Components/hr-payments/hr-payments.component';
-import { MentorPaymentsComponent } from '../mentor/Components/mentor-payments/mentor-payments.component';
 
 import { CustomCalendarComponent } from './Components/custom-calendar/custom-calendar.component';
 import { DeveloperProfileComponent } from './Components/developer-profile/developer-profile.component';
-import { DeveloperlistComponent } from './Components/developerlist/developerlist.component';
 import { RequestComponent } from '../../shared/components/request/request.component';
+import { ErrorPageComponent } from '../../shared/components/error-page/error-page.component';
 
 
 
@@ -80,41 +74,41 @@ const routes: Routes = [
     component: UserlayoutComponent,
 
     children: [
-      { path: 'paypal/:id', component: PaymentComponent,canActivate: [AuthGuard] },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
+      { path: 'paypal/:id', component: PaymentComponent, },
       { path: 'mentors', component: MentorListComponent },
-      { path: 'mentors/:id', component: MentorProfileComponent,canActivate: [AuthGuard], },
+      { path: 'mentors/:id', component: MentorProfileComponent, },
 
       { path: 'hrs', component: HRListComponent },
-      { path: 'hrs/:id', component: HrProfileComponent,canActivate: [AuthGuard], },
+      { path: 'hrs/:id', component: HrProfileComponent, },
       { path: 'contactus', component: ContactUsComponent },
-      { path: 'skill-assessments', component: SkillAssessmentsComponent,canActivate: [AuthGuard], },
-      { path: 'skill-instructions', component: SkillInstructionsComponent,canActivate: [AuthGuard], },
+      { path: 'skill-assessments', component: SkillAssessmentsComponent, },
+      { path: 'skill-instructions', component: SkillInstructionsComponent, },
 
       { path: 'aboutus', component: AboutUsComponent },
-      { path: 'home', component: HomeComponent },
 
       { path: 'faq-and-licence', component: FaqComponent },
-//       { path: 'booking', component: BookingComponent },
-//       { path: 'query', component: QueryComponent },
-//       { path: 'confirmation', component: BookingConfirmationComponent },
-//       {path:'Quizzes',component:QuizzesListComponent},
-//       {path:'Quiz/:id',component:QuizzesDetailsComponent},
-       { path: 'calender', component: CustomCalendarComponent },
-      { path: 'booking', component: BookingComponent,canActivate: [AuthGuard], },
-      { path: 'query', component: QueryComponent,canActivate: [AuthGuard], },
-      { path: 'confirmation', component: BookingConfirmationComponent,canActivate: [AuthGuard], },
-      { path: 'quiz/:id', component: QuizComponent,canActivate: [AuthGuard], },
-      { path: 'finish-quiz/:id', component: FinishQuizComponent,canActivate: [AuthGuard], },
-      {path:'Quizzes',component:QuizzesListComponent,canActivate: [AuthGuard],},
-      {path:'Quiz/:id',component:QuizzesDetailsComponent,canActivate: [AuthGuard],},
-
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-
-     { path: '**', redirectTo: 'notfound' },
+      //       { path: 'booking', component: BookingComponent },
+      //       { path: 'query', component: QueryComponent },
+      //       { path: 'confirmation', component: BookingConfirmationComponent },
+      //       {path:'Quizzes',component:QuizzesListComponent},
+      //       {path:'Quiz/:id',component:QuizzesDetailsComponent},
+      { path: 'calender', component: CustomCalendarComponent },
+      { path: 'booking', component: BookingComponent, },
+      { path: 'query', component: QueryComponent, },
+      { path: 'confirmation', component: BookingConfirmationComponent, },
+      { path: 'quiz/:id', component: QuizComponent, },
+      { path: 'finish-quiz/:id', component: FinishQuizComponent, },
+      { path: 'Quizzes', component: QuizzesListComponent, },
+      { path: 'Quiz/:id', component: QuizzesDetailsComponent, },
 
 
+      { path: '**', redirectTo: 'notfound' },
 
-     //{ path: '**', component:NotFoundComponent},
+
+
+      //{ path: '**', component:NotFoundComponent},
 
       //{ path: 'AdminUi', component: AdminUIComponent }
     ],
@@ -123,53 +117,54 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileLayoutComponent,
-    canActivate: [AuthGuard],
+
     children: [
       { path: 'Developer', component: DeveloperProfileComponent },
       { path: 'profile', component: MentorProfileComponent },
       { path: 'updateprofile', component: Update_ProfileComponent },
-      {path:'change-password',component:ChangepasswordComponent},
-      {path:'skills',component:SkillsComponent},
-      {path:'educations',component:EducationsComponent},
-      {path:'experiences',component:ExperienceListComponent},
-      {path:'socialaccounts',component:SocialAccountsListComponent},
+      { path: 'change-password', component: ChangepasswordComponent },
+      { path: 'skills', component: SkillsComponent },
+      { path: 'educations', component: EducationsComponent },
+      { path: 'experiences', component: ExperienceListComponent },
+      { path: 'socialaccounts', component: SocialAccountsListComponent },
       { path: 'reviews', component: ReviewsListComponent },
-      { path: 'quizzes', component: QuizListComponent,canActivate:[AuthGuard], },
+      { path: 'quizzes', component: QuizListComponent, },
       { path: 'reply', component: MentorReplyComponent },
       { path: 'answer-query/:id', component: QueryAnswerComponent },
       { path: 'AdminUi', component: AdminUIComponent },
       //{ path: '**', redirectTo: 'notfound' },
-      {path:'',redirectTo: 'updateprofile', pathMatch: 'full'},
+      { path: '', redirectTo: 'updateprofile', pathMatch: 'full' },
       // { path: 'answer-query/:id/:queryid/:userid', component: QueryAnswerComponent },
       { path: 'answer-query/:id/:queryid/:userid', component: QueryAnswerComponent },
       { path: 'AdminUi', component: AdminUIComponent },
       { path: 'session-details/:id', component: DeveloperSessionDetailsComponent },
-      { path: 'Sessions', component:BookingListComponent },
+      { path: 'Sessions', component: BookingListComponent },
     ],
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'booking/:id', component: BookingComponent,canActivate: [AuthGuard], },
-  { path: 'query/:id', component: QueryComponent,canActivate: [AuthGuard], },
-  { path: 'confirmation', component: BookingConfirmationComponent,canActivate: [AuthGuard], },
-  { path: 'communication', component: CommunicationComponent,canActivate: [AuthGuard], },
+  { path: 'booking/:id', component: BookingComponent, },
+  { path: 'query/:id', component: QueryComponent, },
+  { path: 'confirmation', component: BookingConfirmationComponent, },
+  { path: 'communication', component: CommunicationComponent, },
   { path: 'step-one', component: StepOneComponent },
   { path: 'step-two', component: StepTwoComponent },
   { path: 'step-three', component: StepThreeComponent },
   { path: 'step-four', component: StepFourComponent },
   { path: 'step-five', component: StepFiveComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'cancel', component: PaymentComponent,canActivate: [AuthGuard] },
-  { path: 'confirm/:id', component: BookingConfirmationComponent,canActivate: [AuthGuard] },
+  { path: 'cancel', component: PaymentComponent, },
+  { path: 'confirm/:id', component: BookingConfirmationComponent, },
   { path: 'cancel', component: PaymentComponent },
   { path: 'forgetpassword', component: ForgotPasswordComponent },
-  { path: 'request', component: RequestComponent}, // إضافة المسار الجديد
+  { path: 'request', component: RequestComponent }, // إضافة المسار الجديد
   { path: 'resetpassword', component: ResetPasswordComponent },
+  { path: 'errorpage', component: ErrorPageComponent }
   // { path: 'hr-payment', component: HrPaymentsComponent },
   //{ path: '**', redirectTo: 'notfound' },
 ];
 @NgModule({
-  imports: [RouterModule.forChild(routes),SharedModule],
+  imports: [RouterModule.forChild(routes), SharedModule],
   exports: [RouterModule],
 })
-export class DeveloperRoutingModule {}
+export class DeveloperRoutingModule { }
