@@ -1,6 +1,27 @@
 <main>
   <!--hero section-->
-  
+  <div *ngIf="
+  developerProfile.Status==1&&showMessageapproval" class="bg-light-approval"
+    style=" padding: 15px; border-radius: 10px; margin-bottom: 10px;">
+    Congratulations on completing the review process! Your profile has been approved and is now visible in the HR list.
+    <button (click)="hideMessageaprroval()" class="btn bg-btn-approval">Ok</button>
+  </div>
+  <div *ngIf="
+  developerProfile.Status==2&& Messagerejection"
+    style="border: 1px solid  #ff4107; background-color: #ffd5cd; padding: 15px; border-radius: 10px; margin-bottom: 10px;">
+
+    Sorry, your profile has been rejected and does not appear in the list of HRs. To get your profile approved, please
+    take at least 3 quizzes related to your skills.
+    <div class="text-end">
+      <button (click)="hideMessagerejection()" class="btn  bg-btn-rejection">Ok</button>
+    </div>
+  </div>
+  <div *ngIf="showMessage&&developerProfile.Status==0" class="bg-light-warning"
+    style="padding: 15px; border-radius: 10px; margin-bottom: 10px;"> Your profile currently under preview so does not
+    appear in the list of HRs. To reduce the preview time, you can take quizzes related to your skills.
+
+    <button (click)="hideMessage()" class="btn bg-btn-warning">Ok</button>
+  </div>
   <section class="py-xl-8 py-6">
     <div class="container">
       <!--row-->
