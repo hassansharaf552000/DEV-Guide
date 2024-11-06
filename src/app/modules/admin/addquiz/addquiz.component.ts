@@ -4,6 +4,7 @@ import { CreateQuiz } from '../../../core/enums/CreateQuiz';
 import { QuizService } from '../../../shared/services/Quiz/quiz.service';
 import { SkillService } from '../../../shared/services/Skill/skill.service';
 import { ISkill } from '../../../core/enums/Skill';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-addquiz',
@@ -19,7 +20,8 @@ export class AddquizComponent {
     private fb: FormBuilder,
     private quizService: QuizService,
     private skillservice:SkillService,
-    private cdr:ChangeDetectorRef
+    private cdr:ChangeDetectorRef,
+    private touster:ToastrService
   ) {
     this.quizForm = this.fb.group({
       QuizName: ['', Validators.required],
@@ -59,9 +61,11 @@ export class AddquizComponent {
       this.quizService.createQuiz(quizData).subscribe({
         next: (response) => {
           console.log('Quiz created successfully:', response);
+          this.touster.success("Quiz Created Successfully");
         },
         error: (error) => {
           console.error('Error creating quiz:', error);
+          this.touster.error("Failed to Create Quiz")
         }
       });
     }

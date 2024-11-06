@@ -6,6 +6,7 @@ import { QuizService } from '../../../shared/services/Quiz/quiz.service';
 import { DashboardService } from '../../../shared/services/Dashboard/dashboard.service';
 import { IQuiz } from '../../../core/enums/Quiz';
 import { CreateQuiz } from '../../../core/enums/CreateQuiz';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-addquestionsandoptions',
@@ -18,7 +19,7 @@ export class AddquestionsandoptionsComponent {
   selectedQuiz: QuizDetailsViewModel | undefined;
   Questions: QuestionDto[] = []
   currentQustionId = 0;
-  constructor(private dashboardservice: DashboardService) { }
+  constructor(private dashboardservice: DashboardService, private touster:ToastrService) { }
 
   ngOnInit(): void {
     this.loadQuizzes();
@@ -86,12 +87,12 @@ export class AddquestionsandoptionsComponent {
     this.dashboardservice.addQuestionsToQuiz(this.currentQustionId, this.Questions).subscribe({
       next: (res) => {
         console.log(res);
-
+        this.touster.success("Questions Added Successfully");
         
       },
       error: (err) => {
         console.log(err);
-
+        this.touster.error("Failed to Add Questions")
       }
     })
   }
