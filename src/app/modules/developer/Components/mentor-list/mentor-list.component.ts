@@ -12,8 +12,8 @@ import { Options, LabelType } from "@angular-slider/ngx-slider";
 // export class MentorListComponent {
 //   price: number = 10;
 //   // mentors: IMentor[] = []; // Initialize with an empty array4
-//   name:string=""; 
-//   role:string=""; 
+//   name:string="";
+//   role:string="";
 //   title:string="";
 //   priceMin:number=0;
 //   priceMax:number=0;
@@ -22,24 +22,24 @@ import { Options, LabelType } from "@angular-slider/ngx-slider";
 //   pageSize:number;
 //   mentors:any[]=[];
 //   p: number ;
-//   collection: any[] = this.mentors;  
+//   collection: any[] = this.mentors;
 //   totalItems:number;
 //   constructor(private AccountServ:AccountService){
 //      this.AccountServ.getall(this.name,this.role,this.title,this.priceMin,this.priceMax,this.rate,this.p,this.pageSize).subscribe((res: any) => {
 //       // this.mentors = res.Data as any[];
-//        this.mentors = res.Data as 
+//        this.mentors = res.Data as
 //        any[];
 //        this.totalItems=res.TotalCount
 //        this.pageSize=res.PageSize
 //       //  this.p=res.PageNumber
 //       console.log("res=",res);})
 //      }
-  
-  
-      
-      
+
+
+
+
 //   //     console.log("hello");
-     
+
 
 //   // }
 //   ngOnInit():void {
@@ -69,7 +69,7 @@ import { Options, LabelType } from "@angular-slider/ngx-slider";
 //         //  (res:any)=>{ this.mentors=res.Data as any[];
 //         //    console.log(res);
 //   //  });
-    
+
 //    }
 //   getRangeMinPercent(): number {
 //     return ((this.priceMin - 100) / (10000 - 100)) * 100;
@@ -82,7 +82,7 @@ import { Options, LabelType } from "@angular-slider/ngx-slider";
 //   getRangeWidthPercent(): number {
 //     return this.getRangeMaxPercent() - this.getRangeMinPercent();
 //   }
- 
+
 //   totalPge():number{
 // return Math.ceil(this.totalItems/this.pageSize)
 //   }
@@ -95,13 +95,13 @@ import { Options, LabelType } from "@angular-slider/ngx-slider";
 
 //   }
 // }
-  
 
-// this os the final 
+
+// this os the final
 
 // export class MentorListComponent {
-//   name: string = ""; 
-//   role: string = ""; 
+//   name: string = "";
+//   role: string = "";
 //   title: string = "";
 //   priceMin: number = 0;
 //   priceMax: number = 0;
@@ -118,14 +118,14 @@ import { Options, LabelType } from "@angular-slider/ngx-slider";
 //     //   next: (res: any) => {
 //     //     this.mentors = res
 //     //     console.log("resssss",res);
-        
+
 //     //   }
 //     // });
 //      this.filter();
 //   }
 
 //   // Fetch mentors based on filters and pagination
-//   // // this is the final one 
+//   // // this is the final one
 //   filter(): void {
 //     this.AccountServ.getall(this.name, this.role, this.title, this.priceMin, this.priceMax, this.rate, this.p, this.pageSize)
 //       .subscribe({
@@ -157,8 +157,8 @@ import { Options, LabelType } from "@angular-slider/ngx-slider";
 
 // }
 export class MentorListComponent implements OnInit {
-  name: string = ""; 
-  role: string = ""; 
+  name: string = "";
+  role: string = "";
   title: string = "";
   // priceMin: number = 0;
   // priceMax: number = 0;
@@ -167,11 +167,11 @@ export class MentorListComponent implements OnInit {
   pageSize: number = 5;    // Default page size
   mentors: any[] = [];
   totalItems: number;
-  
+
   // minValue: number = 100;
   // maxValue: number = 400;
   priceMin: number =0;
-  priceMax: number =0;
+  priceMax: number ;
   options: Options = {
     floor: 0,
     ceil: 5000,
@@ -226,13 +226,13 @@ export class MentorListComponent implements OnInit {
             res.Data.SocialAccounts.forEach(account => {
                 console.log(account.SocialLink); // Make sure 'account' is not undefined
             });
-        
+
           }
- 
+
           this.cdr.detectChanges();
         }
       });
-      
+
   }
 
   // Calculate total number of pages
@@ -240,7 +240,7 @@ export class MentorListComponent implements OnInit {
     return Math.ceil(this.totalItems / this.pageSize);
   }
 
-  
+
   // Method to handle page change
   OnpageChange(newPage: number): void {
     if (newPage > 0 && newPage <= this.totalPge()) {
@@ -260,7 +260,7 @@ export class MentorListComponent implements OnInit {
     this.priceMax = newMaxValue;
     console.log('Updated Price Max:', this.priceMax);
   }
-  
+
  r
 }
 

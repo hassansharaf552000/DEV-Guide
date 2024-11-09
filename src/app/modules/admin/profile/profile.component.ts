@@ -59,7 +59,7 @@ export class ProfileComponent implements OnInit {
 
   reviewForm: FormGroup;
   constructor(private route: ActivatedRoute,
-    private http: HttpClient, private AccService: AccountService, 
+    private http: HttpClient, private AccService: AccountService,
     private fb: FormBuilder,private toaster:ToastrService) {
     this.id = this.route.snapshot.paramMap.get('id');
     this.reviewForm = this.fb.group({
@@ -114,37 +114,37 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     const userId = this.id; // Replace with the actual user ID
     console.log("iduserforrole",userId);
-    
+
     this.AccService.getUserRole(userId).subscribe({
       next: (response) => {
         this.userRole = response.Role || response.Roles;
         console.log("role",this.userRole);
-        
+
       },
       error: (error) => {
         console.error('Error fetching user role:', error);
       },
     });
-  
+
     this.AccService.getUsers().subscribe({
       next: (data) => {
         this.users = data;
         console.log("data",data);
-        
+
         // Initially, display all users
       },
       error: (err) => {
         console.error('Error fetching users:', err);
       }
     });
-    
+
        // You can fetch the dynamic `id` from the route if necessary
        this.route.params.subscribe(params => {
         this.id = params['id']; // Now `id` is taken from the URL params if needed
       });
 
 
-      
+
     // Get the mentor ID from the URL
     const mentorId = this.route.snapshot.paramMap.get('id');
     console.log("mentorid", mentorId)
@@ -190,11 +190,11 @@ export class ProfileComponent implements OnInit {
     // });
 
     // console.log("formated",formattedDate);
-    
+
   }
   changeRole() {
     console.log("userid",this.id);
-    
+
     if (this.id) {
       this.AccService.changeUserRoleApproved(this.id).subscribe(
         (response) => {
@@ -202,8 +202,8 @@ export class ProfileComponent implements OnInit {
         },
         (error) => {
           this.message = 'An error occurred while updating the user role.';
-          this.toaster.success("Request Accepted successfully!")
-        
+          this.toaster.success("Request Rejected successfully!")
+
         }
       );
     } else {
@@ -216,7 +216,7 @@ export class ProfileComponent implements OnInit {
     this.AccService.updateUserStatus(this.id).subscribe(
       response => {
         console.log(response);
-        this.toaster.success("Request Rejected successfully!")
+        this.toaster.success("Request Accepted successfully!")
       },
       error => {
         console.error(error);
